@@ -1,0 +1,23 @@
+.headtxt {
+    position: absolute;
+    top: 643px;
+    left: 159px;
+    width: 592px; 
+    height: 109px;
+    color: #ffffff;
+}
+
+.text{
+    position: absolute;
+    top: 776px;
+    left: 159px;
+    width: 849px;
+    height: 120px;
+    text-align: left;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+
+}
+
+
