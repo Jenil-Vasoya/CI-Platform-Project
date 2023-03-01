@@ -1,0 +1,40 @@
+﻿.endtext1 {
+    justify-content: end;
+}
+
+.ratings {
+    margin-right: 10px;
+}
+
+    .ratings i {
+        color: #cecece;
+        font-size: 25px;
+    }
+
+.rating-color {
+    color: #fbc634 !important;
+}
+
+.rating1 {
+    justify-content: space-between;
+}
+
+@media screen and (max-width : 576px) {
+    .endtext1 {
+        justify-content: center;
+        max-height:50px;
+    }
+    
+}
+
+
+
+.endtext2 {
+    justify-content: start;
+}
+
+@media screen and (max-width : 576px) {
+    .endtext2 {
+        justify-content: center;
+    }
+}

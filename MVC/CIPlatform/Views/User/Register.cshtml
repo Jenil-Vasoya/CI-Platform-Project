@@ -1,0 +1,105 @@
+﻿@{
+    Layout = "";
+}
+
+
+@model User
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="../Assets/css/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <title>Register</title>
+</head>
+
+<body>
+    <div class="row">
+        <!---------- FIRST PART--------->
+
+        <partial name="_Image" />
+
+        <div class="col-lg-3">
+
+            <div class="container h-100">
+                <div class="row h-100 justify-content-center align-items-end">
+                    <div class="col-10 col-md-8 col-lg-12">
+                        <form class="form-example" action="" method="post">
+                            <div class="form-group my-2">
+                                <label asp-for="FirstName">First Name</label>
+                                <input type="text" asp-for="FirstName" class="form-control my-2" id="firstname" placeholder="Enter first name"
+                                       name="firstname">
+
+                            </div>
+                            <div class="form-group my-2 mt-4">
+                                <label asp-for="LastName">Last Name</label>
+                                <input type="text" asp-for="LastName" class="form-control my-2" id="lastname" placeholder="Enter last name"
+                                       name="lastname">
+                            </div>
+                            <div class="form-group my-2 mt-4">
+                                <label asp-for="PhoneNumber">Phone Number</label>
+                                <input type="number" asp-for="PhoneNumber" class="form-control my-2" id="phonenumber" placeholder="Enter phone number"
+                                       name="phonenumber">
+                            </div>
+                            <div class="form-group my-2 mt-4">
+                                <label asp-for="Email">Email Address</label>
+                                <input type="email" asp-for="Email" class="form-control username my-2" id="email" placeholder="Enter Email"
+                                       name="email">
+                            </div>
+                            <div class="form-group my-2 mt-4">
+                                <label asp-for="Password">New Password</label>
+                                <input type="password" asp-for="Password" class="form-control my-2" id="password" placeholder="Enter new password"
+                                       name="password">
+                            </div>
+
+                            <div class="form-group my-2 mt-3">
+                                <label for="confirmpassword">Confirm Password</label>
+                                <input type="password" class="form-control my-2" id="confirmpassword" placeholder="Confirm password"
+                                       name="confirmpassword">
+                            </div>
+
+                            <button type="submit" asp-controller="User" asp-action="Register" class="btn btn-outline-warning my-2 mt-3 w-100"
+                                    style="border-radius: 25px;">
+                                Register
+                            </button>
+                            <div class="row">
+                                <a asp-action="ForgotPassword" class="link-secondary my-2" style="text-align: center;">
+                                    Lost your
+                                    Password?
+                                </a>
+                            </div>
+
+                            <div class="form-group" style="text-align: center; margin-bottom: 40px;">
+                                <p>
+                                    Already registered?
+                                    <span> <a asp-action="Login" class="link-primary">Login now</a> </span>
+                                </p>
+                            </div>
+                        </form>
+
+
+                    </div>
+                    <div class="policy">
+                        <a href="#" class="link-secondary">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    </div>
+
+</body>
+
+</html>

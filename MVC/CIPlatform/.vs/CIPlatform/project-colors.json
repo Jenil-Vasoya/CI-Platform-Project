@@ -1,0 +1,66 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "3d37e5cc-986e-4693-a79a-b5defc912edb": {
+      "ProjectGuid": "3d37e5cc-986e-4693-a79a-b5defc912edb",
+      "DisplayName": "CIPlatform",
+      "ColorIndex": 0
+    },
+    "cb937474-2c10-4ec8-8b05-5ee09812ba1a": {
+      "ProjectGuid": "cb937474-2c10-4ec8-8b05-5ee09812ba1a",
+      "DisplayName": "CIPlatform.entites",
+      "ColorIndex": 1
+    },
+    "62411e5e-c868-41dc-a7c2-90616b8f3784": {
+      "ProjectGuid": "62411e5e-c868-41dc-a7c2-90616b8f3784",
+      "DisplayName": "CIPlatform.repository",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "c3416f80-fb14-4191-80a4-7545946f7469": {
+      "ProjectGuid": "c3416f80-fb14-4191-80a4-7545946f7469",
+      "DisplayName": "CIPlatform.Entites",
+      "ColorIndex": 3
+    },
+    "2155a5b3-6e4a-4986-bc26-3ab05422babc": {
+      "ProjectGuid": "2155a5b3-6e4a-4986-bc26-3ab05422babc",
+      "DisplayName": "CIPlatform.Repository",
+      "ColorIndex": 4
+    },
+    "3a62e7e9-7279-40e1-af07-2b7bef8cae49": {
+      "ProjectGuid": "3a62e7e9-7279-40e1-af07-2b7bef8cae49",
+      "DisplayName": "CIPlatform.Entities",
+      "ColorIndex": 5
+    },
+    "14de289c-6e8c-41f8-b835-7baf79eb0b92": {
+      "ProjectGuid": "14de289c-6e8c-41f8-b835-7baf79eb0b92",
+      "DisplayName": "CIPlatform.Repository",
+      "ColorIndex": 6
+    },
+    "46a7527f-56ce-4c39-8592-475e68b609a5": {
+      "ProjectGuid": "46a7527f-56ce-4c39-8592-475e68b609a5",
+      "DisplayName": "CIPlatform.Entities",
+      "ColorIndex": 7
+    },
+    "e7b4b485-a80a-4487-bf8f-73b83815768b": {
+      "ProjectGuid": "e7b4b485-a80a-4487-bf8f-73b83815768b",
+      "DisplayName": "CIPlatform.Repository",
+      "ColorIndex": 8
+    },
+    "c29e0090-4eb3-4f2f-bde2-b7c485cd41ad": {
+      "ProjectGuid": "c29e0090-4eb3-4f2f-bde2-b7c485cd41ad",
+      "DisplayName": "CIPlatform.Entities",
+      "ColorIndex": 9
+    },
+    "e7460593-1529-4fa6-8303-24eea1416681": {
+      "ProjectGuid": "e7460593-1529-4fa6-8303-24eea1416681",
+      "DisplayName": "CIPlatform.Repository",
+      "ColorIndex": 10
+    }
+  },
+  "NextColorIndex": 11
+}

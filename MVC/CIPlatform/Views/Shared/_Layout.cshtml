@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CIPlatform</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Assets/css/style.css" asp-append-version="true" />
+
+    
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand navbar-light bg-light">
+            <div class="container">
+                <ul class="navbar-nav storyp">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Stories</a>
+                    </li>
+                    <li class="nav-item dropdown policyp">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Policy
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex ">
+                    <a class="nav-link " style="padding-right: 0px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="~/Assets/images/user-img.png" class="img rounded-5" style="height: 40px; width: 40px;">
+                    </a>
+                    <div class="dropdown-center my-auto uname">
+                        <a class="nav-link dropdown-toggle ms-1 " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Evan Donohue</a>
+                        <ul class=" dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                            <li><a class="dropdown-item" href="#">Action 1</a></li>
+                            <li><a class="dropdown-item" href="#">Action 2 </a></li>
+                            <li><a class="dropdown-item" href="#">Action 3 </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 pb-3 ">
+                    <div class="search d-flex">
+                        <button class="btn">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        <input type="text" class="form-control " placeholder="Search Mission...">
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-3 ">
+                            <div class="dropdown  ">
+                                <a class="nav-link dropdown-toggle ms-1 " href="#" role="button" data-bs-toggle="dropdown"
+                                   aria-expanded="false">Coutry</a>
+                                <ul class=" dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                                    <li><a class="dropdown-item" href="#">Action 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Action 2 </a></li>
+                                    <li><a class="dropdown-item" href="#">Action 3 </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle ms-1 " href="#" role="button" data-bs-toggle="dropdown"
+                                   aria-expanded="false">City</a>
+                                <ul class=" dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                                    <li><a class="dropdown-item" href="#">Action 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Action 2 </a></li>
+                                    <li><a class="dropdown-item" href="#">Action 3 </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle ms-1 " href="#" role="button" data-bs-toggle="dropdown"
+                                   aria-expanded="false">Theme</a>
+                                <ul class=" dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                                    <li><a class="dropdown-item" href="#">Action 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Action 2 </a></li>
+                                    <li><a class="dropdown-item" href="#">Action 3 </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle ms-1 " href="#" role="button" data-bs-toggle="dropdown"
+                                   aria-expanded="false">Skills</a>
+                                <ul class=" dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                                    <li><a class="dropdown-item" href="#">Action 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Action 2 </a></li>
+                                    <li><a class="dropdown-item" href="#">Action 3 </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+   
+    <div class="container-fluid" style="padding-left:0px; padding-right:0px; min-height:100%">
+        <main role="main" >
+            @RenderBody()
+        </main>
+    </div>
+
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
