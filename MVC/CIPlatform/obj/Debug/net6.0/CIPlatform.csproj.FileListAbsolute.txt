@@ -584,3 +584,5 @@ D:\TatvaSoft\CI-Platform-Project\MVC\CIPlatform\obj\Debug\net6.0\CIPlatform.dll
 D:\TatvaSoft\CI-Platform-Project\MVC\CIPlatform\obj\Debug\net6.0\ref\CIPlatform.dll
 D:\TatvaSoft\CI-Platform-Project\MVC\CIPlatform\obj\Debug\net6.0\CIPlatform.pdb
 D:\TatvaSoft\CI-Platform-Project\MVC\CIPlatform\obj\Debug\net6.0\CIPlatform.genruntimeconfig.cache
+D:\TatvaSoft\CI-Platform-Project\MVC\CIPlatform\bin\Debug\net6.0\SendGrid.dll
+D:\TatvaSoft\CI-Platform-Project\MVC\CIPlatform\bin\Debug\net6.0\StarkbankEcdsa.dll

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CIPlatform.Entities.Models;
 
@@ -14,6 +16,10 @@ public partial class User
     public string Email { get; set; } = null!;
 
     public string Password { get; set; } = null!;
+
+    [NotMapped] // Does not effect with your database
+    [Compare("Password")]
+    public string ConfirmPassword { get; set; }
 
     public int PhoneNumber { get; set; }
 

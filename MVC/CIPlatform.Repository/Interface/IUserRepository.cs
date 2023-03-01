@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Entities.Models;
+using CIPlatform.Entities.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,18 @@ namespace CIPlatform.Repository.Interface
 {
     public interface IUserRepository
     {
-        public void UserRegister(User objUser);
+        public List<User> UserList();
+
+        public void Register(User objUser);
+
+        public Boolean IsEmailAvailable(string email);
+
+        public User IsPasswordAvailable(string password, string email);
+
+        public long GetUserID(string Email);
+
+        public bool ResetPassword(int userId, string OldPassword, string NewPassword);
+
+        public Boolean ChangePassword(long UserId, Reset_Password model);
     }
 }

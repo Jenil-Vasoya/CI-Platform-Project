@@ -11,6 +11,7 @@ builder.Services.AddControllersWithViews();
 //    builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDbContext<CiPlatformContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 var app = builder.Build();
 

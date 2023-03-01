@@ -1,22 +1,31 @@
-﻿using CIPlatform.Data;
+﻿
 using CIPlatform.Entities.Models;
+using CIPlatform.Entities.ViewModel;
 using CIPlatform.Repository.Interface;
 using CIPlatform.Views.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using SendGrid.Helpers.Mail;
 using System.Data;
+using MailHelper = CIPlatform.Entities.ViewModel.MailHelper;
 
 namespace CIPlatform.Controllers
 {
     public class UserController : Controller
     {
         private readonly IUserRepository _AccountRepo;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IConfiguration configuration;
 
-        public UserController(IUserRepository AccountRepo)
+        public UserController(IUserRepository AccountRepo, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration)
         {
             _AccountRepo = AccountRepo;
+            _httpContextAccessor = httpContextAccessor;
+            configuration = _configuration;
         }
+
+     
         //private readonly CiPlatformContext _db;
 
         //public UserController(CiPlatformContext db)
@@ -38,9 +47,20 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult Login(User objLogin)
         {
+            var objUser = _AccountRepo.UserList().Exists(u => u.Email == objLogin.Email && u.Password == objLogin.Password);
+
+                if (objUser == true)
+                {
+                    return RedirectToAction("MissionGrid", "Home");
+
+                }
+                else
+                {
+                    return NotFound("User not Found");
+                }
             //if (_db.Users.Any(u=> u.Email == objLogin.Email && u.Password == objLogin.Password)) 
             //{ return RedirectToAction("MissionGrid", "Home"); }
-            return RedirectToAction("Login", "User");
+            return View();
 
           
         }
@@ -53,9 +73,13 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult Register(User objUser)
         {
-            _AccountRepo.UserRegister(objUser);
+            if (objUser.Password == objUser.ConfirmPassword)
+            {
+                _AccountRepo.Register(objUser);
+                return RedirectToAction("MissionGrid", "Home");
+            }
             
-            return RedirectToAction("Login", "User");
+            return RedirectToAction("Register", "User");
         }
 
         //[HttpPost]
@@ -78,31 +102,94 @@ namespace CIPlatform.Controllers
         }
 
         [HttpPost]
-        public IActionResult ForgotPassword(User objPass)
+        public IActionResult ValidateForgotDetails(ForgotPassword fpm)
         {
-            //if (_db.Users.Any(u => u.Email == objPass.Email))
-            //{ return RedirectToAction("ResetPassword", "User"); }
-            return View();
+            if (_AccountRepo.IsEmailAvailable(fpm.email))
+            {
+                try
+                {
+                    long UserId = _AccountRepo.GetUserID(fpm.email);
+                    string welcomeMessage = "Welcome to CI platform, <br/> You can Reset your password using below link. <br/>";
+                    // string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Account/Reset_Password/" + UserId.ToString() + " \"  style=\"font-weight:500;color:blue;\" > Reset Password </a>";
+                    string path = "<a href=\"https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/User/ResetPassword/" + UserId.ToString() + "\"> Reset Password </a>";
+                    MailHelper mailHelper = new MailHelper(configuration);
+                    ViewBag.sendMail = mailHelper.Send(fpm.email, welcomeMessage + path);
+                    ModelState.Clear();
+                    return RedirectToAction("Login", new { UserId = UserId });
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("email", "Plase Enter Register Email Address..");
+                ViewBag.isForgetPasswordOpen = true;
+                return View("Forgot_Password");
+            }
+            return View("Login");
         }
-
-        public IActionResult ResetPassword()
+        [HttpGet]
+        public IActionResult ResetPassword(long id)
         {
-            return View();
+            Reset_Password model = new Reset_Password();
+            model.UserId = id;
+            return View(model.UserId);
         }
 
         [HttpPost]
-        public IActionResult ResetPassword(User objResetPass)
+        public IActionResult ResetPassword(Reset_Password model, long id)
         {
-            //if (objResetPass.Password == objResetPass.ConfirmPassword)
-            //{
-            //    _db.Users.Add(objResetPass);
-            //    _db.SaveChanges();
-            //    return RedirectToAction("MissionGrid", "Home");
-            //}
-            return RedirectToAction("Login", "User");
+            if (ModelState.IsValid)
+            {
 
+                if (_AccountRepo.ChangePassword(id, model))
+                {
+                    ModelState.Clear();
+                    return RedirectToAction("login", "Account");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Enter Same Password");
+                }
+            }
 
+            return View();
         }
+
+
+
+        //[HttpPost]
+        //public IActionResult ForgotPassword(User objPass)
+        //{
+        //    var objUser = _AccountRepo.UserList().Exists;
+        //    //if (_db.Users.Any(u => u.Email == objPass.Email))
+        //    //{ return RedirectToAction("ResetPassword", "User"); }
+        //    return View();
+        //}
+
+        //public IActionResult ResetPassword()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public IActionResult ResetPassword(User objResetPass)
+        //{
+        //    User user = new User();
+        //    user = objResetPass;
+
+        //    //if (objResetPass.Password == objResetPass.ConfirmPassword)
+        //    //{
+        //    //    _db.Users.Add(objResetPass);
+        //    //    _db.SaveChanges();
+        //    //    return RedirectToAction("MissionGrid", "Home");
+        //    //}
+        //    return RedirectToAction("Login", "User");
+
+
+        //}
 
        
 
