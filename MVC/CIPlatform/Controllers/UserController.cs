@@ -75,8 +75,16 @@ namespace CIPlatform.Controllers
         {
             if (objUser.Password == objUser.ConfirmPassword)
             {
-                _AccountRepo.Register(objUser);
-                return RedirectToAction("MissionGrid", "Home");
+               var isValid = _AccountRepo.Register(objUser);
+                {
+                    if (isValid == true)
+                    {
+                        return RedirectToAction("Login", "User");
+
+                    }
+                    return RedirectToAction("Register", "User");
+
+                }
             }
             
             return RedirectToAction("Register", "User");
@@ -102,18 +110,18 @@ namespace CIPlatform.Controllers
         }
 
         [HttpPost]
-        public IActionResult ValidateForgotDetails(ForgotPassword fpm)
+        public IActionResult ValidateForgotDetails(ForgotPassword objForgotPass)
         {
-            if (_AccountRepo.IsEmailAvailable(fpm.email))
+            if (_AccountRepo.IsEmailAvailable(objForgotPass.email))
             {
                 try
                 {
-                    long UserId = _AccountRepo.GetUserID(fpm.email);
+                    long UserId = _AccountRepo.GetUserID(objForgotPass.email);
                     string welcomeMessage = "Welcome to CI platform, <br/> You can Reset your password using below link. <br/>";
                     // string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Account/Reset_Password/" + UserId.ToString() + " \"  style=\"font-weight:500;color:blue;\" > Reset Password </a>";
                     string path = "<a href=\"https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/User/ResetPassword/" + UserId.ToString() + "\"> Reset Password </a>";
                     MailHelper mailHelper = new MailHelper(configuration);
-                    ViewBag.sendMail = mailHelper.Send(fpm.email, welcomeMessage + path);
+                    ViewBag.sendMail = mailHelper.Send(objForgotPass.email, welcomeMessage + path);
                     ModelState.Clear();
                     return RedirectToAction("Login", new { UserId = UserId });
                 }
@@ -147,7 +155,7 @@ namespace CIPlatform.Controllers
                 if (_AccountRepo.ChangePassword(id, model))
                 {
                     ModelState.Clear();
-                    return RedirectToAction("login", "Account");
+                    return RedirectToAction("Login", "User");
                 }
                 else
                 {

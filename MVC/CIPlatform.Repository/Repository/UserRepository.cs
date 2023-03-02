@@ -28,19 +28,19 @@ namespace CIPlatform.Repository.Repository
 
         public Boolean IsEmailAvailable(string email)
         {
-            return _DbContext.Users.Any(x => x.Email == email);
+            return _DbContext.Users.Any(u => u.Email == email);
         }
 
         public User IsPasswordAvailable(string password, string email)
         {
-            return _DbContext.Users.Where(x => x.Password == password && x.Email == email).FirstOrDefault();
+            return _DbContext.Users.Where(u => u.Password == password && u.Email == email).FirstOrDefault();
         }
 
 
 
         public long GetUserID(string Email)
         {
-            User user = _DbContext.Users.Where(x => x.Email == Email).FirstOrDefault();
+            User user = _DbContext.Users.Where(u => u.Email == Email).FirstOrDefault();
             if (user == null)
             {
 
@@ -100,7 +100,7 @@ namespace CIPlatform.Repository.Repository
             try
             {
 
-                User user = _DbContext.Users.Where(x => x.UserId == userID).FirstOrDefault();
+                User user = _DbContext.Users.Where(u => u.UserId == userID).FirstOrDefault();
                 if (user != null)
                 {
                     return user;
@@ -121,11 +121,17 @@ namespace CIPlatform.Repository.Repository
             }
         }
 
-        public void Register(User objUser)
+        public bool Register(User objUser)
         {
+            if(_DbContext.Users.Any(u => u.Email != objUser.Email))
+            {
+                _DbContext.Users.Add(objUser);
+                _DbContext.SaveChanges();
+                return true;
+            }
+            return false;
 
-            _DbContext.Users.Add(objUser);
-            _DbContext.SaveChanges();
+            
                 
             
         }
