@@ -61,7 +61,7 @@ namespace CIPlatform.Repository.Repository
         //    _DbContext.Users.Update(objuser);
         //    _DbContext.SaveChanges();
         //}
-        public bool ResetPassword(int userId, string OldPassword, string NewPassword)
+        public bool ResetPassword(long userId, string OldPassword, string NewPassword)
         {
             try
             {

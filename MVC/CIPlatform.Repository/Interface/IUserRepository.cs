@@ -20,7 +20,7 @@ namespace CIPlatform.Repository.Interface
 
         public long GetUserID(string Email);
 
-        public bool ResetPassword(int userId, string OldPassword, string NewPassword);
+        public bool ResetPassword(long userId, string OldPassword, string NewPassword);
 
         public Boolean ChangePassword(long UserId, Reset_Password model);
     }

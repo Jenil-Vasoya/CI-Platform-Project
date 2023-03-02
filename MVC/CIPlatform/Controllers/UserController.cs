@@ -126,7 +126,7 @@ namespace CIPlatform.Controllers
             {
                 ModelState.AddModelError("email", "Plase Enter Register Email Address..");
                 ViewBag.isForgetPasswordOpen = true;
-                return View("Forgot_Password");
+                return View("ForgotPassword");
             }
             return View("Login");
         }
@@ -135,7 +135,7 @@ namespace CIPlatform.Controllers
         {
             Reset_Password model = new Reset_Password();
             model.UserId = id;
-            return View(model.UserId);
+            return View(model);
         }
 
         [HttpPost]

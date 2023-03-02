@@ -18,7 +18,7 @@ namespace CIPlatform.Entities.ViewModel
 
         [Required]
         [Compare("Password", ErrorMessage = "Password does not match")]
-        public string confirm_password { get; set; }
+        public string ConfirmPassword { get; set; }
 
     }
 }
