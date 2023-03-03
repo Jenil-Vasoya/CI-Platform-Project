@@ -2,6 +2,7 @@
 using CIPlatform.Entities.Models;
 using CIPlatform.Entities.ViewModel;
 using CIPlatform.Repository.Interface;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -142,6 +143,11 @@ namespace CIPlatform.Repository.Repository
             {
 
             }
+
+            //HttpContext.Session.SetString("UserId", objLogin.UserId.ToString());
+            //HttpContext.Session.SetString("UserName", objLogin.FirstName.ToString() + " " + objLogin.LastName.ToString());
+            //HttpContext.Session.SetString("Role", "0");
+            //HttpContext.Session.SetString("Img", objLogin.Avatar.ToString());
         }
 
     }

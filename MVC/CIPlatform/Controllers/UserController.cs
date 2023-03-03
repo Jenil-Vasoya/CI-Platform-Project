@@ -6,6 +6,7 @@ using CIPlatform.Views.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using Newtonsoft.Json;
 using SendGrid.Helpers.Mail;
 using System.Data;
 using MailHelper = CIPlatform.Entities.ViewModel.MailHelper;
@@ -49,17 +50,21 @@ namespace CIPlatform.Controllers
         {
             var objUser = _AccountRepo.UserList().FirstOrDefault(u => u.Email == objLogin.Email && u.Password == objLogin.Password);
 
-                if (objUser != null)
+                if (objUser == null)
                 {
                     return RedirectToAction("MissionGrid", "Home");
 
                 }
 
-            
 
+            HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(objUser));
+            HttpContext.Session.SetString("UserId", JsonConvert.SerializeObject(objUser.UserId.ToString()));
+            HttpContext.Session.SetString("UserName", JsonConvert.SerializeObject(objUser.FirstName.ToString() + " " + objUser.LastName.ToString()));
+            HttpContext.Session.SetString("Role", "0");
+            //HttpContext.Session.SetString("Img", objUser.Avatar.ToString());
             //if (_db.Users.Any(u=> u.Email == objLogin.Email && u.Password == objLogin.Password)) 
             //{ return RedirectToAction("MissionGrid", "Home"); }
-            return View();
+            return RedirectToAction("ForgotPassword", "User");
 
           
         }
@@ -106,6 +111,8 @@ namespace CIPlatform.Controllers
 
         public IActionResult ForgotPassword()
         {
+           ViewBag.sessionV = HttpContext.Session.GetString("UserId");
+           ViewBag.session = HttpContext.Session.GetString("UserName");
             return View();
         }
 

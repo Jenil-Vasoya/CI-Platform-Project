@@ -2,6 +2,7 @@ using CIPlatform.Entities.Data;
 using CIPlatform.Repository.Interface;
 using CIPlatform.Repository.Repository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Session;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<CiPlatformContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -26,6 +30,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseSession();
+ 
 app.UseRouting();
 
 app.UseAuthorization();
