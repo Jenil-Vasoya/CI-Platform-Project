@@ -47,17 +47,16 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult Login(User objLogin)
         {
-            var objUser = _AccountRepo.UserList().Exists(u => u.Email == objLogin.Email && u.Password == objLogin.Password);
+            var objUser = _AccountRepo.UserList().FirstOrDefault(u => u.Email == objLogin.Email && u.Password == objLogin.Password);
 
-                if (objUser == true)
+                if (objUser != null)
                 {
                     return RedirectToAction("MissionGrid", "Home");
 
                 }
-                else
-                {
-                    return NotFound("User not Found");
-                }
+
+            
+
             //if (_db.Users.Any(u=> u.Email == objLogin.Email && u.Password == objLogin.Password)) 
             //{ return RedirectToAction("MissionGrid", "Home"); }
             return View();
@@ -73,7 +72,8 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult Register(User objUser)
         {
-            if (objUser.Password == objUser.ConfirmPassword)
+
+            if (objUser.Password == objUser.ConfirmPassword && objUser.FirstName != null && objUser.Email != null && objUser.PhoneNumber != 0)
             {
                var isValid = _AccountRepo.Register(objUser);
                 {
