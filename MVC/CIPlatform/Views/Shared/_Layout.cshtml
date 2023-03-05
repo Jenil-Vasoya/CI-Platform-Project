@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Assets/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
     
 
@@ -39,11 +42,12 @@
                         <img src="~/Assets/images/user-img.png" class="img rounded-5" style="height: 40px; width: 40px;">
                     </a>
                     <div class="dropdown-center my-auto uname">
-                        <a class="nav-link dropdown-toggle ms-1 " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Evan Donohue</a>
+                        
+                        <a class="nav-link dropdown-toggle ms-1 " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">@ViewBag.UserName</a>
                         <ul class=" dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                            <li><a class="dropdown-item" href="#">Action 1</a></li>
-                            <li><a class="dropdown-item" href="#">Action 2 </a></li>
-                            <li><a class="dropdown-item" href="#">Action 3 </a></li>
+                            <li><a class="dropdown-item" href="#">Add Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
+                            <li><a class="dropdown-item" asp-controller="User" asp-action="Login">Log Out</a></li>
                         </ul>
                     </div>
                 </div>

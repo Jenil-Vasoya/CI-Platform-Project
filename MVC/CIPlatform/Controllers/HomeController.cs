@@ -1,5 +1,6 @@
 ﻿using CIPlatform.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Diagnostics;
 
 namespace CIPlatform.Controllers
@@ -32,6 +33,10 @@ namespace CIPlatform.Controllers
         }
         public IActionResult MissionGrid()
         {
+            ViewBag.UserId = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId"));
+            ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
+            ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName"));
+
             return View();
         }
         public IActionResult MissionList()
