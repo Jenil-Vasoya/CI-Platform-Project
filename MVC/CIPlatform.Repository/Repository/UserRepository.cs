@@ -27,6 +27,31 @@ namespace CIPlatform.Repository.Repository
             return objUserList;
         }
 
+        //public List<Country> CountryList()
+        //{
+        //    List<Country> objCountryList = _DbContext.Countries.ToList();
+        //    return objCountryList;
+        //}
+
+
+        //public List<City> CityList()
+        //{
+        //    List<City> objCityList = _DbContext.Cities.ToList();
+        //    return objCityList;
+        //}
+
+        //public List<MissionTheme> MissionThemeList()
+        //{
+        //    List<MissionTheme> objMissionTheme = _DbContext.MissionThemes.ToList();
+        //    return objMissionTheme;
+        //}
+
+        //public List<Skill> SkillList()
+        //{
+        //    List<Skill> objSkill = _DbContext.Skills.ToList();
+        //    return objSkill;
+        //}
+
         public Boolean IsEmailAvailable(string email)
         {
             return _DbContext.Users.Any(u => u.Email == email);

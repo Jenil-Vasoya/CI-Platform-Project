@@ -9,17 +9,24 @@ public partial class User
 {
     public long UserId { get; set; }
 
+    [Required(ErrorMessage = "Please enter the first name")]
     public string? FirstName { get; set; }
+
 
     public string? LastName { get; set; }
 
+    [Required(ErrorMessage = "Please enter the email")]
+    [EmailAddress(ErrorMessage = "Please enter the valid email")]
     public string Email { get; set; } = null!;
 
+    [Required(ErrorMessage = "Please enter the password")]
     public string Password { get; set; } = null!;
 
+
     [NotMapped] // Does not effect with your database
-    [Compare("Password")]
+    [Compare("Password", ErrorMessage = "Please enter the same password")]
     public string ConfirmPassword { get; set; }
+
 
     public int PhoneNumber { get; set; }
 

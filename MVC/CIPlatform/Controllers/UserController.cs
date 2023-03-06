@@ -26,7 +26,10 @@ namespace CIPlatform.Controllers
             configuration = _configuration;
         }
 
-     
+
+       
+
+
         //private readonly CiPlatformContext _db;
 
         //public UserController(CiPlatformContext db)
@@ -40,33 +43,49 @@ namespace CIPlatform.Controllers
         }
 
         public IActionResult Login()
-         {
-            
+        {
+
             return View();
         }
 
         [HttpPost]
         public IActionResult Login(User objLogin)
         {
-            var objUser = _AccountRepo.UserList().FirstOrDefault(u => u.Email == objLogin.Email && u.Password == objLogin.Password);
+            if (objLogin.Email != null && objLogin.Password != null)
+            {
 
-                if (objUser == null)
+                var objUser = _AccountRepo.UserList().FirstOrDefault(u => u.Email == objLogin.Email && u.Password == objLogin.Password);
+
+                if (objUser != null)
                 {
-                    return RedirectToAction("MissionGrid", "Home");
+                    HttpContext.Session.SetString("UserId", JsonConvert.SerializeObject(objUser.UserId.ToString()));
+                    HttpContext.Session.SetString("Email", JsonConvert.SerializeObject(objUser.Email.ToString()));
+                    HttpContext.Session.SetString("UserName", JsonConvert.SerializeObject(objUser.FirstName.ToString() + " " + objUser.LastName.ToString()));
+
+                  
+
+                    TempData["Success"] = "Login Successfully";
+                   return RedirectToAction("MissionGrid", "Home");
 
                 }
+                TempData["Fail"] = "Don't have any account please register your account";
+                return RedirectToAction("Login", "User");
+
+            }
+            else
+            {
+                TempData["Fail"] = "Don't have any account please register your account";
+                return View();
+            }
 
 
-            HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(objUser));
-            HttpContext.Session.SetString("UserId", JsonConvert.SerializeObject(objUser.UserId.ToString()));
-            HttpContext.Session.SetString("UserName", JsonConvert.SerializeObject(objUser.FirstName.ToString() + " " + objUser.LastName.ToString()));
-            HttpContext.Session.SetString("Role", "0");
+            //HttpContext.Session.SetString("Role", "0");
             //HttpContext.Session.SetString("Img", objUser.Avatar.ToString());
             //if (_db.Users.Any(u=> u.Email == objLogin.Email && u.Password == objLogin.Password)) 
             //{ return RedirectToAction("MissionGrid", "Home"); }
-            return RedirectToAction("ForgotPassword", "User");
 
-          
+
+
         }
 
         public IActionResult Register()
@@ -78,21 +97,30 @@ namespace CIPlatform.Controllers
         public IActionResult Register(User objUser)
         {
 
-            if (objUser.Password == objUser.ConfirmPassword && objUser.FirstName != null && objUser.Email != null && objUser.PhoneNumber != 0)
+            if (objUser.Password == objUser.ConfirmPassword && objUser.FirstName != null && objUser.Email != null)
             {
-               var isValid = _AccountRepo.Register(objUser);
+                if (_AccountRepo.UserList().Any(u => u.Email == objUser.Email) == false)
                 {
-                    if (isValid == true)
+
+                    var isValid = _AccountRepo.Register(objUser);
                     {
-                        return RedirectToAction("Login", "User");
+                        if (isValid == true)
+                        {
+                            TempData["RegisterSuccess"] = "Account Created Successfully";
+                            return RedirectToAction("Login", "User");
+
+                        }
+                        TempData["RegisterFail"] = "Registarion is fail";
+                        return View();
 
                     }
-                    return RedirectToAction("Register", "User");
-
                 }
+                TempData["RegisterFail"] = "This email is already registered";
+                return View();
+
             }
-            
-            return RedirectToAction("Register", "User");
+            TempData["RegisterFail"] = "Registarion is fail";
+            return View();
         }
 
         //[HttpPost]
@@ -111,14 +139,19 @@ namespace CIPlatform.Controllers
 
         public IActionResult ForgotPassword()
         {
-           ViewBag.sessionV = HttpContext.Session.GetString("UserId");
-           ViewBag.session = HttpContext.Session.GetString("UserName");
+            ViewBag.sessionV = HttpContext.Session.GetString("UserId");
+            ViewBag.session = HttpContext.Session.GetString("UserName");
             return View();
         }
 
         [HttpPost]
-        public IActionResult ValidateForgotDetails(ForgotPassword objForgotPass)
+        public IActionResult ForgotPassword(ForgotPassword objForgotPass)
         {
+            if(objForgotPass.email == null)
+            {
+                return View();
+            }
+
             if (_AccountRepo.IsEmailAvailable(objForgotPass.email))
             {
                 try
@@ -130,6 +163,7 @@ namespace CIPlatform.Controllers
                     MailHelper mailHelper = new MailHelper(configuration);
                     ViewBag.sendMail = mailHelper.Send(objForgotPass.email, welcomeMessage + path);
                     ModelState.Clear();
+                    TempData["LinkSent"] = "ResetPassword link is sent on your registered email";
                     return RedirectToAction("Login", new { UserId = UserId });
                 }
                 catch (Exception ex)
@@ -139,11 +173,11 @@ namespace CIPlatform.Controllers
             }
             else
             {
-                ModelState.AddModelError("email", "Plase Enter Register Email Address..");
-                ViewBag.isForgetPasswordOpen = true;
-                return View("ForgotPassword");
+                TempData["InvalidEmail"] = "This email in not registered";
+                return View();
             }
-            return View("Login");
+            return View();
+            
         }
         [HttpGet]
         public IActionResult ResetPassword(long id)
@@ -162,6 +196,7 @@ namespace CIPlatform.Controllers
                 if (_AccountRepo.ChangePassword(id, model))
                 {
                     ModelState.Clear();
+                    TempData["ResetSuccess"] = "Your password has been updated";
                     return RedirectToAction("Login", "User");
                 }
                 else
@@ -206,7 +241,7 @@ namespace CIPlatform.Controllers
 
         //}
 
-       
+
 
     }
 }

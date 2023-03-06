@@ -13,10 +13,9 @@ namespace CIPlatform.Entities.ViewModel
 
         public long UserId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter the password")]
         public string Password { get; set; }
 
-        [Required]
         [Compare("Password", ErrorMessage = "Password does not match")]
         public string ConfirmPassword { get; set; }
 
