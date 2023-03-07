@@ -26,17 +26,3 @@ D:\TatvaSoft\CI-Platform-Project\MVC\CIPlatform.Entities\obj\Debug\net6.0\CIPlat
 D:\TatvaSoft\CI-Platform-Project\MVC\CIPlatform.Entities\obj\Debug\net6.0\ref\CIPlatform.Entities.dll
 D:\TatvaSoft\CI-Platform-Project\MVC\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.pdb
 D:\TatvaSoft\CI-Platform-Project\MVC\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.genruntimeconfig.cache
-C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform.Entities\bin\Debug\net6.0\CIPlatform.Entities.deps.json
-C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform.Entities\bin\Debug\net6.0\CIPlatform.Entities.runtimeconfig.json
-C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform.Entities\bin\Debug\net6.0\CIPlatform.Entities.dll
-C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform.Entities\bin\Debug\net6.0\CIPlatform.Entities.pdb
-C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.csproj.AssemblyReference.cache
-C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.AssemblyInfoInputs.cache
-C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.AssemblyInfo.cs
-C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.csproj.CoreCompileInputs.cache
-C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.dll
-C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform.Entities\obj\Debug\net6.0\refint\CIPlatform.Entities.dll
-C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.pdb
-C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.genruntimeconfig.cache
-C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform.Entities\obj\Debug\net6.0\ref\CIPlatform.Entities.dll

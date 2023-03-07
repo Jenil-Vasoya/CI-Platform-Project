@@ -1,0 +1,317 @@
+﻿@inject IHttpContextAccessor Accessor
+@model IEnumerable<CIPlatform.Entities.Models.Country>
+<style>
+    .chip {
+  display: inline-block;
+  background-color: #ccc;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+</style>
+<div class="container-fluid border shadow-sm">
+   
+
+        <div class="row d-flex">
+
+            <nav class="navbar p-0">
+                <div class="container">
+                    <div class="d-flex align-items-center col-lg-6 col-md-6 col-12 pl-4" role="search">
+                        <img src="~/Assets/images/search.png" class="search" />
+                        <input class="form-control pl-5" style="border-style:none;" type="search" placeholder="&nbsp;Search Missions..." aria-label="Search">
+
+                    </div>
+
+
+                <div class="col-lg-6 col-12 d-flex">
+
+                    <div class="col-3 col-sm-3 col-lg-3 dropdown border">
+
+                        <select id="countryId" onchange="GetCity()" class="form-select select-menu border-lg-left  border-0"
+                                aria-label="Default select example">
+                            <option selected>Country</option>
+                            @foreach (var obj in @ViewBag.countries)
+                            {
+                                <option value="@obj.CountryId">@obj.CountryName</option>
+                            }
+                        </select>
+                    </div>
+
+
+
+                    <div class="col-3 col-sm-3 col-lg-3 dropdown  border">
+
+
+
+                        <select class="form-select select-menu border-lg-left  border-0"
+                                aria-label="Default select example" id="selectCityList" onchange="setFilter()">
+
+                            <option selected>City</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-3 col-sm-3 col-lg-3 dropdown border">
+
+                        <select id="dropdown" class="form-select select-menu border-lg-left  border-0"
+                                aria-label="Default select example">
+                            <option selected>Themes</option>
+                            @foreach (var obj in @ViewBag.themes)
+                            {
+                                <option value="@obj.MissionThemeId">@obj.Titile</option>
+                            }
+                        </select>   
+
+                        @*<div class="form-select d-flex align-items-center hide_dropdown_arrow hide_border_select  border-0"
+                             type="button" id="dropdownMenuButton12" data-bs-toggle="dropdown" aria-expanded="false">
+                            Theme
+                        </div>
+
+                        <ul style="overflow-y:scroll" onchange="setFilter()" class="dropdown-menu scroll_dropdown" id="selectedThemes" aria-labelledby="dropdownMenuButton1">
+
+                            @foreach (var obj in @ViewBag.themes)
+                            {
+                                <li>
+                                    <div class="form-check dropdown-item px-4">
+                                        <input class="form-check-input mx-auto" name="theme" type="checkbox" value=""
+                                           id="@obj.MissionThemeId" />
+                                        <label class="form-check-label ps-2" for="@obj.MissionThemeId">
+                                            @obj.Titile
+                                        </label>
+                                    </div>
+                                </li>
+                            }
+                        </ul>*@
+
+                        
+                    </div>
+
+                    <div class="col-3 col-sm-3 col-lg-3 dropdown  border">
+
+                         <select id="dropdown" class="form-select select-menu border-lg-left  border-0"
+                                aria-label="Default select example">
+                            <option selected>Skills</option>
+                            @foreach (var obj in @ViewBag.skills)
+                            {
+                                <option value="@obj.SkillId">@obj.SkillName</option>
+                            }
+                        </select>   
+                        @*<div class="form-select d-flex align-items-center hide_dropdown_arrow hide_border_select border-0"
+                             type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Skills
+                        </div>
+                        <ul style="overflow-y:scroll" onchange="setFilter()" class="dropdown-menu scroll_dropdown" id="selectedSkills" aria-labelledby="dropdownMenuButton1">
+                            @foreach (var obj in @ViewBag.skills)
+                            {
+                                <li>
+                                    <div class="form-check dropdown-item px-4">
+                                        <input class="form-check-input mx-auto" name="skill" type="checkbox" value="@obj.SkillName"
+                                           id="@obj.SkillId" />
+                                        <label class="form-check-label ps-2" for="@obj.SkillId">
+                                            @obj.SkillName
+                                        </label>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>*@
+                    </div>
+
+                </div>
+            </div>
+            </nav>
+        </div> 
+</div>
+
+<div id="chip-container"></div>
+
+
+
+
+
+
+
+
+
+
+   <script>
+
+       // Get the dropdown and container elements
+const dropdown = document.getElementById('dropdown');
+const container = document.getElementById('chip-container');
+
+// Add event listener to the dropdown to listen for changes
+dropdown.addEventListener('change', () => {
+  // Get the selected option value and text
+  const selectedValue = dropdown.value;
+  const selectedText = dropdown.options[dropdown.selectedIndex].text;
+
+  // Create a new chip element with the selected text
+  const chip = document.createElement('div');
+  chip.classList.add('chip');
+  chip.textContent = selectedText;
+
+  // Add an event listener to the chip to remove it when clicked
+  chip.addEventListener('click', () => {
+    container.removeChild(chip);
+  });
+
+  // Add the chip to the container
+  container.appendChild(chip);
+});
+
+        
+        function GetCity(){
+        var countryId = $('#countryId').find(":selected").val();
+        debugger;
+        $.ajax({
+        url:"/Home/GetCity",
+        method: "GET",
+        data: {
+        "countryId":countryId
+        },
+        success:function(data){
+        data = JSON.parse(data);
+        $("#selectCityList").empty();
+        data.forEach((name)=> {
+        document.getElementById("selectCityList").innerHTML += `
+        <option value=${name} >${name.CityName}</option>
+        `;
+        })
+        },
+        error: function(request,error){
+        console.log(error);
+        }
+        })
+        }
+
+        function setFilter(){
+            debugger;
+            
+            $.ajax({
+                success:function(data){
+                    debugger;
+                    //$("#filter-button").empty();
+                    //$('input[name="city"]:checked').each(function() {
+                    //   console.log(this.value);
+                    //   document.getElementById("filter-button").innerHTML += `
+                    //    <button class="filter common-font filter-text" >
+                    //        <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.value})" class="bi bi-x"></i></div>
+                    //    </button>
+                        
+                    //    `
+                    //});
+                    $('input[name="theme"]:checked').each(function() {
+                       console.log(this.value);
+                       document.getElementById("filter-button").innerHTML += `
+                        <button class="filter common-font filter-text">
+                            <div style="width:max-content">${this.value} <i class="bi bi-x"></i></div>
+                        </button>
+                        `
+                    });
+                    $('input[name="skill"]:checked').each(function() {
+                       console.log(this.value);
+                       document.getElementById("filter-button").innerHTML += `
+                        <button class="filter common-font filter-text">
+                            <div style="width:max-content">${this.value} <i class="bi bi-x"></i></div>
+                        </button>
+                        `
+                    });
+                   document.getElementById("filter-button").innerHTML += `
+                        <button class="filter filter-text common-font" style="padding:0; border:0">Clear all</button>
+                        `
+                    
+                    
+                    
+                },
+                error: function(request,error){
+                    console.log(error);
+                }
+            })
+        }
+</script>
+
+
+ @* <script type="text/javascript" language="javascript">
+         function DisableBackButton() {
+             window.history.forward();
+         }
+         DisableBackButton();
+         window.onload = DisableBackButton;
+         window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton(); }
+         window.onunload = function () { void (0); };
+    
+        
+        function GetCity(){
+        var countryId = $('#countryId').find(":selected").val();
+        debugger;
+        $.ajax({
+        url:"/Home/GetCity",
+        method: "GET",
+        data: {
+        "countryId":countryId
+        },
+        success:function(data){
+        data = JSON.parse(data);
+        $("#selectCityList").empty();
+        data.forEach((name)=> {
+        document.getElementById("selectCityList").innerHTML += `
+        <option value=${name} >${name.CityName}</option>
+        `;
+        })
+        },
+        error: function(request,error){
+        console.log(error);
+        }
+        })
+        }
+
+        function setFilter(){
+            debugger;
+            
+            $.ajax({
+                success:function(data){
+                    debugger;
+                    $("#filter-button").empty();
+                    $('input[name="city"]:checked').each(function() {
+                       console.log(this.value);
+                       document.getElementById("filter-button").innerHTML += `
+                        <button class="filter common-font filter-text" >
+                            <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.value})" class="bi bi-x"></i></div>
+                        </button>
+                        
+                        `
+                    });
+                    $('input[name="theme"]:checked').each(function() {
+                       console.log(this.value);
+                       document.getElementById("filter-button").innerHTML += `
+                        <button class="filter common-font filter-text">
+                            <div style="width:max-content">${this.value} <i class="bi bi-x"></i></div>
+                        </button>
+                        `
+                    });
+                    $('input[name="skill"]:checked').each(function() {
+                       console.log(this.value);
+                       document.getElementById("filter-button").innerHTML += `
+                        <button class="filter common-font filter-text">
+                            <div style="width:max-content">${this.value} <i class="bi bi-x"></i></div>
+                        </button>
+                        `
+                    });
+                   document.getElementById("filter-button").innerHTML += `
+                        <button class="filter filter-text common-font" style="padding:0; border:0">Clear all</button>
+                        `
+                    
+                    
+                    
+                },
+                error: function(request,error){
+                    console.log(error);
+                }
+            })
+        
+    </script>*@

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CIPlatform.Entities.Models;
 
@@ -22,10 +22,11 @@ public partial class User
     [Required(ErrorMessage = "Please enter the password")]
     public string Password { get; set; } = null!;
 
-    
+
     [NotMapped] // Does not effect with your database
-    [Compare("Password",ErrorMessage = "Please enter the same password")]
+    [Compare("Password", ErrorMessage = "Please enter the same password")]
     public string ConfirmPassword { get; set; }
+
 
     public int PhoneNumber { get; set; }
 
