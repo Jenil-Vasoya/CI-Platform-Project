@@ -1,5 +1,6 @@
 ﻿
 using CIPlatform.Entities.Models;
+using CIPlatform.Entities.ViewModel;
 using CIPlatform.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -20,7 +21,10 @@ namespace CIPlatform.Controllers
             configuration = _configuration;
         }
 
-       
+ 
+
+
+
 
         public IActionResult Index()
         {
@@ -41,6 +45,37 @@ namespace CIPlatform.Controllers
         }
         public IActionResult MissionGrid()
         {
+            List<MissionData> missionDatas = new List<MissionData>();
+
+            List<Mission> mission = _HomeRepo.MissionList();
+
+         foreach (var objMission in mission)
+            {
+                MissionData missionData = new MissionData();
+
+                missionData.MissionId = objMission.MissionId;
+                missionData.MissionType = objMission.MissionType.ToString();
+
+                missionData.CityId = objMission.CityId;
+                missionData.CityName = _HomeRepo.GetCityName(objMission.CityId);
+
+                missionData.OrganizationName = objMission.OrganizationName;
+                missionData.ShortDescription = objMission.ShortDescription;
+
+                missionData.StartDate = objMission.StartDate;
+                missionData.EndDate = objMission.EndDate;
+
+                missionData.MediaPath = _HomeRepo.MediaByMissionId(missionData.MissionId);
+                missionData.Title = objMission.Title;
+
+                missionData.Rating = _HomeRepo.MissionRatings(missionData.MissionId);
+                missionData.Theme = _HomeRepo.GetMissionThemes(objMission.MissionThemeId);
+
+                missionDatas.Add(missionData);
+            }
+
+            ViewBag.missionDatas = missionDatas;
+
             ViewBag.UserId = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId"));
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
             ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName"));
@@ -53,6 +88,10 @@ namespace CIPlatform.Controllers
 
             List<Skill> skills = _HomeRepo.SkillList();
             ViewBag.skills = skills;
+
+            var totalMission = _HomeRepo.TotalMissions();
+            ViewBag.totalMission = totalMission;
+
 
             return View();
         }
@@ -70,6 +109,41 @@ namespace CIPlatform.Controllers
 
         public IActionResult MissionList()
         {
+            List<MissionData> missionDatas = new List<MissionData>();
+
+            List<Mission> mission = _HomeRepo.MissionList();
+
+            foreach (var objMission in mission)
+            {
+                MissionData missionData = new MissionData();
+
+                missionData.MissionId = objMission.MissionId;
+                missionData.MissionType = objMission.MissionType.ToString();
+
+                missionData.CityId = objMission.CityId;
+                missionData.CityName = _HomeRepo.GetCityName(objMission.CityId);
+
+                missionData.OrganizationName = objMission.OrganizationName;
+                missionData.ShortDescription = objMission.ShortDescription;
+
+                missionData.StartDate = objMission.StartDate;
+                missionData.EndDate = objMission.EndDate;
+
+                missionData.MediaPath = _HomeRepo.MediaByMissionId(missionData.MissionId);
+                missionData.Title = objMission.Title;
+
+                missionData.Rating = _HomeRepo.MissionRatings(missionData.MissionId);
+                missionData.Theme = _HomeRepo.GetMissionThemes(objMission.MissionThemeId);
+
+                missionDatas.Add(missionData);
+            }
+
+            ViewBag.missionDatas = missionDatas;
+
+
+            var totalMission = _HomeRepo.TotalMissions();
+            ViewBag.totalMission = totalMission;
+
             return View();
         }
         public IActionResult MissionEmpty()

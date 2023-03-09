@@ -43,5 +43,50 @@ namespace CIPlatform.Repository.Repository
             return objSkill;
         }
 
+        public List<Mission> MissionList()
+        {
+            return _DbContext.Missions.ToList();
+        }
+
+        public string GetCityName(long cityId)
+        {
+
+            City city = _DbContext.Cities.FirstOrDefault(i => i.CityId == cityId);
+            return city.CityName;
+
+        }
+
+
+        public string GetMissionThemes(long themeID)
+        {
+            MissionTheme theme = _DbContext.MissionThemes.FirstOrDefault(a => a.MissionThemeId == themeID);
+            return theme.Titile;
+        }
+
+        public int TotalMissions()
+        {
+
+            int totalMission = _DbContext.Missions.Count();
+            return totalMission;
+
+        }
+
+        public string MediaByMissionId(long missionID)
+        {
+
+            MissionMedium media = _DbContext.MissionMedia.FirstOrDefault(a => a.MissionId == missionID);
+            return media.MediaPath;
+
+        }
+
+        public int MissionRatings(long missionID)
+        {
+            MissionRating rating = _DbContext.MissionRatings.FirstOrDefault(a => a.MissionId == missionID);
+            return rating.Rating;
+        }
+
+
+
+
     }
 }

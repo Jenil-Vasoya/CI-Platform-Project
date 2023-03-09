@@ -18,5 +18,17 @@ namespace CIPlatform.Repository.Interface
 
         public List<Skill> SkillList();
 
+        public List<Mission> MissionList();
+
+        public string GetCityName(long cityId);
+
+        public string GetMissionThemes(long themeID);
+
+        public int TotalMissions();
+
+        public string MediaByMissionId(long missionID);
+
+        public int MissionRatings(long missionID);
+
     }
 }
