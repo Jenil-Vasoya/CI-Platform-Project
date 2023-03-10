@@ -56,6 +56,8 @@ namespace CIPlatform.Controllers
                 missionData.MissionId = objMission.MissionId;
                 missionData.MissionType = objMission.MissionType.ToString();
 
+                missionData.Availability = objMission.Availability.ToString();
+
                 missionData.CityId = objMission.CityId;
                 missionData.CityName = _HomeRepo.GetCityName(objMission.CityId);
 
@@ -79,6 +81,7 @@ namespace CIPlatform.Controllers
             ViewBag.UserId = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId"));
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
             ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName"));
+            ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar"));
 
             List<Country> countries = _HomeRepo.CountryList();
             ViewBag.countries = countries;

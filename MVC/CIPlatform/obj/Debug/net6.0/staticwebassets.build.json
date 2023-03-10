@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yn9vjzjki4CnKxmBAqrgN9PJp9pf6Eh/KpHfs5J3Jmk=",
+  "Hash": "kXmwcD2m3MjmODY+Kewefl/5mMhnaYYlvRpfxHh5CFQ=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -85,12 +85,12 @@
       "OriginalItemSpec": "wwwroot\\Assets\\css\\mission.css"
     },
     {
-      "Identity": "D:\\TatvaSoft\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\mlist.css",
+      "Identity": "D:\\TatvaSoft\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\missionlist.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\TatvaSoft\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
-      "RelativePath": "Assets/css/mlist.css",
+      "RelativePath": "Assets/css/missionlist.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -99,7 +99,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Assets\\css\\mlist.css"
+      "OriginalItemSpec": "wwwroot\\Assets\\css\\missionlist.css"
     },
     {
       "Identity": "D:\\TatvaSoft\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\story.css",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\css\\volunteer.css"
+    },
+    {
+      "Identity": "D:\\TatvaSoft\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\volunteermission.css",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\TatvaSoft\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "Assets/css/volunteermission.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\css\\volunteermission.css"
     },
     {
       "Identity": "D:\\TatvaSoft\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\404-Page-image.png",

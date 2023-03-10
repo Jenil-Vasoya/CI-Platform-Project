@@ -1,0 +1,37 @@
+﻿   <nav class="navbar navbar-expand navbar-light bg-light">
+            <div class="container">
+                <ul class="navbar-nav storyp">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Stories</a>
+                    </li>
+                    <li class="nav-item dropdown policyp">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Policy
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex ">
+                    <a class="nav-link " style="padding-right: 0px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="@ViewBag.Avatar" class="img rounded-5" style="height: 40px; width: 40px;">
+                    </a>
+                   <div class="dropdown-center my-auto uname">
+                        
+                        <a class="nav-link dropdown-toggle ms-1 " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">@ViewBag.UserName</a>
+                        <ul class=" dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                            <li><a class="dropdown-item" href="#">Add Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
+                            <li><a class="dropdown-item" asp-controller="User" asp-action="Login">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>

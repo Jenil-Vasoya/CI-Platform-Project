@@ -8,5 +8,38 @@ setTimeout("preventBack()", 0);
 window.onunload = function () { null }
 
 
+$(document).ready(function (a) {
+    //---Convet-Grid-List---
+    localStorage.setItem("lastVisible", "grid");
+    var windowWidth = $(window).width();
+    // Check if the window width is less than 1440px
+    if (windowWidth < 991) {
+        // Hide the list view and show the gird view
+        $('.SelectListForDisplay').hide();
+        $('.SelectGridForDisplay').show();
+    }
+    $(window).resize(function (e) {
+        // Get the new window width
+        var newWindowWidth = $(window).width();
+
+        // Check if the window width is less than 1440px
+        if (newWindowWidth < 991) {
+            // Hide the list view and show the gird view
+            $('.SelectListForDisplay').hide();
+            $('.SelectGridForDisplay').show();
+            $("#selectlistview").hide();
+            $("#selectgridview").hide();
+        }
+        else {
+            $("#selectlistview").show();
+            $("#selectgridview").show();
+            // Show the list view and hide the gird view
+            if (localStorage.getItem("lastVisible") == "list") {
+                $('.SelectGridForDisplay').hide();
+                $('.SelectListForDisplay').show();
+            }
+        }
+    });
 
 
+});

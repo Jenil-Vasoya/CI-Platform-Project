@@ -21,7 +21,7 @@
                 <div class="container">
                     <div class="d-flex align-items-center col-lg-6 col-md-6 col-12 pl-4" role="search">
                         <img src="~/Assets/images/search.png" class="search" />
-                        <input class="form-control pl-5" style="border-style:none;" type="search" placeholder="&nbsp;Search Missions..." aria-label="Search">
+                        <input class="form-control pl-5" style="border-style:none;" type="search" placeholder="&nbsp;Search Missions..." asp-controller="Home" asp-action="Search" oninput="Search()" aria-label="Search">
 
                     </div>
 
@@ -56,17 +56,9 @@
                     </div>
 
                     <div class="col-3 col-sm-3 col-lg-3 dropdown border">
+ 
 
-                        <select id="dropdown" class="form-select select-menu border-lg-left  border-0"
-                                aria-label="Default select example">
-                            <option selected>Themes</option>
-                            @foreach (var obj in @ViewBag.themes)
-                            {
-                                <option value="@obj.MissionThemeId">@obj.Titile</option>
-                            }
-                        </select>   
-
-                        @*<div class="form-select d-flex align-items-center hide_dropdown_arrow hide_border_select  border-0"
+                        <div class="form-select d-flex align-items-center hide_dropdown_arrow hide_border_select  border-0"
                              type="button" id="dropdownMenuButton12" data-bs-toggle="dropdown" aria-expanded="false">
                             Theme
                         </div>
@@ -85,22 +77,15 @@
                                     </div>
                                 </li>
                             }
-                        </ul>*@
+                        </ul>
 
                         
                     </div>
 
                     <div class="col-3 col-sm-3 col-lg-3 dropdown  border">
 
-                         <select id="dropdown" class="form-select select-menu border-lg-left  border-0"
-                                aria-label="Default select example">
-                            <option selected>Skills</option>
-                            @foreach (var obj in @ViewBag.skills)
-                            {
-                                <option value="@obj.SkillId">@obj.SkillName</option>
-                            }
-                        </select>   
-                        @*<div class="form-select d-flex align-items-center hide_dropdown_arrow hide_border_select border-0"
+                           
+                        <div class="form-select d-flex align-items-center hide_dropdown_arrow hide_border_select border-0"
                              type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Skills
                         </div>
@@ -118,7 +103,7 @@
                                 </li>
                             }
 
-                        </ul>*@
+                        </ul>
                     </div>
 
                 </div>
@@ -140,99 +125,154 @@
 
    <script>
 
-       // Get the dropdown and container elements
-const dropdown = document.getElementById('dropdown');
-const container = document.getElementById('chip-container');
+        
+        //function GetCity(){
+        //var countryId = $('#countryId').find(":selected").val();
+        //debugger;
+        //$.ajax({
+        //url:"/Home/GetCity",
+        //method: "GET",
+        //data: {
+        //"countryId":countryId
+        //},
+        //success:function(data){
+        //data = JSON.parse(data);
+        //$("#selectCityList").empty();
+        //data.forEach((name)=> {
+        //document.getElementById("selectCityList").innerHTML += `
+        //<option value=${name} >${name.CityName}</option>
+        //`;
+        //})
+        //},
+        //error: function(request,error){
+        //console.log(error);
+        //}
+        //})
+        //}
 
-// Add event listener to the dropdown to listen for changes
-dropdown.addEventListener('change', () => {
-  // Get the selected option value and text
-  const selectedValue = dropdown.value;
-  const selectedText = dropdown.options[dropdown.selectedIndex].text;
+       function setFilter(){
+console.log("setFilter");
 
-  // Create a new chip element with the selected text
-  const chip = document.createElement('div');
-  chip.classList.add('chip');
-  chip.textContent = selectedText;
+$.ajax({
+success:function(data){
 
-  // Add an event listener to the chip to remove it when clicked
-  chip.addEventListener('click', () => {
-    container.removeChild(chip);
-  });
+$("#filter-button").empty();
+$('input[name="city"]:checked').each(function() {
+console.log(this.value);
+document.getElementById("filter-button").innerHTML += `
+<button class="filter common-font filter-text" id="${this.value}" >
+<div style="width:max-content">${this.value} <i onclick="removeFilter(${this.value})" class="bi bi-x"></i></div>
+</button>
 
-  // Add the chip to the container
-  container.appendChild(chip);
+`
+});
+$('input[name="theme"]:checked').each(function() {
+console.log(this.value);
+document.getElementById("filter-button").innerHTML += `
+<button class="filter common-font filter-text">
+<div style="width:max-content">${this.value} <i onclick="removeFilter()" class="bi bi-x"></i></div>
+</button>
+`
 });
 
-        
-        function GetCity(){
-        var countryId = $('#countryId').find(":selected").val();
-        debugger;
-        $.ajax({
-        url:"/Home/GetCity",
-        method: "GET",
-        data: {
-        "countryId":countryId
-        },
-        success:function(data){
-        data = JSON.parse(data);
-        $("#selectCityList").empty();
-        data.forEach((name)=> {
-        document.getElementById("selectCityList").innerHTML += `
-        <option value=${name} >${name.CityName}</option>
-        `;
-        })
-        },
-        error: function(request,error){
-        console.log(error);
-        }
-        })
-        }
+$('input[name="skill"]:checked').each(function() {
+console.log(this.value);
+document.getElementById("filter-button").innerHTML += `
+<button class="filter common-font filter-text">
+<div style="width:max-content">${this.value} <i onclick="removeFilter()" class="bi bi-x"></i></div>
+</button>
+`
+});
 
-        function setFilter(){
-            debugger;
-            
-            $.ajax({
-                success:function(data){
-                    debugger;
-                    //$("#filter-button").empty();
-                    //$('input[name="city"]:checked').each(function() {
-                    //   console.log(this.value);
-                    //   document.getElementById("filter-button").innerHTML += `
-                    //    <button class="filter common-font filter-text" >
-                    //        <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.value})" class="bi bi-x"></i></div>
-                    //    </button>
-                        
-                    //    `
-                    //});
-                    $('input[name="theme"]:checked').each(function() {
-                       console.log(this.value);
-                       document.getElementById("filter-button").innerHTML += `
-                        <button class="filter common-font filter-text">
-                            <div style="width:max-content">${this.value} <i class="bi bi-x"></i></div>
-                        </button>
-                        `
-                    });
-                    $('input[name="skill"]:checked').each(function() {
-                       console.log(this.value);
-                       document.getElementById("filter-button").innerHTML += `
-                        <button class="filter common-font filter-text">
-                            <div style="width:max-content">${this.value} <i class="bi bi-x"></i></div>
-                        </button>
-                        `
-                    });
-                   document.getElementById("filter-button").innerHTML += `
-                        <button class="filter filter-text common-font" style="padding:0; border:0">Clear all</button>
-                        `
-                    
-                    
-                    
-                },
-                error: function(request,error){
-                    console.log(error);
-                }
-            })
-        }
+document.getElementById("filter-button").innerHTML +=`
+<button class="filter filter-text common-font" onclick="clearAll()" style="padding:0; border:0">Clear all</button>
+`
+
+},
+error: function(request,error){
+console.log(error);
+}
+
+})
+}
+
+
+
+function searchMission(){
+
+console.log("search");
+var search = $('input[name="search"]').val();
+
+var countries =[];
+var cities =[];
+var themes =[];
+var skills =[];
+
+
+$('input[name="country"]:checked').each(function(){
+countries.push(this.value);
+});
+
+$('input[name="city"]:checked').each(function(){
+cities.push(this.value);
+});
+
+$('input[name="theme"]:checked').each(function(){
+themes.push(this.id);
+});
+
+$('input[name="skill"]:checked').each(function(){
+skills.push(this.id);
+});
+
+$.ajax({
+
+url:"/Home/Search",
+method: "POST",
+
+data:{
+"search": search,
+"countries": countries,
+"cities": cities,
+"themes": themes,
+"skills": skills
+},
+success:function(data){
+$("#mission").html(data);
+
+},
+error: function(request,error){
+
+console.log(error);
+}
+
+})
+}
+
+
+
+function removeFilter(checkboxID){
+var checkboxID = checkboxID[0].id;
+
+$("#" + checkboxID).prop( "checked", false );
+
+setFilter();
+
+}
+
+function clearAll(){
+
+$('input[name="city"]:checked').each(function() {
+$("#" + this.id).prop( "checked", false );
+});
+$('input[name="theme"]:checked').each(function() {
+$("#" + this.id).prop( "checked", false );
+});
+$('input[name="skill"]:checked').each(function() {
+$("#" + this.id).prop( "checked", false );
+});
+setFilter();
+}
 </script>
 
 

@@ -36,7 +36,7 @@ namespace CIPlatform.Entities.ViewModel
 
         public int? GoalValue { get; set; }
 
-        public int? TotalSeat { get; set; }
+        public string? Availability { get; set; }
 
         public DateTime? Deadline { get; set; }
 

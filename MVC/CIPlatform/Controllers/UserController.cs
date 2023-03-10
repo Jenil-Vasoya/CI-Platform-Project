@@ -64,6 +64,8 @@ namespace CIPlatform.Controllers
                         HttpContext.Session.SetString("UserId", JsonConvert.SerializeObject(objUser.UserId.ToString()));
                         HttpContext.Session.SetString("Email", JsonConvert.SerializeObject(objUser.Email.ToString()));
                         HttpContext.Session.SetString("UserName", JsonConvert.SerializeObject(objUser.FirstName.ToString() + " " + objUser.LastName.ToString()));
+                        HttpContext.Session.SetString("Avatar", JsonConvert.SerializeObject(objUser.Avatar.ToString()));
+
 
 
 

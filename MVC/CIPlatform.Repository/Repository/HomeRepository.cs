@@ -48,6 +48,11 @@ namespace CIPlatform.Repository.Repository
             return _DbContext.Missions.ToList();
         }
 
+        public List<Mission> MissionList(string search)
+        {
+            return (_DbContext.Missions.Where(x=> x.Title.Contains(search)).ToList());
+        }
+
         public string GetCityName(long cityId)
         {
 
