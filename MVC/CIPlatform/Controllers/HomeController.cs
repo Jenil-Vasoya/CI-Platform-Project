@@ -2,6 +2,7 @@
 using CIPlatform.Entities.Models;
 using CIPlatform.Entities.ViewModel;
 using CIPlatform.Repository.Interface;
+using CIPlatform.Repository.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics;
@@ -17,7 +18,7 @@ namespace CIPlatform.Controllers
         public HomeController(IHomeRepository HomeRepo, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration)
         {
             _HomeRepo = HomeRepo;
-            _httpContextAccessor = httpContextAccessor;
+             _httpContextAccessor = httpContextAccessor;
             configuration = _configuration;
         }
 
@@ -43,39 +44,19 @@ namespace CIPlatform.Controllers
         {
             return View();
         }
+
+        [HttpGet]
         public IActionResult MissionGrid()
         {
-            List<MissionData> missionDatas = new List<MissionData>();
 
-            List<Mission> mission = _HomeRepo.MissionList();
-
-         foreach (var objMission in mission)
+            List<Mission> missions = _HomeRepo.MissionList();
+            if (missions.Count == 0)
             {
-                MissionData missionData = new MissionData();
-
-                missionData.MissionId = objMission.MissionId;
-                missionData.MissionType = objMission.MissionType.ToString();
-
-                missionData.Availability = objMission.Availability.ToString();
-
-                missionData.CityId = objMission.CityId;
-                missionData.CityName = _HomeRepo.GetCityName(objMission.CityId);
-
-                missionData.OrganizationName = objMission.OrganizationName;
-                missionData.ShortDescription = objMission.ShortDescription;
-
-                missionData.StartDate = objMission.StartDate;
-                missionData.EndDate = objMission.EndDate;
-
-                missionData.MediaPath = _HomeRepo.MediaByMissionId(missionData.MissionId);
-                missionData.Title = objMission.Title;
-
-                missionData.Rating = _HomeRepo.MissionRatings(missionData.MissionId);
-                missionData.Theme = _HomeRepo.GetMissionThemes(objMission.MissionThemeId);
-
-                missionDatas.Add(missionData);
+                return RedirectToAction("MissionNotFound");
             }
 
+
+            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(missions); 
             ViewBag.missionDatas = missionDatas;
 
             ViewBag.UserId = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId"));
@@ -83,6 +64,44 @@ namespace CIPlatform.Controllers
             ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName"));
             ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar"));
 
+            List<Country> countries = _HomeRepo.CountryList();
+            ViewBag.countries = countries;
+
+            List<MissionTheme> themes = _HomeRepo.MissionThemeList();
+            ViewBag.themes = themes;
+
+            List<Skill> skills = _HomeRepo.SkillList();
+            ViewBag.skills = skills;
+
+            var totalMission = _HomeRepo.TotalMissions();
+            ViewBag.totalMission = totalMission;
+
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult MissionGrid(string? search)
+        {
+            search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
+
+            ViewBag.UserId = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId"));
+            ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
+            ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName"));
+            ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar"));
+
+
+            List<Mission> missions = _HomeRepo.MissionList();
+            if (missions.Count == 0)
+            {
+                return RedirectToAction("MissionNotFound");
+            }
+
+
+            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(missions);
+            ViewBag.missionDatas = missionDatas;
+
+           
             List<Country> countries = _HomeRepo.CountryList();
             ViewBag.countries = countries;
 
@@ -109,46 +128,67 @@ namespace CIPlatform.Controllers
             return Json(json);
         }
 
-
+        [HttpGet]
         public IActionResult MissionList()
         {
-            List<MissionData> missionDatas = new List<MissionData>();
 
-            List<Mission> mission = _HomeRepo.MissionList();
+            List<Mission> missions = _HomeRepo.MissionList();
 
-            foreach (var objMission in mission)
+            if (missions.Count == 0)
             {
-                MissionData missionData = new MissionData();
-
-                missionData.MissionId = objMission.MissionId;
-                missionData.MissionType = objMission.MissionType.ToString();
-
-                missionData.CityId = objMission.CityId;
-                missionData.CityName = _HomeRepo.GetCityName(objMission.CityId);
-
-                missionData.OrganizationName = objMission.OrganizationName;
-                missionData.ShortDescription = objMission.ShortDescription;
-
-                missionData.StartDate = objMission.StartDate;
-                missionData.EndDate = objMission.EndDate;
-
-                missionData.MediaPath = _HomeRepo.MediaByMissionId(missionData.MissionId);
-                missionData.Title = objMission.Title;
-
-                missionData.Rating = _HomeRepo.MissionRatings(missionData.MissionId);
-                missionData.Theme = _HomeRepo.GetMissionThemes(objMission.MissionThemeId);
-
-                missionDatas.Add(missionData);
+                return RedirectToAction("MissionNotFound");
             }
 
+
+            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(missions); ;
             ViewBag.missionDatas = missionDatas;
 
+            List<Country> countries = _HomeRepo.CountryList();
+            ViewBag.countries = countries;
+
+            List<MissionTheme> themes = _HomeRepo.MissionThemeList();
+            ViewBag.themes = themes;
+
+            List<Skill> skills = _HomeRepo.SkillList();
+            ViewBag.skills = skills;
 
             var totalMission = _HomeRepo.TotalMissions();
             ViewBag.totalMission = totalMission;
 
             return View();
         }
+
+        [HttpPost]
+        public IActionResult MissionList(string? search, string? city, string? theme, string? country)
+        {
+            search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
+
+            List<Mission> missions = _HomeRepo.MissionList();
+
+            if (missions.Count == 0)
+            {
+                return RedirectToAction("MissionNotFound");
+            }
+
+
+            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(missions); ;
+            ViewBag.missionDatas = missionDatas;
+
+            List<Country> countries = _HomeRepo.CountryList();
+            ViewBag.countries = countries;
+
+            List<MissionTheme> themes = _HomeRepo.MissionThemeList();
+            ViewBag.themes = themes;
+
+            List<Skill> skills = _HomeRepo.SkillList();
+            ViewBag.skills = skills;
+
+            var totalMission = _HomeRepo.TotalMissions();
+            ViewBag.totalMission = totalMission;
+
+            return View();
+        }
+
         public IActionResult MissionEmpty()
         {
             return View();
@@ -156,6 +196,21 @@ namespace CIPlatform.Controllers
         public IActionResult VolunteerMission()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Search(string? search, string[] countries, string[] cities, string[] themes, string[] skills)
+        {
+
+
+            search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
+            List<Mission> missions = _HomeRepo.GetMissionList(search, countries, cities, themes, skills);
+            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(missions);
+
+            ViewBag.missionDatas = missionDatas;
+
+
+            return PartialView("_MissionGrid");
         }
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         //public IActionResult Error()

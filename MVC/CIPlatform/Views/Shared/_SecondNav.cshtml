@@ -21,7 +21,7 @@
                 <div class="container">
                     <div class="d-flex align-items-center col-lg-6 col-md-6 col-12 pl-4" role="search">
                         <img src="~/Assets/images/search.png" class="search" />
-                        <input class="form-control pl-5" style="border-style:none;" type="search" placeholder="&nbsp;Search Missions..." asp-controller="Home" asp-action="Search" oninput="Search()" aria-label="Search">
+                    <input class="form-control pl-5" style="border-style:none;" id="name" name="search" type="search" placeholder="&nbsp;Search Missions..." oninput="searchMission()" aria-label="Search">
 
                     </div>
 
@@ -50,6 +50,9 @@
                                 aria-label="Default select example" id="selectCityList" onchange="setFilter()">
 
                             <option selected>City</option>
+                            <ul class="dropdown-menu scroll_dropdown" id="selectCityList" onchange="searchMission()">
+                            </ul>
+
 
                         </select>
 
@@ -63,7 +66,7 @@
                             Theme
                         </div>
 
-                        <ul style="overflow-y:scroll" onchange="setFilter()" class="dropdown-menu scroll_dropdown" id="selectedThemes" aria-labelledby="dropdownMenuButton1">
+                        <ul style="overflow-y:scroll" onchange="searchMission();" class="dropdown-menu scroll_dropdown" id="selectedThemes" aria-labelledby="dropdownMenuButton1">
 
                             @foreach (var obj in @ViewBag.themes)
                             {
@@ -89,7 +92,7 @@
                              type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Skills
                         </div>
-                        <ul style="overflow-y:scroll" onchange="setFilter()" class="dropdown-menu scroll_dropdown" id="selectedSkills" aria-labelledby="dropdownMenuButton1">
+                        <ul style="overflow-y:scroll" onchange="searchMission();" class="dropdown-menu scroll_dropdown" id="selectedSkills" >
                             @foreach (var obj in @ViewBag.skills)
                             {
                                 <li>
@@ -115,7 +118,6 @@
 <div id="chip-container"></div>
 
 
-    
 
 
 
@@ -123,156 +125,94 @@
 
 
 
-   <script>
+
+<script type="text/javascript" language="javascript">
 
         
-        //function GetCity(){
-        //var countryId = $('#countryId').find(":selected").val();
-        //debugger;
-        //$.ajax({
-        //url:"/Home/GetCity",
-        //method: "GET",
-        //data: {
-        //"countryId":countryId
-        //},
-        //success:function(data){
-        //data = JSON.parse(data);
-        //$("#selectCityList").empty();
-        //data.forEach((name)=> {
-        //document.getElementById("selectCityList").innerHTML += `
-        //<option value=${name} >${name.CityName}</option>
-        //`;
-        //})
-        //},
-        //error: function(request,error){
-        //console.log(error);
-        //}
-        //})
-        //}
+        function GetCity(){
 
-       function setFilter(){
-console.log("setFilter");
+        var countryId = $('#countryId').find(":selected").val();
+        debugger;
 
-$.ajax({
-success:function(data){
+        $.ajax({
+        url:"/Home/GetCity",
+        method: "GET",
 
-$("#filter-button").empty();
-$('input[name="city"]:checked').each(function() {
-console.log(this.value);
-document.getElementById("filter-button").innerHTML += `
-<button class="filter common-font filter-text" id="${this.value}" >
-<div style="width:max-content">${this.value} <i onclick="removeFilter(${this.value})" class="bi bi-x"></i></div>
-</button>
+        data: {
+        "countryId":countryId
+        },
 
-`
-});
-$('input[name="theme"]:checked').each(function() {
-console.log(this.value);
-document.getElementById("filter-button").innerHTML += `
-<button class="filter common-font filter-text">
-<div style="width:max-content">${this.value} <i onclick="removeFilter()" class="bi bi-x"></i></div>
-</button>
-`
-});
+        success:function(data){
 
-$('input[name="skill"]:checked').each(function() {
-console.log(this.value);
-document.getElementById("filter-button").innerHTML += `
-<button class="filter common-font filter-text">
-<div style="width:max-content">${this.value} <i onclick="removeFilter()" class="bi bi-x"></i></div>
-</button>
-`
-});
+        data = JSON.parse(data);
+        $("#selectCityList").empty();
 
-document.getElementById("filter-button").innerHTML +=`
-<button class="filter filter-text common-font" onclick="clearAll()" style="padding:0; border:0">Clear all</button>
-`
+        data.forEach((name)=> {
+                    document.getElementById("selectCityList").innerHTML += `
+                      <li>
+                         <div class="form-check dropdown-item px-3"
+                           <input type="checkbox" class="form-check-input mx-auto" name="city"  value="${name.CityName}" id="${name.CityId}" />
+                           <label class="form-check-label ps-2" for="${name.CityId}">
+                              ${name.CityName}
+                           </label>
+                         </div>
+                      </li>
+        `;
+        })
+        },
+        error: function(request,error){
+        console.log(error);
+        }
+        })
+        }
 
-},
-error: function(request,error){
-console.log(error);
-}
-
-})
-}
+    function searchMission() {
+        console.log("abc");
+        var search = $('input[name="search"]').val();
+        var countries = [];
+        var cities = [];
+        var themes = [];
+        var skills = [];
 
 
+        $('input[name="country"]:checked').each(function () {
+            countries.push(this.value);
+        });
+        $('input[name="city"]:checked').each(function () {
+            cities.push(this.value);
+        });
+        $('input[name="theme"]:checked').each(function () {
+            themes.push(this.id);
+        });
+        $('input[name="skill"]:checked').each(function () {
+            skills.push(this.id);
+        });
 
-function searchMission(){
+        $.ajax({
 
-console.log("search");
-var search = $('input[name="search"]').val();
+            url: "/Home/Search",
+            method: "POST",
 
-var countries =[];
-var cities =[];
-var themes =[];
-var skills =[];
+            data: {
+                "search": search,
+                "countries": countries,
+                "cities": cities,
+                "themes": themes,
+                "skills": skills
 
+            },
+            success: function (data) {
 
-$('input[name="country"]:checked').each(function(){
-countries.push(this.value);
-});
+                $('#missions').html(data);
 
-$('input[name="city"]:checked').each(function(){
-cities.push(this.value);
-});
+            },
+            error: function (request, error) {
 
-$('input[name="theme"]:checked').each(function(){
-themes.push(this.id);
-});
+                console.log(error);
+            }
 
-$('input[name="skill"]:checked').each(function(){
-skills.push(this.id);
-});
-
-$.ajax({
-
-url:"/Home/Search",
-method: "POST",
-
-data:{
-"search": search,
-"countries": countries,
-"cities": cities,
-"themes": themes,
-"skills": skills
-},
-success:function(data){
-$("#mission").html(data);
-
-},
-error: function(request,error){
-
-console.log(error);
-}
-
-})
-}
-
-
-
-function removeFilter(checkboxID){
-var checkboxID = checkboxID[0].id;
-
-$("#" + checkboxID).prop( "checked", false );
-
-setFilter();
-
-}
-
-function clearAll(){
-
-$('input[name="city"]:checked').each(function() {
-$("#" + this.id).prop( "checked", false );
-});
-$('input[name="theme"]:checked').each(function() {
-$("#" + this.id).prop( "checked", false );
-});
-$('input[name="skill"]:checked').each(function() {
-$("#" + this.id).prop( "checked", false );
-});
-setFilter();
-}
+        })
+    }
 </script>
 
 

@@ -1,5 +1,6 @@
 ﻿using CIPlatform.Entities.Data;
 using CIPlatform.Entities.Models;
+using CIPlatform.Entities.ViewModel;
 using CIPlatform.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -89,6 +90,86 @@ namespace CIPlatform.Repository.Repository
             MissionRating rating = _DbContext.MissionRatings.FirstOrDefault(a => a.MissionId == missionID);
             return rating.Rating;
         }
+
+
+        public List<Mission> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills)
+        {
+            List<Mission> mission = new List<Mission>();
+
+            List<Mission> missions = _DbContext.Missions.ToList();
+            if (search != "")
+            {
+                missions = _DbContext.Missions.Where(a => a.Title.Contains(search) || a.OrganizationName.Contains(search)).ToList();
+
+            }
+            if (countries.Length > 0)
+            {
+
+                missions = _DbContext.Missions.Where(a => countries.Contains(a.CountryId.ToString())).ToList();
+
+            }
+            if (cities.Length > 0)
+            {
+
+                missions = _DbContext.Missions.Where(a => cities.Contains(a.CityId.ToString())).ToList();
+
+            }
+            if (themes.Length > 0)  
+            {
+
+                missions = _DbContext.Missions.Where(a => themes.Contains(a.MissionThemeId.ToString())).ToList();
+
+            }
+            if (skills.Length > 0)
+            {
+
+                missions = _DbContext.Missions.Where(a => skills.Contains(a.MissionSkills.ToString())).ToList();
+
+            }
+            return missions;
+        }
+
+        public List<MissionData> GetMissionCardsList(List<Mission> missions)
+        {
+            List<MissionData> missionDatas = new List<MissionData>();
+            foreach (var objMission in missions)
+            {
+                MissionData missionData = new MissionData();
+               
+                missionData.MissionId = objMission.MissionId;
+                missionData.MissionType = objMission.MissionType.ToString();
+
+                missionData.CityName = GetCityName(objMission.CityId);
+
+                missionData.OrganizationName = objMission.OrganizationName;
+                missionData.ShortDescription = objMission.ShortDescription;
+
+                missionData.StartDate = objMission.StartDate;
+                missionData.EndDate = objMission.EndDate;
+
+                missionData.MediaPath = MediaByMissionId(missionData.MissionId);
+                missionData.Title = objMission.Title;
+
+                missionData.Rating = MissionRatings(missionData.MissionId);
+                missionData.Theme = GetMissionThemes(objMission.MissionThemeId);
+
+                missionDatas.Add(missionData);
+                //if (obj.MissionType)
+                //{
+                //    missionListing.TotalSeat = GetTotalSeat(obj.MissionId);
+                //    missionListing.Deadline = GetDeadline(obj.MissionId);
+                //}
+                //if (!obj.MissionType)
+                //{
+                //    missionListing.GoalObjectiveText = GetGoalObjectiveText(obj.MissionId);
+                //    missionListing.GoalValue = GetGoalValue(obj.MissionId);
+                //}
+            }
+            return missionDatas;
+        }
+
+
+
 
 
 

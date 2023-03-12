@@ -1,28 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CIPlatform.Models;
 
 public partial class User
 {
-    [Key]
     public long UserId { get; set; }
 
     public string? FirstName { get; set; }
 
     public string? LastName { get; set; }
 
-    [Required]
     public string Email { get; set; } = null!;
 
-    [Required]
     public string Password { get; set; } = null!;
-
-    [NotMapped] // Does not effect with your database
-    [Compare("Password")]
-    public string ConfirmPassword { get; set; }
 
     public int PhoneNumber { get; set; }
 
@@ -35,16 +26,8 @@ public partial class User
     public string? Department { get; set; }
 
     public long? CityId { get; set; }
-    //{
-    //    get { return 1; }
-    //    set
-    //    {
-    //        this.CityId = 1;
-    //    }
-    //}
 
     public long? CountryId { get; set; }
-
 
     public string? ProfileText { get; set; }
 

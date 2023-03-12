@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\Assets\\css\\mission.css"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\missionlist.css",
+      "PackagePath": "staticwebassets\\Assets\\css\\missionlist.css"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\mlist.css",
       "PackagePath": "staticwebassets\\Assets\\css\\mlist.css"
     },
@@ -27,6 +31,10 @@
     {
       "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\volunteer.css",
       "PackagePath": "staticwebassets\\Assets\\css\\volunteer.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\volunteermission.css",
+      "PackagePath": "staticwebassets\\Assets\\css\\volunteermission.css"
     },
     {
       "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\404-Page-image.png",

@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Entities.Models;
+using CIPlatform.Entities.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,5 +31,8 @@ namespace CIPlatform.Repository.Interface
 
         public int MissionRatings(long missionID);
 
+        public List<Mission> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills);
+
+        public List<MissionData> GetMissionCardsList(List<Mission> missions);
     }
 }
