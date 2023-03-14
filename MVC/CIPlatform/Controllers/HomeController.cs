@@ -56,7 +56,7 @@ namespace CIPlatform.Controllers
             }
 
 
-            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(missions); 
+            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(); 
             ViewBag.missionDatas = missionDatas;
 
             ViewBag.UserId = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId"));
@@ -98,7 +98,7 @@ namespace CIPlatform.Controllers
             }
 
 
-            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(missions);
+            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList();
             ViewBag.missionDatas = missionDatas;
 
            
@@ -119,7 +119,7 @@ namespace CIPlatform.Controllers
         }
 
 
-        public JsonResult GetCity(int countryId)
+        public JsonResult GetCity(List<string> countryId)
         {
             List<City> city = _HomeRepo.CityList(countryId);
             var json = JsonConvert.SerializeObject(city);
@@ -140,7 +140,7 @@ namespace CIPlatform.Controllers
             }
 
 
-            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(missions); ;
+            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(); ;
             ViewBag.missionDatas = missionDatas;
 
             List<Country> countries = _HomeRepo.CountryList();
@@ -171,7 +171,7 @@ namespace CIPlatform.Controllers
             }
 
 
-            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(missions); ;
+            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(); ;
             ViewBag.missionDatas = missionDatas;
 
             List<Country> countries = _HomeRepo.CountryList();
@@ -183,7 +183,7 @@ namespace CIPlatform.Controllers
             List<Skill> skills = _HomeRepo.SkillList();
             ViewBag.skills = skills;
 
-            var totalMission = _HomeRepo.TotalMissions();
+            var totalMission = missionDatas.Count.ToString();
             ViewBag.totalMission = totalMission;
 
             return View();
@@ -204,11 +204,12 @@ namespace CIPlatform.Controllers
 
 
             search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
-            List<Mission> missions = _HomeRepo.GetMissionList(search, countries, cities, themes, skills);
-            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(missions);
+            List<MissionData> missionDatas = _HomeRepo.GetMissionList(search, countries, cities, themes, skills);
 
             ViewBag.missionDatas = missionDatas;
 
+            var totalMission = missionDatas.Count.ToString();
+            ViewBag.totalMission = totalMission;
 
             return PartialView("_MissionGrid");
         }

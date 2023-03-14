@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\CIPlatform.csproj": {}
+    "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\CIPlatform.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
+    "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
         "projectName": "CIPlatform.Entities",
-        "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
-        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\obj\\",
+        "projectPath": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
+        "packagesPath": "C:\\Users\\pct106\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pct106\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -75,8 +80,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -85,21 +89,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Repository\\CIPlatform.Repository.csproj": {
+    "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Repository\\CIPlatform.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Repository\\CIPlatform.Repository.csproj",
+        "projectUniqueName": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Repository\\CIPlatform.Repository.csproj",
         "projectName": "CIPlatform.Repository",
-        "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Repository\\CIPlatform.Repository.csproj",
-        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Repository\\obj\\",
+        "projectPath": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Repository\\CIPlatform.Repository.csproj",
+        "packagesPath": "C:\\Users\\pct106\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Repository\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pct106\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -113,8 +122,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
-                "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\CIPlatform.Entities.csproj"
+              "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
+                "projectPath": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\CIPlatform.Entities.csproj"
               }
             }
           }
@@ -172,8 +181,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -182,21 +190,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\CIPlatform.csproj": {
+    "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\CIPlatform.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\CIPlatform.csproj",
+        "projectUniqueName": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\CIPlatform.csproj",
         "projectName": "CIPlatform",
-        "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\CIPlatform.csproj",
-        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\",
+        "projectPath": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\CIPlatform.csproj",
+        "packagesPath": "C:\\Users\\pct106\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pct106\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -210,11 +223,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
-                "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\CIPlatform.Entities.csproj"
+              "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
+                "projectPath": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Entities\\CIPlatform.Entities.csproj"
               },
-              "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Repository\\CIPlatform.Repository.csproj": {
-                "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Repository\\CIPlatform.Repository.csproj"
+              "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Repository\\CIPlatform.Repository.csproj": {
+                "projectPath": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform.Repository\\CIPlatform.Repository.csproj"
               }
             }
           }
@@ -272,8 +285,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -285,7 +297,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

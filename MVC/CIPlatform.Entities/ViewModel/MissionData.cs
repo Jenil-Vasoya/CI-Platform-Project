@@ -14,6 +14,13 @@ namespace CIPlatform.Entities.ViewModel
 
         public long CityId { get; set; }
 
+        public long CountryId { get; set; }
+
+        public int? SkillId { get; set; }
+
+
+        public long MissionThemeId { get; set; }
+
         public string CityName { get; set; } = null!;
 
         public string Title { get; set; } = null!;

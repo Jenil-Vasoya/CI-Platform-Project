@@ -13,7 +13,7 @@ namespace CIPlatform.Repository.Interface
 
         public List<Country> CountryList();
 
-        public List<City> CityList(int CountryID);
+        public List<City> CityList(List<string> CountryID);
 
         public List<MissionTheme> MissionThemeList();
 
@@ -31,8 +31,8 @@ namespace CIPlatform.Repository.Interface
 
         public int MissionRatings(long missionID);
 
-        public List<Mission> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills);
+        public List<MissionData> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills);
 
-        public List<MissionData> GetMissionCardsList(List<Mission> missions);
+        public List<MissionData> GetMissionCardsList();
     }
 }

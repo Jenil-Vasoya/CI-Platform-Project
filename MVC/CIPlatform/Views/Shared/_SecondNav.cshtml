@@ -28,9 +28,9 @@
 
                 <div class="col-lg-6 col-12 d-flex">
 
-                    <div class="col-3 col-sm-3 col-lg-3 dropdown border">
+                 @*   <div class="col-3 col-sm-3 col-lg-3 dropdown border">
 
-                        <select id="countryId" onchange="GetCity()" class="form-select select-menu border-lg-left  border-0"
+                        <select id="countryId" onchange="GetCity();searchMission();" class="form-select select-menu border-lg-left  border-0"
                                 aria-label="Default select example">
                             <option selected>Country</option>
                             @foreach (var obj in @ViewBag.countries)
@@ -38,25 +38,49 @@
                                 <option value="@obj.CountryId">@obj.CountryName</option>
                             }
                         </select>
-                    </div>
+                    </div>*@
 
+                   <div class="col-3 col-sm-3 col-lg-3 dropdown border">
+ 
+
+                        <div class="form-select d-flex align-items-center hide_dropdown_arrow hide_border_select  border-0"
+                             type="button" id="dropdownMenuButton12" data-bs-toggle="dropdown" aria-expanded="false">
+                            Country
+                        </div>
+
+                        <ul style="overflow-y:scroll" onchange="GetCity();searchMission();" id="countryId" class="dropdown-menu scroll_dropdown" aria-labelledby="dropdownMenuButton1">
+
+                            @foreach (var obj in @ViewBag.countries)
+                            {
+                                <li>
+                                    <div class="form-check dropdown-item px-4">
+                                        <input class="form-check-input mx-auto" name="country" type="checkbox" value=""
+                                           id="@obj.CountryId" />
+                                        <label class="form-check-label ps-2" for="@obj.CountryId">
+                                            @obj.CountryName
+                                        </label>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+
+                        
+                    </div>
 
 
                     <div class="col-3 col-sm-3 col-lg-3 dropdown  border">
 
 
+                        <div class="form-select d-flex align-items-center hide_dropdown_arrow hide_border_select  border-0"
+                             type="button" id="dropdownMenuButton12" data-bs-toggle="dropdown" aria-expanded="false">
+                            City
+                        </div>
 
-                        <select class="form-select select-menu border-lg-left  border-0"
-                                aria-label="Default select example" id="selectCityList" onchange="setFilter()">
-
-                            <option selected>City</option>
-                            <ul class="dropdown-menu scroll_dropdown" id="selectCityList" onchange="searchMission()">
-                            </ul>
-
-
-                        </select>
+                        <ul style="overflow-y:scroll" onchange="searchMission();" class="dropdown-menu scroll_dropdown" id="selectCityList" aria-labelledby="dropdownMenuButton1">
+                        </ul>
 
                     </div>
+
 
                     <div class="col-3 col-sm-3 col-lg-3 dropdown border">
  
@@ -130,13 +154,15 @@
 
         
         function GetCity(){
+  var countryId= [];
 
-        var countryId = $('#countryId').find(":selected").val();
-        debugger;
-
+$('input[name="country"]:checked').each(function(){
+countryId.push(this.id);
+});
+    debugger;
         $.ajax({
         url:"/Home/GetCity",
-        method: "GET",
+        method: "Post",
 
         data: {
         "countryId":countryId
@@ -149,14 +175,15 @@
 
         data.forEach((name)=> {
                     document.getElementById("selectCityList").innerHTML += `
-                      <li>
-                         <div class="form-check dropdown-item px-3"
-                           <input type="checkbox" class="form-check-input mx-auto" name="city"  value="${name.CityName}" id="${name.CityId}" />
-                           <label class="form-check-label ps-2" for="${name.CityId}">
-                              ${name.CityName}
-                           </label>
-                         </div>
-                      </li>
+            <li>
+    <div class="form-check dropdown-item px-3">
+    <input class="form-check-input mx-auto" name="city" type="checkbox" value="${name.CityName}"
+    id="${name.CityId}" />
+    <label class="form-check-label ps-2" for="${name.CityId}">
+    ${name.CityName}
+    </label>
+    </div>
+    </li>
         `;
         })
         },
@@ -164,7 +191,7 @@
         console.log(error);
         }
         })
-        }
+        };
 
     function searchMission() {
         console.log("abc");
@@ -176,10 +203,10 @@
 
 
         $('input[name="country"]:checked').each(function () {
-            countries.push(this.value);
+            countries.push(this.id);
         });
         $('input[name="city"]:checked').each(function () {
-            cities.push(this.value);
+            cities.push(this.id);
         });
         $('input[name="theme"]:checked').each(function () {
             themes.push(this.id);
@@ -187,6 +214,7 @@
         $('input[name="skill"]:checked').each(function () {
             skills.push(this.id);
         });
+    debugger;
 
         $.ajax({
 

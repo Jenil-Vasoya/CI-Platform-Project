@@ -1,7 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MVC",
+    "\\MVC\\CIPlatform",
+    "\\MVC\\CIPlatform.Repository",
+    "\\MVC\\CIPlatform.Repository\\Repository",
+    "\\MVC\\CIPlatform\\Views",
+    "\\MVC\\CIPlatform\\Views\\Home"
   ],
-  "SelectedNode": "\\CIPlatform.sln",
+  "SelectedNode": "\\MVC\\CIPlatform\\Views\\Home\\MissionGrid.cshtml",
   "PreviewInSolutionExplorer": false
 }

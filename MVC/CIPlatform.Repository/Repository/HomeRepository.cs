@@ -26,9 +26,9 @@ namespace CIPlatform.Repository.Repository
         }
 
 
-        public List<City> CityList(int CountryID)
+        public List<City> CityList(List<string> CountryID)
         {
-            List<City> objCityList = _DbContext.Cities.Where(i => i.CountryId == CountryID).ToList();
+            List<City> objCityList = _DbContext.Cities.Where(i => CountryID.Contains(i.CountryId.ToString())).ToList();
             return objCityList;
         }
 
@@ -92,46 +92,46 @@ namespace CIPlatform.Repository.Repository
         }
 
 
-        public List<Mission> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills)
+        public List<MissionData> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills)
         {
-            List<Mission> mission = new List<Mission>();
-
-            List<Mission> missions = _DbContext.Missions.ToList();
+            List<MissionData> missions = GetMissionCardsList();
             if (search != "")
             {
-                missions = _DbContext.Missions.Where(a => a.Title.Contains(search) || a.OrganizationName.Contains(search)).ToList();
+                missions = missions.Where(a => a.Title.Contains(search) || a.OrganizationName.Contains(search)).ToList();
 
             }
             if (countries.Length > 0)
             {
-
-                missions = _DbContext.Missions.Where(a => countries.Contains(a.CountryId.ToString())).ToList();
-
+                    missions = missions.Where(a => countries.Contains(a.CountryId.ToString())).ToList();
+                
             }
             if (cities.Length > 0)
             {
 
-                missions = _DbContext.Missions.Where(a => cities.Contains(a.CityId.ToString())).ToList();
+                missions = missions.Where(a => cities.Contains(a.CityId.ToString())).ToList();
 
             }
             if (themes.Length > 0)  
             {
 
-                missions = _DbContext.Missions.Where(a => themes.Contains(a.MissionThemeId.ToString())).ToList();
+                missions = missions.Where(a => themes.Contains(a.MissionThemeId.ToString())).ToList();
 
             }
             if (skills.Length > 0)
             {
 
-                missions = _DbContext.Missions.Where(a => skills.Contains(a.MissionSkills.ToString())).ToList();
+                missions = missions.Where(a => skills.Contains(a.SkillId.ToString())).ToList();
 
             }
             return missions;
         }
 
-        public List<MissionData> GetMissionCardsList(List<Mission> missions)
+        public List<MissionData> GetMissionCardsList()
         {
+            var missions = _DbContext.Missions.ToList();
+
             List<MissionData> missionDatas = new List<MissionData>();
+
             foreach (var objMission in missions)
             {
                 MissionData missionData = new MissionData();
@@ -147,11 +147,18 @@ namespace CIPlatform.Repository.Repository
                 missionData.StartDate = objMission.StartDate;
                 missionData.EndDate = objMission.EndDate;
 
-                missionData.MediaPath = MediaByMissionId(missionData.MissionId);
+                missionData.MediaPath = MediaByMissionId(objMission.MissionId);
                 missionData.Title = objMission.Title;
 
-                missionData.Rating = MissionRatings(missionData.MissionId);
+                missionData.Rating = MissionRatings(objMission.MissionId);
                 missionData.Theme = GetMissionThemes(objMission.MissionThemeId);
+                
+                missionData.MissionThemeId = objMission.MissionThemeId;
+                missionData.CountryId = objMission.CountryId;
+                missionData.CityId = objMission.CityId;
+
+                var missionSkill = _DbContext.MissionSkills.FirstOrDefault(s => s.MissionId == objMission.MissionId);
+                missionData.SkillId = missionSkill.SkillId;
 
                 missionDatas.Add(missionData);
                 //if (obj.MissionType)
