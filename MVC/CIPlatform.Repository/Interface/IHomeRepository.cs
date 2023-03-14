@@ -31,7 +31,7 @@ namespace CIPlatform.Repository.Interface
 
         public int MissionRatings(long missionID);
 
-        public List<MissionData> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills);
+        public List<MissionData> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort);
 
         public List<MissionData> GetMissionCardsList();
     }

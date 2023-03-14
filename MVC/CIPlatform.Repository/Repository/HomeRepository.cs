@@ -92,12 +92,12 @@ namespace CIPlatform.Repository.Repository
         }
 
 
-        public List<MissionData> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills)
+        public List<MissionData> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort)
         {
             List<MissionData> missions = GetMissionCardsList();
             if (search != "")
             {
-                missions = missions.Where(a => a.Title.Contains(search) || a.OrganizationName.Contains(search)).ToList();
+                missions = missions.Where(a => a.Title.ToLower().Contains(search) || a.ShortDescription.ToLower().Contains(search)).ToList();
 
             }
             if (countries.Length > 0)
@@ -121,6 +121,35 @@ namespace CIPlatform.Repository.Repository
             {
 
                 missions = missions.Where(a => skills.Contains(a.SkillId.ToString())).ToList();
+
+            }
+
+            switch (sort)
+            {
+                case 1:
+                    missions = missions.OrderBy(i => i.CreatedAt).ToList();
+                    break;
+
+                case 2:
+                    missions = missions.OrderByDescending(i => i.CreatedAt).ToList();
+                    break;
+
+                case 3:
+                    missions = missions.OrderByDescending(i => i.EndDate).ToList();
+                    break;
+
+                case 4:
+                    missions = missions.OrderBy(i => i.Availability).ToList();
+                    break;
+
+                case 5:
+                    missions = missions.OrderByDescending(i => i.Availability).ToList();
+                    break;
+
+                case 6:
+                    missions = missions.OrderBy(i => i.Availability).ToList();
+                    break;
+
 
             }
             return missions;
@@ -149,9 +178,11 @@ namespace CIPlatform.Repository.Repository
 
                 missionData.MediaPath = MediaByMissionId(objMission.MissionId);
                 missionData.Title = objMission.Title;
+                missionData.CreatedAt = objMission.CreatedAt;
 
                 missionData.Rating = MissionRatings(objMission.MissionId);
                 missionData.Theme = GetMissionThemes(objMission.MissionThemeId);
+                missionData.Availability = objMission.Availability;
                 
                 missionData.MissionThemeId = objMission.MissionThemeId;
                 missionData.CountryId = objMission.CountryId;

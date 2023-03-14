@@ -1,4 +1,4 @@
-﻿ <div class="container">
+﻿@* <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand ">
@@ -18,13 +18,13 @@
                     <button type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Sort by
                     </button>
-                    <ul class="dropdown-menu w-100">
-                            <li><a class="dropdown-item" asp-action="#">Newest</a></li>
-                            <li><a class="dropdown-item" asp-action="#">Oldest</a></li>
-                            <li><a class="dropdown-item" asp-action="">Lowest Available Seats</a></li>
-                            <li><a class="dropdown-item" asp-action="">Highest Available Seats</a></li>
-                            <li><a class="dropdown-item" asp-action="">My Favourite</a></li>
-                            <li><a class="dropdown-item" asp-action="">Registration Deadline</a></li>
+                    <ul class="dropdown-menu w-100" id="sortby" onchange="searchMission();">
+                            <li><a class="dropdown-item" id="1" >Newest</a></li>
+                            <li><a class="dropdown-item" id="2" >Oldest</a></li>
+                            <li><a class="dropdown-item" id="3" >Lowest Available Seats</a></li>
+                            <li><a class="dropdown-item" id="4" >Highest Available Seats</a></li>
+                            <li><a class="dropdown-item" id="5" >My Favourite</a></li>
+                            <li><a class="dropdown-item" id="6" >Registration Deadline</a></li>
                         </ul>
                 </div>
                 <div class="pe-3">
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
     <br />
     <div class="container SelectGridForDisplay">
         <div class="row bootstrap snippets">

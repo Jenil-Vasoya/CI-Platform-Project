@@ -23,10 +23,7 @@ namespace CIPlatform.Controllers
         }
 
  
-
-
-
-
+        
         public IActionResult Index()
         {
             return View();
@@ -46,7 +43,7 @@ namespace CIPlatform.Controllers
         }
 
         [HttpGet]
-        public IActionResult MissionGrid()
+        public IActionResult MissionGrid(int pg = 1)
         {
 
             List<Mission> missions = _HomeRepo.MissionList();
@@ -75,6 +72,15 @@ namespace CIPlatform.Controllers
 
             var totalMission = _HomeRepo.TotalMissions();
             ViewBag.totalMission = totalMission;
+
+            const int pageSize = 9;
+            int recsCount = totalMission;
+            var pager = new Pager(recsCount, pg, pageSize);
+            int recSkip = (pg - 1) * pageSize;
+
+            var data = missionDatas.Skip(recSkip).Take(pager.PageSize).ToList();
+            ViewBag.missionDatas = data;
+            this.ViewBag.Pager = pager;
 
 
             return View();
@@ -199,20 +205,36 @@ namespace CIPlatform.Controllers
         }
 
         [HttpPost]
-        public ActionResult Search(string? search, string[] countries, string[] cities, string[] themes, string[] skills)
+        public ActionResult Search(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort, int pg = 1)
         {
 
 
             search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
-            List<MissionData> missionDatas = _HomeRepo.GetMissionList(search, countries, cities, themes, skills);
+            List<MissionData> missionDatas = _HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort);
 
             ViewBag.missionDatas = missionDatas;
 
             var totalMission = missionDatas.Count.ToString();
             ViewBag.totalMission = totalMission;
 
+
+
+
+            const int pageSize = 9;
+            int recsCount = missionDatas.Count();
+            var pager = new Pager(recsCount, pg, pageSize);
+            int recSkip = (pg - 1) * pageSize;
+
+            var data = missionDatas.Skip(recSkip).Take(pager.PageSize).ToList();
+            ViewBag.missionDatas = data;
+            this.ViewBag.Pager = pager;
+
+
+
             return PartialView("_MissionGrid");
         }
+
+      
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         //public IActionResult Error()
         //{

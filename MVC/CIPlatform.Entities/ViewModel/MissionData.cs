@@ -23,9 +23,12 @@ namespace CIPlatform.Entities.ViewModel
 
         public string CityName { get; set; } = null!;
 
-        public string Title { get; set; } = null!;
+        public string? Title { get; set; } = null!;
 
         public string? ShortDescription { get; set; }
+
+        public DateTime? CreatedAt { get; set; }
+
 
         public DateTime? StartDate { get; set; }
 
