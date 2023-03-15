@@ -43,7 +43,7 @@ namespace CIPlatform.Controllers
         }
 
         [HttpGet]
-        public IActionResult MissionGrid(int pg = 1)
+        public IActionResult MissionGrid()
         {
 
             List<Mission> missions = _HomeRepo.MissionList();
@@ -73,14 +73,6 @@ namespace CIPlatform.Controllers
             var totalMission = _HomeRepo.TotalMissions();
             ViewBag.totalMission = totalMission;
 
-            const int pageSize = 9;
-            int recsCount = totalMission;
-            var pager = new Pager(recsCount, pg, pageSize);
-            int recSkip = (pg - 1) * pageSize;
-
-            var data = missionDatas.Skip(recSkip).Take(pager.PageSize).ToList();
-            ViewBag.missionDatas = data;
-            this.ViewBag.Pager = pager;
 
 
             return View();
@@ -205,7 +197,7 @@ namespace CIPlatform.Controllers
         }
 
         [HttpPost]
-        public ActionResult Search(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort, int pg = 1)
+        public ActionResult Search(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort)
         {
 
 
@@ -220,14 +212,6 @@ namespace CIPlatform.Controllers
 
 
 
-            const int pageSize = 9;
-            int recsCount = missionDatas.Count();
-            var pager = new Pager(recsCount, pg, pageSize);
-            int recSkip = (pg - 1) * pageSize;
-
-            var data = missionDatas.Skip(recSkip).Take(pager.PageSize).ToList();
-            ViewBag.missionDatas = data;
-            this.ViewBag.Pager = pager;
 
 
 
