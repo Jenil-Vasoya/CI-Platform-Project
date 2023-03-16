@@ -1,15 +1,19 @@
-﻿ <div class="container SelectListForDisplay">
- <div class="row">
+﻿
 
-                        @foreach (var item in ViewBag.missionDatas)
-                        {
+
+
+<div class="container ">
+    <div class="row">
+
+        @foreach (var item in ViewBag.missionDatas)
+        {
             <div class="col-lg-3 col-md-5 col-sm-6">
                 <div class="thumbnail h-100">
                     <div class="card h-100">
                         <img src="@item.MediaPath" class="h-100">
                         <div class="position-relative">
                             <div class="position-absolute top-100 start-50 translate-middle rounded-5 p-2" style="background-color: white;">@item.Theme</div>
-                        </div>
+                        </div>  
                         <div class="card-img-overlay ">
                             <div class="d-flex flex-column  text-end pb-5" style="margin-inline: auto;">
 
@@ -60,13 +64,21 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="float-end">
-                            <i class="fa fa-star rating-color"></i>
-                            <i class="fa fa-star rating-color"></i>
-                            <i class="fa fa-star rating-color"></i>
-                            <i class="fa fa-star rating-color"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
+                        <div class="d-flex rating1">
+                                <div class="col d-flex justify-content-end">
+                                    @if (true)
+                                    {
+                                        for (var i = 0; i < (@item.Rating); i++)
+                                        {
+                                            <i class="fa fa-star rating-color checked"></i>
+                                        }
+                                        for (var i = 0; i < 5 - (@item.Rating); i++)
+                                        {
+                                            <i class="fa fa-star"></i>
+                                        }
+                                    }
+                                </div>
+                            </div>
                     </div>
                 </div>
 
@@ -81,28 +93,37 @@
                 <div class="pt-3 row">
                     <div class="col-lg-12 col-md-9 d-flex justify-content-start">
                         <div class="row">
-                            <div class="col-lg col-md-auto float-start pe-lg-0" style="order: 1;">
-                                <div class=" d-inline-flex align-items-center">
-                                    <img src="~/Assets/images/Seats-left.png" />
-                                    <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
-                                        <p class="mb-0 ">@item.Availability</p>
-                                        <p class="mb-0 " style="margin-top: -5px;">Seated Left</p>
-                                    </div>
-                                </div>
-                            </div>
-                            @*<div class="col-lg col-md-auto float-start " style="order: 0;">
-                                <div class="d-inline-flex align-items-center">
-                                    <img src="~/Assets/images/achieved.png" />
-                                    <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
-                                        <div class="progress" style="height: 10px; margin-top: 8px; width: 100%;">
-                                            <div class="progress-bar" role="progressbar" style="width: 70%;"
-                                             aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                            @if (@item.MissionType == "Goal")
+                                        {
+                                <div class="col-6 ">
+                                    <div class="card  border-0">
+                                        <div class="d-flex  align-items-center">
+                                            <img src="~/Assets/images/achieved.png" />
+                                            <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
+                                                <div class="progress" style="height: 10px; margin-top: 8px; width: 100%;">
+                                                    <div class="progress-bar" role="progressbar" style="width: 70%;"
+                                                 aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <div> <span class="">8000 achieved</span> </div>
+                                            </div>
                                         </div>
-                                        <div> <span class="">8000 achieved</span> </div>
                                     </div>
                                 </div>
-                            </div>*@
-                            <div class="col-lg col-md-auto float-start " style="order: 2;">
+                                  <div class="col-6">
+                                            <div class="card  border-0">
+                                                <div class=" d-flex flex-row">
+                                                    <div class=""><img src="~/Assets/images/deadline.png" class="img-fluid"></div>
+                                                    <div class=" ">
+                                                        <h6 class="card-title"> @item.EndDate.ToString("dd/MM/yyyy")</h6>
+                                                        <p class="card-text ">Deadline</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                            }
+                            else
+                            {
+                                <div class="col-lg col-md-auto float-start " style="order: 2;">
                                 <div class=" d-inline-flex align-items-center">
                                     <img src="~/Assets/images/calender.png" />
                                     <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
@@ -111,15 +132,28 @@
                                     </div>
                                 </div>
                             </div>
-                            @*<div class="col-lg col-md-auto float-start ps-0" style="order: 3;">
-                                <div class=" d-inline-flex align-items-center ">
-                                    <i class="bi bi-tools" style="font-size: 1.4em;"></i>
+                             <div class="col-lg col-md-auto float-start pe-lg-0" style="order: 1;">
+                                <div class=" d-inline-flex align-items-center">
+                                    <img src="~/Assets/images/Seats-left.png" />
                                     <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
-                                        <p class="mb-0 ">skill</p>
-                                        <p class="mb-0 " style="margin-top: -5px;">Botany</p>
+                                        <p class="mb-0 ">@item.Availability</p>
+                                        <p class="mb-0 " style="margin-top: -5px;">Seated Left</p>
                                     </div>
                                 </div>
-                            </div>*@
+                            </div>
+                            }
+                           
+                            
+                            
+                            @*<div class="col-lg col-md-auto float-start ps-0" style="order: 3;">
+                                <div class=" d-inline-flex align-items-center ">
+                                <i class="bi bi-tools" style="font-size: 1.4em;"></i>
+                                <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
+                                <p class="mb-0 ">skill</p>
+                                <p class="mb-0 " style="margin-top: -5px;">Botany</p>
+                                </div>
+                                </div>
+                                </div>*@
                         </div>
                     </div>
 
@@ -136,7 +170,7 @@
 
             </div>
             <hr style=" height:20px; opacity: 0;" />
+        }
 
-                        }
     </div>
-    </div>  
+</div>  

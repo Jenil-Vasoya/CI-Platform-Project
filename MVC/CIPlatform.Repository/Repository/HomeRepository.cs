@@ -172,6 +172,15 @@ namespace CIPlatform.Repository.Repository
 
                 missionData.OrganizationName = objMission.OrganizationName;
                 missionData.ShortDescription = objMission.ShortDescription;
+                missionData.MissionType = objMission.MissionType;
+
+                if (_DbContext.GoalMissions.Where(x => missionData.MissionId.Equals(x.MissionId)).Count() != 0)
+                {
+                    missionData.MissionGoalText = GetGoalMissionData(objMission.MissionId).GoalObjectiveText;
+                    missionData.GoalValue1 = GetGoalMissionData(objMission.MissionId).GoalValue;
+
+                }
+
 
                 missionData.StartDate = objMission.StartDate;
                 missionData.EndDate = objMission.EndDate;
@@ -206,7 +215,30 @@ namespace CIPlatform.Repository.Repository
             return missionDatas;
         }
 
+        public GoalMission GetGoalMissionData(long missionId)
+        {
+            GoalMission goalMission = _DbContext.GoalMissions.FirstOrDefault(a => a.MissionId == missionId);
+            if (goalMission == null)
+            {
+                return null;
+            }
+            return goalMission;
+        }
 
+        public bool AddFavouriteMission(int userId, long missionId)
+        {
+            FavoriteMission favoriteMission = new FavoriteMission();
+            favoriteMission.UserId = userId;
+            favoriteMission.MissionId = missionId;
+
+            var mission = _DbContext.FavoriteMissions.FirstOrDefault(s => s.UserId == userId);
+            if (mission != null)
+            {
+                _DbContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
 
 
 

@@ -15,8 +15,8 @@ $(document).ready(function (a) {
     // Check if the window width is less than 1440px
     if (windowWidth < 991) {
         // Hide the list view and show the gird view
-        $('.SelectListForDisplay').hide();
-        $('.SelectGridForDisplay').show();
+        $('.listItem').hide();
+        $('.gridItem').show();
     }
     $(window).resize(function (e) {
         // Get the new window width
@@ -25,18 +25,18 @@ $(document).ready(function (a) {
         // Check if the window width is less than 1440px
         if (newWindowWidth < 991) {
             // Hide the list view and show the gird view
-            $('.SelectListForDisplay').hide();
-            $('.SelectGridForDisplay').show();
-            $("#selectlistview").hide();
-            $("#selectgridview").hide();
+            $('.listItem').hide();
+            $('.gridItem').show();
+            $("#list").hide();
+            $("#grid").hide();
         }
         else {
-            $("#selectlistview").show();
-            $("#selectgridview").show();
+            $("#list").show();
+            $("#grid").show();
             // Show the list view and hide the gird view
             if (localStorage.getItem("lastVisible") == "list") {
-                $('.SelectGridForDisplay').hide();
-                $('.SelectListForDisplay').show();
+                $('.gridItem').hide();
+                $('.listItem').show();
             }
         }
     });

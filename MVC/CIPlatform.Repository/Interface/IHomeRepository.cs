@@ -34,5 +34,7 @@ namespace CIPlatform.Repository.Interface
         public List<MissionData> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort);
 
         public List<MissionData> GetMissionCardsList();
+
+        public bool AddFavouriteMission(int userId, long missionId);
     }
 }

@@ -3,11 +3,8 @@
     "",
     "\\MVC",
     "\\MVC\\CIPlatform",
-    "\\MVC\\CIPlatform.Repository",
-    "\\MVC\\CIPlatform.Repository\\Repository",
-    "\\MVC\\CIPlatform\\Views",
-    "\\MVC\\CIPlatform\\Views\\Home"
+    "\\MVC\\CIPlatform\\Controllers"
   ],
-  "SelectedNode": "\\MVC\\CIPlatform\\Views\\Home\\MissionGrid.cshtml",
+  "SelectedNode": "\\MVC\\CIPlatform\\Controllers\\HomeController.cs",
   "PreviewInSolutionExplorer": false
 }

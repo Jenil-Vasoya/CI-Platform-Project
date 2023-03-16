@@ -36,6 +36,10 @@ namespace CIPlatform.Entities.ViewModel
 
         public string MissionType { get; set; }
 
+        public string MissionGoalText { get; set; }
+
+        public int GoalValue1 { get; set; }
+
         public string? OrganizationName { get; set; }
 
         public string? MediaPath { get; set; }

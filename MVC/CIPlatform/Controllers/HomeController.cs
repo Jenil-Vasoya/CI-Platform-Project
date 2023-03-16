@@ -156,43 +156,38 @@ namespace CIPlatform.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult MissionList(string? search, string? city, string? theme, string? country)
+        
+        public ActionResult SearchList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort)
         {
+
+
             search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
+            List<MissionData> missionDatas = _HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort);
 
-            List<Mission> missions = _HomeRepo.MissionList();
-
-            if (missions.Count == 0)
-            {
-                return RedirectToAction("MissionNotFound");
-            }
-
-
-            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(); ;
             ViewBag.missionDatas = missionDatas;
-
-            List<Country> countries = _HomeRepo.CountryList();
-            ViewBag.countries = countries;
-
-            List<MissionTheme> themes = _HomeRepo.MissionThemeList();
-            ViewBag.themes = themes;
-
-            List<Skill> skills = _HomeRepo.SkillList();
-            ViewBag.skills = skills;
 
             var totalMission = missionDatas.Count.ToString();
             ViewBag.totalMission = totalMission;
 
-            return View();
+            return PartialView("_MissionList");
         }
 
         public IActionResult MissionEmpty()
         {
             return View();
         }
-        public IActionResult VolunteerMission()
-        {
+
+        public IActionResult VolunteerMission(long id)
+{
+            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList();
+            var missions = missionDatas.Where(x => x.MissionId == id).FirstOrDefault();
+            ViewBag.missionDatas = missions;
+
+            ViewBag.UserId = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId"));
+            ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
+            ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName"));
+            ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar"));
+
             return View();
         }
 
@@ -210,15 +205,16 @@ namespace CIPlatform.Controllers
             ViewBag.totalMission = totalMission;
 
 
-
-
-
-
-
             return PartialView("_MissionGrid");
         }
 
-      
+        public ActionResult AddToFavourite(int UserId, long missionId)
+        {
+
+            var mission = _HomeRepo.AddFavouriteMission(UserId, missionId);
+            return View();
+        }
+
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         //public IActionResult Error()
         //{

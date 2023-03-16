@@ -5,16 +5,7 @@
 @{
     ViewData["Title"] = "MissionGrid";
 }
-@{
-    Pager pager = new Pager();
 
-    int pageNo = 0;
-    if (ViewBag.Pager != null)
-    {
-        pager = ViewBag.Pager;
-        pageNo = pager.CurrentPage;
-    }
-}
 
 @if (TempData["Success"] != null)
 {
@@ -65,24 +56,46 @@
                     </div>
 
                     <a class="btn">
-                        <img src="~/Assets/images/grid.png" id="selectgridview">
+                        <img src="~/Assets/images/grid.png" id="grid">
                     </a>
 
 
                     <a class="btn pt-2">
-                        <img src="~/Assets/images/list.png" id="selectlistview">
+                        <img src="~/Assets/images/list.png" id="list">
                     </a>
 
                 </div>
             </div>
         </div>
     </div>
-    <div id="products" class=" mt-3 ">
+@*    <div  id="selectgridview" class="SelectGridForDisplay">
         <div id="missions">
-            <partial name="_MissionGrid" />
+           <partial name="_MissionGrid" />
         </div>
     </div>
-   <partial name="_MissionList" />
+    <div  id="selectlistview"  class="SelectListForDisplay" >
+     <div id="missionslist">x
+  <partial name="_MissionList" />
+   </div>
+   </div>*@
+
+
+
+
+    <div class="gridItem">
+        <div class="container" id="missions">
+            <partial name="_MissionGrid" />
+
+        </div>
+    </div>
+    <div class="listItem" id="missionslist">
+        <partial name="_MissionList" />
+
+
+    </div>
+         
+                   
+
     
    @* <div class="container">
         <br />
@@ -118,18 +131,31 @@
 </body>
 <script type="text/javascript" language="javascript">
 
-    $(".SelectListForDisplay").hide();
-$("#selectlistview").on("click", function (e) {
-$(".SelectGridForDisplay").hide();
-$(".SelectListForDisplay").show();
+    $('.listItem').hide();
+$('#grid').click(function () {
+$('.gridItem').show();
+$('.listItem').hide();
 localStorage.setItem("lastVisible", "list");
-});
-
-$("#selectgridview").on("click", function (e) {
-$(".SelectListForDisplay").hide();
-$(".SelectGridForDisplay").show();
+})
+$('#list').click(function () {
+$('.listItem').show();
+$('.gridItem').hide();
 localStorage.setItem("lastVisible", "grid");
 })
+
+
+//    $(".SelectListForDisplay").hide();
+//$("#selectlistview").on("click", function (e) {
+//$(".SelectGridForDisplay").hide();
+//$(".SelectListForDisplay").show();
+//localStorage.setItem("lastVisible", "list");
+//});
+
+//$("#selectgridview").on("click", function (e) {
+//$(".SelectListForDisplay").hide();
+//$(".SelectGridForDisplay").show();
+//localStorage.setItem("lastVisible", "grid");
+//})
 
 
 
@@ -216,6 +242,35 @@ countryId.push(this.id);
             success: function (data) {
 
                 $('#missions').html(data);
+
+
+            },
+            error: function (request, error) {
+
+                console.log(error);
+            }
+
+        })
+
+         debugger;
+
+        $.ajax({
+
+            url: "/Home/SearchList",
+            method: "POST",
+
+            data: {
+                "search": search,
+                "countries": countries,
+                "cities": cities,
+                "themes": themes,
+                "skills": skills,
+                "sort" : sort
+
+            },
+            success: function (data) {
+
+                $('#missionslist').html(data);
 
             },
             error: function (request, error) {
