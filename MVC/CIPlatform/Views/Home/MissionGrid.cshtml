@@ -23,8 +23,8 @@
 
 <head>
      <link rel="stylesheet" href="~/Assets/css/mission.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
 
 <script src="~/js/site.js"></script>
 
@@ -202,6 +202,9 @@ countryId.push(this.id);
 
     function searchMission() {
         console.log("abc");
+
+
+
         var search = $('input[name="search"]').val();
         var sort = $('#sortby').find(":selected").val();
         var countries = [];
@@ -281,5 +284,20 @@ countryId.push(this.id);
         })
     }
 </script>
+@*<script>
+    $(document).ready(function(){
+searchMission(null, 1);
+//$("#searchByTitle").on("keyup", function() {
+//searchMission();
+});
+//var SortByFunction = "";
+//$("#SortBy li a").on("click", function(){
+//SortByFunction = $(this).text();
+//localStorage.setItem("SortByFunction",SortByFunction);
+//DisplayGrid(SortByFunction, 1);
+//DisplayList(SortByFunction,1);
+//});
+//});
+</script>*@
 
 

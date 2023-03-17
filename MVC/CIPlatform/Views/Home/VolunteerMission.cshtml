@@ -109,9 +109,8 @@
                                                     <div class="d-flex justify-content-center align-items-center">
                                                         <img src="~/Assets/images/achieved.png" />
                                                         <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
-                                                            <div class="progress" style="height: 10px; margin-top: 8px; width: 100%;">
-                                                                <div class="progress-bar" role="progressbar" style="width: 70%;"
-                                                             aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress">
+                                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%; background-color:#F88634;"></div>
                                                             </div>
                                                             <div> <span class="">8000 achieved</span> </div>
                                                         </div>
@@ -226,7 +225,7 @@
                             </div>
 
                             <div class=" text-center pt-3">
-                                <button type="submit" href="#" class="btn rounded-5  " style="border-color: #F88634; color: #F88634;"> Apply Now &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
+                                <button type="submit" class="btn applyButton "> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
                             </div>
 
                         </div>
@@ -307,126 +306,42 @@
                     </div>
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                            <textarea class="form-control" placeholder="Leave a comment here" id="user-comment"></textarea>
+                            <p id="comment-status"></p>
                             <label for="floatingTextarea">Comments</label>
                         </div>
                         <div class="pt-2">
-                            <button type="submit" href="#" class="btn rounded-5  " style="border-color: #F88634; color: #F88634;">Post Comment<i class="bi bi-arrow-right"></i></button>
+                            <button type="submit" href="#" class="btn rounded-5 " onclick="AddComments(@ViewBag.missionDatas.MissionId)">Post Comment<i class="bi bi-arrow-right"></i></button>
                         </div>
                         <div class="container-fluid p-2 mt-2" style="background-color:gray;">
                             <div class="container " style=" height:500px; overflow-y:auto; scroll-behavior:smooth;">
                                 <div class="container px-0 pb-2">
                                     <div class="row  border px-2" style="background-color:white; margin:0px;">
-                                        <div class="col-xl-1 col-md-1 col-sm-2 col-2 my-2">
-                                            <img src="~/Assets/images/volunteer1.png" class="rounded-circle mt-2" height="50px" width="50px" />
-                                        </div>
-                                        <div class="col-xl-11 col-md-11 col-sm-10 col-9 ps-4">
-                                            <h6 class="fw-bold mb-0">Kane Williomson</h6>
-                                            <p>
-                                                Monday, October 21, 2022, 4:57pm
-                                            </p>
-                                            <p>Nice Mission great opportunity for people</p>
-                                        </div>
-                                    </div>   
-                                </div>
-                                <div class="container px-0 pb-2">
-                                    <div class="row  border px-2" style="background-color:white; margin:0px;">
-                                        <div class="col-xl-1 col-md-1 col-sm-2 col-2 my-2">
-                                            <img src="~/Assets/images/volunteer1.png" class="rounded-circle mt-2" height="50px" width="50px" />
-                                        </div>
-                                        <div class="col-xl-11 col-md-11 col-sm-10 col-9 ps-4">
-                                            <h6 class="fw-bold mb-0">Kane Williomson</h6>
-                                            <p>
-                                                Monday, October 21, 2022, 4:57pm
-                                            </p>
-                                            <p>Nice Mission great opportunity for people</p>
-                                        </div>
+
+
+                                        @if (@ViewBag.Comments != null)
+                                        {
+                                            @foreach (var item in @ViewBag.Comments)
+                                            {
+                                                <div class="col-xl-1 col-md-1 col-sm-2 col-2 my-2">
+
+                                                    <img alt="avatar1" src="@item.Avatar" class="rounded-circle mt-2" height="50px" width="50px">
+
+                                                </div>
+                                                <div class="col-xl-11 col-md-11 col-sm-10 col-9 ps-4">
+                                                    <h6 class="fw-bold mb-0"> @item.UserName</h6>
+                                                    <p>
+                                                        @item.Day,@item.Month@item.WeekDay,@item.Year. @item.Time
+                                                    </p>
+
+                                                    <p>@item.Comment</p>
+                                                </div>
+
+                                            }
+                                        }
                                     </div>
                                 </div>
-                                <div class="container px-0 pb-2">
-                                    <div class="row  border px-2" style="background-color:white; margin:0px;">
-                                        <div class="col-xl-1 col-md-1 col-sm-2 col-2 my-2">
-                                            <img src="~/Assets/images/volunteer1.png" class="rounded-circle mt-2" height="50px" width="50px" />
-                                        </div>
-                                        <div class="col-xl-11 col-md-11 col-sm-10 col-9 ps-4">
-                                            <h6 class="fw-bold mb-0">Kane Williomson</h6>
-                                            <p>
-                                                Monday, October 21, 2022, 4:57pm
-                                            </p>
-                                            <p>Nice Mission great opportunity for people</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container px-0 pb-2">
-                                    <div class="row  border px-2" style="background-color:white; margin:0px;">
-                                        <div class="col-xl-1 col-md-1 col-sm-2 col-2 my-2">
-                                            <img src="~/Assets/images/volunteer1.png" class="rounded-circle mt-2" height="50px" width="50px" />
-                                        </div>
-                                        <div class="col-xl-11 col-md-11 col-sm-10 col-9 ps-4">
-                                            <h6 class="fw-bold mb-0">Kane Williomson</h6>
-                                            <p>
-                                                Monday, October 21, 2022, 4:57pm
-                                            </p>
-                                            <p>Nice Mission great opportunity for people</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container px-0 pb-2">
-                                    <div class="row  border px-2" style="background-color:white; margin:0px;">
-                                        <div class="col-xl-1 col-md-1 col-sm-2 col-2 my-2">
-                                            <img src="~/Assets/images/volunteer1.png" class="rounded-circle mt-2" height="50px" width="50px" />
-                                        </div>
-                                        <div class="col-xl-11 col-md-11 col-sm-10 col-9 ps-4">
-                                            <h6 class="fw-bold mb-0">Kane Williomson</h6>
-                                            <p>
-                                                Monday, October 21, 2022, 4:57pm
-                                            </p>
-                                            <p>Nice Mission great opportunity for people</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container px-0 pb-2">
-                                    <div class="row  border px-2" style="background-color:white; margin:0px;">
-                                        <div class="col-xl-1 col-md-1 col-sm-2 col-2 my-2">
-                                            <img src="~/Assets/images/volunteer1.png" class="rounded-circle mt-2" height="50px" width="50px" />
-                                        </div>
-                                        <div class="col-xl-11 col-md-11 col-sm-10 col-9 ps-4">
-                                            <h6 class="fw-bold mb-0">Kane Williomson</h6>
-                                            <p>
-                                                Monday, October 21, 2022, 4:57pm
-                                            </p>
-                                            <p>Nice Mission great opportunity for people</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container px-0 pb-2">
-                                    <div class="row  border px-2" style="background-color:white; margin:0px;">
-                                        <div class="col-xl-1 col-md-1 col-sm-2 col-2 my-2">
-                                            <img src="~/Assets/images/volunteer1.png" class="rounded-circle mt-2" height="50px" width="50px" />
-                                        </div>
-                                        <div class="col-xl-11 col-md-11 col-sm-10 col-9 ps-4">
-                                            <h6 class="fw-bold mb-0">Kane Williomson</h6>
-                                            <p>
-                                                Monday, October 21, 2022, 4:57pm
-                                            </p>
-                                            <p>Nice Mission great opportunity for people</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container px-0 pb-2">
-                                    <div class="row  border px-2" style="background-color:white; margin:0px;">
-                                        <div class="col-xl-1 col-md-1 col-sm-2 col-2 my-2">
-                                            <img src="~/Assets/images/volunteer1.png" class="rounded-circle mt-2" height="50px" width="50px" />
-                                        </div>
-                                        <div class="col-xl-11 col-md-11 col-sm-10 col-9 ps-4">
-                                            <h6 class="fw-bold mb-0">Kane Williomson</h6>
-                                            <p>
-                                                Monday, October 21, 2022, 4:57pm
-                                            </p>
-                                            <p>Nice Mission great opportunity for people</p>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -552,255 +467,134 @@
         <div class="row">
             <h3 class="text-center">Related Missions</h3>
             <br />
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 pt-2">
-                <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
-                    <div class="thumbnail col-lg-12 col-md-12 col-sm-12 ">
-                        <div class="card">
-                            <img src="~/Assets/images/Grow-Trees-On-the-path-to-environment-sustainability.png" class="img-fluid">
-                            <div class="position-relative">
-                                <div class="position-absolute top-100 start-50 translate-middle rounded-5 p-2" style="background-color: white;">Children</div>
-                            </div>
-                            <div class="card-img-overlay ">
-                                <div class="d-flex flex-column  text-end pb-5" style="margin-inline: auto;">
-                                    <div class="">
-                                        <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
-                                            <img src="~/Assets/images/pin.png" class="img-fluid cancle-img" alt="">
-                                            <span style="color:white;">Torento</span>
-                                        </button>
-                                    </div>
-                                    <div class="pt-1">
-                                        <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
-                                            <img src="~/Assets/images/heart.png" class=" img-fluid cancle-img" alt="">
-                                        </button>
-                                    </div>
-                                    <div class="">
-                                        <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
-                                            <img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt="">
-                                        </button>
+         
+
+            @foreach (var item in ViewBag.relatedmission)
+            {
+
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 pb-3" style="">
+                    <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
+                        <div class="thumbnail col-lg-12 col-md-12 col-sm-12 ">
+                            <div class="card">
+                                <img src="@item.MediaPath" class="img-fluid">
+                                <div class="position-relative">
+                                    <div class="position-absolute top-100 start-50 translate-middle rounded-5 p-2" style="background-color: white;">@item.Theme</div>
+                                </div>
+                                <div class="card-img-overlay ">
+                                    <div class="d-flex flex-column  text-end pb-5" style="margin-inline: auto;">
+                                        <div class="">
+                                            <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
+                                                <img src="~/Assets/images/pin.png" class="img-fluid cancle-img" alt="">
+                                                <span style="color:white;">@item.CityName</span>
+                                            </button>
+                                        </div>
+                                        <div class="pt-1">
+                                            <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
+                                                <img src="~/Assets/images/heart.png" class=" img-fluid cancle-img" alt="">
+                                            </button>
+                                        </div>
+                                        <div class="">
+                                            <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
+                                                <img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt="">
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="caption prod-caption pt-2 ">
-                            <h3>Grow Trees - on the path to environment sustainability </h3>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda illo quibusdam voluptatibus culpa, beatae illum.</p>
-                            <div class="d-flex rating1">
-                                <div><h5>Tree canada</h5></div>
-                                <div class="ratings">
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <br>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"></li>
-                                <li class="list-group-item">
-                                    <div class=" text-center py-3" style="margin-top: -45px; ">
-                                        <button type="submit" href="#" class="btn rounded-5  " style="border-color: black; background: white"> From 10/01/2019 untill 25/02/2019</button>
+                            <div class="caption prod-caption p-3 " style="border: solid; border-width: thin; border-color:lightgray">
+                                <h3>@item.Title</h3>
+                                <p>@item.ShortDescription</p>
+                                <div class="d-flex rating1">
+                                    <div><h5>@item.OrganizationName</h5></div>
+                                    <div class="col d-flex justify-content-end">
+                                        @if (true)
+                                        {
+                                            for (var i = 0; i < (@item.Rating); i++)
+                                            {
+                                                <i class="fa fa-star rating-color checked"></i>
+                                            }
+                                            for (var i = 0; i < 5 - (@item.Rating); i++)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                            }
+                                        }
                                     </div>
-                                    <div class="row">
-                                        <div class="col-6 ">
-                                            <div class="card  border-0">
-                                                <div class=" d-flex flex-row">
-                                                    <div class=""><img src="~/Assets/images/Seats-left.png" class="img-fluid"></div>
-                                                    <div class=" ">
-                                                        <h5 class="card-title" style="text-transform: start;"> &nbsp; 10</h5>
-                                                        <p class="card-text ">Seats left</p>
+                                </div>
+                                <br>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"></li>
+                                    <li class="list-group-item">
+                                        <div class=" text-center py-3" style="margin-top: -45px; ">
+                                            @if (@item.MissionType == "Goal")
+                                            {
+                                                <button type="submit" href="#" class="btn rounded-5  " style="border-color: black; background: white">@item.MissionGoalText</button>
+                                            }
+                                            else
+                                            {
+                                                <button type="submit" href="#" class="btn rounded-5  " style="border-color: black; background: white"> From @item.StartDate.ToString("dd/MM/yyyy") untill @item.EndDate.ToString("dd/MM/yyyy")</button>
+                                            }
+                                        </div>
+                                        <div class="row">
+                                            @if (@item.MissionType == "Goal")
+                                            {
+
+                                                <div class="col-6 ">
+                                                    <div class="card  border-0">
+                                                        <div class="d-flex justify-content-center align-items-center">
+                                                            <img src="~/Assets/images/achieved.png" />
+                                                            <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
+
+                                                                <div class="progress">
+                                                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%; background-color:#F88634;"></div>
+                                                                </div>
+                                                                <div> <span class="">8000 achieved</span> </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="col-6 ">
+                                                    <div class="card  border-0">
+                                                        <div class=" d-flex flex-row">
+                                                            <div class=""><img src="~/Assets/images/Seats-left.png" class="img-fluid"></div>
+                                                            <div class=" ">
+                                                                <h5 class="card-title" style="text-transform: start;"> &nbsp; @item.Availability</h5>
+                                                                <p class="card-text ">Seats left</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            <div class="col-6">
+                                                <div class="card  border-0">
+                                                    <div class=" d-flex flex-row">
+                                                        <div class=""><img src="~/Assets/images/deadline.png" class="img-fluid"></div>
+                                                        <div class=" ">
+                                                            <h6 class="card-title"> @item.EndDate.ToString("dd/MM/yyyy")</h6>
+                                                            <p class="card-text ">Deadline</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-6">
-                                            <div class="card  border-0">
-                                                <div class=" d-flex flex-row">
-                                                    <div class=""><img src="~/Assets/images/deadline.png" class="img-fluid"></div>
-                                                    <div class=" ">
-                                                        <h6 class="card-title">09/01/2019</h6>
-                                                        <p class="card-text ">Deadline</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item"></li>
-                            </ul>
-                            <div class=" text-center pb-2">
-                                <button type="submit" href="#" class="btn rounded-5  " style="border-color: #F88634; color: #F88634;"> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
+                                    </li>
+                                    <li class="list-group-item"></li>
+                                </ul>
+                                <div class=" text-center pb-2">
+                                    @*onclick="window.location= '@Url.Action( "VolunteerMission", "Home", new {id = @item.MissionId})'"*@
+                                    <a asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@item.MissionId">
+                                        <button type="submit" class="btn applyButton rounded-5"> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 pt-2">
-                <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
-                    <div class="thumbnail col-lg-12 col-md-12 col-sm-12 ">
-                        <div class="card">
-                            <img src="~/Assets/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png" class="img-fluid">
-                            <div class="position-relative">
-                                <div class="position-absolute top-100 start-50 translate-middle rounded-5 p-2" style="background-color: white;">Children</div>
-                            </div>
-                            <div class="card-img-overlay ">
-                                <div class="d-flex flex-column  text-end pb-5" style="margin-inline: auto;">
-                                    <div class="">
-                                        <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
-                                            <img src="~/Assets/images/pin.png" class="img-fluid cancle-img" alt="">
-                                            <span style="color:white;">Torento</span>
-                                        </button>
-                                    </div>
-                                    <div class="pt-1">
-                                        <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
-                                            <img src="~/Assets/images/heart.png" class=" img-fluid cancle-img" alt="">
-                                    </div>
-                                    <div class="">
-                                        </button>
-                                        <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
-                                            <img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt="">
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="caption prod-caption pt-2 ">
-                            <h3>Grow Trees - on the path to environment sustainability </h3>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda illo quibusdam voluptatibus culpa, beatae illum.</p>
-                            <div class="d-flex rating1">
-                                <div><h5>Tree canada</h5></div>
-                                <div class="ratings">
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <br>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"></li>
-                                <li class="list-group-item">
-                                    <div class=" text-center py-3" style="margin-top: -45px; ">
-                                        <button type="submit" href="#" class="btn rounded-5  " style="border-color: black; background: white"> From 10/01/2019 untill 25/02/2019</button>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 ">
-                                            <div class="card  border-0">
-                                                <div class=" d-flex flex-row">
-                                                    <div class=""><img src="~/Assets/images/Seats-left.png" class="img-fluid"></div>
-                                                    <div class=" ">
-                                                        <h5 class="card-title" style="text-transform: start;"> &nbsp; 10</h5>
-                                                        <p class="card-text ">Seats left</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="card  border-0">
-                                                <div class=" d-flex flex-row">
-                                                    <div class=""><img src="~/Assets/images/deadline.png" class="img-fluid"></div>
-                                                    <div class=" ">
-                                                        <h6 class="card-title">09/01/2019</h6>
-                                                        <p class="card-text ">Deadline</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item"></li>
-                            </ul>
-                            <div class=" text-center pb-2">
-                                <button type="submit" href="#" class="btn rounded-5  " style="border-color: #F88634; color: #F88634;"> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 pt-2">
-                <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
-                    <div class="thumbnail col-lg-12 col-md-12 col-sm-12 ">
-                        <div class="card">
-                            <img src="~/Assets/images/Nourish-the-Children-in--African-country.png" class="img-fluid">
-                            <div class="position-relative">
-                                <div class="position-absolute top-100 start-50 translate-middle rounded-5 p-2" style="background-color: white;">Children</div>
-                            </div>
-                            <div class="card-img-overlay ">
-                                <div class="d-flex flex-column  text-end pb-5" style="margin-inline: auto;">
-                                    <div class="">
-                                        <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
-                                            <img src="~/Assets/images/pin.png" class="img-fluid cancle-img" alt="">
-                                            <span style="color:white;">Torento</span>
-                                        </button>
-                                    </div>
-                                    <div class="pt-1">
-                                        <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
-                                            <img src="~/Assets/images/heart.png" class=" img-fluid cancle-img" alt="">
-                                    </div>
-                                    <div class="">
-                                        </button>
-                                        <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
-                                            <img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt="">
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="caption prod-caption pt-2 ">
-                            <h3>Grow Trees - on the path to environment sustainability </h3>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda illo quibusdam voluptatibus culpa, beatae illum.</p>
-                            <div class="d-flex rating1">
-                                <div><h5>Tree canada</h5></div>
-                                <div class="ratings">
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <br>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"></li>
-                                <li class="list-group-item">
-                                    <div class=" text-center py-3" style="margin-top: -45px; ">
-                                        <button type="submit" href="#" class="btn rounded-5  " style="border-color: black; background: white"> From 10/01/2019 untill 25/02/2019</button>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 ">
-                                            <div class="card  border-0">
-                                                <div class=" d-flex flex-row">
-                                                    <div class=""><img src="~/Assets/images/Seats-left.png" class="img-fluid"></div>
-                                                    <div class=" ">
-                                                        <h5 class="card-title" style="text-transform: start;"> &nbsp; 10</h5>
-                                                        <p class="card-text ">Seats left</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="card  border-0">
-                                                <div class=" d-flex flex-row">
-                                                    <div class=""><img src="~/Assets/images/deadline.png" class="img-fluid"></div>
-                                                    <div class=" ">
-                                                        <h6 class="card-title">09/01/2019</h6>
-                                                        <p class="card-text ">Deadline</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item"></li>
-                            </ul>
-                            <div class=" text-center pb-2">
-                                <button type="submit" href="#" class="btn rounded-5  " style="border-color: #F88634; color: #F88634;"> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
+                    
+          
 
         </div>
 
@@ -809,7 +603,7 @@
 </body>
 
 <script>
-        function Add(missionId)
+        function Add(MissionId)
     {
         debugger
     $.ajax({
@@ -819,7 +613,7 @@
 
     data:
     {
-    missionId:missionId;
+    MissionId:MissionId
     
     },
     success:function(data)
@@ -840,4 +634,39 @@
     }
     })
     }
+
+
+    function AddComments(missionId)
+{
+
+var comment = $("#user-comment").val();
+
+if(comment == null || comment=="")
+{
+$("#comment-status").html("please enter the comment");
+$("#comment-status").css("color","red");
+}
+else
+{
+debugger
+$.ajax({
+
+url:"/Home/AddComment",
+method: "POST",
+
+data:
+{
+comment:comment,
+missionId:missionId
+},
+success:function(data)
+{
+$("#comment-status").html("comment sent for approvel");
+$("#comment-status").css("color","green"); 
+$('#user-comment').val(''); 
+}
+})
+}
+}
+
 </script>

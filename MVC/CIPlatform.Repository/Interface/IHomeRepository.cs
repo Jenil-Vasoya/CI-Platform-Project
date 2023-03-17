@@ -35,6 +35,10 @@ namespace CIPlatform.Repository.Interface
 
         public List<MissionData> GetMissionCardsList();
 
-        public bool AddFavouriteMission(int userId, long missionId);
+        public bool AddFavouriteMission(long userId, long missionId);
+
+        public void AddComment(string comment, long UserId, long MissionId);
+
+        public List<CommentViewModel> GetComment(long missionID);
     }
 }

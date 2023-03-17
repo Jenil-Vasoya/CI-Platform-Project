@@ -1,6 +1,6 @@
 ﻿@model CIPlatform.Entities.Models.User
 
-<link href="~/Assets/css/style.css" rel="stylesheet">
+
 
 
 
@@ -73,7 +73,9 @@
 
 }
 
-  
+
+  <link href="~/Assets/css/style.css" rel="stylesheet">
+
 
 <body>
     <div class="row">
@@ -100,7 +102,7 @@
 
                             </div>
 
-                            <button type="submit" asp-controller="User" asp-action="Login" class="btn btn-outline-warning my-2 w-100"
+                            <button type="submit" asp-controller="User" asp-action="Login" class="btn applyButton my-2 w-100"
                                     style="border-radius: 25px;">
                                 Login
                             </button>
@@ -137,7 +139,6 @@
 
 </body>
 
-</html>
 
 <script type="text/javascript" language="javascript">
 function DisableBackButton() {

@@ -11,6 +11,21 @@
         font-size: 25px;
     }
 
+.applyButton {
+    border: 2px solid #F88634;
+    border-radius: 100px;
+    color: #F88634;
+    background-color:white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+    .applyButton:hover {
+        background-color: #F88634;
+        color: white;
+    }
+
+
 .rating-color {
     color: #fbc634 !important;
 }
@@ -27,7 +42,10 @@
     
 }
 
-
+.btn:hover {
+    background-color: #F88634;
+    color:white;
+}
 
 .endtext2 {
     justify-content: start;

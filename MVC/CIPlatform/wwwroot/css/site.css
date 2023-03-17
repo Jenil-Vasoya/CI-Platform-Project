@@ -43,6 +43,19 @@ html {
 }*/
 
 
+.applyButton {
+    border: 2px solid #F88634;
+    border-radius: 100px;
+    color: #F88634;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+    .applyButton:hover {
+        background-color: #F88634;
+        color: white;
+    }
+
 
 
     html {

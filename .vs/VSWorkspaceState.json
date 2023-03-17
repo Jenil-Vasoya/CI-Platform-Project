@@ -3,8 +3,10 @@
     "",
     "\\MVC",
     "\\MVC\\CIPlatform",
-    "\\MVC\\CIPlatform\\Controllers"
+    "\\MVC\\CIPlatform\\Controllers",
+    "\\MVC\\CIPlatform\\Views",
+    "\\MVC\\CIPlatform\\Views\\Home"
   ],
-  "SelectedNode": "\\MVC\\CIPlatform\\Controllers\\HomeController.cs",
+  "SelectedNode": "\\MVC\\CIPlatform\\Views\\Home\\VolunteerMission.cshtml",
   "PreviewInSolutionExplorer": false
 }

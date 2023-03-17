@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace CIPlatform.Entities.ViewModel
 {
     public class MissionData
     {
+        [Key]
         public long MissionId { get; set; }
 
         public string? Theme { get; set; }
@@ -50,7 +52,8 @@ namespace CIPlatform.Entities.ViewModel
 
         public int? GoalValue { get; set; }
 
-        public string? Availability { get; set; }
+
+        public int? Availability { get; set; }
 
         public DateTime? Deadline { get; set; }
 

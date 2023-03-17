@@ -225,24 +225,66 @@ namespace CIPlatform.Repository.Repository
             return goalMission;
         }
 
-        public bool AddFavouriteMission(int userId, long missionId)
+        public bool AddFavouriteMission(long userId, long missionId)
         {
+            
             FavoriteMission favoriteMission = new FavoriteMission();
             favoriteMission.UserId = userId;
             favoriteMission.MissionId = missionId;
 
-            var mission = _DbContext.FavoriteMissions.FirstOrDefault(s => s.UserId == userId);
-            if (mission != null)
+            var favmission = _DbContext.FavoriteMissions.FirstOrDefault(s => s.UserId == userId && s.MissionId == missionId);
+            if (favmission == null)
             {
+                _DbContext.FavoriteMissions.Add(favoriteMission);
                 _DbContext.SaveChanges();
                 return true;
             }
-            return false;
+            else
+            {
+                _DbContext.FavoriteMissions.Remove(favmission);
+                _DbContext.SaveChanges();
+                return false;
+            }
+        }
+
+        public void AddComment(string comment, long UserId, long MissionId)
+        {
+                Comment commentNew = new Comment();
+                commentNew.Comments = comment;
+                commentNew.MissionId = MissionId;
+                commentNew.UserId = UserId;
+
+                _DbContext.Comments.Add(commentNew);
+                _DbContext.SaveChanges();
+
+            
         }
 
 
+        public List<CommentViewModel> GetComment(long missionID)
+        {
+            List<Comment> comments = _DbContext.Comments.Where(a => a.MissionId == missionID && a.ApprovalStatus == "Approve").ToList();
+            List<CommentViewModel> commentView = new List<CommentViewModel>();
 
+            foreach (var comment in comments)
+            {
+                CommentViewModel commentViews = new CommentViewModel();
 
+                User user = _DbContext.Users.FirstOrDefault(a => a.UserId == comment.UserId);
+
+                commentViews.Comment = comment.Comments;
+                commentViews.Month = comment.CreatedAt.ToString("MMMM");
+                commentViews.Time = comment.CreatedAt.ToString("h:mm tt");
+                commentViews.Day = comment.CreatedAt.Day.ToString();
+                commentViews.WeekDay = comment.CreatedAt.DayOfWeek.ToString();
+                commentViews.Year = comment.CreatedAt.Year.ToString();
+                commentViews.Avatar = user.Avatar;
+                commentViews.UserName = user.FirstName + " " + user.LastName;
+                commentView.Add(commentViews);
+
+            }
+            return commentView;
+        }
 
     }
 }

@@ -23,7 +23,7 @@ public partial class Mission
 
     public DateTime? EndDate { get; set; }
 
-    public string MissionType { get; set; } = null!;
+    public string? MissionType { get; set; }
 
     public bool? Status { get; set; }
 
@@ -31,7 +31,7 @@ public partial class Mission
 
     public string? OrganizationDetail { get; set; }
 
-    public string? Availability { get; set; }
+    public int? Availability { get; set; }
 
     public DateTime CreatedAt { get; set; }
 

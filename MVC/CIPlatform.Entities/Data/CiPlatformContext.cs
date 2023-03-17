@@ -66,10 +66,7 @@ public partial class CiPlatformContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-            => optionsBuilder.UseSqlServer("Data Source=PCT106\\SQL2017;Initial Catalog=CI Platform;User ID=sa;Password=Tatva@123;TrustServerCertificate=True;");
-    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-    //           => optionsBuilder.UseSqlServer("Data Source=MRKHEDUT;DataBase=CI Platform;Trusted_Connection=true;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Data Source=PCT106\\SQL2017;DataBase=CI Platform;User ID=sa;Password=Tatva@123;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -176,6 +173,7 @@ public partial class CiPlatformContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasDefaultValueSql("('PENDING')");
+            entity.Property(e => e.Comments).HasMaxLength(120);
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
@@ -272,9 +270,6 @@ public partial class CiPlatformContext : DbContext
             entity.ToTable("Mission");
 
             entity.Property(e => e.MissionId).HasColumnName("MissionID");
-            entity.Property(e => e.Availability)
-                .HasMaxLength(20)
-                .IsUnicode(false);
             entity.Property(e => e.CityId).HasColumnName("CityID");
             entity.Property(e => e.CountryId).HasColumnName("CountryID");
             entity.Property(e => e.CreatedAt)

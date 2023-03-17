@@ -18,23 +18,22 @@ input:invalid {
     color: #ffffff;
 }
 
-.btn-outline-warning {
-    --bs-btn-color: #F88634;
-    --bs-btn-border-color: #F88634;
 
-    --bs-btn-hover-color: #000;
-    --bs-btn-hover-bg: #F88634;
-    --bs-btn-hover-border-color: #F88634;
-    --bs-btn-focus-shadow-rgb: 255, 193, 7;
-    --bs-btn-active-color: #000;
-    --bs-btn-active-bg: #F88634;
-    --bs-btn-active-border-color: #F88634;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #F88634;
-    --bs-btn-disabled-bg: transparent;
-    --bs-btn-disabled-border-color: #F88634;
-    --bs-gradient: none;
+
+.applyButton {
+    border: 2px solid #F88634;
+    border-radius: 100px;
+    color: #F88634;
+    padding-left: 20px;
+    padding-right: 20px;
 }
+
+    .applyButton:hover {
+        background-color: #F88634;
+        color: white;
+    }
+
+
 
 .text {
     position: absolute;
