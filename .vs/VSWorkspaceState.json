@@ -3,6 +3,8 @@
     "",
     "\\MVC",
     "\\MVC\\CIPlatform",
+    "\\MVC\\CIPlatform.Entities",
+    "\\MVC\\CIPlatform.Entities\\ViewModel",
     "\\MVC\\CIPlatform\\Controllers",
     "\\MVC\\CIPlatform\\Views",
     "\\MVC\\CIPlatform\\Views\\Home"

@@ -65,8 +65,9 @@ namespace CIPlatform.Controllers
         //}
 
         [HttpGet]
-        public IActionResult MissionGrid()
+        public IActionResult MissionGrid(PaginationRequest paginationRequest)
         {
+
             //var pageinfo = new Microsoft.Data.SqlClient.SqlParameter("@TotalCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
 
             //Pagination pagination = new Pagination();
@@ -104,6 +105,22 @@ namespace CIPlatform.Controllers
             var totalMission = _HomeRepo.TotalMissions();
             ViewBag.totalMission = totalMission;
 
+
+            //var allData =  _DbContext.Missions.Contains(m => m.MissionId).ToList();
+
+            //// ------------------------------------ Pagination ------------------------
+            //if (paginationRequest.PageNumber > 0 && paginationRequest.PageSize > 0)
+            //{
+            //    var result = new PaginationResult<Mission>
+            //    {
+            //        PageNumber = paginationRequest.PageNumber,
+            //        PageSize = paginationRequest.PageSize,
+            //        TotalCount = allData.Count(),
+            //        TotalPages = (int)Math.Ceiling(allData.Count() / (double)paginationRequest.PageSize),
+            //        Results = allData.Skip((paginationRequest.PageNumber - 1) * paginationRequest.PageSize).Take(paginationRequest.PageSize).ToList()
+            //    };
+            //    return View(result);
+            //}
             return View();
         }
 
@@ -209,7 +226,9 @@ namespace CIPlatform.Controllers
 
 
         public IActionResult VolunteerMission(long id)
-{
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
+
             List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList();
             var missions = missionDatas.Where(x => x.MissionId == id).FirstOrDefault();
             ViewBag.missionDatas = missions;
@@ -219,8 +238,10 @@ namespace CIPlatform.Controllers
             ViewBag.relatedmission = relatedmission;
 
             ViewBag.Comments = _HomeRepo.GetComment(missions.MissionId);
+            ViewBag.CheckFavMisson = _HomeRepo.CheckFavMission(UserId, missions.MissionId);
 
-            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
+            ViewBag.RecentVolunteer = 
+
             ViewBag.UserId = UserId;
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
             ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName"));
@@ -247,12 +268,23 @@ namespace CIPlatform.Controllers
             return PartialView("_MissionGrid");
         }
 
-        public ActionResult AddToFavourite( long missionId)
+        public JsonResult AddToFavourite( long missionId)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
 
-            var mission = _HomeRepo.AddFavouriteMission(UserId, missionId);
-            return View();
+            bool mission = _HomeRepo.AddFavouriteMission(UserId, missionId);
+            if(mission == true)
+            {
+
+                TempData["Success"] = "Added to your faviroute";
+                return Json(mission);
+            }
+            else
+            {
+
+                TempData["Success"] = "Removed from your faviroute";
+            }
+            return Json(null);
         }
 
         public void AddComment(string comment, long MissionId)
@@ -268,6 +300,12 @@ namespace CIPlatform.Controllers
         //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         //}
 
+        public void ApplyMission(long missionId)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
+
+                _HomeRepo.ApplyMission(UserId, missionId);
+        }
 
 
         [HttpPost]

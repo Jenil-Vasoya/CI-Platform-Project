@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BSBGT/N0hX8xWc69UEt4aWXRw15Hl8Fyx6Sj+I8Ialg=",
+  "Hash": "zxfFzhCPKFAWQlh/BJiUw5Zl0e0UImoeuMQVMPeHwts=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -1494,6 +1494,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\images\\previous.png"
+    },
+    {
+      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\red-heart.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "Assets/images/red-heart.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\images\\red-heart.png"
     },
     {
       "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right.png",

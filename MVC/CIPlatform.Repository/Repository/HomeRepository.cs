@@ -184,6 +184,7 @@ namespace CIPlatform.Repository.Repository
 
                 missionData.StartDate = objMission.StartDate;
                 missionData.EndDate = objMission.EndDate;
+              
 
                 missionData.MediaPath = MediaByMissionId(objMission.MissionId);
                 missionData.Title = objMission.Title;
@@ -247,6 +248,15 @@ namespace CIPlatform.Repository.Repository
             }
         }
 
+        public int CheckFavMission(long userId, long missionId)
+        {
+            if (_DbContext.FavoriteMissions.Any(a=> a.UserId == userId && a.MissionId == missionId))
+            {
+                return 1;
+            }
+            return 0;
+        }
+
         public void AddComment(string comment, long UserId, long MissionId)
         {
                 Comment commentNew = new Comment();
@@ -284,6 +294,19 @@ namespace CIPlatform.Repository.Repository
 
             }
             return commentView;
+        }
+
+        public void ApplyMission(long UserId, long MissionId)
+        {
+          MissionApplication missionApplication = new MissionApplication();
+            missionApplication.UserId = UserId;
+            missionApplication.MissionId = MissionId;
+            missionApplication.AppliedAt = DateTime.Now;
+
+            _DbContext.MissionApplications.Add(missionApplication);
+            _DbContext.SaveChanges();
+
+
         }
 
     }

@@ -20,6 +20,7 @@ namespace CIPlatform.Entities.ViewModel
 
         public int? SkillId { get; set; }
 
+        public bool? Favorite { get; set; }
 
         public long MissionThemeId { get; set; }
 
