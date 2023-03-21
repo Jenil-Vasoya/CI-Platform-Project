@@ -239,6 +239,7 @@ namespace CIPlatform.Controllers
 
             ViewBag.Comments = _HomeRepo.GetComment(missions.MissionId);
             ViewBag.CheckFavMisson = _HomeRepo.CheckFavMission(UserId, missions.MissionId);
+          
 
             ViewBag.RecentVolunteer = 
 
@@ -275,15 +276,9 @@ namespace CIPlatform.Controllers
             bool mission = _HomeRepo.AddFavouriteMission(UserId, missionId);
             if(mission == true)
             {
-
-                TempData["Success"] = "Added to your faviroute";
                 return Json(mission);
             }
-            else
-            {
-
-                TempData["Success"] = "Removed from your faviroute";
-            }
+           
             return Json(null);
         }
 
@@ -300,11 +295,13 @@ namespace CIPlatform.Controllers
         //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         //}
 
-        public void ApplyMission(long missionId)
+        public JsonResult ApplyMission(long missionId)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
 
-                _HomeRepo.ApplyMission(UserId, missionId);
+              bool success =  _HomeRepo.ApplyMission(UserId, missionId);
+            return Json(success);
+            
         }
 
 

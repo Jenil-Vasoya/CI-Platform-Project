@@ -248,13 +248,13 @@ namespace CIPlatform.Repository.Repository
             }
         }
 
-        public int CheckFavMission(long userId, long missionId)
+        public bool CheckFavMission(long userId, long missionId)
         {
-            if (_DbContext.FavoriteMissions.Any(a=> a.UserId == userId && a.MissionId == missionId))
+            if (_DbContext.FavoriteMissions.FirstOrDefault(a=> a.UserId == userId && a.MissionId == missionId) != null)
             {
-                return 1;
+                return true;
             }
-            return 0;
+            return false;
         }
 
         public void AddComment(string comment, long UserId, long MissionId)
@@ -296,18 +296,39 @@ namespace CIPlatform.Repository.Repository
             return commentView;
         }
 
-        public void ApplyMission(long UserId, long MissionId)
+        public bool ApplyMission(long UserId, long MissionId)
         {
-          MissionApplication missionApplication = new MissionApplication();
-            missionApplication.UserId = UserId;
-            missionApplication.MissionId = MissionId;
-            missionApplication.AppliedAt = DateTime.Now;
+            if(_DbContext.MissionApplications.FirstOrDefault(a => a.UserId == UserId && a.MissionId == MissionId) != null)
+            { return false; }
 
-            _DbContext.MissionApplications.Add(missionApplication);
-            _DbContext.SaveChanges();
+            else
+            {
+                MissionApplication missionApplication = new MissionApplication();
+                missionApplication.UserId = UserId;
+                missionApplication.MissionId = MissionId;
+                missionApplication.AppliedAt = DateTime.Now;
 
+                _DbContext.MissionApplications.Add(missionApplication);
+                _DbContext.SaveChanges();
+                return true;
+            }
 
         }
+
+        public void RecentVolunteer(long MissionId)
+        {
+            var missions = _DbContext.Missions.ToList();
+
+            List<MissionData> missionDatas = new List<MissionData>();
+
+            foreach (var objRecent in missions)
+            {
+                MissionData missionData = new MissionData();
+
+               
+                missionDatas.Add(missionData);
+            }
+            }
 
     }
 }

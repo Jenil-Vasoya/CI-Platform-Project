@@ -1,4 +1,5 @@
-﻿@if (TempData["Success"] != null)
+﻿
+@if (TempData["Success"] != null)
 {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script type="text/javascript">
@@ -17,8 +18,17 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- Toastr library -->
+    
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+<!-- jQuery library -->
+
 </head>
 <body>
+
     <partial name="_FirstNav" />
     <div class="container">
 
@@ -160,13 +170,13 @@
                                 <li class="list-group-item p-4  ">
                                     <div class="row">
                                         <div class="col-xl-6 col-12 text-center ">
-                                            @if (@ViewBag.CheckFavMission != 0)
+                                            @if (@ViewBag.CheckFavMisson == true)
                                             {
-                                                <button type="submit" onclick="Add(@ViewBag.missionDatas.MissionId)" class="btn rounded-5  " style="border-color: black;"><i  id="addToFav" class="bi bi-heart-fill bg-danger"></i> Add to favourite</button>
+                                                <button type="submit" class="btn rounded-5  " onclick="Add(@ViewBag.missionDatas.MissionId)"  style="border-color: black;"><i class="bi bi-heart-fill  text-danger" id="addToFav"></i>&nbsp;<span id="favButtonText">Remove from Favourite</span></button>
                                             }
                                             else
                                             {
-                                                <button type="submit" onclick="Add(@ViewBag.missionDatas.MissionId)" class="btn rounded-5  " style="border-color: black;"><i  id="addToFav" class="bi bi-heart"></i> Add to favourite</button>
+                                                <button type="submit" onclick="Add(@ViewBag.missionDatas.MissionId)" class="btn rounded-5  "  style="border-color: black;"><i  id="addToFav" class="bi bi-heart"></i><span id="favButtonText">Add to favourite</span></button>
                                             }
                                         </div>
                                         <div class="col-xl-6 col-12 text-center addpic  ">
@@ -244,11 +254,9 @@
                             </div>
                         
                             <div class=" text-center pt-3">
-                                <a asp-controller="Home" asp-action="ApplyMission" asp-route-id="@ViewBag.missionDatas.MissionId">
-                                    <button type="submit" class="btn applyButton "> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
-                                </a>
-                               
+                                    <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton "> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
                             </div>
+                            <p id="applymsg"></p>
                            
                         </div>
 
@@ -640,18 +648,25 @@
     },
     success:function(data)
     {
+        
+            toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        };
 
     if(data == true)
     {
     console.log('addtofav output:' .data);
-    //$('#addToFav').removeClass();
-    //$('#addToFav').addClass("bi bi-heart-fill");
-    $('#addToFav').css("color", "red");
+    
+     $('#favButtonText').text('Remove from Favourite');
+        $('#addToFav').removeClass('bi-heart text-black').addClass('bi-heart-fill  text-danger');
+        toastr.success('Added favourite successfully');
     }
     else{
-    $('#addToFav').css("color", "black");
-    //$('#addToFav').removeClass();
-    //$('#addToFav').addClass("bi bi-heart");
+
+         $('#favButtonText').text('Add to Favourite');
+      $('#addToFav').removeClass('bi-heart-fill').addClass('bi-heart text-black');
+      toastr.error('Remove favourite successfully');
     }
     }
     })
@@ -689,6 +704,38 @@ $('#user-comment').val('');
 }
 })
 }
+}
+
+function ApplyMission(missionId)
+{
+    debugger
+    $.ajax({
+        url:"/Home/ApplyMission",
+        method:"Post",
+
+        data:{ missionId : missionId},
+
+        success: function(data)
+        {
+            toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        };
+            if(data == true)
+            {
+                toastr.success('Applied mission successfully');
+            }
+            else
+            {
+                toastr.error('You alredy applied');
+            }
+
+        },
+
+         error: function () {
+                       
+                    }
+    })
 }
 
 </script>

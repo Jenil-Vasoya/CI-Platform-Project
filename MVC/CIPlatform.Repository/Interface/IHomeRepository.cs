@@ -37,12 +37,12 @@ namespace CIPlatform.Repository.Interface
 
         public bool AddFavouriteMission(long userId, long missionId);
 
-        public int CheckFavMission(long userId, long missionId);
+        public bool CheckFavMission(long userId, long missionId);
 
         public void AddComment(string comment, long UserId, long MissionId);
 
         public List<CommentViewModel> GetComment(long missionID);
 
-        public void ApplyMission(long UserId, long MissionId);
+        public bool ApplyMission(long UserId, long MissionId);
     }
 }
