@@ -5,6 +5,8 @@ using CIPlatform.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +19,12 @@ namespace CIPlatform.Repository.Repository
         public HomeRepository(CiPlatformContext DbContext)
         {
             _DbContext = DbContext;
+        }
+
+        public List<User> UserList()
+        {
+            List<User> users = _DbContext.Users.ToList();
+            return users;
         }
 
         public List<Country> CountryList()
@@ -51,7 +59,7 @@ namespace CIPlatform.Repository.Repository
 
         public List<Mission> MissionList(string search)
         {
-            return (_DbContext.Missions.Where(x=> x.Title.Contains(search)).ToList());
+            return (_DbContext.Missions.Where(x => x.Title.Contains(search)).ToList());
         }
 
         public string GetCityName(long cityId)
@@ -102,8 +110,8 @@ namespace CIPlatform.Repository.Repository
             }
             if (countries.Length > 0)
             {
-                    missions = missions.Where(a => countries.Contains(a.CountryId.ToString())).ToList();
-                
+                missions = missions.Where(a => countries.Contains(a.CountryId.ToString())).ToList();
+
             }
             if (cities.Length > 0)
             {
@@ -111,7 +119,7 @@ namespace CIPlatform.Repository.Repository
                 missions = missions.Where(a => cities.Contains(a.CityId.ToString())).ToList();
 
             }
-            if (themes.Length > 0)  
+            if (themes.Length > 0)
             {
 
                 missions = missions.Where(a => themes.Contains(a.MissionThemeId.ToString())).ToList();
@@ -164,7 +172,7 @@ namespace CIPlatform.Repository.Repository
             foreach (var objMission in missions)
             {
                 MissionData missionData = new MissionData();
-               
+
                 missionData.MissionId = objMission.MissionId;
                 missionData.MissionType = objMission.MissionType.ToString();
 
@@ -184,7 +192,7 @@ namespace CIPlatform.Repository.Repository
 
                 missionData.StartDate = objMission.StartDate;
                 missionData.EndDate = objMission.EndDate;
-              
+
 
                 missionData.MediaPath = MediaByMissionId(objMission.MissionId);
                 missionData.Title = objMission.Title;
@@ -193,7 +201,7 @@ namespace CIPlatform.Repository.Repository
                 missionData.Rating = MissionRatings(objMission.MissionId);
                 missionData.Theme = GetMissionThemes(objMission.MissionThemeId);
                 missionData.Availability = objMission.Availability;
-                
+
                 missionData.MissionThemeId = objMission.MissionThemeId;
                 missionData.CountryId = objMission.CountryId;
                 missionData.CityId = objMission.CityId;
@@ -228,7 +236,7 @@ namespace CIPlatform.Repository.Repository
 
         public bool AddFavouriteMission(long userId, long missionId)
         {
-            
+
             FavoriteMission favoriteMission = new FavoriteMission();
             favoriteMission.UserId = userId;
             favoriteMission.MissionId = missionId;
@@ -250,7 +258,7 @@ namespace CIPlatform.Repository.Repository
 
         public bool CheckFavMission(long userId, long missionId)
         {
-            if (_DbContext.FavoriteMissions.FirstOrDefault(a=> a.UserId == userId && a.MissionId == missionId) != null)
+            if (_DbContext.FavoriteMissions.FirstOrDefault(a => a.UserId == userId && a.MissionId == missionId) != null)
             {
                 return true;
             }
@@ -259,15 +267,15 @@ namespace CIPlatform.Repository.Repository
 
         public void AddComment(string comment, long UserId, long MissionId)
         {
-                Comment commentNew = new Comment();
-                commentNew.Comments = comment;
-                commentNew.MissionId = MissionId;
-                commentNew.UserId = UserId;
+            Comment commentNew = new Comment();
+            commentNew.Comments = comment;
+            commentNew.MissionId = MissionId;
+            commentNew.UserId = UserId;
 
-                _DbContext.Comments.Add(commentNew);
-                _DbContext.SaveChanges();
+            _DbContext.Comments.Add(commentNew);
+            _DbContext.SaveChanges();
 
-            
+
         }
 
 
@@ -298,7 +306,7 @@ namespace CIPlatform.Repository.Repository
 
         public bool ApplyMission(long UserId, long MissionId)
         {
-            if(_DbContext.MissionApplications.FirstOrDefault(a => a.UserId == UserId && a.MissionId == MissionId) != null)
+            if (_DbContext.MissionApplications.FirstOrDefault(a => a.UserId == UserId && a.MissionId == MissionId) != null)
             { return false; }
 
             else
@@ -315,20 +323,77 @@ namespace CIPlatform.Repository.Repository
 
         }
 
-        public void RecentVolunteer(long MissionId)
+
+        public List<MissionData> GetRecentVolunteer(long missionId)
         {
-            var missions = _DbContext.Missions.ToList();
+            List<MissionApplication> missionApplication = _DbContext.MissionApplications.Where(a => a.MissionId == missionId).ToList();
 
-            List<MissionData> missionDatas = new List<MissionData>();
 
-            foreach (var objRecent in missions)
+            List<MissionData> recentVolunteer = new List<MissionData>();
+
+            foreach (MissionApplication application in missionApplication)
             {
-                MissionData missionData = new MissionData();
+                MissionData missionVolunteer = new MissionData();
+                User user = _DbContext.Users.FirstOrDefault(a => a.UserId == application.UserId);
+                missionVolunteer.MissionId = missionId;
+                missionVolunteer.Avatar = user.Avatar;
+                missionVolunteer.UserName = user.FirstName + " " + user.LastName;
 
-               
-                missionDatas.Add(missionData);
+                recentVolunteer.Add(missionVolunteer);
             }
-            }
+            return recentVolunteer;
+        }
 
+        
+        public bool InviteWorker(List<long> CoWorker, long UserId, long MissionId)
+        {
+            foreach (var user in CoWorker)
+            {
+                _DbContext.MissionInvites.Add(new MissionInvite
+                {
+                    FromUserId = UserId,
+                    ToUserId = Convert.ToInt64(user),
+                    MissionId = MissionId
+                });
+            }
+            _DbContext.SaveChanges();
+
+            User from_user = _DbContext.Users.FirstOrDefault(c => c.UserId.Equals(UserId));
+            List<string> Email_users = (from u in _DbContext.Users
+                                        where CoWorker.Contains(u.UserId)
+                                        select u.Email).ToList();
+            foreach (var email in Email_users)
+            {
+                var senderEmail = new MailAddress("josephlal3eie@gmail.com", "CI-Platform");
+                var receiverEmail = new MailAddress(email, "Receiver");
+                var password = "oxdijqngsiewiooq";
+                var sub = "Recommendation for join a new Mission";
+                var body = "Recommend By " + from_user?.FirstName + " " + from_user?.LastName + "\n" + "You can join through below link" + "\n" + $"https://localhost:7097/Home/VolunteerMission/{MissionId}";
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(senderEmail.Address, password)
+                };
+                using (var mess = new MailMessage(senderEmail, receiverEmail)
+                {
+                    Subject = sub,
+                    Body = body
+                })
+                {
+                    smtp.Send(mess);
+                }
+            }
+            return true;
+        }
+
+
+        public Boolean IsEmailAvailable(string email)
+        {
+            return _DbContext.Users.Any(u => u.Email == email);
+        }
     }
 }

@@ -1181,3 +1181,10 @@ C:\Users\pct106\Desktop\CI-Platform-Project\MVC\CIPlatform\obj\Debug\net6.0\CIPl
 C:\Users\pct106\Desktop\CI-Platform-Project\MVC\CIPlatform\obj\Debug\net6.0\ref\CIPlatform.dll
 C:\Users\pct106\Desktop\CI-Platform-Project\MVC\CIPlatform\obj\Debug\net6.0\CIPlatform.pdb
 C:\Users\pct106\Desktop\CI-Platform-Project\MVC\CIPlatform\obj\Debug\net6.0\CIPlatform.genruntimeconfig.cache
+C:\Users\pct106\Desktop\CI-Platform-Project\MVC\CIPlatform\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\pct106\Desktop\CI-Platform-Project\MVC\CIPlatform\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\pct106\Desktop\CI-Platform-Project\MVC\CIPlatform\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\pct106\Desktop\CI-Platform-Project\MVC\CIPlatform\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\pct106\Desktop\CI-Platform-Project\MVC\CIPlatform\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\pct106\Desktop\CI-Platform-Project\MVC\CIPlatform\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\pct106\Desktop\CI-Platform-Project\MVC\CIPlatform\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

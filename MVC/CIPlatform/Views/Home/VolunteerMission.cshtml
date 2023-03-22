@@ -72,7 +72,7 @@
                     </div>
                 </div>
 
-                
+
 
                 <!-- Swiper JS -->
                 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
@@ -100,7 +100,7 @@
                 </script>
             </div>
             <div class="col-xl-6 col-lg-6  col-12 pt-2">
-                <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs"> 
+                <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
                     <div class="thumbnail col-lg-12 col-md-12 col-sm-12 ">
 
                         <div class=" pt-2 ">
@@ -115,15 +115,15 @@
                                     <div class=" text-center py-3" style="margin-top: -45px; ">
                                         @if (@ViewBag.missionDatas.MissionType == "Goal")
                                         {
-                                             <button  class="btn rounded-5  " style="border-color: black; background: white; z-index:4;">@ViewBag.missionDatas.MissionGoalText</button>
+                                            <button class="btn rounded-5  " style="border-color: black; background: white; z-index:4;">@ViewBag.missionDatas.MissionGoalText</button>
                                         }
                                         else
                                         {
-                                            <button  class="btn rounded-5  " style="border-color: black; background: white; z-index:4;"> From @ViewBag.missionDatas.StartDate untill @ViewBag.missionDatas.EndDate</button>
+                                            <button class="btn rounded-5  " style="border-color: black; background: white; z-index:4;"> From @ViewBag.missionDatas.StartDate untill @ViewBag.missionDatas.EndDate</button>
                                         }
                                     </div>
                                     <div class="row">
-                                         @if (@ViewBag.missionDatas.MissionType == "Goal")
+                                        @if (@ViewBag.missionDatas.MissionType == "Goal")
                                         {
 
                                             <div class="col-6 ">
@@ -154,7 +154,7 @@
                                                 </div>
                                             </div>
                                         }
-                                         <div class="col-6">
+                                        <div class="col-6">
                                             <div class="card  border-0">
                                                 <div class=" d-flex flex-row">
                                                     <div class=""><img src="~/Assets/images/deadline.png" class="img-fluid"></div>
@@ -172,33 +172,79 @@
                                         <div class="col-xl-6 col-12 text-center ">
                                             @if (@ViewBag.CheckFavMisson == true)
                                             {
-                                                <button type="submit" class="btn rounded-5  " onclick="Add(@ViewBag.missionDatas.MissionId)"  style="border-color: black;"><i class="bi bi-heart-fill  text-danger" id="addToFav"></i>&nbsp;<span id="favButtonText">Remove from Favourite</span></button>
+                                                <button type="submit" class="btn rounded-5  " onclick="Add(@ViewBag.missionDatas.MissionId)" style="border-color: black;"><i class="bi bi-heart-fill  text-danger" id="addToFav"></i>&nbsp;<span id="favButtonText">Remove from Favourite</span></button>
                                             }
                                             else
                                             {
-                                                <button type="submit" onclick="Add(@ViewBag.missionDatas.MissionId)" class="btn rounded-5  "  style="border-color: black;"><i  id="addToFav" class="bi bi-heart"></i><span id="favButtonText">Add to favourite</span></button>
+                                                <button type="submit" onclick="Add(@ViewBag.missionDatas.MissionId)" class="btn rounded-5  " style="border-color: black;"><i id="addToFav" class="bi bi-heart"></i><span id="favButtonText">Add to favourite</span></button>
                                             }
                                         </div>
-                                        <div class="col-xl-6 col-12 text-center addpic  ">
-                                            <button type="submit" href="#" class="btn rounded-5  " style="border-color: black;"><img src="~/Assets/images/add1.png" class=" img-fluid cancle-img" alt=""> Recommend to a Co-Worker</button>
+                                        <div class="col-xl-6 col-12 text-center  ">
+                                            <button type="submit" class="btn rounded-5  " style="border-color: black;" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="~/Assets/images/add1.png" class=" img-fluid cancle-img" alt=""> Recommend to a Co-Worker</button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Co-Worker List</h5>
+
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                                                        </div>
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Select</th>
+                                                                    <th>Name</th>
+                                                                    <th>Email</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach (var worker in @ViewBag.Users)
+                                                                {
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="form-check">
+                                                                                <input class="form-check-input" name="CoWorkers" type="checkbox" value="@worker.FirstName" id="@worker.UserId" />
+                                                                                <input type="hidden" id="uid" value="@worker.UserId" />
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>@worker.FirstName @worker.LastName</td>
+                                                                        <td>@worker.Email</td>
+                                                                    </tr>
+                                                                }
+                                                            </tbody>
+                                                            <tfoot>
+                                                                <tr>
+                                                                    <td colspan="3">
+                                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                                        <button type="submit" onclick="sendInvitation(@ViewBag.missionDatas.MissionId)" class="btn btn-success">Send Invitation</button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tfoot>
+                                                        </table>
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
 
                                 </li>
                                 <li class="list-group-item ">
                                     <div class="ratings text-center" style="margin-top: -20px; z-index:5;">
-                                    @if (true)
-                                    {
-                                        for (var i = 0; i < (@ViewBag.missionDatas.Rating); i++)
+                                        @if (true)
                                         {
-                                            <i class="fa fa-star rating-color checked"></i>
+                                            for (var i = 0; i < (@ViewBag.missionDatas.Rating); i++)
+                                            {
+                                                <i class="fa fa-star rating-color checked"></i>
+                                            }
+                                            for (var i = 0; i < 5 - (@ViewBag.missionDatas.Rating); i++)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                            }
                                         }
-                                        for (var i = 0; i < 5 - (@ViewBag.missionDatas.Rating); i++)
-                                        {
-                                            <i class="fa fa-star"></i>
-                                        }
-                                    }
-                                
+
                                     </div>
                                 </li>
                             </ul>
@@ -226,7 +272,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                                 <div class="col-xl-3 col-md-3 col-6 border-1 pt-lg-0 pt-md-0 pt-2">
                                     <div class="card p-xl-2  p-2  p-lg-0 ">
                                         <div class=" d-flex flex-row">
@@ -252,38 +298,43 @@
                                     </div>
                                 </div>
                             </div>
-                        
+
                             <div class=" text-center pt-3">
-                                    <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton "> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
+                                <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton "> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
                             </div>
                             <p id="applymsg"></p>
-                           
+
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="row mt-5">
+
             <div class="col-lg-8">
+
                 <nav>
+
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="t1 btn btn-outline-danger active" style="border-color: #fafafa;" id="nav-home-tab" data-bs-toggle="tab"
                                 data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
                                 aria-selected="true">
-                           Mission
+                            Mission
                         </button>
                         <button class="t1 btn btn-outline-danger" style="border-color: #fafafa; " id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
                                 type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
-                           Organization
+                            Organization
                         </button>
                         <button class="t1 btn btn-outline-danger" style="border-color: #fafafa;" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
                                 type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
                             Comments
                         </button>
                     </div>
+
                 </nav>
+
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <h4 class="pt-3 pb-2">Introduction</h4>
@@ -317,15 +368,15 @@
                         veritatis aliquid id voluptates unde inventore alias dolorum et modi, fuga vitae possimus. Quam
                         recusandae commodi error corporis voluptatem architecto, a placeat eveniet neque? Sequi!
                         <h4 class="pt-3 pb-2"> Documents </h4>
-                        
-                            <div class="row">
-                                <div class="col-xl-6 col-12 text-center ">
-                                    <button type="submit" href="#" class="btn rounded-5  " style="border-color: black;"><img src="~/Assets/images/pdf.png" class=" img-fluid cancle-img" alt=""> Documnet1.pdf</button>
-                                </div>
-                                <div class="col-xl-6 col-12 text-center addpic  ">
-                                    <button type="submit" href="#" class="btn rounded-5  " style="border-color: black;"><img src="~/Assets/images/pdf.png" class=" img-fluid cancle-img" alt=""> Documnet2.pdf</button>
-                                </div>
+
+                        <div class="row">
+                            <div class="col-xl-6 col-12 text-center ">
+                                <button type="submit" href="#" class="btn rounded-5  " style="border-color: black;"><img src="~/Assets/images/pdf.png" class=" img-fluid cancle-img" alt=""> Documnet1.pdf</button>
                             </div>
+                            <div class="col-xl-6 col-12 text-center addpic  ">
+                                <button type="submit" href="#" class="btn rounded-5  " style="border-color: black;"><img src="~/Assets/images/pdf.png" class=" img-fluid cancle-img" alt=""> Documnet2.pdf</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                         Lorem
@@ -377,6 +428,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-4 pt-xl-0 pt-4">
                 <div class="col-12 border p-4">
                     <h3>Information </h3>
@@ -406,14 +458,13 @@
                         <div class="col-8">
                             <span>
 
-                                <div class="">
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star rating-color"></i>
-                                    <i class="fa fa-star"></i>
-                                    (by 125 volunteers)
-                                </div>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star"></i>
+                                (by 125 volunteers)
+
                             </span>
                         </div>
                     </div>
@@ -423,212 +474,182 @@
                     <h3>Recent Volunteers</h3>
                     <hr />
                     <div class="row  ">
+                        @if (@ViewBag.RecentVolunteer != null)
+                        {
+                            @foreach (var volunteer in @ViewBag.RecentVolunteer)
+                            {
 
-                        <div class="col-4 d-flex flex-column align-items-center text-center">
-                            <img src="~/Assets/images/volunteer1.png" class="rounded-circle " height="70px" width="70px" />
-                            <h6 style="font-size:15px;">Andraw Johnson</h6>
-                        </div>
-                        <div class="col-4 d-flex flex-column align-items-center text-center">
-                            <img src="~/Assets/images/volunteer2.png" class="rounded-circle " height="70px" width="70px" />
-                            <h6 style="font-size:15px;">Charles Vigue</h6>
-                        </div>
-                        <div class="col-4 d-flex flex-column align-items-center text-center">
-                            <img src="~/Assets/images/volunteer3.png" class="rounded-circle " height="70px" width="70px" />
-                            <h6 style="font-size:15px;">Kathryns Roberts</h6>
-                        </div>
+                                <div class="col-4 d-flex flex-column align-items-center text-center">
+                                    <img src="@volunteer.Avatar" class="rounded-circle " height="70px" width="70px" />
+                                    <h6 style="font-size:15px;">@volunteer.UserName</h6>
+                                </div>
                         
-                    </div><br />
-                    <div class="row  ">
-
-                        <div class="col-4 d-flex flex-column align-items-center text-center">
-                            <img src="~/Assets/images/volunteer4.png" class="rounded-circle " height="70px" width="70px" />
-                            <h6 style="font-size:15px;">Estella Fowdes</h6>
-                        </div>
-                        <div class="col-4 d-flex flex-column align-items-center text-center">
-                            <img src="~/Assets/images/volunteer5.png" class="rounded-circle " height="70px" width="70px" />
-                            <h6 style="font-size:15px;">Rose lewls</h6>
-                        </div>
-                        <div class="col-4 d-flex flex-column align-items-center text-center">
-                            <img src="~/Assets/images/volunteer6.png" class="rounded-circle " height="70px" width="70px" />
-                            <h6 style="font-size:15px;">Rymond Pabon</h6>
-                        </div>
-                        
-                    </div><br />
-                    <div class="row  ">
-
-                        <div class="col-4 d-flex flex-column align-items-center text-center">
-                            <img src="~/Assets/images/volunteer7.png" class="rounded-circle " height="70px" width="70px" />
-                            <h6 style="font-size:15px;">Travis Steen</h6>
-                        </div>
-                        <div class="col-4 d-flex flex-column align-items-center text-center">
-                            <img src="~/Assets/images/volunteer8.png" class="rounded-circle " height="70px" width="70px" />
-                            <h6 style="font-size:15px;">Sarah Santillan</h6>
-                        </div>
-                        <div class="col-4 d-flex flex-column align-items-center text-center">
-                            <img src="~/Assets/images/volunteer9.png" class="rounded-circle " height="70px" width="70px" />
-                            <h6 style="font-size:15px;">Linda Richards</h6>
-                        </div>
-
+                            }
+                             
+                        }
                     </div>
-                    <ul class="pagination border justify-content-between align-items-center">
-                        <li class="page-item">
-                            <a class="page-link border-0" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                        
-                        <li><p class="mb-0 fw-lighter"  >1 to 9 out of 25 Volunteers</p></li>
-                        
-                        <li class="page-item">
-                            <a class="page-link border-0" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
-                    </ul>
-                    
+                   
+
                 </div>
+                <ul class="pagination border justify-content-between align-items-center">
+                    <li class="page-item">
+                        <a class="page-link border-0" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+
+                    <li><p class="mb-0 fw-lighter">1 to 9 out of 25 Volunteers</p></li>
+
+                    <li class="page-item">
+                        <a class="page-link border-0" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+
             </div>
         </div>
-        <br />
-        <br />
-        <hr />
-        <div class="row">
-            <h3 class="text-center">Related Missions</h3>
-            <br />
-         
+   
 
-            @foreach (var item in @ViewBag.relatedmission)
-            {
+    <br />
+    <br />
+    <hr />
 
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 pb-3" style="">
-                    <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
-                        <div class="thumbnail col-lg-12 col-md-12 col-sm-12 ">
-                            <div class="card">
-                                <img src="~/@item.MediaPath" class="img-fluid">
-                                <div class="position-relative">
-                                    <div class="position-absolute top-100 start-50 translate-middle rounded-5 p-2" style="background-color: white;">@item.Theme</div>
-                                </div>
-                                <div class="card-img-overlay ">
-                                    <div class="d-flex flex-column  text-end pb-5" style="margin-inline: auto;">
-                                        <div class="">
-                                            <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
-                                                <img src="~/Assets/images/pin.png" class="img-fluid cancle-img" alt="">
-                                                <span style="color:white;">@item.CityName</span>
-                                            </button>
-                                        </div>
-                                        <div class="pt-1">
-                                            <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
-                                                <img src="~/Assets/images/heart.png" class=" img-fluid cancle-img" alt="">
-                                            </button>
-                                        </div>
-                                        <div class="">
-                                            <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
-                                                <img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt="">
-                                            </button>
-                                        </div>
+    <div class="row">
+        <h3 class="text-center">Related Missions</h3>
+        <br />
+
+
+        @foreach (var item in @ViewBag.relatedmission)
+        {
+
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 pb-3" style="">
+                <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
+                    <div class="thumbnail col-lg-12 col-md-12 col-sm-12 ">
+                        <div class="card">
+                            <img src="~/@item.MediaPath" class="img-fluid">
+                            <div class="position-relative">
+                                <div class="position-absolute top-100 start-50 translate-middle rounded-5 p-2" style="background-color: white;">@item.Theme</div>
+                            </div>
+                            <div class="card-img-overlay ">
+                                <div class="d-flex flex-column  text-end pb-5" style="margin-inline: auto;">
+                                    <div class="">
+                                        <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
+                                            <img src="~/Assets/images/pin.png" class="img-fluid cancle-img" alt="">
+                                            <span style="color:white;">@item.CityName</span>
+                                        </button>
+                                    </div>
+                                    <div class="pt-1">
+                                        <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
+                                            <img src="~/Assets/images/heart.png" class=" img-fluid cancle-img" alt="">
+                                        </button>
+                                    </div>
+                                    <div class="">
+                                        <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
+                                            <img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt="">
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="caption prod-caption p-3 " style="border: solid; border-width: thin; border-color:lightgray">
-                                <h3>@item.Title</h3>
-                                <p>@item.ShortDescription</p>
-                                <div class="d-flex rating1">
-                                    <div><h5>@item.OrganizationName</h5></div>
-                                    <div class="col d-flex justify-content-end">
-                                        @if (true)
+                        </div>
+                        <div class="caption prod-caption p-3 " style="border: solid; border-width: thin; border-color:lightgray">
+                            <h3>@item.Title</h3>
+                            <p>@item.ShortDescription</p>
+                            <div class="d-flex rating1">
+                                <div><h5>@item.OrganizationName</h5></div>
+                                <div class="col d-flex justify-content-end">
+                                    @if (true)
+                                    {
+                                        for (var i = 0; i < (@item.Rating); i++)
                                         {
-                                            for (var i = 0; i < (@item.Rating); i++)
-                                            {
-                                                <i class="fa fa-star rating-color checked"></i>
-                                            }
-                                            for (var i = 0; i < 5 - (@item.Rating); i++)
-                                            {
-                                                <i class="fa fa-star"></i>
-                                            }
+                                            <i class="fa fa-star rating-color checked"></i>
+                                        }
+                                        for (var i = 0; i < 5 - (@item.Rating); i++)
+                                        {
+                                            <i class="fa fa-star"></i>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <br>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"></li>
+                                <li class="list-group-item">
+                                    <div class=" text-center py-3" style="margin-top: -45px; ">
+                                        @if (@item.MissionType == "Goal")
+                                        {
+                                            <button type="submit" href="#" class="btn rounded-5  " style="border-color: black; background: white">@item.MissionGoalText</button>
+                                        }
+                                        else
+                                        {
+                                            <button type="submit" href="#" class="btn rounded-5  " style="border-color: black; background: white"> From @item.StartDate.ToString("dd/MM/yyyy") untill @item.EndDate.ToString("dd/MM/yyyy")</button>
                                         }
                                     </div>
-                                </div>
-                                <br>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"></li>
-                                    <li class="list-group-item">
-                                        <div class=" text-center py-3" style="margin-top: -45px; ">
-                                            @if (@item.MissionType == "Goal")
-                                            {
-                                                <button type="submit" href="#" class="btn rounded-5  " style="border-color: black; background: white">@item.MissionGoalText</button>
-                                            }
-                                            else
-                                            {
-                                                <button type="submit" href="#" class="btn rounded-5  " style="border-color: black; background: white"> From @item.StartDate.ToString("dd/MM/yyyy") untill @item.EndDate.ToString("dd/MM/yyyy")</button>
-                                            }
-                                        </div>
-                                        <div class="row">
-                                            @if (@item.MissionType == "Goal")
-                                            {
+                                    <div class="row">
+                                        @if (@item.MissionType == "Goal")
+                                        {
 
-                                                <div class="col-6 ">
-                                                    <div class="card  border-0">
-                                                        <div class="d-flex justify-content-center align-items-center">
-                                                            <img src="~/Assets/images/achieved.png" />
-                                                            <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
-
-                                                                <div class="progress">
-                                                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%; background-color:#F88634;"></div>
-                                                                </div>
-                                                                <div> <span class="">8000 achieved</span> </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            }
-                                            else
-                                            {
-                                                <div class="col-6 ">
-                                                    <div class="card  border-0">
-                                                        <div class=" d-flex flex-row">
-                                                            <div class=""><img src="~/Assets/images/Seats-left.png" class="img-fluid"></div>
-                                                            <div class=" ">
-                                                                <h5 class="card-title" style="text-transform: start;"> &nbsp; @item.Availability</h5>
-                                                                <p class="card-text ">Seats left</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            }
-                                            <div class="col-6">
+                                            <div class="col-6 ">
                                                 <div class="card  border-0">
-                                                    <div class=" d-flex flex-row">
-                                                        <div class=""><img src="~/Assets/images/deadline.png" class="img-fluid"></div>
-                                                        <div class=" ">
-                                                            <h6 class="card-title"> @item.EndDate.ToString("dd/MM/yyyy")</h6>
-                                                            <p class="card-text ">Deadline</p>
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                        <img src="~/Assets/images/achieved.png" />
+                                                        <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
+
+                                                            <div class="progress">
+                                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%; background-color:#F88634;"></div>
+                                                            </div>
+                                                            <div> <span class="">8000 achieved</span> </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="col-6 ">
+                                                <div class="card  border-0">
+                                                    <div class=" d-flex flex-row">
+                                                        <div class=""><img src="~/Assets/images/Seats-left.png" class="img-fluid"></div>
+                                                        <div class=" ">
+                                                            <h5 class="card-title" style="text-transform: start;"> &nbsp; @item.Availability</h5>
+                                                            <p class="card-text ">Seats left</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        <div class="col-6">
+                                            <div class="card  border-0">
+                                                <div class=" d-flex flex-row">
+                                                    <div class=""><img src="~/Assets/images/deadline.png" class="img-fluid"></div>
+                                                    <div class=" ">
+                                                        <h6 class="card-title"> @item.EndDate.ToString("dd/MM/yyyy")</h6>
+                                                        <p class="card-text ">Deadline</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </li>
-                                    <li class="list-group-item"></li>
-                                </ul>
-                                <div class=" text-center pb-2">
-                                    @*onclick="window.location= '@Url.Action( "VolunteerMission", "Home", new {id = @item.MissionId})'"*@
-                                    <a asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@item.MissionId">
-                                        <button type="submit" class="btn applyButton rounded-5"> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
-                                    </a>
-                                </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item"></li>
+                            </ul>
+                            <div class=" text-center pb-2">
+                                @*onclick="window.location= '@Url.Action( "VolunteerMission", "Home", new {id = @item.MissionId})'"*@
+                                <a asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@item.MissionId">
+                                    <button type="submit" class="btn applyButton rounded-5"> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            }
-                    
-          
-
-        </div>
-
+            </div>
+        }
     </div>
+    </div>
+
+
 
 </body>
 
@@ -737,5 +758,33 @@ function ApplyMission(missionId)
                     }
     })
 }
+
+
+ function sendInvitation(MissionId)
+    {
+        debugger
+        var CoWorkers = [];
+
+         $('input[name="CoWorkers"]:checked').each(function(){
+             CoWorkers.push(this.id);
+         });
+
+         $.ajax({
+             url:"/Home/InviteWorker",
+             method: "POST",
+             data:{
+                 "MissionId" : MissionId,
+                 "CoWorkers" : CoWorkers
+             },
+             success:function(data){
+                $("#mission").html(data);
+             },
+             error: function(request,error){
+                 
+                 console.log(error);
+             }
+         })
+
+    }
 
 </script>

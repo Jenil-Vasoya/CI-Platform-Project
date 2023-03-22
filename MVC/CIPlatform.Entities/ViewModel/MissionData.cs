@@ -58,5 +58,9 @@ namespace CIPlatform.Entities.ViewModel
 
         public DateTime? Deadline { get; set; }
 
+        public string UserName { get; set; }
+
+        public string? Avatar { get; set; }
+
     }
 }

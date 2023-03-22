@@ -10,6 +10,7 @@ namespace CIPlatform.Repository.Interface
 {
     public interface IHomeRepository
     {
+        public List<User> UserList();
 
         public List<Country> CountryList();
 
@@ -44,5 +45,9 @@ namespace CIPlatform.Repository.Interface
         public List<CommentViewModel> GetComment(long missionID);
 
         public bool ApplyMission(long UserId, long MissionId);
+
+        public List<MissionData> GetRecentVolunteer(long missionId);
+
+        public bool InviteWorker(List<long> CoWorker, long UserId, long MissionId);
     }
 }

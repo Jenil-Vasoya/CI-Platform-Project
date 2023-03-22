@@ -49,35 +49,9 @@ namespace CIPlatform.Controllers
         }
 
 
-        //[HttpPost]
-        //public IActionResult GetGridView(test test)
-        //{
-        //    var pageinfo = new Microsoft.Data.SqlClient.SqlParameter("@TotalCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
-
-        //    Pagination pagination = new Pagination();
-        //    List<MissionListing> ViewItem = _dataBaseForCiPlatformContext.MissionListing.FromSqlInterpolated($"exec SP_GETDATAFORVIEW @searchCountry = {test.country} , @searchCity = {test.city} , @searchTheme = {test.theme} , @searchSkill = {test.skill} , @searchText = {test.searchText} , @SortBy = {test.SortBy}, @pageNumber = {test.pageNumber}, @TotalCount = {pageinfo} out").ToList();
-        //    pagination.MissionListings = ViewItem;
-        //    pagination.PageSize = 9;
-        //    pagination.TotalItems = long.Parse(pageinfo.Value.ToString());
-        //    pagination.ActivePage = test.pageNumber;
-        //    return PartialView("_GridView", pagination);
-
-        //}
-
         [HttpGet]
         public IActionResult MissionGrid(PaginationRequest paginationRequest)
         {
-
-            //var pageinfo = new Microsoft.Data.SqlClient.SqlParameter("@TotalCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
-
-            //Pagination pagination = new Pagination();
-
-            //List<MissionData> ViewItem = _DbContext.MissionDatas.FromSqlInterpolated($"exec SP_GETDATAFORVIEW @pageNumber = {test.pageNumber}, @TotalCount = {pageinfo} out").ToList();
-          
-            //pagination.MissionDatas = ViewItem;
-            //pagination.PageSize = 4;
-            //pagination.TotalItems = long.Parse(pageinfo.Value.ToString());
-            //pagination.ActivePage = test.pageNumber;
 
             List<Mission> missions = _HomeRepo.MissionList();
             if (missions.Count == 0)
@@ -105,22 +79,6 @@ namespace CIPlatform.Controllers
             var totalMission = _HomeRepo.TotalMissions();
             ViewBag.totalMission = totalMission;
 
-
-            //var allData =  _DbContext.Missions.Contains(m => m.MissionId).ToList();
-
-            //// ------------------------------------ Pagination ------------------------
-            //if (paginationRequest.PageNumber > 0 && paginationRequest.PageSize > 0)
-            //{
-            //    var result = new PaginationResult<Mission>
-            //    {
-            //        PageNumber = paginationRequest.PageNumber,
-            //        PageSize = paginationRequest.PageSize,
-            //        TotalCount = allData.Count(),
-            //        TotalPages = (int)Math.Ceiling(allData.Count() / (double)paginationRequest.PageSize),
-            //        Results = allData.Skip((paginationRequest.PageNumber - 1) * paginationRequest.PageSize).Take(paginationRequest.PageSize).ToList()
-            //    };
-            //    return View(result);
-            //}
             return View();
         }
 
@@ -227,6 +185,9 @@ namespace CIPlatform.Controllers
 
         public IActionResult VolunteerMission(long id)
         {
+            List<User> users = _HomeRepo.UserList();
+            ViewBag.Users = users;
+
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
 
             List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList();
@@ -241,7 +202,7 @@ namespace CIPlatform.Controllers
             ViewBag.CheckFavMisson = _HomeRepo.CheckFavMission(UserId, missions.MissionId);
           
 
-            ViewBag.RecentVolunteer = 
+            ViewBag.RecentVolunteer = _HomeRepo.GetRecentVolunteer(missions.MissionId);
 
             ViewBag.UserId = UserId;
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
@@ -331,6 +292,13 @@ namespace CIPlatform.Controllers
                 return Ok(allData.ToList());
             }
             return Ok();
+        }
+
+        public void InviteWorker(long MissionId, List<long> CoWorkers)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
+
+            _HomeRepo.InviteWorker(CoWorkers, UserId, MissionId);
         }
 
 
