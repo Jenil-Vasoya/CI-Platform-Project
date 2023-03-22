@@ -93,11 +93,12 @@ namespace CIPlatform.Repository.Repository
 
         }
 
-        public int MissionRatings(long missionID)
+        public List<MissionRating> MissionRatings(long missionID)
         {
-            MissionRating rating = _DbContext.MissionRatings.FirstOrDefault(a => a.MissionId == missionID);
-            return rating.Rating;
+            List<MissionRating> rating = _DbContext.MissionRatings.Where(a => a.MissionId == missionID).ToList();
+            return rating;
         }
+
 
 
         public List<MissionData> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort)
@@ -198,16 +199,21 @@ namespace CIPlatform.Repository.Repository
                 missionData.Title = objMission.Title;
                 missionData.CreatedAt = objMission.CreatedAt;
 
-                missionData.Rating = MissionRatings(objMission.MissionId);
+                missionData.Rating = (int)MissionRatings(objMission.MissionId).Average(a => a.Rating);
+                missionData.CommentByUser = MissionRatings(objMission.MissionId).Count();
+
                 missionData.Theme = GetMissionThemes(objMission.MissionThemeId);
                 missionData.Availability = objMission.Availability;
 
                 missionData.MissionThemeId = objMission.MissionThemeId;
                 missionData.CountryId = objMission.CountryId;
                 missionData.CityId = objMission.CityId;
-
+                
                 var missionSkill = _DbContext.MissionSkills.FirstOrDefault(s => s.MissionId == objMission.MissionId);
                 missionData.SkillId = missionSkill.SkillId;
+
+               var skillName = _DbContext.Skills.FirstOrDefault(a=> a.SkillId == missionSkill.SkillId);
+                missionData.SkillName = skillName.SkillName;
 
                 missionDatas.Add(missionData);
                 //if (obj.MissionType)
@@ -390,10 +396,37 @@ namespace CIPlatform.Repository.Repository
             return true;
         }
 
-
-        public Boolean IsEmailAvailable(string email)
+        public bool PostRating(byte rate, long missionId, long userId)
         {
-            return _DbContext.Users.Any(u => u.Email == email);
+            var entry = _DbContext.MissionRatings.Where(m => m.MissionId == missionId && m.UserId == userId);
+
+            if (entry.ToList().Count == 0)
+            {
+                var data = new MissionRating()
+                {
+                    UserId = userId,
+                    MissionId = missionId,
+                    Rating = rate
+                };
+                _DbContext.MissionRatings.Add(data);
+                _DbContext.SaveChangesAsync();
+
+                return true;
+            }
+            else
+            {
+                var data = new MissionRating()
+                {
+                    Rating = rate
+                };
+                entry.First().Rating = rate;
+                entry.First().UpdatedAt = DateTime.Now;
+                _DbContext.SaveChangesAsync();
+
+                return true;
+            }
+
         }
+
     }
 }

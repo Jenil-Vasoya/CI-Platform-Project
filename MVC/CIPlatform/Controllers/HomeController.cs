@@ -301,6 +301,14 @@ namespace CIPlatform.Controllers
             _HomeRepo.InviteWorker(CoWorkers, UserId, MissionId);
         }
 
+        public bool PostRating(byte rate, long missionId)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
+
+            bool result = _HomeRepo.PostRating(rate, missionId, UserId);
+
+            return true;
+        }
 
 
 

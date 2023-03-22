@@ -20,6 +20,8 @@ namespace CIPlatform.Entities.ViewModel
 
         public int? SkillId { get; set; }
 
+        public string? SkillName { get; set; }
+
         public bool? Favorite { get; set; }
 
         public long MissionThemeId { get; set; }
@@ -48,6 +50,8 @@ namespace CIPlatform.Entities.ViewModel
         public string? MediaPath { get; set; }
 
         public int Rating { get; set; }
+
+        public long CommentByUser { get; set; }
 
         public string? GoalObjectiveText { get; set; }
 

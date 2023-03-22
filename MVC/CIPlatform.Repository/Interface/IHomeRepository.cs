@@ -30,7 +30,7 @@ namespace CIPlatform.Repository.Interface
 
         public string MediaByMissionId(long missionID);
 
-        public int MissionRatings(long missionID);
+        public List<MissionRating> MissionRatings(long missionID);
 
         public List<MissionData> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort);
 
@@ -49,5 +49,7 @@ namespace CIPlatform.Repository.Interface
         public List<MissionData> GetRecentVolunteer(long missionId);
 
         public bool InviteWorker(List<long> CoWorker, long UserId, long MissionId);
+
+        public bool PostRating(byte rate, long missionId, long userId);
     }
 }

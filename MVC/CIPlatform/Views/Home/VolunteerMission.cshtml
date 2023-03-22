@@ -25,7 +25,58 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 <!-- jQuery library -->
+<style>
+    .rating {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+   
+}
 
+    .rating > input {
+        display: none
+    }
+
+    .rating > label {
+        position: relative;
+        width: 1em;
+        font-size: 30px;
+        color: #F88634;
+        cursor: pointer
+    }
+
+        .rating > label::before {
+            content: "\2605";
+            position: absolute;
+            opacity: 0
+        }
+
+        .rating > label:hover:before,
+        .rating > label:hover ~ label:before {
+            opacity: 1 !important
+        }
+
+    .rating > input:checked ~ label:before {
+        opacity: 1
+    }
+
+    .rating:hover > input:checked ~ label:before {
+        opacity: 0.4
+    }
+
+    
+.disc_stars {
+    width: fit-content;
+    background: #ffffff;
+    display: block;
+    margin: auto;
+    transform: translateY(-100%);
+}
+
+
+
+
+</style>
 </head>
 <body>
 
@@ -229,21 +280,42 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        </div>
 
                                 </li>
+                           
                                 <li class="list-group-item ">
-                                    <div class="ratings text-center" style="margin-top: -20px; z-index:5;">
-                                        @if (true)
-                                        {
+                                    <div class="rating disc_stars text-center" style="margin-top: 15px; z-index:5;">
+                                            
+                                        
+                                            @for (short i = 1; i <= 5; i++)
+                                            {
+                                                if (i == @ViewBag.missionDatas.Rating)
+                                                {
+                                                    <input type="radio" name="myradio" value="@i">
+
+                                                    <label for="i" checked onclick="PostRating(@ViewBag.missionDatas.MissionId, @i)">☆</label>
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" name="myradio" value="@i">
+
+                                                    <label for="i" onclick="PostRating(@ViewBag.missionDatas.MissionId, @i)">☆</label>
+                                                }
+                                            }
+                                      
+
+                                        @*@if (true)
+                                            {
                                             for (var i = 0; i < (@ViewBag.missionDatas.Rating); i++)
                                             {
-                                                <i class="fa fa-star rating-color checked"></i>
+                                            <i class="fa fa-star rating-color checked"></i>
                                             }
                                             for (var i = 0; i < 5 - (@ViewBag.missionDatas.Rating); i++)
                                             {
-                                                <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
                                             }
-                                        }
+                                            }*@
 
                                     </div>
                                 </li>
@@ -337,20 +409,8 @@
 
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <h4 class="pt-3 pb-2">Introduction</h4>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia ipsum ratione quae! Earum,
-                        atque quidem! Suscipit architecto, itaque, quae quia quaerat eligendi blanditiis sequi tempore
-                        veritatis aliquid id voluptates unde inventore alias dolorum et modi, fuga vitae possimus. Quam
-                        recusandae commodi error corporis voluptatem architecto, a placeat eveniet neque? Sequi!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia ipsum ratione quae! Earum,
-                        atque quidem! Suscipit architecto, itaque, quae quia quaerat eligendi blanditiis sequi tempore
-                        veritatis aliquid id voluptates unde inventore alias dolorum et modi, fuga vitae possimus. Quam
-                        recusandae commodi error corporis voluptatem architecto, a placeat eveniet neque? Sequi!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia ipsum ratione quae! Earum,
-                        atque quidem! Suscipit architecto, itaque, quae quia quaerat eligendi blanditiis sequi tempore
-                        veritatis aliquid id voluptates unde inventore alias dolorum et modi, fuga vitae possimus. Quam
-                        recusandae commodi error corporis voluptatem architecto, a placeat eveniet neque? Sequi!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia ipsum ratione quae! Earum,
-                        atque quidem! Suscipit architecto, itaque, quae quia quaerat eligendi blanditiis sequi tempore
-                        veritatis aliquid id voluptates unde inventore alias dolorum et modi, fuga vitae possimus. Quam
-                        <h4 class="pt-3 pb-2">Challenge</h4>
+                        <h4 class="pt-3 pb-2">Introduction</h4>@ViewBag.missionDatas.ShortDescription
+                         <h4 class="pt-3 pb-2">Challenge</h4>
                         recusandae commodi error corporis voluptatem architecto, a placeat eveniet neque? Sequi!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia ipsum ratione quae! Earum,
                         atque quidem! Suscipit architecto, itaque, quae quia quaerat eligendi blanditiis sequi tempore
                         veritatis aliquid id voluptates unde inventore alias dolorum et modi, fuga vitae possimus. Quam
@@ -412,11 +472,12 @@
                                                 <div class="col-xl-11 col-md-11 col-sm-10 col-9 ps-4">
                                                     <h6 class="fw-bold mb-0"> @item.UserName</h6>
                                                     <p>
-                                                        @item.Day,@item.Month@item.WeekDay,@item.Year. @item.Time
+                                                        @item.Day,@item.Month @item.WeekDay,@item.Year. @item.Time
                                                     </p>
 
                                                     <p>@item.Comment</p>
                                                 </div>
+                                                <hr />
 
                                             }
                                         }
@@ -438,7 +499,7 @@
                             <span>Skills</span>
                         </div>
                         <div class="col-8">
-                            <span>Cool, Easy going, Math, Computer</span>
+                            <span>@ViewBag.missionDatas.SkillName</span>
                         </div>
                     </div>
                     <hr />
@@ -456,14 +517,20 @@
                             <span>Rating</span>
                         </div>
                         <div class="col-8">
-                            <span>
-
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star"></i>
-                                (by 125 volunteers)
+                            <span class="rating  text-center">
+                       
+                                @if (true)
+                                            {
+                                            for (var i = 0; i < (@ViewBag.missionDatas.Rating); i++)
+                                            {
+                                                 <label style="color: #F88634; text-shadow: 0 0 0 #F88634;">&#9733;</label>
+                                            }
+                                            for (var i = 0; i < 5 - (@ViewBag.missionDatas.Rating); i++)
+                                            {
+                                                <label style="color: black;">☆</label>
+                                            }
+                                            }
+                                (by @ViewBag.missionDatas.CommentByUser volunteers)
 
                             </span>
                         </div>
@@ -786,5 +853,34 @@ function ApplyMission(missionId)
          })
 
     }
+
+    function PostRating(x,i) {
+
+    
+    debugger
+    
+    var missionId = x;
+     //var rate = document.getElementsByName('input[name="myradio"]:checked').va;
+    //console.log(rate);
+    $.ajax({
+        type: "POST",
+        url: '/Home/PostRating',
+        data: {
+            'rate': i,
+            'MissionId': missionId
+            
+        },
+        success: (data) => {
+            console.log(data);
+            
+        },
+
+        error: function () {
+            alert("An error occurred while Sending Mission Rating!");
+        }
+    });
+     
+}
+
 
 </script>
