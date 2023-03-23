@@ -231,7 +231,7 @@
                                             }
                                         </div>
                                         <div class="col-xl-6 col-12 text-center  ">
-                                            <button type="submit" class="btn rounded-5  " style="border-color: black;" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="~/Assets/images/add1.png" class=" img-fluid cancle-img" alt=""> Recommend to a Co-Worker</button>
+                                            <button type="submit" class="btn rounded-5  " style="border-color: black;" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="~/Assets/images/add1.png" class=" img-fluid cancle-img" alt=""></button>
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -390,16 +390,16 @@
                 <nav>
 
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="t1 btn btn-outline-danger active" style="border-color: #fafafa;" id="nav-home-tab" data-bs-toggle="tab"
+                        <button class=" btn applyButton  active " id="nav-home-tab" data-bs-toggle="tab"
                                 data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
                                 aria-selected="true">
                             Mission
                         </button>
-                        <button class="t1 btn btn-outline-danger" style="border-color: #fafafa; " id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                        <button class=" btn applyButton " id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
                                 type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
                             Organization
                         </button>
-                        <button class="t1 btn btn-outline-danger" style="border-color: #fafafa;" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                        <button class=" btn applyButton" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
                                 type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
                             Comments
                         </button>
@@ -445,48 +445,7 @@
                         pariatur laudantium optio, molestiae reprehenderit hic! Hic, beatae cumque harum excepturi rem,
                         animi minima eius porro sequi doloremque incidunt distinctio enim ipsam quis in.
                     </div>
-                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                        <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="user-comment"></textarea>
-                            <p id="comment-status"></p>
-                            <label for="floatingTextarea">Comments</label>
-                        </div>
-                        <div class="pt-2">
-                            <button type="submit" href="#" class="btn rounded-5 " onclick="AddComments(@ViewBag.missionDatas.MissionId)">Post Comment<i class="bi bi-arrow-right"></i></button>
-                        </div>
-                        <div class="container-fluid p-2 mt-2" style="background-color:gray;">
-                            <div class="container " style=" height:500px; overflow-y:auto; scroll-behavior:smooth;">
-                                <div class="container px-0 pb-2">
-                                    <div class="row  border px-2" style="background-color:white; margin:0px;">
-
-
-                                        @if (@ViewBag.Comments != null)
-                                        {
-                                            @foreach (var item in @ViewBag.Comments)
-                                            {
-                                                <div class="col-xl-1 col-md-1 col-sm-2 col-2 my-2">
-
-                                                    <img alt="avatar1" src="@item.Avatar" class="rounded-circle mt-2" height="50px" width="50px">
-
-                                                </div>
-                                                <div class="col-xl-11 col-md-11 col-sm-10 col-9 ps-4">
-                                                    <h6 class="fw-bold mb-0"> @item.UserName</h6>
-                                                    <p>
-                                                        @item.Day,@item.Month @item.WeekDay,@item.Year. @item.Time
-                                                    </p>
-
-                                                    <p>@item.Comment</p>
-                                                </div>
-                                                <hr />
-
-                                            }
-                                        }
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+                   <partial name="_Comment" />
                 </div>
             </div>
 

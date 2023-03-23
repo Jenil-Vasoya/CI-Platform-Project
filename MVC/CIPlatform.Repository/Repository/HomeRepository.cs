@@ -99,11 +99,9 @@ namespace CIPlatform.Repository.Repository
             return rating;
         }
 
-
-
-        public List<MissionData> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort)
+        public List<MissionData> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort, long UserId)
         {
-            List<MissionData> missions = GetMissionCardsList();
+            List<MissionData> missions = GetMissionCardsList(UserId);
             if (search != "")
             {
                 missions = missions.Where(a => a.Title.ToLower().Contains(search) || a.ShortDescription.ToLower().Contains(search)).ToList();
@@ -164,7 +162,71 @@ namespace CIPlatform.Repository.Repository
             return missions;
         }
 
-        public List<MissionData> GetMissionCardsList()
+
+        public List<MissionData> GetStoryMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort, long UserId)
+        {
+            List<MissionData> missions = GetStoryCardsList();
+            if (search != "")
+            {
+                missions = missions.Where(a => a.Title.ToLower().Contains(search) || a.ShortDescription.ToLower().Contains(search)).ToList();
+
+            }
+            if (countries.Length > 0)
+            {
+                missions = missions.Where(a => countries.Contains(a.CountryId.ToString())).ToList();
+
+            }
+            if (cities.Length > 0)
+            {
+
+                missions = missions.Where(a => cities.Contains(a.CityId.ToString())).ToList();
+
+            }
+            if (themes.Length > 0)
+            {
+
+                missions = missions.Where(a => themes.Contains(a.MissionThemeId.ToString())).ToList();
+
+            }
+            if (skills.Length > 0)
+            {
+
+                missions = missions.Where(a => skills.Contains(a.SkillId.ToString())).ToList();
+
+            }
+
+            switch (sort)
+            {
+                case 1:
+                    missions = missions.OrderBy(i => i.CreatedAt).ToList();
+                    break;
+
+                case 2:
+                    missions = missions.OrderByDescending(i => i.CreatedAt).ToList();
+                    break;
+
+                case 3:
+                    missions = missions.OrderByDescending(i => i.EndDate).ToList();
+                    break;
+
+                case 4:
+                    missions = missions.OrderBy(i => i.Availability).ToList();
+                    break;
+
+                case 5:
+                    missions = missions.OrderByDescending(i => i.Availability).ToList();
+                    break;
+
+                case 6:
+                    missions = missions.OrderBy(i => i.Availability).ToList();
+                    break;
+
+
+            }
+            return missions;
+        }
+
+        public List<MissionData> GetMissionCardsList(long UserId)
         {
             var missions = _DbContext.Missions.ToList();
 
@@ -190,6 +252,10 @@ namespace CIPlatform.Repository.Repository
 
                 }
 
+                var favmission = _DbContext.FavoriteMissions.Where(a => a.UserId == UserId && a.MissionId == objMission.MissionId).Count();
+                    missionData.IsFavMission = favmission;
+               
+
 
                 missionData.StartDate = objMission.StartDate;
                 missionData.EndDate = objMission.EndDate;
@@ -213,6 +279,63 @@ namespace CIPlatform.Repository.Repository
                 missionData.SkillId = missionSkill.SkillId;
 
                var skillName = _DbContext.Skills.FirstOrDefault(a=> a.SkillId == missionSkill.SkillId);
+                missionData.SkillName = skillName.SkillName;
+
+                missionDatas.Add(missionData);
+                //if (obj.MissionType)
+                //{
+                //    missionListing.TotalSeat = GetTotalSeat(obj.MissionId);
+                //    missionListing.Deadline = GetDeadline(obj.MissionId);
+                //}
+                //if (!obj.MissionType)
+                //{
+                //    missionListing.GoalObjectiveText = GetGoalObjectiveText(obj.MissionId);
+                //    missionListing.GoalValue = GetGoalValue(obj.MissionId);
+                //}
+            }
+            return missionDatas;
+        }
+
+
+        public List<MissionData> GetStoryCardsList()
+        {
+            var missions = _DbContext.Stories.ToList();
+
+            List<MissionData> missionDatas = new List<MissionData>();
+
+            foreach (var objMission in missions)
+            {
+                MissionData missionData = new MissionData();
+
+                User user = _DbContext.Users.FirstOrDefault(a => a.UserId == objMission.UserId);
+
+                Mission mission = _DbContext.Missions.FirstOrDefault(a => a.MissionId == objMission.MissionId);
+
+                missionData.MissionId = objMission.MissionId;
+
+                missionData.CityName = GetCityName(mission.CityId);
+
+                missionData.OrganizationName = mission.OrganizationName;
+                missionData.ShortDescription = mission.ShortDescription;
+                missionData.MissionType = mission.MissionType;
+
+                missionData.UserName = user.FirstName + " " + user.LastName;
+                missionData.Avatar = user.Avatar;
+
+                missionData.MediaPath = MediaByMissionId(objMission.MissionId);
+                missionData.Title = objMission.Title;
+
+
+                missionData.Theme = GetMissionThemes(mission.MissionThemeId);
+
+                missionData.MissionThemeId = mission.MissionThemeId;
+                missionData.CountryId = mission.CountryId;
+                missionData.CityId = mission.CityId;
+
+                var missionSkill = _DbContext.MissionSkills.FirstOrDefault(s => s.MissionId == objMission.MissionId);
+                missionData.SkillId = missionSkill.SkillId;
+
+                var skillName = _DbContext.Skills.FirstOrDefault(a => a.SkillId == missionSkill.SkillId);
                 missionData.SkillName = skillName.SkillName;
 
                 missionDatas.Add(missionData);
@@ -409,7 +532,7 @@ namespace CIPlatform.Repository.Repository
                     Rating = rate
                 };
                 _DbContext.MissionRatings.Add(data);
-                _DbContext.SaveChangesAsync();
+                _DbContext.SaveChanges();
 
                 return true;
             }
@@ -421,7 +544,7 @@ namespace CIPlatform.Repository.Repository
                 };
                 entry.First().Rating = rate;
                 entry.First().UpdatedAt = DateTime.Now;
-                _DbContext.SaveChangesAsync();
+                _DbContext.SaveChanges();
 
                 return true;
             }

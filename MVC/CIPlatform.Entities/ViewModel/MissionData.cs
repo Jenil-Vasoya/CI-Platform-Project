@@ -34,6 +34,7 @@ namespace CIPlatform.Entities.ViewModel
 
         public DateTime? CreatedAt { get; set; }
 
+        public int IsFavMission { get; set; }
 
         public DateTime? StartDate { get; set; }
 
