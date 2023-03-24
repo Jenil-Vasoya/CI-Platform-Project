@@ -99,8 +99,9 @@ namespace CIPlatform.Repository.Repository
             return rating;
         }
 
-        public List<MissionData> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort, long UserId)
+        public List<MissionData> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort, long UserId, int pg)
         {
+            var pageSize = 6;
             List<MissionData> missions = GetMissionCardsList(UserId);
             if (search != "")
             {
@@ -129,6 +130,10 @@ namespace CIPlatform.Repository.Repository
 
                 missions = missions.Where(a => skills.Contains(a.SkillId.ToString())).ToList();
 
+            }
+            if(pg != null)
+            {
+                missions = missions.Skip((pg - 1)* pageSize).Take(pageSize).Take(pageSize).ToList();
             }
 
             switch (sort)
@@ -163,8 +168,9 @@ namespace CIPlatform.Repository.Repository
         }
 
 
-        public List<MissionData> GetStoryMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort, long UserId)
+        public List<MissionData> GetStoryMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int pg, long UserId)
         {
+            var pageSize = 6;
             List<MissionData> missions = GetStoryCardsList();
             if (search != "")
             {
@@ -194,35 +200,12 @@ namespace CIPlatform.Repository.Repository
                 missions = missions.Where(a => skills.Contains(a.SkillId.ToString())).ToList();
 
             }
-
-            switch (sort)
+            if (pg != null)
             {
-                case 1:
-                    missions = missions.OrderBy(i => i.CreatedAt).ToList();
-                    break;
-
-                case 2:
-                    missions = missions.OrderByDescending(i => i.CreatedAt).ToList();
-                    break;
-
-                case 3:
-                    missions = missions.OrderByDescending(i => i.EndDate).ToList();
-                    break;
-
-                case 4:
-                    missions = missions.OrderBy(i => i.Availability).ToList();
-                    break;
-
-                case 5:
-                    missions = missions.OrderByDescending(i => i.Availability).ToList();
-                    break;
-
-                case 6:
-                    missions = missions.OrderBy(i => i.Availability).ToList();
-                    break;
-
-
+                missions = missions.Skip((pg - 1) * pageSize).Take(pageSize).Take(pageSize).ToList();
             }
+
+
             return missions;
         }
 

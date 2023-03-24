@@ -1,6 +1,22 @@
 ﻿
 
+<style>
+    .rating {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+   
+}
 
+    .rating > label {
+        position: relative;
+        width: 1em;
+        font-size: 20px;
+        color: #F88634;
+        cursor: pointer
+    }
+
+</style>
 
 <div class="container ">
     <div class="row">
@@ -30,20 +46,20 @@
                                     @if (@item.IsFavMission == 1)
                                         {
                                           
-                                           <button type="submit"  onclick="Add(@item.MissionId)" class="btn rounded-5 border-light"  style="border-color: white;" ><i class="bi bi-heart-fill  text-danger" id="addToFav"></i></button>
+                                           <button type="submit"  onclick="Add(@item.MissionId)" class="btn rounded-5 border-light" style="background-color:black; opacity:50%;"><i class="bi bi-heart-fill  text-danger" id="addToFavList_@item.MissionId"></i></button>
                                         }
                                         else
                                         {
-                                            <button type="submit"  onclick="Add(@item.MissionId)" class="btn rounded-5  border-light" style="border-color: black;"><i id="addToFav" class="bi bi-heart"></i></button>
+                                            <button type="submit"  onclick="Add(@item.MissionId)" class="btn rounded-5  border-light" style="background-color:black; opacity:50%;"><i id="addToFavList_@item.MissionId" class="bi bi-heart text-white"></i></button>
                                         }
                                 </div>
 
                                 <div class="">
 
-                                  <button type="submit" class="btn rounded-5  border-light" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt=""> </button>
+                                  <button type="submit" class="btn rounded-5  border-light" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="background-color:black; opacity:50%;"><img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt=""> </button>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -84,6 +100,7 @@
                                                                 </tr>
                                                             </tfoot>
                                                         </table>
+                                                    
 
                                                     </div>
                                                 </div>
@@ -117,17 +134,18 @@
                     <div class="col-md-4">
                         <div class="d-flex rating1">
                                 <div class="col d-flex justify-content-end">
-                                    @if (true)
-                                    {
-                                        for (var i = 0; i < (@item.Rating); i++)
-                                        {
-                                            <i class="fa fa-star rating-color checked"></i>
-                                        }
-                                        for (var i = 0; i < 5 - (@item.Rating); i++)
-                                        {
-                                            <i class="fa fa-star"></i>
-                                        }
-                                    }
+                                   <span class="rating  text-center">
+                       
+                                            @for (var i = 0; i < (@item.Rating); i++)
+                                            {
+                                                 <label style="color: #F88634; text-shadow: 0 0 0 #F88634;">&#9733;</label>
+                                            }
+                                            @for (var i = 0; i < 5 - (@item.Rating); i++)
+                                            {
+                                                <label style="color: black;">☆</label>
+                                            }
+
+                            </span>
                                 </div>
                             </div>
                     </div>
@@ -209,10 +227,9 @@
 
                     <div class="col-lg-12 col-md-3 pt-lg-3 d-flex justify-content-center">
                         <div class="d-inline-flex justify-content-center ">
-                            <button type="submit" class="btn applyButton">
-                                View
-                                Detail <i class="bi bi-arrow-right ms-2"></i>
-                            </button>
+                            <a  asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@item.MissionId">
+                                    <button type="submit" class="btn applyButton ">View Detail &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
+                                </a>
                         </div>
                     </div>
 

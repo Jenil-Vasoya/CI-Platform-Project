@@ -1,7 +1,25 @@
 ﻿@*@model CIPlatform.Entities.ViewModel.Pagination*@
     
 <link rel="stylesheet" href="~/Assets/css/mission.css" />
+<style>
+      .rating {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+   
+}
 
+    .rating > label {
+        position: relative;
+        width: 1em;
+        font-size: 20px;
+        color: #F88634;
+        cursor: pointer
+    }
+
+        
+
+</style>
     <br />
 <div class="container">
     <div class="row bootstrap snippets">
@@ -20,7 +38,7 @@
                             <div class="card-img-overlay ">
                                 <div class="d-flex flex-column  text-end pb-5" style="margin-inline: auto;">
                                     <div class="">
-                                        <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
+                                        <button class="btn rounded-5 border" style="background-color:black; opacity:50%;">
                                             <img src="~/Assets/images/pin.png" class="img-fluid cancle-img" alt="">
                                             <span style="color:white;">@item.CityName</span>
                                         </button>
@@ -29,11 +47,11 @@
                                         @if (@item.IsFavMission == 1)
                                         {
                                           
-                                           <button type="submit"  onclick="Add(@item.MissionId)" class="btn rounded-5 border-light"  style="border-color: white;" ><i class="bi bi-heart-fill  text-danger" id="addToFav"></i></button>
+                                           <button type="submit"  onclick="Add(@item.MissionId)" class="btn rounded-5 border-light"   style="background-color:black; opacity:50%;"><i class="bi bi-heart-fill  text-danger" id="addToFav_@item.MissionId"></i></button>
                                         }
                                         else
                                         {
-                                            <button type="submit"  onclick="Add(@item.MissionId)" class="btn rounded-5  border-light" style="border-color: black;"><i id="addToFav" class="bi bi-heart"></i></button>
+                                            <button type="submit"  onclick="Add(@item.MissionId)" class="btn rounded-5  border-light" style="background-color:black; opacity:50%;"><i id="addToFav_@item.MissionId" class="bi bi-heart text-white"></i></button>
                                         }
 
                                     </div>
@@ -42,7 +60,7 @@
                                             <img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt="">
                                         </button>*@
 
-                                        <button type="submit" class="btn rounded-5  border-light" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt=""> </button>
+                                        <button type="submit" class="btn rounded-5  border-light" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color:black; opacity:50%;"><img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt=""> </button>
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -100,7 +118,7 @@
                             <div class="d-flex rating1">
                                 <div><h5>@item.OrganizationName</h5></div>
                                 <div class="col d-flex justify-content-end">
-                                    @if (true)
+                                    @*@if (true)
                                     {
                                         for (var i = 0; i < (@item.Rating); i++)
                                         {
@@ -110,7 +128,20 @@
                                         {
                                             <i class="fa fa-star"></i>
                                         }
-                                    }
+                                    }*@
+
+                                     <span class="rating  text-center">
+                       
+                                            @for (var i = 0; i < (@item.Rating); i++)
+                                            {
+                                                 <label style="color: #F88634; text-shadow: 0 0 0 #F88634;">&#9733;</label>
+                                            }
+                                            @for (var i = 0; i < 5 - (@item.Rating); i++)
+                                            {
+                                                <label style="color: black;">☆</label>
+                                            }
+
+                            </span>
                                 </div>
                             </div>
                             <br>

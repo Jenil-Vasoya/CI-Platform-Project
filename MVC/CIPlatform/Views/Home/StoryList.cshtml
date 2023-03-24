@@ -31,27 +31,45 @@
 <partial name="_StoryList" />
 </div>
 
-<div class="container">
-    <div class=row>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</div>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center" onchange="searchMission()">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous" onclick="Previous(2)">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @{
+                double totalpages = ViewBag.Totalpages;
+
+                for (int i = 1; i <= totalpages; i++)
+                {
+                    @if (i == ViewBag.pg_no)
+                    {
+                        <li class="page-item ">
+                            <a class="page-link" href="#" onclick="searchMission(@i)">@i </a>
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="#" onclick="searchMission(@i)">@i</a>
+                        </li>
+                    }
+
+
+                }
+            }
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next" onclick="NextPage(1)">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
 <br />
 <br />
 
@@ -98,20 +116,20 @@
             })
             };
 
-    function searchMission() {
+     function searchMission(pg) {
         console.log("abc");
-
-
-
         var search = $('input[name="search"]').val();
         var sort = $('#sortby').find(":selected").val();
         var countries = [];
         var cities = [];
         var themes = [];
         var skills = [];
+
+        if(pg == undefined)
+        {
+            pg = 1;
+        }
         
-
-
         $('input[name="country"]:checked').each(function () {
             countries.push(this.id);
         });
@@ -125,32 +143,25 @@
             skills.push(this.id);
         });
     debugger;
-
         $.ajax({
-
             url: "/Home/SearchStory",
             method: "POST",
-
             data: {
                 "search": search,
                 "countries": countries,
                 "cities": cities,
                 "themes": themes,
                 "skills": skills,
-                "sort" : sort
-
+                "sort" : sort,
+                "pg" : pg
             },
             success: function (data) {
-
                 $('#storylist').html(data);
-
-
             },
             error: function (request, error) {
-
                 console.log(error);
             }
-
         })
-        }
+        
+    }
 </script>

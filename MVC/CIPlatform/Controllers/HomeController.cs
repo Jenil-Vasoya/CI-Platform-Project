@@ -57,6 +57,10 @@ namespace CIPlatform.Controllers
             var totalMission = _HomeRepo.TotalMissions();
             ViewBag.totalMission = totalMission;
 
+            ViewBag.Totalpages = Math.Ceiling(missionDatas.Count() / 6.0);
+            ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.pg_no = 1;
+
             return View();
         }
         public IActionResult Header()
@@ -70,7 +74,7 @@ namespace CIPlatform.Controllers
 
 
         [HttpGet]
-        public IActionResult MissionGrid(PaginationRequest paginationRequest)
+        public IActionResult MissionGrid()
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
 
@@ -82,7 +86,7 @@ namespace CIPlatform.Controllers
             }
 
             List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(UserId); 
-            ViewBag.missionDatas = missionDatas;
+          
 
             ViewBag.UserId = UserId;
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
@@ -103,6 +107,11 @@ namespace CIPlatform.Controllers
 
             var totalMission = _HomeRepo.TotalMissions();
             ViewBag.totalMission = totalMission;
+
+            ViewBag.Totalpages = Math.Ceiling(missionDatas.Count() / 6.0);
+            ViewBag.missionDatas = missionDatas.Skip((1-1)*6).Take(6).ToList();
+            ViewBag.pg_no = 1;
+
 
             return View();
         }
@@ -189,12 +198,12 @@ namespace CIPlatform.Controllers
         }
 
         
-        public ActionResult SearchList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort)
+        public ActionResult SearchList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort, int pg)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
 
             search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
-            List<MissionData> missionDatas = _HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId);
+            List<MissionData> missionDatas = _HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId, pg);
 
             ViewBag.missionDatas = missionDatas;
 
@@ -225,7 +234,7 @@ namespace CIPlatform.Controllers
             var missions = missionDatas.Where(x => x.MissionId == id).FirstOrDefault();
             ViewBag.missionDatas = missions;
 
-            var relatedmission = missionDatas.Where(x => x.Theme == missions.Theme || x.CityName == missions.CityName || x.MissionType == missions.MissionType).Take(3).ToList();
+            var relatedmission = missionDatas.Where(x => (x.Theme == missions.Theme || x.CityName == missions.CityName || x.MissionType == missions.MissionType) && x.MissionId != id).Take(3).ToList();
             ViewBag.total = relatedmission.Count;
             ViewBag.relatedmission = relatedmission;
 
@@ -245,12 +254,12 @@ namespace CIPlatform.Controllers
 
 
         [HttpPost]
-        public ActionResult Search(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort)
+        public ActionResult Search(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort, int pg)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
 
             search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
-            List<MissionData> missionDatas = _HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId);
+            List<MissionData> missionDatas = _HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId, pg);
 
             ViewBag.missionDatas = missionDatas;
 
@@ -264,12 +273,12 @@ namespace CIPlatform.Controllers
         }
 
         [HttpPost]
-        public ActionResult SearchStory(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort)
+        public ActionResult SearchStory(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int pg)
         {
 
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
             search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
-            List<MissionData> missionDatas = _HomeRepo.GetStoryMissionList(search, countries, cities, themes, skills, sort, UserId);
+            List<MissionData> missionDatas = _HomeRepo.GetStoryMissionList(search, countries, cities, themes, skills, pg, UserId);
 
             ViewBag.missionDatas = missionDatas;
 

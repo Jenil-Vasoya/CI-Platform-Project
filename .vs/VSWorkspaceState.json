@@ -7,8 +7,9 @@
     "\\MVC\\CIPlatform.Entities\\ViewModel",
     "\\MVC\\CIPlatform\\Controllers",
     "\\MVC\\CIPlatform\\Views",
-    "\\MVC\\CIPlatform\\Views\\Home"
+    "\\MVC\\CIPlatform\\Views\\Home",
+    "\\MVC\\CIPlatform\\Views\\Shared"
   ],
-  "SelectedNode": "\\MVC\\CIPlatform\\Views\\Home\\VolunteerMission.cshtml",
+  "SelectedNode": "\\MVC\\CIPlatform\\Views\\Shared\\_MissionList.cshtml",
   "PreviewInSolutionExplorer": false
 }

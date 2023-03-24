@@ -128,13 +128,84 @@
     </div>*@
 
 
+   @* <div class="container mt—5 p—3 ">
+        <nav aria-label="Page navigation example">
+            <ul class=" pagination justify—content—center" onchange="searchMission()">
+                <li class="page-item">
+                    <a class="page-link" aria-label="Previous" onclick="Previous(2)">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                @{
+                    double totalpages = ViewBag.Totalpages;
+                    for (int i = 1; i <= totalpages; i++)
+                    {
+                        @if (i == ViewBag.pg_no)
+                        {
+                            <li class=" page—item">
+                                <a class="page-link" onclick="searchMission(@i)">@i</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a class="page-link" onclick="searchMission(@i)">@i</a>
+                            </li>
+                        }
 
+                    }
+                }
+            </ul>
+        </nav>
+    </div>*@
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center" onchange="searchMission()">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous" onclick="Previous(2)">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @{
+                double totalpages = ViewBag.Totalpages;
+
+                for (int i = 1; i <= totalpages; i++)
+                {
+                    @if (i == ViewBag.pg_no)
+                    {
+                        <li class="page-item ">
+                            <a class="page-link" href="#" onclick="searchMission(@i)">@i </a>
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="#" onclick="searchMission(@i)">@i</a>
+                        </li>
+                    }
+
+
+                }
+            }
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next" onclick="NextPage(1)">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
 
     <br />
     <br />
 </body>
+
 <script type="text/javascript" language="javascript">
+
+window.onbeforeunload = function() {
+  window.location.reload(true);
+}
 
     $('.listItem').hide();
 $('#grid').click(function () {
@@ -149,45 +220,7 @@ localStorage.setItem("lastVisible", "grid");
 })
 
 
-     function Add(MissionId)
-    {
-        debugger
-    $.ajax({
-
-    url:"/Home/AddToFavourite",
-    method: "POST",
-
-    data:
-    {
-    MissionId:MissionId
-    
-    },
-    success:function(data)
-    {
-        
-            toastr.options = {
-            "closeButton": true,
-            "progressBar": true
-        };
-
-    if(data == true)
-    {
-    console.log('addtofav output:' .data);
-    
-     $('#favButtonText').text('Remove from Favourite');
-        $('#addToFav').removeClass('bi-heart text-black').addClass('bi-heart-fill  text-danger');
-        toastr.success('Added favourite successfully');
-    }
-    else{
-
-         $('#favButtonText').text('Add to Favourite');
-      $('#addToFav').removeClass('bi-heart-fill').addClass('bi-heart text-black');
-      toastr.error('Remove favourite successfully');
-    }
-    }
-    })
-    };
-
+  
     
  function sendInvitation(MissionId)
     {
@@ -252,7 +285,10 @@ countryId.push(this.id);
         }
         })
         };
-    function searchMission() {
+
+
+
+    function searchMission(pg) {
         console.log("abc");
         var search = $('input[name="search"]').val();
         var sort = $('#sortby').find(":selected").val();
@@ -260,6 +296,11 @@ countryId.push(this.id);
         var cities = [];
         var themes = [];
         var skills = [];
+
+        if(pg == undefined)
+        {
+            pg = 1;
+        }
         
         $('input[name="country"]:checked').each(function () {
             countries.push(this.id);
@@ -283,7 +324,8 @@ countryId.push(this.id);
                 "cities": cities,
                 "themes": themes,
                 "skills": skills,
-                "sort" : sort
+                "sort" : sort,
+                "pg" : pg
             },
             success: function (data) {
                 $('#missions').html(data);
@@ -302,7 +344,8 @@ countryId.push(this.id);
                 "cities": cities,
                 "themes": themes,
                 "skills": skills,
-                "sort" : sort
+                "sort" : sort,
+                "pg" : pg
             },
             success: function (data) {
                 $('#missionslist').html(data);

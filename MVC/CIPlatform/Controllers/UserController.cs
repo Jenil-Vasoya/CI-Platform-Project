@@ -187,6 +187,7 @@ namespace CIPlatform.Controllers
             return View();
             
         }
+
         [HttpGet]
         public IActionResult ResetPassword(long id)
         {
