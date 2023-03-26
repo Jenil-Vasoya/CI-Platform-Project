@@ -203,88 +203,123 @@
 
 <script type="text/javascript" language="javascript">
 
-window.onbeforeunload = function() {
-  window.location.reload(true);
-}
+    
 
     $('.listItem').hide();
-$('#grid').click(function () {
-$('.gridItem').show();
-$('.listItem').hide();
-localStorage.setItem("lastVisible", "list");
-})
-$('#list').click(function () {
-$('.listItem').show();
-$('.gridItem').hide();
-localStorage.setItem("lastVisible", "grid");
-})
+    $('#grid').click(function () {
+        $('.gridItem').show();
+        $('.listItem').hide();
+        localStorage.setItem("lastVisible", "list");
+    })
+    $('#list').click(function () {
+        $('.listItem').show();
+        $('.gridItem').hide();
+        localStorage.setItem("lastVisible", "grid");
+    })
+
+    function Add(MissionId) {
+        debugger
+        $.ajax({
+
+            url: "/Home/AddToFavourite",
+            method: "POST",
+
+            data:
+            {
+                MissionId: MissionId
+
+            },
+            success: function (data) {
+
+                toastr.options = {
+                    "closeButton": true,
+                    "progressBar": true
+                };
+
+                if (data == true) {
+                    console.log('addtofav output:'.data);
+
+                    $('#favButtonText').text('Remove from Favourite');
+                    $("#addToFav_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
+                    $("#addToFavList_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
+                    toastr.success('Added favourite successfully');
+                }
+                else {
+
+                    $('#favButtonText').text('Add to Favourite');
+                    $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+                    $("#addToFavList_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+                    toastr.error('Remove favourite successfully');
+                }
+            }
+        })
+    };
 
 
-  
-    
- function sendInvitation(MissionId)
-    {
+
+
+    function sendInvitation(MissionId) {
         debugger
         var CoWorkers = [];
 
-         $('input[name="CoWorkers"]:checked').each(function(){
-             CoWorkers.push(this.id);
-         });
+        $('input[name="CoWorkers"]:checked').each(function () {
+            CoWorkers.push(this.id);
+        });
 
-         $.ajax({
-             url:"/Home/InviteWorker",
-             method: "POST",
-             data:{
-                 "MissionId" : MissionId,
-                 "CoWorkers" : CoWorkers
-             },
-             success:function(data){
+        $.ajax({
+            url: "/Home/InviteWorker",
+            method: "POST",
+            data: {
+                "MissionId": MissionId,
+                "CoWorkers": CoWorkers
+            },
+            success: function (data) {
                 $("#mission").html(data);
-             },
-             error: function(request,error){
-                 
-                 console.log(error);
-             }
-         })
+            },
+            error: function (request, error) {
+
+                console.log(error);
+            }
+        })
 
     }
 
 
 
-       function GetCity(){
-  var countryId= [];
-$('input[name="country"]:checked').each(function(){
-countryId.push(this.id);
-});
-    debugger;
+    function GetCity() {
+        var countryId = [];
+        $('input[name="country"]:checked').each(function () {
+            countryId.push(this.id);
+        });
+        debugger;
         $.ajax({
-        url:"/Home/GetCity",
-        method: "Post",
-        data: {
-        "countryId":countryId
-        },
-        success:function(data){
-        data = JSON.parse(data);
-        $("#selectCityList").empty();
-        data.forEach((name)=> {
+            url: "/Home/GetCity",
+            method: "Post",
+            data: {
+                "countryId": countryId
+            },
+            success: function (data) {
+                data = JSON.parse(data);
+                $("#selectCityList").empty();
+                data.forEach((name) => {
                     document.getElementById("selectCityList").innerHTML += `
-            <li>
-    <div class="form-check dropdown-item px-3">
-    <input class="form-check-input mx-auto" name="city" type="checkbox" value="${name.CityName}"
-    id="${name.CityId}" />
-    <label class="form-check-label ps-2" for="${name.CityId}">
-    ${name.CityName}
-    </label>
-    </div>
-    </li>
-        `;
+                <li>
+        <div class="form-check dropdown-item px-3">
+        <input class="form-check-input mx-auto" name="city" type="checkbox" value="${name.CityName}"
+        id="${name.CityId}" />
+        <label class="form-check-label ps-2" for="${name.CityId}">
+        ${name.CityName}
+        </label>
+        </div>
+        </li>
+            `;
+                })
+            },
+            error: function (request, error) {
+                console.log(error);
+            }
         })
-        },
-        error: function(request,error){
-        console.log(error);
-        }
-        })
-        };
+    };
 
 
 
@@ -297,11 +332,10 @@ countryId.push(this.id);
         var themes = [];
         var skills = [];
 
-        if(pg == undefined)
-        {
+        if (pg == undefined) {
             pg = 1;
         }
-        
+
         $('input[name="country"]:checked').each(function () {
             countries.push(this.id);
         });
@@ -314,7 +348,7 @@ countryId.push(this.id);
         $('input[name="skill"]:checked').each(function () {
             skills.push(this.id);
         });
-    debugger;
+        debugger;
         $.ajax({
             url: "/Home/Search",
             method: "POST",
@@ -324,8 +358,8 @@ countryId.push(this.id);
                 "cities": cities,
                 "themes": themes,
                 "skills": skills,
-                "sort" : sort,
-                "pg" : pg
+                "sort": sort,
+                "pg": pg
             },
             success: function (data) {
                 $('#missions').html(data);
@@ -334,7 +368,7 @@ countryId.push(this.id);
                 console.log(error);
             }
         })
-         debugger;
+        debugger;
         $.ajax({
             url: "/Home/SearchList",
             method: "POST",
@@ -344,8 +378,8 @@ countryId.push(this.id);
                 "cities": cities,
                 "themes": themes,
                 "skills": skills,
-                "sort" : sort,
-                "pg" : pg
+                "sort": sort,
+                "pg": pg
             },
             success: function (data) {
                 $('#missionslist').html(data);

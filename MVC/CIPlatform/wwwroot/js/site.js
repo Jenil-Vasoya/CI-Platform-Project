@@ -45,45 +45,45 @@ $(document).ready(function (a) {
 });
 
 
-function Add(MissionId) {
-    debugger
-    $.ajax({
+//function Add(MissionId) {
+//    debugger
+//    $.ajax({
 
-        url: "/Home/AddToFavourite",
-        method: "POST",
+//        url: "/Home/AddToFavourite",
+//        method: "POST",
 
-        data:
-        {
-            MissionId: MissionId
+//        data:
+//        {
+//            MissionId: MissionId
 
-        },
-        success: function (data) {
+//        },
+//        success: function (data) {
 
-            toastr.options = {
-                "closeButton": true,
-                "progressBar": true
-            };
+//            toastr.options = {
+//                "closeButton": true,
+//                "progressBar": true
+//            };
 
-            if (data == true) {
-                console.log('addtofav output:'.data);
+//            if (data == true) {
+//                console.log('addtofav output:'.data);
 
-                $('#favButtonText').text('Remove from Favourite');
-                $("#addToFav_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
-                $("#addToFavVolun_" + MissionId).removeClass('bi-heart text-black').addClass('bi-heart-fill  text-danger');
-                $("#addToFavList_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
-                toastr.success('Added favourite successfully');
-            }
-            else {
+//                $('#favButtonText').text('Remove from Favourite');
+//                $("#addToFav_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
+//                $("#addToFavVolun_" + MissionId).removeClass('bi-heart text-black').addClass('bi-heart-fill  text-danger');
+//                $("#addToFavList_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
+//                toastr.success('Added favourite successfully');
+//            }
+//            else {
 
-                $('#favButtonText').text('Add to Favourite');
-                $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
-                $("#addToFavVolun_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-black');
-                $("#addToFavList_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
-                toastr.error('Remove favourite successfully');
-            }
-        }
-    })
-};
+//                $('#favButtonText').text('Add to Favourite');
+//                $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+//                $("#addToFavVolun_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-black');
+//                $("#addToFavList_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+//                toastr.error('Remove favourite successfully');
+//            }
+//        }
+//    })
+//};
 
 
 

@@ -243,11 +243,11 @@
                                         <div class="col-xl-6 col-12 text-center ">
                                             @if (@ViewBag.CheckFavMisson == true)
                                             {
-                                                <button type="submit" class="btn rounded-5  " onclick="Add(@ViewBag.missionDatas.MissionId)" style="border-color: black;"><i class="bi bi-heart-fill  text-danger" id="addToFavVolun_@ViewBag.missionDatas.MissionId"></i>&nbsp;<span id="favButtonText">Remove from Favourite</span></button>
+                                                <button type="submit" class="btn rounded-5" onclick="Add(@ViewBag.missionDatas.MissionId, 'btnAddToFavVolun_')" style="border-color: black;"><i class="bi bi-heart-fill  text-danger" id="addToFavVolun_@ViewBag.missionDatas.MissionId"></i>&nbsp;<span id="favButtonText">Remove from Favourite</span></button>
                                             }
                                             else
                                             {
-                                                <button type="submit" onclick="Add(@ViewBag.missionDatas.MissionId)" class="btn rounded-5  " style="border-color: black;"><i id="addToFavVolun_@ViewBag.missionDatas.MissionId" class="bi bi-heart"></i><span id="favButtonText">Add to favourite</span></button>
+                                                <button type="submit"  onclick="Add(@ViewBag.missionDatas.MissionId, 'btnAddToFavVolun_')" class="btn rounded-5  " style="border-color: black;"><i id="addToFavVolun_@ViewBag.missionDatas.MissionId" class="bi bi-heart"></i><span id="favButtonText">Add to favourite</span></button>
                                             }
                                         </div>
                                         <div class="col-xl-6 col-12 text-center  ">
@@ -590,12 +590,12 @@
                                     <div class="pt-1">
                                         @if (@item.IsFavMission == 1)
                                         {
-                                          
-                                           <button type="submit"  onclick="Add(@item.MissionId)" class="btn rounded-5 border-light"   style="background-color:black; opacity:50%;"><i class="bi bi-heart-fill  text-danger" id="addToFav_@item.MissionId"></i></button>
+
+                                                <button type="submit" onclick="Add(@item.MissionId,'btnaddToFav_')" class="btn rounded-5 border-light" style="background-color:black; opacity:50%;"><i class="bi bi-heart-fill  text-danger" id="addToFav_@item.MissionId"></i></button>
                                         }
                                         else
                                         {
-                                            <button type="submit"  onclick="Add(@item.MissionId)" class="btn rounded-5  border-light" style="background-color:black; opacity:50%;"><i id="addToFav_@item.MissionId" class="bi bi-heart text-white"></i></button>
+                                                <button type="submit" onclick="Add(@item.MissionId,'btnaddToFav_')" class="btn rounded-5  border-light" style="background-color:black; opacity:50%;"><i id="addToFav_@item.MissionId" class="bi bi-heart text-white"></i></button>
                                         }
 
 
@@ -771,11 +771,11 @@
 
 <script>
 
-@*
 
-        function Add(MissionId)
+    debugger
+    function Add(MissionId, btn)
     {
-        debugger
+    debugger
     $.ajax({
 
     url:"/Home/AddToFavourite",
@@ -788,30 +788,50 @@
     },
     success:function(data)
     {
-        
+        console.log(data)
+        debugger
             toastr.options = {
             "closeButton": true,
             "progressBar": true
         };
+        console.log(MissionId)
+        console.log(btn)
+                if (data == true) {
+                    debugger
+                    if (btn == 'btnAddToFavVolun_') 
+                    {
 
-    if(data == true)
-    {
-    
-     $('#favButtonText').text('Remove from Favourite');
-      $("#addToFav_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
-        $("#addToFavVolun_" + MissionId).removeClass('bi-heart text-black').addClass('bi-heart-fill  text-danger');
-        toastr.success('Added favourite successfully');
-    }
-    else{
+                        $('#favButtonText').text('Remove from Favourite');
+                        $("#addToFavVolun_" + MissionId).removeClass('bi-heart text-black').addClass('bi-heart-fill  text-danger');
+                        toastr.success('Added favourite successfully');
+                    }
+                    else if(btn == 'btnaddToFav_')
+                    {
+                        $("#addToFav_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
+                        toastr.success('Added favourite successfully');
+                    }
+                }
+                else {
+                    if (btn == 'btnAddToFavVolun_') 
+                    {
 
-         $('#favButtonText').text('Add to Favourite');
-         $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
-      $("#addToFavVolun_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-black');
-      toastr.error('Remove favourite successfully');
+                        $('#favButtonText').text('Add to Favourite');
+                        $("#addToFavVolun_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-black');
+                        toastr.error('Remove favourite successfully');
+                    }
+                    else if (btn == 'btnaddToFav_') 
+                    {
+                        $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+                        toastr.error('Remove favourite successfully');
+                    }
+                        @*$('#favButtonText').text('Add to Favourite');
+                        $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+                        $("#addToFavVolun_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-black');
+                        toastr.error('Remove favourite successfully');*@
+                }
+            }
+        })
     }
-    }
-    })
-    }*@
 
     function AddComments(missionId)
 {

@@ -357,6 +357,10 @@
       "PackagePath": "staticwebassets\\Assets\\images\\previous.png"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\red-heart.png",
+      "PackagePath": "staticwebassets\\Assets\\images\\red-heart.png"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-arrow.png",
       "PackagePath": "staticwebassets\\Assets\\images\\right-arrow.png"
     },
@@ -471,6 +475,10 @@
     {
       "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\js\\AddFavourite.js",
+      "PackagePath": "staticwebassets\\js\\AddFavourite.js"
     },
     {
       "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\js\\site.js",
