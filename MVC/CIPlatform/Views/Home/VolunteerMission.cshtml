@@ -516,45 +516,9 @@
                     </div>
                 </div>
                 <br />
-                <div class="col-12 border p-4">
-                    <h3>Recent Volunteers</h3>
-                    <hr />
-                    <div class="row  ">
-                        @if (@ViewBag.RecentVolunteer != null)
-                        {
-                            @foreach (var volunteer in @ViewBag.RecentVolunteer)
-                            {
-
-                                <div class="col-4 d-flex flex-column align-items-center text-center">
-                                    <img src="@volunteer.Avatar" class="rounded-circle " height="70px" width="70px" />
-                                    <h6 style="font-size:15px;">@volunteer.UserName</h6>
-                                </div>
-                        
-                            }
-                             
-                        }
-                    </div>
-                   
-
-                </div>
-                <ul class="pagination border justify-content-between align-items-center">
-                    <li class="page-item">
-                        <a class="page-link border-0" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-
-                    <li><p class="mb-0 fw-lighter">1 to 9 out of 25 Volunteers</p></li>
-
-                    <li class="page-item">
-                        <a class="page-link border-0" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-
+                <div id="volunteer">
+             <partial name="_RecentVolunteer" />
+             </div>
             </div>
         </div>
    
@@ -591,11 +555,11 @@
                                         @if (@item.IsFavMission == 1)
                                         {
 
-                                                <button type="submit" onclick="Add(@item.MissionId,'btnaddToFav_')" class="btn rounded-5 border-light" style="background-color:black; opacity:50%;"><i class="bi bi-heart-fill  text-danger" id="addToFav_@item.MissionId"></i></button>
+                                                <button type="submit" onclick="Add(@item.MissionId,'btnaddToFav_')" class="btn rounded-5 border-light" style="background-color:black; opacity:50%;"><i class="bi bi-heart-fill  text-danger" id="addToFavGrid_@item.MissionId"></i></button>
                                         }
                                         else
                                         {
-                                                <button type="submit" onclick="Add(@item.MissionId,'btnaddToFav_')" class="btn rounded-5  border-light" style="background-color:black; opacity:50%;"><i id="addToFav_@item.MissionId" class="bi bi-heart text-white"></i></button>
+                                                <button type="submit" onclick="Add(@item.MissionId,'btnaddToFav_')" class="btn rounded-5  border-light" style="background-color:black; opacity:50%;"><i id="addToFavGrid_@item.MissionId" class="bi bi-heart text-white"></i></button>
                                         }
 
 
@@ -768,12 +732,34 @@
 
 
 </body>
+                <script>
+                    function searchMission(pg) {
+       
+
+        if (pg == undefined) {
+            pg = 1;
+        }
+        debugger;
+        $.ajax({
+            url: "/Home/Volunteer",
+            method: "POST",
+            data: {
+                "MissionId" : @ViewBag.missionDatas.MissionId,
+                "pg": pg
+            },
+            success: function (data) {
+                $('#volunteer').html(data);
+            },
+            error: function (request, error) {
+                console.log(error);
+            }
+        })
+        }
+                </script>
 
 <script>
 
-
-    debugger
-    function Add(MissionId, btn)
+   @* function Add(MissionId, btn)
     {
     debugger
     $.ajax({
@@ -824,14 +810,11 @@
                         $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
                         toastr.error('Remove favourite successfully');
                     }
-                        @*$('#favButtonText').text('Add to Favourite');
-                        $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
-                        $("#addToFavVolun_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-black');
-                        toastr.error('Remove favourite successfully');*@
+                       
                 }
             }
         })
-    }
+    }*@
 
     function AddComments(missionId)
 {

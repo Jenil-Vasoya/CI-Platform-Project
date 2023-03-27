@@ -178,6 +178,12 @@ namespace CIPlatform.Controllers
             List<User> users = _HomeRepo.UserList();
             ViewBag.Users = users;
 
+
+            ViewBag.pg_no = pg;
+            ViewBag.Totalpages = Math.Ceiling(_HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId, pg = 0).Count() / 6.0);
+            ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
+
+
             return PartialView("_MissionList");
         }
 
@@ -207,7 +213,13 @@ namespace CIPlatform.Controllers
             ViewBag.CheckFavMisson = _HomeRepo.CheckFavMission(UserId, missions.MissionId);
           
 
-            ViewBag.RecentVolunteer = _HomeRepo.GetRecentVolunteer(missions.MissionId);
+            var recentVolunteer = _HomeRepo.GetRecentVolunteer(missions.MissionId);
+            ViewBag.RecentVolunteer = recentVolunteer;
+
+            ViewBag.Totalpages = Math.Ceiling(recentVolunteer.Count() / 1.0);
+            ViewBag.RecentVolunteer = recentVolunteer.Skip((1 - 1) * 1).Take(1).ToList();
+            ViewBag.pg_no = 1;
+
 
             ViewBag.UserId = UserId;
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
@@ -217,6 +229,17 @@ namespace CIPlatform.Controllers
             return View();
         }
 
+        public ActionResult Volunteer(long MissionId, int pg)
+        {
+            List<RecentVolunteer> missionDatas = _HomeRepo.RecentVolunteer(MissionId,pg);
+            ViewBag.RecentVolunteer = missionDatas;
+
+            ViewBag.pg_no = pg;
+            ViewBag.Totalpages = Math.Ceiling(_HomeRepo.RecentVolunteer(MissionId, pg = 0).Count() / 1.0);
+            ViewBag.RecentVolunteer = missionDatas.Skip((1 - 1) * 1).Take(1).ToList();
+
+            return PartialView("_RecentVolunteer");
+        }
 
         [HttpPost]
         public ActionResult Search(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort, int pg)
@@ -233,6 +256,10 @@ namespace CIPlatform.Controllers
 
             List<User> users = _HomeRepo.UserList();
             ViewBag.Users = users;
+
+            ViewBag.pg_no = pg;
+            ViewBag.Totalpages = Math.Ceiling(_HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId, pg = 0).Count() / 6.0);
+            ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
 
             return PartialView("_MissionGrid");
         }
@@ -287,11 +314,17 @@ namespace CIPlatform.Controllers
         }
 
 
-        public void InviteWorker(long MissionId, List<long> CoWorkers)
+        public JsonResult InviteWorker(long MissionId, List<long> CoWorkers)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
 
-            _HomeRepo.InviteWorker(CoWorkers, UserId, MissionId);
+            bool mailSent = _HomeRepo.InviteWorker(CoWorkers, UserId, MissionId);
+            if (mailSent == true)
+            {
+                return Json(mailSent);
+            }
+
+            return Json(null);
         }
 
         public bool PostRating(byte rate, long missionId)

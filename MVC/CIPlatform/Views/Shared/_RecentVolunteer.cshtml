@@ -1,0 +1,88 @@
+﻿ <style>
+     .page-item.active .page-link {
+    background-color: #F88634;
+    border-color: #F88634;
+}
+
+ .page-item > .page-link {
+    color: black;
+}
+ </style> 
+
+ 
+ <div class="col-12 border p-4" >
+                    <h3>Recent Volunteers</h3>
+                    <hr />
+                    <div class="row">
+                        @if (@ViewBag.RecentVolunteer != null)
+                        {
+                            @foreach (var volunteer in @ViewBag.RecentVolunteer)
+                            {
+
+                                <div class="col-4 d-flex flex-column align-items-center text-center">
+                                    <img src="@volunteer.Avatar" class="rounded-circle " height="70px" width="70px" />
+                                    <h6 style="font-size:15px;">@volunteer.UserName</h6>
+                                </div>
+                        
+                            }
+                             
+                        }
+                    </div>
+
+                    <div class="pb-0">
+                    <partial name="_Pagination" /></div>
+ </div>
+
+                @* <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center" onchange="searchMission()" >
+            <li class="page-item">
+                <button class="page-link" type="submit" aria-label="Previous" onclick="searchMission(1)">
+                    <span aria-hidden="true">&laquo;</span>
+                </button>
+            </li>
+            @{
+                double totalpages = ViewBag.Totalpages;
+
+                for (int i = 1; i <= totalpages; i++)
+                {
+                    @if (i == ViewBag.pg_no)
+                    {
+                        <li class="page-item active">
+                            <button class="page-link" type="submit" onclick="searchMission(@i)">@i</button
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <button class="page-link" type="submit" onclick="searchMission(@i)">@i</button>
+                        </li>
+                    }
+
+
+                }   
+            }
+            <li class="page-item">
+                <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@ViewBag.Totalpages)">
+                    <span aria-hidden="true">&raquo;</span>
+                </button>
+            </li>
+        </ul>
+    </nav> *@
+                @*<ul class="pagination border justify-content-between align-items-center">
+                    <li class="page-item">
+                        <a class="page-link border-0" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+
+                    <li><p class="mb-0 fw-lighter">1 to 9 out of 25 Volunteers</p></li>
+
+                    <li class="page-item">
+                        <a class="page-link border-0" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>*@

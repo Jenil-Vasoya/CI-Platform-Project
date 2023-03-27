@@ -1,0 +1,47 @@
+﻿ <style>
+     .page-item.active .page-link {
+    background-color: #F88634;
+    border-color: #F88634;
+}
+
+ .page-item > .page-link {
+    color: black;
+}
+ </style>
+  
+ <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center" onchange="searchMission()" >
+            <li class="page-item">
+                <button class="page-link" type="submit" aria-label="Previous" onclick="searchMission(1)">
+                    <span aria-hidden="true">&laquo;</span>
+                </button>
+            </li>
+            @{
+                double totalpages = ViewBag.Totalpages;
+
+                for (int i = 1; i <= totalpages; i++)
+                {
+                    @if (i == ViewBag.pg_no)
+                    {
+                        <li class="page-item active">
+                            <button class="page-link" type="submit" onclick="searchMission(@i)">@i</button
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <button class="page-link" type="submit" onclick="searchMission(@i)">@i</button>
+                        </li>
+                    }
+
+
+                }   
+            }
+            <li class="page-item">
+                <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@ViewBag.Totalpages)">
+                    <span aria-hidden="true">&raquo;</span>
+                </button>
+            </li>
+        </ul>
+    </nav> 

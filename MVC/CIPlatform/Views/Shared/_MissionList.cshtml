@@ -46,11 +46,11 @@
                                     @if (@item.IsFavMission == 1)
                                         {
                                           
-                                           <button type="submit"  onclick="Add(@item.MissionId)" class="btn rounded-5 border-light" style="background-color:black; opacity:50%;"><i class="bi bi-heart-fill  text-danger" id="addToFavList_@item.MissionId"></i></button>
+                                           <button type="submit"  onclick="Add(@item.MissionId, 'btnAddToFavVolun_')" class="btn rounded-5 border-light" style="background-color:black; opacity:50%;"><i class="bi bi-heart-fill  text-danger" id="addToFavList_@item.MissionId"></i></button>
                                         }
                                         else
                                         {
-                                            <button type="submit"  onclick="Add(@item.MissionId)" class="btn rounded-5  border-light" style="background-color:black; opacity:50%;"><i id="addToFavList_@item.MissionId" class="bi bi-heart text-white"></i></button>
+                                            <button type="submit"  onclick="Add(@item.MissionId, 'btnAddToFavVolun_')" class="btn rounded-5  border-light" style="background-color:black; opacity:50%;"><i id="addToFavList_@item.MissionId" class="bi bi-heart text-white"></i></button>
                                         }
                                 </div>
 
@@ -240,4 +240,6 @@
         }
 
     </div>
+
+    <partial name="_Pagination" />
 </div>  

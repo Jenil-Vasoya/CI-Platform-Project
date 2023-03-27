@@ -35,6 +35,8 @@ namespace CIPlatform.Repository.Interface
         public List<MissionData> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort, long UserId, int pg);
         public List<MissionData> GetStoryMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int pg, long UserId);
 
+        public List<RecentVolunteer> RecentVolunteer(long MissionId, int pg);
+
         public List<MissionData> GetMissionCardsList(long UserId);
 
         public List<MissionData> GetStoryCardsList();
@@ -49,7 +51,7 @@ namespace CIPlatform.Repository.Interface
 
         public bool ApplyMission(long UserId, long MissionId);
 
-        public List<MissionData> GetRecentVolunteer(long missionId);
+        public List<RecentVolunteer> GetRecentVolunteer(long missionId);
 
         public bool InviteWorker(List<long> CoWorker, long UserId, long MissionId);
 

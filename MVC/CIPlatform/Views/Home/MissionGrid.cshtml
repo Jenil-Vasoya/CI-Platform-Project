@@ -159,7 +159,7 @@
         </nav>
     </div>*@
 
-    <nav aria-label="Page navigation example">
+@*    <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center" onchange="searchMission()">
             <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous" onclick="Previous(2)">
@@ -194,7 +194,7 @@
                 </a>
             </li>
         </ul>
-    </nav>
+    </nav>*@
 
 
     <br />
@@ -217,43 +217,43 @@
         localStorage.setItem("lastVisible", "grid");
     })
 
-    function Add(MissionId) {
-        debugger
-        $.ajax({
+    //function Add(MissionId) {
+    //    debugger
+    //    $.ajax({
 
-            url: "/Home/AddToFavourite",
-            method: "POST",
+    //        url: "/Home/AddToFavourite",
+    //        method: "POST",
 
-            data:
-            {
-                MissionId: MissionId
+    //        data:
+    //        {
+    //            MissionId: MissionId
 
-            },
-            success: function (data) {
+    //        },
+    //        success: function (data) {
 
-                toastr.options = {
-                    "closeButton": true,
-                    "progressBar": true
-                };
+    //            toastr.options = {
+    //                "closeButton": true,
+    //                "progressBar": true
+    //            };
 
-                if (data == true) {
-                    console.log('addtofav output:'.data);
+    //            if (data == true) {
+    //                console.log('addtofav output:'.data);
 
-                    $('#favButtonText').text('Remove from Favourite');
-                    $("#addToFav_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
-                    $("#addToFavList_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
-                    toastr.success('Added favourite successfully');
-                }
-                else {
+    //                $('#favButtonText').text('Remove from Favourite');
+    //                $("#addToFav_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
+    //                $("#addToFavList_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
+    //                toastr.success('Added favourite successfully');
+    //            }
+    //            else {
 
-                    $('#favButtonText').text('Add to Favourite');
-                    $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
-                    $("#addToFavList_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
-                    toastr.error('Remove favourite successfully');
-                }
-            }
-        })
-    };
+    //                $('#favButtonText').text('Add to Favourite');
+    //                $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+    //                $("#addToFavList_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+    //                toastr.error('Remove favourite successfully');
+    //            }
+    //        }
+    //    })
+    //};
 
 
 
@@ -274,7 +274,14 @@
                 "CoWorkers": CoWorkers
             },
             success: function (data) {
-                $("#mission").html(data);
+                if(data == true)
+                {
+                    toastr.success('Mail sent successfully');
+                }
+                else
+                {
+                    toastr.error('Mail not successfully');
+                }
             },
             error: function (request, error) {
 

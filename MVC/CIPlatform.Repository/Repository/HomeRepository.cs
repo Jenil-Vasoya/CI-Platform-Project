@@ -131,11 +131,7 @@ namespace CIPlatform.Repository.Repository
                 missions = missions.Where(a => skills.Contains(a.SkillId.ToString())).ToList();
 
             }
-            if(pg != null)
-            {
-                missions = missions.Skip((pg - 1)* pageSize).Take(pageSize).Take(pageSize).ToList();
-            }
-
+           
             switch (sort)
             {
                 case 1:
@@ -159,14 +155,31 @@ namespace CIPlatform.Repository.Repository
                     break;
 
                 case 6:
-                    missions = missions.OrderBy(i => i.Availability).ToList();
+                    missions = missions.OrderByDescending(i => i.IsFavMission).ToList();
                     break;
 
 
             }
+            if (pg != 0)
+            {
+                missions = missions.Skip((pg - 1) * pageSize).Take(pageSize).Take(pageSize).ToList();
+            }
+
             return missions;
         }
 
+        public List<RecentVolunteer> RecentVolunteer(long MissionId, int pg)
+        {
+            var pageSize = 1;
+            List<RecentVolunteer> missions = GetRecentVolunteer(MissionId);
+
+            if (pg != 0)
+            {
+                missions = missions.Skip((pg - 1) * pageSize).Take(pageSize).Take(pageSize).ToList();
+            }
+
+            return missions;
+        }
 
         public List<MissionData> GetStoryMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int pg, long UserId)
         {
@@ -235,8 +248,8 @@ namespace CIPlatform.Repository.Repository
 
                 }
 
-                var favmission = _DbContext.FavoriteMissions.Where(a => a.UserId == UserId && a.MissionId == objMission.MissionId).Count();
-                    missionData.IsFavMission = favmission;
+                var favmission = _DbContext.FavoriteMissions.Where(a => a.UserId == UserId && a.MissionId == objMission.MissionId);
+                    missionData.IsFavMission = favmission.Count();
                
 
 
@@ -436,16 +449,16 @@ namespace CIPlatform.Repository.Repository
         }
 
 
-        public List<MissionData> GetRecentVolunteer(long missionId)
+        public List<RecentVolunteer> GetRecentVolunteer(long missionId)
         {
             List<MissionApplication> missionApplication = _DbContext.MissionApplications.Where(a => a.MissionId == missionId).ToList();
 
 
-            List<MissionData> recentVolunteer = new List<MissionData>();
+            List<RecentVolunteer> recentVolunteer = new List<RecentVolunteer>();
 
             foreach (MissionApplication application in missionApplication)
             {
-                MissionData missionVolunteer = new MissionData();
+                RecentVolunteer missionVolunteer = new RecentVolunteer();
                 User user = _DbContext.Users.FirstOrDefault(a => a.UserId == application.UserId);
                 missionVolunteer.MissionId = missionId;
                 missionVolunteer.Avatar = user.Avatar;

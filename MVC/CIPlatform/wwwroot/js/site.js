@@ -44,6 +44,121 @@ $(document).ready(function (a) {
 
 });
 
+function Add(MissionId,btn) {
+    debugger
+    $.ajax({
+
+        url: "/Home/AddToFavourite",
+        method: "POST",
+
+        data:
+        {
+            MissionId: MissionId
+
+        },
+        success: function (data) {
+
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            };
+
+            if (data == true) {
+
+                debugger
+                if (btn == 'btnAddToFavVolun_' || btn == 'btnAddToFavGrid_') {
+
+                    $('#favButtonText').text('Remove from Favourite');
+                    $("#addToFavGrid_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
+                    $("#addToFavVolun_" + MissionId).removeClass('bi-heart text-black').addClass('bi-heart-fill  text-danger');
+                    $("#addToFavList_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
+                    toastr.success('Added favourite successfully');
+                }
+                else if (btn == 'btnaddToFav_') {
+                    //$("#addToFav_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
+                    $("#addToFavGrid_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
+                    $("#addToFavList_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
+                    toastr.success('Added favourite successfully');
+                }
+               
+            }
+            else {
+
+                if (btn == 'btnAddToFavVolun_' || btn == 'btnAddToFavGrid_') {
+
+                    $('#favButtonText').text('Add to Favourite');
+                    $("#addToFavGrid_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+                    $("#addToFavVolun_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-black');
+                    $("#addToFavList_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+                    toastr.error('Remove favourite successfully');
+                }
+                else if (btn == 'btnaddToFav_') {
+                    //$("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+                    $("#addToFavGrid_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+                    $("#addToFavList_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+                    toastr.error('Remove favourite successfully');
+                }
+
+               
+            }
+        }
+    })
+};
+
+//function Add(MissionId, btn) {
+//    debugger
+//    $.ajax({
+
+//        url: "/Home/AddToFavourite",
+//        method: "POST",
+
+//        data:
+//        {
+//            MissionId: MissionId
+
+//        },
+//        success: function (data) {
+//            console.log(data)
+//            debugger
+//            toastr.options = {
+//                "closeButton": true,
+//                "progressBar": true
+//            };
+//            console.log(MissionId)
+//            console.log(btn)
+//            if (data == true) {
+//                debugger
+//                if (btn == 'btnAddToFavVolun_') {
+
+//                    $('#favButtonText').text('Remove from Favourite');
+//                    $("#addToFavVolun_" + MissionId).removeClass('bi-heart text-black').addClass('bi-heart-fill  text-danger');
+//                    toastr.success('Added favourite successfully');
+//                }
+//                else if (btn == 'btnaddToFav_') {
+//                    $("#addToFav_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
+//                    toastr.success('Added favourite successfully');
+//                }
+//            }
+//            else {
+//                if (btn == 'btnAddToFavVolun_') {
+
+//                    $('#favButtonText').text('Add to Favourite');
+//                    $("#addToFavVolun_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-black');
+//                    toastr.error('Remove favourite successfully');
+//                }
+//                else if (btn == 'btnaddToFav_') {
+//                    $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+//                    toastr.error('Remove favourite successfully');
+//                }
+//                @* $('#favButtonText').text('Add to Favourite');
+//                $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+//                $("#addToFavVolun_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-black');
+//                toastr.error('Remove favourite successfully');*@
+//                }
+//        }
+//    })
+//}
+
 
 //function Add(MissionId) {
 //    debugger
