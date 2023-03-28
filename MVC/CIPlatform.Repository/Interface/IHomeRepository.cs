@@ -49,7 +49,9 @@ namespace CIPlatform.Repository.Interface
 
         public List<CommentViewModel> GetComment(long missionID);
 
-        public bool ApplyMission(long UserId, long MissionId);
+        public int ApplyMission(long UserId, long MissionId);
+
+        public int ApplyMissionCheck(long UserId, long MissionId);
 
         public List<RecentVolunteer> GetRecentVolunteer(long missionId);
 

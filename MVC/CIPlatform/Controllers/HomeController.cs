@@ -81,11 +81,11 @@ namespace CIPlatform.Controllers
         [HttpGet]
         public IActionResult MissionGrid()
         {
-            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
 
             List<Mission> missions = _HomeRepo.MissionList();
-            if (missions.Count == 0)
+            if (missions.Count <= 0)
             {
                 return RedirectToAction("MissionNotFound");
             }
@@ -118,6 +118,7 @@ namespace CIPlatform.Controllers
             ViewBag.pg_no = 1;
 
 
+
             return View();
         }
 
@@ -131,36 +132,36 @@ namespace CIPlatform.Controllers
             return Json(json);
         }
 
-        [HttpGet]
-        public IActionResult MissionList()
-        {
-            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
+        //[HttpGet]
+        //public IActionResult MissionList()
+        //{
+        //    long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
 
-            List<Mission> missions = _HomeRepo.MissionList();
+        //    List<Mission> missions = _HomeRepo.MissionList();
 
-            if (missions.Count == 0)
-            {
-                return RedirectToAction("MissionNotFound");
-            }
+        //    if (missions.Count == 0)
+        //    {
+        //        return RedirectToAction("MissionNotFound");
+        //    }
 
 
-            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(UserId); 
-            ViewBag.missionDatas = missionDatas;
+        //    List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(UserId); 
+        //    ViewBag.missionDatas = missionDatas;
 
-            List<Country> countries = _HomeRepo.CountryList();
-            ViewBag.countries = countries;
+        //    List<Country> countries = _HomeRepo.CountryList();
+        //    ViewBag.countries = countries;
 
-            List<MissionTheme> themes = _HomeRepo.MissionThemeList();
-            ViewBag.themes = themes;
+        //    List<MissionTheme> themes = _HomeRepo.MissionThemeList();
+        //    ViewBag.themes = themes;
 
-            List<Skill> skills = _HomeRepo.SkillList();
-            ViewBag.skills = skills;
+        //    List<Skill> skills = _HomeRepo.SkillList();
+        //    ViewBag.skills = skills;
 
-            var totalMission = _HomeRepo.TotalMissions();
-            ViewBag.totalMission = totalMission;
+        //    var totalMission = _HomeRepo.TotalMissions();
+        //    ViewBag.totalMission = totalMission;
 
-            return View();
-        }
+        //    return View();
+        //}
 
         
         public ActionResult SearchList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort, int pg)
@@ -308,7 +309,7 @@ namespace CIPlatform.Controllers
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
 
-              bool success =  _HomeRepo.ApplyMission(UserId, missionId);
+              int success =  _HomeRepo.ApplyMission(UserId, missionId);
             return Json(success);
             
         }
@@ -327,13 +328,26 @@ namespace CIPlatform.Controllers
             return Json(null);
         }
 
-        public bool PostRating(byte rate, long missionId)
+        public int PostRating(byte rate, long missionId)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId")));
 
-            bool result = _HomeRepo.PostRating(rate, missionId, UserId);
+            int UserValid = _HomeRepo.ApplyMissionCheck(UserId, missionId);
 
-            return true;
+            if (UserValid == 1)
+            {
+                bool result = _HomeRepo.PostRating(rate, missionId, UserId);
+
+                return 1;
+            }
+            else if(UserValid == 2)
+            {
+                return 2;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
 

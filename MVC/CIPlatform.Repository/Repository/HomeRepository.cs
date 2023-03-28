@@ -250,18 +250,27 @@ namespace CIPlatform.Repository.Repository
 
                 var favmission = _DbContext.FavoriteMissions.Where(a => a.UserId == UserId && a.MissionId == objMission.MissionId);
                     missionData.IsFavMission = favmission.Count();
-               
 
+                var userratting = _DbContext.MissionRatings.Where(a => a.UserId == UserId && a.MissionId == objMission.MissionId);
+                if (userratting.Count() != 0)
+                {
+                    missionData.UserRating = userratting.FirstOrDefault().Rating;
+                }
+                else
+                {
+                    missionData.UserRating = 0;
+                }
 
                 missionData.StartDate = objMission.StartDate;
                 missionData.EndDate = objMission.EndDate;
+                missionData.IsApplied = (_DbContext.MissionApplications.FirstOrDefault(a => a.UserId == UserId && a.MissionId == objMission.MissionId) != null) ? 1 : 0;
 
 
                 missionData.MediaPath = MediaByMissionId(objMission.MissionId);
                 missionData.Title = objMission.Title;
                 missionData.CreatedAt = objMission.CreatedAt;
 
-                missionData.Rating = (int)MissionRatings(objMission.MissionId).Average(a => a.Rating);
+                missionData.AvgRating = (int)MissionRatings(objMission.MissionId).Average(a => a.Rating);
                 missionData.CommentByUser = MissionRatings(objMission.MissionId).Count();
 
                 missionData.Theme = GetMissionThemes(objMission.MissionThemeId);
@@ -429,10 +438,16 @@ namespace CIPlatform.Repository.Repository
             return commentView;
         }
 
-        public bool ApplyMission(long UserId, long MissionId)
+        public int ApplyMission(long UserId, long MissionId)
         {
-            if (_DbContext.MissionApplications.FirstOrDefault(a => a.UserId == UserId && a.MissionId == MissionId) != null)
-            { return false; }
+            if (_DbContext.MissionApplications.FirstOrDefault(a => a.UserId == UserId && a.MissionId == MissionId && a.ApprovalStatus == "Approve") != null)
+            { 
+                return 1; 
+            }
+            else if (_DbContext.MissionApplications.FirstOrDefault(a => a.UserId == UserId && a.MissionId == MissionId) != null)
+            {
+                return 0;
+            }
 
             else
             {
@@ -443,9 +458,24 @@ namespace CIPlatform.Repository.Repository
 
                 _DbContext.MissionApplications.Add(missionApplication);
                 _DbContext.SaveChanges();
-                return true;
+                return 2;
             }
 
+        }
+        public int ApplyMissionCheck(long UserId, long MissionId)
+        {
+            if (_DbContext.MissionApplications.FirstOrDefault(a => a.UserId == UserId && a.MissionId == MissionId && a.ApprovalStatus == "Approve") != null)
+            {
+                return 1;
+            }
+            else if (_DbContext.MissionApplications.FirstOrDefault(a => a.UserId == UserId && a.MissionId == MissionId) != null)
+            {
+                return 0;
+            }
+            else
+            {
+                return 2;
+            }
         }
 
 

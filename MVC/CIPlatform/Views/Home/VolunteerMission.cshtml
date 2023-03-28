@@ -1,5 +1,4 @@
-﻿
-@if (TempData["Success"] != null)
+﻿@if (TempData["Success"] != null)
 {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script type="text/javascript">
@@ -9,7 +8,7 @@
         }
         toastr.success('@TempData["Success"]', { timeOut: 100 })
     </script>
-    
+
 }
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
@@ -19,84 +18,74 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- Toastr library -->
-    
+
     <script src="~/js/site.js"></script>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-<!-- jQuery library -->
-<style>
-          .rating1 {
-    display: flex;
-    justify-content: center;
-    background-color: white;
-   
-}
-
-    .rating1 > label {
-        position: relative;
-        width: 1em;
-        font-size: 20px;
-        color: #F88634;
-        cursor: pointer
-    }
-
-        
-
-    .rating {
-    display: flex;
-    justify-content: center;
-    background-color: white;
-   
-}
-
-    .rating > input {
-        display: none
-    }
-
-    .rating > label {
-        position: relative;
-        width: 1em;
-        font-size: 30px;
-        color: #F88634;
-        cursor: pointer
-    }
-
-        .rating > label::before {
-            content: "\2605";
-            position: absolute;
-            opacity: 0
+    <!-- jQuery library -->
+    <style>
+        .rating1 {
+            display: flex;
+            justify-content: center;
+            background-color: white;
         }
 
-        .rating > label:hover:before,
-        .rating > label:hover ~ label:before {
-            opacity: 1 !important
+            .rating1 > label {
+                position: relative;
+                width: 1em;
+                font-size: 20px;
+                color: #F88634;
+                cursor: pointer
+            }
+
+
+
+        .rating ::before
+            display: flex;
+            justify-content: center;
+            background-color: white;
         }
 
-    .rating > input:checked ~ label:before {
-        opacity: 1
-    }
+            .rating > input {
+                display: none
+            }
 
-    .rating:hover > input:checked ~ label:before {
-        opacity: 0.4
-    }
+            .rating > label {
+                position: relative;
+                width: 1em;
+                font-size: 30px;
+                color: #F88634;
+                cursor: pointer
+            }
 
-    
-.disc_stars {
-    width: fit-content;
-    background: #ffffff;
-    display: block;
-    margin: auto;
-    transform: translateY(-100%);
-}
+                .rating > label::before {
+                    content: "\2605";
+                    position: absolute;
+                    opacity: 0
+                }
+
+                .rating > label:hover::before,
+                .rating > label:hover {
+                    opacity: 1 !important;
+                color: #F88634;
+                    
+                    
+                }
 
 
+        .disc_stars {
+            width: fit-content;
+            background: #ffffff;
+            display: block;
+            margin: auto;
+            transform: translateY(-100%);
+        }
 
-
-</style>
+    </style>
 </head>
 <body>
 
@@ -247,7 +236,7 @@
                                             }
                                             else
                                             {
-                                                <button type="submit"  onclick="Add(@ViewBag.missionDatas.MissionId, 'btnAddToFavVolun_')" class="btn rounded-5  " style="border-color: black;"><i id="addToFavVolun_@ViewBag.missionDatas.MissionId" class="bi bi-heart"></i><span id="favButtonText">Add to favourite</span></button>
+                                                <button type="submit" onclick="Add(@ViewBag.missionDatas.MissionId, 'btnAddToFavVolun_')" class="btn rounded-5  " style="border-color: black;"><i id="addToFavVolun_@ViewBag.missionDatas.MissionId" class="bi bi-heart"></i><span id="favButtonText">Add to favourite</span></button>
                                             }
                                         </div>
                                         <div class="col-xl-6 col-12 text-center  ">
@@ -300,42 +289,23 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        </div>
+                                    </div>
 
                                 </li>
-                           
-                                <li class="list-group-item ">
+
+                                <li class="list-group-item">
                                     <div class="rating disc_stars text-center" style="margin-top: 15px; z-index:5;">
-                                            
-                                        
-                                            @for (short i = 1; i <= 5; i++)
-                                            {
-                                                if (i == @ViewBag.missionDatas.Rating)
-                                                {
-                                                    <input type="radio" name="myradio" value="@i">
 
-                                                    <label for="i" checked onclick="PostRating(@ViewBag.missionDatas.MissionId, @i)">☆</label>
-                                                }
-                                                else
-                                                {
-                                                    <input type="radio" name="myradio" value="@i">
 
-                                                    <label for="i" onclick="PostRating(@ViewBag.missionDatas.MissionId, @i)">☆</label>
-                                                }
-                                            }
-                                      
+                                        @for (var j = 1; j <= (@ViewBag.missionDatas.UserRating); j++)
+                                        {
+                                            <label class="rtcolor checked" style="color: #F88634; text-shadow: 0 0 0 #F88634;" id="rating_@j">&#9733;</label>
+                                        }
+                                        @for (int j = (@ViewBag.missionDatas.UserRating) + 1; j <= 5; j++)
+                                        {
+                                            <label class="rtcolor text-black" id="rating_@j">☆</label>
+                                        }
 
-                                        @*@if (true)
-                                            {
-                                            for (var i = 0; i < (@ViewBag.missionDatas.Rating); i++)
-                                            {
-                                            <i class="fa fa-star rating-color checked"></i>
-                                            }
-                                            for (var i = 0; i < 5 - (@ViewBag.missionDatas.Rating); i++)
-                                            {
-                                            <i class="fa fa-star"></i>
-                                            }
-                                            }*@
 
                                     </div>
                                 </li>
@@ -430,7 +400,7 @@
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <h4 class="pt-3 pb-2">Introduction</h4>@ViewBag.missionDatas.ShortDescription
-                         <h4 class="pt-3 pb-2">Challenge</h4>
+                        <h4 class="pt-3 pb-2">Challenge</h4>
                         recusandae commodi error corporis voluptatem architecto, a placeat eveniet neque? Sequi!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia ipsum ratione quae! Earum,
                         atque quidem! Suscipit architecto, itaque, quae quia quaerat eligendi blanditiis sequi tempore
                         veritatis aliquid id voluptates unde inventore alias dolorum et modi, fuga vitae possimus. Quam
@@ -465,7 +435,7 @@
                         pariatur laudantium optio, molestiae reprehenderit hic! Hic, beatae cumque harum excepturi rem,
                         animi minima eius porro sequi doloremque incidunt distinctio enim ipsam quis in.
                     </div>
-                   <partial name="_Comment" />
+                    <partial name="_Comment" />
                 </div>
             </div>
 
@@ -497,18 +467,18 @@
                         </div>
                         <div class="col-8">
                             <span class="rating1  text-center">
-                       
+
                                 @if (true)
-                                            {
-                                            for (var i = 0; i < (@ViewBag.missionDatas.Rating); i++)
-                                            {
-                                                 <label style="color: #F88634; text-shadow: 0 0 0 #F88634;">&#9733;</label>
-                                            }
-                                            for (var i = 0; i < 5 - (@ViewBag.missionDatas.Rating); i++)
-                                            {
-                                                <label style="color: black;">☆</label>
-                                            }
-                                            }
+                                {
+                                    for (var i = 0; i < (@ViewBag.missionDatas.AvgRating); i++)
+                                    {
+                                        <label style="color: #F88634; text-shadow: 0 0 0 #F88634;">&#9733;</label>
+                                    }
+                                    for (var i = 0; i < 5 - (@ViewBag.missionDatas.AvgRating); i++)
+                                    {
+                                        <label style="color: black;">☆</label>
+                                    }
+                                }
                                 (by @ViewBag.missionDatas.CommentByUser volunteers)
 
                             </span>
@@ -517,62 +487,62 @@
                 </div>
                 <br />
                 <div id="volunteer">
-             <partial name="_RecentVolunteer" />
-             </div>
+                    <partial name="_RecentVolunteer" />
+                </div>
             </div>
         </div>
-   
 
-    <br />
-    <br />
-    <hr />
 
-    <div class="row">
-        <h3 class="text-center">Related Missions</h3>
         <br />
+        <br />
+        <hr />
+
+        <div class="row">
+            <h3 class="text-center">Related Missions</h3>
+            <br />
 
 
-       
-           @foreach (var item in @ViewBag.relatedmission)
-        {
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 pb-3" style="">
-                <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
-                    <div class="thumbnail col-lg-12 col-md-12 col-sm-12 ">
-                        <div class="card">
-                            <img src="~/@item.MediaPath" class="img-fluid">
-                            <div class="position-relative">
-                                <div class="position-absolute top-100 start-50 translate-middle rounded-5 p-2" style="background-color: white;">@item.Theme</div>
-                            </div>
-                            <div class="card-img-overlay ">
-                                <div class="d-flex flex-column  text-end pb-5" style="margin-inline: auto;">
-                                    <div class="">
-                                        <button class="btn rounded-5 border" style="background-color:black; opacity:50%;">
-                                            <img src="~/Assets/images/pin.png" class="img-fluid cancle-img" alt="">
-                                            <span style="color:white;">@item.CityName</span>
-                                        </button>
-                                    </div>
-                                    <div class="pt-1">
-                                        @if (@item.IsFavMission == 1)
-                                        {
 
-                                                <button type="submit" onclick="Add(@item.MissionId,'btnaddToFav_')" class="btn rounded-5 border-light" style="background-color:black; opacity:50%;"><i class="bi bi-heart-fill  text-danger" id="addToFavGrid_@item.MissionId"></i></button>
-                                        }
-                                        else
-                                        {
-                                                <button type="submit" onclick="Add(@item.MissionId,'btnaddToFav_')" class="btn rounded-5  border-light" style="background-color:black; opacity:50%;"><i id="addToFavGrid_@item.MissionId" class="bi bi-heart text-white"></i></button>
-                                        }
+            @foreach (var item in @ViewBag.relatedmission)
+            {
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 pb-3" style="">
+                    <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
+                        <div class="thumbnail col-lg-12 col-md-12 col-sm-12 ">
+                            <div class="card">
+                                <img src="~/@item.MediaPath" class="img-fluid">
+                                <div class="position-relative">
+                                    <div class="position-absolute top-100 start-50 translate-middle rounded-5 p-2" style="background-color: white;">@item.Theme</div>
+                                </div>
+                                <div class="card-img-overlay ">
+                                    <div class="d-flex flex-column  text-end pb-5" style="margin-inline: auto;">
+                                        <div class="">
+                                            <button class="btn rounded-5 border" style="background-color:black; opacity:70%;">
+                                                <img src="~/Assets/images/pin.png" class="img-fluid cancle-img" alt="">
+                                                <span style="color:white;">@item.CityName</span>
+                                            </button>
+                                        </div>
+                                        <div class="pt-1">
+                                            @if (@item.IsFavMission == 1)
+                                            {
+
+                                                <button type="submit" onclick="Add(@item.MissionId,'btnaddToFav_')" class="btn rounded-5 border-light" style="background-color:black; opacity:70%;"><i class="bi bi-heart-fill  text-danger" id="addToFavGrid_@item.MissionId"></i></button>
+                                            }
+                                            else
+                                            {
+                                                <button type="submit" onclick="Add(@item.MissionId,'btnaddToFav_')" class="btn rounded-5  border-light" style="background-color:black; opacity:70%;"><i id="addToFavGrid_@item.MissionId" class="bi bi-heart text-white"></i></button>
+                                            }
 
 
-                                    </div>
-                                    <div class="">
-                                    @*    <button class="btn btn-box rounded-5 border-light" >
-                                            <img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt="">
-                                        </button>*@
+                                        </div>
+                                        <div class="">
+                                            @*    <button class="btn btn-box rounded-5 border-light" >
+                                                <img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt="">
+                                                </button>*@
 
-                                        <button type="submit" class="btn rounded-5  border-light" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color:black; opacity:50%;"><img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt=""> </button>
+                                            <button type="submit" class="btn rounded-5  border-light" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color:black; opacity:70%;"><img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt=""> </button>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -617,325 +587,396 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="caption prod-caption p-3 " style="border: solid; border-width: thin; border-color:lightgray">
-                            <h3>@item.Title</h3>
-                            <p>@item.ShortDescription</p>
-                            <div class="d-flex rating1">
-                                <div><h5>@item.OrganizationName</h5></div>
-                                <div class="col d-flex justify-content-end">
-                                    @*@if (true)
-                                    {
-                                        for (var i = 0; i < (@item.Rating); i++)
-                                        {
-                                            <i class="fa fa-star rating-color checked"></i>
-                                        }
-                                        for (var i = 0; i < 5 - (@item.Rating); i++)
-                                        {
-                                            <i class="fa fa-star"></i>
-                                        }
-                                    }*@
-
-                                     <span class="rating1  text-center">
-                       
-                                            @for (var i = 0; i < (@item.Rating); i++)
+                            <div class="caption prod-caption p-3 " style="border: solid; border-width: thin; border-color:lightgray">
+                                <h3>@item.Title</h3>
+                                <p>@item.ShortDescription</p>
+                                <div class="d-flex rating1">
+                                    <div><h5>@item.OrganizationName</h5></div>
+                                    <div class="col d-flex justify-content-end">
+                                        @*@if (true)
                                             {
-                                                 <label style="color: #F88634; text-shadow: 0 0 0 #F88634;">&#9733;</label>
+                                            for (var i = 0; i < (@item.Rating); i++)
+                                            {
+                                            <i class="fa fa-star rating-color checked"></i>
                                             }
-                                            @for (var i = 0; i < 5 - (@item.Rating); i++)
+                                            for (var i = 0; i < 5 - (@item.Rating); i++)
+                                            {
+                                            <i class="fa fa-star"></i>
+                                            }
+                                            }*@
+
+                                        <span class="rating1  text-center">
+
+                                            @for (var i = 0; i < (@item.AvgRating); i++)
+                                            {
+                                                <label style="color: #F88634; text-shadow: 0 0 0 #F88634;">&#9733;</label>
+                                            }
+                                            @for (var i = 0; i < 5 - (@item.AvgRating); i++)
                                             {
                                                 <label style="color: black;">☆</label>
                                             }
 
-                            </span>
-                                </div>
-                            </div>
-                            <br>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"></li>
-                                <li class="list-group-item">
-                                    <div class=" text-center py-3" style="margin-top: -45px; ">
-                                        @if (@item.MissionType == "Goal")
-                                        {
-                                            <button type="submit" href="#" class="btn rounded-5  " style="border-color: black; background: white">@item.MissionGoalText</button>
-                                        }
-                                        else
-                                        {
-                                            <button type="submit" href="#" class="btn rounded-5  " style="border-color: black; background: white"> From @item.StartDate.ToString("dd/MM/yyyy") untill @item.EndDate.ToString("dd/MM/yyyy")</button>
-                                        }
+                                        </span>
                                     </div>
-                                    <div class="row">
-                                        @if (@item.MissionType == "Goal")
-                                        {
+                                </div>
+                                <br>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"></li>
+                                    <li class="list-group-item">
+                                        <div class=" text-center py-3" style="margin-top: -45px; ">
+                                            @if (@item.MissionType == "Goal")
+                                            {
+                                                <button type="submit" href="#" class="btn rounded-5  " style="border-color: black; background: white">@item.MissionGoalText</button>
+                                            }
+                                            else
+                                            {
+                                                <button type="submit" href="#" class="btn rounded-5  " style="border-color: black; background: white"> From @item.StartDate.ToString("dd/MM/yyyy") untill @item.EndDate.ToString("dd/MM/yyyy")</button>
+                                            }
+                                        </div>
+                                        <div class="row">
+                                            @if (@item.MissionType == "Goal")
+                                            {
 
-                                            <div class="col-6 ">
-                                                <div class="card  border-0">
-                                                    <div class="d-flex justify-content-center align-items-center">
-                                                        <img src="~/Assets/images/achieved.png" />
-                                                        <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
-                                                            <div class="progress">
-                                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%; background-color:#F88634;"></div>
+                                                <div class="col-6 ">
+                                                    <div class="card  border-0">
+                                                        <div class="d-flex justify-content-center align-items-center">
+                                                            <img src="~/Assets/images/achieved.png" />
+                                                            <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
+                                                                <div class="progress">
+                                                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%; background-color:#F88634;"></div>
+                                                                </div>
+                                                                <div> <span class="">8000 achieved</span> </div>
                                                             </div>
-                                                            <div> <span class="">8000 achieved</span> </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        }
-                                        else
-                                        {
-                                            <div class="col-6 ">
+                                            }
+                                            else
+                                            {
+                                                <div class="col-6 ">
+                                                    <div class="card  border-0">
+                                                        <div class=" d-flex flex-row">
+                                                            <div class=""><img src="~/Assets/images/Seats-left.png" class="img-fluid"></div>
+                                                            <div class=" ">
+                                                                <h5 class="card-title" style="text-transform: start;"> &nbsp; @item.Availability</h5>
+                                                                <p class="card-text ">Seats left</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            <div class="col-6">
                                                 <div class="card  border-0">
                                                     <div class=" d-flex flex-row">
-                                                        <div class=""><img src="~/Assets/images/Seats-left.png" class="img-fluid"></div>
+                                                        <div class=""><img src="~/Assets/images/deadline.png" class="img-fluid"></div>
                                                         <div class=" ">
-                                                            <h5 class="card-title" style="text-transform: start;"> &nbsp; @item.Availability</h5>
-                                                            <p class="card-text ">Seats left</p>
+                                                            <h6 class="card-title"> @item.EndDate.ToString("dd/MM/yyyy")</h6>
+                                                            <p class="card-text ">Deadline</p>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        }
-                                        <div class="col-6">
-                                            <div class="card  border-0">
-                                                <div class=" d-flex flex-row">
-                                                    <div class=""><img src="~/Assets/images/deadline.png" class="img-fluid"></div>
-                                                    <div class=" ">
-                                                        <h6 class="card-title"> @item.EndDate.ToString("dd/MM/yyyy")</h6>
-                                                        <p class="card-text ">Deadline</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item"></li>
-                            </ul>
-                            <div class=" text-center pb-2">
-                                @*onclick="window.location= '@Url.Action( "VolunteerMission", "Home", new {id = @item.MissionId})'"*@
-                                <a  asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@item.MissionId">
-                                    <button type="submit" class="btn applyButton "> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
-                                </a>
-                               </div>
+                                    </li>
+                                    <li class="list-group-item"></li>
+                                </ul>
+                                <div class=" text-center pb-2">
+                                    @*onclick="window.location= '@Url.Action( "VolunteerMission", "Home", new {id = @item.MissionId})'"*@
+                                    <a asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@item.MissionId">
+                                        <button type="submit" class="btn applyButton "> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        }
-    </div>
+            }
+        </div>
     </div>
 
 
 
 </body>
-                <script>
-                    function searchMission(pg) {
+  <script>
+
+        $(document).ready(function () {
+                $("#rating_1").click(function () {
+                    $(".rtcolor").removeClass("text-warning");
+                    
+                    PostRating(1);
+                });
+                $("#rating_2").click(function () {
+                    $(".rtcolor").removeClass("text-warning");
+                    PostRating(2);
+                });
+                $("#rating_3").click(function () {
+                    console.log("ittttttttttt")
+                    $(".rtcolor").removeClass("text-warning");
+                    PostRating(3);
+                });
+                $("#rating_4").click(function () {
+                    $(".rtcolor").removeClass("text-warning");
+                    PostRating(4);
+                });
+                $("#rating_5").click(function () {
+                    debugger
+                    console.log($('#rating_5'));
+                    $(".rtcolor").removeClass("text-warning");
+                    PostRating(5);
+                });
+        });
+           function PostRating(i) {
+
+
+        debugger
+
+        $.ajax({
+            type: "POST",
+            url: '/Home/PostRating',
+            data: {
+                'rate': i,
+                'MissionId': @ViewBag.missionDatas.MissionId
+
+            },
+            success: (data) => {
+                if(data == 1)
+                {
+                 debugger
+                        location.reload();
+                }
+                else if(data == 2)
+                {
+                    toastr.error('First apply for the mission');
+                }
+                else if(data == 0)
+                {
+                    toastr.info('Please wait for application approve');
+                }
+
+            },
+
+            error: function () {
+                alert("An error occurred while Sending Mission Rating!");
+            }
+        });
+
+    }
        
 
-        if (pg == undefined) {
-            pg = 1;
+    </script>
+<script>
+                function searchMission(pg) {
+
+
+    if (pg == undefined) {
+        pg = 1;
+    }
+    debugger;
+    $.ajax({
+        url: "/Home/Volunteer",
+        method: "POST",
+        data: {
+            "MissionId" : @ViewBag.missionDatas.MissionId,
+            "pg": pg
+        },
+        success: function (data) {
+            $('#volunteer').html(data);
+        },
+        error: function (request, error) {
+            console.log(error);
         }
-        debugger;
-        $.ajax({
-            url: "/Home/Volunteer",
-            method: "POST",
-            data: {
-                "MissionId" : @ViewBag.missionDatas.MissionId,
-                "pg": pg
-            },
-            success: function (data) {
-                $('#volunteer').html(data);
-            },
-            error: function (request, error) {
-                console.log(error);
-            }
-        })
-        }
-                </script>
+    })
+    }
+</script>
 
 <script>
 
-   @* function Add(MissionId, btn)
+    @* function Add(MissionId, btn)
+        {
+        debugger
+        $.ajax({
+
+        url:"/Home/AddToFavourite",
+        method: "POST",
+
+        data:
+        {
+        MissionId:MissionId
+
+        },
+        success:function(data)
+        {
+        console.log(data)
+        debugger
+        toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+        };
+        console.log(MissionId)
+        console.log(btn)
+        if (data == true) {
+        debugger
+        if (btn == 'btnAddToFavVolun_')
+        {
+
+        $('#favButtonText').text('Remove from Favourite');
+        $("#addToFavVolun_" + MissionId).removeClass('bi-heart text-black').addClass('bi-heart-fill  text-danger');
+        toastr.success('Added favourite successfully');
+        }
+        else if(btn == 'btnaddToFav_')
+        {
+        $("#addToFav_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
+        toastr.success('Added favourite successfully');
+        }
+        }
+        else {
+        if (btn == 'btnAddToFavVolun_')
+        {
+
+        $('#favButtonText').text('Add to Favourite');
+        $("#addToFavVolun_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-black');
+        toastr.error('Remove favourite successfully');
+        }
+        else if (btn == 'btnaddToFav_')
+        {
+        $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
+        toastr.error('Remove favourite successfully');
+        }
+
+        }
+        }
+        })
+        }*@
+
+        function AddComments(missionId)
+    {
+
+    var comment = $("#user-comment").val();
+
+    if(comment == null || comment=="")
+    {
+    $("#comment-status").html("please enter the comment");
+    $("#comment-status").css("color","red");
+    }
+    else
     {
     debugger
     $.ajax({
 
-    url:"/Home/AddToFavourite",
+    url:"/Home/AddComment",
     method: "POST",
 
     data:
     {
-    MissionId:MissionId
-    
+    comment:comment,
+    missionId:missionId
     },
     success:function(data)
     {
-        console.log(data)
-        debugger
-            toastr.options = {
-            "closeButton": true,
-            "progressBar": true
-        };
-        console.log(MissionId)
-        console.log(btn)
-                if (data == true) {
-                    debugger
-                    if (btn == 'btnAddToFavVolun_') 
-                    {
-
-                        $('#favButtonText').text('Remove from Favourite');
-                        $("#addToFavVolun_" + MissionId).removeClass('bi-heart text-black').addClass('bi-heart-fill  text-danger');
-                        toastr.success('Added favourite successfully');
-                    }
-                    else if(btn == 'btnaddToFav_')
-                    {
-                        $("#addToFav_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
-                        toastr.success('Added favourite successfully');
-                    }
-                }
-                else {
-                    if (btn == 'btnAddToFavVolun_') 
-                    {
-
-                        $('#favButtonText').text('Add to Favourite');
-                        $("#addToFavVolun_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-black');
-                        toastr.error('Remove favourite successfully');
-                    }
-                    else if (btn == 'btnaddToFav_') 
-                    {
-                        $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
-                        toastr.error('Remove favourite successfully');
-                    }
-                       
-                }
-            }
-        })
-    }*@
-
-    function AddComments(missionId)
-{
-
-var comment = $("#user-comment").val();
-
-if(comment == null || comment=="")
-{
-$("#comment-status").html("please enter the comment");
-$("#comment-status").css("color","red");
-}
-else
-{
-debugger
-$.ajax({
-
-url:"/Home/AddComment",
-method: "POST",
-
-data:
-{
-comment:comment,
-missionId:missionId
-},
-success:function(data)
-{
-$("#comment-status").html("comment sent for approvel");
-$("#comment-status").css("color","green"); 
-$('#user-comment').val(''); 
-}
-})
-}
-}
-
-function ApplyMission(missionId)
-{
-    debugger
-    $.ajax({
-        url:"/Home/ApplyMission",
-        method:"Post",
-
-        data:{ missionId : missionId},
-
-        success: function(data)
-        {
-            toastr.options = {
-            "closeButton": true,
-            "progressBar": true
-        };
-            if(data == true)
-            {
-                toastr.success('Applied mission successfully');
-            }
-            else
-            {
-                toastr.error('You alredy applied');
-            }
-
-        },
-
-         error: function () {
-                       
-                    }
+    $("#comment-status").html("comment sent for approvel");
+    $("#comment-status").css("color","green");
+    $('#user-comment').val('');
+    }
     })
-}
-
-
- function sendInvitation(MissionId)
-    {
-        debugger
-        var CoWorkers = [];
-
-         $('input[name="CoWorkers"]:checked').each(function(){
-             CoWorkers.push(this.id);
-         });
-
-         $.ajax({
-             url:"/Home/InviteWorker",
-             method: "POST",
-             data:{
-                 "MissionId" : MissionId,
-                 "CoWorkers" : CoWorkers
-             },
-             success:function(data){
-                $("#mission").html(data);
-             },
-             error: function(request,error){
-                 
-                 console.log(error);
-             }
-         })
-
+    }
     }
 
-    function PostRating(x,i) {
+        function ApplyMission(missionId)
+        {
+            debugger
+            $.ajax({
+                url:"/Home/ApplyMission",
+                method:"Post",
 
-    
-    debugger
-    
-    var missionId = x;
-     //var rate = document.getElementsByName('input[name="myradio"]:checked').va;
-    //console.log(rate);
-    $.ajax({
-        type: "POST",
-        url: '/Home/PostRating',
-        data: {
-            'rate': i,
-            'MissionId': missionId
-            
-        },
-        success: (data) => {
-            console.log(data);
-            
-        },
+                data:{ missionId : missionId},
 
-        error: function () {
-            alert("An error occurred while Sending Mission Rating!");
+                success: function(data)
+                {
+                    toastr.options = {
+                    "closeButton": true,
+                    "progressBar": true
+                };
+                    if(data == 2)
+                    {
+                        toastr.success('Applied mission successfully');
+                    }
+                    else if(data == 1)
+                    {
+                        toastr.error('You alredy applied');
+                    }
+                    else if(data == 0)
+                    {
+                        toastr.info('Please wait your application in not approved');
+                    }
+
+                },
+
+                 error: function () {
+
+                            }
+            })
         }
-    });
-     
-}
+
+
+     function sendInvitation(MissionId)
+        {
+            debugger
+            var CoWorkers = [];
+
+             $('input[name="CoWorkers"]:checked').each(function(){
+                 CoWorkers.push(this.id);
+             });
+
+             $.ajax({
+                 url:"/Home/InviteWorker",
+                 method: "POST",
+                 data:{
+                     "MissionId" : MissionId,
+                     "CoWorkers" : CoWorkers
+                 },
+                 success:function(data){
+                    $("#mission").html(data);
+                 },
+                 error: function(request,error){
+
+                     console.log(error);
+                 }
+             })
+
+        }
+
+        @*function PostRating(x,i) {
+
+
+        debugger
+
+        var missionId = x;
+         //var rate = document.getElementsByName('input[name="myradio"]:checked').va;
+        //console.log(rate);
+        $.ajax({
+            type: "POST",
+            url: '/Home/PostRating',
+            data: {
+                'rate': i,
+                'MissionId': missionId
+
+            },
+            success: (data) => {
+                console.log(data);
+
+            },
+
+            error: function () {
+                alert("An error occurred while Sending Mission Rating!");
+            }
+        });
+*@
+    
 
 
 </script>

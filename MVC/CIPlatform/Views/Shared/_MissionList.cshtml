@@ -19,6 +19,11 @@
 </style>
 
 <div class="container ">
+    <div class="row" style="margin-top:-40px">
+         <div class="col-lg-6 col-md-6 col-sm-6 col-12  ">
+                <h3>Explore @ViewBag.totalMission missions</h3>
+            </div>
+            </div>
     <div class="row">
 
         @foreach (var item in ViewBag.missionDatas)
@@ -34,9 +39,15 @@
                             <div class="d-flex flex-column  text-end pb-5" style="margin-inline: auto;">
 
                                 <div class="d-flex justify-content-between">
-                                    <label style="background-color:green; color:aliceblue; padding:5px">APPLIED</label>
-
-                                    <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
+                                    @if (@item.IsApplied == 1)
+                                    {
+                                        <label class="rounded-5 border-light" style="background-color:forestgreen; opacity:80%; padding:5px;color:white;">APPLIED</label>
+                                    }
+                                    else
+                                    {
+                                        <label ></label>
+                                    }
+                                    <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 70%;">
                                         <img src="~/Assets/images/pin.png" class="img-fluid cancle-img" alt="">
                                         <span style="color:white;">@item.CityName</span>
                                     </button>
@@ -46,17 +57,17 @@
                                     @if (@item.IsFavMission == 1)
                                         {
                                           
-                                           <button type="submit"  onclick="Add(@item.MissionId, 'btnAddToFavVolun_')" class="btn rounded-5 border-light" style="background-color:black; opacity:50%;"><i class="bi bi-heart-fill  text-danger" id="addToFavList_@item.MissionId"></i></button>
+                                           <button type="submit"  onclick="Add(@item.MissionId, 'btnAddToFavVolun_')" class="btn rounded-5 border-light" style="background-color:black; opacity:70%;"><i class="bi bi-heart-fill  text-danger" id="addToFavList_@item.MissionId"></i></button>
                                         }
                                         else
                                         {
-                                            <button type="submit"  onclick="Add(@item.MissionId, 'btnAddToFavVolun_')" class="btn rounded-5  border-light" style="background-color:black; opacity:50%;"><i id="addToFavList_@item.MissionId" class="bi bi-heart text-white"></i></button>
+                                            <button type="submit"  onclick="Add(@item.MissionId, 'btnAddToFavVolun_')" class="btn rounded-5  border-light" style="background-color:black; opacity:70%;"><i id="addToFavList_@item.MissionId" class="bi bi-heart text-white"></i></button>
                                         }
                                 </div>
 
                                 <div class="">
 
-                                  <button type="submit" class="btn rounded-5  border-light" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="background-color:black; opacity:50%;"><img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt=""> </button>
+                                  <button type="submit" class="btn rounded-5  border-light" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="background-color:black; opacity:70%;"><img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt=""> </button>
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -136,11 +147,11 @@
                                 <div class="col d-flex justify-content-end">
                                    <span class="rating  text-center">
                        
-                                            @for (var i = 0; i < (@item.Rating); i++)
+                                            @for (var i = 0; i < (@item.AvgRating); i++)
                                             {
                                                  <label style="color: #F88634; text-shadow: 0 0 0 #F88634;">&#9733;</label>
                                             }
-                                            @for (var i = 0; i < 5 - (@item.Rating); i++)
+                                            @for (var i = 0; i < 5 - (@item.AvgRating); i++)
                                             {
                                                 <label style="color: black;">☆</label>
                                             }
