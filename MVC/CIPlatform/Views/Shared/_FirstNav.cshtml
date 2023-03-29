@@ -2,7 +2,10 @@
             <div class="container">
                 <ul class="navbar-nav storyp">
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="StoryList">Stories</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="MissionGrid">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Story" asp-action="StoryList">Stories</a>
                     </li>
                     <li class="nav-item dropdown policyp">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -29,7 +32,7 @@
                         <ul class=" dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
                             <li><a class="dropdown-item" href="#">Add Profile</a></li>
                             <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
-                            <li><a class="dropdown-item" asp-controller="User" asp-action="Login">Log Out</a></li>
+                            <li><a class="dropdown-item" asp-controller="User" asp-action="LogOut">Log Out</a></li>
                         </ul>
                     </div>
                 </div>

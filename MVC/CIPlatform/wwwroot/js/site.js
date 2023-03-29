@@ -68,7 +68,7 @@ function Add(MissionId,btn) {
                 debugger
                 if (btn == 'btnAddToFavVolun_' || btn == 'btnAddToFavGrid_') {
 
-                    $('#favButtonText').text('Remove from Favourite');
+                    $('#favButtonText').text(' Remove from Favourite');
                     $("#addToFavGrid_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
                     $("#addToFavVolun_" + MissionId).removeClass('bi-heart text-black').addClass('bi-heart-fill  text-danger');
                     $("#addToFavList_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
@@ -86,7 +86,7 @@ function Add(MissionId,btn) {
 
                 if (btn == 'btnAddToFavVolun_' || btn == 'btnAddToFavGrid_') {
 
-                    $('#favButtonText').text('Add to Favourite');
+                    $('#favButtonText').text(' Add to Favourite');
                     $("#addToFavGrid_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
                     $("#addToFavVolun_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-black');
                     $("#addToFavList_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');

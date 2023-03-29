@@ -9,9 +9,11 @@
             <div class="howerimg">
                 <img src="~/@story.MediaPath" alt="Avatar" width="100%">
                 <div class=" overlayforhower p-0">
-                    <button class="bg-transparent border-white rounded-pill">
+                    <a asp-controller="Story" asp-action="StoryDetail" asp-route-id="@story.MissionId">
+                    <button type="submit"  class="btn bg-transparent border-white rounded-pill">
                         <span style="color:white">View Details &nbsp;<i class="bi bi-arrow-right"></i></span>
                     </button>
+                    </a>
                 </div>
                 <div class="position-relative">
                     <div class="position-absolute top-100 start-50 translate-middle rounded-pill p-2" style="background-color: white;">@story.Theme</div>
@@ -36,5 +38,5 @@
 
       
     </div>
-
+    <partial name="_Pagination" />
 </div>

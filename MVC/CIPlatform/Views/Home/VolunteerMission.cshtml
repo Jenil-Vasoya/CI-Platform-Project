@@ -179,22 +179,23 @@
                                         }
                                         else
                                         {
-                                            <button class="btn rounded-5  " style="border-color: black; background: white; z-index:4;"> From @ViewBag.missionDatas.StartDate untill @ViewBag.missionDatas.EndDate</button>
+                                            <button class="btn rounded-5  " style="border-color: black; background: white; z-index:4;"> From @ViewBag.missionDatas.StartDate.ToString("dd/MM/yyyy") untill @ViewBag.missionDatas.EndDate.ToString("dd/MM/yyyy")</button>
                                         }
                                     </div>
                                     <div class="row">
                                         @if (@ViewBag.missionDatas.MissionType == "Goal")
                                         {
 
+                                            var a = @ViewBag.missionDatas.GoalValue1;
                                             <div class="col-6 ">
                                                 <div class="card  border-0">
                                                     <div class="d-flex justify-content-center align-items-center">
                                                         <img src="~/Assets/images/achieved.png" />
                                                         <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
                                                             <div class="progress">
-                                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%; background-color:#F88634;"></div>
+                                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: @a%; background-color:#F88634;"></div>
                                                             </div>
-                                                            <div> <span class="">8000 achieved</span> </div>
+                                                            <div> <span class="">@ViewBag.missionDatas.CompletedGoal achieved</span> </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -219,7 +220,7 @@
                                                 <div class=" d-flex flex-row">
                                                     <div class=""><img src="~/Assets/images/deadline.png" class="img-fluid"></div>
                                                     <div class=" ">
-                                                        <h6 class="card-title">@ViewBag.missionDatas.EndDate.ToString("dd/MM/yyyy")</h6>
+                                                        <h6 class="card-title">@ViewBag.missionDatas.Deadline.ToString("dd/MM/yyyy")</h6>
                                                         <p class="card-text ">Deadline</p>
                                                     </div>
                                                 </div>
@@ -236,11 +237,11 @@
                                             }
                                             else
                                             {
-                                                <button type="submit" onclick="Add(@ViewBag.missionDatas.MissionId, 'btnAddToFavVolun_')" class="btn rounded-5  " style="border-color: black;"><i id="addToFavVolun_@ViewBag.missionDatas.MissionId" class="bi bi-heart"></i><span id="favButtonText">Add to favourite</span></button>
+                                                <button type="submit" onclick="Add(@ViewBag.missionDatas.MissionId, 'btnAddToFavVolun_')" class="btn rounded-5  " style="border-color: black;"><i id="addToFavVolun_@ViewBag.missionDatas.MissionId" class="bi bi-heart"></i>&nbsp;<span id="favButtonText">Add to favourite</span></button>
                                             }
                                         </div>
                                         <div class="col-xl-6 col-12 text-center  ">
-                                            <button type="submit" class="btn rounded-5  " style="border-color: black;" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="~/Assets/images/add1.png" class=" img-fluid cancle-img" alt="">Recommand Co-Worker</button>
+                                            <button type="submit" class="btn rounded-5  " style="border-color: black;" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="~/Assets/images/add1.png" class=" img-fluid cancle-img" alt=""> &nbsp;Recommand Co-Worker</button>
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -299,11 +300,11 @@
 
                                         @for (var j = 1; j <= (@ViewBag.missionDatas.UserRating); j++)
                                         {
-                                            <label class="rtcolor checked" style="color: #F88634; text-shadow: 0 0 0 #F88634;" id="rating_@j">&#9733;</label>
+                                            <label class="rtcolor checked" style="color: #F88634; text-shadow: 0 0 0 #F88634;" onclick="Rate(@j,@ViewBag.missionDatas.MissionId)">&#9733;</label>
                                         }
                                         @for (int j = (@ViewBag.missionDatas.UserRating) + 1; j <= 5; j++)
                                         {
-                                            <label class="rtcolor text-black" id="rating_@j">☆</label>
+                                            <label class="rtcolor text-black" onclick="Rate(@j,@ViewBag.missionDatas.MissionId)">☆</label>
                                         }
 
 
@@ -362,9 +363,17 @@
                             </div>
 
                             <div class=" text-center pt-3">
-                                <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton "> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
+
+                                @if(@ViewBag.missionDatas.Availability == 0)
+                                {
+                                     <button type="button" disabled  class="btn applyButton ">Sorry seats left !!</button>
+                                }
+                                else
+                                {
+                                    <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton "> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
+                                }
                             </div>
-                            <p id="applymsg"></p>
+                         
 
                         </div>
 
@@ -641,19 +650,20 @@
                                             @if (@item.MissionType == "Goal")
                                             {
 
-                                                <div class="col-6 ">
-                                                    <div class="card  border-0">
-                                                        <div class="d-flex justify-content-center align-items-center">
-                                                            <img src="~/Assets/images/achieved.png" />
-                                                            <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
-                                                                <div class="progress">
-                                                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%; background-color:#F88634;"></div>
-                                                                </div>
-                                                                <div> <span class="">8000 achieved</span> </div>
+                                                var a = @item.GoalValue1;
+                                            <div class="col-6 ">
+                                                <div class="card  border-0">
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                        <img src="~/Assets/images/achieved.png" />
+                                                        <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
+                                                            <div class="progress">
+                                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: @a%; background-color:#F88634;"></div>
                                                             </div>
+                                                            <div> <span class="">@item.CompletedGoal achieved</span> </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
                                             }
                                             else
                                             {
@@ -674,7 +684,7 @@
                                                     <div class=" d-flex flex-row">
                                                         <div class=""><img src="~/Assets/images/deadline.png" class="img-fluid"></div>
                                                         <div class=" ">
-                                                            <h6 class="card-title"> @item.EndDate.ToString("dd/MM/yyyy")</h6>
+                                                            <h6 class="card-title"> @item.Deadline.ToString("dd/MM/yyyy")</h6>
                                                             <p class="card-text ">Deadline</p>
                                                         </div>
                                                     </div>
@@ -703,34 +713,13 @@
 
 </body>
   <script>
-
-        $(document).ready(function () {
-                $("#rating_1").click(function () {
-                    $(".rtcolor").removeClass("text-warning");
-                    
-                    PostRating(1);
-                });
-                $("#rating_2").click(function () {
-                    $(".rtcolor").removeClass("text-warning");
-                    PostRating(2);
-                });
-                $("#rating_3").click(function () {
-                    console.log("ittttttttttt")
-                    $(".rtcolor").removeClass("text-warning");
-                    PostRating(3);
-                });
-                $("#rating_4").click(function () {
-                    $(".rtcolor").removeClass("text-warning");
-                    PostRating(4);
-                });
-                $("#rating_5").click(function () {
-                    debugger
-                    console.log($('#rating_5'));
-                    $(".rtcolor").removeClass("text-warning");
-                    PostRating(5);
-                });
-        });
-           function PostRating(i) {
+      function Rate(i,MissionId)
+      {
+          $(".rtcolor").removeClass("text-warning");
+          PostRating(i,MissionId);
+      }
+       
+           function PostRating(i,MissionId) {
 
 
         debugger
@@ -740,7 +729,7 @@
             url: '/Home/PostRating',
             data: {
                 'rate': i,
-                'MissionId': @ViewBag.missionDatas.MissionId
+                'MissionId': MissionId
 
             },
             success: (data) => {

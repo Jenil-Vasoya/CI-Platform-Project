@@ -1,0 +1,293 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Story Details Page</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <style>
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .swiper-slide img {
+                display: block;
+                width: 75%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+
+
+        .swiper {
+            width: 100%;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .mySwiper2 {
+            height: 80%;
+            width: 100%;
+        }
+
+        .mySwiper {
+            height: 20%;
+            box-sizing: border-box;
+            padding: 10px 0;
+        }
+
+            .mySwiper .swiper-slide {
+                width: 25%;
+                height: 100%;
+                opacity: 0.4;
+            }
+
+            .mySwiper .swiper-slide-thumb-active {
+                opacity: 1;
+            }
+
+        .swiper-slide img {
+            display: block;
+            width: 75%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <partial name="_FirstNav" />
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-1 "></div>
+            <div class="col-lg-10 ">
+                <div class="row bootstrap snippets">
+                    <div class="col-xl-6 col-lg-6  col-12 ">
+                        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="~/Assets/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="~/Assets/images/img.png" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="~/Assets/images/Plantation-and-Afforestation-programme.png" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="~/Assets/images/img11.png" />
+                                </div>
+
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                        <div thumbsSlider="" class="swiper mySwiper row d-flex flex-row">
+                            <div class="swiper-wrapper  ">
+                                <div class="swiper-slide col-3">
+                                    <img src="~/Assets/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png" />
+                                </div>
+                                <div class="swiper-slide col-3">
+                                    <img src="~/Assets/images/img.png" />
+                                </div>
+                                <div class="swiper-slide col-3">
+                                    <img src="~/Assets/images/Plantation-and-Afforestation-programme.png" />
+                                </div>
+                                <div class="swiper-slide col-3">
+                                    <img src="~/Assets/images/img11.png" />
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        <!-- Swiper JS -->
+                        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+                        <!-- Initialize Swiper -->
+                        <script>
+                            var swiper = new Swiper(".mySwiper", {
+                                loop: true,
+                                spaceBetween: 10,
+                                slidesPerView: 4,
+                                freeMode: true,
+                                watchSlidesProgress: true,
+                            });
+                            var swiper2 = new Swiper(".mySwiper2", {
+                                loop: true,
+                                spaceBetween: 10,
+                                navigation: {
+                                    nextEl: ".swiper-button-next",
+                                    prevEl: ".swiper-button-prev",
+                                },
+                                thumbs: {
+                                    swiper: swiper,
+                                },
+                            });
+                        </script>
+                    </div>
+
+
+                    <div class="col-xl-6 col-lg-6  col-12 pt-2">
+                        <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
+                            <div class="thumbnail col-lg-12 col-md-12 col-sm-12 ">
+                                <div class="caption prod-caption pt-2 ">
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-6 pl-5">
+                                            <img src="@ViewBag.missionDatas.Avatar" class="img rounded-5 " style="height: 70px; width: 70px;">
+                                            <p>&nbsp;&nbsp; @ViewBag.missionDatas.UserName</p>
+                                        </div>
+                                        <div class="col-xl-6 col-6 text-end">
+                                            <br>
+                                            <button type="submit" class="btn rounded-5  " style="border-color: black;"><img src="~/Assets/images/eye.png" class=" img-fluid cancle-img" alt=""> 1200 Views</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="pl-3"> @ViewBag.missionDatas.WhyIVolunteer</div>
+
+                                    <br>
+                                    <div class="row">
+
+
+
+                                        <div class="col-xl-6 col-12 text-center  ">
+                                            <button type="submit" class="btn rounded-5  " style="border-color: black;" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="~/Assets/images/add1.png" class=" img-fluid cancle-img" alt=""> Recommend to a Co-Worker</button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Co-Worker List</h5>
+
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                                                        </div>
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Select</th>
+                                                                    <th>Name</th>
+                                                                    <th>Email</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach (var worker in ViewBag.Users)
+                                                                {
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="form-check">
+                                                                                <input class="form-check-input" name="CoWorkers" type="checkbox" value="@worker.FirstName" id="@worker.UserId" />
+                                                                                <input type="hidden" id="uid" value="@worker.UserId" />
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>@worker.FirstName @worker.LastName</td>
+                                                                        <td>@worker.Email</td>
+                                                                    </tr>
+                                                                }
+                                                            </tbody>
+                                                            <tfoot>
+                                                                <tr>
+                                                                    <td colspan="3">
+                                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                                        <button type="submit" onclick="sendInvitation(@ViewBag.missionDatas.StoryId)" class="btn btn-success"> Send Invitation</button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tfoot>
+                                                        </table>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-12 text-center " id="">
+                                             <a asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@ViewBag.missionDatas.MissionId">
+                                            <button type="submit" class="btn rounded-5  " style="border-color: #F88634; color: #F88634;"> Open Mission &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-1 "></div>
+            <div class="col-lg-10 ">
+
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                                type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                            @ViewBag.missionDatas.Title
+                        </button>
+
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <br>
+                        <div> @ViewBag.missionDatas.Description</div>
+                       
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+
+
+
+
+</html>

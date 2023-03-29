@@ -10,10 +10,14 @@ namespace CIPlatform.Entities.ViewModel
 {
     public class MissionData
     {
-        [Key]
+        
         public long MissionId { get; set; }
 
+        public long? StoryId { get; set; }
+
         public string? Theme { get; set; }
+
+        public string? WhyIVolunteer { get; set; }
 
         public long CityId { get; set; }
 
@@ -33,7 +37,12 @@ namespace CIPlatform.Entities.ViewModel
 
         public string? Title { get; set; } = null!;
 
+        public string? Description { get; set; }
+
         public string? ShortDescription { get; set; }
+
+        public string? StoryStatus { get; set; }
+
 
         public DateTime? CreatedAt { get; set; }
 
@@ -43,11 +52,14 @@ namespace CIPlatform.Entities.ViewModel
 
         public DateTime? EndDate { get; set; }
 
-        public string MissionType { get; set; }
+        public string? MissionType { get; set; }
 
-        public string MissionGoalText { get; set; }
+        public string? MissionGoalText { get; set; }
 
-        public int GoalValue1 { get; set; }
+        public float? GoalValue1 { get; set; }
+
+        public float? CompletedGoal { get; set; }
+
 
         public string? OrganizationName { get; set; }
 
@@ -64,12 +76,11 @@ namespace CIPlatform.Entities.ViewModel
 
         public int? GoalValue { get; set; }
 
-
         public int? Availability { get; set; }
 
         public DateTime? Deadline { get; set; }
 
-        public string UserName { get; set; }
+        public string? UserName { get; set; }
 
         public string? Avatar { get; set; }
 

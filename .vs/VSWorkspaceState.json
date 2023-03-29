@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MVC",
+    "\\MVC\\CIPlatform",
+    "\\MVC\\CIPlatform\\Views",
+    "\\MVC\\CIPlatform\\Views\\Shared"
   ],
-  "SelectedNode": "\\CIPlatform.sln",
+  "SelectedNode": "\\MVC\\CIPlatform\\Views\\Shared\\_RecentVolunteer.cshtml",
   "PreviewInSolutionExplorer": false
 }

@@ -44,13 +44,13 @@ namespace CIPlatform.Controllers
 
         public IActionResult Login()
         {
-
             return View();
         }
 
         [HttpPost]
         public IActionResult Login(User objLogin)
         {
+            
             if (objLogin.Email != null && objLogin.Password != null)
             {
 
@@ -86,14 +86,12 @@ namespace CIPlatform.Controllers
                 return View();
             }
 
+        }
 
-            //HttpContext.Session.SetString("Role", "0");
-            //HttpContext.Session.SetString("Img", objUser.Avatar.ToString());
-            //if (_db.Users.Any(u=> u.Email == objLogin.Email && u.Password == objLogin.Password)) 
-            //{ return RedirectToAction("MissionGrid", "Home"); }
-
-
-
+        public IActionResult LogOut()
+        {
+           
+            return RedirectToAction("Login", "User");
         }
 
         public IActionResult Register()
