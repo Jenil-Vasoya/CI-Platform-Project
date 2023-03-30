@@ -133,6 +133,7 @@ namespace CIPlatform.Repository.Repository
 
                 missionData.UserName = user.FirstName + " " + user.LastName;
                 missionData.Avatar = user.Avatar;
+                missionData.Views = objMission.Views;
 
                 missionData.MediaPath = MediaByMissionId(objMission.MissionId);
                 missionData.Title = objMission.Title;
@@ -158,5 +159,50 @@ namespace CIPlatform.Repository.Repository
             return missionDatas;
         }
 
+        public void StoryView(long StoryId)
+        {
+           var entry= _DbContext.Stories.FirstOrDefault(a => a.StoryId == StoryId);
+            if(entry != null)
+            {
+                entry.Views = entry.Views + 1;
+                _DbContext.SaveChanges();
+            }
+           
+        }
+
+        public List<Mission> UserAppliedMissionList(long UserId)
+        {
+            var validUser = _DbContext.MissionApplications.Where(a=> a.UserId == UserId && a.ApprovalStatus == "Approve").ToList();
+
+            var list = new List<long>();
+
+            foreach (var app in validUser)
+            {
+                list.Add(app.MissionId);
+            }
+
+            var missions = _DbContext.Missions.Where(a=> list.Contains(a.MissionId)).ToList();
+
+            return missions;
+        }
+
+        public void AddData(MissionData objStory, long UserId)
+        {
+
+            Story story = new Story();
+            {
+                story.UserId = UserId;
+                story.Views = 0;
+                story.Title = objStory.Title;
+                story.Description = objStory.Description;
+                story.PublishedAt = objStory.CreatedAt;
+                story.MissionId = objStory.MissionId;
+            }
+
+                _DbContext.Stories.Add(story);
+                _DbContext.SaveChanges();
+              
+            
+        }
     }
 }

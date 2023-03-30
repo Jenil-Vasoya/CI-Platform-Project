@@ -70,11 +70,13 @@ namespace CIPlatform.Controllers
             List<User> users = _StoryRepo.UserList();
             ViewBag.Users = users;
 
+            _StoryRepo.StoryView(id);
+
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
             List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList();
 
-            var missions = missionDatas.Where(x => x.MissionId == id).FirstOrDefault();
+            var missions = missionDatas.Where(x => x.StoryId == id).FirstOrDefault();
             ViewBag.missionDatas = missions;
 
           
@@ -85,6 +87,39 @@ namespace CIPlatform.Controllers
 
             return View();
         }
+
+        public IActionResult AddStory(MissionData objStory)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+
+            ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
+            if(objStory.MissionId != 0)
+            _StoryRepo.AddData(objStory,UserId);
+           
+            ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
+            ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName") ?? "");
+            ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar") ?? "");
+
+            return View();
+        }
+
+        //[HttpPost]
+        //public ActionResult UploadImages(IEnumerable<HttpPostedFileBase> images)
+        //{
+        //    foreach (var image in images)
+        //    {
+        //        if (image != null && image.ContentLength > 0)
+        //        {
+        //            // Save the file to the server or process it as needed
+        //            var fileName = Path.GetFileName(image.FileName);
+        //            var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+        //            image.SaveAs(path);
+        //        }
+        //    }
+
+        //    return RedirectToAction("Index");
+        //}
+
 
     }
 }

@@ -28,6 +28,12 @@ namespace CIPlatform.Repository.Interface
 
         public List<MissionData> GetStoryCardsList();
 
+        public void StoryView(long StoryId);
+
+        public List<Mission> UserAppliedMissionList(long UserId);
+
+        public void AddData(MissionData objStory,long UserId);
+
 
     }
 }

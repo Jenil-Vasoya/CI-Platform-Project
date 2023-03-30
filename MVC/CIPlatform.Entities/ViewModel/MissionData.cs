@@ -15,6 +15,8 @@ namespace CIPlatform.Entities.ViewModel
 
         public long? StoryId { get; set; }
 
+        public long? UserId { get; set; }
+
         public string? Theme { get; set; }
 
         public string? WhyIVolunteer { get; set; }
@@ -83,6 +85,8 @@ namespace CIPlatform.Entities.ViewModel
         public string? UserName { get; set; }
 
         public string? Avatar { get; set; }
+
+        public long? Views { get; set; }
 
     }
 }

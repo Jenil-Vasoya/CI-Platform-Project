@@ -182,8 +182,6 @@ namespace CIPlatform.Controllers
             if (missions != null)
             {
 
-
-
                 var relatedmission = missionDatas.Where(x => (x.Theme == missions.Theme || x.CityName == missions.CityName || x.MissionType == missions.MissionType) && x.MissionId != id).Take(3).ToList();
                 ViewBag.total = relatedmission.Count;
                 ViewBag.relatedmission = relatedmission;
