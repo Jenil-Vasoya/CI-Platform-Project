@@ -10,13 +10,16 @@ namespace CIPlatform.Controllers
     {
         private readonly IStoryRepository _StoryRepo;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IConfiguration configuration;
+        private readonly IConfiguration _configuration;
+        private readonly IWebHostEnvironment _env;
 
-        public StoryController(IStoryRepository StoryRepo, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration)
+        public StoryController(IStoryRepository StoryRepo, IHttpContextAccessor httpContextAccessor, IConfiguration configuration, IWebHostEnvironment env)
         {
             _StoryRepo = StoryRepo;
             _httpContextAccessor = httpContextAccessor;
-            configuration = _configuration;
+            _configuration = configuration;
+            _env = env;
+
         }
 
 
@@ -88,18 +91,34 @@ namespace CIPlatform.Controllers
             return View();
         }
 
-        public IActionResult AddStory(MissionData objStory)
+        [HttpGet]
+        public IActionResult AddStory()
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
             ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
-            if(objStory.MissionId != 0)
-            _StoryRepo.AddData(objStory,UserId);
+            
            
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
             ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName") ?? "");
             ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar") ?? "");
 
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddStory(MissionData objStory , string submit)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+            string btn = "" ;
+           
+             if(submit != null)
+            {
+                btn=submit;
+            }
+            _StoryRepo.AddData(objStory, UserId,btn);
+
+            ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
             return View();
         }
 

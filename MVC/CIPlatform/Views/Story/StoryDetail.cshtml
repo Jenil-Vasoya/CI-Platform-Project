@@ -128,7 +128,10 @@
                             </div>
                         </div>
 
-
+                        @foreach(var i in @ViewBag.missionDatas.StoryImages)
+                        {
+                            <img src="~/Assets/images/@i" />
+                        }
 
                         <!-- Swiper JS -->
                         <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
@@ -266,7 +269,7 @@
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <br>
-                        <div> @ViewBag.missionDatas.Description</div>
+                        <div> @Html.Raw(ViewBag.missionDatas.Description)</div>
                        
                     </div>
 

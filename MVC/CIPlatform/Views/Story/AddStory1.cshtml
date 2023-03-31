@@ -1,0 +1,654 @@
+﻿@model CIPlatform.Entities.ViewModel.MissionData
+
+<style>
+    .applyButton {
+        border: 2px solid #F88634;
+        border-radius: 100px;
+        color: #F88634;
+        background-color: white;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+        .applyButton:hover {
+            background-color: #F88634;
+            color: white;
+        }
+
+    #image-preview .preview-container {
+        display: inline-block;
+        position: relative;
+        margin: 5px;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+    }
+
+        #image-preview .preview-container img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        #image-preview .preview-container .remove-icon {
+            position: absolute;
+            top: 5px;
+            margin-left: 40px;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+
+        
+/*----IMG---*/
+
+.upload__inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.upload__btn {
+    height: 20vh;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: inline-block;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    min-width: 116px;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px dashed #ADADAD;
+    border-radius: 10px;
+    line-height: 26px;
+    font-size: 1.2rem;
+}
+
+.uploadButton {
+    font-size: 3rem !important;
+    height: 35px;
+    color: #757575;
+}
+
+.upload__btn p {
+    font-size: 1.2rem;
+}
+
+.upload__btn {
+    background-color: unset;
+    color: #757575;
+}
+
+.upload__btn-box {
+    margin-bottom: 10px;
+}
+
+.upload__img-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+
+.upload__img-box {
+    width: 200px;
+    padding: 0 10px;
+    margin-bottom: 12px;
+}
+
+.upload__img-close {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+    line-height: 24px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+    .upload__img-close:after {
+        content: '\2716';
+        font-size: 14px;
+        color: white;
+    }
+
+.img-bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    padding-bottom: 100%;
+}
+
+
+
+
+
+</style>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<partial name="_FirstNav" />
+<div class="container">
+    <form>
+    <h3>Share Your Story</h3>
+    <br />
+
+
+    <div class="row">
+        <div class="col-lg-4 pe-2">
+            Select Mission
+            <select class="form-select  my-2"  data-bs-toggle="dropdown" aria-placeholder="dropdown">
+                <option disabled selected>select your mission</option>
+                @foreach (var obj in ViewBag.MissionData)
+                {
+                    <option id="ddlForMissionTitle" value="@obj.MissionId">@obj.Title</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-lg-4 pe-2">
+            My Story title
+            <div class="row-cols-auto my-2 "><input type="text" class="StoryTitle form-control" placeholder="Enter Story Title"></div>
+        </div>
+        <div class="col-lg-4">
+            Date
+            <div class="row-cols-auto my-2 "><input id="SelectDateForStory" type="date" class="form-control"></div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-12 mt-3 ">
+        My Story
+        <div class="row my-2">
+            <textarea id="editor"></textarea>
+        </div>
+    </div>
+    <br />
+
+    <div class="col-12">
+        Enter Video URL
+        <input type="text" class="form-control my-2" placeholder="enter video url">
+    </div>
+    <br />
+
+          @*  <div class="images w-100 mt-4 ">
+                <label class="form-label">Upload Your Photos</label>
+                <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
+                    <img src="~/Assets/images/add.png" style="cursor:pointer;position:relative; top:20px;" />
+                    <input type="file" accept="image/*" onchange="loadimages()" id="images" style="opacity:0;cursor:pointer;" multiple />
+                    <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
+                </div>
+                <div id="image-preview"></div>
+                <div id="selected-count"></div>
+                <span class="text-danger d-none" id="image">At Least Select One Image</span>
+                <div class="gallary mt-4 d-flex flex-wrap">
+                </div>
+            </div>*@
+
+                @*---Drag & Drop your Pictures & Photos---*@
+        @*<div class="row">
+             <label class="lbforstoryitems" for="Upload-Images">Upload Your Photos</label>
+                  <div class="upload__box">
+                    <div class="upload__btn-box">
+                      <label class="upload__btn">
+                        <p class="uploadButton">+</p>
+                        <p>Drag & Drop your Pictures & Photos</p>
+                        <input type="file" id="imageInput" multiple="" data-max_length="19" class="upload__inputfile">
+                      </label>
+                    </div>
+                    <div class="upload__img-wrap"></div>
+                  </div>
+        </div>*@
+
+
+         <div class="images w-100 mt-4 ">
+                <label class="form-label">Upload Your Photos</label>
+                <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
+                    <img src="~/Assets/images/add.png" style="cursor:pointer;position:relative; top:20px;" />
+                    <input type="file" accept="image/*" onchange="loadimages()" id="images" style="opacity:0;cursor:pointer;" multiple />
+                    <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
+                </div>
+                <div id="image-preview"></div>
+                <div id="selected-count"></div>
+                <span class="text-danger d-none" id="image">At Least Select One Image</span>
+                <div class="gallary mt-4 d-flex flex-wrap">
+                </div>
+            </div>
+
+
+
+
+
+        <br />
+        
+
+        <div class="row">
+            <div class="col-lg-6 col-6 ">
+                <button type="submit" class="btn applyButton cancel  px-3" onclick=" location.href='@Url.Action("StoryListing","Story")' ">Cancel</button>
+            </div>
+
+            <div class="col-lg-6 col-6  d-flex justify-content-end">
+                <button type="button" id="SaveBtnForStory" onclick="SaveYourStory()" class="btn applyButton save  me-2 ">Save</button>
+                <button type="submit"  id="submitBtn"  onclick="SubmitYourStory()"  class="btn applyButton submit ">Submit</button>
+            </div>
+
+
+        </div>
+
+
+        </form>
+
+    </div>
+    @section Scripts {
+    <script>
+
+        $(function() {
+  var selectedCount = 0;
+  var selectedCountElement = $('#selected-count');
+  var formData = new FormData(); // Create a new FormData object
+  // Listen for changes to the file input element
+  $('#images').on('change', function() {
+    // Clear any previous preview images
+    $('#image-preview').empty();
+    selectedCount = 0;
+    selectedCountElement.html('0 images selected');
+    formData = new FormData(); // Reset the formData object
+    // Loop through the selected files
+    $.each(this.files, function(i, file) {
+      // Create a container for the preview image and remove button
+      var container = $('<div />', { class: 'preview-container' });
+      // Create an image element to show the preview
+      var img = $('<img  />');
+      img.attr('src', URL.createObjectURL(file));
+      img.attr('alt', file.name);
+      // Create a remove button to remove the image from the preview
+      var removeBtn = $('<img />', { class: 'remove-icon' });
+      removeBtn.attr('src',"/Assets/images/cancel1.png");
+      removeBtn.attr('alt', file.name);
+      removeBtn.html('&#x2715;');
+      removeBtn.on('click', function() {
+        container.remove();
+        selectedCount--;
+        selectedCountElement.html(selectedCount + ' images selected');
+        formData.delete('imgUploadForStoryAdd'); // Remove the deleted file from the formData object
+      });
+      // Add the image and remove button to the container
+      container.append(img, removeBtn);
+      // Add the container to the preview container
+      $('#image-preview').append(container);
+      selectedCount++;
+      selectedCountElement.html(selectedCount + ' images selected');
+      formData.append('imgUploadForStoryAdd', file); // Append the selected file to the formData object
+    });
+  });
+});
+
+        
+        // $(function() {
+        //     var selectedCount = 0;
+        //    var selectedCountElement = $('#selected-count');
+        //    // Listen for changes to the file input element
+        //    $('#images').on('change', function() {
+        //        // Clear any previous preview images
+        //        $('#image-preview').empty();
+        //        selectedCount = 0;
+        //        selectedCountElement.html('0 images selected');
+        //        // Loop through the selected files
+        //        $.each(this.files, function(i, file) {
+        //            // Create a container for the preview image and remove button
+        //            var container = $('<div />', { class: 'preview-container' });
+        //            // Create an image element to show the preview
+        //            var img = $('<img  />');
+        //            img.attr('src', URL.createObjectURL(file));
+        //            img.attr('alt', file.name);
+        //            // Create a remove button to remove the image from the preview
+        //            var removeBtn = $('<img />', { class: 'remove-icon' });
+        //            removeBtn.attr('src',"/Assets/images/cancel1.png");
+        //            removeBtn.attr('alt', file.name);
+        //            removeBtn.html('&#x2715;');
+        //            removeBtn.on('click', function() {
+        //                container.remove();
+        //                selectedCount--;
+        //                selectedCountElement.html(selectedCount + ' images selected');
+        //            });
+        //            // Add the image and remove button to the container
+        //            container.append(img, removeBtn);
+        //            // Add the container to the preview container
+        //            $('#image-preview').append(container);
+        //            selectedCount++;
+        //            selectedCountElement.html(selectedCount + ' images selected');
+        //        });
+        //    });
+        //});
+
+        debugger
+
+        function SaveYourStory(formData) {
+
+        var ddlForMission = $("#ddlForMissionTitle").val();
+        var StoryTitle = $(".StoryTitle").val();
+        var StoryDate = $("#SelectDateForStory").val();
+        var EditorText = $("#editor").text();
+       // var StoryUrl = $(".StoryUrl").val();
+           var formData1 = $('#imageInput').val();
+
+    // Get selected images and append them to formData
+    var images = $('#imageInput').prop('files');
+    for (var i = 0; i < images.length; i++) {
+        formData1.append('.upload__inputfile',images[i]);
+    }
+
+        if (ddlForMission != null && StoryTitle != null && StoryDate != null) {
+            debugger
+
+            $.ajax({
+                type: "POST",
+                url: "/Story/SaveYourStory",
+              
+                data: { dropdownItem: ddlForMission, titleOfStory: StoryTitle, storyDate: StoryDate, editorText: EditorText, imgUploadForStoryAdd: formData1 },
+                success: function (data) {
+                    debugger
+                    //formData.append('GetUrlPath', StoryUrl);
+                    //formData.append('storyId', data);
+                    //$.ajax({
+                    //    url: "/Story/UploadImages",
+                    //    type: "POST",
+                    //    data: formData,
+                    //    contentType: false,
+                    //    processData: false,
+                    //    success: function (response) {
+                    //        alert('Save Story Sucessfully!!!!!!');
+                    //        $("#SaveBtnForStory").hide();
+                    //    },
+                    //    error: function () {
+                    //        alert("Error in SaveStory");
+                    //    }
+                    //});
+                },
+                failure: function (response) {
+                    alert("failure");
+                }
+               
+            });
+
+        }
+    }
+  //Submit Your Story
+    function SubmitYourStory() {
+        debugger
+        var ddlForMission = $("#ddlForMissionTitle").val();
+        var StoryTitle = $(".StoryTitle").val();
+        var StoryDate = $("#SelectDateForStory").val();
+        var EditorText = $("#editor").text();
+        if (ddlForMission != null && StoryTitle != null && StoryDate != null && EditorText != null) {
+            $.ajax({
+                type: "POST",
+                url: "/Story/SubmitYourStory",
+                dataType: 'json',
+                data: { dropdownItem: ddlForMission, titleOfStory: StoryTitle, storyDate: StoryDate, editorText: EditorText },
+                success: function (data) {
+                    alert('Story Submited Successfully...');
+                    formData.append('storyId', data);
+                },
+                failure: function (response) {
+                    alert("failure");
+                },
+                error: function (response) {
+                    alert("Something went Wrong in Dropodown");
+                }
+            });
+        }
+    }
+
+
+    // function ImgUpload() {
+    //     debugger
+    //    var imgWrap = "";
+    //    var imgArray = [];
+
+    //    $('.upload__inputfile').each(function () {
+    //        $(this).on('change', function (e) {
+    //            imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
+    //            var maxLength = $(this).attr('data-max_length');
+    //            var files = e.target.files;
+    //            var filesArr = Array.prototype.slice.call(files);
+    //            var iterator = 0;
+
+
+
+    //            filesArr.forEach(function (f, index) {
+    //                // Check if file is an image with the correct extension
+    //                if (!f.type.match('image.(png|jpe?g)')) {
+    //                    alert('Please select only .png, .jpg, or .jpeg images.');
+    //                    return;
+    //                }
+
+    //                // Check if file size is less than 4 MB
+    //                if (f.size > 4 * 1024 * 1024) {
+    //                    alert('Please select an image that is less than 4 MB.');
+    //                    return;
+    //                }
+
+    //                formData.append("files", f);
+
+    //                if (imgArray.length > maxLength) {
+    //                    return false;
+    //                } else {
+    //                    var len = 0;
+    //                    for (var i = 0; i < imgArray.length; i++) {
+    //                        if (imgArray[i] !== undefined) {
+    //                            len++;
+    //                        }
+    //                    }
+    //                    if (len > maxLength) {
+    //                        return false;
+    //                    } else {
+    //                        imgArray.push(f);
+
+    //                        var reader = new FileReader();
+    //                        reader.onload = function (e) {
+    //                            var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+    //                            imgWrap.append(html);
+    //                            iterator++;
+    //                        }
+    //                        reader.readAsDataURL(f);
+    //                    }
+    //                }
+    //            });
+    //            // Send image data to server via AJAX
+    //        });
+    //    });
+
+
+    //    $('body').on('click', ".upload__img-close", function (e) {
+    //        var file = $(this).parent().data("file");
+    //        for (var i = 0; i < imgArray.length; i++) {
+    //            if (imgArray[i].name === file) {
+    //                imgArray.splice(i, 1);
+    //                break;
+    //            }
+    //        }
+    //        $(this).parent().parent().remove();
+    //    });
+
+
+    //    $('.upload__box').on('dragover', function (e) {
+    //        e.preventDefault();
+    //        $(this).addClass('dragover');
+    //    });
+
+    //    $('.upload__box').on('dragleave', function (e) {
+    //        e.preventDefault();
+    //        $(this).removeClass('dragover');
+    //    });
+
+    //    $('.upload__box').on('drop', function (e) {
+    //        e.preventDefault();
+    //        $(this).removeClass('dragover');
+    //        imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
+    //        var maxLength = $(this).find('.upload__inputfile').attr('data-max_length');
+    //        var files = e.originalEvent.dataTransfer.files;
+    //        var filesArr = Array.prototype.slice.call(files);
+    //        var iterator = 0;
+
+
+    //        filesArr.forEach(function (f, index) {
+    //            if (!f.type.match('image.*')) {
+    //                return;
+    //            }
+
+    //            // Check if file is an image with the correct extension
+    //            if (!f.type.match('image.(png|jpe?g)')) {
+    //                alert('Please select only .png, .jpg, or .jpeg images.');
+    //                return;
+    //            }
+
+    //            formData.append("files", f);
+
+    //            // Check if file size is less than 4 MB
+    //            if (f.size > 4 * 1024 * 1024) {
+    //                alert('Please select an image that is less than 4 MB.');
+    //                return;
+    //            }
+
+    //            if (imgArray.length > maxLength) {
+    //                return false
+    //            } else {
+    //                var len = 0;
+    //                for (var i = 0; i < imgArray.length; i++) {
+    //                    if (imgArray[i] !== undefined) {
+    //                        len++;
+    //                    }
+    //                }
+    //                if (len > maxLength) {
+    //                    return false;
+    //                } else {
+    //                    imgArray.push(f);
+
+    //                    var reader = new FileReader();
+    //                    reader.onload = function (e) {
+    //                        var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+    //                        imgWrap.append(html);
+    //                        iterator++;
+    //                    }
+    //                    reader.readAsDataURL(f);
+    //                }
+    //            }
+    //        });
+
+    //    });
+    //}
+
+
+        //$(function() {
+        //     var selectedCount = 0;
+        //    var selectedCountElement = $('#selected-count');
+        //    // Listen for changes to the file input element
+        //    $('#images').on('change', function() {
+        //        // Clear any previous preview images
+        //        $('#image-preview').empty();
+
+        //        selectedCount = 0;
+        //        selectedCountElement.html('0 images selected');
+        //        // Loop through the selected files
+        //        $.each(this.files, function(i, file) {
+        //            // Create a container for the preview image and remove button
+        //            var container = $('<div />', { class: 'preview-container' });
+        //            // Create an image element to show the preview
+        //            var img = $('<img  />');
+        //            img.attr('src', URL.createObjectURL(file));
+        //            img.attr('alt', file.name);
+        //            // Create a remove button to remove the image from the preview
+        //            var removeBtn = $('<img />', { class: 'remove-icon' });
+        //            removeBtn.attr('src',"/Assets/images/cancel1.png");
+        //            removeBtn.attr('alt', file.name);
+
+
+        //            removeBtn.html('&#x2715;');
+        //            removeBtn.on('click', function() {
+        //                container.remove();
+        //                selectedCount--;
+        //                selectedCountElement.html(selectedCount + ' images selected');
+        //            });
+        //            // Add the image and remove button to the container
+        //            container.append(img, removeBtn);
+        //            // Add the container to the preview container
+        //            $('#image-preview').append(container);
+        //            selectedCount++;
+        //            selectedCountElement.html(selectedCount + ' images selected');
+        //        });
+        //    });
+        //});
+    </script>
+    }
+    <script>
+                    tinymce.init({
+                     selector:'#editor',
+                     menubar: false,
+                     statusbar: false,
+                     plugins: 'autoresize anchor autolink charmap code codesample directionality fullpage help hr image imagetools insertdatetime link lists media nonbreaking pagebreak preview print searchreplace table template textpattern toc visualblocks visualchars',
+                     toolbar: ' bold italic strikethrough  backcolor | link image media | removeformat help fullscreen ',
+                     skin: 'bootstrap',
+                     toolbar_drawer: 'floating',
+                     min_height: 200,
+                     autoresize_bottom_margin: 16,
+                     setup: (editor) => {
+                         editor.on('init', () => {
+                             editor.getContainer().style.transition="border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out"
+                         });
+                         editor.on('focus', () => {
+                             editor.getContainer().style.boxShadow="0 0 0 .2rem rgba(0, 123, 255, .25)",
+                             editor.getContainer().style.borderColor="#80bdff"
+                         });
+                         editor.on('blur', () => {
+                             editor.getContainer().style.boxShadow="",
+                             editor.getContainer().style.borderColor=""
+                         });
+                     }
+                 });
+
+
+        //const input = document.querySelector("input")
+        //const output = document.querySelector("output")
+        //let imagesArray = []
+
+        //input.addEventListener("change", function() {
+
+        //})
+
+        // input.addEventListener("change", () => {
+        //   const file = input.files
+        //   imagesArray.push(file[0])
+        //   displayImages()
+        // })
+
+        // function displayImages() {
+        //   let images = ""
+        //   imagesArray.forEach((image, index) => {
+        //     images += `<div class="image">
+        //                 <img src="${URL.createObjectURL(image)}" alt="image">
+        //                 <span onclick="deleteImage(${index})">&times;</span>
+        //               </div>`
+        //   })
+        //   output.innerHTML = images
+        // }
+
+        // function deleteImage(index) {
+        //       imagesArray.splice(index, 1)
+        //       displayImages()
+        //     }
+
+
+
+    </script>

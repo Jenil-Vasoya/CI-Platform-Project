@@ -22,7 +22,8 @@
             @*---Card Body---*@
             <div class="p-3 pb-0">
                 <h5 class="card-title mt-2">@story.Title</h5>
-                <p class="m-0">@story.Description.Substring(0, 150)...</p>
+              @Html.Raw(string.IsNullOrEmpty(story.Description) ? "" : story.Description.Substring(0, Math.Min(story.Description.Length, 150)))
+
             </div>
             <div class="px-3 row">
                 <div class="col-2 d-flex align-items-center">

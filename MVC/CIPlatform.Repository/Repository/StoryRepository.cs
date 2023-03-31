@@ -108,13 +108,26 @@ namespace CIPlatform.Repository.Repository
 
         public List<MissionData> GetStoryCardsList()
         {
-            var missions = _DbContext.Stories.ToList();
+            var missions = _DbContext.Stories.Where(a => a.Status == "PUBLISHED").ToList();
 
             List<MissionData> missionDatas = new List<MissionData>();
 
             foreach (var objMission in missions)
             {
                 MissionData missionData = new MissionData();
+                List<StoryMedium> storyMedium = _DbContext.StoryMedia.Where(a => a.StoryId == objMission.StoryId).ToList();
+
+                var path = new List<string>();
+                foreach (var i in storyMedium)
+                {
+                    StoryMedium story = new StoryMedium();
+
+                    string path1 = i.Path;
+
+                    path.Add(path1);
+
+                }
+                missionData.StoryImages = path;
 
                 User user = _DbContext.Users.FirstOrDefault(a => a.UserId == objMission.UserId);
 
@@ -186,7 +199,7 @@ namespace CIPlatform.Repository.Repository
             return missions;
         }
 
-        public void AddData(MissionData objStory, long UserId)
+        public void AddData(MissionData objStory, long UserId, string btn)
         {
 
             Story story = new Story();
@@ -197,12 +210,42 @@ namespace CIPlatform.Repository.Repository
                 story.Description = objStory.Description;
                 story.PublishedAt = objStory.CreatedAt;
                 story.MissionId = objStory.MissionId;
+                if(btn == "Submit")
+                {
+                    story.Status = "PUBLISHED";
+                }
             }
 
                 _DbContext.Stories.Add(story);
-                _DbContext.SaveChanges();
+            _DbContext.SaveChanges();
+
+
+            var filePath = new List<string>();
+            foreach (var i in objStory.images)
+            {
+                StoryMedium storyMedium = new StoryMedium();
+                storyMedium.StoryId = story.StoryId;
+                storyMedium.Type = "png";
+                storyMedium.Path = i.FileName;
+                _DbContext.StoryMedia.Add(storyMedium);
+                if (i.Length > 0)
+                {
+                    //string path = Server.MapPath("~/wwwroot/Assets/Story");
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", i.FileName);
+                    filePath.Add(path);
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        i.CopyTo(stream);
+                    }
+                }
+
+            }
+
+
+            _DbContext.SaveChanges();
               
             
         }
+
     }
 }

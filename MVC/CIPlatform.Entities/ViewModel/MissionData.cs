@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Entities.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -40,6 +41,10 @@ namespace CIPlatform.Entities.ViewModel
         public string? Title { get; set; } = null!;
 
         public string? Description { get; set; }
+        
+        public List<string>? StoryImages { get; set; }
+
+       public List<IFormFile>? images { get; set; }
 
         public string? ShortDescription { get; set; }
 
