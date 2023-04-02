@@ -26,7 +26,9 @@ namespace CIPlatform.Controllers
 
         public IActionResult StoryList()
         {
-            List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList();
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+
+            List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
             ViewBag.missionDatas = missionDatas;
 
             ViewBag.UserId = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? "");
@@ -56,12 +58,12 @@ namespace CIPlatform.Controllers
 
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
             search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
-            List<MissionData> missionDatas = _StoryRepo.GetStoryMissionList(search, countries, cities, themes, skills, pg);
+            List<MissionData> missionDatas = _StoryRepo.GetStoryMissionList(search, countries, cities, themes, skills, pg, UserId);
 
             ViewBag.missionDatas = missionDatas;
 
             ViewBag.pg_no = pg;
-            ViewBag.Totalpages = Math.Ceiling(_StoryRepo.GetStoryMissionList(search, countries, cities, themes, skills, pg = 0).Count() / 6.0);
+            ViewBag.Totalpages = Math.Ceiling(_StoryRepo.GetStoryMissionList(search, countries, cities, themes, skills, pg = 0, UserId).Count() / 6.0);
             ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
 
             return PartialView("_StoryList");
@@ -77,7 +79,7 @@ namespace CIPlatform.Controllers
 
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-            List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList();
+            List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
 
             var missions = missionDatas.Where(x => x.StoryId == id).FirstOrDefault();
             ViewBag.missionDatas = missions;
@@ -91,19 +93,24 @@ namespace CIPlatform.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult AddStory()
+        
+        public IActionResult AddStory(long id)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
+            List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
+
+            var missions = missionDatas.Where(x => x.StoryId == id).FirstOrDefault();
+            ViewBag.missionDatas = missions;
+
             ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
-            
-           
+
+
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
             ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName") ?? "");
             ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar") ?? "");
 
-            return View();
+            return View(missions);
         }
 
         [HttpPost]
@@ -116,6 +123,7 @@ namespace CIPlatform.Controllers
             {
                 btn=submit;
             }
+             if(objStory.MissionId != 0)
             _StoryRepo.AddData(objStory, UserId,btn);
 
             ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);

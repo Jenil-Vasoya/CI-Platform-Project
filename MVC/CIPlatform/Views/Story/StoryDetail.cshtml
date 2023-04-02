@@ -90,10 +90,14 @@
             <div class="col-lg-1 "></div>
             <div class="col-lg-10 ">
                 <div class="row bootstrap snippets">
+
+                   
+
+                    
                     <div class="col-xl-6 col-lg-6  col-12 ">
                         <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
+                                @*<div class="swiper-slide">
                                     <img src="~/Assets/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png" />
                                 </div>
                                 <div class="swiper-slide">
@@ -104,7 +108,14 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <img src="~/Assets/images/img11.png" />
-                                </div>
+                                </div>*@
+                                @foreach (string imageUrl in ViewBag.missionDatas.StoryImages)
+                                {
+                                    <div class="swiper-slide">
+                                        <img src="~/Assets/StoryImages/@imageUrl" />
+                                    </div>
+                                    
+                                }
 
                             </div>
                             <div class="swiper-button-next"></div>
@@ -112,7 +123,14 @@
                         </div>
                         <div thumbsSlider="" class="swiper mySwiper row d-flex flex-row">
                             <div class="swiper-wrapper  ">
-                                <div class="swiper-slide col-3">
+                                @foreach (string imageUrl in ViewBag.missionDatas.StoryImages)
+                                {
+                                    <div class="swiper-slide">
+                                        <img src="~/Assets/StoryImages/@imageUrl" />
+                                    </div>
+                                    
+                                }
+                                @*<div class="swiper-slide col-3">
                                     <img src="~/Assets/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png" />
                                 </div>
                                 <div class="swiper-slide col-3">
@@ -123,15 +141,78 @@
                                 </div>
                                 <div class="swiper-slide col-3">
                                     <img src="~/Assets/images/img11.png" />
-                                </div>
+                                </div>*@
 
                             </div>
                         </div>
+                        @*<div thumbsSlider="" class="swiper mySwiper row d-flex flex-row">
+                            <div class="swiper-wrapper  ">
+                                @{
+                                    int sub_count = 4;
+                                    int check = 0;
+                                    int carousel_count = (int)Math.Ceiling((double)@ViewBag.missionDatas.StoryImages.Count / 4);
+                                    for (var i = 0; i < carousel_count; i++)
+                                    {
 
-                        @foreach(var i in @ViewBag.missionDatas.StoryImages)
-                        {
-                            <img src="~/Assets/images/@i" />
-                        }
+                                        if (check == 0)
+                                        {
+
+
+                                            @if (@ViewBag.missionDatas.StoryImages.Count >= sub_count)
+                                            {
+                                                @foreach (var item in @ViewBag.missionDatas.StoryImages)
+                                                {
+                                                    <div class="swiper-slide col-3">
+                                                        <img src='~/Assets/StoryImages/@item' data-bs-target="#sub-images"  alt="a1" />
+                                                    </div>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                @for (int j = 0; j < @ViewBag.missionDatas.StoryImages.Count; j++)
+                                                {
+                                                    <div class="swiper-slide col-3">
+                                                        <img src='~/Assets/StoryImages/@ViewBag.missionDatas.StoryImages.@j' data-bs-target="#sub-images" data-bs-slide-to=@j alt="a2" />
+                                                    </div>
+                                                }
+                                            }
+
+
+                                            check = check + 4;
+                                        }
+                                        else
+                                        {
+
+                                            @if (@ViewBag.missionDatas.StoryImages.Count - (4 * i) >= sub_count)
+                                            {
+                                                @for (int j = check; j < sub_count + check; j++)
+                                                {
+                                                    <div class="swiper-slide col-3">
+                                                        <img src='~/Assets/StoryImages/@ViewBag.missionDatas.StoryImages.@j' data-bs-target="#sub-images" data-bs-slide-to=@j alt="a3" />
+                                                    </div>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                @for (int j = check; j < @ViewBag.missionDatas.StoryImages.Count; j++)
+                                                {
+                                                    <div class="swiper-slide col-3">
+                                                        <img src='~/Assets/StoryImages/@ViewBag.missionDatas.StoryImages.[@j]' data-bs-target="#sub-images" data-bs-slide-to=@j alt="a4" />
+                                                    </div>
+                                                }
+                                            }
+
+
+                                            check = check + 4;
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>*@
+
+                        
+                            
+                        
 
                         <!-- Swiper JS -->
                         <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>

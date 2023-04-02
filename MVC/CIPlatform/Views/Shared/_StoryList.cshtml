@@ -1,4 +1,19 @@
-﻿<div class="container">
+﻿<style>
+    .applyButton {
+        border: 2px solid #F88634;
+        border-radius: 100px;
+        color: #F88634;
+        background-color: white;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+        .applyButton:hover {
+            background-color: #F88634;
+            color: white;
+        }
+</style>
+
+<div class="container">
     <div class="row" style="justify-content:space-around">
 
         @foreach(var story in  @ViewBag.missionDatas)
@@ -26,13 +41,33 @@
 
             </div>
             <div class="px-3 row">
-                <div class="col-2 d-flex align-items-center">
-                <img src="@story.Avatar" class="rounded-circle w-20 h-50" />
+                    @if (story.StoryStatus == "DRAFT")
+                    {
+                        <div class="col-2 d-flex align-items-center">
+                            <img src="@story.Avatar" class="rounded-circle w-20 h-50" />
+                        </div>
+                        <div class="col-8 d-flex align-items-center">
+                            <h6 class="fw-normal">@story.UserName</h6>
+                        </div>
+
+                        <div class="col-2 d-flex align-items-center">
+                            <a asp-controller="Story" asp-action="AddStory" asp-route-id="@story.StoryId">
+                                <button  class="btn applyButton rounded-pill" type="submit">
+                                    Edit &nbsp;<i class="bi bi-arrow-right"></i>
+                                </button>
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-2 d-flex align-items-center">
+                            <img src="@story.Avatar" class="rounded-circle w-20 h-50" />
+                        </div>
+                        <div class="col-10 d-flex align-items-center">
+                            <h6 class="fw-normal">@story.UserName</h6>
+                        </div>
+                    }
                 </div>
-                <div class="col-10 d-flex align-items-center">
-                    <h6 class="fw-normal">@story.UserName</h6>
-                </div>
-            </div>
 
         </div>
         }

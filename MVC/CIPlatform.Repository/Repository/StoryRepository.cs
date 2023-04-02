@@ -65,10 +65,10 @@ namespace CIPlatform.Repository.Repository
             return theme.Titile;
         }
 
-        public List<MissionData> GetStoryMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int pg)
+        public List<MissionData> GetStoryMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int pg, long UserId)
         {
             var pageSize = 6;
-            List<MissionData> missions = GetStoryCardsList();
+            List<MissionData> missions = GetStoryCardsList(UserId);
             if (search != "")
             {
                 missions = missions.Where(a => a.Title.ToLower().Contains(search) || a.ShortDescription.ToLower().Contains(search)).ToList();
@@ -106,9 +106,12 @@ namespace CIPlatform.Repository.Repository
             return missions;
         }
 
-        public List<MissionData> GetStoryCardsList()
+        public List<MissionData> GetStoryCardsList(long UserId)
         {
-            var missions = _DbContext.Stories.Where(a => a.Status == "PUBLISHED").ToList();
+            var missions = _DbContext.Stories.Where(a => a.Status == "PUBLISHED" || a.UserId == UserId).OrderBy(a => a.Status).ToList();
+
+
+            
 
             List<MissionData> missionDatas = new List<MissionData>();
 

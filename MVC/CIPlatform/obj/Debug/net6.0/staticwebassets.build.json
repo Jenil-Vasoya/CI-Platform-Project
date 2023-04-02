@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "e93t1/+hN+DO891AqgnAgc76Bd30M6zyQxElXUicVbQ=",
+  "Hash": "GVDdYYGgXR9lUpxlGRfIytByt4FC+9Hi2gp4tPAkPYo=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "CIPlatform\\wwwroot",
       "Source": "CIPlatform",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CIPlatform.styles.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CIPlatform.styles.css",
       "SourceId": "CIPlatform",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "CIPlatform.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CIPlatform.styles.css"
+      "OriginalItemSpec": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CIPlatform.styles.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CIPlatform.bundle.scp.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CIPlatform.bundle.scp.css",
       "SourceId": "CIPlatform",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "CIPlatform.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CIPlatform.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CIPlatform.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\bootstrap.min.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\bootstrap.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\mission.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\mission.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/css/mission.css",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\css\\mission.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\missionlist.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\missionlist.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/css/missionlist.css",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\css\\missionlist.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\mlist.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\mlist.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/css/mlist.css",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\css\\mlist.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\story.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\story.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/css/story.css",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\css\\story.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\style.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\style.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/css/style.css",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\css\\style.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\volunteer.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\volunteer.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/css/volunteer.css",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\css\\volunteer.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\volunteermission.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\volunteermission.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/css/volunteermission.css",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\css\\volunteermission.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\404-Page-image.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\404-Page-image.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/404-Page-image.png",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\404-Page-image.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\achieved.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\achieved.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/achieved.png",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\achieved.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\add.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\add.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/add.png",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\add.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\add1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\add1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/add1.png",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\add1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Already-volunteered.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Already-volunteered.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Already-volunteered.png",
       "AssetKind": "All",
@@ -272,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Already-volunteered.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Animal-welfare-&-save-birds-campaign.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Animal-welfare-&-save-birds-campaign.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Animal-welfare-&-save-birds-campaign.png",
       "AssetKind": "All",
@@ -289,10 +289,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Animal-welfare-&-save-birds-campaign.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Animal-welfare-&-save-birds-campaign-1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Animal-welfare-&-save-birds-campaign-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Animal-welfare-&-save-birds-campaign-1.png",
       "AssetKind": "All",
@@ -306,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Animal-welfare-&-save-birds-campaign-1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\arrow.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\arrow.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/arrow.png",
       "AssetKind": "All",
@@ -323,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\arrow.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\bell.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\bell.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/bell.png",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\bell.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\bell-big.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\bell-big.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/bell-big.png",
       "AssetKind": "All",
@@ -357,10 +357,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\bell-big.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\bin.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\bin.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/bin.png",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\bin.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\calender.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\calender.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/calender.png",
       "AssetKind": "All",
@@ -391,10 +391,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\calender.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\cancel.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\cancel.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/cancel.png",
       "AssetKind": "All",
@@ -408,10 +408,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\cancel.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\cancel1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\cancel1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/cancel1.png",
       "AssetKind": "All",
@@ -425,10 +425,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\cancel1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\checked.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\checked.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/checked.png",
       "AssetKind": "All",
@@ -442,10 +442,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\checked.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\cross.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\cross.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/cross.png",
       "AssetKind": "All",
@@ -459,10 +459,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\cross.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
       "AssetKind": "All",
@@ -476,10 +476,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
       "AssetKind": "All",
@@ -493,10 +493,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
       "AssetKind": "All",
@@ -510,10 +510,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
       "AssetKind": "All",
@@ -527,10 +527,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
       "AssetKind": "All",
@@ -544,10 +544,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
       "AssetKind": "All",
@@ -561,10 +561,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
       "AssetKind": "All",
@@ -578,10 +578,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\deadline.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\deadline.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/deadline.png",
       "AssetKind": "All",
@@ -595,10 +595,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\deadline.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\doc.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\doc.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/doc.png",
       "AssetKind": "All",
@@ -612,10 +612,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\doc.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\down.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\down.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/down.png",
       "AssetKind": "All",
@@ -629,10 +629,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\down.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\drag-and-drop.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\drag-and-drop.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/drag-and-drop.png",
       "AssetKind": "All",
@@ -646,10 +646,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\drag-and-drop.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\drop-down.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\drop-down.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/drop-down.png",
       "AssetKind": "All",
@@ -663,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\drop-down.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
       "AssetKind": "All",
@@ -680,10 +680,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
       "AssetKind": "All",
@@ -697,10 +697,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
       "AssetKind": "All",
@@ -714,10 +714,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\eye.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\eye.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/eye.png",
       "AssetKind": "All",
@@ -731,10 +731,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\eye.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\facebook.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\facebook.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/facebook.png",
       "AssetKind": "All",
@@ -748,10 +748,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\facebook.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\filter.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\filter.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/filter.png",
       "AssetKind": "All",
@@ -765,10 +765,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\filter.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\gift.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\gift.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/gift.png",
       "AssetKind": "All",
@@ -782,10 +782,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\gift.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\graph.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\graph.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/graph.png",
       "AssetKind": "All",
@@ -799,10 +799,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\graph.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\grid.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\grid.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/grid.png",
       "AssetKind": "All",
@@ -816,10 +816,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\grid.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Grow-Trees-On-the-path-to-environment-sustainability.png",
       "AssetKind": "All",
@@ -833,10 +833,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Grow-Trees-On-the-path-to-environment-sustainability-1.png",
       "AssetKind": "All",
@@ -850,10 +850,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-2.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Grow-Trees-On-the-path-to-environment-sustainability-2.png",
       "AssetKind": "All",
@@ -867,10 +867,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-2.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-3.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Grow-Trees-On-the-path-to-environment-sustainability-3.png",
       "AssetKind": "All",
@@ -884,10 +884,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-3.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-4.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-4.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Grow-Trees-On-the-path-to-environment-sustainability-4.png",
       "AssetKind": "All",
@@ -901,10 +901,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-4.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-5.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-5.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Grow-Trees-On-the-path-to-environment-sustainability-5.png",
       "AssetKind": "All",
@@ -918,10 +918,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-5.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-login.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-login.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png",
       "AssetKind": "All",
@@ -935,10 +935,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-login.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\heart.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\heart.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/heart.png",
       "AssetKind": "All",
@@ -952,10 +952,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\heart.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\heart1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\heart1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/heart1.png",
       "AssetKind": "All",
@@ -969,10 +969,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\heart1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\hours.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\hours.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/hours.png",
       "AssetKind": "All",
@@ -986,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\hours.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\image.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\image.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/image.png",
       "AssetKind": "All",
@@ -1003,10 +1003,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\image.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\image1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\image1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/image1.png",
       "AssetKind": "All",
@@ -1020,10 +1020,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\image1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\image2.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\image2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/image2.png",
       "AssetKind": "All",
@@ -1037,10 +1037,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\image2.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/img.png",
       "AssetKind": "All",
@@ -1054,10 +1054,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\img.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/img1.png",
       "AssetKind": "All",
@@ -1071,10 +1071,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\img1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img11.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img11.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/img11.png",
       "AssetKind": "All",
@@ -1088,10 +1088,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\img11.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img2.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/img2.png",
       "AssetKind": "All",
@@ -1105,10 +1105,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\img2.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img22.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img22.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/img22.png",
       "AssetKind": "All",
@@ -1122,10 +1122,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\img22.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img3.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/img3.png",
       "AssetKind": "All",
@@ -1139,10 +1139,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\img3.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img33.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img33.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/img33.png",
       "AssetKind": "All",
@@ -1156,10 +1156,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\img33.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\info.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\info.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/info.png",
       "AssetKind": "All",
@@ -1173,10 +1173,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\info.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\left.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\left.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/left.png",
       "AssetKind": "All",
@@ -1190,10 +1190,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\left.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\left1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\left1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/left1.png",
       "AssetKind": "All",
@@ -1207,10 +1207,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\left1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\linkedin.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\linkedin.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/linkedin.png",
       "AssetKind": "All",
@@ -1224,10 +1224,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\linkedin.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\list.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\list.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/list.png",
       "AssetKind": "All",
@@ -1241,10 +1241,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\list.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\logo.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\logo.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/logo.png",
       "AssetKind": "All",
@@ -1258,10 +1258,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\logo.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\mission.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\mission.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/mission.png",
       "AssetKind": "All",
@@ -1275,10 +1275,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\mission.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\my-story.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\my-story.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/my-story.png",
       "AssetKind": "All",
@@ -1292,10 +1292,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\my-story.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\new-message.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\new-message.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/new-message.png",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\new-message.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\next.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\next.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/next.png",
       "AssetKind": "All",
@@ -1326,10 +1326,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\next.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Nourish-the-Children-in--African-country.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Nourish-the-Children-in--African-country.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Nourish-the-Children-in--African-country.png",
       "AssetKind": "All",
@@ -1343,10 +1343,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Nourish-the-Children-in--African-country.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Nourish-the-Children-in--African-country-1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Nourish-the-Children-in--African-country-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Nourish-the-Children-in--African-country-1.png",
       "AssetKind": "All",
@@ -1360,10 +1360,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Nourish-the-Children-in--African-country-1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Open-Volunteering-Requests.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Open-Volunteering-Requests.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Open-Volunteering-Requests.png",
       "AssetKind": "All",
@@ -1377,10 +1377,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Open-Volunteering-Requests.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\organization.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\organization.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/organization.png",
       "AssetKind": "All",
@@ -1394,10 +1394,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\organization.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\pdf.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\pdf.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/pdf.png",
       "AssetKind": "All",
@@ -1411,10 +1411,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\pdf.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\pin.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\pin.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/pin.png",
       "AssetKind": "All",
@@ -1428,10 +1428,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\pin.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\pin1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\pin1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/pin1.png",
       "AssetKind": "All",
@@ -1445,10 +1445,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\pin1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Plantation-and-Afforestation-programme.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Plantation-and-Afforestation-programme.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Plantation-and-Afforestation-programme.png",
       "AssetKind": "All",
@@ -1462,10 +1462,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Plantation-and-Afforestation-programme.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Plantation-and-Afforestation-programme-1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Plantation-and-Afforestation-programme-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Plantation-and-Afforestation-programme-1.png",
       "AssetKind": "All",
@@ -1479,10 +1479,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Plantation-and-Afforestation-programme-1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\previous.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\previous.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/previous.png",
       "AssetKind": "All",
@@ -1496,10 +1496,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\previous.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\red-heart.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\red-heart.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/red-heart.png",
       "AssetKind": "All",
@@ -1513,10 +1513,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\red-heart.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/right.png",
       "AssetKind": "All",
@@ -1530,10 +1530,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\right.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-arrow.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-arrow.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/right-arrow.png",
       "AssetKind": "All",
@@ -1547,10 +1547,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\right-arrow.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-arrow1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-arrow1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/right-arrow1.png",
       "AssetKind": "All",
@@ -1564,10 +1564,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\right-arrow1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-arrow2.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-arrow2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/right-arrow2.png",
       "AssetKind": "All",
@@ -1581,10 +1581,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\right-arrow2.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-white.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-white.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/right-white.png",
       "AssetKind": "All",
@@ -1598,10 +1598,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\right-white.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\search.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\search.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/search.png",
       "AssetKind": "All",
@@ -1615,10 +1615,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\search.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Seats-left.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Seats-left.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Seats-left.png",
       "AssetKind": "All",
@@ -1632,10 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Seats-left.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\selected-star.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\selected-star.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/selected-star.png",
       "AssetKind": "All",
@@ -1649,10 +1649,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\selected-star.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\settings.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\settings.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/settings.png",
       "AssetKind": "All",
@@ -1666,10 +1666,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\settings.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\star.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\star.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/star.png",
       "AssetKind": "All",
@@ -1683,10 +1683,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\star.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\star-empty.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\star-empty.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/star-empty.png",
       "AssetKind": "All",
@@ -1700,10 +1700,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\star-empty.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\twitter.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\twitter.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/twitter.png",
       "AssetKind": "All",
@@ -1717,10 +1717,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\twitter.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\up.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\up.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/up.png",
       "AssetKind": "All",
@@ -1734,10 +1734,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\up.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/user.png",
       "AssetKind": "All",
@@ -1751,10 +1751,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\user.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/user1.png",
       "AssetKind": "All",
@@ -1768,10 +1768,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\user1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user-img.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user-img.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/user-img.png",
       "AssetKind": "All",
@@ -1785,10 +1785,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\user-img.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user-img-large.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user-img-large.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/user-img-large.png",
       "AssetKind": "All",
@@ -1802,10 +1802,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\user-img-large.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/volunteer1.png",
       "AssetKind": "All",
@@ -1819,10 +1819,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\volunteer1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer2.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/volunteer2.png",
       "AssetKind": "All",
@@ -1836,10 +1836,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\volunteer2.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer3.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/volunteer3.png",
       "AssetKind": "All",
@@ -1853,10 +1853,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\volunteer3.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer4.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer4.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/volunteer4.png",
       "AssetKind": "All",
@@ -1870,10 +1870,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\volunteer4.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer5.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer5.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/volunteer5.png",
       "AssetKind": "All",
@@ -1887,10 +1887,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\volunteer5.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer6.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer6.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/volunteer6.png",
       "AssetKind": "All",
@@ -1904,10 +1904,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\volunteer6.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer7.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer7.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/volunteer7.png",
       "AssetKind": "All",
@@ -1921,10 +1921,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\volunteer7.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer8.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer8.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/volunteer8.png",
       "AssetKind": "All",
@@ -1938,10 +1938,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\volunteer8.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer9.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer9.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/volunteer9.png",
       "AssetKind": "All",
@@ -1955,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\volunteer9.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Volunteering-Rank.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Volunteering-Rank.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Volunteering-Rank.png",
       "AssetKind": "All",
@@ -1972,10 +1972,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Volunteering-Rank.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Voted-Missions.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Voted-Missions.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/Voted-Missions.png",
       "AssetKind": "All",
@@ -1989,10 +1989,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\Voted-Missions.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\web.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\web.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/web.png",
       "AssetKind": "All",
@@ -2006,10 +2006,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\web.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\xlsx.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\xlsx.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/images/xlsx.png",
       "AssetKind": "All",
@@ -2023,10 +2023,27 @@
       "OriginalItemSpec": "wwwroot\\Assets\\images\\xlsx.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\404-Page-image.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "Assets/StoryImages/404-Page-image.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\404-Page-image.png"
+    },
+    {
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/StoryImages/Animal-welfare-&-save-birds-campaign.png",
       "AssetKind": "All",
@@ -2040,10 +2057,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign-1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/StoryImages/Animal-welfare-&-save-birds-campaign-1.png",
       "AssetKind": "All",
@@ -2057,10 +2074,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign-1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\bell.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\bell.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/StoryImages/bell.png",
       "AssetKind": "All",
@@ -2074,10 +2091,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\bell.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\cross.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\cross.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/StoryImages/cross.png",
       "AssetKind": "All",
@@ -2091,10 +2108,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\cross.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/StoryImages/CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
       "AssetKind": "All",
@@ -2108,10 +2125,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/StoryImages/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
       "AssetKind": "All",
@@ -2125,10 +2142,10 @@
       "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "Assets/StoryImages/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
       "AssetKind": "All",
@@ -2142,10 +2159,27 @@
       "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "Assets/StoryImages/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png"
+    },
+    {
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\css\\site.css",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -2159,10 +2193,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\favicon.ico",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -2176,10 +2210,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\js\\AddFavourite.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\js\\AddFavourite.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "js/AddFavourite.js",
       "AssetKind": "All",
@@ -2193,10 +2227,10 @@
       "OriginalItemSpec": "wwwroot\\js\\AddFavourite.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\js\\site.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\js\\site.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -2210,10 +2244,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -2227,10 +2261,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -2244,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -2261,10 +2295,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -2278,10 +2312,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -2295,10 +2329,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -2312,10 +2346,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -2329,10 +2363,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -2346,10 +2380,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -2363,10 +2397,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -2380,10 +2414,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -2397,10 +2431,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -2414,10 +2448,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -2431,10 +2465,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -2448,10 +2482,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -2465,10 +2499,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -2482,10 +2516,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -2499,10 +2533,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -2516,10 +2550,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -2533,10 +2567,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -2550,10 +2584,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -2567,10 +2601,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -2584,10 +2618,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -2601,10 +2635,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -2618,10 +2652,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -2635,10 +2669,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -2652,10 +2686,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -2669,10 +2703,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -2686,10 +2720,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -2703,10 +2737,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -2720,10 +2754,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -2737,10 +2771,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -2754,10 +2788,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -2771,10 +2805,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -2788,10 +2822,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -2805,10 +2839,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -2822,10 +2856,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -2839,10 +2873,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -2856,10 +2890,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -2873,10 +2907,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -2890,10 +2924,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -2907,10 +2941,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -2924,10 +2958,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -2941,10 +2975,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -2958,10 +2992,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -2975,10 +3009,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -2992,10 +3026,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -3009,10 +3043,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -3026,10 +3060,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -3043,10 +3077,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -3060,10 +3094,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -3077,10 +3111,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -3094,10 +3128,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -3111,10 +3145,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -3128,10 +3162,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -3145,10 +3179,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -3162,10 +3196,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",

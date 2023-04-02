@@ -1,5 +1,6 @@
 ﻿@model CIPlatform.Entities.ViewModel.MissionData
 
+
 <style>
     .applyButton {
         border: 2px solid #F88634;
@@ -51,16 +52,27 @@
             Select Mission
             <select asp-for="MissionId" class="form-select  my-2" data-bs-toggle="dropdown" aria-placeholder="dropdown">
                 <option disabled selected>select your mission</option>
-                @foreach (var obj in ViewBag.MissionData)
-                {
-                    <option value="@obj.MissionId">@obj.Title</option>
-                }
+                    @foreach (var obj in ViewBag.MissionData)
+                    {
+                        @if(ViewBag.missionDatas == null)
+                        {
+                            <option value="@obj.MissionId">@obj.Title</option>
+                        }
+                        else if (ViewBag.missionDatas.StoryStatus == "DRAFT")
+                        {
+                            <option value="@obj.MissionId" selected>@obj.Title</option>
+                        }
+                        else
+                        {
+                            <option value="@obj.MissionId">@obj.Title</option>
+                        }
+                    }
             </select>
         </div>
 
         <div class="col-lg-4 pe-2">
             My Story title
-            <div class="row-cols-auto my-2 "><input asp-for="Title" type="text" class="form-control" placeholder="Enter Story Title"></div>
+                <div class="row-cols-auto my-2 "><input asp-for="Title" type="text" class="form-control" placeholder="Enter Story Title"></div>
         </div>
         <div class="col-lg-4">
             Date
@@ -82,11 +94,13 @@
     </div>
     <br />
 
+        @if (ViewBag.missionDatas == null)
+        {
             <div class="images w-100 mt-4 ">
                 <label class="form-label">Upload Your Photos</label>
                 <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
                     <img src="~/Assets/images/add.png" style="cursor:pointer;position:relative; top:20px;" />
-                    <input type="file" accept="image/*" asp-for="images"  id="images" style="opacity:0;cursor:pointer;" multiple />
+                    <input type="file" accept="image/*" asp-for="images" id="images" style="opacity:0;cursor:pointer;" multiple />
                     <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
                 </div>
                 <div id="image-preview"></div>
@@ -95,11 +109,34 @@
                 <div class="gallary mt-4 d-flex flex-wrap">
                 </div>
             </div>
+        }
+        else if (ViewBag.missionDatas.StoryStatus == "DRAFT")
+        {
+            <div class="images w-100 mt-4 ">
+                <label class="form-label">Upload Your Photos</label>
+                <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
+                    <img src="~/Assets/images/add.png" style="cursor:pointer;position:relative; top:20px;" />
+                    <input type="file" accept="image/*" asp-for="StoryImages" id="images" style="opacity:0;cursor:pointer;" multiple />
+                    <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
+                </div>
+                <div id="image-preview">
+                    @foreach (var a in ViewBag.missionDatas.StoryImages)
+                    {
+                    <div class="preview-container">
 
-
-
-
-
+                            <img class="img" src="~/Assets/StoryImages/@a" alt="404-Page-image.png">
+                        <img class="remove-icon" src="/Assets/images/cancel1.png" alt="404-Page-image.png">
+                        
+                    </div>
+                    }
+                    
+                </div>
+                <div id="selected-count"></div>
+                <span class="text-danger d-none" id="image">At Least Select One Image</span>
+                <div class="gallary mt-4 d-flex flex-wrap">
+                </div>
+            </div>
+        }
         <br />
         
 
@@ -122,6 +159,13 @@
     </div>
     @section Scripts {
     <script>
+        // Add a click event listener to the removeImg icon
+$('.remove-icon').on('click', function() {
+  // Remove the preview-container element from the DOM
+  $('.img').remove();
+});
+
+
         $(function() {
              var selectedCount = 0;
             var selectedCountElement = $('#selected-count');
