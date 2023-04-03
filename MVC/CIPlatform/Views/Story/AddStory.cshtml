@@ -1,6 +1,24 @@
 ﻿@model CIPlatform.Entities.ViewModel.MissionData
 
 
+@if (TempData["SaveStory"] != null)
+{
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.success('@TempData["SaveStory"]')
+    </script>
+    
+}
+
 <style>
     .applyButton {
         border: 2px solid #F88634;
@@ -48,6 +66,7 @@
 
 
     <div class="row">
+        <input type="hidden" asp-for="StoryId" />
         <div class="col-lg-4 pe-2">
             Select Mission
             <select asp-for="MissionId" class="form-select  my-2" data-bs-toggle="dropdown" aria-placeholder="dropdown">
@@ -72,7 +91,10 @@
 
         <div class="col-lg-4 pe-2">
             My Story title
-                <div class="row-cols-auto my-2 "><input asp-for="Title" type="text" class="form-control" placeholder="Enter Story Title"></div>
+                <div class="row-cols-auto my-2 ">
+                    <input asp-for="Title" type="text" class="form-control" placeholder="Enter Story Title">
+                    <span asp-validation-for="Title"></span>
+                    </div>
         </div>
         <div class="col-lg-4">
             Date
@@ -116,19 +138,18 @@
                 <label class="form-label">Upload Your Photos</label>
                 <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
                     <img src="~/Assets/images/add.png" style="cursor:pointer;position:relative; top:20px;" />
-                    <input type="file" accept="image/*" asp-for="StoryImages" id="images" style="opacity:0;cursor:pointer;" multiple />
+                    <input type="file" accept="image/*" asp-for="images" id="images" style="opacity:0;cursor:pointer;" multiple />
                     <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
                 </div>
                 <div id="image-preview">
-                    @foreach (var a in ViewBag.missionDatas.StoryImages)
-                    {
-                    <div class="preview-container">
-
-                            <img class="img" src="~/Assets/StoryImages/@a" alt="404-Page-image.png">
-                        <img class="remove-icon" src="/Assets/images/cancel1.png" alt="404-Page-image.png">
+                        @foreach (var a in ViewBag.missionDatas.StoryImages)
+                        {
+                        <div class="preview-container">
+                                <img class="img"  asp-for="images" src="~/Assets/StoryImages/@a" alt="404-Page-image.png">
+                            <img class="remove-icon" src="/Assets/images/cancel1.png" alt="404-Page-image.png">
                         
-                    </div>
-                    }
+                        </div>
+                        }
                     
                 </div>
                 <div id="selected-count"></div>
@@ -142,7 +163,7 @@
 
         <div class="row">
             <div class="col-lg-6 col-6 ">
-                <button type="submit" class="btn applyButton cancel  px-3" onclick=" location.href='@Url.Action("StoryListing","Story")' ">Cancel</button>
+                <button type="submit" class="btn applyButton cancel  px-3" asp-controller="Story" asp-action="StoryList">Cancel</button>
             </div>
 
             <div class="col-lg-6 col-6  d-flex justify-content-end">

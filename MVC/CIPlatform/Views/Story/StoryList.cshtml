@@ -1,5 +1,21 @@
 ﻿<link rel="stylesheet" href="~/Assets/css/story.css" />
+@if (TempData["SubmitStory"] != null)
+{
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.success('@TempData["SubmitStory"]')
+    </script>
+    
+}
 
 <partial name="_FirstNav" />
 <partial name="_SecondNav" />

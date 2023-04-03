@@ -118,16 +118,49 @@ namespace CIPlatform.Controllers
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
             string btn = "" ;
-           
-             if(submit != null)
+
+            if (submit != null)
             {
-                btn=submit;
+                btn = submit;
+                TempData["SubmitStory"] = "Story Sent for Publish Successfully";
             }
-             if(objStory.MissionId != 0)
+            else
+            {
+                TempData["SaveStory"] = "Story Saved Successfully";
+            }
+            if (objStory.MissionId != 0)
             _StoryRepo.AddData(objStory, UserId,btn);
+           
+                var path = new List<string>();
+                foreach (var i in objStory.images)
+                {
+                    StoryMedium story = new StoryMedium();
+
+                    string path1 = i.FileName;
+
+                    path.Add(path1);
+
+                }
+                objStory.StoryImages = path;
+            
+            var missions = objStory;
+
+            List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
+
+            var storymission = missionDatas.Where(x => x.StoryId == objStory.StoryId).FirstOrDefault();
+            ViewBag.missionDatas = storymission;
+
+
+            ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
+            ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName") ?? "");
+            ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar") ?? "");
 
             ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
-            return View();
+            if(submit != null)
+            {
+                return RedirectToAction("StoryList");
+            }
+            return View(missions);
         }
 
         //[HttpPost]

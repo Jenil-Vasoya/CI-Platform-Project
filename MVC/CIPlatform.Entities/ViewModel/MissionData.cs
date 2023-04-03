@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +39,7 @@ namespace CIPlatform.Entities.ViewModel
 
         public string CityName { get; set; } = null!;
 
+        
         public string? Title { get; set; } = null!;
 
         public string? Description { get; set; }

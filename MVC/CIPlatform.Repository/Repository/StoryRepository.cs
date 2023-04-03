@@ -108,7 +108,7 @@ namespace CIPlatform.Repository.Repository
 
         public List<MissionData> GetStoryCardsList(long UserId)
         {
-            var missions = _DbContext.Stories.Where(a => a.Status == "PUBLISHED" || a.UserId == UserId).OrderBy(a => a.Status).ToList();
+            var missions = _DbContext.Stories.Where(a => a.Status == "PUBLISHED" || (a.UserId == UserId && a.Status != "PENDING")).OrderBy(a => a.Status).ToList();
 
 
             
@@ -146,6 +146,7 @@ namespace CIPlatform.Repository.Repository
                 missionData.OrganizationName = mission.OrganizationName;
                 missionData.ShortDescription = mission.ShortDescription;
                 missionData.MissionType = mission.MissionType;
+                missionData.CreatedAt = objMission.PublishedAt;
 
                 missionData.UserName = user.FirstName + " " + user.LastName;
                 missionData.Avatar = user.Avatar;
@@ -204,48 +205,105 @@ namespace CIPlatform.Repository.Repository
 
         public void AddData(MissionData objStory, long UserId, string btn)
         {
-
-            Story story = new Story();
+            var editStory = _DbContext.Stories.Where(a=> a.StoryId == objStory.StoryId).FirstOrDefault();
+            if (editStory != null)
             {
-                story.UserId = UserId;
-                story.Views = 0;
-                story.Title = objStory.Title;
-                story.Description = objStory.Description;
-                story.PublishedAt = objStory.CreatedAt;
-                story.MissionId = objStory.MissionId;
-                if(btn == "Submit")
+                editStory.UserId = UserId;
+                editStory.Views = 0;
+                editStory.Title = objStory.Title;
+                editStory.Description = objStory.Description;
+                editStory.PublishedAt = objStory.CreatedAt;
+                editStory.MissionId = objStory.MissionId;
+                if (btn == "Submit")
                 {
-                    story.Status = "PUBLISHED";
+                    editStory.Status = "PENDING";
                 }
-            }
+                _DbContext.Stories.Update(editStory);
+                _DbContext.SaveChanges();
 
-                _DbContext.Stories.Add(story);
-            _DbContext.SaveChanges();
-
-
-            var filePath = new List<string>();
-            foreach (var i in objStory.images)
-            {
-                StoryMedium storyMedium = new StoryMedium();
-                storyMedium.StoryId = story.StoryId;
-                storyMedium.Type = "png";
-                storyMedium.Path = i.FileName;
-                _DbContext.StoryMedia.Add(storyMedium);
-                if (i.Length > 0)
+                List<StoryMedium> storyMedia = _DbContext.StoryMedia.Where(a => a.StoryId == editStory.StoryId).ToList();
+                foreach (var storyMediaItem in storyMedia)
                 {
-                    //string path = Server.MapPath("~/wwwroot/Assets/Story");
-                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", i.FileName);
-                    filePath.Add(path);
-                    using (var stream = new FileStream(path, FileMode.Create))
+                    _DbContext.StoryMedia.Remove(storyMediaItem);
+                    _DbContext.SaveChanges();
+                }
+
+
+
+
+                var filePath = new List<string>();
+                foreach (var i in objStory.images)
+                {
+                    StoryMedium storyMedium = new StoryMedium();
+                    storyMedium.StoryId = editStory.StoryId;
+                    storyMedium.Type = "png";
+                    storyMedium.Path = i.FileName;
+                    _DbContext.StoryMedia.Add(storyMedium);
+                    if (i.Length > 0)
                     {
-                        i.CopyTo(stream);
+                        //string path = Server.MapPath("~/wwwroot/Assets/Story");
+                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", i.FileName);
+                        filePath.Add(path);
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            i.CopyTo(stream);
+                        }
+                    }
+
+                }
+
+
+                _DbContext.SaveChanges();
+
+            }
+            else
+            {
+                Story story = new Story();
+                {
+                    story.UserId = UserId;
+                    story.Views = 0;
+                    story.Title = objStory.Title;
+                    story.Description = objStory.Description;
+                    story.PublishedAt = objStory.CreatedAt;
+                    story.MissionId = objStory.MissionId;
+                    if (btn == "Submit")
+                    {
+                        story.Status = "PENDING";
                     }
                 }
 
+                _DbContext.Stories.Add(story);
+                _DbContext.SaveChanges();
+
+
+
+
+                var filePath = new List<string>();
+                foreach (var i in objStory.images)
+                {
+                    StoryMedium storyMedium = new StoryMedium();
+                    storyMedium.StoryId = story.StoryId;
+                    storyMedium.Type = "png";
+                    storyMedium.Path = i.FileName;
+                    _DbContext.StoryMedia.Add(storyMedium);
+                    if (i.Length > 0)
+                    {
+                        //string path = Server.MapPath("~/wwwroot/Assets/Story");
+                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", i.FileName);
+                        filePath.Add(path);
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            i.CopyTo(stream);
+                        }
+                    }
+
+                }
+
+
+                _DbContext.SaveChanges();
+
             }
 
-
-            _DbContext.SaveChanges();
               
             
         }
