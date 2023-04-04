@@ -32,6 +32,6 @@ namespace CIPlatform.Repository.Interface
 
         public List<Mission> UserAppliedMissionList(long UserId);
 
-        public void AddData(MissionData objStory,long UserId, string btn);
+        public long AddData(MissionData objStory,long UserId, string btn);
     }
 }

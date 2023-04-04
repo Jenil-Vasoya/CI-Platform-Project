@@ -46,7 +46,9 @@ namespace CIPlatform.Entities.ViewModel
         
         public List<string>? StoryImages { get; set; }
 
-       public List<IFormFile>? images { get; set; }
+        public List<string>? VideoUrl { get; set; }
+
+        public List<IFormFile>? images { get; set; }
 
         public string? ShortDescription { get; set; }
 

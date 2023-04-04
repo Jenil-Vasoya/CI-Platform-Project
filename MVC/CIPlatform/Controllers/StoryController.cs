@@ -118,6 +118,7 @@ namespace CIPlatform.Controllers
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
             string btn = "" ;
+            long StoryId = 0;
 
             if (submit != null)
             {
@@ -129,7 +130,9 @@ namespace CIPlatform.Controllers
                 TempData["SaveStory"] = "Story Saved Successfully";
             }
             if (objStory.MissionId != 0)
-            _StoryRepo.AddData(objStory, UserId,btn);
+            {
+                 StoryId = _StoryRepo.AddData(objStory, UserId, btn);
+            }
            
                 var path = new List<string>();
                 foreach (var i in objStory.images)
@@ -147,7 +150,7 @@ namespace CIPlatform.Controllers
 
             List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
 
-            var storymission = missionDatas.Where(x => x.StoryId == objStory.StoryId).FirstOrDefault();
+            var storymission = missionDatas.Where(x => x.StoryId == (objStory.StoryId ?? StoryId)).FirstOrDefault();
             ViewBag.missionDatas = storymission;
 
 

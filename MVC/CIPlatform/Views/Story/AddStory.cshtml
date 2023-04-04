@@ -69,22 +69,12 @@
         <input type="hidden" asp-for="StoryId" />
         <div class="col-lg-4 pe-2">
             Select Mission
-            <select asp-for="MissionId" class="form-select  my-2" data-bs-toggle="dropdown" aria-placeholder="dropdown">
-                <option disabled selected>select your mission</option>
+            <select asp-for="MissionId" class="form-select  my-2" data-bs-toggle="dropdown" aria-placeholder="dropdown" required>
+                 <option disabled selected value="">select your mission</option>
                     @foreach (var obj in ViewBag.MissionData)
                     {
-                        @if(ViewBag.missionDatas == null)
-                        {
-                            <option value="@obj.MissionId">@obj.Title</option>
-                        }
-                        else if (ViewBag.missionDatas.StoryStatus == "DRAFT")
-                        {
-                            <option value="@obj.MissionId" selected>@obj.Title</option>
-                        }
-                        else
-                        {
-                            <option value="@obj.MissionId">@obj.Title</option>
-                        }
+                            <option value="@obj.MissionId" >@obj.Title</option>
+                        
                     }
             </select>
         </div>
@@ -92,13 +82,12 @@
         <div class="col-lg-4 pe-2">
             My Story title
                 <div class="row-cols-auto my-2 ">
-                    <input asp-for="Title" type="text" class="form-control" placeholder="Enter Story Title">
-                    <span asp-validation-for="Title"></span>
+                    <input asp-for="Title" type="text" class="form-control" placeholder="Enter Story Title" required data-val-required="Please enter a title for your story">
                     </div>
         </div>
         <div class="col-lg-4">
             Date
-            <div class="row-cols-auto my-2 "><input asp-for="CreatedAt" type="date" class="form-control"></div>
+            <div class="row-cols-auto my-2 "><input asp-for="CreatedAt" type="date" class="form-control" required></div>
         </div>
     </div>
 
@@ -112,7 +101,31 @@
 
     <div class="col-12">
         Enter Video URL
-        <input type="text" class="form-control my-2" placeholder="enter video url">
+        @if(ViewBag.missionDatas != null)
+        {
+                @if (ViewBag.missionDatas.VideoUrl != null)
+                {
+                    @foreach (var i in ViewBag.missionDatas.VideoUrl)
+                    {
+                        <input asp-for="VideoUrl" value="@i" type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your url">
+                        <br />
+                    }
+                }
+                else
+                {
+                    <input asp-for="VideoUrl" name="VideoUrl[]" type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your url">
+                    <br />
+                }
+        }
+        else
+        {
+                <input asp-for="VideoUrl" name="VideoUrl[]" type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your url">
+                <br />
+
+        }
+        
+            <button type="button" class="btn applyButton" id="addLink">Add Link</button>
+
     </div>
     <br />
 
@@ -122,7 +135,7 @@
                 <label class="form-label">Upload Your Photos</label>
                 <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
                     <img src="~/Assets/images/add.png" style="cursor:pointer;position:relative; top:20px;" />
-                    <input type="file" accept="image/*" asp-for="images" id="images" style="opacity:0;cursor:pointer;" multiple />
+                    <input type="file" accept="image/*" asp-for="images" id="images" style="opacity:0;cursor:pointer;" multiple required />
                     <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
                 </div>
                 <div id="image-preview"></div>
@@ -163,7 +176,7 @@
 
         <div class="row">
             <div class="col-lg-6 col-6 ">
-                <button type="submit" class="btn applyButton cancel  px-3" asp-controller="Story" asp-action="StoryList">Cancel</button>
+                <a type="button" class="btn applyButton cancel  px-3" asp-controller="Story" asp-action="StoryList">Cancel</a>
             </div>
 
             <div class="col-lg-6 col-6  d-flex justify-content-end">
@@ -180,6 +193,16 @@
     </div>
     @section Scripts {
     <script>
+
+           $(document).ready(function () {
+        $('#addLink').click(function () {
+            //var index = $('input[name="URL"]').length;
+            var input = '<input type="text" class="form-control" asp-for="VideoUrl" name="VideoUrl[]" /> <br/>';
+                  $(this).before(input);
+            //$(input).appendTo('form');
+        });
+    });
+
         // Add a click event listener to the removeImg icon
 $('.remove-icon').on('click', function() {
   // Remove the preview-container element from the DOM
@@ -274,4 +297,7 @@ $('.remove-icon').on('click', function() {
         //       imagesArray.splice(index, 1)
         //       displayImages()
         //     }
+
     </script>
+
+   

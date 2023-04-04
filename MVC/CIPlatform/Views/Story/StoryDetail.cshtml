@@ -115,7 +115,21 @@
                                         <img src="~/Assets/StoryImages/@imageUrl" />
                                     </div>
                                     
+                                } 
+                                @if (ViewBag.missionDatas != null)
+                                {
+                                    @if (ViewBag.missionDatas.VideoUrl != null)
+                                    {
+                                        @foreach (var i in ViewBag.missionDatas.VideoUrl)
+                                        {
+                                            <div class="swiper-slide">
+                                               <iframe width="560" height="315" src="@i" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                                            </div>
+                                        }
+                                    }
+
                                 }
+
 
                             </div>
                             <div class="swiper-button-next"></div>
@@ -129,6 +143,19 @@
                                         <img src="~/Assets/StoryImages/@imageUrl" />
                                     </div>
                                     
+                                } 
+                                 @if (ViewBag.missionDatas != null)
+                                {
+                                    @if (ViewBag.missionDatas.VideoUrl != null)
+                                    {
+                                        @foreach (var i in ViewBag.missionDatas.VideoUrl)
+                                        {
+                                            <div class="swiper-slide">
+                                                <iframe width="200" height="200" src="@i" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                                            </div>
+                                        }
+                                    }
+
                                 }
                                 @*<div class="swiper-slide col-3">
                                     <img src="~/Assets/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png" />

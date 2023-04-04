@@ -1195,3 +1195,6 @@ C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform\bin\Debug\ne
 C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
 C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform\bin\Debug\net6.0\System.Web.WebPages.dll
 C:\Users\Lenovo\OneDrive\Desktop\CI-Platform-Project\MVC\CIPlatform\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+C:\Users\pct106\Desktop\CI-Platform-Project\MVC\CIPlatform\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\pct106\Desktop\CI-Platform-Project\MVC\CIPlatform\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\pct106\Desktop\CI-Platform-Project\MVC\CIPlatform\bin\Debug\net6.0\Microsoft.Extensions.FileSystemGlobbing.dll

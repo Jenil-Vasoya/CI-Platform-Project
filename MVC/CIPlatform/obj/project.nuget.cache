@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5Yz0ifg3NysI2c2u47FfnlSt7w2c0tfft9wMv6jMFlV7S6bqJ/hy8DanntuDPFxl1Ih/VS0Raje5ndyAD8wK2g==",
+  "dgSpecHash": "YxB+IEkTdv2NT9rGMUhW/KtEk1T+E1wSo0BzsJbPvm45tC4BAaulanRR+Yyfj9b1OspuFYI4lCa6jnt9zPoaFw==",
   "success": true,
   "projectFilePath": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\CIPlatform.csproj",
   "expectedPackageFiles": [
@@ -71,7 +71,9 @@
     "C:\\Users\\pct106\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\pct106\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\pct106\\.nuget\\packages\\microsoft.extensions.dependencymodel\\7.0.0\\microsoft.extensions.dependencymodel.7.0.0.nupkg.sha512",
-    "C:\\Users\\pct106\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\2.2.0\\microsoft.extensions.fileproviders.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\pct106\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\7.0.0\\microsoft.extensions.fileproviders.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\pct106\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\7.0.0\\microsoft.extensions.fileproviders.physical.7.0.0.nupkg.sha512",
+    "C:\\Users\\pct106\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\7.0.0\\microsoft.extensions.filesystemglobbing.7.0.0.nupkg.sha512",
     "C:\\Users\\pct106\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\2.2.0\\microsoft.extensions.hosting.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\pct106\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
     "C:\\Users\\pct106\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",

@@ -124,13 +124,59 @@ namespace CIPlatform.Repository.Repository
                 foreach (var i in storyMedium)
                 {
                     StoryMedium story = new StoryMedium();
+                    if (i.Type == "png")
+                    {
+                        string path1 = i.Path;
 
-                    string path1 = i.Path;
-
-                    path.Add(path1);
+                        path.Add(path1);
+                    }
 
                 }
                 missionData.StoryImages = path;
+
+                var Videopath = new List<string>();
+                foreach (var i in storyMedium)
+                {
+                    StoryMedium story = new StoryMedium();
+                    if (i.Type == "mp4")
+                    {
+                        string path1 = i.Path;
+
+                        Videopath.Add(path1);
+                    }
+                }
+                if (Videopath.Count != 0)
+                {
+                    missionData.VideoUrl = Videopath;
+                }
+                else
+                {
+                    missionData.VideoUrl = null;
+                }
+
+                //var formFiles = new List<IFormFile>();
+
+                //foreach (var imagePath in path)
+                //{
+                //    var fileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory());
+                //    var fileInfo = fileProvider.GetFileInfo(imagePath);
+
+                //    if (fileInfo.Exists)
+                //    {
+                //        var stream = fileInfo.CreateReadStream();
+                //        var formFile = new FormFile(stream, 0, stream.Length, null, Path.GetFileName(imagePath))
+                //        {
+                //            Headers = new HeaderDictionary(),
+                //            ContentType = "image/png" // set the content type to the appropriate value for your image type
+                //        };
+
+                //        formFiles.Add(formFile);
+                //    }
+                //}
+
+                //missionData.images = formFiles;
+
+
 
                 User user = _DbContext.Users.FirstOrDefault(a => a.UserId == objMission.UserId);
 
@@ -203,7 +249,7 @@ namespace CIPlatform.Repository.Repository
             return missions;
         }
 
-        public void AddData(MissionData objStory, long UserId, string btn)
+        public long AddData(MissionData objStory, long UserId, string btn)
         {
             var editStory = _DbContext.Stories.Where(a=> a.StoryId == objStory.StoryId).FirstOrDefault();
             if (editStory != null)
@@ -251,9 +297,21 @@ namespace CIPlatform.Repository.Repository
                     }
 
                 }
-
+                if (objStory.VideoUrl != null)
+                {
+                    foreach (var i in objStory.VideoUrl)
+                    {
+                        StoryMedium storyMediumurl = new StoryMedium();
+                        storyMediumurl.StoryId = editStory.StoryId;
+                        storyMediumurl.Type = "mp4";
+                        storyMediumurl.Path = i;
+                        _DbContext.StoryMedia.Add(storyMediumurl);
+                    }
+                    _DbContext.SaveChanges();
+                }
 
                 _DbContext.SaveChanges();
+                return editStory.StoryId;
 
             }
             else
@@ -299,8 +357,22 @@ namespace CIPlatform.Repository.Repository
 
                 }
 
+                if (objStory.VideoUrl != null)
+                {
+                    foreach (var i in objStory.VideoUrl)
+                    {
+                        StoryMedium storyMediumurl = new StoryMedium();
+                        storyMediumurl.StoryId = story.StoryId;
+                        storyMediumurl.Type = "mp4";
+                        storyMediumurl.Path = i;
+                        _DbContext.StoryMedia.Add(storyMediumurl);
+                    }
+                    _DbContext.SaveChanges();
+                }
+
 
                 _DbContext.SaveChanges();
+                return story.StoryId;
 
             }
 
