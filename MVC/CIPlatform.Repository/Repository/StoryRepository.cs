@@ -133,6 +133,9 @@ namespace CIPlatform.Repository.Repository
 
                 }
                 missionData.StoryImages = path;
+                if(path.Count > 0)
+                missionData.MediaPath = path[0];
+
 
                 var Videopath = new List<string>();
                 foreach (var i in storyMedium)
@@ -196,9 +199,8 @@ namespace CIPlatform.Repository.Repository
 
                 missionData.UserName = user.FirstName + " " + user.LastName;
                 missionData.Avatar = user.Avatar;
-                missionData.Views = objMission.Views;
+                missionData.Views = _DbContext.StoryViews.Where(a=> a.StoryId == objMission.StoryId).Count();
 
-                missionData.MediaPath = MediaByMissionId(objMission.MissionId);
                 missionData.Title = objMission.Title;
                 missionData.Description = objMission.Description;
                 missionData.StoryStatus = objMission.Status;
@@ -222,15 +224,19 @@ namespace CIPlatform.Repository.Repository
             return missionDatas;
         }
 
-        public void StoryView(long StoryId)
+        public void StoryView(long StoryId, long UserId)
         {
-           var entry= _DbContext.Stories.FirstOrDefault(a => a.StoryId == StoryId);
-            if(entry != null)
+
+            var view1 = _DbContext.StoryViews.FirstOrDefault(s => s.StoryId == StoryId && s.UserId == UserId);
+            if (view1 == null)
             {
-                entry.Views = entry.Views + 1;
+                StoryView sv = new StoryView();
+                sv.UserId = UserId;
+                sv.StoryId = StoryId;
+                _DbContext.StoryViews.Add(sv);
                 _DbContext.SaveChanges();
             }
-           
+
         }
 
         public List<Mission> UserAppliedMissionList(long UserId)

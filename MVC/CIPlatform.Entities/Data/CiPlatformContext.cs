@@ -58,6 +58,8 @@ public partial class CiPlatformContext : DbContext
 
     public virtual DbSet<StoryMedium> StoryMedia { get; set; }
 
+    public virtual DbSet<StoryView> StoryViews { get; set; }
+
     public virtual DbSet<TimeSheet> TimeSheets { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
@@ -66,11 +68,7 @@ public partial class CiPlatformContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-            => optionsBuilder.UseSqlServer("Data Source=PCT106\\SQL2017;DataBase=CI Platform;User ID=sa;Password=Tatva@123;TrustServerCertificate=True;");
-
-    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-    //      => optionsBuilder.UseSqlServer("Data Source=MRKHEDUT;DataBase=CI Platform;Trusted_Connection=true;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Data Source=PCT106\\SQL2017;DataBase=CI Platform;User ID=sa;Password=Tatva@123;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -320,7 +318,9 @@ public partial class CiPlatformContext : DbContext
             entity.ToTable("MissionApplication");
 
             entity.Property(e => e.MissionApplicationId).HasColumnName("MissionApplicationID");
-            entity.Property(e => e.AppliedAt).HasColumnType("datetime");
+            entity.Property(e => e.AppliedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
             entity.Property(e => e.ApprovalStatus)
                 .HasMaxLength(20)
                 .IsUnicode(false)
@@ -609,6 +609,27 @@ public partial class CiPlatformContext : DbContext
                 .HasForeignKey(d => d.StoryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_StoryMedia_Story");
+        });
+
+        modelBuilder.Entity<StoryView>(entity =>
+        {
+            entity.HasKey(e => e.ViewId).HasName("PK_StoryView");
+
+            entity.ToTable("StoryView");
+
+            entity.Property(e => e.ViewId).HasColumnName("ViewID");
+            entity.Property(e => e.StoryId).HasColumnName("StoryID");
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.Story).WithMany(p => p.StoryViews)
+                .HasForeignKey(d => d.StoryId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_StoryView_Story");
+
+            entity.HasOne(d => d.User).WithMany(p => p.StoryViews)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_StoryView_User");
         });
 
         modelBuilder.Entity<TimeSheet>(entity =>

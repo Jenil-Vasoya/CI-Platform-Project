@@ -72,6 +72,9 @@ public partial class User
 
     public virtual ICollection<Story> Stories { get; } = new List<Story>();
 
+
+    public virtual ICollection<StoryView> StoryViews { get; } = new List<StoryView>();
+
     public virtual ICollection<TimeSheet> TimeSheets { get; } = new List<TimeSheet>();
 
     public virtual ICollection<UserSkill> UserSkills { get; } = new List<UserSkill>();

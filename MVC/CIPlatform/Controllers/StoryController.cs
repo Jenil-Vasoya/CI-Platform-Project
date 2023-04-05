@@ -72,12 +72,12 @@ namespace CIPlatform.Controllers
 
         public IActionResult StoryDetail(long id)
         {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
             List<User> users = _StoryRepo.UserList();
             ViewBag.Users = users;
+           
+            _StoryRepo.StoryView(id,UserId);
 
-            _StoryRepo.StoryView(id);
-
-            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
             List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
 
@@ -116,6 +116,8 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult AddStory(MissionData objStory , string submit)
         {
+
+
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
             string btn = "" ;
             long StoryId = 0;

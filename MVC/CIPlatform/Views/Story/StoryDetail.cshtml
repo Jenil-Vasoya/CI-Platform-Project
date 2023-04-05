@@ -15,6 +15,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <style>
 
+        .applyButton {
+        border: 2px solid #F88634;
+        border-radius: 100px;
+        color: #F88634;
+        background-color: white;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+        .applyButton:hover {
+            background-color: #F88634;
+            color: white;
+        }
+
         .swiper {
             width: 100%;
             height: 100%;
@@ -77,6 +90,12 @@
             height: 100%;
             object-fit: cover;
         }
+        .swiper-slide iframe {
+            display: block;
+            width: 75%;
+            height: 100%;
+            object-fit: cover;
+        }
 
     </style>
 </head>
@@ -96,19 +115,8 @@
                     
                     <div class="col-xl-6 col-lg-6  col-12 ">
                         <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
-                            <div class="swiper-wrapper">
-                                @*<div class="swiper-slide">
-                                    <img src="~/Assets/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="~/Assets/images/img.png" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="~/Assets/images/Plantation-and-Afforestation-programme.png" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="~/Assets/images/img11.png" />
-                                </div>*@
+                            <div class="swiper-wrapper pb-5">
+                               
                                 @foreach (string imageUrl in ViewBag.missionDatas.StoryImages)
                                 {
                                     <div class="swiper-slide">
@@ -122,8 +130,9 @@
                                     {
                                         @foreach (var i in ViewBag.missionDatas.VideoUrl)
                                         {
+                                            string embedLink = @i.Replace("watch?v=", "embed/");
                                             <div class="swiper-slide">
-                                               <iframe width="560" height="315" src="@i" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                                               <iframe width="560" height="315" src="@embedLink" title="YouTube video player" frameborder="0" ></iframe>
                                             </div>
                                         }
                                     }
@@ -132,8 +141,8 @@
 
 
                             </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next text-black"></div>
+                            <div class="swiper-button-prev text-black"></div>
                         </div>
                         <div thumbsSlider="" class="swiper mySwiper row d-flex flex-row">
                             <div class="swiper-wrapper  ">
@@ -150,97 +159,18 @@
                                     {
                                         @foreach (var i in ViewBag.missionDatas.VideoUrl)
                                         {
+                                            string embedLink = @i.Replace("watch?v=", "embed/");
                                             <div class="swiper-slide">
-                                                <iframe width="200" height="200" src="@i" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                                                <iframe width="200" height="125" src="@embedLink" title="YouTube video player" frameborder="1" allowfullscreen></iframe>
                                             </div>
                                         }
                                     }
 
                                 }
-                                @*<div class="swiper-slide col-3">
-                                    <img src="~/Assets/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png" />
-                                </div>
-                                <div class="swiper-slide col-3">
-                                    <img src="~/Assets/images/img.png" />
-                                </div>
-                                <div class="swiper-slide col-3">
-                                    <img src="~/Assets/images/Plantation-and-Afforestation-programme.png" />
-                                </div>
-                                <div class="swiper-slide col-3">
-                                    <img src="~/Assets/images/img11.png" />
-                                </div>*@
-
+                                
                             </div>
                         </div>
-                        @*<div thumbsSlider="" class="swiper mySwiper row d-flex flex-row">
-                            <div class="swiper-wrapper  ">
-                                @{
-                                    int sub_count = 4;
-                                    int check = 0;
-                                    int carousel_count = (int)Math.Ceiling((double)@ViewBag.missionDatas.StoryImages.Count / 4);
-                                    for (var i = 0; i < carousel_count; i++)
-                                    {
-
-                                        if (check == 0)
-                                        {
-
-
-                                            @if (@ViewBag.missionDatas.StoryImages.Count >= sub_count)
-                                            {
-                                                @foreach (var item in @ViewBag.missionDatas.StoryImages)
-                                                {
-                                                    <div class="swiper-slide col-3">
-                                                        <img src='~/Assets/StoryImages/@item' data-bs-target="#sub-images"  alt="a1" />
-                                                    </div>
-                                                }
-                                            }
-                                            else
-                                            {
-                                                @for (int j = 0; j < @ViewBag.missionDatas.StoryImages.Count; j++)
-                                                {
-                                                    <div class="swiper-slide col-3">
-                                                        <img src='~/Assets/StoryImages/@ViewBag.missionDatas.StoryImages.@j' data-bs-target="#sub-images" data-bs-slide-to=@j alt="a2" />
-                                                    </div>
-                                                }
-                                            }
-
-
-                                            check = check + 4;
-                                        }
-                                        else
-                                        {
-
-                                            @if (@ViewBag.missionDatas.StoryImages.Count - (4 * i) >= sub_count)
-                                            {
-                                                @for (int j = check; j < sub_count + check; j++)
-                                                {
-                                                    <div class="swiper-slide col-3">
-                                                        <img src='~/Assets/StoryImages/@ViewBag.missionDatas.StoryImages.@j' data-bs-target="#sub-images" data-bs-slide-to=@j alt="a3" />
-                                                    </div>
-                                                }
-                                            }
-                                            else
-                                            {
-                                                @for (int j = check; j < @ViewBag.missionDatas.StoryImages.Count; j++)
-                                                {
-                                                    <div class="swiper-slide col-3">
-                                                        <img src='~/Assets/StoryImages/@ViewBag.missionDatas.StoryImages.[@j]' data-bs-target="#sub-images" data-bs-slide-to=@j alt="a4" />
-                                                    </div>
-                                                }
-                                            }
-
-
-                                            check = check + 4;
-                                        }
-                                    }
-                                }
-                            </div>
-                        </div>*@
-
-                        
-                            
-                        
-
+                       
                         <!-- Swiper JS -->
                         <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
@@ -343,7 +273,7 @@
                                         </div>
                                         <div class="col-xl-6 col-12 text-center " id="">
                                              <a asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@ViewBag.missionDatas.MissionId">
-                                            <button type="submit" class="btn rounded-5  " style="border-color: #F88634; color: #F88634;"> Open Mission &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
+                                            <button type="submit" class="btn applyButton rounded-5  " > Open Mission &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
                                             </a>
                                         </div>
 

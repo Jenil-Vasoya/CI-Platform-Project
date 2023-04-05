@@ -19,11 +19,18 @@
         @foreach(var story in  @ViewBag.missionDatas)
         {
 
-        <div class="card mb-5 p-0" style="width: 25rem; height:fit-content">
-            @*---image---*@
-            <div class="howerimg">
-                <img src="~/@story.MediaPath" alt="Avatar" width="100%">
-                <div class=" overlayforhower p-0">
+            <div class="card mb-5 p-0" style="width: 25rem; height:fit-content">
+                @*---image---*@
+                <div class="howerimg">
+                    @if (story.MediaPath != null)
+                    {
+                        <img src="~/Assets/StoryImages/@story.MediaPath" alt="Avatar" height="250px" width="100%">
+                    }
+                    else
+                    {
+                        <img src="~/Assets/images/404-Page-image.png" alt="Avatar" height="300px" width="100%">
+                    }
+                    <div class=" overlayforhower p-0">
                     <a asp-controller="Story" asp-action="StoryDetail" asp-route-id="@story.StoryId">
                     <button type="submit"  class="btn applyButton bg-transparent border-white rounded-pill">
                         <span style="color:white">View Details &nbsp;<i class="bi bi-arrow-right"></i></span>

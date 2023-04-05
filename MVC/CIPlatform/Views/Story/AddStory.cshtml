@@ -107,19 +107,19 @@
                 {
                     @foreach (var i in ViewBag.missionDatas.VideoUrl)
                     {
-                        <input asp-for="VideoUrl" value="@i" type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your url">
+                        <input asp-for="VideoUrl" value="@i" type="text" name="VideoUrl[]" class="form-control" id="formGroupExampleInput" placeholder="Enter your url">
                         <br />
                     }
                 }
                 else
                 {
-                    <input asp-for="VideoUrl" name="VideoUrl[]" type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your url">
+                    <input asp-for="VideoUrl" name="VideoUrl[]"  type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your url">
                     <br />
                 }
         }
         else
         {
-                <input asp-for="VideoUrl" name="VideoUrl[]" type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your url">
+                <input asp-for="VideoUrl" name="VideoUrl[]"  type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your url">
                 <br />
 
         }
@@ -151,7 +151,7 @@
                 <label class="form-label">Upload Your Photos</label>
                 <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
                     <img src="~/Assets/images/add.png" style="cursor:pointer;position:relative; top:20px;" />
-                    <input type="file" accept="image/*" asp-for="images" id="images" style="opacity:0;cursor:pointer;" multiple />
+                    <input type="file" accept="image/*" asp-for="images" id="images" style="opacity:0;cursor:pointer;" multiple required />
                     <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
                 </div>
                 <div id="image-preview">
@@ -197,7 +197,7 @@
            $(document).ready(function () {
         $('#addLink').click(function () {
             //var index = $('input[name="URL"]').length;
-            var input = '<input type="text" class="form-control" asp-for="VideoUrl" name="VideoUrl[]" /> <br/>';
+            var input = '<input type="text" class="form-control" name="VideoUrl[]" asp-for="VideoUrl"  id="formGroupExampleInput" placeholder="Enter your url"/> <br/>';
                   $(this).before(input);
             //$(input).appendTo('form');
         });
