@@ -33,5 +33,7 @@ namespace CIPlatform.Repository.Interface
         public List<Mission> UserAppliedMissionList(long UserId);
 
         public long AddData(MissionData objStory,long UserId, string btn);
+
+        public bool InviteWorker(List<long> CoWorker, long UserId, long StoryId);
     }
 }

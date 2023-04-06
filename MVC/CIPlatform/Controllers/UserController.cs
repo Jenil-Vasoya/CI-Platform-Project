@@ -15,13 +15,13 @@ namespace CIPlatform.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IUserRepository _AccountRepo;
+        private readonly IUserRepository _UserRepo;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IConfiguration configuration;
 
-        public UserController(IUserRepository AccountRepo, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration)
+        public UserController(IUserRepository UserRepo, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration)
         {
-            _AccountRepo = AccountRepo;
+            _UserRepo = UserRepo;
             _httpContextAccessor = httpContextAccessor;
             configuration = _configuration;
         }
@@ -54,11 +54,11 @@ namespace CIPlatform.Controllers
             if (objLogin.Email != null && objLogin.Password != null)
             {
 
-                var objUser = _AccountRepo.UserList().FirstOrDefault(u => u.Email == objLogin.Email && u.Password == objLogin.Password);
+                var objUser = _UserRepo.UserList().FirstOrDefault(u => u.Email == objLogin.Email && u.Password == objLogin.Password);
 
-                if (_AccountRepo.UserList().Any(u => u.Email == objLogin.Email))
+                if (_UserRepo.UserList().Any(u => u.Email == objLogin.Email))
                 {
-                    if(_AccountRepo.UserList().Any(u => u.Password == objLogin.Password))
+                    if(_UserRepo.UserList().Any(u => u.Password == objLogin.Password))
                     { 
                    
                         HttpContext.Session.SetString("UserId", JsonConvert.SerializeObject(objUser.UserId.ToString()));
@@ -105,10 +105,10 @@ namespace CIPlatform.Controllers
 
             if ((objUser.Password == objUser.ConfirmPassword) && objUser.FirstName != null && objUser.Email != null && objUser.Password != null)
             {
-                if (_AccountRepo.UserList().Any(u => u.Email == objUser.Email) == false)
+                if (_UserRepo.UserList().Any(u => u.Email == objUser.Email) == false)
                 {
 
-                    var isValid = _AccountRepo.Register(objUser);
+                    var isValid = _UserRepo.Register(objUser);
                     {
                         if (isValid == true)
                         {
@@ -158,11 +158,11 @@ namespace CIPlatform.Controllers
                 return View();
             }
 
-            if (_AccountRepo.IsEmailAvailable(objForgotPass.email))
+            if (_UserRepo.IsEmailAvailable(objForgotPass.email))
             {
                 try
                 {
-                    long UserId = _AccountRepo.GetUserID(objForgotPass.email);
+                    long UserId = _UserRepo.GetUserID(objForgotPass.email);
                     string welcomeMessage = "Welcome to CI platform, <br/> You can Reset your password using below link. <br/>";
                     // string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Account/Reset_Password/" + UserId.ToString() + " \"  style=\"font-weight:500;color:blue;\" > Reset Password </a>";
                     string path = "<a href=\"https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/User/ResetPassword/" + UserId.ToString() + "\"> Reset Password </a>";
@@ -200,7 +200,7 @@ namespace CIPlatform.Controllers
             if (ModelState.IsValid)
             {
 
-                if (_AccountRepo.ChangePassword(id, model))
+                if (_UserRepo.ChangePassword(id, model))
                 {
                     ModelState.Clear();
                     TempData["ResetSuccess"] = "Your password has been updated";
@@ -215,12 +215,37 @@ namespace CIPlatform.Controllers
             return View();
         }
 
+        public IActionResult EditProfile(long id)
+        {
+            ViewBag.Uid = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+            ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
+            ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName"));
+            ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar"));
+          
 
+            UserData userEditProfile = new UserData();
+            {
+                userEditProfile.users = _UserRepo.GetUserlist(id);
+                userEditProfile.country = _UserRepo.GetCountryList();
+                userEditProfile.city = _UserRepo.GetCities();
+            }
+
+            return View(userEditProfile);
+        }
+
+        public JsonResult GetCity(long countryId)
+        {
+            List<City> city = _UserRepo.CityList(countryId);
+            var json = JsonConvert.SerializeObject(city);
+
+
+            return Json(json);
+        }
 
         //[HttpPost]
         //public IActionResult ForgotPassword(User objPass)
         //{
-        //    var objUser = _AccountRepo.UserList().Exists;
+        //    var objUser = _UserRepo.UserList().Exists;
         //    //if (_db.Users.Any(u => u.Email == objPass.Email))
         //    //{ return RedirectToAction("ResetPassword", "User"); }
         //    return View();

@@ -13,6 +13,11 @@
     <title>Story Details Page</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
     <style>
 
         .applyButton {
@@ -222,7 +227,16 @@
 
 
                                         <div class="col-xl-6 col-12 text-center  ">
-                                            <button type="submit" class="btn rounded-5  " style="border-color: black;" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="~/Assets/images/add1.png" class=" img-fluid cancle-img" alt=""> Recommend to a Co-Worker</button>
+                                            @if (ViewBag.missionDatas.StoryStatus == "DRAFT")
+                                            {
+                                                <button type="submit" class="btn rounded-5" disabled style="border-color: black;" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="~/Assets/images/add1.png" class=" img-fluid cancle-img" alt=""> Recommend to a Co-Worker</button>
+
+                                            }
+                                            else
+                                            {
+                                                <button type="submit" class="btn rounded-5  " style="border-color: black;" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="~/Assets/images/add1.png" class=" img-fluid cancle-img" alt=""> Recommend to a Co-Worker</button>
+                                            }
+                                            
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -332,3 +346,41 @@
 
 
 </html>
+
+<script>
+    
+     function sendInvitation(StoryId)
+        {
+            debugger
+            var CoWorkers = [];
+
+             $('input[name="CoWorkers"]:checked').each(function(){
+                 CoWorkers.push(this.id);
+             });
+
+             $.ajax({
+                 url:"/Story/InviteWorker",
+                 method: "POST",
+                 data:{
+                     "StoryId" : StoryId,
+                     "CoWorkers" : CoWorkers
+                 },
+                 success:function(data){
+                     debugger
+                   if(data == true)
+                   {
+                       toastr.success("Mail sent Successfully")
+                   }
+                   else
+                   {
+                       toastr.error("Mail is not sent")
+                   }
+                 },
+                 error: function(request,error){
+
+                     console.log(error);
+                 }
+             })
+
+        }
+</script>

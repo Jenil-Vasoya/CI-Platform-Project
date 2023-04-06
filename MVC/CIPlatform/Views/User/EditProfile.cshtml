@@ -1,0 +1,336 @@
+﻿@model CIPlatform.Entities.ViewModel.UserData
+
+<partial name="_FirstNav">
+    <div class="container pt-4">
+        <div class="row">
+            @foreach (var data in Model.users)
+            {
+                <!-- Profile Picture and change password -->
+                <div class="col-md-3">
+                    <div class="border border-2 rounded d-flex flex-column justify-content-center align-items-center pt-3">
+
+                        <img src="@data.Avatar" class="rounded-circle" style="height:150px; max-width:150px;" />
+
+                        <h3>
+                            @data.FirstName @data.LastName
+                        </h3>
+                        <button type="button" class="btn bg-transparent border border-0" data-bs-toggle="modal" data-bs-target="#exampleModal">Change Password</button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="recipient-name" class="col-form-label">Old Password:</label>
+                                                <input type="password" value="@data.Password" class="form-control">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="recipient-name" class="col-form-label">New Password:</label>
+                                                <input type="password" class="form-control">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="recipient-name" class="col-form-label">Confirm New Password:</label>
+                                                <input type="password" class="form-control">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-warning bg-transparent border border-2 border-warning rounded-pill text-warning">Change Password</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Profile Details -->
+                <div class="col-md-9">
+                    <!----- Personal Information ----->
+                <div class="row mt-3 px-3">
+                        <div class="col-12 col-md-12">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active text-black" id="mission-tab" data-bs-toggle="tab"
+                                   data-bs-target="#mission" type="button" role="tab" aria-controls="mission"
+                                   aria-selected="true">
+                                        Basic Information
+                                    </a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content mt-3" id="myTabContent">
+                                <!-------- Personal information ------>
+                            <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
+                                    <div class="row mt-2">
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Name*</label>
+                                            <input type="text" value="@data.FirstName" id="Fristname"
+                                               class="form-control" placeholder="Enter Your Name" required />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Surname*</label>
+                                            <input type="text" value="@data.LastName" id="Lastname"
+                                               class="form-control" placeholder="Enter Your Surname" required />
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-sm-6">
+                                            <label class="form-label">EmployeeID</label>
+                                            <input type="text" value="@data.EmployeeId" id="EmpId"
+                                               class="form-control" placeholder="Enter Your EmployeeId" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Manager</label>
+
+
+
+                                            <input type="text" id="ManagerDetails" class="form-control" value="" placeholder="Enter Your Manager Details" />
+
+
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Title</label>
+                                            <input type="text" value="@data.Title" id="title"
+                                               class="form-control" placeholder="Enter Title" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Department</label>
+                                            <input type="text" value="@data.Department" id="Department"
+                                               class="form-control" placeholder="Enter Your Department Name" />
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-12">
+                                            <label class="form-label">My Profile*</label>
+                                            @if (@data.ProfileText == null)
+                                            {
+                                                <textarea type="text" value="@data.ProfileText" id="Profile" class="form-control" rows="5" placeholder="Enter your comments....." required></textarea>
+                                            }
+                                            else
+                                            {
+                                                <textarea type="text" value="@data.ProfileText" id="Profile" class="form-control" rows="5" required>@data.ProfileText</textarea>
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-12">
+                                            <label class="form-label">Why I Volunteer?</label>
+                                            @if (@data.WhyIvolunteer == null)
+                                            {
+                                                <textarea type="text" value="@data.WhyIvolunteer" id="whyIVolunteer" class="form-control" rows="5" placeholder="Enter Your Comments..." required></textarea>
+                                            }
+                                            else
+                                            {
+                                                <textarea type="text" value="@data.WhyIvolunteer" id="whyIVolunteer" class="form-control" rows="5" required>@data.WhyIvolunteer</textarea>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="m-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!----- address Information ----->
+                <div class="row mt-3 px-3">
+                        <div class="col-12 col-md-12" id="DropDownChanger">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active text-black" id="mission-tab" data-bs-toggle="tab"
+                                        data-bs-target="#mission" type="button" role="tab" aria-controls="mission"
+                                        aria-selected="true">
+                                        Address Information
+                                    </button>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content mt-3" id="myTabContent">
+                                <!----- address Information Inputs ----->
+                            <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
+                                    <div class="row mt-2">
+                                        <div class="col-sm-6">
+                                            <label class="form-label">City<span class="text-danger">*</span></label>
+                                            <select class="form-select" id="selectCityList" required>
+
+                                                <option  id="selectCity" value="Please select first country"></option>
+ 
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Country*</label>
+
+                                            <select class="form-select" id="country" onchange="GetCity()" required>
+                                                @*<option value="@data.CountryId" selected>@data.Country.CountryName</option>*@
+                                                    @foreach (var country in Model.country) @*if (country.CountryId != data.CountryId)*@
+                                                    {
+                                                    <option value="@country.CountryId">@country.CountryName</option>
+                                                    }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="m-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!----- Professional Information ----->
+                <div class="row mt-3 px-3">
+                        <div class="col-12 col-md-12">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active text-black" id="mission-tab" data-bs-toggle="tab"
+                                        data-bs-target="#mission" type="button" role="tab" aria-controls="mission"
+                                        aria-selected="true">
+                                        Professional Information
+                                    </button>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content mt-3" id="myTabContent">
+                                <!----- Professional Information Inputs ----->
+                            <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
+                                    <div class="row mt-2">
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Availablity</label>
+                                            <select class="form-select" id="Availablity" required>
+
+                                                @*<option value="@data.a" selected> @data.Availability </option>
+                                                    @if (@data.Availability != "Monthly")
+                                                    {
+                                                    <option value="Monthly">Monthly</option>
+                                                    }
+                                                    @if (@data.Availability != "Week-End")
+                                                    {
+                                                    <option value="Week-End">Week-End</option>
+                                                    }
+                                                    @if (@data.Availability != "Weekly")
+                                                    {
+                                                    <option value="Weekly">Weekly</option>
+                                                    }
+                                                    @if (@data.Availability != "Daily")
+                                                    {
+                                                    <option value="Daily">Daily</option>
+                                                    }
+                                                *@
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">LinkdeIn</label>
+                                            <input type="text" value="@data.LinkedInUrl" id="linkedinId"
+                                               class="form-control" placeholder="Enter LinkdeIn url" required />
+                                        </div>
+                                    </div>
+                                    <div class="m-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!----- My Skills ----->
+                <div class="row mt-3 px-3">
+                        <div class="col-12 col-md-12">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active text-black" id="mission-tab" data-bs-toggle="tab"
+                                        data-bs-target="#mission" type="button" role="tab" aria-controls="mission"
+                                        aria-selected="true">
+                                        My Skills
+                                    </button>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content mt-3" id="myTabContent">
+                                <!----- My Skills Inputs ----->
+                            <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
+                                    <div class="row mt-2">
+
+                                        <div class="col">
+                                            <textarea id="skillsTextArea" type="text" class="form-control" rows="6" placeholder="Select Skills" disabled>
+                                                @*@foreach (var uskill in Model.UserSkills) if (uskill.UserId == ViewBag.UserId)
+                                                    {
+
+                                                    @uskill.Skill.SkillName
+                                                    @("\n")
+                                                    }*@
+                                                                    </textarea>
+                                        </div>
+                                    </div>
+                                    <button type="button" id="skillButton" class="btn btn-secondary border border-2 rounded-pill mt-3 bg-transparent text-secondary" data-bs-toggle="modal" data-bs-target="#skillModal">Add Skills</button>
+                                    <div class="m-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                    <!----- Save Button ----->
+                <div class="d-flex justify-content-end align-items-center">
+                        <div>
+                            <button class="btn btn-warning border border-2 rounded-pill mt-3 bg-transparent text-warning border-warning px-5" onclick="SaveProfile()">Save</button>
+                        </div>
+                    </div>
+                </div>
+                <!----- Skills Model ----->
+                <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Your Skills</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col mx-2 border border-2">
+                                        <div id="sourceDiv">
+                                            @*@foreach (var skill in Model.Skill)
+                                                {
+                                                <li class="skill list-unstyled cursor" value="@skill.SkillId">@skill.SkillName</li>
+                                                }*@
+                                        </div>
+                                    </div>
+                                    <div class="col mx-2 border border-2">
+                                        <div id="destinationDiv"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="skillClose" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-warning bg-transparent border border-2 border-warning rounded-pill text-warning" onclick="setSkills()">Change Skills</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script>
+         function GetCity() {
+         var countryId = document.getElementById("country").value;
+        debugger;
+        $.ajax({
+            url: "/User/GetCity",
+            method: "Post",
+            data: {
+                "countryId": countryId
+            },
+            success: function (data) {
+                data = JSON.parse(data);
+                $("#selectCityList").empty();
+                data.forEach((name) => {
+                    document.getElementById("selectCityList").innerHTML += `
+              
+        <option class="form-check" name="city" id="${name.CityId}">${name.CityName}</option>
+        
+            `;
+                })
+            },
+            error: function (request, error) {
+                console.log(error);
+            }
+        })
+    };
+    </script>

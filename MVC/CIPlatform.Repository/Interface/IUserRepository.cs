@@ -24,5 +24,13 @@ namespace CIPlatform.Repository.Interface
         public bool ResetPassword(long userId, string OldPassword, string NewPassword);
 
         public Boolean ChangePassword(long UserId, Reset_Password model);
+
+        public List<User> GetUserlist(long UserId);
+
+        public List<Country> GetCountryList();
+
+        public List<City> GetCities();
+
+        public List<City> CityList(long CountryID);
     }
 }

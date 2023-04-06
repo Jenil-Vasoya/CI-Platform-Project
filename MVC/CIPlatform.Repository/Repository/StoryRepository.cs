@@ -5,6 +5,8 @@ using CIPlatform.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -363,7 +365,7 @@ namespace CIPlatform.Repository.Repository
 
                 }
 
-                if (objStory.VideoUrl != null)
+                if (objStory.VideoUrl[0] != null)
                 {
                     foreach (var i in objStory.VideoUrl)
                     {
@@ -384,6 +386,50 @@ namespace CIPlatform.Repository.Repository
 
               
             
+        }
+        public bool InviteWorker(List<long> CoWorker, long UserId, long StoryId)
+        {
+            foreach (var user in CoWorker)
+            {
+                _DbContext.StoryInvites.Add(new StoryInvite
+                {
+                    FromUserId = UserId,
+                    ToUserId = Convert.ToInt64(user),
+                    StoryId = StoryId
+                });
+            }
+            _DbContext.SaveChanges();
+
+            User? from_user = _DbContext.Users.FirstOrDefault(c => c.UserId.Equals(UserId));
+            List<string> Email_users = (from u in _DbContext.Users
+                                        where CoWorker.Contains(u.UserId)
+                                        select u.Email).ToList();
+            foreach (var email in Email_users)
+            {
+                var senderEmail = new MailAddress("josephlal3eie@gmail.com", "CI-Platform");
+                var receiverEmail = new MailAddress(email, "Receiver");
+                var password = "oxdijqngsiewiooq";
+                var sub = "Recommendation for see Mission Story";
+                var body = "Recommend By " + from_user?.FirstName + " " + from_user?.LastName + "\n" + "You can join through below link" + "\n" + $"https://localhost:7097/Home/VolunteerMission/{StoryId}";
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(senderEmail.Address, password)
+                };
+                using (var mess = new MailMessage(senderEmail, receiverEmail)
+                {
+                    Subject = sub,
+                    Body = body
+                })
+                {
+                    smtp.Send(mess);
+                }
+            }
+            return true;
         }
 
     }

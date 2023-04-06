@@ -151,7 +151,7 @@ namespace CIPlatform.Controllers
             List<User> users = _HomeRepo.UserList();
             ViewBag.Users = users;
 
-
+            ViewBag.UserId = UserId;
             ViewBag.pg_no = pg;
             ViewBag.Totalpages = Math.Ceiling(_HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId, pg = 0).Count() / 6.0);
             ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
@@ -235,6 +235,7 @@ namespace CIPlatform.Controllers
             List<User> users = _HomeRepo.UserList();
             ViewBag.Users = users;
 
+            ViewBag.UserId = UserId;
             ViewBag.pg_no = pg;
             ViewBag.Totalpages = Math.Ceiling(_HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId, pg = 0).Count() / 6.0);
             ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();

@@ -3,9 +3,10 @@
     "",
     "\\MVC",
     "\\MVC\\CIPlatform",
+    "\\MVC\\CIPlatform\\Controllers",
     "\\MVC\\CIPlatform\\Views",
     "\\MVC\\CIPlatform\\Views\\Story"
   ],
-  "SelectedNode": "\\MVC\\CIPlatform\\Views\\Story\\StoryDetail.cshtml",
+  "SelectedNode": "\\MVC\\CIPlatform\\Controllers\\StoryController.cs",
   "PreviewInSolutionExplorer": false
 }

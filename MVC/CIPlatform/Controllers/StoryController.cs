@@ -62,6 +62,7 @@ namespace CIPlatform.Controllers
 
             ViewBag.missionDatas = missionDatas;
 
+            ViewBag.UserId = UserId;
             ViewBag.pg_no = pg;
             ViewBag.Totalpages = Math.Ceiling(_StoryRepo.GetStoryMissionList(search, countries, cities, themes, skills, pg = 0, UserId).Count() / 6.0);
             ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
@@ -105,7 +106,7 @@ namespace CIPlatform.Controllers
 
             ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
 
-
+            ViewBag.UserId = UserId;
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
             ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName") ?? "");
             ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar") ?? "");
@@ -116,7 +117,6 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult AddStory(MissionData objStory , string submit)
         {
-
 
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
             string btn = "" ;
@@ -155,7 +155,7 @@ namespace CIPlatform.Controllers
             var storymission = missionDatas.Where(x => x.StoryId == (objStory.StoryId ?? StoryId)).FirstOrDefault();
             ViewBag.missionDatas = storymission;
 
-
+            ViewBag.UserId = UserId;
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
             ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName") ?? "");
             ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar") ?? "");
@@ -168,6 +168,19 @@ namespace CIPlatform.Controllers
             return View(missions);
         }
 
+        [HttpPost]
+        public JsonResult InviteWorker(long StoryId, List<long> CoWorkers)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+
+            bool mailSent = _StoryRepo.InviteWorker(CoWorkers, UserId, StoryId);
+            if (mailSent == true)
+            {
+                return Json(mailSent);
+            }
+
+            return Json(null);
+        }
         //[HttpPost]
         //public ActionResult UploadImages(IEnumerable<HttpPostedFileBase> images)
         //{
