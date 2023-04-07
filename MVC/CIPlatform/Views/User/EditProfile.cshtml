@@ -1,5 +1,27 @@
 ﻿@model CIPlatform.Entities.ViewModel.UserData
+<style>
+    .applyButton {
+        border: 2px solid #F88634;
+        border-radius: 100px;
+        color: #F88634;
+        background-color: white;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+        .applyButton:hover {
+            background-color: #F88634;
+            color: white;
+        }
+    .skill:hover {
+  background-color: #F88634;
+            color: white;
+  cursor: pointer;
+}
 
+
+
+
+</style>
 <partial name="_FirstNav">
     <div class="container pt-4">
         <div class="row">
@@ -40,7 +62,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-warning bg-transparent border border-2 border-warning rounded-pill text-warning">Change Password</button>
+                                        <button type="button" class="btn applyButton rounded-pill">Change Password</button>
                                     </div>
                                 </div>
                             </div>
@@ -67,12 +89,12 @@
                             <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
                                     <div class="row mt-2">
                                         <div class="col-sm-6">
-                                            <label class="form-label">Name*</label>
+                                            <label class="form-label">Name<span class="text-danger">*</span></label>
                                             <input type="text" value="@data.FirstName" id="Fristname"
                                                class="form-control" placeholder="Enter Your Name" required />
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label">Surname*</label>
+                                            <label class="form-label">Surname<span class="text-danger">*</span></label>
                                             <input type="text" value="@data.LastName" id="Lastname"
                                                class="form-control" placeholder="Enter Your Surname" required />
                                         </div>
@@ -107,7 +129,7 @@
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-12">
-                                            <label class="form-label">My Profile*</label>
+                                            <label class="form-label">My Profile<span class="text-danger">*</span></label>
                                             @if (@data.ProfileText == null)
                                             {
                                                 <textarea type="text" value="@data.ProfileText" id="Profile" class="form-control" rows="5" placeholder="Enter your comments....." required></textarea>
@@ -158,12 +180,12 @@
                                             <label class="form-label">City<span class="text-danger">*</span></label>
                                             <select class="form-select" id="selectCityList" required>
 
-                                                <option  id="selectCity" value="Please select first country"></option>
+                                                <option  id="selectCity">Please select first country</option>
  
                                             </select>
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label">Country*</label>
+                                            <label class="form-label">Country<span class="text-danger">*</span></label>
 
                                             <select class="form-select" id="country" onchange="GetCity()" required>
                                                 @*<option value="@data.CountryId" selected>@data.Country.CountryName</option>*@
@@ -269,7 +291,7 @@
                     <!----- Save Button ----->
                 <div class="d-flex justify-content-end align-items-center">
                         <div>
-                            <button class="btn btn-warning border border-2 rounded-pill mt-3 bg-transparent text-warning border-warning px-5" onclick="SaveProfile()">Save</button>
+                            <button class="btn applyButton rounded-pill mt-3  px-5" onclick="SaveProfile()">Save</button>
                         </div>
                     </div>
                 </div>
@@ -285,10 +307,8 @@
                                 <div class="row">
                                     <div class="col mx-2 border border-2">
                                         <div id="sourceDiv">
-                                            @*@foreach (var skill in Model.Skill)
-                                                {
-                                                <li class="skill list-unstyled cursor" value="@skill.SkillId">@skill.SkillName</li>
-                                                }*@
+                                            @foreach (var skill in Model.skill)
+                                            { <li class="skill list-unstyled cursor" onclick="addSkill(event)">@skill.SkillName</li> }
                                         </div>
                                     </div>
                                     <div class="col mx-2 border border-2">
@@ -298,7 +318,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" id="skillClose" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-warning bg-transparent border border-2 border-warning rounded-pill text-warning" onclick="setSkills()">Change Skills</button>
+                                <button type="button" class="btn applyButton rounded-pill" onclick="setSkills()">Change Skills</button>
                             </div>
                         </div>
                     </div>
@@ -308,6 +328,37 @@
     </div>
 
     <script>
+         
+
+function addSkill(event) {
+  // Get the clicked skill element and its name
+  var skillElement = event.target;
+  var skillName = skillElement.innerHTML;
+
+  // Check if skill is already in destinationDiv
+  var destinationDiv = document.getElementById("destinationDiv");
+  var skillList = destinationDiv.getElementsByTagName("li");
+  for (var i = 0; i < skillList.length; i++) {
+    if (skillList[i].innerHTML == skillName) {
+      // Skill already in destinationDiv, do nothing
+      return;
+    }
+  }
+
+  // Create a new list item for the destinationDiv
+  var newSkillElement = document.createElement("li");
+  newSkillElement.setAttribute("class", "skill list-unstyled cursor");
+  newSkillElement.innerHTML = skillName;
+
+  // Add onclick event to new skill element to remove it from destinationDiv
+  newSkillElement.onclick = function() {
+    newSkillElement.parentNode.removeChild(newSkillElement);
+  }
+
+  // Add the new skill element to the destinationDiv
+  destinationDiv.appendChild(newSkillElement);
+}
+
          function GetCity() {
          var countryId = document.getElementById("country").value;
         debugger;

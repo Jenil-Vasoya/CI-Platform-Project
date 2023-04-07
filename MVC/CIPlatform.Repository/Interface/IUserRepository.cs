@@ -31,6 +31,8 @@ namespace CIPlatform.Repository.Interface
 
         public List<City> GetCities();
 
+        public List<Skill> GetSkills();
+
         public List<City> CityList(long CountryID);
     }
 }

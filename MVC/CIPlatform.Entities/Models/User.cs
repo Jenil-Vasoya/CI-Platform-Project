@@ -25,7 +25,7 @@ public partial class User
 
     [NotMapped] // Does not effect with your database
     [Compare("Password", ErrorMessage = "Please enter the same password")]
-    public string ConfirmPassword { get; set; }
+    public string? ConfirmPassword { get; set; }
 
 
     public int PhoneNumber { get; set; }

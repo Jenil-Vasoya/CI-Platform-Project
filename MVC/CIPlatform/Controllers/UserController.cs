@@ -228,6 +228,7 @@ namespace CIPlatform.Controllers
                 userEditProfile.users = _UserRepo.GetUserlist(id);
                 userEditProfile.country = _UserRepo.GetCountryList();
                 userEditProfile.city = _UserRepo.GetCities();
+                userEditProfile.skill = _UserRepo.GetSkills();
             }
 
             return View(userEditProfile);

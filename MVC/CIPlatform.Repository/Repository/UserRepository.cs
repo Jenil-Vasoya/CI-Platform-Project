@@ -159,6 +159,12 @@ namespace CIPlatform.Repository.Repository
             var getcity = _DbContext.Cities.ToList();
             return getcity;
         }
+        
+        public List<Skill> GetSkills()
+        {
+            var getskills = _DbContext.Skills.ToList();
+            return getskills;
+        }
 
         public List<City> CityList(long CountryID)
         {

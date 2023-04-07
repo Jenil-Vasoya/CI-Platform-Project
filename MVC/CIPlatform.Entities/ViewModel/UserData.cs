@@ -13,6 +13,7 @@ namespace CIPlatform.Entities.ViewModel
 
         public List<Country>? country { get; set; }
 
+        public List<Skill>? skill { get; set; }
 
         public List<City>? city { get; set; }
     }
