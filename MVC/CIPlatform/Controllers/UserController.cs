@@ -9,6 +9,7 @@ using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
 using SendGrid.Helpers.Mail;
 using System.Data;
+using System.Drawing;
 using MailHelper = CIPlatform.Entities.ViewModel.MailHelper;
 
 namespace CIPlatform.Controllers
@@ -58,9 +59,9 @@ namespace CIPlatform.Controllers
 
                 if (_UserRepo.UserList().Any(u => u.Email == objLogin.Email))
                 {
-                    if(_UserRepo.UserList().Any(u => u.Password == objLogin.Password))
-                    { 
-                   
+                    if (_UserRepo.UserList().Any(u => u.Email == objLogin.Email.ToLower() && u.Password == objLogin.Password))
+                    {
+
                         HttpContext.Session.SetString("UserId", JsonConvert.SerializeObject(objUser.UserId.ToString()));
                         HttpContext.Session.SetString("Email", JsonConvert.SerializeObject(objUser.Email.ToString()));
                         HttpContext.Session.SetString("UserName", JsonConvert.SerializeObject(objUser.FirstName.ToString() + " " + objUser.LastName.ToString()));
@@ -221,17 +222,31 @@ namespace CIPlatform.Controllers
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
             ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName"));
             ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar"));
-          
 
-            UserData userEditProfile = new UserData();
-            {
-                userEditProfile.users = _UserRepo.GetUserlist(id);
-                userEditProfile.country = _UserRepo.GetCountryList();
-                userEditProfile.city = _UserRepo.GetCities();
-                userEditProfile.skill = _UserRepo.GetSkills();
-            }
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-            return View(userEditProfile);
+            
+            UserData model = _UserRepo.GetUserlist(UserId);
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult EditProfile(UserData userData)
+        {
+            ViewBag.Uid = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+            ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
+            ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName"));
+            ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar"));
+
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+
+            
+            UserData model = _UserRepo.GetUserlist(UserId);
+
+
+            return View(model);
         }
 
         public JsonResult GetCity(long countryId)
@@ -242,6 +257,58 @@ namespace CIPlatform.Controllers
 
             return Json(json);
         }
+
+        [HttpPost]
+        public JsonResult ChangePassword(string OldPassword, string Password, string ConfirmPassword)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+
+            if (Password == ConfirmPassword)
+            {
+
+               bool result = _UserRepo.ChangePasswordUser(UserId, OldPassword, Password);
+
+                if (result == true)
+                {
+                    TempData["ResetSuccess"] = "Your password has been updated";
+                    return Json(true);
+
+                }
+                else
+                {
+                    TempData["ResetFail"] = "Please enter the correct old password";
+                    return Json(false);
+
+                }
+
+            }
+
+            TempData["ResetFail"] = "Please enter the same password";
+            string res = "";
+            return Json(res);
+
+        }
+
+        [HttpPost]
+        public JsonResult ChangeSkill(List<long> skillIDs)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+
+            bool result = _UserRepo.ChangeSkills(skillIDs, UserId);
+            return Json(result);
+        }
+
+        [HttpPost]
+        public ActionResult ActionName(string base64Image)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+
+            _UserRepo.EditAvatar(base64Image,UserId);
+
+            return RedirectToAction("Index");
+        }
+
+
 
         //[HttpPost]
         //public IActionResult ForgotPassword(User objPass)

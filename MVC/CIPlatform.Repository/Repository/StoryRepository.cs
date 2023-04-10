@@ -200,7 +200,7 @@ namespace CIPlatform.Repository.Repository
                 missionData.CreatedAt = objMission.PublishedAt;
 
                 missionData.UserName = user.FirstName + " " + user.LastName;
-                missionData.Avatar = user.Avatar;
+                //missionData.Avatar = user.Avatar;
                 missionData.Views = _DbContext.StoryViews.Where(a=> a.StoryId == objMission.StoryId).Count();
 
                 missionData.Title = objMission.Title;

@@ -25,7 +25,7 @@ namespace CIPlatform.Repository.Interface
 
         public Boolean ChangePassword(long UserId, Reset_Password model);
 
-        public List<User> GetUserlist(long UserId);
+        public UserData GetUserlist(long UserId);
 
         public List<Country> GetCountryList();
 
@@ -33,6 +33,14 @@ namespace CIPlatform.Repository.Interface
 
         public List<Skill> GetSkills();
 
+        public List<UserSkill> GetUserSkills(long UserId);
+
         public List<City> CityList(long CountryID);
+
+        public bool ChangePasswordUser(long UserId, string OldPassword, string Password);
+
+        public bool ChangeSkills(List<long> skills, long UserId);
+
+        public bool EditAvatar(string base64Image, long UserId);
     }
 }

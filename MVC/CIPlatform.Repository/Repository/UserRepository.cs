@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -142,10 +143,35 @@ namespace CIPlatform.Repository.Repository
 
         }
 
-        public List<User> GetUserlist(long UserId)
+        public UserData GetUserlist(long UserId)
         {
-            var getuser = _DbContext.Users.Include(x => x.City).Include(x => x.Country).Where(x => x.UserId == UserId).ToList();
-            return getuser;
+            var getuser = _DbContext.Users.FirstOrDefault(u=> u.UserId == UserId);
+            if (getuser != null)
+            {
+                UserData userData = new UserData();
+                userData.UserId = getuser.UserId;
+                userData.FirstName = getuser.FirstName;
+                userData.LastName = getuser.LastName;
+                userData.Email = getuser.Email;
+                userData.PhoneNumber = getuser.PhoneNumber;
+                userData.Avatar = getuser.Avatar;
+                userData.WhyIvolunteer = getuser.WhyIvolunteer;
+                userData.EmployeeId = getuser.EmployeeId;
+                userData.Department = getuser.Department;
+                userData.CityId = getuser.CityId;
+                userData.CountryId = getuser.CountryId;
+                userData.ProfileText = getuser.ProfileText;
+                userData.LinkedInUrl = getuser.LinkedInUrl;
+                userData.Title = getuser.Title;
+                userData.Status = getuser.Status;
+
+                userData.CountryList = _DbContext.Countries.ToList();
+                userData.CityList = _DbContext.Cities.ToList();
+                userData.SkillList = _DbContext.Skills.ToList();
+                userData.userSkill = _DbContext.UserSkills.Where(u => u.UserId == UserId).ToList();
+                return userData;
+            }
+            return null;
         }
 
         public List<Country> GetCountryList()
@@ -165,6 +191,12 @@ namespace CIPlatform.Repository.Repository
             var getskills = _DbContext.Skills.ToList();
             return getskills;
         }
+        
+        public List<UserSkill> GetUserSkills(long UserId)
+        {
+            var getUserSkills = _DbContext.UserSkills.Where(u=> u.UserId == UserId).ToList();
+            return getUserSkills;
+        }
 
         public List<City> CityList(long CountryID)
         {
@@ -172,5 +204,70 @@ namespace CIPlatform.Repository.Repository
             return objCityList;
         }
 
+        public bool ChangePasswordUser(long UserId, string OldPassword, string Password)
+        {
+            User user = _DbContext.Users.FirstOrDefault(x => x.UserId == UserId);
+            if (user.Password == OldPassword)
+            {
+                user.Password = Password;
+                user.UpdatedAt = DateTime.Now;
+                _DbContext.Users.Update(user);
+                _DbContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public bool ChangeSkills(List<long> skills, long UserId)
+        {
+            List<UserSkill> userSkills = _DbContext.UserSkills.Where(a => a.UserId == UserId).ToList();
+            foreach (var userSkill in userSkills)
+            {
+                _DbContext.UserSkills.Remove(userSkill);
+                _DbContext.SaveChanges();
+            }
+
+            foreach (var skill in skills)
+            {
+                UserSkill userSkill = new UserSkill();
+                {
+                    userSkill.UserId = UserId;
+                    userSkill.SkillId = (int)skill;
+                    userSkill.UpdatedAt = DateTime.Now;
+
+                    _DbContext.UserSkills.Add(userSkill);
+                    _DbContext.SaveChanges();
+
+                }
+
+            }
+            return true;
+
+        }
+
+        public bool EditAvatar(string base64Image, long UserId)
+        {
+            User user = _DbContext.Users.FirstOrDefault(a => a.UserId == UserId);
+            if(user != null)
+            {
+                base64Image = base64Image.Replace("data:image/png;base64,", "");
+                byte[] imageBytes1 = Convert.FromBase64String(base64Image);
+
+                user.Avatar = base64Image;
+                _DbContext.Users.Update(user);
+                _DbContext.SaveChanges();
+            }
+            
+            base64Image = base64Image.Replace("data:image/png;base64,", "");
+
+            byte[] imageBytes = Convert.FromBase64String(base64Image);
+
+            using (var ms = new MemoryStream(imageBytes))
+            {
+                var image = Image.FromStream(ms);
+
+            }
+            return true;
+        }
     }
 }

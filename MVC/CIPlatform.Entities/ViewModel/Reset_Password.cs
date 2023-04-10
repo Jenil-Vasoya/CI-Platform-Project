@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace CIPlatform.Entities.ViewModel
 
         [Required(ErrorMessage = "Please enter the password")]
         public string Password { get; set; }
+        
 
         [Compare("Password", ErrorMessage = "Password does not match")]
         public string ConfirmPassword { get; set; }
