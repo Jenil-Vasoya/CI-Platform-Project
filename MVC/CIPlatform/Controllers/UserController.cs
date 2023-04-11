@@ -65,7 +65,7 @@ namespace CIPlatform.Controllers
                         HttpContext.Session.SetString("UserId", JsonConvert.SerializeObject(objUser.UserId.ToString()));
                         HttpContext.Session.SetString("Email", JsonConvert.SerializeObject(objUser.Email.ToString()));
                         HttpContext.Session.SetString("UserName", JsonConvert.SerializeObject(objUser.FirstName.ToString() + " " + objUser.LastName.ToString()));
-                        HttpContext.Session.SetString("Avatar", JsonConvert.SerializeObject(objUser.Avatar.ToString()));
+                       
 
 
 
@@ -220,14 +220,15 @@ namespace CIPlatform.Controllers
         {
             ViewBag.Uid = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
-            ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName"));
-            ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar"));
+            
 
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
             
             UserData model = _UserRepo.GetUserlist(UserId);
 
+            ViewBag.UserName = _UserRepo.GetUserAvatar(UserId).FirstName + " " + _UserRepo.GetUserAvatar(UserId).LastName;
+            ViewBag.Avatar = _UserRepo.GetUserAvatar(UserId).Avatar;
 
             return View(model);
         }
@@ -235,17 +236,33 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult EditProfile(UserData userData)
         {
-            ViewBag.Uid = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-            ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
-            ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName"));
-            ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar"));
-
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-            
+            UserData model1 = _UserRepo.GetUserlist(UserId);
+            if (userData.FirstName == model1.FirstName && userData.LastName == model1.LastName && userData.EmployeeId == model1.EmployeeId && userData.Title == model1.Title && userData.Department == model1.Department && userData.WhyIvolunteer == model1.WhyIvolunteer && userData.CityId == model1.CityId && userData.CountryId == model1.CountryId && userData.LinkedInUrl == model1.LinkedInUrl && userData.ProfileText == model1.ProfileText)
+            {
+                TempData["EditFail"] = "Please change the profile details for update details";
+
+                ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
+                ViewBag.UserName = model1.FirstName + " " + model1.LastName;
+                ViewBag.Avatar = model1.Avatar;
+                return View(model1);
+            }
+           bool result = _UserRepo.EditProfile(userData, UserId);
+
             UserData model = _UserRepo.GetUserlist(UserId);
+            if(result)
+            {
+                TempData["EditSuccess"] = "Your profile was updated";
+            }
+            else
+            {
+                TempData["EditFail"] = "Your profile was not updated";
+            }
 
-
+            ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
+            ViewBag.UserName = _UserRepo.GetUserAvatar(UserId).FirstName + " " + _UserRepo.GetUserAvatar(UserId).LastName;
+            ViewBag.Avatar = _UserRepo.GetUserAvatar(UserId).Avatar;
             return View(model);
         }
 
@@ -262,7 +279,10 @@ namespace CIPlatform.Controllers
         public JsonResult ChangePassword(string OldPassword, string Password, string ConfirmPassword)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-
+            if(OldPassword == null || Password == null || ConfirmPassword == null)
+            {
+                return Json(null);
+            }
             if (Password == ConfirmPassword)
             {
 
@@ -284,7 +304,7 @@ namespace CIPlatform.Controllers
             }
 
             TempData["ResetFail"] = "Please enter the same password";
-            string res = "";
+            string res = "abc";
             return Json(res);
 
         }
@@ -298,18 +318,24 @@ namespace CIPlatform.Controllers
             return Json(result);
         }
 
+        //[HttpPost]
+        //public ActionResult ActionName(string base64Image)
+        //{
+        //    long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+
+        //    _UserRepo.EditAvatar(base64Image,UserId);
+
+        //    return RedirectToAction("Index");
+        //}
+
         [HttpPost]
-        public ActionResult ActionName(string base64Image)
+        public JsonResult EditAvatar(IFormFile Profileimg)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-            _UserRepo.EditAvatar(base64Image,UserId);
-
-            return RedirectToAction("Index");
+            var changeimage = _UserRepo.EditAvatar(Profileimg, UserId);
+            return Json(changeimage);
         }
-
-
-
         //[HttpPost]
         //public IActionResult ForgotPassword(User objPass)
         //{

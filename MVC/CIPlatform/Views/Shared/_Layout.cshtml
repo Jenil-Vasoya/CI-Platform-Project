@@ -22,18 +22,25 @@
 
 </head>
 <body>
-    <header>
- 
-
-
-    </header>
    
     <div class="container-fluid" style="padding-left:0px; padding-right:0px; min-height:100%">
         <main role="main" >
             @RenderBody()
         </main>
     </div>
+     @if (IsSectionDefined("hidefooter"))
+    {
+         @RenderSection("hidefooter", false)
+    }
+    else  
+    {
+         <footer style="margin-bottom: -65px;">
+            <partial name="_Policy" />
 
+
+         </footer>
+     }
+   
     
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

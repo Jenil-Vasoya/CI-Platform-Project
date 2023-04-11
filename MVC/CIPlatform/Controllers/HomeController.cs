@@ -38,6 +38,15 @@ namespace CIPlatform.Controllers
         public IActionResult AddStory()
         {
             return View();
+        } 
+        
+        public IActionResult Policy()
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+
+            ViewBag.UserName = _HomeRepo.GetUserAvatar(UserId).FirstName + " " + _HomeRepo.GetUserAvatar(UserId).LastName;
+            ViewBag.Avatar = _HomeRepo.GetUserAvatar(UserId).Avatar;
+            return View();
         }
 
         //public IActionResult StoryList()
@@ -97,8 +106,8 @@ namespace CIPlatform.Controllers
 
             ViewBag.UserId = UserId;
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-            ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName") ?? "");
-            ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar") ?? "");
+            ViewBag.UserName = _HomeRepo.GetUserAvatar(UserId).FirstName + " " + _HomeRepo.GetUserAvatar(UserId).LastName;
+            ViewBag.Avatar = _HomeRepo.GetUserAvatar(UserId).Avatar;
 
             List<User> users = _HomeRepo.UserList();
             ViewBag.Users = users;
@@ -201,8 +210,8 @@ namespace CIPlatform.Controllers
             }
             ViewBag.UserId = UserId;
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-            ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName") ?? "");
-            ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar") ?? "");
+            ViewBag.UserName = _HomeRepo.GetUserAvatar(UserId).FirstName + " " + _HomeRepo.GetUserAvatar(UserId).LastName;
+            ViewBag.Avatar = _HomeRepo.GetUserAvatar(UserId).Avatar;
 
             return View();
         }

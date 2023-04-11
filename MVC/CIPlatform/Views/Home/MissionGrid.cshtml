@@ -40,6 +40,7 @@
 
     <partial name="_FirstNav" />
     <partial name="_SecondNav" />
+
     <div class="container pt-3">
         <div class="row">
            
@@ -73,129 +74,20 @@
             </div>
         </div>
     </div>
-@*    <div  id="selectgridview" class="SelectGridForDisplay">
-        <div id="missions">
-           <partial name="_MissionGrid" />
-        </div>
-    </div>
-    <div  id="selectlistview"  class="SelectListForDisplay" >
-     <div id="missionslist">x
-  <partial name="_MissionList" />
-   </div>
-   </div>*@
 
 
 
 
         <div class="gridItem" id="missions">
             <partial name="_MissionGrid" />
-
         </div>
+
    
     <div class="listItem" id="missionslist">
         <partial name="_MissionList" />
-
-
     </div>
-         
-                   
-
-    
-   @* <div class="container">
-        <br />
-        <div class=row>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>*@
 
 
-   @* <div class="container mt—5 p—3 ">
-        <nav aria-label="Page navigation example">
-            <ul class=" pagination justify—content—center" onchange="searchMission()">
-                <li class="page-item">
-                    <a class="page-link" aria-label="Previous" onclick="Previous(2)">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                @{
-                    double totalpages = ViewBag.Totalpages;
-                    for (int i = 1; i <= totalpages; i++)
-                    {
-                        @if (i == ViewBag.pg_no)
-                        {
-                            <li class=" page—item">
-                                <a class="page-link" onclick="searchMission(@i)">@i</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="page-item">
-                                <a class="page-link" onclick="searchMission(@i)">@i</a>
-                            </li>
-                        }
-
-                    }
-                }
-            </ul>
-        </nav>
-    </div>*@
-
-@*    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center" onchange="searchMission()">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous" onclick="Previous(2)">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            @{
-                double totalpages = ViewBag.Totalpages;
-
-                for (int i = 1; i <= totalpages; i++)
-                {
-                    @if (i == ViewBag.pg_no)
-                    {
-                        <li class="page-item ">
-                            <a class="page-link" href="#" onclick="searchMission(@i)">@i </a>
-
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="page-item">
-                            <a class="page-link" href="#" onclick="searchMission(@i)">@i</a>
-                        </li>
-                    }
-
-
-                }
-            }
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next" onclick="NextPage(1)">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>*@
-
-
-    <br />
-    <br />
 </body>
 
 <script type="text/javascript" language="javascript">

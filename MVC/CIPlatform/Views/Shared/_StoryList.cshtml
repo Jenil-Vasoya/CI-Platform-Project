@@ -51,7 +51,7 @@
                     @if (story.StoryStatus == "DRAFT")
                     {
                         <div class="col-2 d-flex align-items-center">
-                            <img src="@story.Avatar" class="rounded-circle w-20 h-50" />
+                            <img src="~/Assets/StoryImages/@story.Avatar" class="rounded-circle w-20 h-50" />
                         </div>
                         <div class="col-7 d-flex align-items-center">
                             <h6 class="fw-normal">@story.UserName</h6>
@@ -68,7 +68,7 @@
                     else
                     {
                         <div class="col-2 d-flex align-items-center">
-                            <img src="@story.Avatar" class="rounded-circle w-20 h-50" />
+                            <img src="~/Assets/StoryImages/@story.Avatar" class="rounded-circle w-20 h-50" />
                         </div>
                         <div class="col-10 d-flex align-items-center">
                             <h6 class="fw-normal">@story.UserName</h6>

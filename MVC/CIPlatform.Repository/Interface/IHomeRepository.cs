@@ -16,6 +16,8 @@ namespace CIPlatform.Repository.Interface
 
         public List<City> CityList(List<string> CountryID);
 
+        public User GetUserAvatar(long UserId);
+
         public List<MissionTheme> MissionThemeList();
 
         public List<Skill> SkillList();

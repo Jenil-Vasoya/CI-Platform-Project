@@ -21,6 +21,12 @@ namespace CIPlatform.Repository.Repository
             _DbContext = DbContext;
         }
 
+        public User GetUserAvatar(long UserId)
+        {
+            var user = _DbContext.Users.FirstOrDefault(i => i.UserId == UserId);
+            return user;
+        }
+
         public List<User> UserList()
         {
             List<User> users = _DbContext.Users.ToList();
@@ -200,7 +206,7 @@ namespace CIPlatform.Repository.Repository
                 missionData.CreatedAt = objMission.PublishedAt;
 
                 missionData.UserName = user.FirstName + " " + user.LastName;
-                //missionData.Avatar = user.Avatar;
+                missionData.Avatar = user.Avatar;
                 missionData.Views = _DbContext.StoryViews.Where(a=> a.StoryId == objMission.StoryId).Count();
 
                 missionData.Title = objMission.Title;

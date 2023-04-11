@@ -10,6 +10,8 @@ namespace CIPlatform.Repository.Interface
 {
     public interface IStoryRepository
     {
+        public User GetUserAvatar(long UserId);
+
         public List<User> UserList();
 
         public List<Country> CountryList();

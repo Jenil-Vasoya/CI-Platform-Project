@@ -1,5 +1,6 @@
 ﻿using CIPlatform.Entities.Models;
 using CIPlatform.Entities.ViewModel;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,10 @@ namespace CIPlatform.Repository.Interface
 {
     public interface IUserRepository
     {
+        public User GetUserAvatar(long UserId);
+
         public List<User> UserList();
 
-        
         public Boolean Register(User objUser);
 
         public Boolean IsEmailAvailable(string email);
@@ -41,6 +43,8 @@ namespace CIPlatform.Repository.Interface
 
         public bool ChangeSkills(List<long> skills, long UserId);
 
-        public bool EditAvatar(string base64Image, long UserId);
+        public bool EditAvatar(IFormFile Profileimg, long UserId);
+
+        public bool EditProfile(UserData userData, long UserId);
     }
 }

@@ -23,6 +23,12 @@ namespace CIPlatform.Repository.Repository
             _DbContext = DbContext;
         }
 
+        public User GetUserAvatar(long UserId)
+        {
+            var user = _DbContext.Users.FirstOrDefault(i => i.UserId == UserId);
+            return user;
+        }
+
         public List<User> UserList()
         {
             List<User> objUserList = _DbContext.Users.ToList();
@@ -245,29 +251,52 @@ namespace CIPlatform.Repository.Repository
 
         }
 
-        public bool EditAvatar(string base64Image, long UserId)
+        public bool EditAvatar(IFormFile Profileimg, long UserId)
         {
-            User user = _DbContext.Users.FirstOrDefault(a => a.UserId == UserId);
-            if(user != null)
-            {
-                base64Image = base64Image.Replace("data:image/png;base64,", "");
-                byte[] imageBytes1 = Convert.FromBase64String(base64Image);
+            var CheckProfile = _DbContext.Users.FirstOrDefault(x => x.UserId == UserId);
 
-                user.Avatar = base64Image;
-                _DbContext.Users.Update(user);
-                _DbContext.SaveChanges();
-            }
+
+            // Delete the image file from the file system
             
-            base64Image = base64Image.Replace("data:image/png;base64,", "");
-
-            byte[] imageBytes = Convert.FromBase64String(base64Image);
-
-            using (var ms = new MemoryStream(imageBytes))
+            var filepath = Path.Combine("wwwroot/Assets/StoryImages", Profileimg.FileName);
+            using (var filestream = new FileStream(filepath, FileMode.Create))
             {
-                var image = Image.FromStream(ms);
-
+                Profileimg.CopyTo(filestream);
             }
+
+            CheckProfile.Avatar = Profileimg.FileName;
+
+            _DbContext.Users.Update(CheckProfile);
+            _DbContext.SaveChanges();
+
             return true;
         }
+
+        public bool EditProfile(UserData userData, long UserId)
+        {
+            User getUser = _DbContext.Users.FirstOrDefault(u=> u.UserId == UserId);
+            if(getUser != null)
+            {
+                getUser.FirstName = userData.FirstName;
+                getUser.LastName = userData.LastName;   
+               // getUser.Avatar = userData.Avatar;
+                getUser.WhyIvolunteer = userData.WhyIvolunteer;
+                getUser.EmployeeId = userData.EmployeeId;
+                getUser.Department = userData.Department;
+                getUser.CityId = userData.CityId;
+                getUser.CountryId = userData.CountryId;
+                getUser.ProfileText = userData.ProfileText;
+                getUser.LinkedInUrl = userData.LinkedInUrl;
+                getUser.Title = userData.Title;
+                getUser.UpdatedAt = DateTime.Now;
+
+                _DbContext.Users.Update(getUser);
+                _DbContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        
     }
 }

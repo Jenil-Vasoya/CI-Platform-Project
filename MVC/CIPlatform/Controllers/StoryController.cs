@@ -33,8 +33,8 @@ namespace CIPlatform.Controllers
 
             ViewBag.UserId = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? "");
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-            ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName") ?? "");
-            ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar") ?? "");
+            ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
+            ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
 
             List<Country> countries = _StoryRepo.CountryList();
             ViewBag.countries = countries;
@@ -88,8 +88,8 @@ namespace CIPlatform.Controllers
           
             ViewBag.UserId = UserId;
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-            ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName") ?? "");
-            ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar") ?? "");
+            ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
+            ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
 
             return View();
         }
@@ -108,8 +108,8 @@ namespace CIPlatform.Controllers
 
             ViewBag.UserId = UserId;
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-            ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName") ?? "");
-            ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar") ?? "");
+            ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
+            ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
 
             return View(missions);
         }
@@ -157,8 +157,8 @@ namespace CIPlatform.Controllers
 
             ViewBag.UserId = UserId;
             ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-            ViewBag.UserName = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserName") ?? "");
-            ViewBag.Avatar = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Avatar") ?? "");
+            ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
+            ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
 
             ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
             if(submit != null)

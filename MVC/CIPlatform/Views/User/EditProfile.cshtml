@@ -13,10 +13,11 @@
             "closeButton": true,
             "progressBar": true
         }
-        toastr.success('@TempData["ResetSuccess"]')
+        toastr.success('@TempData["ResetSuccess"]', { timeOut: 100 })
     </script>
 
 }
+
 @if (TempData["ResetFail"] != null)
 {
 
@@ -30,14 +31,51 @@
             "closeButton": true,
             "progressBar": true
         }
-        toastr.error('@TempData["ResetFail"]')
+        toastr.error('@TempData["ResetFail"]', { timeOut: 100 })
     </script>
-
 }
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+@if (TempData["EditSuccess"] != null)
+{
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.success('@TempData["EditSuccess"]', { timeOut: 100 })
+    </script>
+}
+
+@if (TempData["EditFail"] != null)
+{
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.error('@TempData["EditFail"]', { timeOut: 100 })
+    </script>
+}
+
+
+<head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+</head>
+
 <style>
     .applyButton {
         border: 2px solid #F88634;
@@ -47,67 +85,311 @@
         padding-left: 20px;
         padding-right: 20px;
     }
+
         .applyButton:hover {
             background-color: #F88634;
             color: white;
         }
+
     .skill:hover {
-  background-color: #F88634;
-            color: white;
-  cursor: pointer;
-}
+        background-color: #F88634;
+        color: white;
+        cursor: pointer;
+    }
 
     #imagePreview {
         position: absolute;
-        margin-top : -150px;
+        margin-top: -150px;
     }
 
-    #imageupload{
+    #imageupload {
         position: absolute;
         width: 1px;
         height: 150px;
         margin-top: -50px;
         padding-left: 170px;
         display: block;
-        opacity : 0;
+        opacity: 0;
     }
-
-
-
 </style>
-<partial name="_FirstNav">
 
-    <form method="post" >
-    <div class="container pt-4">
-        <div class="row">
-        
-                <!-- Profile Picture and change password -->
-                <div class="col-md-3">
-                    <div class="border border-2 rounded d-flex flex-column justify-content-center align-items-center pt-3">
+<body>
+    <partial name="_FirstNav">
 
-                        <a href="#" id="pop">
-                        <img id="imageresource" src="@ViewBag.Avatar" class="rounded-circle" style="height:150px; max-width:150px;">
+        <form method="post"   asp-controller="User" asp-action="EditProfile">
+            <div class="container pt-4">
+                <div class="row">
+
+
+                    <div class="col-md-3">
+                        <div class="border border-2 rounded d-flex flex-column justify-content-center align-items-center pt-3">
+
+                            <a href="#" id="pop">
+                        <img id="imageresource" src="~/Assets/StoryImages/@Model.Avatar" class="rounded-circle" style="height:150px; max-width:150px;">
                         <div id="imagePreview"></div>
                         
                     </a>
-                    <input type="file" name="imageFile" id="imageupload" accept="image/jpeg, image/png, image/jpg" onchange="convertImageToBase64()" />
+                   <input id="imageupload" type="file" onchange="EditAvatar()" class="file" accept="image/jpeg, image/png, image/jpg">
 
 
-                        @*<img src="@data.Avatar" class="rounded-circle" style="height:150px; max-width:150px;" />*@
+                            @*<img src="@data.Avatar" class="rounded-circle" style="height:150px; max-width:150px;" />*@
 
-                        <h3>
-                            @Model.FirstName @Model.LastName
-                        </h3>
-                        <button type="button" class="btn bg-transparent border border-0" data-bs-toggle="modal" data-bs-target="#exampleModal">Change Password</button>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h3>
+                                @Model.FirstName @Model.LastName
+                            </h3>
+                            <button type="button" class="btn bg-transparent border border-0" data-bs-toggle="modal" data-bs-target="#exampleModal">Change Password</button>
+                            
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-9">
+
+                        <div class="row mt-3 px-3">
+                            <div class="col-12 col-md-12">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link active text-black" id="mission-tab" data-bs-toggle="tab"
+                                           data-bs-target="#mission" type="button" role="tab" aria-controls="mission"
+                                           aria-selected="true">
+                                            Basic Information
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content mt-3" id="myTabContent">
+
+                                    <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
+                                        <div class="row mt-2">
+                                            <div class="col-sm-6">
+                                                <label class="form-label">Name<span class="text-danger">*</span></label>
+                                                <input type="text" asp-for="FirstName" id="Fristname"
+                                                       class="form-control" placeholder="Enter Your Name" required />
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="form-label">Surname<span class="text-danger">*</span></label>
+                                                <input type="text" asp-for="LastName" id="Lastname"
+                                                       class="form-control" placeholder="Enter Your Surname" required />
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-sm-6">
+                                                <label class="form-label">EmployeeID</label>
+                                                <input type="text" asp-for="EmployeeId" id="EmpId"
+                                                       class="form-control" placeholder="Enter Your EmployeeId" />
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="form-label">Manager</label>
+                                                <input type="text" id="ManagerDetails" class="form-control" value="" placeholder="Enter Your Manager Details" />
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-sm-6">
+                                                <label class="form-label">Title</label>
+                                                <input type="text" asp-for="Title" id="title"
+                                                       class="form-control" placeholder="Enter Title" />
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="form-label">Department</label>
+                                                <input type="text" asp-for="Department" id="Department"
+                                                       class="form-control" placeholder="Enter Your Department Name" />
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-12">
+                                                <label class="form-label">My Profile<span class="text-danger">*</span></label>
+                                                @*  @if (@data.ProfileText == null)
+                                                    {
+                                                    <textarea type="text" asp-for="ProfileText" value="@data.ProfileText" id="Profile" class="form-control" rows="5" placeholder="Enter your comments....." required></textarea>
+                                                    }
+                                                    else
+                                                    {*@
+                                                <textarea type="text" asp-for="ProfileText" id="Profile" class="form-control" rows="5" required></textarea>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-12">
+                                                <label class="form-label">Why I Volunteer?</label>
+                                                @* @if (@data.WhyIvolunteer == null)
+                                                    {
+                                                    <textarea type="text" asp-for="WhyIvolunteer" value="@data.WhyIvolunteer" id="whyIVolunteer" class="form-control" rows="5" placeholder="Enter Your Comments..." required></textarea>
+                                                    }
+                                                    else
+                                                    {*@
+                                                <textarea type="text" asp-for="WhyIvolunteer" id="whyIVolunteer" class="form-control" rows="5" required></textarea>
+
+                                            </div>
+                                        </div>
+                                        <div class="m-3"></div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
 
-                                    @*<form method="post" action="/User/ChangePassword">*@
+                        <div class="row mt-3 px-3">
+                            <div class="col-12 col-md-12" id="DropDownChanger">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active text-black" id="mission-tab" data-bs-toggle="tab"
+                                                data-bs-target="#mission" type="button" role="tab" aria-controls="mission"
+                                                aria-selected="true">
+                                            Address Information
+                                        </button>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content mt-3" id="myTabContent">
+
+                                    <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
+                                        <div class="row mt-2">
+                                             <div class="col-sm-6">
+                                            <label class="form-label">City<span class="text-danger">*</span></label>
+                                            <select class="form-select" asp-for="@Model.CityId" id="selectCityList" required>
+                                                @if(@Model.CityId != null)
+                                                    {
+                                                        
+                                                        var selectedCity = Model.CityList.FirstOrDefault(a => a.CityId == Model.CityId);
+
+                                                        <option value="@selectedCity.CityId" id="@selectedCity.CityId">@selectedCity.CityName</option>
+                                                    }
+                                                    else
+                                                    {
+                                                    <option value="@Model.CityId" id="selectCity">Please select first country</option>
+                                                        
+                                                    }
+ 
+                                            </select>
+                                        </div>
+                                            <div class="col-sm-6">
+                                            <label class="form-label">Country<span class="text-danger">*</span></label>
+
+                                            <select class="form-select" asp-for="@Model.CountryId" id="country" onchange="GetCity()" required>
+                                                @*<option value="@data.CountryId" selected>@data.Country.CountryName</option>*@
+                                                    @foreach (var country in Model.CountryList) @*if (country.CountryId != data.CountryId)*@
+                                                    {
+                                                    <option value="@country.CountryId">@country.CountryName</option>
+                                                    }
+                                            </select>
+                                        </div>
+                                        </div>
+                                        <div class="m-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3 px-3">
+                            <div class="col-12 col-md-12">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active text-black" id="mission-tab" data-bs-toggle="tab"
+                                                data-bs-target="#mission" type="button" role="tab" aria-controls="mission"
+                                                aria-selected="true">
+                                            Professional Information
+                                        </button>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content mt-3" id="myTabContent">
+
+                                    <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
+                                        <div class="row mt-2">
+                                            <div class="col-sm-6">
+                                                <label class="form-label">Availablity</label>
+                                                <select class="form-select" id="Availablity">
+
+                                                    @*<option value="@data.a" selected> @data.Availability </option>
+                                                        @if (@data.Availability != "Monthly")
+                                                        {
+                                                        <option value="Monthly">Monthly</option>
+                                                        }
+                                                        @if (@data.Availability != "Week-End")
+                                                        {
+                                                        <option value="Week-End">Week-End</option>
+                                                        }
+                                                        @if (@data.Availability != "Weekly")
+                                                        {
+                                                        <option value="Weekly">Weekly</option>
+                                                        }
+                                                        @if (@data.Availability != "Daily")
+                                                        {
+                                                        <option value="Daily">Daily</option>
+                                                        }
+                                                    *@
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="form-label">LinkdeIn</label>
+                                                <input type="text" asp-for="LinkedInUrl" value="@Model.LinkedInUrl" id="linkedinId"
+                                                       class="form-control" placeholder="Enter LinkdeIn url" required />
+                                            </div>
+                                        </div>
+                                        <div class="m-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3 px-3">
+                            <div class="col-12 col-md-12">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active text-black" id="mission-tab" data-bs-toggle="tab"
+                                                data-bs-target="#mission" type="button" role="tab" aria-controls="mission"
+                                                aria-selected="true">
+                                            My Skills
+                                        </button>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content mt-3" id="myTabContent">
+
+                                    <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
+                                        <div class="row mt-2">
+
+                                            <div class="col">
+                                                <textarea id="skillsTextArea" type="text" class="form-control" rows="6" placeholder="Select Skills" disabled>
+                                                    @if (Model.userSkill != null)
+                                                    {
+                                                        @foreach (var uskill in Model.userSkill)@*if (uskill.UserId == ViewBag.Uid)*@
+                                                        {
+
+                                                            @uskill.Skill.SkillName
+                                                            @("\n")
+                                                        }
+                                                    }
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                        <button type="button" id="skillButton" class="btn btn-secondary border border-2 rounded-pill mt-3 bg-transparent text-secondary" data-bs-toggle="modal" data-bs-target="#skillModal">Add Skills</button>
+                                        <div class="m-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-end align-items-center">
+                            <div>
+                                <button type="submit" class="btn applyButton rounded-pill mt-3  px-5">Save</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+
+                                        <form>
                                         <div class="modal-body">
                                             <div class="mb-3">
                                                 <label for="OldPassword" class="col-form-label">Old Password:</label>
@@ -126,496 +408,313 @@
                                             <button type="button" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Cancel</button>
                                             <button type="button" onclick="changePassword()" class="btn applyButton">Change Password</button>
                                         </div>
-                                        @*</form>*@
+                                        </form>
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Profile Details -->
-                <div class="col-md-9">
-                    <!----- Personal Information ----->
-                <div class="row mt-3 px-3">
-                        <div class="col-12 col-md-12">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link active text-black" id="mission-tab" data-bs-toggle="tab"
-                                   data-bs-target="#mission" type="button" role="tab" aria-controls="mission"
-                                   aria-selected="true">
-                                        Basic Information
-                                    </a>
-                                </li>
+        <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                    <div class="modal-content">
 
-                            </ul>
-                            <div class="tab-content mt-3" id="myTabContent">
-                                <!-------- Personal information ------>
-                            <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
-                                    <div class="row mt-2">
-                                        <div class="col-sm-6">
-                                            <label class="form-label">Name<span class="text-danger">*</span></label>
-                                            <input type="text" asp-for="FirstName" id="Fristname"
-                                               class="form-control" placeholder="Enter Your Name" required />
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Your Skills</h1>
+                                            <button type="button" id="skillClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label">Surname<span class="text-danger">*</span></label>
-                                            <input type="text" asp-for="LastName" id="Lastname"
-                                               class="form-control" placeholder="Enter Your Surname" required />
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-sm-6">
-                                            <label class="form-label">EmployeeID</label>
-                                            <input type="text" asp-for="EmployeeId" id="EmpId"
-                                               class="form-control" placeholder="Enter Your EmployeeId" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label">Manager</label>
-                                            <input type="text" id="ManagerDetails" class="form-control" value="" placeholder="Enter Your Manager Details" />
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-sm-6">
-                                            <label class="form-label">Title</label>
-                                            <input type="text" asp-for="Title" id="title"
-                                               class="form-control" placeholder="Enter Title" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label">Department</label>
-                                            <input type="text" asp-for="Department" id="Department"
-                                               class="form-control" placeholder="Enter Your Department Name" />
-                                        </div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-12">
-                                            <label class="form-label">My Profile<span class="text-danger">*</span></label>
-                                          @*  @if (@data.ProfileText == null)
-                                            {
-                                                <textarea type="text" asp-for="ProfileText" value="@data.ProfileText" id="Profile" class="form-control" rows="5" placeholder="Enter your comments....." required></textarea>
-                                            }
-                                            else
-                                            {*@
-                                                <textarea type="text" asp-for="ProfileText" id="Profile" class="form-control" rows="5" required></textarea>
-                                            
 
-                                        </div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-12">
-                                            <label class="form-label">Why I Volunteer?</label>
-                                           @* @if (@data.WhyIvolunteer == null)
-                                            {
-                                                <textarea type="text" asp-for="WhyIvolunteer" value="@data.WhyIvolunteer" id="whyIVolunteer" class="form-control" rows="5" placeholder="Enter Your Comments..." required></textarea>
-                                            }
-                                            else
-                                            {*@
-                                                <textarea type="text" asp-for="WhyIvolunteer"  id="whyIVolunteer" class="form-control" rows="5" required></textarea>
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="m-3"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!----- address Information ----->
-                <div class="row mt-3 px-3">
-                        <div class="col-12 col-md-12" id="DropDownChanger">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active text-black" id="mission-tab" data-bs-toggle="tab"
-                                        data-bs-target="#mission" type="button" role="tab" aria-controls="mission"
-                                        aria-selected="true">
-                                        Address Information
-                                    </button>
-                                </li>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col mx-2 border border-2">
+                                                    <div id="sourceDiv">
+                                                        @foreach (var skill in Model.SkillList)
+                                                        { 
+                                                            <li id="@skill.SkillId" class="skill list-unstyled cursor" onclick="addSkill(event)">@skill.SkillName</li> 
+                                                        }
+                                                    </div>
+                                                </div>
 
-                            </ul>
-                            <div class="tab-content mt-3" id="myTabContent">
-                                <!----- address Information Inputs ----->
-                            <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
-                                    <div class="row mt-2">
-                                        <div class="col-sm-6">
-                                            <label class="form-label">City<span class="text-danger">*</span></label>
-                                            <select class="form-select" asp-for="@Model.CityId" id="selectCityList" required>
-
-                                                <option value="@Model.CityId" id="selectCity">Please select first country</option>
- 
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label">Country<span class="text-danger">*</span></label>
-
-                                            <select class="form-select" asp-for="@Model.CountryId" id="country" onchange="GetCity()" required>
-                                                @*<option value="@data.CountryId" selected>@data.Country.CountryName</option>*@
-                                                    @foreach (var country in Model.CountryList) @*if (country.CountryId != data.CountryId)*@
+                                                <div class="col mx-2 border border-2">
+                                                    @if (Model.userSkill != null)
                                                     {
-                                                    <option value="@country.CountryId">@country.CountryName</option>
+                                                        <div id="destinationDiv">
+                                                            @foreach (var uskill in Model.userSkill) @*if (uskill.UserId == ViewBag.Uid)*@
+                                                            {
+                                                              <li onclick="removeSkill(event)" class="skill list-unstyled cursor" id="@uskill.Skill.SkillId">@uskill.Skill.SkillName</li>
+                                                            }
+                                                        </div>
                                                     }
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="m-3"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!----- Professional Information ----->
-                <div class="row mt-3 px-3">
-                        <div class="col-12 col-md-12">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active text-black" id="mission-tab" data-bs-toggle="tab"
-                                        data-bs-target="#mission" type="button" role="tab" aria-controls="mission"
-                                        aria-selected="true">
-                                        Professional Information
-                                    </button>
-                                </li>
-
-                            </ul>
-                            <div class="tab-content mt-3" id="myTabContent">
-                                <!----- Professional Information Inputs ----->
-                            <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
-                                    <div class="row mt-2">
-                                        <div class="col-sm-6">
-                                            <label class="form-label">Availablity</label>
-                                            <select class="form-select" id="Availablity">
-
-                                                @*<option value="@data.a" selected> @data.Availability </option>
-                                                    @if (@data.Availability != "Monthly")
+                                                    else
                                                     {
-                                                    <option value="Monthly">Monthly</option>
+                                                        <div id="destinationDiv"></div>
                                                     }
-                                                    @if (@data.Availability != "Week-End")
-                                                    {
-                                                    <option value="Week-End">Week-End</option>
-                                                    }
-                                                    @if (@data.Availability != "Weekly")
-                                                    {
-                                                    <option value="Weekly">Weekly</option>
-                                                    }
-                                                    @if (@data.Availability != "Daily")
-                                                    {
-                                                    <option value="Daily">Daily</option>
-                                                    }
-                                                *@
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label">LinkdeIn</label>
-                                            <input type="text" asp-for="LinkedInUrl" value="@Model.LinkedInUrl" id="linkedinId"
-                                               class="form-control" placeholder="Enter LinkdeIn url" required />
-                                        </div>
-                                    </div>
-                                    <div class="m-3"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!----- My Skills ----->
-                <div class="row mt-3 px-3">
-                        <div class="col-12 col-md-12">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active text-black" id="mission-tab" data-bs-toggle="tab"
-                                        data-bs-target="#mission" type="button" role="tab" aria-controls="mission"
-                                        aria-selected="true">
-                                        My Skills
-                                    </button>
-                                </li>
-
-                            </ul>
-                            <div class="tab-content mt-3" id="myTabContent">
-                                <!----- My Skills Inputs ----->
-                            <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
-                                    <div class="row mt-2">
-
-                                        <div class="col">
-                                            <textarea id="skillsTextArea" asp-for="userSkill" type="text" class="form-control" rows="6" placeholder="Select Skills" disabled>
-                                                @foreach (var uskill in Model.userSkill) @*if (uskill.UserId == ViewBag.Uid)*@
-                                                    {
-
-                                                    @uskill.Skill.SkillName
-                                                    @("\n")
-
-                                                    
-                                                    }
-                                                                    </textarea>
-                                        </div>
-                                    </div>
-                                    <button type="button" id="skillButton" class="btn btn-secondary border border-2 rounded-pill mt-3 bg-transparent text-secondary" data-bs-toggle="modal" data-bs-target="#skillModal">Add Skills</button>
-                                    <div class="m-3"></div>
-                                </div>
-                            </div>
-                        </div>
-                     </div>
-                    <!----- Save Button ----->
-                <div class="d-flex justify-content-end align-items-center">
-                        <div>
-                            <button type="submit" asp-action="EditProfile" asp-controller="User" class="btn applyButton rounded-pill mt-3  px-5">Save</button>
-                        </div>
-                    </div>
-                </div>
-                <!----- Skills Model ----->
-                <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Your Skills</h1>
-                                <button type="button" id="skillClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col mx-2 border border-2">
-                                        <div id="sourceDiv">
-                                            @foreach (var skill in Model.SkillList)
-                                            { 
-                                                <li id="@skill.SkillId" class="skill list-unstyled cursor" onclick="addSkill(event)">@skill.SkillName</li> 
-                                            }
-                                        </div>
-                                    </div>
-                                    <div class="col mx-2 border border-2">
-                                        @if (Model.userSkill != null)
-                                        {
-                                            <div id="destinationDiv">
-                                                @foreach (var uskill in Model.userSkill) @*if (uskill.UserId == ViewBag.Uid)*@
-                                                {
-                                                  <li onclick="removeSkill(event)" class="skill list-unstyled cursor" id="@uskill.Skill.SkillId">@uskill.Skill.SkillName</li>
-                                                }
+                                                </div>
                                             </div>
-                                        }
-                                        else
-                                        {
-                                            <div id="destinationDiv"></div>
-                                        }
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" id="skillClose1" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn applyButton rounded-pill" onclick="setSkills()">Change Skills</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" id="skillClose1" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn applyButton rounded-pill" onclick="setSkills()">Change Skills</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-    </form>
+         </div>
 
-    <script>
-            // Add a listener for when the image input changes
-            document.querySelector('input[type="file"]').addEventListener('change', function() {
-                // Get the selected image file
-                var file = this.files[0];
+</body>
 
-                // Create a new FileReader object
-                var reader = new FileReader();
+@*<script>
+           
+                document.querySelector('input[type="file"]').addEventListener('change', function() {
+                    // Get the selected image file
+                    var file = this.files[0];
 
-                // Set a function to run when the FileReader has finished loading the image file
-                reader.onload = function(e) {
-                    // Create a new image element
-                    var image = new Image();
+                    // Create a new FileReader object
+                    var reader = new FileReader();
 
-                    image.style.height = '150px';
-                    image.style.width = '150px';
-                    image.style.borderRadius = '50%';
-                    // Set the source of the image to the FileReader's result (the image data)
-                    image.src = e.target.result;
+                    // Set a function to run when the FileReader has finished loading the image file
+                    reader.onload = function(e) {
+                        // Create a new image element
+                        var image = new Image();
 
-                    // Add the image to the preview area
-                    document.getElementById('imagePreview').innerHTML = '';
-                    document.getElementById('imagePreview').appendChild(image);
+                        image.style.height = '150px';
+                        image.style.width = '150px';
+                        image.style.borderRadius = '50%';
+                        // Set the source of the image to the FileReader's result (the image data)
+                        image.src = e.target.result;
 
-                    // Show the preview area
-                    //document.getElementById('imagePreviewContainer').style.display = 'block';
+                        // Add the image to the preview area
+                        document.getElementById('imagePreview').innerHTML = '';
+                        document.getElementById('imagePreview').appendChild(image);
+
+                        // Show the preview area
+                        //document.getElementById('imagePreviewContainer').style.display = 'block';
+                    };
+
+                    // Read the image file data as a URL
+                    reader.readAsDataURL(file);
+                    });
+
+           
+                function convertImageToBase64() {
+
+                    // Get the selected image file
+                    var file = document.getElementById("imageupload").files[0];
+
+                    // Create a new FileReader object
+                    var reader = new FileReader();
+
+                    // Set the onload event of the FileReader object to convert the image to base64
+                    reader.onload = function(event) {
+                    // Get the base64-encoded image data
+                    var base64Image = event.target.result;
+
+                    // Send the base64-encoded image to the server using AJAX
+                        $.ajax({
+                            type: "POST",
+                            url: "/User/ActionName",
+                            data: { base64Image: base64Image },
+                            success: function(response) {
+                                // Handle the server response here
+                            }
+                        });
                 };
+</script>*@
 
-                // Read the image file data as a URL
-                reader.readAsDataURL(file);
-            });
+<script>
 
+      $(document).ready(function(){
+             $('#skillClose').click(function(){
+             location.reload();
+             });
+             $('#skillClose1').click(function(){
+             location.reload();
+             });
+             });
 
-            function convertImageToBase64() {
-    // Get the selected image file
-                var file = document.getElementById("imageupload").files[0];
-    
-                // Create a new FileReader object
-                var reader = new FileReader();
-    
-                // Set the onload event of the FileReader object to convert the image to base64
-                reader.onload = function(event) {
-        // Get the base64-encoded image data
-                var base64Image = event.target.result;
-        
-        // Send the base64-encoded image to the server using AJAX
-                $.ajax({
-                    type: "POST",
-                    url: "/User/ActionName",
-                    data: { base64Image: base64Image },
-                    success: function(response) {
-                        // Handle the server response here
-                    }
-                });
-    };
-    
-    // Read the selected image file as a DataURL
-    reader.readAsDataURL(file);
-}
+                        function changePassword(){
 
-
-        </script>
-
-    <script>
-
-        $(document).ready(function(){
-         $('#skillClose').click(function(){
-         location.reload();
-         });
-         $('#skillClose1').click(function(){
-         location.reload();
-         });
-    });
-
-    function changePassword()
-    {
-        debugger
-        var OldPass = $('#OldPassword').val();
-        var Pass = $('#Password').val();
-        var ConPass = $('#ConfirmPassword').val();
-        
-                 $.ajax({
-                        type: "POST",
-                        url: "/User/ChangePassword",
-                        data: {OldPassword: OldPass, Password: Pass , ConfirmPassword: ConPass },
-                        success: function(data) {
                             debugger
-                            if(data == true)
-                            {
-                                 toastr.options = {
-                                    "closeButton": true,
-                                    "progressBar": true
-                                }
-                                  toastr.success('Your password has been updated')
-                            }
-                            else if(data == "")
-                            {
-                                toastr.options = {
-                                    "closeButton": true,
-                                    "progressBar": true
-                                }
-                                  toastr.error('Please enter the same password')
-                            }
-                            else
-                            {
-                                toastr.options = {
-                                    "closeButton": true,
-                                    "progressBar": true
-                                }
-                                  toastr.error('Please enter the correct old password')
-                            }
-                          // Handle success response from server
-                        },
-                        error: function() {
-                          // Handle error response from server
-                        }
-                      });
-    }
+                            var OldPass = $('#OldPassword').val();
+                            var Pass = $('#Password').val();
+                            var ConPass = $('#ConfirmPassword').val();
 
-        function setSkills() {
+                                     $.ajax({
+                                            type: "POST",
+                                            url: "/User/ChangePassword",
+                                            data: {OldPassword: OldPass, Password: Pass , ConfirmPassword: ConPass },
+                                            success: function(data) {
+                                                console.log(data);
+                                                if(data == true)
+                                                {
+                                                     toastr.options = {
+                                                        "closeButton": true,
+                                                        "progressBar": true
+                                                    }
+                                                      toastr.success('Your password has been updated')
+                                                }
+                                                else if(data == "abc")
+                                                {
+                                                    toastr.options = {
+                                                        "closeButton": true,
+                                                        "progressBar": true
+                                                    }
+                                                      toastr.error('Please enter the same password')
+                                                }
+                                                else if(data == false)
+                                                {
+                                                    toastr.options = {
+                                                        "closeButton": true,
+                                                        "progressBar": true
+                                                    }
+                                                      toastr.error('Please enter the correct old password')
+                                                }
+                                                else{
+
+                                                }
+                                              // Handle success response from server
+                                            },
+                                            error: function() {
+                                              // Handle error response from server
+                                            }
+                                          });
+                        }
+
+                        function setSkills() {
+
+                                  var destinationDiv = document.getElementById("destinationDiv");
+                                  var selectedSkills = destinationDiv.getElementsByTagName("li");
+                                  var skillIDs = [];
+
+                                      for (var i = 0; i < selectedSkills.length; i++)
+                                      {
+                                        var skillElement = selectedSkills[i];
+                                        var skillID = skillElement.getAttribute("id");
+                                        skillIDs.push(skillID);
+                                      }
+
+                                          $.ajax({
+                                            type: "POST",
+                                            url: "/User/ChangeSkill",
+                                            data: { skillIDs: skillIDs },
+                                            success: function(data) {
+                                                if(data == true)
+                                                {
+                                                     toastr.options = {
+                                                        "closeButton": true,
+                                                        "progressBar": true
+                                                    }
+                                                    toastr.success('Skill changed successfully')
+                                                }
+                                              // Handle success response from server
+                                            },
+                                            error: function() {
+                                              // Handle error response from server
+                                            }
+                                          });
+                        };
+
+
+                        function addSkill(event) {
+                          // Get the clicked skill element and its name
+                          debugger
+                          var skillElement = event.target;
+                          var skillId = skillElement.getAttribute("id");
+                          var skillName = skillElement.innerHTML;
+
+                          // Check if skill is already in destinationDiv
+                          var destinationDiv = document.getElementById("destinationDiv");
+                          var skillList = destinationDiv.getElementsByTagName("li");
+                          for (var i = 0; i < skillList.length; i++) {
+                            if (skillList[i].getAttribute("id") == skillId) {
+                              // Skill already in destinationDiv, do nothing
+                              return;
+                            }
+                          }
+
+                          // Create a new list item for the destinationDiv
+                          var newSkillElement = document.createElement("li");
+                          newSkillElement.setAttribute("class", "skill list-unstyled cursor");
+                          newSkillElement.setAttribute("id", skillId);
+
+                          newSkillElement.innerHTML = skillName;
+
+                          // Add onclick event to new skill element to remove it from destinationDiv
+                          newSkillElement.onclick = function() {
+                            newSkillElement.parentNode.removeChild(newSkillElement);
+                          }
+
+                          // Add the new skill element to the destinationDiv
+                          destinationDiv.appendChild(newSkillElement);
+                        };
+
+                        function removeSkill(event) {
+                          var skillElement = event.target;
+                          skillElement.parentNode.removeChild(skillElement);
+                        }
+
+                        function GetCity() {
+                             var countryId = document.getElementById("country").value;
+
+                                $.ajax({
+                                    url: "/User/GetCity",
+                                    method: "Post",
+                                    data: {"countryId": countryId},
+                                    success: function (data) {
+                                        data = JSON.parse(data);
+                                        $("#selectCityList").empty();
+                                        data.forEach((name) => {
+                                            document.getElementById("selectCityList").innerHTML += `
+
+                                <option class="form-check" value="${name.CityId}" name="city" id="${name.CityId}">${name.CityName}</option>
+
+                                    `;
+                                        })
+                                    },
+                                    error: function (request, error) {
+                                        console.log(error);
+                                    }
+                                })
+                        };
+</script>
+
+<script>
+                function EditAvatar(){
+            
+                    debugger
+                    var Profileimg = $('#imageupload')[0].files[0];
+                    console.log(Profileimg);
+
+                    var data = new FormData();
+                    data.append('Profileimg',Profileimg);
+
+                    $.ajax({
+
+                          url: '/User/EditAvatar',
+                          type: 'POST',
+                          data: data,
+                          processData: false,
+                          contentType: false,
+                          success: function(response) {
+                            console.log(response);
+                             localStorage.setItem('avatarChanged', 'true');
+                            location.reload();
+                          },
+                          error: function(error) {
+                            console.log(error);
+                          }
+                                          });
+
+                    
+                }
+
+                $(document).ready(function() {
+    if (localStorage.getItem('avatarChanged') === 'true') {
+         toastr.options = {
+                                                        "closeButton": true,
+                                                        "progressBar": true
+                                                    }
+        toastr.success('Your avatar changed successfully');
        
-              var destinationDiv = document.getElementById("destinationDiv");
-              var selectedSkills = destinationDiv.getElementsByTagName("li");
-              var skillIDs = [];
-  
-                  for (var i = 0; i < selectedSkills.length; i++) 
-                  {
-                    var skillElement = selectedSkills[i];
-                    var skillID = skillElement.getAttribute("id");
-                    skillIDs.push(skillID);
-                  }
-
-                      $.ajax({
-                        type: "POST",
-                        url: "/User/ChangeSkill",
-                        data: { skillIDs: skillIDs },
-                        success: function(data) {
-                            if(data == true)
-                            {
-                                 toastr.options = {
-                                    "closeButton": true,
-                                    "progressBar": true
-                                }
-                                toastr.success('Skill changed successfully')
-                            }
-                          // Handle success response from server
-                        },
-                        error: function() {
-                          // Handle error response from server
-                        }
-                      });
-};
-
-
-function addSkill(event) {
-  // Get the clicked skill element and its name
-  debugger
-  var skillElement = event.target;
-  var skillId = skillElement.getAttribute("id");
-  var skillName = skillElement.innerHTML;
-
-  // Check if skill is already in destinationDiv
-  var destinationDiv = document.getElementById("destinationDiv");
-  var skillList = destinationDiv.getElementsByTagName("li");
-  for (var i = 0; i < skillList.length; i++) {
-    if (skillList[i].getAttribute("id") == skillId) {
-      // Skill already in destinationDiv, do nothing
-      return;
+        localStorage.setItem('avatarChanged', 'false');
     }
-  }
-
-  // Create a new list item for the destinationDiv
-  var newSkillElement = document.createElement("li");
-  newSkillElement.setAttribute("class", "skill list-unstyled cursor");
-  newSkillElement.setAttribute("id", skillId);
-
-  newSkillElement.innerHTML = skillName;
-
-  // Add onclick event to new skill element to remove it from destinationDiv
-  newSkillElement.onclick = function() {
-    newSkillElement.parentNode.removeChild(newSkillElement);
-  }
-
-  // Add the new skill element to the destinationDiv
-  destinationDiv.appendChild(newSkillElement);
-};
-
-function removeSkill(event) {
-  var skillElement = event.target;
-  skillElement.parentNode.removeChild(skillElement);
-}
-
-         function GetCity() {
-             var countryId = document.getElementById("country").value;
-      
-                $.ajax({
-                    url: "/User/GetCity",
-                    method: "Post",
-                    data: {"countryId": countryId},
-                    success: function (data) {
-                        data = JSON.parse(data);
-                        $("#selectCityList").empty();
-                        data.forEach((name) => {
-                            document.getElementById("selectCityList").innerHTML += `
-              
-                <option class="form-check" name="city" id="${name.CityId}">${name.CityName}</option>
-        
-                    `;
-                        })
-                    },
-                    error: function (request, error) {
-                        console.log(error);
-                    }
-                })
-    };
-    </script>
+});
+</script>

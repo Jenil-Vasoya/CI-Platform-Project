@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Entities.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -48,6 +49,8 @@ namespace CIPlatform.Entities.ViewModel
         public int PhoneNumber { get; set; }
 
         public string? Avatar { get; set; }
+
+        public IFormFile? NewAvatar { get; set; }
 
         public List<Country> CountryList { get; set; }
 

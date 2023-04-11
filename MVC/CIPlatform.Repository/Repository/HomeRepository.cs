@@ -40,6 +40,11 @@ namespace CIPlatform.Repository.Repository
             return objCityList;
         }
 
+        public User GetUserAvatar(long UserId)
+        {
+            var user = _DbContext.Users.FirstOrDefault(i => i.UserId == UserId);
+            return user;
+        }
         public List<MissionTheme> MissionThemeList()
         {
             List<MissionTheme> objMissionTheme = _DbContext.MissionThemes.ToList();
