@@ -7,6 +7,6 @@
     "\\MVC\\CIPlatform\\Views",
     "\\MVC\\CIPlatform\\Views\\Story"
   ],
-  "SelectedNode": "\\MVC\\CIPlatform\\CIPlatform.sln",
+  "SelectedNode": "\\MVC\\CIPlatform\\Controllers\\UserController.cs",
   "PreviewInSolutionExplorer": false
 }

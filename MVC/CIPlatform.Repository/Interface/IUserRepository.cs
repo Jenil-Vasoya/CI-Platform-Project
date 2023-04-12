@@ -46,5 +46,16 @@ namespace CIPlatform.Repository.Interface
         public bool EditAvatar(IFormFile Profileimg, long UserId);
 
         public bool EditProfile(UserData userData, long UserId);
+
+        public List<VolunteerTimeSheet> GetVolunteerSheetData(long UserId);
+
+        public List<Mission> UserAppliedMissionList(long UserId);
+
+        public bool AddTimeSheet(VolunteerTimeSheet volunteerSheet);
+
+        public bool EditTimeSheet(VolunteerTimeSheet volunteerSheet);
+
+        public bool DeleteTimeSheet(long TimesheetId);
+
     }
 }

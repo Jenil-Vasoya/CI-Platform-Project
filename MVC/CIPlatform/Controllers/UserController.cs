@@ -47,6 +47,70 @@ namespace CIPlatform.Controllers
         {
             return View();
         }
+        
+        public IActionResult VolunteerTimeSheet()
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+
+            ViewBag.UserName = _UserRepo.GetUserAvatar(UserId).FirstName + " " + _UserRepo.GetUserAvatar(UserId).LastName;
+            ViewBag.Avatar = _UserRepo.GetUserAvatar(UserId).Avatar;
+
+            ViewBag.MissionList = _UserRepo.UserAppliedMissionList(UserId);
+            List<VolunteerTimeSheet> sheets = _UserRepo.GetVolunteerSheetData(UserId);
+            ViewBag.SheetData = sheets;
+            return View();
+        }
+
+        public IActionResult AddTimeSheet(VolunteerTimeSheet volunteerSheet)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+            volunteerSheet.UserId = UserId;
+            var result = _UserRepo.AddTimeSheet(volunteerSheet);
+
+            if(result)
+            {
+                TempData["SheetSuccess"] = "Your sheet added successfully🙍";
+            }
+            return RedirectToAction("VolunteerTimeSheet");
+        } 
+        
+        public IActionResult EditTimeSheet(VolunteerTimeSheet volunteerSheet)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+            volunteerSheet.UserId = UserId;
+            var result = _UserRepo.EditTimeSheet(volunteerSheet);
+
+            if(result)
+            {
+                TempData["SheetSuccess"] = "Your sheet update successfully🧖";
+            }
+            return RedirectToAction("VolunteerTimeSheet");
+        }
+        
+        public IActionResult DeleteTimeSheet(long id)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+            
+            var result = _UserRepo.DeleteTimeSheet(id);
+
+            if(result)
+            {
+                TempData["SheetDelete"] = "Your TimeSheet delete successfully🤦";
+            }
+            return RedirectToAction("VolunteerTimeSheet");
+        }
+
+
+
+        //[HttpPost]
+        //public JsonResult EditTimeSheet(long id)
+        //{
+        //    long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+        //    List<VolunteerTimeSheet> sheets = _UserRepo.GetVolunteerSheetData(UserId);
+
+        //    var sheet = sheets.FirstOrDefault(s => s.TimesheetId == id);
+        //    return Json(sheet);
+        //}
 
         [HttpPost]
         public IActionResult Login(User objLogin)
@@ -130,19 +194,6 @@ namespace CIPlatform.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-
-        //public IActionResult Register(User objUser)
-        //{
-        //    if (objUser.Password == objUser.ConfirmPassword)
-        //    {
-        //        _db.Users.Add(objUser);
-        //        _db.SaveChanges();
-        //        return RedirectToAction("MissionGrid", "Home");
-        //    }
-        //    return RedirectToAction("Login", "User");
-        //}
 
         public IActionResult ForgotPassword()
         {
@@ -336,36 +387,10 @@ namespace CIPlatform.Controllers
             var changeimage = _UserRepo.EditAvatar(Profileimg, UserId);
             return Json(changeimage);
         }
-        //[HttpPost]
-        //public IActionResult ForgotPassword(User objPass)
-        //{
-        //    var objUser = _UserRepo.UserList().Exists;
-        //    //if (_db.Users.Any(u => u.Email == objPass.Email))
-        //    //{ return RedirectToAction("ResetPassword", "User"); }
-        //    return View();
-        //}
 
-        //public IActionResult ResetPassword()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public IActionResult ResetPassword(User objResetPass)
-        //{
-        //    User user = new User();
-        //    user = objResetPass;
-
-        //    //if (objResetPass.Password == objResetPass.ConfirmPassword)
-        //    //{
-        //    //    _db.Users.Add(objResetPass);
-        //    //    _db.SaveChanges();
-        //    //    return RedirectToAction("MissionGrid", "Home");
-        //    //}
-        //    return RedirectToAction("Login", "User");
+       
 
 
-        //}
 
 
 

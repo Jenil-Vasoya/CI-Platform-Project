@@ -297,6 +297,127 @@ namespace CIPlatform.Repository.Repository
             return false;
         }
 
+        public List<VolunteerTimeSheet> GetVolunteerSheetData(long UserId)
+        {
+
+            List<VolunteerTimeSheet> volunteerSheets = new List<VolunteerTimeSheet>();
+
+            var timeSheet = _DbContext.TimeSheets.Where(u => u.UserId == UserId).ToList();
+
+            foreach (var sheet in timeSheet)
+            {
+
+                VolunteerTimeSheet volunteerSheet = new VolunteerTimeSheet();
+                volunteerSheet.TimesheetId = sheet.TimeSheetId;
+                volunteerSheet.UserId = sheet.UserId;
+                volunteerSheet.MissionId = sheet.MissionId;
+                volunteerSheet.MissionTitle = _DbContext.Missions.Where(m => m.MissionId == sheet.MissionId).FirstOrDefault().Title;
+                volunteerSheet.Time = sheet.Time.ToString();
+                
+                
+                volunteerSheet.DateVolunteered = sheet.DateVolunteered;
+                volunteerSheet.Notes = sheet.Notes;
+
+                if (sheet.Time != null)
+                {
+                    TimeSpan timeSpanValue = TimeSpan.Parse(sheet.Time.ToString());
+                    volunteerSheet.Hours = timeSpanValue.Hours;
+                    volunteerSheet.Minutes = timeSpanValue.Minutes;
+                }
+                else
+                {
+                    volunteerSheet.Action = sheet.Action;
+                }
+                
+
+                volunteerSheets.Add(volunteerSheet);
+            }
+            
+            return volunteerSheets;
+        }
+
+        public List<Mission> UserAppliedMissionList(long UserId)
+        {
+            var validUser = _DbContext.MissionApplications.Where(a => a.UserId == UserId && a.ApprovalStatus == "Approve").ToList();
+
+            var list = new List<long>();
+
+            foreach (var app in validUser)
+            {
+                list.Add(app.MissionId);
+            }
+
+            var missions = _DbContext.Missions.Where(a => list.Contains(a.MissionId)).ToList();
+
+            return missions;
+        }
+
+        public bool AddTimeSheet(VolunteerTimeSheet volunteerSheet)
+        {
+            TimeSheet timeSheet = new TimeSheet();
+            {
+                timeSheet.UserId = volunteerSheet.UserId;
+                timeSheet.MissionId = volunteerSheet.MissionId;
+                if(volunteerSheet.Hours != 0 || volunteerSheet.Minutes != 0)
+                {
+                    TimeSpan timeSpan = new TimeSpan(volunteerSheet.Hours, volunteerSheet.Minutes, 0);
+                    timeSheet.Time = timeSpan;
+                }
+                else
+                {
+                    timeSheet.Action = volunteerSheet.Action;
+                }
+                timeSheet.DateVolunteered = volunteerSheet.DateVolunteered;
+                timeSheet.Notes = volunteerSheet.Notes;
+                
+                _DbContext.TimeSheets.Add(timeSheet);
+                _DbContext.SaveChanges();
+
+                return true;
+            }
+            
+        }
         
+        public bool EditTimeSheet(VolunteerTimeSheet volunteerSheet)
+        {
+            var timeSheet = _DbContext.TimeSheets.Where(t => t.TimeSheetId == volunteerSheet.TimesheetId).FirstOrDefault();
+            if(timeSheet != null)
+            {
+                timeSheet.MissionId = volunteerSheet.MissionId;
+                if(volunteerSheet.Hours != 0 || volunteerSheet.Minutes != 0)
+                {
+                    TimeSpan timeSpan = new TimeSpan(volunteerSheet.Hours, volunteerSheet.Minutes, 0);
+                    timeSheet.Time = timeSpan;
+                }
+                else
+                {
+                    timeSheet.Action = volunteerSheet.Action;
+                }
+                timeSheet.DateVolunteered = volunteerSheet.DateVolunteered;
+                timeSheet.Notes = volunteerSheet.Notes;
+                
+                _DbContext.TimeSheets.Update(timeSheet);
+                _DbContext.SaveChanges();
+
+                return true;
+            }
+            return false;
+            
+        }
+        
+        public bool DeleteTimeSheet(long TimesheetId)
+        {
+            var timeSheet = _DbContext.TimeSheets.Where(t => t.TimeSheetId == TimesheetId).FirstOrDefault();
+            if(timeSheet != null)
+            {
+                _DbContext.TimeSheets.Remove(timeSheet);
+                _DbContext.SaveChanges();
+
+                return true;
+            }
+            return false;
+            
+        }
+       
     }
 }
