@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Entities.Models;
+using CIPlatform.Entities.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,12 @@ namespace CIPlatform.Repository.Interface
 {
     public interface IAccountRepository
     {
-        public List<Admin> Index();
+        public List<User> UserList();
+
+        public List<Mission> MissionList();
+
+        public AdminModel adminModelList();
+
+        public List<User> UserListSearch(string search, int pg);
     }
 }

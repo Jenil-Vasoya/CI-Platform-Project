@@ -313,7 +313,7 @@ namespace CIPlatform.Repository.Repository
                 volunteerSheet.MissionId = sheet.MissionId;
                 volunteerSheet.MissionTitle = _DbContext.Missions.Where(m => m.MissionId == sheet.MissionId).FirstOrDefault().Title;
                 volunteerSheet.Time = sheet.Time.ToString();
-                
+                volunteerSheet.Status = sheet.Status;
                 
                 volunteerSheet.DateVolunteered = sheet.DateVolunteered;
                 volunteerSheet.Notes = sheet.Notes;

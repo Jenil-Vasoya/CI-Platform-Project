@@ -42,6 +42,8 @@ namespace CIPlatform.Entities.ViewModel
             [MaxLength(500, ErrorMessage = "Message cannot exceed 500 characters")]
             public string? Notes { get; set; }
 
+        public string? Status { get; set; }
+
 
     }
 }

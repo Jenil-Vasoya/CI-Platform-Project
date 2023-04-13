@@ -1,0 +1,30 @@
+﻿<div class="row" style="overflow-x: auto;">
+    <table class="table table-hover  table-bordered">
+        <thead>
+            <tr class="table-light" style="height: 70px;">
+                <th scope="col" class="thforcmstable">Mission Title</th>
+                <th scope="col" class="thforcmstable">Mission Type</th>
+                <th scope="col" class="thforcmstable">Start Date</th>
+                <th scope="col" class="thforcmstable">End Date</th>
+                <th scope="col" class="thforcmstable">Action</th>
+            </tr>
+        </thead>
+        @foreach (var item in @ViewBag.MissionList)
+        {
+            <tbody class="table-border">
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.MissionType</td>
+                    <td>@item.StartDate</td>
+                    <td>@item.EndDate</td>
+                    <td>
+                        <button class="btncmspageedit " data-bs-toggle="modal" data-bs-target="#editmodelinUser"><i class="bi bi-pencil-square" style="color: #F88634;"></i></button>
+                        <button class="btncmspageedit"><i class="bi bi-trash3"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
+
+<partial name="_Pagination" />

@@ -1,48 +1,147 @@
-﻿@model IEnumerable<Admin>
-<h1>Index Of Admin</h1>
+﻿<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-4   px-sm-2 px-0 cms-sidebar" style="background-color: #F88634;">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/"
+                   class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Navigation</span>
+                </a>
 
-<button class="btn btn-primary">R</button>
+                <div class="col-8">
 
-<table class="table table-bordered table-striped" style="width:100%">
-    <thead>
-        <tr>
-            <td>
-                AdminID
-            </td>
-            <td>
-                FirstName
-            </td>
-            <td>
-                LastName
-            </td>
-            <td>
-                Email
-            </td>
-            <td>
-                CreatedAt
-            </td>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var obj in Model)
-        {
-            <tr>
-                <td>
-                    @obj.AdminId
-                </td>
-                <td>
-                    @obj.FirstName
-                </td>
-                <td>
-                    @obj.LastName
-                </td>
-                <td>
-                    @obj.Email
-                </td>
-                <td>
-                    @obj.CreatedAt
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                    <nav>
+
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <div class="row">
+                                <button class=" btn  active " id="nav-user-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-user" aria-selected="true">
+                                    User
+                                </button>
+                            </div>
+                            <button class=" btn  " id="nav-cms-tab" data-bs-toggle="tab" data-bs-target="#nav-cms" type="button" role="tab" aria-controls="nav-cms" aria-selected="false">
+                                CMS Page
+                            </button>
+
+                            <button class=" btn " id="nav-mission-tab" data-bs-toggle="tab" data-bs-target="#nav-mission" type="button" role="tab" aria-controls="nav-mission" aria-selected="false">
+                                Mission
+                            </button>
+
+                            <button class=" btn " id="nav-theme-tab" data-bs-toggle="tab" data-bs-target="#nav-theme" type="button" role="tab" aria-controls="nav-theme" aria-selected="true">
+                                Mission Theme
+                            </button>
+
+                            <button class=" btn  " id="nav-skill-tab" data-bs-toggle="tab" data-bs-target="#nav-skill" type="button" role="tab" aria-controls="nav-skill" aria-selected="false">
+                                Mission Skills
+                            </button>
+
+                            <button class=" btn " id="nav-application-tab" data-bs-toggle="tab" data-bs-target="#nav-application" type="button" role="tab" aria-controls="nav-application" aria-selected="false">
+                                Mission Application
+                            </button>
+
+                            <button class=" btn  " id="nav-story-tab" data-bs-toggle="tab" data-bs-target="#nav-story" type="button" role="tab" aria-controls="nav-story" aria-selected="false">
+                                Story
+                            </button>
+
+                            <button class=" btn " id="nav-banner-tab" data-bs-toggle="tab" data-bs-target="#nav-banner" type="button" role="tab" aria-controls="nav-banner" aria-selected="false">
+                                Banner Management
+                            </button>
+                        </div>
+
+                    </nav>
+
+
+                </div>
+               
+            </div>
+        </div>
+
+
+        <div class="col py-3">
+            <div class="container-fluid">
+
+                <div class="row" style="background: #FFFFFF 0% 0% no-repeat padding-box;box-shadow: 3px 5px 10px #00000014;">
+                    <div style="display: flex; justify-content: space-between">
+                        <p>@DateTime.Now</p>
+                        <div style="display: flex;">
+                            <img src="~/images/user.png" class="rounded-circle userimgforHeader">
+                            <a class="nav-link dropdown-toggle adminprofname" href="#" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Admin 1
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a asp-controller="Account" asp-action="Login" class="dropdown-item">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
+                        <h4 class="pt-3 pb-2">User</h4>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-cms" role="tabpanel" aria-labelledby="nav-cms-tab">
+                        <h4 class="pt-3 pb-2">CMS</h4>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
+                        <h4 class="pt-3 pb-2">Mission</h4>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-theme" role="tabpanel" aria-labelledby="nav-theme-tab">
+                        <h4 class="pt-3 pb-2">Theme</h4>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-skill" role="tabpanel" aria-labelledby="nav-skill-tab">
+                        <h4 class="pt-3 pb-2">Skills</h4>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-application" role="tabpanel" aria-labelledby="nav-application-tab">
+                        <h4 class="pt-3 pb-2">Application</h4>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-story" role="tabpanel" aria-labelledby="nav-story-tab">
+                        <h4 class="pt-3 pb-2">Story</h4>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-banner" role="tabpanel" aria-labelledby="nav-banner-tab">
+                        <h4 class="pt-3 pb-2">Banner</h4>
+                    </div>
+
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+           $(".cms-sidebar ul li").on("mouseenter", function () {
+               $(this).find("i").css("color", "#F88634");
+               $(this).find("span").css("color", "#F88634");
+           });
+           $(".cms-sidebar ul li").on("mouseleave", function () {
+               if (!$(this).hasClass("active")) {
+                   $(this).find("i").css("color", "#fff");
+                   $(this).find("span").css("color", "#fff");
+               }
+           });
+           $(".cms-sidebar ul li").on("click", function () {
+               $(".cms-sidebar ul li").removeClass("active");
+               $(".cms-sidebar ul li i").css("color", "#fff");
+               $(".cms-sidebar ul li span").css("color", "#fff");
+               $(this).addClass("active");
+               $(this).find("i").css("color", "#F88634");
+               $(this).find("span").css("color", "#F88634");
+           });
+       });
+</script>
+
+

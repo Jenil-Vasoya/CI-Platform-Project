@@ -1,0 +1,34 @@
+﻿<div class="row" style="overflow-x: auto;">
+    <table class="table table-hover  table-bordered">
+        <thead>
+            <tr class="table-light" style="height: 70px;">
+                <th scope="col" class="thforcmstable">First Name</th>
+                <th scope="col" class="thforcmstable">Last Name</th>
+                <th scope="col" class="thforcmstable">Email</th>
+                <th scope="col" class="thforcmstable">Employee Id</th>
+                <th scope="col" class="thforcmstable">Department</th>
+                <th scope="col" class="thforcmstable">Status</th>
+                <th scope="col" class="thforcmstable">Action</th>
+            </tr>
+        </thead>
+        @foreach (var item in @ViewBag.UserList)
+        {
+            <tbody class="table-border">
+                <tr>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Email</td>
+                    <td>@item.EmployeeId</td>
+                    <td>@item.Department</td>
+                    <td class="statuscolorincms">@item.Status</td>
+                    <td>
+                        <button class="btncmspageedit " data-bs-toggle="modal" data-bs-target="#editmodelinUser"><i class="bi bi-pencil-square" style="color: #F88634;"></i></button>
+                        <button class="btncmspageedit"><i class="bi bi-trash3"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
+
+<partial name="_Pagination" />
