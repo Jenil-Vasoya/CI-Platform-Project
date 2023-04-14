@@ -490,7 +490,9 @@ public partial class CiPlatformContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.DeletedAt).HasColumnType("datetime");
-            entity.Property(e => e.Status).HasDefaultValueSql("((1))");
+            entity.Property(e => e.Status)
+                .IsRequired()
+                .HasDefaultValueSql("((1))");
             entity.Property(e => e.Titile)
                 .HasMaxLength(255)
                 .IsUnicode(false);

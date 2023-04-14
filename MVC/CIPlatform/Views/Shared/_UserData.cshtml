@@ -1,4 +1,16 @@
-﻿<div class="row" style="overflow-x: auto;">
+﻿ <style>
+     .page-item.active .page-link {
+    background-color: #F88634;
+    border-color: #F88634;
+}
+
+ .page-item > .page-link {
+    color: black;
+}
+ </style>
+
+
+<div class="row" style="overflow-x: auto;">
     <table class="table table-hover  table-bordered">
         <thead>
             <tr class="table-light" style="height: 70px;">
@@ -21,9 +33,13 @@
                     <td>@item.EmployeeId</td>
                     <td>@item.Department</td>
                     <td class="statuscolorincms">@item.Status</td>
-                    <td>
-                        <button class="btncmspageedit " data-bs-toggle="modal" data-bs-target="#editmodelinUser"><i class="bi bi-pencil-square" style="color: #F88634;"></i></button>
-                        <button class="btncmspageedit"><i class="bi bi-trash3"></i></button>
+                   <td>
+                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalG-">
+                            <i class="bi bi-pencil-square" style="color: coral;"></i>
+                        </button>
+                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDelete-">
+                            <i class="bi bi-trash ms-3"></i>
+                        </button>
                     </td>
                 </tr>
             </tbody>
@@ -31,4 +47,41 @@
     </table>
 </div>
 
-<partial name="_Pagination" />
+
+  
+ <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center" onchange="searchMission()" >
+            <li class="page-item">
+                <button class="page-link" type="submit" aria-label="Previous" onclick="searchMission(1,'user')">
+                    <span aria-hidden="true">&laquo;</span>
+                </button>
+            </li>
+            @{
+                double totalpages = ViewBag.Totalpages;
+
+                for (int i = 1; i <= totalpages; i++)
+                {
+                    @if (i == ViewBag.pg_no)
+                    {
+                        <li class="page-item active">
+                            <button class="page-link" type="submit" onclick="searchMission(@i,'user')">@i</button>
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <button class="page-link" type="submit" onclick="searchMission(@i,'user')">@i</button>
+                        </li>
+                    }
+
+
+                }   
+            }
+            <li class="page-item">
+                <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@ViewBag.Totalpages,'user')">
+                    <span aria-hidden="true">&raquo;</span>
+                </button>
+            </li>
+        </ul>
+    </nav> 

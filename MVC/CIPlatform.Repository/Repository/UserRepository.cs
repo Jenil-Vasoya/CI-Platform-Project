@@ -314,8 +314,11 @@ namespace CIPlatform.Repository.Repository
                 volunteerSheet.MissionTitle = _DbContext.Missions.Where(m => m.MissionId == sheet.MissionId).FirstOrDefault().Title;
                 volunteerSheet.Time = sheet.Time.ToString();
                 volunteerSheet.Status = sheet.Status;
-                
-                volunteerSheet.DateVolunteered = sheet.DateVolunteered;
+                var newdate = sheet.DateVolunteered;
+                var year = newdate.Year;
+                var month = newdate.Month.ToString("D2");
+                var day = newdate.Day.ToString("D2");
+                volunteerSheet.DateVolunteered = year+"-"+month + "-" + day;
                 volunteerSheet.Notes = sheet.Notes;
 
                 if (sheet.Time != null)
@@ -367,7 +370,7 @@ namespace CIPlatform.Repository.Repository
                 {
                     timeSheet.Action = volunteerSheet.Action;
                 }
-                timeSheet.DateVolunteered = volunteerSheet.DateVolunteered;
+                timeSheet.DateVolunteered = volunteerSheet.sendDateVolunteered;
                 timeSheet.Notes = volunteerSheet.Notes;
                 
                 _DbContext.TimeSheets.Add(timeSheet);
@@ -393,7 +396,7 @@ namespace CIPlatform.Repository.Repository
                 {
                     timeSheet.Action = volunteerSheet.Action;
                 }
-                timeSheet.DateVolunteered = volunteerSheet.DateVolunteered;
+                timeSheet.DateVolunteered = volunteerSheet.sendDateVolunteered;
                 timeSheet.Notes = volunteerSheet.Notes;
                 
                 _DbContext.TimeSheets.Update(timeSheet);

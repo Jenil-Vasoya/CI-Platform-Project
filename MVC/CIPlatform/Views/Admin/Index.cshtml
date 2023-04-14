@@ -300,24 +300,35 @@
                         </div>
 
                         <div class="tab-pane fade" id="nav-cms" role="tabpanel" aria-labelledby="nav-cms-tab">
+                            <h4 class="pt-3 pb-2">CMS</h4>
+                            
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
                             <h4 class="pt-3 pb-2">Mission</h4>
-                            <input class="form-control pl-5 w-25" style="border-style:none;" id="name" name="search" type="search" placeholder="&nbsp;Search User..." oninput="searchMission()" aria-label="Search">
+                            <input class="form-control pl-5 w-25" style="border-style:none;" id="name" name="searchMission" type="search" placeholder="&nbsp;Search Mission..." oninput="searchMission(1,'mission')" aria-label="Search">
 
                             <div id="missions">
                             <partial name="_MissionData" />
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
-                            <h4 class="pt-3 pb-2">Mission</h4>
-                        </div>
-
                         <div class="tab-pane fade" id="nav-theme" role="tabpanel" aria-labelledby="nav-theme-tab">
                             <h4 class="pt-3 pb-2">Theme</h4>
+                            <input class="form-control pl-5 w-25" style="border-style:none;" id="name" name="searchTheme" type="search" placeholder="&nbsp;Search Mission..." oninput="searchMission(1,'theme')" aria-label="Search">
+
+                            <div id="themes">
+                            <partial name="_ThemeData" />
+                            </div>
                         </div>
 
                         <div class="tab-pane fade" id="nav-skill" role="tabpanel" aria-labelledby="nav-skill-tab">
                             <h4 class="pt-3 pb-2">Skills</h4>
+                            <input class="form-control pl-5 w-25" style="border-style:none;" id="name" name="searchSkill" type="search" placeholder="&nbsp;Search Mission..." oninput="searchMission(1,'skill')" aria-label="Search">
+
+                            <div id="skills">
+                            <partial name="_SkillData" />
+                            </div>
                         </div>
 
                         <div class="tab-pane fade" id="nav-application" role="tabpanel"
@@ -355,12 +366,29 @@
 
 
 <script>
-      function searchMission(pg) {
+      function searchMission(pg,who) {
+          debugger
         console.log("abc");
         var search = $('input[name="search"]').val();
+        if(search == "")
+        {
+            search = $('input[name="searchMission"]').val();
+        }
+        if(search == "")
+        {
+            search = $('input[name="searchTheme"]').val();
+        }
+        if(search == "")
+        {
+            search = $('input[name="searchSkill"]').val();
+        }
 
         if (pg == undefined) {
             pg = 1;
+        }
+        
+        if (who == undefined) {
+            who = 'user';
         }
 
         debugger;
@@ -369,10 +397,26 @@
             method: "POST",
             data: {
                 "search": search,
-                "pg": pg
+                "pg": pg,
+                "who": who
             },
             success: function (data) {
-                $('#users').html(data);
+                if(who == 'user')
+                {
+                    $('#users').html(data);
+                }
+                else if(who == 'mission')
+                {
+                    $('#missions').html(data);
+                }
+                else if(who == 'theme')
+                {
+                     $('#themes').html(data);
+                }
+                else if(who == 'skill')
+                {
+                     $('#skills').html(data);
+                }
             },
             error: function (request, error) {
                 console.log(error);

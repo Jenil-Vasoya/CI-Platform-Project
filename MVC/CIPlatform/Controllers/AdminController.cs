@@ -19,7 +19,9 @@ namespace CIPlatform.Controllers
         {
             var model = _AccountRepo.adminModelList();
 
-            ViewBag.MissionList = _AccountRepo.MissionList();
+            ViewBag.MissionList = _AccountRepo.MissionList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ThemeList = _AccountRepo.ThemeList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.SkillList = _AccountRepo.SkillList().Skip((1 - 1) * 6).Take(6).ToList();
             ViewBag.Totalpages = Math.Ceiling(_AccountRepo.UserList().Count() / 6.0);
             ViewBag.UserList = _AccountRepo.UserList().Skip((1 - 1) * 6).Take(6).ToList();
             ViewBag.pg_no = 1;
@@ -27,17 +29,53 @@ namespace CIPlatform.Controllers
             return View();
         }
 
-        public ActionResult Search(string? search, int pg)
+        public ActionResult Search(string? search, int pg, string who)
         {
-            var userlist = _AccountRepo.UserList();
-            var model = _AccountRepo.UserListSearch(search,pg);
+            if (who == "mission")
+            {
+                var model = _AccountRepo.MissionListSearch(search, pg);
 
-            ViewBag.pg_no = pg;
-            ViewBag.Totalpages = Math.Ceiling(_AccountRepo.UserListSearch(search,pg=0).Count() / 6.0);
-            ViewBag.model = model.Skip((1 - 1) * 6).Take(6).ToList();
+                ViewBag.MissionList = model;
+                ViewBag.pg_no = pg;
+                ViewBag.Totalpages = Math.Ceiling(_AccountRepo.MissionListSearch(search, pg = 0).Count() / 6.0);
 
-            
-            return PartialView("_UserData");
+
+
+                return PartialView("_MissionData");
+                
+            }
+            else if (who == "theme")
+            {
+                var model = _AccountRepo.ThemeListSearch(search, pg);
+
+                ViewBag.ThemeList = model;
+                ViewBag.pg_no = pg;
+                ViewBag.Totalpages = Math.Ceiling(_AccountRepo.ThemeListSearch(search, pg = 0).Count() / 6.0);
+
+                return PartialView("_ThemeData");
+
+            }
+            else if (who == "skill")
+            {
+                var model = _AccountRepo.SkillListSearch(search, pg);
+
+                ViewBag.ThemeList = model;
+                ViewBag.pg_no = pg;
+                ViewBag.Totalpages = Math.Ceiling(_AccountRepo.SkillListSearch(search, pg = 0).Count() / 6.0);
+
+                return PartialView("_SkillData");
+
+            }
+            else 
+            {
+                var model = _AccountRepo.UserListSearch(search, pg);
+
+                ViewBag.UserList = model;
+                ViewBag.pg_no = pg;
+                ViewBag.Totalpages = Math.Ceiling(_AccountRepo.UserListSearch(search, pg = 0).Count() / 6.0);
+
+                return PartialView("_UserData");
+            }
         }
         //private readonly CiPlatformContext _db;
 

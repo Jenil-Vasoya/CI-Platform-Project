@@ -32,15 +32,16 @@ namespace CIPlatform.Entities.ViewModel
 
             [Required(ErrorMessage = "Please Enter a Date")]
             //[DataType(DataType.DateTime, ErrorMessage = "Please enter a valid date and time")]
-            public DateTime DateVolunteered { get; set; }
+            public string DateVolunteered { get; set; }
+            public DateTime sendDateVolunteered { get; set; }
 
             [Required(ErrorMessage = "Please Enter The Action")]
             [Range(0, 200, ErrorMessage = "Action Must be between 0 and 200")]
             public int? Action { get; set; }
 
-            [Required(ErrorMessage = "Please Enter a Notes")]
-            [MaxLength(500, ErrorMessage = "Message cannot exceed 500 characters")]
-            public string? Notes { get; set; }
+        [Required(ErrorMessage = "Please Enter a Notes")]
+        [MaxLength(500, ErrorMessage = "Message cannot exceed 500 characters")]
+        public string? Notes { get; set; }
 
         public string? Status { get; set; }
 

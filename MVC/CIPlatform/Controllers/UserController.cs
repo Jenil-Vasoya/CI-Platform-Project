@@ -47,7 +47,15 @@ namespace CIPlatform.Controllers
         {
             return View();
         }
-        
+
+
+        //[Route("/logout")]
+        //public IActionResult Logout()
+        //{
+        //    HttpContext.Session.Clear();
+        //    return RedirectToAction("Index");
+        //}
+
         public IActionResult VolunteerTimeSheet()
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
@@ -129,13 +137,25 @@ namespace CIPlatform.Controllers
                         HttpContext.Session.SetString("UserId", JsonConvert.SerializeObject(objUser.UserId.ToString()));
                         HttpContext.Session.SetString("Email", JsonConvert.SerializeObject(objUser.Email.ToString()));
                         HttpContext.Session.SetString("UserName", JsonConvert.SerializeObject(objUser.FirstName.ToString() + " " + objUser.LastName.ToString()));
-                       
+
+                        if (objUser.CountryId != null)
+                        {
+
+                            HttpContext.Session.SetInt32("userid", (int)objUser.UserId);
+                            HttpContext.Session.SetString("FirstName", objUser.FirstName + " " + objUser.LastName);
+                            HttpContext.Session.SetString("Country", objLogin.CountryId.ToString());
 
 
+                            TempData["Success"] = "Login Successfully";
+                            return RedirectToAction("MissionGrid", "Home");
+                        }
+                        else
+                        {
+                            HttpContext.Session.SetInt32("userid", (int)objUser.UserId);
+                            HttpContext.Session.SetString("FirstName", objUser.FirstName + " " + objUser.LastName);
 
-
-                        TempData["Success"] = "Login Successfully";
-                        return RedirectToAction("MissionGrid", "Home");
+                            return RedirectToAction("EditProfile", "User");
+                        }
 
                     }
                     TempData["Fail"] = "Please enter correct password";
