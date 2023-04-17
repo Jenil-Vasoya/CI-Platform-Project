@@ -1,4 +1,5 @@
-﻿using CIPlatform.Entities.Data;
+﻿using CIPlatform.Entities.AdminViewModel;
+using CIPlatform.Entities.Data;
 using CIPlatform.Entities.Models;
 using CIPlatform.Entities.ViewModel;
 using CIPlatform.Repository.Interface;
@@ -24,6 +25,12 @@ namespace CIPlatform.Repository.Repository
             return objUserList;
         }
         
+        public List<Cmspage> CMSList()
+        {
+            List<Cmspage> objCMSList = _DbContext.Cmspages.ToList();
+            return objCMSList;
+        }
+        
         public List<Mission> MissionList()
         {
             List<Mission> objMissionList = _DbContext.Missions.ToList();
@@ -41,6 +48,58 @@ namespace CIPlatform.Repository.Repository
             List<Skill> objSkillList = _DbContext.Skills.ToList();
             return objSkillList;
         }
+        
+        public List<MissionApplicationModel> MissionApplicationList()
+        {
+            List<MissionApplication> missionApplications = _DbContext.MissionApplications.ToList();
+
+            List<MissionApplicationModel> missionsApplication = new List<MissionApplicationModel>();
+
+            foreach (var application in missionApplications)
+            {
+                User user = _DbContext.Users.Find(application.UserId);
+                Mission mission = _DbContext.Missions.Find(application.MissionId);
+
+                MissionApplicationModel model = new MissionApplicationModel();
+                model.Mission = mission;
+                model.User = user;
+                model.UserId = application.UserId;
+                model.MissionId = application.MissionId;
+                model.User = application.User;
+                model.ApprovalStatus = application.ApprovalStatus;
+                model.MissionApplicationId = application.MissionApplicationId;  
+                model.AppliedAt = application.AppliedAt;
+                missionsApplication.Add(model);
+            }
+            return missionsApplication;
+        } 
+        
+        public List<StoryModel> StoryList()
+        {
+            List<Story> stories = _DbContext.Stories.ToList();
+
+            List<StoryModel> storyModels = new List<StoryModel>();
+
+            foreach (var story in stories)
+            {
+                User user = _DbContext.Users.Find(story.UserId);
+                Mission mission = _DbContext.Missions.Find(story.MissionId);
+
+                StoryModel model = new StoryModel();
+                model.StoryId = story.StoryId;
+                model.Mission = mission;
+                model.User = user;
+
+                model.Title = story.Title;
+                model.Description = story.Description;
+                model.PublishedAt = story.PublishedAt;
+                model.CreatedAt = story.CreatedAt;
+                model.UpdatedAt = story.UpdatedAt;
+                model.Status = story.Status;
+                storyModels.Add(model);
+            }
+            return storyModels;
+        }
 
         public AdminModel adminModelList()
         {
@@ -50,6 +109,22 @@ namespace CIPlatform.Repository.Repository
             return admins;
         }
 
+        public List<Cmspage> CMSListSearch(string search, int pg)
+        {
+            var pageSize = 6;
+            List<Cmspage> cmspages = _DbContext.Cmspages.ToList();
+
+            if(search != null)
+            {
+                cmspages = cmspages.Where(u => u.Title.ToLower().Contains(search.ToLower())).ToList();
+            }
+
+            if (pg != 0)
+            {
+                cmspages = cmspages.Skip((pg - 1) * pageSize).Take(pageSize).ToList();
+            }
+            return cmspages;
+        }
         public List<User> UserListSearch(string search, int pg)
         {
             var pageSize = 6;
@@ -116,6 +191,57 @@ namespace CIPlatform.Repository.Repository
                 skills = skills.Skip((pg - 1) * pageSize).Take(pageSize).Take(pageSize).ToList();
             }
             return skills;
+        }
+        
+        
+        public List<MissionApplicationModel> ApplicationListSearch(string search, int pg)
+        {
+            var pageSize = 6;
+            List<MissionApplicationModel> missions = MissionApplicationList();
+
+            if(search != null)
+            {
+                missions = missions.Where(u => u.Mission.Title.ToLower().Contains(search.ToLower())).ToList();
+            }
+
+            if (pg != 0)
+            {
+                missions = missions.Skip((pg - 1) * pageSize).Take(pageSize).Take(pageSize).ToList();
+            }
+            return missions;
+        } 
+
+        public List<StoryModel> StoryListSearch(string search, int pg)
+        {
+            var pageSize = 6;
+            List<StoryModel> stories = StoryList();
+
+            if(search != null)
+            {
+                stories = stories.Where(u => u.Mission.Title.ToLower().Contains(search.ToLower()) || u.Title.ToLower().Contains(search.ToLower())).ToList();
+            }
+
+            if (pg != 0)
+            {
+                stories = stories.Skip((pg - 1) * pageSize).Take(pageSize).Take(pageSize).ToList();
+            }
+            return stories;
+        }
+
+
+        public bool AddCMS(AdminModel adminModel)
+        {
+            Cmspage cmspage = new Cmspage();
+            {
+                cmspage.Title = adminModel.Title;
+                cmspage.Description = adminModel.Description;
+                cmspage.Slug = adminModel.Slug;
+                cmspage.Status = adminModel.Status;
+                
+                _DbContext.Cmspages.Add(cmspage);
+                _DbContext.SaveChanges();
+            }
+            return true;
         }
     }
 }

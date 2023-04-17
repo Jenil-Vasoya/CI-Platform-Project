@@ -1,17 +1,6 @@
-﻿ <style>
-     .page-item.active .page-link {
-    background-color: #F88634;
-    border-color: #F88634;
-}
-
- .page-item > .page-link {
-    color: black;
-}
- </style>
-
-
+﻿
 <div class="row" style="overflow-x: auto;">
-    <table class="table table-hover  table-bordered">
+    <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
         <thead>
             <tr class="table-light" style="height: 70px;">
                 <th scope="col" class="thforcmstable">First Name</th>
@@ -32,7 +21,14 @@
                     <td>@item.Email</td>
                     <td>@item.EmployeeId</td>
                     <td>@item.Department</td>
-                    <td class="statuscolorincms">@item.Status</td>
+                    @if(item.Status == true)
+                    {
+                    <td style="color: green;">Active</td>
+                    }
+                    else
+                    {
+                    <td class="text-danger">Inactive</td>
+                    }
                    <td>
                         <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalG-">
                             <i class="bi bi-pencil-square" style="color: coral;"></i>
@@ -57,7 +53,7 @@
                 </button>
             </li>
             @{
-                double totalpages = ViewBag.Totalpages;
+                double totalpages = ViewBag.ttlUsers;
 
                 for (int i = 1; i <= totalpages; i++)
                 {
@@ -77,11 +73,12 @@
 
 
                 }   
-            }
+            
             <li class="page-item">
-                <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@ViewBag.Totalpages,'user')">
+                <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@totalpages,'user')">
                     <span aria-hidden="true">&raquo;</span>
                 </button>
             </li>
+            }
         </ul>
     </nav> 

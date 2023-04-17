@@ -1,33 +1,32 @@
-﻿ <style>
-     .page-item.active .page-link {
-    background-color: #F88634;
-    border-color: #F88634;
-}
-
- .page-item > .page-link {
-    color: black;
-}
- </style>
-
-
+﻿
 <div class="row" style="overflow-x: auto;">
     <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
         <thead>
             <tr class="table-light" style="height: 70px;">
-                <th scope="col" class="thforcmstable">Theme Name</th>
-                <th scope="col" class="thforcmstable">Status</th>
+                <th scope="col" class="thforcmstable">Story Title</th>
+                <th scope="col" class="thforcmstable">Full Name</th>
+                <th scope="col" class="thforcmstable">Mission Title</th>
                 <th scope="col" class="thforcmstable">Action</th>
             </tr>
         </thead>
-        @foreach (var item in @ViewBag.ThemeList)
+        @foreach (var item in @ViewBag.StoryList)
         {
             <tbody class="table-border">
                 <tr>
-                    <td>@item.Titile</td>
-                    <td>@item.Status</td>
+                    <td>@item.Title</td>
+                    <td>@item.User.FirstName  @item.User.LastName</td>
+                    <td>@item.Mission.Title</td>
                     <td>
+                        <button type="button" class="btn applyButton" data-bs-toggle="modal" data-bs-target="#exampleModalG-">
+                            View
+                        </button>
+                        &nbsp;
                         <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalG-">
-                            <i class="bi bi-pencil-square" style="color: coral;"></i>
+                            <i class="bi bi-check-circle" style="color: green;"></i>
+                        </button>
+                        &nbsp;
+                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDelete-">
+                            <i class="bi bi-x-circle" style="color: red;"></i>
                         </button>
                         <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDelete-">
                             <i class="bi bi-trash ms-3"></i>
@@ -39,31 +38,29 @@
     </table>
 </div>
 
-
-  
- <nav aria-label="Page navigation example">
+<nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center" onchange="searchMission()" >
             <li class="page-item">
-                <button class="page-link" type="submit" aria-label="Previous" onclick="searchMission(1,'theme')">
+                <button class="page-link" type="submit" aria-label="Previous" onclick="searchMission(1,'story')">
                     <span aria-hidden="true">&laquo;</span>
                 </button>
             </li>
             @{
-                double totalpages = ViewBag.ttlThemes;
+                double totalpages = ViewBag.ttlStories;
 
                 for (int i = 1; i <= totalpages; i++)
                 {
                     @if (i == ViewBag.pg_no)
                     {
                         <li class="page-item active">
-                            <button class="page-link" type="submit" onclick="searchMission(@i,'theme')">@i</button>
+                            <button class="page-link" type="submit" onclick="searchMission(@i,'story')">@i</button>
 
                         </li>
                     }
                     else
                     {
                         <li class="page-item">
-                            <button class="page-link" type="submit" onclick="searchMission(@i,'theme')">@i</button>
+                            <button class="page-link" type="submit" onclick="searchMission(@i,'story')">@i</button>
                         </li>
                     }
 
@@ -71,7 +68,7 @@
                 }   
             
             <li class="page-item">
-                <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@totalpages,'theme')">
+                <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@totalpages,'story')">
                     <span aria-hidden="true">&raquo;</span>
                 </button>
             </li>
