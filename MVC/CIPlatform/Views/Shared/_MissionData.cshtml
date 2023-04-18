@@ -1,38 +1,87 @@
-﻿<div class="row" style="overflow-x: auto;">
-    <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
-        <thead>
-            <tr class="table-light" style="height: 70px;">
-                <th scope="col" class="thforcmstable">Mission Title</th>
-                <th scope="col" class="thforcmstable">Mission Type</th>
-                <th scope="col" class="thforcmstable">Start Date</th>
-                <th scope="col" class="thforcmstable">End Date</th>
-                <th scope="col" class="thforcmstable">Action</th>
-            </tr>
-        </thead>
-        @foreach (var item in @ViewBag.MissionList)
-        {
-            <tbody class="table-border">
-                <tr>
-                    <td>@item.Title</td>
-                    <td>@item.MissionType</td>
-                    <td>@item.StartDate</td>
-                    <td>@item.EndDate</td>
-                    <td>
-                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalG-">
-                            <i class="bi bi-pencil-square" style="color: coral;"></i>
-                        </button>
-                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDelete-">
-                            <i class="bi bi-trash ms-3"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
+﻿<style>
+    .applyButton {
+        border: 2px solid #F88634;
+        border-radius: 100px;
+        color: #F88634;
+        background-color: white;
         }
-    </table>
-</div>
 
-<nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center" onchange="searchMission()" >
+        .applyButton:hover {
+            background-color: #F88634;
+            color: white;
+        }
+</style>
+
+
+<div id="missionpage">
+    <div class="col-12 col-sm-6 col-lg-8 col-xl-9 text-sm-end mt-3 mt-sm-0">
+        <button type="button" class="btn applyButton rounded-pill"
+                onclick="addform('nav-mission')">
+            <i class="bi bi-plus"></i>
+            Add
+        </button>
+    </div>
+
+    <div class="row" style="overflow-x: auto;">
+        <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
+            <thead>
+                <tr class="table-light" style="height: 70px;">
+                    <th scope="col" class="thforcmstable">Mission Title</th>
+                    <th scope="col" class="thforcmstable">Mission Type</th>
+                    <th scope="col" class="thforcmstable">Start Date</th>
+                    <th scope="col" class="thforcmstable">End Date</th>
+                    <th scope="col" class="thforcmstable">Action</th>
+                </tr>
+            </thead>
+            @foreach (var item in @ViewBag.MissionList)
+            {
+                <tbody class="table-border">
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.MissionType</td>
+                        <td>@item.StartDate</td>
+                        <td>@item.EndDate</td>
+                        <td>
+                            <button type="button" class="btn p-0" onclick="editform('nav-mission',@item.MissionId)">
+                                <i class="bi bi-pencil-square" style="color: coral;"></i>
+                            </button>
+                             <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteTime-@item.MissionId">
+                                                    <i class="bi bi-trash ms-3"></i>
+                                                </button>
+
+
+                                                 <!-- Modal For Delete Mission -->
+                                                    <div class="modal fade" id="exampleModalDeleteTime-@item.MissionId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                        Are you sure for delete this Mission
+                                                                    </h1>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+
+                                                                <form method="post">
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                        <button type="submit" onclick="deleteMission(@item.MissionId,event)" class="btn applyButton" data-bs-dismiss="modal">Delete</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center" onchange="searchMission()">
             <li class="page-item">
                 <button class="page-link" type="submit" aria-label="Previous" onclick="searchMission(1,'mission')">
                     <span aria-hidden="true">&laquo;</span>
@@ -58,13 +107,220 @@
                     }
 
 
-                }   
-            
-            <li class="page-item">
-                <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@totalpages,'mission')">
-                    <span aria-hidden="true">&raquo;</span>
-                </button>
-            </li>
+                }
+
+                <li class="page-item">
+                    <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@totalpages,'mission')">
+                        <span aria-hidden="true">&raquo;</span>
+                    </button>
+                </li>
             }
         </ul>
-    </nav> 
+    </nav>
+</div>
+
+<div class="border" id="add" style="display: none;">
+    <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Add </h3>
+    <hr class="m-0">
+    <form class="px-3">
+        <label class="mt-3"> Title </label>
+        <input type="text" class="form-control" id="formGroupExampleInput">
+        <label class="mt-3"> Description</label>
+        <textarea id="editor"></textarea>
+
+        <label class="mt-3"> Slug </label>
+        <input type="text" class="form-control" id="formGroupExampleInput">
+
+        <label class="mb-1 mt-3">Mission</label>
+        <select type="text" id="status" class="form-select form-control">
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+        </select>
+        <div class="row my-3">
+            <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
+                <button type="button" class="cancell rounded-pill btn btn-outline-dark"
+                        onclick="addpage('nav-mission');">
+                    Cancel
+                </button>
+                <button type="submit" onclick="addMission(event)" class="btn rounded-pill applyButton"
+                        value="2" name="command">
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<div class="border" id="edit" style="display: none;">
+                                <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Edit </h3>
+                                <hr class="m-0">
+                                <form class="px-3">
+                                    <input type="hidden" id="missionId" />
+                                    <label for="select mission" class="mt-3"> Title </label>
+                                    <input type="text"  class="form-control" id="titleedit">
+                                    <label class="mt-3"> Description</label>
+                                    <textarea id="editoredit"></textarea>
+                                    
+                                    <label class="mt-3"> Slug </label>
+                                    <input type="text" class="form-control" id="slugedit">
+
+                                    <label class="mb-1 mt-3">Mission</label>
+                                    <select type="text" id="statusedit" class="form-select form-control">
+                                        <option value="true">Active</option>
+                                        <option value="false">Inactive</option>
+                                    </select>
+                                    <div class="row my-3">
+                                        <div class="col-10"></div>
+                                        <div class="col-2">
+                                            <button type="button" class="cancell rounded-pill btn btn-outline-dark"
+                                                onclick="editpage('nav-mission');">Cancel</button>
+                                            <button type="submit" onclick="addMission(event)" class="rounded-pill btn applyButton"
+                                                value="2" name="command">Save</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+
+
+
+ <script>
+        function addMission(event) {
+                    debugger
+                    var missionId = $('#missionId').val()
+                    if(missionId != 0)
+                    {
+                        event.preventDefault();
+                      var formData = {
+                         missionId: missionId,
+                         title: $('#titleedit').val(),
+                         description: $('#editoredit').val(),
+                         slug: $('#slugedit').val(),
+                         status: $('#statusedit').val()
+                     };
+                    }
+                    else
+                    {
+                     event.preventDefault();
+                     var formData = {
+                         title: $('#formGroupExampleInput').val(),
+                         description: $('#editor').val(),
+                         slug: $('#formGroupExampleInput').val(),
+                         status: $('#status').val()
+                     };
+                    }
+
+                     // Send the AJAX request
+                     $.ajax({
+                         type: 'POST',
+                         url: '/Admin/AddMission',
+                         data: formData,
+                         success: function(data) {
+                             console.log(data);
+                             debugger
+                             addpage('nav-mission');
+                             console.log(data);
+                             $('#missions').html(data);
+                             if(missionId != 0)
+                            {
+                             toastr.success('Mission edit successfully');
+                            }
+                            else
+                            {
+                                toastr.success('Mission add sucessfully');
+                            }
+
+                         },
+                        error: function (request, error) {
+                         console.log(error);
+                     }
+                     });
+                 }
+
+        function editMission(missionId)
+        {
+            
+            debugger
+            $.ajax({
+                         type: 'POST',
+                         url: '/Admin/EditMission',
+                         data: {"MissionId": missionId},
+                         success: function(data) {
+                             console.log(data);
+                             debugger
+                             $('#missionId').val(data.missionId);
+                             $('#titleedit').val(data.title);
+                             $('#editoredit').val(data.description);
+                             $('#slugedit').val(data.slug);
+                             $('#statusedit').val(data.status);
+                         },
+                        error: function (request, error) {
+                         console.log(error);
+                     }
+                     });
+        }
+
+        function deleteMission(missionId,event)
+        {
+            
+             debugger
+             event.preventDefault();
+            $.ajax({
+                         type: 'POST',
+                         url: '/Admin/DeleteMission',
+                         data: {"MissionId": missionId},
+                         success: function(data) {
+                             console.log(data);
+                             debugger
+                             addpage('nav-mission');
+                             console.log(data);
+                             $('#missions').html(data);
+                             toastr.error('Page Deleted');
+                         },
+                        error: function (request, error) {
+                         console.log(error);
+                     }
+                     });
+        }
+
+    </script>
+
+
+ <script>
+        function addform(x) {
+            var page = document.getElementById(x);
+            var missionpage = page.querySelector("#missionpage");
+            var addForm = page.querySelector("#add");
+            missionpage.style.display = "none";
+            addForm.style.display = 'block';
+        }
+        function addpage(x) {
+            debugger
+            var page = document.getElementById(x);
+            var missionpage = page.querySelector("#missionpage");
+            var addForm = page.querySelector("#add");
+            missionpage.style.display = "block";
+            addForm.style.display = 'none';
+        }
+        function editform(x,id) {
+           debugger
+            var page = document.getElementById(x);
+            var missionpage = page.querySelector("#missionpage");
+            var addForm = page.querySelector("#edit");
+            missionpage.style.display = "none";
+            addForm.style.display = 'block';
+             editMission(id);
+        }
+        function editpage(x,id) {
+            var page = document.getElementById(x);
+            var missionpage = page.querySelector("#missionpage");
+            var addForm = page.querySelector("#edit");
+            missionpage.style.display = "block";
+            addForm.style.display = 'none';
+        }
+
+
+    </script>

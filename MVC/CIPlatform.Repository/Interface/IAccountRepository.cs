@@ -41,6 +41,18 @@ namespace CIPlatform.Repository.Interface
 
         public List<StoryModel> StoryListSearch(string search, int pg);
 
-        public bool AddCMS(AdminModel adminModel);
+        public bool AddCMS(Cmspage model);
+
+        //public AdminModel EditCMS(long CMSId);
+
+        public Cmspage EditCMS(long CMSId);
+
+        public bool DeleteCMS(long CMSId);
+
+        public bool AddMission(Mission model);
+
+        public Mission EditMission(long MissionId);
+
+        public bool DeleteMission(long MissionId);
     }
 }

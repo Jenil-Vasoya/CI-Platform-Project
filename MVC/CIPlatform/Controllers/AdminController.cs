@@ -1,6 +1,6 @@
 ﻿using CIPlatform.Data;
+using CIPlatform.Entities.Models;
 using CIPlatform.Entities.ViewModel;
-using CIPlatform.Models;
 using CIPlatform.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.PortableExecutable;
@@ -126,15 +126,64 @@ namespace CIPlatform.Controllers
             }
         }
 
-        public ActionResult AddCMS(AdminModel adminModel)
+        public ActionResult AddCMS(Cmspage model)
         {
-           bool result = _AccountRepo.AddCMS(adminModel);
+           bool result = _AccountRepo.AddCMS(model);
+
             ViewBag.CMSList = _AccountRepo.CMSList().Skip((1 - 1) * 6).Take(6).ToList();
             ViewBag.ttlCMS = Math.Ceiling(_AccountRepo.CMSList().Count() / 6.0);
             ViewBag.pg_no = 1;
 
             return PartialView("_CMSData");
 
+        }
+
+        public JsonResult EditCMS(long CMSId)
+        {
+            var adminModel = _AccountRepo.EditCMS(CMSId);
+
+            return Json(adminModel);
+        }
+
+        public ActionResult DeleteCMS(long CMSId)
+        {
+            bool result = _AccountRepo.DeleteCMS(CMSId);
+
+            ViewBag.CMSList = _AccountRepo.CMSList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlCMS = Math.Ceiling(_AccountRepo.CMSList().Count() / 6.0);
+            ViewBag.pg_no = 1;
+
+            return PartialView("_CMSData");
+        } 
+        
+        public ActionResult AddMission(Mission model)
+        {
+           bool result = _AccountRepo.AddMission(model);
+
+            ViewBag.MissionList = _AccountRepo.MissionList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlMissions = Math.Ceiling(_AccountRepo.MissionList().Count() / 6.0);
+            ViewBag.pg_no = 1;
+
+            return PartialView("_MissionData");
+
+        }
+
+        public JsonResult EditMission(long MissionId)
+        {
+            var adminModel = _AccountRepo.EditMission(MissionId);
+
+            return Json(adminModel);
+        }
+
+        public ActionResult DeleteMission(long MissionId)
+        {
+            bool result = _AccountRepo.DeleteMission(MissionId);
+
+            ViewBag.MissionList = _AccountRepo.MissionList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlMissions = Math.Ceiling(_AccountRepo.MissionList().Count() / 6.0);
+            ViewBag.pg_no = 1;
+
+            return PartialView("_MissionData");
         }
         //private readonly CiPlatformContext _db;
 

@@ -229,18 +229,130 @@ namespace CIPlatform.Repository.Repository
         }
 
 
-        public bool AddCMS(AdminModel adminModel)
+        public bool AddCMS(Cmspage model)
         {
-            Cmspage cmspage = new Cmspage();
+            if (model.CmspageId == 0)
             {
-                cmspage.Title = adminModel.Title;
-                cmspage.Description = adminModel.Description;
-                cmspage.Slug = adminModel.Slug;
-                cmspage.Status = adminModel.Status;
-                
-                _DbContext.Cmspages.Add(cmspage);
-                _DbContext.SaveChanges();
+
+                Cmspage cmspage = new Cmspage();
+                {
+                    cmspage.Title = model.Title;
+                    cmspage.Description = model.Description;
+                    cmspage.Slug = model.Slug;
+                    cmspage.Status = model.Status;
+
+                    _DbContext.Cmspages.Add(cmspage);
+                    _DbContext.SaveChanges();
+                }
+                return true;
             }
+            else
+            {
+                var cms = _DbContext.Cmspages.Find(model.CmspageId);
+                if(cms != null)
+                {
+                    cms.Title = model.Title;
+                    cms.Description = model.Description;
+                    cms.Slug = model.Slug;
+                    cms.Status = model.Status;
+                    cms.UpdatedAt = DateTime.Now;
+
+                    _DbContext.Cmspages.Update(cms);
+                    _DbContext.SaveChanges();
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        //public AdminModel EditCMS(long CMSId)
+        //{
+        //    var cmspage = _DbContext.Cmspages.Where(c => c.CmspageId == CMSId).FirstOrDefault();
+
+        //    AdminModel adminModel = new AdminModel();
+        //    {
+        //        adminModel.Title = cmspage.Title;
+        //        adminModel.Description = cmspage.Description;
+        //        adminModel.Slug = cmspage.Slug;
+        //        adminModel.Status = cmspage.Status;
+
+        //    }
+        //    return adminModel;
+        //}
+        
+        public Cmspage EditCMS(long CMSId)
+        {
+            var cmspage = _DbContext.Cmspages.Where(c => c.CmspageId == CMSId).FirstOrDefault();
+
+           
+            return cmspage;
+        }
+
+        public bool DeleteCMS(long CMSId)
+        {
+            var cms = _DbContext.Cmspages.Find(CMSId);
+            
+            _DbContext.Cmspages.Remove(cms);
+            _DbContext.SaveChanges();
+            return true;
+        }
+
+        public bool AddMission(Mission model)
+        {
+            if (model.MissionId == 0)
+            {
+
+                Mission mission = new Mission();
+                {
+                    mission.Title = model.Title;
+                    mission.Description = model.Description;
+                    mission.Status = model.Status;
+
+                    _DbContext.Missions.Add(mission);
+                    _DbContext.SaveChanges();
+                }
+                return true;
+            }
+            else
+            {
+                var mission = _DbContext.Missions.Find(model.MissionId);
+                if (mission != null)
+                {
+                    mission.Title = model.Title;
+                    mission.Description = model.Description;
+                    mission.Status = model.Status;
+                    mission.UpdatedAt = DateTime.Now;
+
+                    _DbContext.Missions.Update(mission);
+                    _DbContext.SaveChanges();
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+         public Mission EditMission(long MissionId)
+        {
+            var mission = _DbContext.Missions.Where(c => c.MissionId == MissionId).FirstOrDefault();
+
+           
+            return mission;
+        }
+
+        public bool DeleteMission(long MissionId)
+        {
+            var mission = _DbContext.Missions.Find(MissionId);
+            
+            _DbContext.Missions.Remove(mission);
+            _DbContext.SaveChanges();
             return true;
         }
     }

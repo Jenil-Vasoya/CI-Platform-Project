@@ -314,7 +314,7 @@
                         </div>
 
                         <div class="tab-pane fade" id="nav-cms" role="tabpanel" aria-labelledby="nav-cms-tab">
-                          <div id="cmspage">
+                          
                                 <h4 class="pt-3 pb-2">CMS Page</h4>
                                 <div class="row mt-3 g-0">
                                     <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
@@ -323,47 +323,13 @@
                                             <input type="text" class="form-control " placeholder="Search">
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-6 col-lg-8 col-xl-9 text-sm-end mt-3 mt-sm-0">
-                                        <button type="button" class="btn btn-outline-warning rounded-pill"
-                                            onclick="addform('nav-cms')">
-                                            <i class="bi bi-plus"></i>
-                                            Add
-                                        </button>
-                                    </div>
                                 </div>
                                 <div id="cms">
                                     <partial name="_CMSData" />
                                 </div>
-                          </div>
+                        
 
-                            <div class="border" id="add" style="display: none;">
-                                <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Add </h3>
-                                <hr class="m-0">
-                                <form class="px-3">
-                                    <label class="mt-3"> Title </label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput">
-                                    <label class="mt-3"> Description</label>
-                                    <textarea id="editor"></textarea>
-                                    
-                                    <label class="mt-3"> Slug </label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput">
-
-                                    <label class="mb-1 mt-3">Mission</label>
-                                    <select type="text" id="status" class="form-select form-control">
-                                        <option value="true">Active</option>
-                                        <option value="false">Inactive</option>
-                                    </select>
-                                    <div class="row my-3">
-                                        <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
-                                        <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
-                                            <button type="button" class="cancell rounded-pill btn btn-outline-dark"
-                                                onclick="addpage('nav-cms');">Cancel</button>
-                                            <button type="submit" onclick="addCMS(event)" class="threebt rounded-pill btn btn-outline-warning"
-                                                value="2" name="command">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                            
 
                             @*<div class="border" id="edit" style="display: none;">
                                 <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Edit </h3>
@@ -457,43 +423,43 @@
 
 
 
-    <script>
-   function addCMS(event) {
-                debugger
-                event.preventDefault();
-                var formData = {
-                    title: $('#formGroupExampleInput').val(),
-                    description: $('#editor').val(),
-                    slug: $('#formGroupExampleInput').val(),
-                    status: $('#status').val()
-                };
+   @* <script>
+        function addCMS(event) {
+                     debugger
+                     event.preventDefault();
+                     var formData = {
+                         title: $('#formGroupExampleInput').val(),
+                         description: $('#editor').val(),
+                         slug: $('#formGroupExampleInput').val(),
+                         status: $('#status').val()
+                     };
 
-                // Send the AJAX request
-                $.ajax({
-                    type: 'POST',
-                    url: '/Admin/AddCMS',
-                    data: formData,
-                    success: function(data) {
-                        console.log(data);
-                        debugger
-                        addpage('nav-cms');
-                        console.log(data);
-                        $('#cms').html(data);
-                        toastr.success('Page added successfully');
-                        
-                    },
-                   error: function (request, error) {
-                    console.log(error);
-                }
-                });
-            }
+                     // Send the AJAX request
+                     $.ajax({
+                         type: 'POST',
+                         url: '/Admin/AddCMS',
+                         data: formData,
+                         success: function(data) {
+                             console.log(data);
+                             debugger
+                             addpage('nav-cms');
+                             console.log(data);
+                             $('#cms').html(data);
+                             toastr.success('Page added successfully');
 
-           
-        </script>
+                         },
+                        error: function (request, error) {
+                         console.log(error);
+                     }
+                     });
+                 }
+
+
+    </script>*@
 
     
 
-    <script>
+   @* <script>
         function addform(x) {
             var page = document.getElementById(x);
             var cmsPage = page.querySelector("#cmspage");
@@ -525,7 +491,7 @@
         }
 
 
-    </script>
+    </script>*@
 
 
 
