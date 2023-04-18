@@ -126,7 +126,7 @@ namespace CIPlatform.Controllers
             }
         }
 
-        public IActionResult AddCMS(AdminModel adminModel)
+        public ActionResult AddCMS(AdminModel adminModel)
         {
            bool result = _AccountRepo.AddCMS(adminModel);
             ViewBag.CMSList = _AccountRepo.CMSList().Skip((1 - 1) * 6).Take(6).ToList();

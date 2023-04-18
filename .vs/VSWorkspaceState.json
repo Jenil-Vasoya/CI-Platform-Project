@@ -5,8 +5,9 @@
     "\\MVC\\CIPlatform",
     "\\MVC\\CIPlatform\\Controllers",
     "\\MVC\\CIPlatform\\Views",
+    "\\MVC\\CIPlatform\\Views\\Admin",
     "\\MVC\\CIPlatform\\Views\\Story"
   ],
-  "SelectedNode": "\\MVC\\CIPlatform\\Controllers\\HomeController.cs",
+  "SelectedNode": "\\MVC\\CIPlatform\\Views\\Admin\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }
