@@ -48,6 +48,11 @@ namespace CIPlatform.Repository.Repository
             List<Skill> objSkillList = _DbContext.Skills.ToList();
             return objSkillList;
         }
+        public List<Country> CountryList()
+        {
+            List<Country> objCountryList = _DbContext.Countries.ToList();
+            return objCountryList;
+        }
         
         public List<MissionApplicationModel> MissionApplicationList()
         {
@@ -308,13 +313,110 @@ namespace CIPlatform.Repository.Repository
 
                 Mission mission = new Mission();
                 {
-                    mission.Title = model.Title;
-                    mission.Description = model.Description;
-                    mission.Status = model.Status;
+                    //mission.Title = model.Title;
+                    //mission.Description = model.Description;
+                    //mission.Status = model.Status;
+                    //mission.CityId = model.CityId;
+                    //mission.CountryId = model.CountryId;
+                    //mission.EndDate = model.EndDate;
+                    //mission.StartDate = model.StartDate;
+                    //mission.MissionType = model.MissionType;
+                    //mission.MissionThemeId = model.MissionThemeId;
+                    //mission.OrganizationName = model.OrganizationName;
+                    //mission.OrganizationDetail = model.OrganizationDetail;
+                    //mission.ShortDescription = model.ShortDescription;
+                    mission = model;
+                    mission.Availability = 10;
 
                     _DbContext.Missions.Add(mission);
                     _DbContext.SaveChanges();
                 }
+                if (model.MissionSkill.Count != 0)
+                {
+                    foreach (var skillId in model.MissionSkill)
+                    {
+                        MissionSkill skill = new MissionSkill();
+                        {
+                            skill.SkillId = skillId;
+                            skill.MissionId = mission.MissionId;
+
+                            _DbContext.MissionSkills.Add(skill);
+                            _DbContext.SaveChanges();
+                        }
+                    }
+                }
+
+                if(model.Images.Count != 0)
+                {
+                    List<MissionMedium> missionMedia = _DbContext.MissionMedia.Where(a => a.MissionId == mission.MissionId).ToList();
+                    foreach (var missionMediaItem in missionMedia)
+                    {
+                        _DbContext.MissionMedia.Remove(missionMediaItem);
+                        _DbContext.SaveChanges();
+                    }
+
+
+
+
+                    var filePath = new List<string>();
+                    foreach (var i in model.Images)
+                    {
+                        MissionMedium missionMedium = new MissionMedium();
+                        missionMedium.MissionId = mission.MissionId;
+                        missionMedium.MediaName = i.FileName;
+                        missionMedium.MediaType = "png";
+                        missionMedium.MediaPath = "~/Assets/StoryImages/" + i.FileName;
+                        _DbContext.MissionMedia.Add(missionMedium);
+                        _DbContext.SaveChanges();
+                        if (i.Length > 0)
+                        {
+                            //string path = Server.MapPath("~/wwwroot/Assets/Story");
+                            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", i.FileName);
+                            filePath.Add(path);
+                            using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                i.CopyTo(stream);
+                            }
+                        }
+
+                    }
+                    
+                    var docPath = new List<string>();
+                    foreach (var i in model.Images)
+                    {
+                        MissionDocument missionDocument = new MissionDocument();
+                        missionDocument.MissionId = mission.MissionId;
+                        missionDocument.DocumentName = i.FileName;
+                        missionDocument.DocumentType = "docx";
+                        missionDocument.DocumentPath = "~/Assets/StoryImages/" + i.FileName;
+                        _DbContext.MissionDocuments.Add(missionDocument);
+                        _DbContext.SaveChanges();
+                        if (i.Length > 0)
+                        {
+                            //string path = Server.MapPath("~/wwwroot/Assets/Story");
+                            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", i.FileName);
+                            docPath.Add(path);
+                            using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                i.CopyTo(stream);
+                            }
+                        }
+
+                    }
+                    
+                }
+                if (model.VideoUrl != null)
+                {
+
+                    MissionMedium medium = new MissionMedium();
+                    medium.MissionId = mission.MissionId;
+                    medium.MediaName = model.VideoUrl;
+                    medium.MediaType = "mp4";
+                    medium.MediaPath = model.VideoUrl;
+                    _DbContext.MissionMedia.Add(medium);
+                    _DbContext.SaveChanges();
+                }
+
                 return true;
             }
             else

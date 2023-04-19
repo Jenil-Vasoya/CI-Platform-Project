@@ -41,6 +41,10 @@ namespace CIPlatform.Controllers
             ViewBag.StoryList = _AccountRepo.StoryList().Skip((1 - 1) * 6).Take(6).ToList();
             ViewBag.ttlStories = Math.Ceiling(_AccountRepo.StoryList().Count() / 6.0);
 
+            ViewBag.CountryList = _AccountRepo.CountryList();
+            ViewBag.Themes = _AccountRepo.ThemeList();
+            ViewBag.Skills = _AccountRepo.SkillList();
+
             ViewBag.pg_no = 1;
 
             return View();

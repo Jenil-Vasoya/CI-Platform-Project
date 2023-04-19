@@ -182,7 +182,7 @@
             <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
             <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
                 <button type="button" class="cancell rounded-pill btn btn-outline-dark"
-                        onclick="addpage('nav-cms');">
+                        onclick="addpage('nav-cms')">
                     Cancel
                 </button>
                 <button type="submit" onclick="addCMS(event)" class="btn rounded-pill applyButton"
@@ -224,6 +224,8 @@
                                     </div>
                                 </form>
                             </div>
+
+
 
  <script>
         function addCMS(event) {
@@ -329,6 +331,7 @@
 
      <script>
         function addform(x) {
+            debugger
             var page = document.getElementById(x);
             var cmsPage = page.querySelector("#cmspage");
             var addForm = page.querySelector("#add");
@@ -352,7 +355,8 @@
             addForm.style.display = 'block';
              editCMS(id);
         }
-        function editpage(x,id) {
+        function editpage(x) {
+            debugger
             var page = document.getElementById(x);
             var cmsPage = page.querySelector("#cmspage");
             var addForm = page.querySelector("#edit");

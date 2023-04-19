@@ -245,34 +245,34 @@
                                     <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
                                         <div class="row mt-2">
                                              <div class="col-sm-6">
-                                            <label class="form-label">City<span class="text-danger">*</span></label>
-                                            <select class="form-select" asp-for="@Model.CityId" id="selectCityList" required>
-                                                @if(@Model.CityId != null)
-                                                    {
+                                                <label class="form-label">City<span class="text-danger">*</span></label>
+                                                <select class="form-select" asp-for="@Model.CityId" id="selectCityList" required>
+                                                    @if(@Model.CityId != null)
+                                                        {
                                                         
-                                                        var selectedCity = Model.CityList.FirstOrDefault(a => a.CityId == Model.CityId);
+                                                            var selectedCity = Model.CityList.FirstOrDefault(a => a.CityId == Model.CityId);
 
-                                                        <option value="@selectedCity.CityId" id="@selectedCity.CityId">@selectedCity.CityName</option>
-                                                    }
-                                                    else
-                                                    {
-                                                    <option value="@Model.CityId" id="selectCity">Please select first country</option>
+                                                            <option value="@selectedCity.CityId" id="@selectedCity.CityId">@selectedCity.CityName</option>
+                                                        }
+                                                        else
+                                                        {
+                                                        <option value="@Model.CityId" id="selectCity">Please select first country</option>
                                                         
-                                                    }
+                                                        }
  
-                                            </select>
-                                        </div>
-                                            <div class="col-sm-6">
-                                            <label class="form-label">Country<span class="text-danger">*</span></label>
+                                                </select>
+                                             </div>
+                                                <div class="col-sm-6">
+                                                    <label class="form-label">Country<span class="text-danger">*</span></label>
 
-                                            <select class="form-select" asp-for="@Model.CountryId" id="country" onchange="GetCity()" required>
-                                                @*<option value="@data.CountryId" selected>@data.Country.CountryName</option>*@
-                                                    @foreach (var country in Model.CountryList) @*if (country.CountryId != data.CountryId)*@
-                                                    {
-                                                    <option value="@country.CountryId">@country.CountryName</option>
-                                                    }
-                                            </select>
-                                        </div>
+                                                    <select class="form-select" asp-for="@Model.CountryId" id="country" onchange="GetCity()" required>
+                                                    @*<option value="@data.CountryId" selected>@data.Country.CountryName</option>*@
+                                                        @foreach (var country in Model.CountryList) @*if (country.CountryId != data.CountryId)*@
+                                                        {
+                                                        <option value="@country.CountryId">@country.CountryName</option>
+                                                        }
+                                                 </select>
+                                                </div>
                                         </div>
                                         <div class="m-3"></div>
                                     </div>

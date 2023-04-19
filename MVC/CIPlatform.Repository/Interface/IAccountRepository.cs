@@ -21,6 +21,8 @@ namespace CIPlatform.Repository.Interface
 
         public List<Skill> SkillList();
 
+        public List<Country> CountryList();
+
         public List<MissionApplicationModel> MissionApplicationList();
 
         public List<StoryModel> StoryList();

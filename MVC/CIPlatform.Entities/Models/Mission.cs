@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CIPlatform.Entities.Models;
 
@@ -38,6 +40,21 @@ public partial class Mission
     public DateTime? UpdatedAt { get; set; }
 
     public DateTime? DeletedAt { get; set; }
+
+    [NotMapped]
+    public List<int>? MissionSkill { get; set; }
+    
+    [NotMapped]
+    public List<string>? StoryImages { get; set; }
+
+    [NotMapped]
+    public string? VideoUrl { get; set; }
+
+    [NotMapped]
+    public List<IFormFile>? Images { get; set; }
+    
+    [NotMapped]
+    public List<IFormFile>? Documents { get; set; }
 
     public virtual City City { get; set; } = null!;
 

@@ -101,7 +101,14 @@ namespace CIPlatform.Repository.Repository
         public List<MissionRating> MissionRatings(long missionID)
         {
             List<MissionRating> rating = _DbContext.MissionRatings.Where(a => a.MissionId == missionID).ToList();
-            return rating;
+            if (rating.Count > 0)
+            {
+                return rating;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public List<MissionData> GetMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int sort, long UserId, int pg)
@@ -251,12 +258,12 @@ namespace CIPlatform.Repository.Repository
                     missionData.MissionGoalText = GetGoalMissionData(objMission.MissionId).GoalObjectiveText;
                     missionData.CompletedGoal = GetGoalMissionData(objMission.MissionId).CompleteGoal;
                     var goalValue = GetGoalMissionData(objMission.MissionId).GoalValue;
-                    missionData.GoalValue1 = (missionData.CompletedGoal/ goalValue) * 100 ;
+                    missionData.GoalValue1 = (missionData.CompletedGoal / goalValue) * 100;
 
                 }
 
                 var favmission = _DbContext.FavoriteMissions.Where(a => a.UserId == UserId && a.MissionId == objMission.MissionId);
-                    missionData.IsFavMission = favmission.Count();
+                missionData.IsFavMission = favmission.Count();
 
                 var userratting = _DbContext.MissionRatings.Where(a => a.UserId == UserId && a.MissionId == objMission.MissionId);
                 if (userratting.Count() != 0)
@@ -280,8 +287,20 @@ namespace CIPlatform.Repository.Repository
                 missionData.Title = objMission.Title;
                 missionData.CreatedAt = objMission.CreatedAt;
 
-                missionData.AvgRating = (int)MissionRatings(objMission.MissionId).Average(a => a.Rating);
-                missionData.CommentByUser = MissionRatings(objMission.MissionId).Count();
+                var rateAvail = MissionRatings(objMission.MissionId);
+                if (rateAvail != null)
+                {
+                    var avgRate = (int)rateAvail.Average(a => a.Rating);
+
+
+                    missionData.AvgRating = avgRate;
+                    missionData.CommentByUser = MissionRatings(objMission.MissionId).Count();
+                }
+                else
+                {
+                    missionData.AvgRating = 0;
+                    missionData.CommentByUser = 0;
+                }
 
                 missionData.Theme = GetMissionThemes(objMission.MissionThemeId);
                 missionData.Availability = objMission.Availability;
