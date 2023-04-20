@@ -147,7 +147,7 @@
                                                 <div class="modal-body">
 
                                                 <label asp-for="MissionId" class="mb-1 ">Mission</label>
-                                                <select id="missionId" name="missionId" asp-for="MissionId" class="form-control form-select">
+                                                <select id="missionId" name="missionId" asp-for="MissionId" class="form-control form-select" required>
                                                 <option >Select your mission</option>
                                                 @foreach (var obj in ViewBag.MissionList)
                                                 {
@@ -161,7 +161,7 @@
                                                 <label asp-for="DateVolunteered" class="mb-1 mt-3">Date</label>
 
                                                 <div class="form-group">
-                                                <input type="date" asp-for="sendDateVolunteered" id="dateVolunteered" name="dateVolunteered" class="form-control" required>
+                                                <input type="date" asp-for="sendDateVolunteered" id="dateVolunteered" name="dateVolunteered" class="form-control" oninput="validDate()" required>
                                                                             <span asp-validation-for="sendDateVolunteered" style="color:red"></span>
 
                                                 </div>
@@ -529,6 +529,25 @@
 
 
 <script>
+    function validDate()
+    {
+        debugger
+        var dateVolunteeredInput = document.getElementById('dateVolunteered').value;
+        var dateVolunteered = '2023-04-07'; // Convert server-side datetime to JavaScript date object
+       
+
+        dateVolunteeredInput.addEventListener('input', function() {
+            
+            
+
+            if (dateVolunteered == dateVolunteeredInput) {
+                dateVolunteeredInput.setCustomValidity('The date volunteered cannot be the same as the original date.');
+            } else {
+                dateVolunteeredInput.setCustomValidity('');
+            }
+            });
+       }
+
     function clearSheet() {
     debugger
     var spanElements = document.querySelectorAll("#exampleModal1 span");

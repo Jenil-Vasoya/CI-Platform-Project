@@ -21,7 +21,7 @@
                 <div class="container">
                     <div class="d-flex align-items-center col-lg-6 col-md-6 col-12 pl-4" role="search">
                         <img src="~/Assets/images/search.png" class="search" />
-                    <input class="form-control pl-5" style="border-style:none;" id="name" name="search" type="search" placeholder="&nbsp;Search Missions..." oninput="searchMission()" aria-label="Search">
+                    <input class="form-control pl-5" style="border-style:none;" id="name" name="search" type="search" placeholder="&nbsp;Search Missions..." oninput="searchMission();filterBadges()" aria-label="Search">
 
                     </div>
 
@@ -48,13 +48,13 @@
                             Country
                         </div>
 
-                        <ul style="overflow-y:scroll" onchange="GetCity();searchMission();" id="countryId" class="dropdown-menu scroll_dropdown" aria-labelledby="dropdownMenuButton1">
+                        <ul style="overflow-y:scroll" onchange="GetCity();searchMission();;filterBadges()" id="countryId" class="dropdown-menu scroll_dropdown" aria-labelledby="dropdownMenuButton1">
 
                             @foreach (var obj in @ViewBag.countries)
                             {
                                 <li>
                                     <div class="form-check dropdown-item px-4">
-                                        <input class="form-check-input mx-auto" name="country" type="checkbox" value=""
+                                        <input class="form-check-input mx-auto country_@obj.CountryId" name="country" type="checkbox" value="@obj.CountryName"
                                            id="@obj.CountryId" />
                                         <label class="form-check-label ps-2" for="@obj.CountryId">
                                             @obj.CountryName
@@ -76,7 +76,7 @@
                             City
                         </div>
 
-                        <ul style="overflow-y:scroll" onchange="searchMission();" class="dropdown-menu scroll_dropdown" id="selectCityList" aria-labelledby="dropdownMenuButton1">
+                        <ul style="overflow-y:scroll" onchange="searchMission();filterBadges()" class="dropdown-menu scroll_dropdown" id="selectCityList" aria-labelledby="dropdownMenuButton1">
                         </ul>
 
                     </div>
@@ -90,13 +90,13 @@
                             Theme
                         </div>
 
-                        <ul style="overflow-y:scroll" onchange="searchMission();" class="dropdown-menu scroll_dropdown" id="selectedThemes" aria-labelledby="dropdownMenuButton1">
+                        <ul style="overflow-y:scroll" onchange="searchMission();filterBadges()" class="dropdown-menu scroll_dropdown" id="selectedThemes" aria-labelledby="dropdownMenuButton1">
 
                             @foreach (var obj in @ViewBag.themes)
                             {
                                 <li>
                                     <div class="form-check dropdown-item px-4">
-                                        <input class="form-check-input mx-auto" name="theme" type="checkbox" value=""
+                                        <input class="form-check-input mx-auto theme_@obj.MissionThemeId" name="theme" type="checkbox" value="@obj.Titile"
                                            id="@obj.MissionThemeId" />
                                         <label class="form-check-label ps-2" for="@obj.MissionThemeId">
                                             @obj.Titile
@@ -116,12 +116,12 @@
                              type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Skills
                         </div>
-                        <ul style="overflow-y:scroll" onchange="searchMission();" class="dropdown-menu scroll_dropdown" id="selectedSkills" >
+                        <ul style="overflow-y:scroll" onchange="searchMission();filterBadges()" class="dropdown-menu scroll_dropdown" id="selectedSkills" >
                             @foreach (var obj in @ViewBag.skills)
                             {
                                 <li>
                                     <div class="form-check dropdown-item px-4">
-                                        <input class="form-check-input mx-auto" name="skill" type="checkbox" value="@obj.SkillName"
+                                        <input class="form-check-input mx-auto skill_@obj.SkillId" name="skill" type="checkbox" value="@obj.SkillName"
                                            id="@obj.SkillId" />
                                         <label class="form-check-label ps-2" for="@obj.SkillId">
                                             @obj.SkillName
@@ -139,7 +139,7 @@
         </div> 
 </div>
 
-<div id="chip-container"></div>
+<div id="filter-button"></div>
 
 
 

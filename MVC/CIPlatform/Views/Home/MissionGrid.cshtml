@@ -145,7 +145,94 @@
     //};
 
 
+    function filterBadges() {
+        debugger
+    $("#filter-button").empty();
+    $('input[name="country"]:checked').each(function () {
+        debugger
+        console.log(this.value)
+        document.getElementById("filter-button").innerHTML += `
+<button class="filter rounded-pill border" id="${this.value}" >
+<div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'country')" class="bi bi-x"></i></div>
+</button>
+`
+    });
+    console.log(this.value);
+    
+    $('input[name="city"]:checked').each(function () {
 
+        document.getElementById("filter-button").innerHTML += `
+<button class="filter rounded-pill border" id="${this.value}" >
+<div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'city')" class="bi bi-x"></i></div>
+</button>
+`
+    });
+    $('input[name="theme"]:checked').each(function () {
+
+        document.getElementById("filter-button").innerHTML += `
+<button class="filter rounded-pill border" id="${this.value}">
+<div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'theme')" class="bi bi-x"></i></div>
+</button>
+`
+    });
+
+    $('input[name="skill"]:checked').each(function () {
+
+        document.getElementById("filter-button").innerHTML += `
+<button class="filter rounded-pill border" id="${this.value}">
+<div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'skill')" class="bi bi-x"></i></div>
+</button>
+`
+    });
+
+    document.getElementById("filter-button").innerHTML += `
+<button class="clearall p-0 rounded-pill border" onclick="clearAll()">Clear all</button>
+`
+}
+ 
+
+function clearAll() {
+    $('input[name="country"]:checked').each(function () {
+
+        $(".country_" + this.id).prop("checked", false);
+    });
+    $('input[name="city"]:checked').each(function () {
+
+        $(".city_" + this.id).prop("checked", false);
+    });
+    $('input[name="theme"]:checked').each(function () {
+
+        $(".theme_" + this.id).prop("checked", false);
+    });
+    $('input[name="skill"]:checked').each(function () {
+
+        $(".skill_" + this.id).prop("checked", false);
+    });
+
+    filterBadges();
+    searchMission();
+    $(".clearall").addClass("d-none");
+}
+
+function removeFilter(checkboxId, type) {
+    console.log("rm" + checkboxId);
+    if (type == 'country') {
+        $(".country_" + checkboxId).prop("checked", false);
+    }
+    if (type == 'city') {
+        $(".city_" + checkboxId).prop("checked", false);
+    }
+    if (type == 'theme') {
+        $(".theme_" + checkboxId).prop("checked", false);
+    }
+    if (type == 'skill') {
+        $(".skill_" + checkboxId).prop("checked", false);
+    }
+
+    searchMission();
+    filterBadges();
+
+}
 
     function sendInvitation(MissionId) {
         debugger
@@ -201,7 +288,7 @@
                     document.getElementById("selectCityList").innerHTML += `
                 <li>
         <div class="form-check dropdown-item px-3">
-        <input class="form-check-input mx-auto" name="city" type="checkbox" value="${name.CityName}"
+        <input class="form-check-input mx-auto city_${name.CityId}" name="city" type="checkbox" value="${name.CityName}"
         id="${name.CityId}" />
         <label class="form-check-label ps-2" for="${name.CityId}">
         ${name.CityName}

@@ -39,15 +39,18 @@ namespace CIPlatform.Entities.ViewModel
 
         public string CityName { get; set; } = null!;
 
-        
-        public string? Title { get; set; } = null!;
+        [MaxLength(255, ErrorMessage = "Your Title Is Too Big!!!")]
+        public string? Title { get; set; } 
 
+        [MinLength(150, ErrorMessage = "Please enter more details about your story")]
+        [MaxLength(40000, ErrorMessage = "Your Story Is Too Big!!!")]
         public string? Description { get; set; }
         
         public List<string>? StoryImages { get; set; }
 
         public List<string>? VideoUrl { get; set; }
 
+        [MaxLength(20, ErrorMessage = "You can upload maximum 20 images")]
         public List<IFormFile>? images { get; set; }
 
         public string? ShortDescription { get; set; }

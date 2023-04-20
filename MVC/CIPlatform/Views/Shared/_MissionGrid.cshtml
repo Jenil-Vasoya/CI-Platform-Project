@@ -64,10 +64,10 @@
                                             <img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt="">
                                             </button>*@
 
-                                        <button type="submit" class="btn rounded-5  border-light" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color:black; opacity:70%;"><img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt=""> </button>
+                                        <button type="submit" class="btn rounded-5  border-light" data-bs-toggle="modal" data-bs-target="#exampleModal_@item.MissionId" style="background-color:black; opacity:70%;"><img src="~/Assets/images/user.png" class=" img-fluid cancle-img" alt=""> </button>
 
                                         <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModal_@item.MissionId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -102,8 +102,8 @@
                                                         <tfoot>
                                                             <tr>
                                                                 <td colspan="3">
-                                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                                                    <button type="submit" onclick="sendInvitation(@item.MissionId)" class="btn btn-success">Send Invitation</button>
+                                                                    <button type="button" class=" rounded-pill btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" onclick="sendInvitation(@item.MissionId)" class="btn applyButton" data-bs-dismiss="modal">Send Invitation</button>
                                                                 </td>
                                                             </tr>
                                                         </tfoot>

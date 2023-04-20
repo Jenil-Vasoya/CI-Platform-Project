@@ -117,25 +117,26 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult AddStory(MissionData objStory , string submit)
         {
+                long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+            if (ModelState.IsValid)
+            {
+                string btn = "";
+                long StoryId = 0;
 
-            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-            string btn = "" ;
-            long StoryId = 0;
+                if (submit != null)
+                {
+                    btn = submit;
+                    TempData["SubmitStory"] = "Story Sent for Publish Successfully";
+                }
+                else
+                {
+                    TempData["SaveStory"] = "Story Saved Successfully";
+                }
+                if (objStory.MissionId != 0)
+                {
+                    StoryId = _StoryRepo.AddData(objStory, UserId, btn);
+                }
 
-            if (submit != null)
-            {
-                btn = submit;
-                TempData["SubmitStory"] = "Story Sent for Publish Successfully";
-            }
-            else
-            {
-                TempData["SaveStory"] = "Story Saved Successfully";
-            }
-            if (objStory.MissionId != 0)
-            {
-                 StoryId = _StoryRepo.AddData(objStory, UserId, btn);
-            }
-           
                 var path = new List<string>();
                 foreach (var i in objStory.images)
                 {
@@ -147,25 +148,36 @@ namespace CIPlatform.Controllers
 
                 }
                 objStory.StoryImages = path;
-            
-            var missions = objStory;
 
-            List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
+                var missions = objStory;
 
-            var storymission = missionDatas.Where(x => x.StoryId == (objStory.StoryId ?? StoryId)).FirstOrDefault();
-            ViewBag.missionDatas = storymission;
+                List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
 
-            ViewBag.UserId = UserId;
-            ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-            ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
-            ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
+                var storymission = missionDatas.Where(x => x.StoryId == (objStory.StoryId ?? StoryId)).FirstOrDefault();
+                ViewBag.missionDatas = storymission;
 
-            ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
-            if(submit != null)
-            {
-                return RedirectToAction("StoryList");
+                ViewBag.UserId = UserId;
+                ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
+                ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
+                ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
+
+                ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
+                if (submit != null)
+                {
+                    return RedirectToAction("StoryList");
+                }
+                return View(missions);
             }
-            return View(missions);
+            else
+            {
+                ViewBag.UserId = UserId;
+                ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
+                ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
+                ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
+
+                ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
+                return View();
+            }
         }
 
         [HttpPost]
