@@ -90,7 +90,7 @@
                                                                 <tr>
                                                                     <td>
                                                                         <div class="form-check">
-                                                                            <input class="form-check-input" name="CoWorkers" type="checkbox" value="@worker.FirstName" id="@worker.UserId" />
+                                                                            <input class="form-check-input" name="CoWorkers" type="checkbox" onclick="CheckUser(@worker.UserId,@item.MissionId)" value="@worker.FirstName" id="@worker.UserId" />
                                                                             <input type="hidden" id="uid" value="@worker.UserId" />
                                                                         </div>
                                                                     </td>

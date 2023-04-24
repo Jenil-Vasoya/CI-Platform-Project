@@ -146,48 +146,48 @@
 
 
     function filterBadges() {
-        debugger
-    $("#filter-button").empty();
-    $('input[name="country"]:checked').each(function () {
-        debugger
-        console.log(this.value)
-        document.getElementById("filter-button").innerHTML += `
-<button class="filter rounded-pill border" id="${this.value}" >
-<div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'country')" class="bi bi-x"></i></div>
-</button>
-`
-    });
-    console.log(this.value);
+        
+        $("#filter-button").empty();
+        $('input[name="country"]:checked').each(function () {
+            debugger
+            console.log(this.value)
+            document.getElementById("filter-button").innerHTML += `
+            <button class="filter rounded-pill border" id="${this.value}" >
+            <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'country')" class="bi bi-x"></i></div>
+            </button>
+            `
+        });
+        console.log(this.value);
     
-    $('input[name="city"]:checked').each(function () {
+        $('input[name="city"]:checked').each(function () {
+
+            document.getElementById("filter-button").innerHTML += `
+            <button class="filter rounded-pill border" id="${this.value}" >
+            <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'city')" class="bi bi-x"></i></div>
+            </button>
+            `
+        });
+        $('input[name="theme"]:checked').each(function () {
+
+            document.getElementById("filter-button").innerHTML += `
+                <button class="filter rounded-pill border" id="${this.value}">
+                <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'theme')" class="bi bi-x"></i></div>
+                </button>
+                `
+        });
+
+        $('input[name="skill"]:checked').each(function () {
+
+            document.getElementById("filter-button").innerHTML += `
+                <button class="filter rounded-pill border" id="${this.value}">
+                <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'skill')" class="bi bi-x"></i></div>
+                </button>
+                `
+        });
 
         document.getElementById("filter-button").innerHTML += `
-<button class="filter rounded-pill border" id="${this.value}" >
-<div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'city')" class="bi bi-x"></i></div>
-</button>
-`
-    });
-    $('input[name="theme"]:checked').each(function () {
-
-        document.getElementById("filter-button").innerHTML += `
-<button class="filter rounded-pill border" id="${this.value}">
-<div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'theme')" class="bi bi-x"></i></div>
-</button>
-`
-    });
-
-    $('input[name="skill"]:checked').each(function () {
-
-        document.getElementById("filter-button").innerHTML += `
-<button class="filter rounded-pill border" id="${this.value}">
-<div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'skill')" class="bi bi-x"></i></div>
-</button>
-`
-    });
-
-    document.getElementById("filter-button").innerHTML += `
-<button class="clearall p-0 rounded-pill border" onclick="clearAll()">Clear all</button>
-`
+            <button class="clearall p-0 rounded-pill border" onclick="clearAll()">Clear all</button>
+            `
 }
  
 

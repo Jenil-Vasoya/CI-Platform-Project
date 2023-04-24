@@ -257,7 +257,7 @@
                                                                         </label>
 
                                                                         <div class="form-group">
-                                                                            <input type="date" name="sendDateVolunteered" value="@obj.DateVolunteered" class="form-control">
+                                                                            <input type="date" name="sendDateVolunteered" oninput="checkDate()" value="@obj.DateVolunteered" class="form-control">
                                                                             <span asp-validation-for="sendDateVolunteered" style="color:red"></span>
 
                                                                         </div>
@@ -529,6 +529,40 @@
 
 
 <script>
+
+    function checkDate() {
+
+    mission_id = document.getElementById("tMission").value;
+    var newDate = document.getElementById("tDate").value;
+
+    if (mission_id == 0) {
+        $("#missionAlert").text("Please Select Your Mission");
+        $("#tDate").val('');
+    }
+    else {
+        $("#missionAlert").text("");
+    }
+    $.ajax({
+        url: '/Home/checkDate',
+        type: 'post',
+        data: {
+            mission_id: mission_id,
+            newDate: newDate
+        },
+        success: function (data) {
+            console.log(data)
+            if (!data) {
+                $("#tDate").val('');
+                toastr.error('You can not select the same date')
+                $("#dateAlert").text("You can not select the same date");
+            } 
+        },
+        error: function () {
+            console.log("Error updating variable");
+        }
+    })
+}
+
     function validDate()
     {
         debugger

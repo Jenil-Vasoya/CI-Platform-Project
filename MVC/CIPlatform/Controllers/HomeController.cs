@@ -44,9 +44,16 @@ namespace CIPlatform.Controllers
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-            ViewBag.UserName = _HomeRepo.GetUserAvatar(UserId).FirstName + " " + _HomeRepo.GetUserAvatar(UserId).LastName;
-            ViewBag.Avatar = _HomeRepo.GetUserAvatar(UserId).Avatar;
-            return View();
+            if (UserId > 0)
+            {
+                ViewBag.UserName = _HomeRepo.GetUserAvatar(UserId).FirstName + " " + _HomeRepo.GetUserAvatar(UserId).LastName;
+                ViewBag.Avatar = _HomeRepo.GetUserAvatar(UserId).Avatar;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login","User");
+            }
         }
 
         //public IActionResult StoryList()
@@ -94,43 +101,52 @@ namespace CIPlatform.Controllers
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-
-            List<Mission> missions = _HomeRepo.MissionList();
-            if (missions.Count <= 0)
+            if (UserId > 0)
             {
-                return RedirectToAction("MissionNotFound");
+                List<Mission> missions = _HomeRepo.MissionList();
+                if (missions.Count <= 0)
+                {
+                    return RedirectToAction("MissionNotFound");
+                }
+
+                List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(UserId);
+
+
+                ViewBag.UserId = UserId;
+                ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
+                ViewBag.UserName = _HomeRepo.GetUserAvatar(UserId).FirstName + " " + _HomeRepo.GetUserAvatar(UserId).LastName;
+                ViewBag.Avatar = _HomeRepo.GetUserAvatar(UserId).Avatar;
+
+                List<User> users = _HomeRepo.UserList();
+                ViewBag.Users = users;
+
+                //List<MissionInvite> missionInvites = _HomeRepo.InvitedUserList(UserId);
+                //ViewBag.Invites = missionInvites;
+
+                List<Country> countries = _HomeRepo.CountryList();
+                ViewBag.countries = countries;
+
+                List<MissionTheme> themes = _HomeRepo.MissionThemeList();
+                ViewBag.themes = themes;
+
+                List<Skill> skills = _HomeRepo.SkillList();
+                ViewBag.skills = skills;
+
+                var totalMission = _HomeRepo.TotalMissions();
+                ViewBag.totalMission = totalMission;
+
+                ViewBag.Totalpages = Math.Ceiling(missionDatas.Count() / 6.0);
+                ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
+                ViewBag.pg_no = 1;
+
+
+
+                return View();
             }
-
-            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(UserId); 
-          
-
-            ViewBag.UserId = UserId;
-            ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-            ViewBag.UserName = _HomeRepo.GetUserAvatar(UserId).FirstName + " " + _HomeRepo.GetUserAvatar(UserId).LastName;
-            ViewBag.Avatar = _HomeRepo.GetUserAvatar(UserId).Avatar;
-
-            List<User> users = _HomeRepo.UserList();
-            ViewBag.Users = users;
-
-            List<Country> countries = _HomeRepo.CountryList();
-            ViewBag.countries = countries;
-
-            List<MissionTheme> themes = _HomeRepo.MissionThemeList();
-            ViewBag.themes = themes;
-
-            List<Skill> skills = _HomeRepo.SkillList();
-            ViewBag.skills = skills;
-
-            var totalMission = _HomeRepo.TotalMissions();
-            ViewBag.totalMission = totalMission;
-
-            ViewBag.Totalpages = Math.Ceiling(missionDatas.Count() / 6.0);
-            ViewBag.missionDatas = missionDatas.Skip((1-1)*6).Take(6).ToList();
-            ViewBag.pg_no = 1;
-
-
-
-            return View();
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
         }
 
 
@@ -149,24 +165,38 @@ namespace CIPlatform.Controllers
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-            search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
-            List<MissionData> missionDatas = _HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId, pg);
+            if (UserId > 0)
+            {
+                search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
+                List<MissionData> missionDatas = _HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId, pg);
 
-            ViewBag.missionDatas = missionDatas;
+                ViewBag.missionDatas = missionDatas;
 
-            var totalMission = missionDatas.Count.ToString();
-            ViewBag.totalMission = totalMission;
+                var totalMission = missionDatas.Count.ToString();
+                ViewBag.totalMission = totalMission;
 
-            List<User> users = _HomeRepo.UserList();
-            ViewBag.Users = users;
+                List<User> users = _HomeRepo.UserList();
+                ViewBag.Users = users;
 
-            ViewBag.UserId = UserId;
-            ViewBag.pg_no = pg;
-            ViewBag.Totalpages = Math.Ceiling(_HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId, pg = 0).Count() / 6.0);
-            ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
+                ViewBag.UserId = UserId;
+                ViewBag.pg_no = pg;
+                ViewBag.Totalpages = Math.Ceiling(_HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId, pg = 0).Count() / 6.0);
+                ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
 
 
-            return PartialView("_MissionList");
+                if (totalMission != "0")
+                {
+                    return PartialView("_MissionList");
+                }
+                else
+                {
+                    return PartialView("_MissionEmpty");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
         }
 
 
@@ -178,54 +208,70 @@ namespace CIPlatform.Controllers
 
         public IActionResult VolunteerMission(long id)
         {
-            List<User> users = _HomeRepo.UserList();
-            ViewBag.Users = users;
-
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-            List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(UserId);
-
-            var missions = missionDatas.Where(x => x.MissionId == id).FirstOrDefault();
-            ViewBag.missionDatas = missions;
-
-            if (missions != null)
+            if (UserId > 0)
             {
-
-                var relatedmission = missionDatas.Where(x => (x.Theme == missions.Theme || x.CityName == missions.CityName || x.MissionType == missions.MissionType) && x.MissionId != id).Take(3).ToList();
-                ViewBag.total = relatedmission.Count;
-                ViewBag.relatedmission = relatedmission;
-
-                ViewBag.Comments = _HomeRepo.GetComment(missions.MissionId);
-                ViewBag.CheckFavMisson = _HomeRepo.CheckFavMission(UserId, missions.MissionId);
+                List<User> users = _HomeRepo.UserList();
+                ViewBag.Users = users;
 
 
-                var recentVolunteer = _HomeRepo.GetRecentVolunteer(missions.MissionId);
-                ViewBag.RecentVolunteer = recentVolunteer;
+                List<MissionData> missionDatas = _HomeRepo.GetMissionCardsList(UserId);
+
+                var missions = missionDatas.Where(x => x.MissionId == id).FirstOrDefault();
+                ViewBag.missionDatas = missions;
+
+                if (missions != null)
+                {
+
+                    var relatedmission = missionDatas.Where(x => (x.Theme == missions.Theme || x.CityName == missions.CityName || x.MissionType == missions.MissionType) && x.MissionId != id).Take(3).ToList();
+                    ViewBag.total = relatedmission.Count;
+                    ViewBag.relatedmission = relatedmission;
+
+                    ViewBag.Comments = _HomeRepo.GetComment(missions.MissionId);
+                    ViewBag.CheckFavMisson = _HomeRepo.CheckFavMission(UserId, missions.MissionId);
 
 
-                ViewBag.Totalpages = Math.Ceiling(recentVolunteer.Count() / 1.0);
-                ViewBag.RecentVolunteer = recentVolunteer.Skip((1 - 1) * 1).Take(1).ToList();
-                ViewBag.pg_no = 1;
+                    var recentVolunteer = _HomeRepo.GetRecentVolunteer(missions.MissionId);
+                    ViewBag.RecentVolunteer = recentVolunteer;
 
+
+                    ViewBag.Totalpages = Math.Ceiling(recentVolunteer.Count() / 3.0);
+                    ViewBag.RecentVolunteer = recentVolunteer.Skip((1 - 1) * 3).Take(3).ToList();
+                    ViewBag.pg_no = 1;
+
+                }
+                ViewBag.UserId = UserId;
+                ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
+                ViewBag.UserName = _HomeRepo.GetUserAvatar(UserId).FirstName + " " + _HomeRepo.GetUserAvatar(UserId).LastName;
+                ViewBag.Avatar = _HomeRepo.GetUserAvatar(UserId).Avatar;
+
+                return View();
             }
-            ViewBag.UserId = UserId;
-            ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-            ViewBag.UserName = _HomeRepo.GetUserAvatar(UserId).FirstName + " " + _HomeRepo.GetUserAvatar(UserId).LastName;
-            ViewBag.Avatar = _HomeRepo.GetUserAvatar(UserId).Avatar;
-
-            return View();
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
         }
 
         public ActionResult Volunteer(long MissionId, int pg)
         {
-            List<RecentVolunteer> missionDatas = _HomeRepo.RecentVolunteer(MissionId,pg);
-            ViewBag.RecentVolunteer = missionDatas;
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+            if (UserId > 0)
+            {
+                List<RecentVolunteer> missionDatas = _HomeRepo.RecentVolunteer(MissionId, pg);
+                ViewBag.RecentVolunteer = missionDatas;
 
-            ViewBag.pg_no = pg;
-            ViewBag.Totalpages = Math.Ceiling(_HomeRepo.RecentVolunteer(MissionId, pg = 0).Count() / 1.0);
-            ViewBag.RecentVolunteer = missionDatas.Skip((1 - 1) * 1).Take(1).ToList();
+                ViewBag.pg_no = pg;
+                ViewBag.Totalpages = Math.Ceiling(_HomeRepo.RecentVolunteer(MissionId, pg = 0).Count() / 3.0);
+                ViewBag.RecentVolunteer = missionDatas.Skip((1 - 1) * 3).Take(3).ToList();
 
-            return PartialView("_RecentVolunteer");
+                return PartialView("_RecentVolunteer");
+            }
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
         }
 
         [HttpPost]
@@ -233,23 +279,37 @@ namespace CIPlatform.Controllers
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-            search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
-            List<MissionData> missionDatas = _HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId, pg);
+            if (UserId > 0)
+            {
+                search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
+                List<MissionData> missionDatas = _HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId, pg);
 
-            ViewBag.missionDatas = missionDatas;
+                ViewBag.missionDatas = missionDatas;
 
-            var totalMission = missionDatas.Count.ToString();
-            ViewBag.totalMission = totalMission;
+                var totalMission = missionDatas.Count.ToString();
+                ViewBag.totalMission = totalMission;
 
-            List<User> users = _HomeRepo.UserList();
-            ViewBag.Users = users;
+                List<User> users = _HomeRepo.UserList();
+                ViewBag.Users = users;
 
-            ViewBag.UserId = UserId;
-            ViewBag.pg_no = pg;
-            ViewBag.Totalpages = Math.Ceiling(_HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId, pg = 0).Count() / 6.0);
-            ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
+                ViewBag.UserId = UserId;
+                ViewBag.pg_no = pg;
+                ViewBag.Totalpages = Math.Ceiling(_HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId, pg = 0).Count() / 6.0);
+                ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
 
-            return PartialView("_MissionGrid");
+                if (totalMission != "0")
+                {
+                    return PartialView("_MissionGrid");
+                }
+                else
+                {
+                    return PartialView("_MissionEmpty");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
         }
 
         //[HttpPost]
@@ -283,7 +343,9 @@ namespace CIPlatform.Controllers
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-            _HomeRepo.AddComment(comment, UserId, MissionId);
+           
+                _HomeRepo.AddComment(comment, UserId, MissionId);
+            
         }
 
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -319,6 +381,7 @@ namespace CIPlatform.Controllers
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
+
             int UserValid = _HomeRepo.ApplyMissionCheck(UserId, missionId);
 
             if (UserValid == 1)
@@ -337,7 +400,15 @@ namespace CIPlatform.Controllers
             }
         }
 
+        public bool CheckUser(long userId, long missionId)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
+            var invited = _HomeRepo.CheckUser(userId,UserId, missionId);
+           
+            return invited;
+            
+        }
 
     }
 }

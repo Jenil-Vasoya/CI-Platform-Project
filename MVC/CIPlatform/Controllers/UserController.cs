@@ -59,7 +59,8 @@ namespace CIPlatform.Controllers
         public IActionResult VolunteerTimeSheet()
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-
+            if(UserId != 0)
+            {
             ViewBag.UserName = _UserRepo.GetUserAvatar(UserId).FirstName + " " + _UserRepo.GetUserAvatar(UserId).LastName;
             ViewBag.Avatar = _UserRepo.GetUserAvatar(UserId).Avatar;
 
@@ -67,45 +68,71 @@ namespace CIPlatform.Controllers
             List<VolunteerTimeSheet> sheets = _UserRepo.GetVolunteerSheetData(UserId);
             ViewBag.SheetData = sheets;
             return View();
+
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         public IActionResult AddTimeSheet(VolunteerTimeSheet volunteerSheet)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-            volunteerSheet.UserId = UserId;
-            var result = _UserRepo.AddTimeSheet(volunteerSheet);
-
-            if(result)
+            if (UserId != 0)
             {
-                TempData["SheetSuccess"] = "Your sheet added successfully🙍";
+                volunteerSheet.UserId = UserId;
+                var result = _UserRepo.AddTimeSheet(volunteerSheet);
+
+                if (result)
+                {
+                    TempData["SheetSuccess"] = "Your sheet added successfully🙍";
+                }
+                return RedirectToAction("VolunteerTimeSheet");
             }
-            return RedirectToAction("VolunteerTimeSheet");
+            else
+            {
+                return RedirectToAction("Login");
+            }
         } 
         
         public IActionResult EditTimeSheet(VolunteerTimeSheet volunteerSheet)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-            volunteerSheet.UserId = UserId;
-            var result = _UserRepo.EditTimeSheet(volunteerSheet);
-
-            if(result)
+            if (UserId != 0)
             {
-                TempData["SheetSuccess"] = "Your sheet update successfully🧖";
+                volunteerSheet.UserId = UserId;
+                var result = _UserRepo.EditTimeSheet(volunteerSheet);
+
+                if (result)
+                {
+                    TempData["SheetSuccess"] = "Your sheet update successfully🧖";
+                }
+                return RedirectToAction("VolunteerTimeSheet");
             }
-            return RedirectToAction("VolunteerTimeSheet");
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
         
         public IActionResult DeleteTimeSheet(long id)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-            
-            var result = _UserRepo.DeleteTimeSheet(id);
-
-            if(result)
+            if (UserId != 0)
             {
-                TempData["SheetDelete"] = "Your TimeSheet delete successfully🤦";
+                var result = _UserRepo.DeleteTimeSheet(id);
+
+                if (result)
+                {
+                    TempData["SheetDelete"] = "Your TimeSheet delete successfully🤦";
+                }
+                return RedirectToAction("VolunteerTimeSheet");
             }
-            return RedirectToAction("VolunteerTimeSheet");
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
 
@@ -289,19 +316,24 @@ namespace CIPlatform.Controllers
 
         public IActionResult EditProfile(long id)
         {
-            ViewBag.Uid = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-            ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
-            
-
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-            
-            UserData model = _UserRepo.GetUserlist(UserId);
+            if (UserId != 0)
+            {
+                ViewBag.Uid = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+                ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
 
-            ViewBag.UserName = _UserRepo.GetUserAvatar(UserId).FirstName + " " + _UserRepo.GetUserAvatar(UserId).LastName;
-            ViewBag.Avatar = _UserRepo.GetUserAvatar(UserId).Avatar;
+                UserData model = _UserRepo.GetUserlist(UserId);
 
-            return View(model);
+                ViewBag.UserName = _UserRepo.GetUserAvatar(UserId).FirstName + " " + _UserRepo.GetUserAvatar(UserId).LastName;
+                ViewBag.Avatar = _UserRepo.GetUserAvatar(UserId).Avatar;
+
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         [HttpPost]
@@ -309,32 +341,39 @@ namespace CIPlatform.Controllers
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-            UserData model1 = _UserRepo.GetUserlist(UserId);
-            if (userData.FirstName == model1.FirstName && userData.LastName == model1.LastName && userData.EmployeeId == model1.EmployeeId && userData.Title == model1.Title && userData.Department == model1.Department && userData.WhyIvolunteer == model1.WhyIvolunteer && userData.CityId == model1.CityId && userData.CountryId == model1.CountryId && userData.LinkedInUrl == model1.LinkedInUrl && userData.ProfileText == model1.ProfileText)
+            if (UserId != 0)
             {
-                TempData["EditFail"] = "Please change the profile details for update details";
+                UserData model1 = _UserRepo.GetUserlist(UserId);
+                if (userData.FirstName == model1.FirstName && userData.LastName == model1.LastName && userData.EmployeeId == model1.EmployeeId && userData.Title == model1.Title && userData.Department == model1.Department && userData.WhyIvolunteer == model1.WhyIvolunteer && userData.CityId == model1.CityId && userData.CountryId == model1.CountryId && userData.LinkedInUrl == model1.LinkedInUrl && userData.ProfileText == model1.ProfileText)
+                {
+                    TempData["EditFail"] = "Please change the profile details for update details";
+
+                    ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
+                    ViewBag.UserName = model1.FirstName + " " + model1.LastName;
+                    ViewBag.Avatar = model1.Avatar;
+                    return View(model1);
+                }
+                bool result = _UserRepo.EditProfile(userData, UserId);
+
+                UserData model = _UserRepo.GetUserlist(UserId);
+                if (result)
+                {
+                    TempData["EditSuccess"] = "Your profile was updated";
+                }
+                else
+                {
+                    TempData["EditFail"] = "Your profile was not updated";
+                }
 
                 ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-                ViewBag.UserName = model1.FirstName + " " + model1.LastName;
-                ViewBag.Avatar = model1.Avatar;
-                return View(model1);
-            }
-           bool result = _UserRepo.EditProfile(userData, UserId);
-
-            UserData model = _UserRepo.GetUserlist(UserId);
-            if(result)
-            {
-                TempData["EditSuccess"] = "Your profile was updated";
+                ViewBag.UserName = _UserRepo.GetUserAvatar(UserId).FirstName + " " + _UserRepo.GetUserAvatar(UserId).LastName;
+                ViewBag.Avatar = _UserRepo.GetUserAvatar(UserId).Avatar;
+                return View(model);
             }
             else
             {
-                TempData["EditFail"] = "Your profile was not updated";
+                return RedirectToAction("Login");
             }
-
-            ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-            ViewBag.UserName = _UserRepo.GetUserAvatar(UserId).FirstName + " " + _UserRepo.GetUserAvatar(UserId).LastName;
-            ViewBag.Avatar = _UserRepo.GetUserAvatar(UserId).Avatar;
-            return View(model);
         }
 
         public JsonResult GetCity(long countryId)

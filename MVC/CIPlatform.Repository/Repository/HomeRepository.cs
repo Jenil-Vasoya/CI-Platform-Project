@@ -26,6 +26,12 @@ namespace CIPlatform.Repository.Repository
             List<User> users = _DbContext.Users.ToList();
             return users;
         }
+        
+        public List<MissionInvite> InvitedUserList(long UserId)
+        {
+            List<MissionInvite> users = _DbContext.MissionInvites.Where(m=> m.FromUserId == UserId).ToList();
+            return users;
+        }
 
         public List<Country> CountryList()
         {
@@ -182,12 +188,12 @@ namespace CIPlatform.Repository.Repository
 
         public List<RecentVolunteer> RecentVolunteer(long MissionId, int pg)
         {
-            var pageSize = 1;
+            var pageSize = 3;
             List<RecentVolunteer> missions = GetRecentVolunteer(MissionId);
 
             if (pg != 0)
             {
-                missions = missions.Skip((pg - 1) * pageSize).Take(pageSize).Take(pageSize).ToList();
+                missions = missions.Skip((pg - 3) * pageSize).Take(pageSize).Take(pageSize).ToList();
             }
 
             return missions;
@@ -539,6 +545,7 @@ namespace CIPlatform.Repository.Repository
         
         public bool InviteWorker(List<long> CoWorker, long UserId, long MissionId)
         {
+          
             foreach (var user in CoWorker)
             {
                 _DbContext.MissionInvites.Add(new MissionInvite
@@ -612,6 +619,20 @@ namespace CIPlatform.Repository.Repository
                 return true;
             }
 
+        }
+
+
+        public bool CheckUser(long userId, long UserId, long MissionId)
+        {
+            var invited = _DbContext.MissionInvites.FirstOrDefault(i=> i.FromUserId == UserId && i.ToUserId == userId && i.MissionId == MissionId);
+            if(invited == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
     }

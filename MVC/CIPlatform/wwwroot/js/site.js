@@ -105,6 +105,38 @@ function Add(MissionId,btn) {
     })
 };
 
+
+function CheckUser(userId, missionId) {
+    debugger
+    $.ajax({
+
+        url: "/Home/CheckUser",
+        method: "POST",
+
+        data:
+        {
+            userId: userId,
+            missionId: missionId
+
+        },
+        success: function (data) {
+
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            };
+
+            if (data == true) {
+                
+                $('#exampleModal_' + missionId).modal('hide');
+                $('#exampleModal1_' + missionId).modal('hide');
+                $('#exampleModal').modal('hide');
+                toastr.error('You already invite this user');
+            }
+           
+        }
+    })
+};
 //function Add(MissionId, btn) {
 //    debugger
 //    $.ajax({

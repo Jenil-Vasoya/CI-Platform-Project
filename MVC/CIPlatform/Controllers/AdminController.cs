@@ -14,6 +14,7 @@ namespace CIPlatform.Controllers
         public AdminController(IAccountRepository AccountRepo)
         {
             _AccountRepo = AccountRepo;
+
         }
 
         public IActionResult Index()
@@ -52,10 +53,14 @@ namespace CIPlatform.Controllers
 
         public ActionResult Search(string? search, int pg, string who)
         {
+            ViewBag.CountryList = _AccountRepo.CountryList();
+            ViewBag.Themes = _AccountRepo.ThemeList();
+            ViewBag.Skills = _AccountRepo.SkillList();
             if (who == "mission")
             {
                 var model = _AccountRepo.MissionListSearch(search, pg);
-
+                ViewBag.CountryList = _AccountRepo.CountryList();
+                ViewBag.Skills = _AccountRepo.SkillList();
                 ViewBag.MissionList = model;
                 ViewBag.pg_no = pg;
                 ViewBag.ttlMissions = Math.Ceiling(_AccountRepo.MissionListSearch(search, pg = 0).Count() / 6.0);
@@ -164,6 +169,7 @@ namespace CIPlatform.Controllers
         {
            bool result = _AccountRepo.AddMission(model);
 
+            ViewBag.Skills = _AccountRepo.SkillList();
             ViewBag.MissionList = _AccountRepo.MissionList().Skip((1 - 1) * 6).Take(6).ToList();
             ViewBag.ttlMissions = Math.Ceiling(_AccountRepo.MissionList().Count() / 6.0);
             ViewBag.pg_no = 1;

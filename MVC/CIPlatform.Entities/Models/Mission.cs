@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace CIPlatform.Entities.Models;
 
@@ -22,6 +23,12 @@ public partial class Mission
     public string? Description { get; set; }
 
     public DateTime? StartDate { get; set; }
+
+    [NotMapped]
+    public string StartDateEdit { get; set; }
+    
+    [NotMapped]
+    public string EndDateEdit { get; set; }
 
     public DateTime? EndDate { get; set; }
 
@@ -46,6 +53,9 @@ public partial class Mission
     
     [NotMapped]
     public List<string>? StoryImages { get; set; }
+    
+    [NotMapped]
+    public List<string>? skillNames { get; set; }
 
     [NotMapped]
     public string? VideoUrl { get; set; }
@@ -76,6 +86,7 @@ public partial class Mission
 
     public virtual ICollection<MissionRating> MissionRatings { get; } = new List<MissionRating>();
 
+    [JsonIgnore]
     public virtual ICollection<MissionSkill> MissionSkills { get; } = new List<MissionSkill>();
 
     public virtual MissionTheme MissionTheme { get; set; } = null!;

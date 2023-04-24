@@ -132,7 +132,9 @@
                     </div>
                 </div>
 
-
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
                 <!-- Swiper JS -->
                 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
@@ -267,7 +269,7 @@
                                                                     <tr>
                                                                         <td>
                                                                             <div class="form-check">
-                                                                                <input class="form-check-input" name="CoWorkers" type="checkbox" value="@worker.FirstName" id="@worker.UserId" />
+                                                                                <input class="form-check-input" onclick="CheckUser(@worker.UserId,@ViewBag.missionDatas.MissionId)" name="CoWorkers" type="checkbox" value="@worker.FirstName" id="@worker.UserId" />
                                                                                 <input type="hidden" id="uid" value="@worker.UserId" />
                                                                             </div>
                                                                         </td>

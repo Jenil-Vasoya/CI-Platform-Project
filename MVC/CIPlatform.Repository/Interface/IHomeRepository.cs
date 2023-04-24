@@ -12,6 +12,8 @@ namespace CIPlatform.Repository.Interface
     {
         public List<User> UserList();
 
+        public List<MissionInvite> InvitedUserList(long UserId);
+
         public List<Country> CountryList();
 
         public List<City> CityList(List<string> CountryID);
@@ -60,5 +62,7 @@ namespace CIPlatform.Repository.Interface
         public bool InviteWorker(List<long> CoWorker, long UserId, long MissionId);
 
         public bool PostRating(byte rate, long missionId, long userId);
+
+        public bool CheckUser(long userId, long UserId, long MissionId);
     }
 }
