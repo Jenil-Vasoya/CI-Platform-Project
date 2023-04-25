@@ -7,42 +7,88 @@
  .page-item > .page-link {
     color: black;
 }
+
+  .applyButton {
+        border: 2px solid #F88634;
+        border-radius: 100px;
+        color: #F88634;
+        background-color: white;
+        }
+
+        .applyButton:hover {
+            background-color: #F88634;
+            color: white;
+        }
  </style>
 
 
-<div class="row" style="overflow-x: auto;">
-    <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
-        <thead>
-            <tr class="table-light" style="height: 70px;">
-                <th scope="col" class="thforcmstable">Theme Name</th>
-                <th scope="col" class="thforcmstable">Status</th>
-                <th scope="col" class="thforcmstable">Action</th>
-            </tr>
-        </thead>
-        @foreach (var item in @ViewBag.ThemeList)
-        {
-            <tbody class="table-border">
-                <tr>
-                    <td>@item.Titile</td>
-                    <td>@item.Status</td>
-                    <td>
-                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalG-">
-                            <i class="bi bi-pencil-square" style="color: coral;"></i>
-                        </button>
-                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDelete-">
-                            <i class="bi bi-trash ms-3"></i>
-                        </button>
-                    </td>
+<div id="themepage">
+    <div class="col-12 col-sm-6 col-lg-8 col-xl-9 text-sm-end mt-3 mt-sm-0">
+        <button type="button" class="btn applyButton rounded-pill"
+                onclick="addTheme('nav-theme')">
+            <i class="bi bi-plus"></i>
+            Add
+        </button>
+    </div>
+
+    <div class="row" style="overflow-x: auto;">
+        <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
+            <thead>
+                <tr class="table-light" style="height: 70px;">
+                    <th scope="col" class="thforcmstable">Theme Name</th>
+                    <th scope="col" class="thforcmstable">Status</th>
+                    <th scope="col" class="thforcmstable">Action</th>
                 </tr>
-            </tbody>
-        }
-    </table>
-</div>
+            </thead>
+            @foreach (var item in @ViewBag.ThemeList)
+            {
+                <tbody class="table-border">
+                    <tr>
+                        <td>@item.Titile</td>
+                        <td>@item.Status</td>
+                        <td>
+                            <button type="button" class="btn p-0" onclick="editTheme('nav-theme',@item.MissionThemeId)">
+                                <i class="bi bi-pencil-square" style="color: coral;"></i>
+                            </button>
 
 
-  
- <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center" onchange="searchMission()" >
+
+
+                            <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteTime-@item.MissionThemeId"><i class="bi bi-trash ms-3"></i></button>
+
+                            <!-- Modal For Delete CMS -->
+                            <div class="modal fade" id="exampleModalDeleteTime-@item.MissionThemeId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                Are you sure for delete this CMS Page
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+
+                                        <form method="post">
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <button type="submit" onclick="deleteTheme(@item.MissionThemeId,event)" class="btn applyButton" data-bs-dismiss="modal">Delete</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+
+
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center" onchange="searchMission()">
             <li class="page-item">
                 <button class="page-link" type="submit" aria-label="Previous" onclick="searchMission(1,'theme')">
                     <span aria-hidden="true">&laquo;</span>
@@ -68,13 +114,213 @@
                     }
 
 
-                }   
-            
-            <li class="page-item">
-                <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@totalpages,'theme')">
-                    <span aria-hidden="true">&raquo;</span>
-                </button>
-            </li>
+                }
+
+                <li class="page-item">
+                    <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@totalpages,'theme')">
+                        <span aria-hidden="true">&raquo;</span>
+                    </button>
+                </li>
             }
         </ul>
-    </nav> 
+    </nav>
+
+</div>
+
+
+<div class="border" id="add" style="display: none;">
+    <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Add </h3>
+    <hr class="m-0">
+    <form class="px-3">
+        <label class="mt-3">Theme Name </label>
+        <input type="text" class="form-control" id="addThemeName">
+
+        <label class="mb-1 mt-3">Theme Status</label>
+        <select type="text" id="addThemeStatus" class="form-select form-control">
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+        </select>
+        <div class="row my-3">
+            <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
+                <button type="button" class="cancell rounded-pill btn btn-outline-dark"
+                        onclick="themeView('nav-theme')">
+                    Cancel
+                </button>
+                <button type="button" onclick="addThemeData(event)" class="btn rounded-pill applyButton"
+                        value="2" name="command">
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="border" id="edit" style="display: none;">
+    <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Edit </h3>
+    <hr class="m-0">
+    <form class="px-3">
+        <label class="mt-3">Theme Name </label>
+        <input type="hidden" class="form-control" id="MissionThemeId">
+        <input type="text" class="form-control" id="editThemeName">
+
+        <label class="mb-1 mt-3">Theme Status</label>
+        <select type="text" id="editThemeStatus" class="form-select form-control">
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+        </select>
+        <div class="row my-3">
+            <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
+                <button type="button" class="cancell rounded-pill btn btn-outline-dark"
+                        onclick="editThemeClose('nav-theme')">
+                    Cancel
+                </button>
+                <button type="submit" onclick="addThemeData(event)" class="btn rounded-pill applyButton"
+                        value="2" name="command">
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+ <script>
+        function addThemeData(event) {
+                    debugger
+                    event.preventDefault();
+                    var MissionThemeId = $('#MissionThemeId').val();
+                    if(MissionThemeId != 0)
+                    {
+                        
+                        var formData = {
+                         MissionThemeId: MissionThemeId,
+                         Titile: $('#editThemeName').val(),
+                         Status: $('#editThemeStatus').val()
+                        };
+                    }
+                    else
+                    {
+                    
+                     var formData = {
+                         Titile: $('#addThemeName').val(),
+                         Status: $('#addThemeStatus').val()
+                     };
+                    }
+
+                     $.ajax({
+                         type: 'POST',
+                         url: '/Admin/addTheme',
+                         data: formData,
+                         success: function(data) {
+                             console.log(data);
+                             debugger
+                             themeView('nav-theme');
+                             console.log(data);
+                             $('#themes').html(data);
+                             if(MissionThemeId != 0)
+                            {
+                             toastr.success('Theme edit successfully');
+                            }
+                            else
+                            {
+                                toastr.success('Theme add sucessfully');
+                            }
+
+                         },
+                         error: function (request, error) {
+                         console.log(error);
+                         }
+                     });
+                 }
+
+        function getThemeData(themeId)
+        {
+            
+            debugger
+            $.ajax({
+                         type: 'POST',
+                         url: '/Admin/EditTheme',
+                         data: {"ThemeId": themeId},
+                         success: function(data) {
+                             console.log(data);
+                             debugger
+                             $('#MissionThemeId').val(data.missionThemeId);
+                             $('#editThemeName').val(data.titile);
+                             $('#editThemeStatus').val((data.status).toString());
+                         },
+                        error: function (request, error) {
+                         console.log(error);
+                     }
+                     });
+        }
+
+        function deleteTheme(themeId,event)
+        {
+            
+             debugger
+             event.preventDefault();
+             $.ajax({
+                         type: 'POST',
+                         url: '/Admin/DeleteTheme',
+                         data: {"ThemeId": themeId},
+                         success: function(data) {
+                             console.log(data);
+                             debugger
+                             themeView('nav-theme');
+                             console.log(data);
+                             $('#themes').html(data);
+                             toastr.error('Theme Deleted');
+                         },
+                        error: function (request, error) {
+                         console.log(error);
+                     }
+                     });
+        }
+
+    </script>
+
+
+     <script>
+        function addTheme(x) {
+            debugger
+            var page = document.getElementById(x);
+            var themepage = page.querySelector("#themepage");
+            var addTheme = page.querySelector("#add");
+            themepage.style.display = "none";
+            addTheme.style.display = 'block';
+        }
+        function themeView(x) {
+            debugger
+            var page = document.getElementById(x);
+            var themepage = page.querySelector("#themepage");
+            var addTheme = page.querySelector("#add");
+            themepage.style.display = "block";
+            addTheme.style.display = 'none';
+        }
+        function editTheme(x,id) {
+           debugger
+            var page = document.getElementById(x);
+            var themepage = page.querySelector("#themepage");
+            var addTheme = page.querySelector("#edit");
+            themepage.style.display = "none";
+            addTheme.style.display = 'block';
+             getThemeData(id);
+        }
+        function editThemeClose(x) {
+            debugger
+            $('#MissionThemeId').val(0);
+            $('#editThemeName').val('');
+            $('#editThemeStatus').val('');
+            var page = document.getElementById(x);
+            var themepage = page.querySelector("#themepage");
+            var addTheme = page.querySelector("#edit");
+            themepage.style.display = "block";
+            addTheme.style.display = 'none';
+        }
+
+
+    </script>

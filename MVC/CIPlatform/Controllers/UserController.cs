@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using SendGrid.Helpers.Mail;
 using System.Data;
 using System.Drawing;
+using System.Web.Helpers;
 using MailHelper = CIPlatform.Entities.ViewModel.MailHelper;
 
 namespace CIPlatform.Controllers
@@ -154,39 +155,42 @@ namespace CIPlatform.Controllers
             if (objLogin.Email != null && objLogin.Password != null)
             {
 
-                var objUser = _UserRepo.UserList().FirstOrDefault(u => u.Email == objLogin.Email && u.Password == objLogin.Password);
+                var objUser = _UserRepo.UserList().FirstOrDefault(u => u.Email == objLogin.Email);
 
                 if (_UserRepo.UserList().Any(u => u.Email == objLogin.Email))
                 {
-                    if (_UserRepo.UserList().Any(u => u.Email == objLogin.Email.ToLower() && u.Password == objLogin.Password))
+                    if (_UserRepo.UserList().Any(u => u.Email == objLogin.Email.ToLower()))
                     {
-
-                        HttpContext.Session.SetString("UserId", JsonConvert.SerializeObject(objUser.UserId.ToString()));
-                        HttpContext.Session.SetString("Email", JsonConvert.SerializeObject(objUser.Email.ToString()));
-                        HttpContext.Session.SetString("UserName", JsonConvert.SerializeObject(objUser.FirstName.ToString() + " " + objUser.LastName.ToString()));
-
-                        if (objUser.CountryId != null)
+                        if (Crypto.VerifyHashedPassword(objUser.Password, objLogin.Password))
                         {
 
-                            HttpContext.Session.SetInt32("userid", (int)objUser.UserId);
-                            HttpContext.Session.SetString("FirstName", objUser.FirstName + " " + objUser.LastName);
-                            HttpContext.Session.SetString("Country", objLogin.CountryId.ToString());
+                            HttpContext.Session.SetString("UserId", JsonConvert.SerializeObject(objUser.UserId.ToString()));
+                            HttpContext.Session.SetString("Email", JsonConvert.SerializeObject(objUser.Email.ToString()));
+                            HttpContext.Session.SetString("UserName", JsonConvert.SerializeObject(objUser.FirstName.ToString() + " " + objUser.LastName.ToString()));
+
+                            if (objUser.CountryId != null)
+                            {
+
+                                HttpContext.Session.SetInt32("userid", (int)objUser.UserId);
+                                HttpContext.Session.SetString("FirstName", objUser.FirstName + " " + objUser.LastName);
+                                HttpContext.Session.SetString("Country", objLogin.CountryId.ToString());
 
 
-                            TempData["Success"] = "Login Successfully";
-                            return RedirectToAction("MissionGrid", "Home");
+                                TempData["Success"] = "Login Successfully";
+                                return RedirectToAction("MissionGrid", "Home");
+                            }
+                            else
+                            {
+                                HttpContext.Session.SetInt32("userid", (int)objUser.UserId);
+                                HttpContext.Session.SetString("FirstName", objUser.FirstName + " " + objUser.LastName);
+
+                                return RedirectToAction("EditProfile", "User");
+                            }
                         }
-                        else
-                        {
-                            HttpContext.Session.SetInt32("userid", (int)objUser.UserId);
-                            HttpContext.Session.SetString("FirstName", objUser.FirstName + " " + objUser.LastName);
-
-                            return RedirectToAction("EditProfile", "User");
-                        }
-
-                    }
                     TempData["Fail"] = "Please enter correct password";
                     return View();
+
+                    }
                 }
                 TempData["Fail"] = "Don't have any account please register your account";
                 return View();
@@ -202,7 +206,7 @@ namespace CIPlatform.Controllers
 
         public IActionResult LogOut()
         {
-           
+            HttpContext.Session.Clear();
             return RedirectToAction("Login", "User");
         }
 
@@ -254,6 +258,7 @@ namespace CIPlatform.Controllers
         {
             if(objForgotPass.email == null)
             {
+                TempData["InvalidEmail"] = "Please enter registered Email";
                 return View();
             }
 
@@ -266,8 +271,8 @@ namespace CIPlatform.Controllers
                     // string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Account/Reset_Password/" + UserId.ToString() + " \"  style=\"font-weight:500;color:blue;\" > Reset Password </a>";
                     string path = "<a href=\"https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/User/ResetPassword/" + UserId.ToString() + "\"> Reset Password </a>";
                     MailHelper mailHelper = new MailHelper(configuration);
-                    ViewBag.sendMail = mailHelper.Send(objForgotPass.email, welcomeMessage + path);
                     ModelState.Clear();
+                    ViewBag.sendMail = mailHelper.Send(objForgotPass.email, welcomeMessage + path);
                     TempData["LinkSent"] = "ResetPassword link is sent on your registered email";
                     return RedirectToAction("Login", new { UserId = UserId });
                 }
@@ -388,34 +393,41 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public JsonResult ChangePassword(string OldPassword, string Password, string ConfirmPassword)
         {
-            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-            if(OldPassword == null || Password == null || ConfirmPassword == null)
+            if (ModelState.IsValid)
             {
-                return Json(null);
-            }
-            if (Password == ConfirmPassword)
-            {
-
-               bool result = _UserRepo.ChangePasswordUser(UserId, OldPassword, Password);
-
-                if (result == true)
+                long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+                if (OldPassword == null || Password == null || ConfirmPassword == null)
                 {
-                    TempData["ResetSuccess"] = "Your password has been updated";
-                    return Json(true);
+                    return Json(null);
+                }
+                if (Password == ConfirmPassword)
+                {
+
+                    bool result = _UserRepo.ChangePasswordUser(UserId, OldPassword, Password);
+
+                    if (result == true)
+                    {
+                        TempData["ResetSuccess"] = "Your password has been updated";
+                        return Json(true);
+
+                    }
+                    else
+                    {
+                        TempData["ResetFail"] = "Please enter the correct old password";
+                        return Json(false);
+
+                    }
 
                 }
-                else
-                {
-                    TempData["ResetFail"] = "Please enter the correct old password";
-                    return Json(false);
 
-                }
-
+                TempData["ResetFail"] = "Please enter the same password";
+                string res = "abc";
+                return Json(res);
             }
-
-            TempData["ResetFail"] = "Please enter the same password";
-            string res = "abc";
-            return Json(res);
+            else
+            {
+                return Json("notvalid");
+            }
 
         }
 
@@ -447,7 +459,15 @@ namespace CIPlatform.Controllers
             return Json(changeimage);
         }
 
-       
+       [HttpPost]
+       public JsonResult AddMessage(ContactU model)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+            model.UserId = UserId;
+            bool result = _UserRepo.AddContactUs(model);
+
+            return Json(result);
+        }
 
 
 

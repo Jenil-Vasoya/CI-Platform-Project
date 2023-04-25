@@ -90,7 +90,9 @@ namespace CIPlatform.Entities.ViewModel
 
         public int? GoalValue { get; set; }
 
-        public int? Availability { get; set; }
+        public int? TotalSeats { get; set; }
+
+        public string? Availability { get; set; }
 
         public DateTime? Deadline { get; set; }
 

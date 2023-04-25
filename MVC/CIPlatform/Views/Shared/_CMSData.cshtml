@@ -29,134 +29,99 @@
         </button>
     </div>
 
-            <div class="row" style="overflow-x: auto;">
-                    <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
-                        <thead>
-                            <tr class="table-light" style="height: 70px;">
-                                <th scope="col" class="thforcmstable">Title</th>
-                                <th scope="col" class="thforcmstable">Status</th>
-                                <th scope="col" class="thforcmstable">Action</th>
-                            </tr>
-                        </thead>
-                        @foreach (var item in @ViewBag.CMSList)
-                        {
-                            <tbody class="table-border">
-                                <tr>
-                                    <td>@item.Title</td>
-                                    <td>@item.Status</td>
-                                    <td>
-                                        <button type="button" class="btn p-0" onclick="editform('nav-cms',@item.CmspageId)">
-                                            <i class="bi bi-pencil-square" style="color: coral;"></i>
-                                        </button>
+    <div class="row" style="overflow-x: auto;">
+        <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
+            <thead>
+                <tr class="table-light" style="height: 70px;">
+                    <th scope="col" class="thforcmstable">Title</th>
+                    <th scope="col" class="thforcmstable">Status</th>
+                    <th scope="col" class="thforcmstable">Action</th>
+                </tr>
+            </thead>
+            @foreach (var item in @ViewBag.CMSList)
+            {
+                <tbody class="table-border">
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.Status</td>
+                        <td>
+                            <button type="button" class="btn p-0" onclick="editform('nav-cms',@item.CmspageId)">
+                                <i class="bi bi-pencil-square" style="color: coral;"></i>
+                            </button>
 
 
-                                        @*<div class="border" id="edit" style="display: none;">
-                                            <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Edit </h3>
-                                            <hr class="m-0">
-                                            <form class="px-3">
-                                                <label for="select mission" class="mt-3"> Title </label>
-                                                <input type="text" value="@item.Title" class="form-control" id="formGroupExampleInput">
-                                                <label class="mt-3"> Description</label>
-                                                <textarea id="editor" cols="172" rows="10" maxlength="40000"></textarea>
-                                    
-                                                <label class="mt-3"> Slug </label>
-                                                <input type="text" value="@item.Slug" class="form-control" id="formGroupExampleInput">
 
-                                                <label class="mb-1 mt-3">Mission</label>
-                                                <select type="text" class="form-select form-control">
-                                                    <option value="true">Active</option>
-                                                    <option value="false">Inactive</option>
-                                                </select>
-                                                <div class="row my-3">
-                                                    <div class="col-10"></div>
-                                                    <div class="col-2">
-                                                        <button type="button" class="cancell rounded-pill btn btn-outline-dark"
-                                                            onclick="editpage('nav-cms');">Cancel</button>
-                                                        <button type="submit" class="threebt rounded-pill btn btn-outline-warning"
-                                                            value="2" name="command">Save</button>
-                                                    </div>
-                                                </div>
-                                            </form>
+
+                            <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteTime-@item.CmspageId"><i class="bi bi-trash ms-3"></i></button>
+
+                            <!-- Modal For Delete CMS -->
+                            <div class="modal fade" id="exampleModalDeleteTime-@item.CmspageId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                Are you sure for delete this CMS Page
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-            *@
 
+                                        <form method="post">
 
-                                     @*   <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDelete-">
-                                            <i class="bi bi-trash ms-3"></i>
-                                        </button>
-*@
-                                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteTime-@item.CmspageId">
-                                                    <i class="bi bi-trash ms-3"></i>
-                                                </button>
-
-                                                <!-- Modal For Delete CMS -->
-                                                    <div class="modal fade" id="exampleModalDeleteTime-@item.CmspageId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
-                                                                        Are you sure for delete this CMS Page
-                                                                    </h1>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-
-                                                                <form method="post">
-
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                        <button type="submit" onclick="deleteCMS(@item.CmspageId,event)" class="btn applyButton" data-bs-dismiss="modal">Delete</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        }
-                    </table>
-                </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <button type="submit" onclick="deleteCMS(@item.CmspageId,event)" class="btn applyButton" data-bs-dismiss="modal">Delete</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
 
 
 
     <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center" onchange="searchMission()">
-                <li class="page-item">
-                    <button class="page-link" type="submit" aria-label="Previous" onclick="searchMission(1,'cms')">
-                        <span aria-hidden="true">&laquo;</span>
-                    </button>
-                </li>
-                @{
-                    double totalpages = ViewBag.ttlCMS;
+        <ul class="pagination justify-content-center" onchange="searchMission()">
+            <li class="page-item">
+                <button class="page-link" type="submit" aria-label="Previous" onclick="searchMission(1,'cms')">
+                    <span aria-hidden="true">&laquo;</span>
+                </button>
+            </li>
+            @{
+                double totalpages = ViewBag.ttlCMS;
 
-                    for (int i = 1; i <= totalpages; i++)
+                for (int i = 1; i <= totalpages; i++)
+                {
+                    @if (i == ViewBag.pg_no)
                     {
-                        @if (i == ViewBag.pg_no)
-                        {
-                            <li class="page-item active">
-                                <button class="page-link" type="submit" onclick="searchMission(@i,'cms')">@i</button>
+                        <li class="page-item active">
+                            <button class="page-link" type="submit" onclick="searchMission(@i,'cms')">@i</button>
 
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="page-item">
-                                <button class="page-link" type="submit" onclick="searchMission(@i,'cms')">@i</button>
-                            </li>
-                        }
-
-
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <button class="page-link" type="submit" onclick="searchMission(@i,'cms')">@i</button>
+                        </li>
                     }
 
-                    <li class="page-item">
-                        <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@totalpages,'cms')">
-                            <span aria-hidden="true">&raquo;</span>
-                        </button>
-                    </li>
+
                 }
-            </ul>
-        </nav>
+
+                <li class="page-item">
+                    <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@totalpages,'cms')">
+                        <span aria-hidden="true">&raquo;</span>
+                    </button>
+                </li>
+            }
+        </ul>
+    </nav>
 
 </div>
 

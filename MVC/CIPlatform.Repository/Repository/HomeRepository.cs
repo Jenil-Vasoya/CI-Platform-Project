@@ -14,9 +14,9 @@ namespace CIPlatform.Repository.Repository
 {
     public class HomeRepository : IHomeRepository
     {
-        public readonly CiPlatformContext _DbContext;
+        public readonly CIPlatformDbContext _DbContext;
 
-        public HomeRepository(CiPlatformContext DbContext)
+        public HomeRepository(CIPlatformDbContext DbContext)
         {
             _DbContext = DbContext;
         }
@@ -165,11 +165,11 @@ namespace CIPlatform.Repository.Repository
                     break;
 
                 case 4:
-                    missions = missions.OrderBy(i => i.Availability).ToList();
+                    missions = missions.OrderBy(i => i.TotalSeats).ToList();
                     break;
 
                 case 5:
-                    missions = missions.OrderByDescending(i => i.Availability).ToList();
+                    missions = missions.OrderByDescending(i => i.TotalSeats).ToList();
                     break;
 
                 case 6:
@@ -309,7 +309,7 @@ namespace CIPlatform.Repository.Repository
                 }
 
                 missionData.Theme = GetMissionThemes(objMission.MissionThemeId);
-                missionData.Availability = objMission.Availability;
+                missionData.TotalSeats = objMission.TotalSeats;
 
                 missionData.MissionThemeId = objMission.MissionThemeId;
                 missionData.CountryId = objMission.CountryId;

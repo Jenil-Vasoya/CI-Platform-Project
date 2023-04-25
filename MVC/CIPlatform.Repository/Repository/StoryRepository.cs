@@ -14,9 +14,9 @@ namespace CIPlatform.Repository.Repository
 {
     public class StoryRepository : IStoryRepository
     {
-        public readonly CiPlatformContext _DbContext;
+        public readonly CIPlatformDbContext _DbContext;
 
-        public StoryRepository(CiPlatformContext DbContext)
+        public StoryRepository(CIPlatformDbContext DbContext)
         {
             _DbContext = DbContext;
         }

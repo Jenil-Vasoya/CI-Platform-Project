@@ -300,20 +300,20 @@
                                                 <label class="form-label">Availablity</label>
                                                 <select class="form-select" id="Availablity">
 
-                                                    @*<option value="@data.a" selected> @data.Availability </option>
-                                                        @if (@data.Availability != "Monthly")
+                                                    @*<option value="@data.a" selected> @data.TotalSeats </option>
+                                                        @if (@data.TotalSeats != "Monthly")
                                                         {
                                                         <option value="Monthly">Monthly</option>
                                                         }
-                                                        @if (@data.Availability != "Week-End")
+                                                        @if (@data.TotalSeats != "Week-End")
                                                         {
                                                         <option value="Week-End">Week-End</option>
                                                         }
-                                                        @if (@data.Availability != "Weekly")
+                                                        @if (@data.TotalSeats != "Weekly")
                                                         {
                                                         <option value="Weekly">Weekly</option>
                                                         }
-                                                        @if (@data.Availability != "Daily")
+                                                        @if (@data.TotalSeats != "Daily")
                                                         {
                                                         <option value="Daily">Daily</option>
                                                         }
@@ -533,6 +533,25 @@
              });
              });
 
+             function validPassword()
+             {
+                 debugger
+                 var Pass = $('#Password').val();
+
+                 function checkPassword(password) {
+                      // Create a regular expression object
+                      const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$!%*?&])[A-Za-z\d$!%*?&]{8,}$/;
+  
+                      // Test the password against the regular expression
+                      const isValid = regex.test(Pass);
+
+                      // Return the result
+                      return isValid;
+                 }
+
+
+             }
+
                         function changePassword(){
 
                             debugger
@@ -585,9 +604,11 @@
                                                     }
                                                       toastr.error('Please enter the correct old password')
                                                 }
-                                                else{
-
+                                                else if(data == "notvalid"){
+                                                    document.getElementById('passwordError').textContent = 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number and one special character.';
                                                 }
+                                                else
+                                                {}
                                               // Handle success response from server
                                             },
                                             error: function() {

@@ -41,6 +41,30 @@
             color: #fff;
             font-size: 14px;
             cursor: pointer;
+        }  
+        #image-previewedit .preview-containeredit {
+        display: inline-block;
+        position: relative;
+        margin: 5px;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        }
+        #image-previewedit .preview-containeredit img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            max-height: 100%;
+        }
+        #image-previewedit .preview-containeredit .remove-icon {
+            position: absolute;
+            top: 5px;
+            margin-left: 40px;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
         }
 </style>
 
@@ -346,6 +370,7 @@
     <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Edit </h3>
     <hr class="m-0">
     <form class="px-3" enctype="multipart/form-data">
+        <input type="hidden" id="missionId" />
         <label class="mt-3"> Title </label>
         <input type="text" class="form-control" id="editMissionTitle">
 
@@ -507,22 +532,14 @@
                 <label class="form-label">Upload Your Photos</label>
                 <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
                     <img src="~/Assets/images/add.png" style="cursor:pointer;position:relative; top:20px;" />
-                    <input type="file" accept="image/*" name="images" id="images" style="opacity:0;cursor:pointer;" multiple required />
+                    <input type="file" accept="image/*" name="images" id="imagesedit" style="opacity:0;cursor:pointer;" multiple required />
                     <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
                 </div>
-                <div id="image-preview">
-
-                    
-                        <div class="preview-container">
-                                <img class="img"  asp-for="images" src="~/Assets/StoryImages/" alt="404-Page-image.png">
-                            <img class="remove-icon" src="/Assets/images/cancel1.png" alt="404-Page-image.png">
-                        
-                        </div>
-                        
+                <div id="image-previewedit">
 
                 </div>
-                <div id="selected-count"></div>
-                <span class="text-danger d-none" id="image">At Least Select One Image</span>
+                <div id="selected-countedit"></div>
+                <span class="text-danger d-none" id="imageedit">At Least Select One Image</span>
                 <div class="gallary mt-4 d-flex flex-wrap">
                 </div>
             </div>
@@ -561,45 +578,83 @@
 
 
         $(function() {
-             var selectedCount = 0;
-            var selectedCountElement = $('#selected-count');
-            // Listen for changes to the file input element
-            $('#images').on('change', function() {
-                // Clear any previous preview images
-                $('#image-preview').empty();
-                selectedCount = 0;
-                selectedCountElement.html('0 images selected');
-                // Loop through the selected files
-                $.each(this.files, function(i, file) {
-                    // Create a container for the preview image and remove button
-                    var container = $('<div />', { class: 'preview-container' });
-                    // Create an image element to show the preview
-                    var img = $('<img  />');
-                    img.attr('src', URL.createObjectURL(file));
-                    img.attr('alt', file.name);
-                    // Create a remove button to remove the image from the preview
-                    var removeBtn = $('<img />', { class: 'remove-icon' });
-                    removeBtn.attr('src',"/Assets/images/cancel1.png");
-                    removeBtn.attr('alt', file.name);
-                    removeBtn.html('&#x2715;');
-                    removeBtn.on('click', function() {
-                        container.remove();
-                        selectedCount--;
+                var selectedCount = 0;
+                var selectedCountElement = $('#selected-count');
+                // Listen for changes to the file input element
+                $('#images').on('change', function() {
+                    // Clear any previous preview images
+                    $('#image-preview').empty();
+                    selectedCount = 0;
+                    selectedCountElement.html('0 images selected');
+                    // Loop through the selected files
+                    $.each(this.files, function(i, file) {
+                        // Create a container for the preview image and remove button
+                        var container = $('<div />', { class: 'preview-container' });
+                        // Create an image element to show the preview
+                        var img = $('<img  />');
+                        img.attr('src', URL.createObjectURL(file));
+                        img.attr('alt', file.name);
+                        // Create a remove button to remove the image from the preview
+                        var removeBtn = $('<img />', { class: 'remove-icon' });
+                        removeBtn.attr('src',"/Assets/images/cancel1.png");
+                        removeBtn.attr('alt', file.name);
+                        removeBtn.html('&#x2715;');
+                        removeBtn.on('click', function() {
+                            container.remove();
+                            selectedCount--;
+                            selectedCountElement.html(selectedCount + ' images selected');
+                        });
+                        // Add the image and remove button to the container
+                        container.append(img, removeBtn);
+                        // Add the container to the preview container
+                        $('#image-preview').append(container);
+                        selectedCount++;
                         selectedCountElement.html(selectedCount + ' images selected');
                     });
-                    // Add the image and remove button to the container
-                    container.append(img, removeBtn);
-                    // Add the container to the preview container
-                    $('#image-preview').append(container);
-                    selectedCount++;
-                    selectedCountElement.html(selectedCount + ' images selected');
                 });
-            });
         });
     </script>
                        
 
  <script>
+     $(function() {
+                var selectedCount = 0;
+                var selectedCountElement = $('#selected-countedit');
+                // Listen for changes to the file input element
+                $('#imagesedit').on('change', function() {
+                    // Clear any previous preview images
+                    $('#image-previewedit').empty();
+                    selectedCount = 0;
+                    selectedCountElement.html('0 images selected');
+                    // Loop through the selected files
+                    $.each(this.files, function(i, file) {
+                        // Create a container for the preview image and remove button
+                        var container = $('<div />', { class: 'preview-containeredit' });
+                        // Create an image element to show the preview
+                        var img = $('<img  />');
+                        img.attr('src', URL.createObjectURL(file));
+                        img.attr('alt', file.name);
+                        // Create a remove button to remove the image from the preview
+                        var removeBtn = $('<img />', { class: 'remove-icon' });
+                        removeBtn.attr('src',"/Assets/images/cancel1.png");
+                        removeBtn.attr('alt', file.name);
+                        removeBtn.html('&#x2715;');
+                        removeBtn.on('click', function() {
+                            container.remove();
+                            selectedCount--;
+                            selectedCountElement.html(selectedCount + ' images selected');
+                        });
+                        // Add the image and remove button to the container
+                        container.append(img, removeBtn);
+                        // Add the container to the preview container
+                        $('#image-previewedit').append(container);
+                        selectedCount++;
+                        selectedCountElement.html(selectedCount + ' images selected');
+                    });
+                });
+            });
+
+
 function addSkill(event) {
     
   var skillId = event.target.id;
@@ -627,7 +682,7 @@ function addSkill(event) {
 
  function skillClear() {
     debugger
-  $("#editMissionSkill").empty();
+    $("#editMissionSkill").empty();
 };
 
 
@@ -688,68 +743,21 @@ function addSkilledit(event) {
      //                     destinationDiv.appendChild(newSkillElement);
      //                   };
 
-        function addMissionData(event) {
+     function editMissionData(event) {
                     debugger
+                         const imgs = document.getElementById("imagesedit");
+                         const imgfiles = imgs.files;
 
-                    var missionId = 0;
-                     const imgs = document.getElementById("images");
-                     const imgfiles = imgs.files;
-
-                     
-
-                 
-                    const allSkills = $('#addMissionSkill option').map(function(){
-                                         return $(this).val();
-                                        }).get();
-
-                     missionId = $('#missionId').val();
-                   
-                    if(missionId == 0)
-                    {
-                        const docs = document.getElementById("addMissionDocument");
-                        const docfiles = docs.files;
-
-                     event.preventDefault();
-                     var formData = new FormData();
-                        formData.append('MissionThemeId', $('#addMissionTheme').val());
-                        formData.append('CityId', $('#addMissionCity').val());
-                        formData.append('CountryId', $('#addMissionCountry').val());
-                        formData.append('Title', $('#addMissionTitle').val());
-                        formData.append('ShortDescription', $('#addMissionShortDescription').val());
-                        formData.append('Description', $('#addMissionDescription').val());
-                        formData.append('StartDate', $('#addMissionStartDate').val());
-                        formData.append('EndDate', $('#addMissionEndDate').val());
-                        formData.append('MissionType', $('#addMissionType').val());
-                        formData.append('Status', $('#addMissionStatus').val());
-                        formData.append('OrganizationName', $('#addMissionOrganisationName').val());
-                        formData.append('OrganizationDetail', $('#addMissionOrganisationDetail').val());
-                        formData.append('VideoUrl', $('#addMissionVideo').val());
-                        
-
-                        var documents = docfiles;
-                        for (var i = 0; i < documents.length; i++) {
-                            formData.append('Documents', documents[i]);
-                        } 
-                        
-                        var skills = allSkills;
-                        for (var i = 0; i < skills.length; i++) {
-                            formData.append('MissionSkill', skills[i]);
-                        } 
-                        
-                        var images = imgfiles;
-                        for (var i = 0; i < images.length; i++) {
-                          formData.append('Images', images[i]);
-                        }
-
-                   
-                     }
-                     else
-                     {
                          const docs = document.getElementById("editMissionDocument");
                          const docfiles = docs.files;
 
-                         event.preventDefault();
-                     var formData = new FormData();
+                         const allSkills = $('#editMissionSkill option').map(function(){
+                                         return $(this).val();
+                                        }).get();
+
+                        event.preventDefault();
+                        var formData = new FormData();
+                        formData.append('MissionId', $('#missionId').val());
                         formData.append('MissionThemeId', $('#editMissionTheme').val());
                         formData.append('CityId', $('#editMissionCity').val());
                         formData.append('CountryId', $('#editMissionCountry').val());
@@ -779,9 +787,7 @@ function addSkilledit(event) {
                         for (var i = 0; i < images.length; i++) {
                           formData.append('Images', images[i]);
                         }
-                     }
-                     // Send the AJAX request
-                     $.ajax({
+                        $.ajax({
                          type: 'POST',
                          url: '/Admin/AddMission',
                          data: formData,
@@ -793,23 +799,84 @@ function addSkilledit(event) {
                              missionView('nav-mission');
                              console.log(data);
                              $('#missions').html(data);
-                             if(missionId != 0)
-                            {
                              toastr.success('Mission edit successfully');
-                            }
-                            else
-                            {
-                                toastr.success('Mission add sucessfully');
-                            }
+                            
 
                          },
                         error: function (request, error) {
                          console.log(error);
                      }
                      });
-                 }
+     }
 
-        function editMissionData(missionId)
+     function addMissionData(event) {
+                        debugger
+
+                        const imgs = document.getElementById("images");
+                        const imgfiles = imgs.files;
+
+                        const docs = document.getElementById("addMissionDocument");
+                        const docfiles = docs.files;
+                        const allSkills = $('#addMissionSkill option').map(function(){
+                                         return $(this).val();
+                                        }).get();
+
+                         event.preventDefault();
+                         var formData = new FormData();
+                            formData.append('MissionThemeId', $('#addMissionTheme').val());
+                            formData.append('CityId', $('#addMissionCity').val());
+                            formData.append('CountryId', $('#addMissionCountry').val());
+                            formData.append('Title', $('#addMissionTitle').val());
+                            formData.append('ShortDescription', $('#addMissionShortDescription').val());
+                            formData.append('Description', $('#addMissionDescription').val());
+                            formData.append('StartDate', $('#addMissionStartDate').val());
+                            formData.append('EndDate', $('#addMissionEndDate').val());
+                            formData.append('MissionType', $('#addMissionType').val());
+                            formData.append('Status', $('#addMissionStatus').val());
+                            formData.append('OrganizationName', $('#addMissionOrganisationName').val());
+                            formData.append('OrganizationDetail', $('#addMissionOrganisationDetail').val());
+                            formData.append('VideoUrl', $('#addMissionVideo').val());
+                        
+
+                            var documents = docfiles;
+                            for (var i = 0; i < documents.length; i++) {
+                                formData.append('Documents', documents[i]);
+                            } 
+                        
+                            var skills = allSkills;
+                            for (var i = 0; i < skills.length; i++) {
+                                formData.append('MissionSkill', skills[i]);
+                            } 
+                        
+                            var images = imgfiles;
+                            for (var i = 0; i < images.length; i++) {
+                              formData.append('Images', images[i]);
+                            }
+
+                   
+                             $.ajax({
+                                 type: 'POST',
+                                 url: '/Admin/AddMission',
+                                 data: formData,
+                                 contentType: false,
+                                 processData: false,
+                                 success: function(data) {
+                                     console.log(data);
+                                     debugger
+                                     missionView('nav-mission');
+                                     console.log(data);
+                                     $('#missions').html(data);
+                                        toastr.success('Mission add sucessfully');
+                            
+
+                                 },
+                                 error: function (request, error) {
+                                 console.log(error);
+                                 }
+                             });
+     }
+
+        function getMissionData(missionId)
         {
             console.log(missionId);
             debugger
@@ -821,6 +888,7 @@ function addSkilledit(event) {
                              console.log(data);
                              debugger
 
+                             $('#missionId').val(data.missionId);
                              $('#editMissionTheme').val(data.missionThemeId);
                              $('#editMissionCity').val(data.cityId);
                              $('#editMissionCountry').val(data.countryId);
@@ -830,7 +898,7 @@ function addSkilledit(event) {
                              $('#editMissionStartDate').val(data.startDateEdit);
                              $('#editMissionEndDate').val(data.endDateEdit);
                              $('#editMissionType').val(data.missionType);
-                             $('#editMissionStatus').val(data.status);
+                             $('#editMissionStatus').val((data.status).toString());
                              $('#editMissionOrganisationName').val(data.organizationName);
                              $('#editMissionOrganisationDetail').val(data.organizationDetail);
                              $('#editMissionVideo').val(data.videoUrl);
@@ -869,7 +937,7 @@ function addSkilledit(event) {
                              missionView('nav-mission');
                              console.log(data);
                              $('#missions').html(data);
-                             toastr.error('Page Deleted');
+                             toastr.error('Mission Deleted');
                          },
                         error: function (request, error) {
                          console.log(error);
@@ -903,7 +971,7 @@ function addSkilledit(event) {
             var addMission = page.querySelector("#edit");
             missionpage.style.display = "none";
             addMission.style.display = 'block';
-            editMissionData(id);
+            getMissionData(id);
         }
         function editMissionClose(x) {
             debugger
@@ -916,9 +984,9 @@ function addSkilledit(event) {
 
 
          function GetCity(x) {
-             var who = x;
-             var countryId = 0;
-             debugger
+                 var who = x;
+                 var countryId = 0;
+                 debugger
                             if(who == 'edit')
                             {
                               countryId = document.getElementById("editMissionCountry").value;
@@ -962,6 +1030,6 @@ function addSkilledit(event) {
                                         console.log(error);
                                     }
                                 })
-                        }
+         }
     </script>
     

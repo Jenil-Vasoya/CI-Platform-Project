@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CIPlatform.Entities.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,12 +21,13 @@ public partial class User
     public string Email { get; set; } = null!;
 
     [Required(ErrorMessage = "Please enter the password")]
+    [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$", ErrorMessage = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number and one special character.")]
     public string Password { get; set; } = null!;
 
 
     [NotMapped] // Does not effect with your database
     [Compare("Password", ErrorMessage = "Please enter the same password")]
-    public string ConfirmPassword { get; set; }
+    public string? ConfirmPassword { get; set; }
 
 
     public int PhoneNumber { get; set; }
@@ -71,6 +73,9 @@ public partial class User
     public virtual ICollection<MissionRating> MissionRatings { get; } = new List<MissionRating>();
 
     public virtual ICollection<Story> Stories { get; } = new List<Story>();
+
+
+    public virtual ICollection<StoryView> StoryViews { get; } = new List<StoryView>();
 
     public virtual ICollection<TimeSheet> TimeSheets { get; } = new List<TimeSheet>();
 

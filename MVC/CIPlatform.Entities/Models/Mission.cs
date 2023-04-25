@@ -26,7 +26,7 @@ public partial class Mission
 
     [NotMapped]
     public string StartDateEdit { get; set; }
-    
+
     [NotMapped]
     public string EndDateEdit { get; set; }
 
@@ -40,7 +40,7 @@ public partial class Mission
 
     public string? OrganizationDetail { get; set; }
 
-    public int? Availability { get; set; }
+    public int? TotalSeats { get; set; }
 
     public DateTime CreatedAt { get; set; }
 
@@ -50,10 +50,10 @@ public partial class Mission
 
     [NotMapped]
     public List<int>? MissionSkill { get; set; }
-    
+
     [NotMapped]
     public List<string>? StoryImages { get; set; }
-    
+
     [NotMapped]
     public List<string>? skillNames { get; set; }
 
@@ -62,9 +62,11 @@ public partial class Mission
 
     [NotMapped]
     public List<IFormFile>? Images { get; set; }
-    
+
     [NotMapped]
     public List<IFormFile>? Documents { get; set; }
+
+    public string? Availibility { get; set; }
 
     public virtual City City { get; set; } = null!;
 

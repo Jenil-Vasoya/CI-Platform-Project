@@ -1,4 +1,6 @@
-﻿<style>
+﻿
+
+<style>
     .applyButton {
         border: 2px solid #F88634;
         border-radius: 100px;
@@ -37,37 +39,39 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">Contact Us</h4>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" onclick="clearData()" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <form>
                     <div class="modal-body">
-                        <form>
+                        
                             @if (@ViewBag != null)
                             {
                                 <div class="form-group mb-3">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" value="@ViewBag.UserName" placeholder="Enter your name" disabled>
+                                    <input type="text"  class="form-control" id="name" value="@ViewBag.UserName" placeholder="Enter your name" disabled>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" value="@ViewBag.Email" placeholder="Enter your email address" disabled>
+                                    <input type="email"  class="form-control" id="email" value="@ViewBag.Email" placeholder="Enter your email address" disabled>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="subject">Subject</label>
-                                    <input type="text" class="form-control" id="subject" placeholder="Enter the subject of your message">
+                                    <input type="text"  class="form-control" id="subject" placeholder="Enter the subject of your message">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="message">Message</label>
                                     <textarea class="form-control" id="message" rows="5" placeholder="Enter your message"></textarea>
                                 </div>
                             }
-                        </form>
+                        
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn applyButton">Save</button>
+                        <button type="button" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" onclick="clearData()" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" onclick="contactus(event)" class="btn applyButton" data-bs-dismiss="modal">Save</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -75,29 +79,34 @@
     </div>
 </nav>
   
-@*<script>
-    function contactus(){
+<script>
+    function clearData()
+    {
+        $('#subject').val(''),
+        $('#message').val('')
+    }
+    function contactus(event){
         debugger
-        var Name = $('#name').val();
-        var Email = $('#email').val();
-        var Subject = $('#subject').val();
-        var Message = $('#message').val();
+        event.preventDefault();
+        
+        var formData = {
+                         UserName: $('#name').val(),
+                         Email: $('#email').val(),
+                         Subject: $('#subject').val(),
+                         Message: $('#message').val()
+                     };
 
         $.ajax({
            type: "POST",
-           url: "/Home/ContactUs",
-           data:{ "Name" : Name,
-                    "Email" : Email,
-                    "Subject" : Subject,
-                    "Message" : Message,
-                  
-                },
+           url: "/User/AddMessage",
+           data:formData,
            
            dataType: "JSON",
            success: function (data) {
-             
+                         $('#subject').val(''),
+                         $('#message').val('')
                  console.log(data);
-                 toastr.success(' SuccessFully!!');
+                 toastr.success('Message sent SuccessFully!!');
                  
                  
               
@@ -107,4 +116,4 @@
         
     }
 
-</script>*@
+</script>

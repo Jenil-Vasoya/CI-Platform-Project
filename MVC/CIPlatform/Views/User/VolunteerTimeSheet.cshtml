@@ -124,13 +124,13 @@
 
                                 <input type="hidden" asp-for="UserId" />
 
-                                <button type="button" class="btn applyButton rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                <button type="button" class="btn applyButton rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal12">
                                     <i class="bi bi-plus"></i>
                                     Add
                                 </button>
 
                                 <!-- Modal For ADD Hours -->
-                                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -168,7 +168,7 @@
                                                 <div class="row">
                                                 <div class="col-6">
                                                 <label class="mb-1 mt-3">Hours</label>
-                                                <input type="text" asp-for="Hours" class="form-control" placeholder="Enter Spent Hours">
+                                                <input type="text" asp-for="Hours" id="hours" class="form-control" placeholder="Enter Spent Hours">
                                                                             <span asp-validation-for="Hours" style="color:red"></span>
 
                                                 </div>
@@ -176,7 +176,7 @@
                                                 <label class="mb-1 mt-3">
                                                 Minute
                                                 </label>
-                                                <input type="text" asp-for="Minutes" class="form-control" placeholder="Enter Spent Minutes">
+                                                <input type="text" asp-for="Minutes" id="minutes" class="form-control" placeholder="Enter Spent Minutes">
                                                                             <span asp-validation-for="Minutes" style="color:red"></span>
 
                                                 </div>
@@ -365,7 +365,7 @@
                                                 <div class="modal-body">
 
                                                     <label class="mb-1 ">Mission</label>
-                                                    <select id="missionId" name="missionId" asp-for="MissionId" class="form-control form-select">
+                                                    <select id="missionId2" name="missionId" asp-for="MissionId" class="form-control form-select">
                                                 <option >Select your mission</option>
                                                          @foreach (var obj in ViewBag.MissionList)
                                                             {
@@ -376,7 +376,7 @@
                                                             }
                                                     </select>
                                                     <label class="mb-1 mt-3">Actions</label>
-                                                    <input type="text" asp-for="Action" class="form-control" placeholder="Enter Actions">
+                                                    <input type="text" asp-for="Action" id="action" class="form-control" placeholder="Enter Actions">
                                                      <span asp-validation-for="Action" style="color:red"></span>
 
                                                     
@@ -385,13 +385,13 @@
                                                         <label class="mb-1 mt-3">
                                                         Date
                                                     </label>
-                                                        <input type="date" asp-for="sendDateVolunteered" id="dateVolunteered" name="dateVolunteered" class="form-control" required>
+                                                        <input type="date" asp-for="sendDateVolunteered" id="dateVolunteered2" name="dateVolunteered" class="form-control" required>
                                                                             <span asp-validation-for="sendDateVolunteered" style="color:red"></span>
 
                                                     </div>
 
                                                     <label class="mb-1 mt-3" for="exampleFormControlTextarea1">Message</label>
-                                                    <textarea class="form-control" asp-for="Notes" id="exampleFormControlTextarea1" rows="4" placeholder="Enter your message..."></textarea>
+                                                    <textarea class="form-control" asp-for="Notes" id="exampleFormControlTextarea12" rows="4" placeholder="Enter your message..."></textarea>
                                                                             <span asp-validation-for="Notes" style="color:red"></span>
 
                                                 </div>
@@ -584,7 +584,22 @@
 
     function clearSheet() {
     debugger
-    var spanElements = document.querySelectorAll("#exampleModal1 span");
+
+     @*$('#timeSheetId').val('');*@
+    $('#missionId').val(0);
+    $('#missionId2').val(0);
+    $('#action').val('');
+    $('#dateVolunteered').val('');
+    $('#dateVolunteered2').val('');
+    $('#exampleFormControlTextarea12').val('');
+    $('#exampleFormControlTextarea1').val('');
+    $('#timeMessage').val('');
+    $('#hours').val('');
+    $('#minutes').val('');
+    $('#exampleFormControlTextarea1').val('');
+
+
+    var spanElements = document.querySelectorAll("#exampleModal12 span");
     for (var i = 0; i < spanElements.length; i++) {
         spanElements[i].textContent = "";
     }

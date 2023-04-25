@@ -45,36 +45,34 @@
 
 
         .rating ::before
-            display: flex;
-            justify-content: center;
-            background-color: white;
+        display: flex;
+        justify-content: center;
+        background-color: white;
         }
 
-            .rating > input {
-                display: none
+        .rating > input {
+            display: none
+        }
+
+        .rating > label {
+            position: relative;
+            width: 1em;
+            font-size: 30px;
+            color: #F88634;
+            cursor: pointer
+        }
+
+            .rating > label::before {
+                content: "\2605";
+                position: absolute;
+                opacity: 0
             }
 
-            .rating > label {
-                position: relative;
-                width: 1em;
-                font-size: 30px;
+            .rating > label:hover::before,
+            .rating > label:hover {
+                opacity: 1 !important;
                 color: #F88634;
-                cursor: pointer
             }
-
-                .rating > label::before {
-                    content: "\2605";
-                    position: absolute;
-                    opacity: 0
-                }
-
-                .rating > label:hover::before,
-                .rating > label:hover {
-                    opacity: 1 !important;
-                color: #F88634;
-                    
-                    
-                }
 
 
         .disc_stars {
@@ -210,7 +208,7 @@
                                                     <div class=" d-flex flex-row">
                                                         <div class=""><img src="~/Assets/images/Seats-left.png" class="img-fluid"></div>
                                                         <div class=" ">
-                                                            <h5 class="card-title" style="text-transform: start;"> &nbsp; @ViewBag.missionDatas.Availability</h5>
+                                                            <h5 class="card-title" style="text-transform: start;"> &nbsp; @ViewBag.missionDatas.TotalSeats</h5>
                                                             <p class="card-text ">Seats left</p>
                                                         </div>
                                                     </div>
@@ -281,8 +279,8 @@
                                                             <tfoot>
                                                                 <tr>
                                                                     <td colspan="3">
-                                                                         <button type="button" class=" rounded-pill btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-                                                                         <button type="submit" onclick="sendInvitation(@ViewBag.missionDatas.MissionId)" class="btn applyButton" data-bs-dismiss="modal">Send Invitation</button>
+                                                                        <button type="button" class=" rounded-pill btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                                                                        <button type="submit" onclick="sendInvitation(@ViewBag.missionDatas.MissionId)" class="btn applyButton" data-bs-dismiss="modal">Send Invitation</button>
                                                                     </td>
                                                                 </tr>
                                                             </tfoot>
@@ -302,11 +300,11 @@
 
                                         @for (var j = 1; j <= (@ViewBag.missionDatas.UserRating); j++)
                                         {
-                                            <label class="rtcolor checked" style="color: #F88634; text-shadow: 0 0 0 #F88634;" onclick="Rate(@j,@ViewBag.missionDatas.MissionId)">&#9733;</label>
+                                            <label class="rtcolor checked" style="color: #F88634; text-shadow: 0 0 0 #F88634;" data-mission-id="@j" onclick="Rate(@j,@ViewBag.missionDatas.MissionId)">&#9733;</label>
                                         }
                                         @for (int j = (@ViewBag.missionDatas.UserRating) + 1; j <= 5; j++)
                                         {
-                                            <label class="rtcolor text-black" onclick="Rate(@j,@ViewBag.missionDatas.MissionId)">☆</label>
+                                            <label class="rtcolor text-black" data-mission-id="@j" onclick="Rate(@j,@ViewBag.missionDatas.MissionId)">☆</label>
                                         }
 
 
@@ -366,16 +364,16 @@
 
                             <div class=" text-center pt-3">
 
-                                @if(@ViewBag.missionDatas.Availability == 0)
+                                @if (@ViewBag.missionDatas.TotalSeats == 0)
                                 {
-                                     <button type="button" disabled  class="btn applyButton ">Sorry seats left !!</button>
+                                    <button type="button" disabled class="btn applyButton ">Sorry seats left !!</button>
                                 }
                                 else
                                 {
                                     <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton "> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
                                 }
                             </div>
-                         
+
 
                         </div>
 
@@ -653,19 +651,19 @@
                                             {
 
                                                 var a = @item.GoalValue1;
-                                            <div class="col-6 ">
-                                                <div class="card  border-0">
-                                                    <div class="d-flex justify-content-center align-items-center">
-                                                        <img src="~/Assets/images/achieved.png" />
-                                                        <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
-                                                            <div class="progress">
-                                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: @a%; background-color:#F88634;"></div>
+                                                <div class="col-6 ">
+                                                    <div class="card  border-0">
+                                                        <div class="d-flex justify-content-center align-items-center">
+                                                            <img src="~/Assets/images/achieved.png" />
+                                                            <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
+                                                                <div class="progress">
+                                                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: @a%; background-color:#F88634;"></div>
+                                                                </div>
+                                                                <div> <span class="">@item.CompletedGoal achieved</span> </div>
                                                             </div>
-                                                            <div> <span class="">@item.CompletedGoal achieved</span> </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             }
                                             else
                                             {
@@ -674,7 +672,7 @@
                                                         <div class=" d-flex flex-row">
                                                             <div class=""><img src="~/Assets/images/Seats-left.png" class="img-fluid"></div>
                                                             <div class=" ">
-                                                                <h5 class="card-title" style="text-transform: start;"> &nbsp; @item.Availability</h5>
+                                                                <h5 class="card-title" style="text-transform: start;"> &nbsp; @item.TotalSeats</h5>
                                                                 <p class="card-text ">Seats left</p>
                                                             </div>
                                                         </div>
@@ -714,52 +712,61 @@
 
 
 </body>
-  <script>
-      function Rate(i,MissionId)
-      {
-          $(".rtcolor").removeClass("text-warning");
-          PostRating(i,MissionId);
-      }
-       
-           function PostRating(i,MissionId) {
+<script>
+
+    //      $(document).ready(function() {
+    //          debugger
+    //        if (successMessage) {
+    //            toastr.success(successMessage);
+    //         }
+    //});
+
+          function Rate(i,MissionId)
+          {
+              $(".rtcolor").removeClass("text-warning");
+              PostRating(i,MissionId);
+          }
+
+        function PostRating(i,MissionId) {
 
 
-        debugger
+            debugger
 
-        $.ajax({
-            type: "POST",
-            url: '/Home/PostRating',
-            data: {
-                'rate': i,
-                'MissionId': MissionId
+            $.ajax({
+                type: "POST",
+                url: '/Home/PostRating',
+                data: {
+                    'rate': i,
+                    'MissionId': MissionId
 
-            },
-            success: (data) => {
-                if(data == 1)
-                {
-                 debugger
-                        location.reload();
+                },
+                success: (data) => {
+                    if(data == 1)
+                    {
+                             debugger
+                             toastr.success('Rateing applied for the mission');
+                             setTimeout(function(){ location.reload();}, 2000);
+                    }
+                    else if(data == 2)
+                    {
+                        toastr.error('First apply for the mission');
+                    }
+                    else if(data == 0)
+                    {
+                        toastr.info('Please wait for application approve');
+                    }
+
+                },
+
+                error: function () {
+                    alert("An error occurred while Sending Mission Rating!");
                 }
-                else if(data == 2)
-                {
-                    toastr.error('First apply for the mission');
-                }
-                else if(data == 0)
-                {
-                    toastr.info('Please wait for application approve');
-                }
+            });
 
-            },
+        }
 
-            error: function () {
-                alert("An error occurred while Sending Mission Rating!");
-            }
-        });
 
-    }
-       
-
-    </script>
+</script>
 <script>
                 function searchMission(pg) {
 
@@ -844,130 +851,130 @@
         })
         }*@
 
-        function AddComments(missionId)
-    {
-
-    var comment = $("#user-comment").val();
-
-    if(comment == null || comment=="")
-    {
-    $("#comment-status").html("please enter the comment");
-    $("#comment-status").css("color","red");
-    }
-    else
-    {
-    debugger
-    $.ajax({
-
-    url:"/Home/AddComment",
-    method: "POST",
-
-    data:
-    {
-    comment:comment,
-    missionId:missionId
-    },
-    success:function(data)
-    {
-    $("#comment-status").html("comment sent for approvel");
-    $("#comment-status").css("color","green");
-    $('#user-comment').val('');
-    }
-    })
-    }
-    }
-
-        function ApplyMission(missionId)
+            function AddComments(missionId)
         {
-            debugger
-            $.ajax({
-                url:"/Home/ApplyMission",
-                method:"Post",
 
-                data:{ missionId : missionId},
+        var comment = $("#user-comment").val();
 
-                success: function(data)
-                {
-                    toastr.options = {
-                    "closeButton": true,
-                    "progressBar": true
-                };
-                    if(data == 2)
-                    {
-                        toastr.success('Applied mission successfully');
-                    }
-                    else if(data == 1)
-                    {
-                        toastr.error('You alredy applied');
-                    }
-                    else if(data == 0)
-                    {
-                        toastr.info('Please wait your application in not approved');
-                    }
+        if(comment == null || comment=="")
+        {
+        $("#comment-status").html("please enter the comment");
+        $("#comment-status").css("color","red");
+        }
+        else
+        {
+        debugger
+        $.ajax({
 
-                },
+        url:"/Home/AddComment",
+        method: "POST",
 
-                 error: function () {
-
-                            }
-            })
+        data:
+        {
+        comment:comment,
+        missionId:missionId
+        },
+        success:function(data)
+        {
+        $("#comment-status").html("comment sent for approvel");
+        $("#comment-status").css("color","green");
+        $('#user-comment').val('');
+        }
+        })
+        }
         }
 
+            function ApplyMission(missionId)
+            {
+                debugger
+                $.ajax({
+                    url:"/Home/ApplyMission",
+                    method:"Post",
 
-     function sendInvitation(MissionId)
-        {
-            debugger
-            var CoWorkers = [];
+                    data:{ missionId : missionId},
 
-             $('input[name="CoWorkers"]:checked').each(function(){
-                 CoWorkers.push(this.id);
-             });
+                    success: function(data)
+                    {
+                        toastr.options = {
+                        "closeButton": true,
+                        "progressBar": true
+                    };
+                        if(data == 2)
+                        {
+                            toastr.success('Applied mission successfully');
+                        }
+                        else if(data == 1)
+                        {
+                            toastr.error('You alredy applied');
+                        }
+                        else if(data == 0)
+                        {
+                            toastr.info('Please wait your application in not approved');
+                        }
 
-             $.ajax({
-                 url:"/Home/InviteWorker",
-                 method: "POST",
-                 data:{
-                     "MissionId" : MissionId,
-                     "CoWorkers" : CoWorkers
-                 },
-                 success:function(data){
-                    $("#mission").html(data);
-                 },
-                 error: function(request,error){
+                    },
 
-                     console.log(error);
-                 }
-             })
+                     error: function () {
 
-        }
+                                }
+                })
+            }
 
-        @*function PostRating(x,i) {
+
+         function sendInvitation(MissionId)
+            {
+                debugger
+                var CoWorkers = [];
+
+                 $('input[name="CoWorkers"]:checked').each(function(){
+                     CoWorkers.push(this.id);
+                 });
+
+                 $.ajax({
+                     url:"/Home/InviteWorker",
+                     method: "POST",
+                     data:{
+                         "MissionId" : MissionId,
+                         "CoWorkers" : CoWorkers
+                     },
+                     success:function(data){
+                        $("#mission").html(data);
+                     },
+                     error: function(request,error){
+
+                         console.log(error);
+                     }
+                 })
+
+            }
+
+    @*function PostRating(x,i) {
 
 
         debugger
 
         var missionId = x;
-         //var rate = document.getElementsByName('input[name="myradio"]:checked').va;
+        //var rate = document.getElementsByName('input[name="myradio"]:checked').va;
         //console.log(rate);
         $.ajax({
-            type: "POST",
-            url: '/Home/PostRating',
-            data: {
-                'rate': i,
-                'MissionId': missionId
+        type: "POST",
+        url: '/Home/PostRating',
+        data: {
+        'rate': i,
+        'MissionId': missionId
 
-            },
-            success: (data) => {
-                console.log(data);
+        },
+        success: (data) => {
+        console.log(data);
 
-            },
+        },
 
-            error: function () {
-                alert("An error occurred while Sending Mission Rating!");
-            }
+        error: function () {
+        alert("An error occurred while Sending Mission Rating!");
+        }
         });
-*@
-    
+    *@
+
 
 
 </script>

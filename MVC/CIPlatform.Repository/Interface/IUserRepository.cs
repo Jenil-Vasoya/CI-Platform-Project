@@ -57,5 +57,7 @@ namespace CIPlatform.Repository.Interface
 
         public bool DeleteTimeSheet(long TimesheetId);
 
+        public bool AddContactUs(ContactU model);
+
     }
 }

@@ -13,8 +13,8 @@ namespace CIPlatform.Repository.Repository
 {
     public  class AccountRepository : IAccountRepository
     {
-        public readonly CiPlatformContext _DbContext;
-        public AccountRepository(CiPlatformContext DbContext)
+        public readonly CIPlatformDbContext _DbContext;
+        public AccountRepository(CIPlatformDbContext DbContext)
         {
             _DbContext = DbContext;
         }
@@ -33,13 +33,13 @@ namespace CIPlatform.Repository.Repository
         
         public List<Mission> MissionList()
         {
-            List<Mission> objMissionList = _DbContext.Missions.ToList();
+            List<Mission> objMissionList = _DbContext.Missions.Where(m=> m.DeletedAt == null).ToList();
             return objMissionList;
         }
 
         public List<MissionTheme> ThemeList()
         {
-            List<MissionTheme> objThemeList = _DbContext.MissionThemes.ToList();
+            List<MissionTheme> objThemeList = _DbContext.MissionThemes.Where(t=> t.DeletedAt == null).ToList();
             return objThemeList;
         }
         
@@ -150,7 +150,7 @@ namespace CIPlatform.Repository.Repository
         public List<Mission> MissionListSearch(string search, int pg)
         {
             var pageSize = 6;
-            List<Mission> missions = _DbContext.Missions.ToList();
+            List<Mission> missions = MissionList();
 
             if(search != null)
             {
@@ -167,7 +167,7 @@ namespace CIPlatform.Repository.Repository
         public List<MissionTheme> ThemeListSearch(string search, int pg)
         {
             var pageSize = 6;
-            List<MissionTheme> themes = _DbContext.MissionThemes.ToList();
+            List<MissionTheme> themes = ThemeList();
 
             if(search != null)
             {
@@ -273,21 +273,6 @@ namespace CIPlatform.Repository.Repository
                 }
             }
         }
-
-        //public AdminModel EditCMS(long CMSId)
-        //{
-        //    var cmspage = _DbContext.Cmspages.Where(c => c.CmspageId == CMSId).FirstOrDefault();
-
-        //    AdminModel adminModel = new AdminModel();
-        //    {
-        //        adminModel.Title = cmspage.Title;
-        //        adminModel.Description = cmspage.Description;
-        //        adminModel.Slug = cmspage.Slug;
-        //        adminModel.Status = cmspage.Status;
-
-        //    }
-        //    return adminModel;
-        //}
         
         public Cmspage EditCMS(long CMSId)
         {
@@ -326,7 +311,7 @@ namespace CIPlatform.Repository.Repository
                     //mission.OrganizationDetail = model.OrganizationDetail;
                     //mission.ShortDescription = model.ShortDescription;
                     mission = model;
-                    mission.Availability = 10;
+                    mission.TotalSeats = 10;
 
                     _DbContext.Missions.Add(mission);
                     _DbContext.SaveChanges();
@@ -424,13 +409,102 @@ namespace CIPlatform.Repository.Repository
                 var mission = _DbContext.Missions.Find(model.MissionId);
                 if (mission != null)
                 {
+
                     mission.Title = model.Title;
                     mission.Description = model.Description;
                     mission.Status = model.Status;
+                    mission.CityId = model.CityId;
+                    mission.CountryId = model.CountryId;
+                    mission.EndDate = model.EndDate;
+                    mission.StartDate = model.StartDate;
+                    mission.MissionType = model.MissionType;
+                    mission.MissionThemeId = model.MissionThemeId;
+                    mission.OrganizationName = model.OrganizationName;
+                    mission.OrganizationDetail = model.OrganizationDetail;
+                    mission.ShortDescription = model.ShortDescription;
+                    mission.TotalSeats = 10;
                     mission.UpdatedAt = DateTime.Now;
 
                     _DbContext.Missions.Update(mission);
                     _DbContext.SaveChanges();
+
+                    if (model.MissionSkill.Count != 0)
+                    {
+
+                        List<MissionSkill> missionSkills = _DbContext.MissionSkills.Where(a => a.MissionId == mission.MissionId).ToList();
+                        foreach (var missionSkillItem in missionSkills)
+                        {
+                            _DbContext.MissionSkills.Remove(missionSkillItem);
+                            _DbContext.SaveChanges();
+                        }
+
+
+                        foreach (var skillId in model.MissionSkill)
+                        {
+                            MissionSkill skill = new MissionSkill();
+                            {
+                                skill.SkillId = skillId;
+                                skill.MissionId = mission.MissionId;
+
+                                _DbContext.MissionSkills.Add(skill);
+                                _DbContext.SaveChanges();
+                            }
+                        }
+                    }
+
+                    if (model.Images.Count != 0)
+                    {
+                        List<MissionMedium> missionMedia = _DbContext.MissionMedia.Where(a => a.MissionId == mission.MissionId && a.MediaType == "png").ToList();
+                        foreach (var missionMediaItem in missionMedia)
+                        {
+                            _DbContext.MissionMedia.Remove(missionMediaItem);
+                            _DbContext.SaveChanges();
+                        }
+
+
+
+
+                        var filePath = new List<string>();
+                        foreach (var i in model.Images)
+                        {
+                            MissionMedium missionMedium = new MissionMedium();
+                            missionMedium.MissionId = mission.MissionId;
+                            missionMedium.MediaName = i.FileName;
+                            missionMedium.MediaType = "png";
+                            missionMedium.MediaPath = "~/Assets/StoryImages/" + i.FileName;
+                            _DbContext.MissionMedia.Add(missionMedium);
+                            _DbContext.SaveChanges();
+                            if (i.Length > 0)
+                            {
+                                //string path = Server.MapPath("~/wwwroot/Assets/Story");
+                                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", i.FileName);
+                                filePath.Add(path);
+                                using (var stream = new FileStream(path, FileMode.Create))
+                                {
+                                    i.CopyTo(stream);
+                                }
+                            }
+
+                        }
+
+                    }
+                    if (model.VideoUrl != null)
+                    {
+                        List<MissionMedium> missionMedia = _DbContext.MissionMedia.Where(a => a.MissionId == mission.MissionId && a.MediaType == "mp4").ToList();
+                        foreach (var missionMediaItem in missionMedia)
+                        {
+                            _DbContext.MissionMedia.Remove(missionMediaItem);
+                            _DbContext.SaveChanges();
+                        }
+
+                        MissionMedium medium = new MissionMedium();
+                        medium.MissionId = mission.MissionId;
+                        medium.MediaName = model.VideoUrl;
+                        medium.MediaType = "mp4";
+                        medium.MediaPath = model.VideoUrl;
+                        _DbContext.MissionMedia.Add(medium);
+                        _DbContext.SaveChanges();
+                    }
 
                     return true;
                 }
@@ -465,8 +539,61 @@ namespace CIPlatform.Repository.Repository
         public bool DeleteMission(long MissionId)
         {
             var mission = _DbContext.Missions.Find(MissionId);
-            
-            _DbContext.Missions.Remove(mission);
+            mission.DeletedAt = DateTime.Now;
+            _DbContext.Missions.Update(mission);
+            _DbContext.SaveChanges();
+            return true;
+        }
+
+        public bool AddTheme(MissionTheme model)
+        {
+            if (model.MissionThemeId == 0)
+            {
+
+                MissionTheme missionTheme = new MissionTheme();
+                {
+                    missionTheme.Titile = model.Titile;
+                    missionTheme.Status = model.Status;
+
+                    _DbContext.MissionThemes.Add(missionTheme);
+                    _DbContext.SaveChanges();
+                }
+                return true;
+            }
+            else
+            {
+                var theme = _DbContext.MissionThemes.Find(model.MissionThemeId);
+                if (theme != null)
+                {
+                    theme.Titile = model.Titile;
+                    theme.Status = model.Status;
+                    theme.UpdatedAt = DateTime.Now;
+
+                    _DbContext.MissionThemes.Update(theme);
+                    _DbContext.SaveChanges();
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public MissionTheme EditTheme(long ThemeId)
+        {
+            var theme = _DbContext.MissionThemes.Where(c => c.MissionThemeId == ThemeId).FirstOrDefault();
+
+
+            return theme;
+        }
+
+        public bool DeleteTheme(long ThemeId)
+        {
+            var theme = _DbContext.MissionThemes.Find(ThemeId);
+            theme.DeletedAt = DateTime.Now;
+            _DbContext.MissionThemes.Update(theme);
             _DbContext.SaveChanges();
             return true;
         }

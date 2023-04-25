@@ -1,4 +1,5 @@
 ﻿
+using CIPlatform.Data;
 using CIPlatform.Entities.Data;
 using CIPlatform.Entities.Models;
 using CIPlatform.Entities.ViewModel;
@@ -17,10 +18,10 @@ namespace CIPlatform.Controllers
         private readonly IHomeRepository _HomeRepo;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IConfiguration configuration;
-        public readonly CiPlatformContext _DbContext;
+        public readonly CIPlatformDbContext _DbContext;
 
 
-        public HomeController(IHomeRepository HomeRepo, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration, CiPlatformContext DbContext)
+        public HomeController(IHomeRepository HomeRepo, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration, CIPlatformDbContext DbContext)
         {
             _HomeRepo = HomeRepo;
              _httpContextAccessor = httpContextAccessor;

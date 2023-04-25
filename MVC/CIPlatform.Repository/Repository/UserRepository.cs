@@ -11,14 +11,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Helpers;
 
 namespace CIPlatform.Repository.Repository
 {
     public class UserRepository : IUserRepository
     {
-        public readonly CiPlatformContext _DbContext;
+        public readonly CIPlatformDbContext _DbContext;
 
-        public UserRepository(CiPlatformContext DbContext)
+        public UserRepository(CIPlatformDbContext DbContext)
         {
             _DbContext = DbContext;
         }
@@ -92,7 +93,7 @@ namespace CIPlatform.Repository.Repository
         public Boolean ChangePassword(long UserId, Reset_Password model)
         {
             User user = _DbContext.Users.FirstOrDefault(x => x.UserId == model.UserId);
-            user.Password = model.Password;
+            user.Password = Crypto.HashPassword(model.Password); ;
             user.UpdatedAt = DateTime.Now;
             _DbContext.Users.Update(user);
             _DbContext.SaveChanges();
@@ -129,6 +130,7 @@ namespace CIPlatform.Repository.Repository
         {
             if(_DbContext.Users.Any(u => u.Email != objUser.Email))
             {
+                objUser.Password = Crypto.HashPassword(objUser.Password);
                 _DbContext.Users.Add(objUser);
                 _DbContext.SaveChanges();
                 return true;
@@ -213,9 +215,9 @@ namespace CIPlatform.Repository.Repository
         public bool ChangePasswordUser(long UserId, string OldPassword, string Password)
         {
             User user = _DbContext.Users.FirstOrDefault(x => x.UserId == UserId);
-            if (user.Password == OldPassword)
+            if (Crypto.VerifyHashedPassword(user.Password, OldPassword))
             {
-                user.Password = Password;
+                user.Password = Crypto.HashPassword(Password);
                 user.UpdatedAt = DateTime.Now;
                 _DbContext.Users.Update(user);
                 _DbContext.SaveChanges();
@@ -370,7 +372,8 @@ namespace CIPlatform.Repository.Repository
                 {
                     timeSheet.Action = volunteerSheet.Action;
                 }
-                timeSheet.DateVolunteered = volunteerSheet.sendDateVolunteered;
+                DateTime dateTime = DateTime.Parse(volunteerSheet.DateVolunteered);
+                timeSheet.DateVolunteered = dateTime;
                 timeSheet.Notes = volunteerSheet.Notes;
                 
                 _DbContext.TimeSheets.Add(timeSheet);
@@ -420,6 +423,20 @@ namespace CIPlatform.Repository.Repository
             }
             return false;
             
+        }
+
+        public bool AddContactUs(ContactU model)
+        {
+            ContactU contactU = new ContactU();
+            contactU.Message = model.Message;
+            contactU.UserName = model.UserName;
+            contactU.Email = model.Email;
+            contactU.Subject = model.Subject;
+            contactU.UserId = model.UserId;
+            _DbContext.ContactUs.Add(contactU);
+            _DbContext.SaveChanges();
+
+            return true;
         }
        
     }

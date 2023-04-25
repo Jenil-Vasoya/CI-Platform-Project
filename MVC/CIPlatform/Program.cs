@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 //builder.Services.AddDbContext<CiPlatformContext>(options => options.UseSqlServer(
 //    builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddDbContext<CiPlatformContext>();
+builder.Services.AddDbContext<CIPlatformDbContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IHomeRepository, HomeRepository>();
 builder.Services.AddScoped<IStoryRepository, StoryRepository>();

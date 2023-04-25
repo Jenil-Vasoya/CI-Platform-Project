@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kIKV1Nqwv0iPeB0tpX8p/C9DixRhF2s6qqfIOauHZEM=",
+  "Hash": "jODOPPDxBbmQSKPSxQgIjDQnoc5v4vu3yfNuOKF9SlA=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -2380,6 +2380,23 @@
       "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\img22.png"
     },
     {
+      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\img3.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "Assets/StoryImages/img3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\img3.png"
+    },
+    {
       "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Nourish-the-Children-in--African-country.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
@@ -2463,6 +2480,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\volunteer1.png"
+    },
+    {
+      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\volunteer4.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "Assets/StoryImages/volunteer4.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\volunteer4.png"
+    },
+    {
+      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\volunteer5.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "Assets/StoryImages/volunteer5.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\volunteer5.png"
     },
     {
       "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\volunteer7.png",

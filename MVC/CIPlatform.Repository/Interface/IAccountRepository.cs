@@ -56,5 +56,11 @@ namespace CIPlatform.Repository.Interface
         public Mission EditMission(long MissionId);
 
         public bool DeleteMission(long MissionId);
+
+        public bool AddTheme(MissionTheme model);
+
+        public MissionTheme EditTheme(long ThemeId);
+
+        public bool DeleteTheme(long ThemeId);
     }
 }

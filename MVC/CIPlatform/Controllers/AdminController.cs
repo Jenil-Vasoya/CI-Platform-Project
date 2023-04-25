@@ -189,11 +189,43 @@ namespace CIPlatform.Controllers
         {
             bool result = _AccountRepo.DeleteMission(MissionId);
 
+            ViewBag.Skills = _AccountRepo.SkillList();
             ViewBag.MissionList = _AccountRepo.MissionList().Skip((1 - 1) * 6).Take(6).ToList();
             ViewBag.ttlMissions = Math.Ceiling(_AccountRepo.MissionList().Count() / 6.0);
             ViewBag.pg_no = 1;
 
             return PartialView("_MissionData");
+        }
+
+
+        public ActionResult AddTheme(MissionTheme model)
+        {
+            bool result = _AccountRepo.AddTheme(model);
+
+            ViewBag.ThemeList = _AccountRepo.ThemeList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlThemes = Math.Ceiling(_AccountRepo.ThemeList().Count() / 6.0);
+            ViewBag.pg_no = 1;
+
+            return PartialView("_ThemeData");
+
+        }
+
+        public JsonResult EditTheme(long ThemeId)
+        {
+            var adminModel = _AccountRepo.EditTheme(ThemeId);
+
+            return Json(adminModel);
+        }
+
+        public ActionResult DeleteTheme(long ThemeId)
+        {
+            bool result = _AccountRepo.DeleteTheme(ThemeId);
+
+            ViewBag.ThemeList = _AccountRepo.ThemeList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlThemes = Math.Ceiling(_AccountRepo.ThemeList().Count() / 6.0);
+            ViewBag.pg_no = 1;
+
+            return PartialView("_ThemeData");
         }
         //private readonly CiPlatformContext _db;
 
