@@ -78,7 +78,7 @@
         </button>
     </div>
 
-    <div class="row" style="overflow-x: auto;">
+    <div class="row gx-0">
         <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
             <thead>
                 <tr class="table-light" style="height: 70px;">
@@ -710,39 +710,7 @@ function addSkilledit(event) {
   }
 }
 
-     //function addSkill(event) {
-     //                     // Get the clicked skill element and its name
-     //                     debugger
-     //                     var skillElement = event.target;
-     //                     var skillId = skillElement.getAttribute("id");
-     //                     var skillName = skillElement.innerHTML;
-
-     //                     // Check if skill is already in destinationDiv
-     //                     var destinationDiv = document.getElementById("destinationDiv");
-     //                     var skillList = destinationDiv.getElementsByTagName("li");
-     //                     for (var i = 0; i < skillList.length; i++) {
-     //                       if (skillList[i].getAttribute("id") == skillId) {
-     //                         // Skill already in destinationDiv, do nothing
-     //                         return;
-     //                       }
-     //                     }
-
-     //                     // Create a new list item for the destinationDiv
-     //                     var newSkillElement = document.createElement("li");
-     //                     newSkillElement.setAttribute("class", "skill list-unstyled cursor");
-     //                     newSkillElement.setAttribute("id", skillId);
-
-     //                     newSkillElement.innerHTML = skillName;
-
-     //                     // Add onclick event to new skill element to remove it from destinationDiv
-     //                     newSkillElement.onclick = function() {
-     //                       newSkillElement.parentNode.removeChild(newSkillElement);
-     //                     }
-
-     //                     // Add the new skill element to the destinationDiv
-     //                     destinationDiv.appendChild(newSkillElement);
-     //                   };
-
+    
      function editMissionData(event) {
                     debugger
                          const imgs = document.getElementById("imagesedit");
@@ -861,7 +829,6 @@ function addSkilledit(event) {
                                  contentType: false,
                                  processData: false,
                                  success: function(data) {
-                                     console.log(data);
                                      debugger
                                      missionView('nav-mission');
                                      console.log(data);

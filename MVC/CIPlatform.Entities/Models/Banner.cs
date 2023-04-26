@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CIPlatform.Entities.Models;
 
@@ -8,6 +10,9 @@ public partial class Banner
     public long BannerId { get; set; }
 
     public string Image { get; set; } = null!;
+
+    [NotMapped]
+    public IFormFile? BannerImg { get; set; }
 
     public string? Text { get; set; }
 

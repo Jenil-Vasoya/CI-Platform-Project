@@ -411,6 +411,10 @@
 
                         <div class="tab-pane fade" id="nav-banner" role="tabpanel" aria-labelledby="nav-banner-tab">
                             <h4 class="pt-3 pb-2">Banner</h4>
+
+                            <div id="banners">
+                            <partial name="_BannerData" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -575,6 +579,10 @@
                     else if(who == 'story')
                     {
                          $('#stories').html(data);
+                    } 
+                    else if(who == 'banner')
+                    {
+                         $('#banners').html(data);
                     }
                 },
                 error: function (request, error) {

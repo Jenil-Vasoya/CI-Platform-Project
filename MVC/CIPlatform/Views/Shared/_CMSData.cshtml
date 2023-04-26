@@ -29,7 +29,7 @@
         </button>
     </div>
 
-    <div class="row" style="overflow-x: auto;">
+    <div class="row gx-0">
         <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
             <thead>
                 <tr class="table-light" style="height: 70px;">
@@ -260,7 +260,7 @@
                              $('#titleedit').val(data.title);
                              $('#editoredit').val(data.description);
                              $('#slugedit').val(data.slug);
-                             $('#statusedit').val(data.status);
+                             $('#statusedit').val((data.status).toString());
                          },
                         error: function (request, error) {
                          console.log(error);

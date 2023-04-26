@@ -1,52 +1,99 @@
-﻿
-<div class="row" style="overflow-x: auto;">
+﻿<style>
+    
+    #imagePreviewUser {
+        position: absolute;
+        margin-top: -150px;
+    }
+
+    #imageupload {
+        position: absolute;
+        width: 1px;
+        height: 150px;
+        margin-top: -50px;
+        padding-left: 170px;
+        display: block;
+        opacity: 0;
+    }
+</style>
+
+<div id="userpage">
+    <div class="col-12 col-sm-6 col-lg-8 col-xl-9 text-sm-end mt-3 mt-sm-0">
+        <button type="button" class="btn applyButton rounded-pill"
+                onclick="addUser('nav-user')">
+            <i class="bi bi-plus"></i>
+            Add
+        </button>
+    </div>
+
+
+    <div class="row gx-0">
         <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
-        <thead>
-            <tr class="table-light" style="height: 70px;">
-                <th scope="col" class="thforcmstable">First Name</th>
-                <th scope="col" class="thforcmstable">Last Name</th>
-                <th scope="col" class="thforcmstable">Email</th>
-                <th scope="col" class="thforcmstable">Employee Id</th>
-                <th scope="col" class="thforcmstable">Department</th>
-                <th scope="col" class="thforcmstable">Status</th>
-                <th scope="col" class="thforcmstable">Action</th>
-            </tr>
-        </thead>
-        @foreach (var item in @ViewBag.UserList)
-        {
-            <tbody class="table-border">
-                <tr>
-                    <td>@item.FirstName</td>
-                    <td>@item.LastName</td>
-                    <td>@item.Email</td>
-                    <td>@item.EmployeeId</td>
-                    <td>@item.Department</td>
-                    @if(item.Status == true)
-                    {
-                    <td style="color: green;">Active</td>
-                    }
-                    else
-                    {
-                    <td class="text-danger">Inactive</td>
-                    }
-                   <td>
-                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalG-">
-                            <i class="bi bi-pencil-square" style="color: coral;"></i>
-                        </button>
-                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDelete-">
-                            <i class="bi bi-trash ms-3"></i>
-                        </button>
-                    </td>
+            <thead>
+                <tr class="table-light" style="height: 70px;">
+                    <th scope="col" class="thforcmstable">First Name</th>
+                    <th scope="col" class="thforcmstable">Last Name</th>
+                    <th scope="col" class="thforcmstable">Email</th>
+                    <th scope="col" class="thforcmstable">Employee Id</th>
+                    <th scope="col" class="thforcmstable">Department</th>
+                    <th scope="col" class="thforcmstable">Status</th>
+                    <th scope="col" class="thforcmstable">Action</th>
                 </tr>
-            </tbody>
-        }
-    </table>
-</div>
+            </thead>
+            @foreach (var item in @ViewBag.UserList)
+            {
+                <tbody class="table-border">
+                    <tr>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Email</td>
+                        <td>@item.EmployeeId</td>
+                        <td>@item.Department</td>
+                        @if (item.Status == true)
+                        {
+                            <td style="color: green;">Active</td>
+                        }
+                        else
+                        {
+                            <td class="text-danger">Inactive</td>
+                        }
+                        <td>
+                            <button type="button" class="btn p-0" onclick="editUser('nav-user',@item.UserId)"><i class="bi bi-pencil-square" style="color: coral;"></i></button>
+                             <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteUser-@item.UserId"><i class="bi bi-trash ms-3"></i></button>
 
 
-  
- <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center" onchange="searchMission()" >
+                                                 <!-- Modal For Delete User -->
+                                                    <div class="modal fade" id="exampleModalDeleteUser-@item.UserId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                        Are you sure for delete this User
+                                                                    </h1>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+
+                                                                <form method="post">
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                        <button type="submit" onclick="deleteUser(@item.UserId,event)" class="btn applyButton" data-bs-dismiss="modal">Delete</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+
+
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center" onchange="searchMission()">
             <li class="page-item">
                 <button class="page-link" type="submit" aria-label="Previous" onclick="searchMission(1,'user')">
                     <span aria-hidden="true">&laquo;</span>
@@ -72,13 +119,476 @@
                     }
 
 
-                }   
-            
-            <li class="page-item">
-                <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@totalpages,'user')">
-                    <span aria-hidden="true">&raquo;</span>
-                </button>
-            </li>
+                }
+
+                <li class="page-item">
+                    <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@totalpages,'user')">
+                        <span aria-hidden="true">&raquo;</span>
+                    </button>
+                </li>
             }
         </ul>
-    </nav> 
+    </nav>
+</div>
+
+<div class="border" id="add" style="display: none;">
+    <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Add </h3>
+    <hr class="m-0">
+    <form class="px-3" enctype="multipart/form-data">
+        <a id="pop">
+            <input id="imageupload" type="file" class="file" accept="image/jpeg, image/png, image/jpg">
+
+            <img id="imageresource" src="~/Assets/StoryImages/404-Page-image.png" class="rounded-circle" style="height:150px; max-width:150px;">
+        </a>
+
+        <div class="row">
+            <div class="col-6">
+                <label class="mt-3"> First Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="addUserFirstName">
+            </div>
+
+            <div class="col-6">
+                <label class="mt-3"> Last Name </label>
+                <input type="text" class="form-control" id="addUserLastName">
+            </div>
+        </div>
+
+         <div class="row">
+            <div class="col-6">
+                <label class="mt-3"> Eamil <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="addUserEmail">
+            </div>
+
+            <div class="col-6">
+                <label class="mt-3"> Password <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="addUserPassword">
+            </div>
+        </div>
+         
+         <div class="row">
+            <div class="col-6">
+                <label class="mt-3"> Employee Id </label>
+                <input type="text" class="form-control" id="addUserEmployeeId">
+            </div>
+
+            <div class="col-6">
+                <label class="mt-3"> Department Name </label>
+                <input type="text" class="form-control" id="addUserDepartment">
+            </div>
+        </div>
+          
+
+        
+        <div class="row mt-2">
+            <div class="col-sm-4">
+                <label class="form-label">Country<span class="text-danger">*</span></label>
+
+                <select class="form-select" id="addUserCountry" onchange="GetCityUser()" required>
+                    @*<option value="@data.CountryId" selected>@data.Country.CountryName</option>*@
+                    @if (ViewBag.CountryList != null)
+                    {
+                        @foreach (var country in ViewBag.CountryList)
+                        {
+                            <option value="@country.CountryId">@country.CountryName</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="col-sm-4">
+                <label class="form-label">City<span class="text-danger">*</span></label>
+                <select class="form-select" id="selectUserCityList" required>
+
+                    <option id="selectCityUser">Please select first country</option>
+
+                </select>
+            </div>
+
+            <div class="col-sm-4">
+                <label class="form-label">User Status<span class="text-danger">*</span></label>
+                <select class="form-select" id="addUserStatus">
+                    <option value="true">Active</option>
+                    <option value="false">InActive</option>
+                </select>
+            </div>
+        </div>
+
+        <label class="mt-3"> Profile Text </label>
+        <input type="text" class="form-control" id="addUserText">
+
+        <div class="row my-3">
+            <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
+                <button type="button" class="cancell rounded-pill btn btn-outline-dark"
+                        onclick="userView('nav-user');">
+                    Cancel
+                </button>
+                <button type="submit" onclick="addUserData(event)" class="btn rounded-pill applyButton"
+                        value="2" name="command">
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="border" id="edit" style="display: none;">
+    <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Edit </h3>
+    <hr class="m-0">
+    <form class="px-3" enctype="multipart/form-data">
+        <input type="hidden" id="userId" />
+        <div class="row">
+
+            <div class="col-2 d-flex justify-content-center align-items-end">
+                <div id="imgPreviewUser" style="height:150px; max-width:150px;">
+                    <input id="imageuploadedit" type="file" class="file" accept="image/jpeg, image/png, image/jpg">
+                </div>
+            </div>
+
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="mt-3"> First Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="editUserFirstName">
+                    </div>
+
+                    <div class="col-6">
+                        <label class="mt-3"> Last Name </label>
+                        <input type="text" class="form-control" id="editUserLastName">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <label class="mt-3"> Profile Text </label>
+                        <input type="text" class="form-control" id="editUserText">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <div class="row">
+            <div class="col-6">
+                <label class="mt-3"> Eamil <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="editUserEmail">
+            </div>
+
+            <div class="col-6">
+                <label class="mt-3"> Password <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="editUserPassword" disabled>
+            </div>
+        </div>
+         
+         <div class="row">
+            <div class="col-6">
+                <label class="mt-3"> Employee Id </label>
+                <input type="text" class="form-control" id="editUserEmployeeId">
+            </div>
+
+            <div class="col-6">
+                <label class="mt-3"> Department Name </label>
+                <input type="text" class="form-control" id="editUserDepartment">
+            </div>
+        </div>
+          
+
+        
+        <div class="row mt-2">
+            <div class="col-sm-4">
+                <label class="form-label">Country<span class="text-danger">*</span></label>
+
+                <select class="form-select" id="editUserCountry" onchange="GetCityUser()" required>
+                    @*<option value="@data.CountryId" selected>@data.Country.CountryName</option>*@
+                    @if (ViewBag.CountryList != null)
+                    {
+                        @foreach (var country in ViewBag.CountryList)
+                        {
+                            <option value="@country.CountryId">@country.CountryName</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="col-sm-4">
+                <label class="form-label">City<span class="text-danger">*</span></label>
+                <select class="form-select" id="selectUserCityList" required>
+
+                    <option id="selectCityUser">Please select first country</option>
+
+                </select>
+            </div>
+
+            <div class="col-sm-4">
+                <label class="form-label">User Status<span class="text-danger">*</span></label>
+                <select class="form-select" id="editUserStatus">
+                    <option value="true">Active</option>
+                    <option value="false">InActive</option>
+                </select>
+            </div>
+        </div>
+
+        
+
+        <div class="row my-3">
+            <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
+                <button type="button" class="cancell rounded-pill btn btn-outline-dark"
+                        onclick="editUserClose('nav-user');">
+                    Cancel
+                </button>
+                <button type="submit" onclick="addUserData(event)" class="btn rounded-pill applyButton"
+                        value="2" name="command">
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+
+    // listen for changes to the file input
+$('#imageupload').on('change', function() {
+    // get the selected file
+    var file = this.files[0];
+    
+    // create a URL for the selected file
+    var url = URL.createObjectURL(file);
+    
+    // create an img element and set its src attribute
+    var img = $('<img>').attr({
+        'src': url,
+        'class': 'rounded-circle',
+        'style': 'height: 150px; max-width: 150px;'
+    });
+    
+    // remove the old image and append the new one
+    $('#imageresource').remove();
+    $('#pop').append(img);
+});
+
+
+    function getUserData(userId)
+        {
+            console.log(userId);
+            debugger
+            $.ajax({
+                         type: 'POST',
+                         url: '/Admin/EditUser',
+                         data: {"UserId": userId},
+                         success: function(data) {
+                             console.log(data);
+                             debugger
+
+                             $('#userId').val(data.userId);
+                             $('#editUserFirstName').val(data.firstName);
+                             $('#editUserLastName').val(data.lastName);
+                             $('#editUserEmail').val(data.email);
+                             $('#editUserPassword').val(data.password);
+                             $('#editUserEmployeeId').val(data.employeeId);
+                             $('#editUserDepartment').val(data.department);
+                             $('#editUserCountry').val(data.countryId);
+                             $('#editUserCity').val(data.cityId);
+                             $('#editUserText').val(data.profileText);
+                             $('#editUserStatus').val((data.status).toString());
+
+                             $('#imgPreviewUser').empty();
+                             var img = $('<img>').attr({
+                                    'src': '../Assets/StoryImages/' + data.avatar,
+                                    'class': 'rounded-circle',
+                                    'style': 'height: 150px; max-width: 150px;'
+                                });
+                                $('#imgPreviewUser').append(img);
+
+
+                         },
+                        error: function (request, error) {
+                         console.log(error);
+                     }
+                     });
+        }
+
+    function addUserData(event) {
+                        debugger
+                        var userId = $('#userId').val();
+
+                        if(userId != 0)
+                        {
+
+                             event.preventDefault();
+                             var formData = new FormData();
+                            formData.append('UserId', $('#userId').val());
+                            formData.append('FirstName', $('#editUserFirstName').val());
+                            formData.append('LastName', $('#editUserLastName').val());
+                            formData.append('Email', $('#editUserEmail').val());
+                            formData.append('Password', $('#editUserPassword').val());@*
+                            formData.append('UserImg', $('#imageupload')[0].files[0]);*@
+                            formData.append('EmployeeId', $('#editUserEmployeeId').val());
+                            formData.append('Department', $('#editUserDepartment').val());
+                            formData.append('CityId', $('#editUserCity').val());
+                            formData.append('CountryId', $('#editUserCountry').val());
+                            formData.append('ProfileText', $('#editUserText').val());
+                            formData.append('Status', $('#editUserStatus').val());
+                        }
+                        else
+                        {
+                            var Profileimg = $('#imageupload')[0].files[0];
+
+                             event.preventDefault();
+                             var formData = new FormData();
+                            formData.append('FirstName', $('#addUserFirstName').val());
+                            formData.append('LastName', $('#addUserLastName').val());
+                            formData.append('Email', $('#addUserEmail').val());
+                            formData.append('Password', $('#addUserPassword').val());
+                            formData.append('UserImg', $('#imageupload')[0].files[0]);
+                            formData.append('EmployeeId', $('#addUserEmployeeId').val());
+                            formData.append('Department', $('#addUserDepartment').val());
+                            formData.append('CityId', $('#addUserCity').val());
+                            formData.append('CountryId', $('#addUserCountry').val());
+                            formData.append('ProfileText', $('#addUserText').val());
+                            formData.append('Status', $('#addUserStatus').val());
+
+                      }
+                   
+                             $.ajax({
+                                 type: 'POST',
+                                 url: '/Admin/AddUser',
+                                 data: formData,
+                                 contentType: false,
+                                 processData: false,
+                                 success: function(data) {
+                                     debugger
+                                     userView('nav-user');
+                                     console.log(data);
+                                     $('#users').html(data);
+
+                                     if(userId != 0)
+                                     {
+                                         toastr.success('User edited');
+                                     }
+                                     else
+                                     {
+                                        toastr.success('User add sucessfully');
+                                     }
+
+                                 },
+                                 error: function (request, error) {
+                                 console.log(error);
+                                 }
+                             });
+     }
+
+     function EditAvatar(){
+            
+                    debugger
+                    var Profileimg = $('#imageupload')[0].files[0];
+                    console.log(Profileimg);
+
+                    var data = new FormData();
+                    data.append('Profileimg',Profileimg);
+
+                    //$.ajax({
+
+                    //      url: '/User/EditAvatar',
+                    //      type: 'POST',
+                    //      data: data,
+                    //      processData: false,
+                    //      contentType: false,
+                    //      success: function(response) {
+                    //        console.log(response);
+                    //         localStorage.setItem('avatarChanged', 'true');
+                    //        location.reload();
+                    //      },
+                    //      error: function(error) {
+                    //        console.log(error);
+                    //      }
+                    //                      });
+
+                    
+                }
+
+                function GetCityUser(x) {
+                    debugger
+                     var who = x;
+                     var countryId = 0;
+                     debugger
+                                if(who == 'edit')
+                                {
+                                  countryId = document.getElementById("editUserCountry").value;
+                                }
+                                else
+                                {
+                                  countryId = $("#addUserCountry").val();
+                                }
+
+                                    $.ajax({
+                                        url: "/User/GetCity",
+                                        method: "Post",
+                                        data: {"countryId": countryId},
+                                        success: function (data) {
+                                            data = JSON.parse(data);
+                                        if(who == 'edit')
+                                        {
+
+                                            $("#selectUserCityList").empty();
+                                            data.forEach((name) => {
+                                                document.getElementById("selectUserCityList").innerHTML += `
+
+                                            <option class="form-check" value="${name.CityId}" name="city" id="editUserCity">${name.CityName}</option>
+
+                                                `;
+                                            })
+                                        }
+                                        else
+                                        {
+                                            $("#selectUserCityList").empty();
+                                             data.forEach((name) => {
+                                            document.getElementById("selectUserCityList").innerHTML += `
+
+                                            <option class="form-check" value="${name.CityId}" name="city" id="addUserCity">${name.CityName}</option>
+
+                                                `;
+                                                    })
+                                        }
+                                        },
+                                        error: function (request, error) {
+                                            console.log(error);
+                                        }
+                                    })
+         }
+</script>
+
+<script>
+    function addUser(x) {
+            var page = document.getElementById(x);
+            var userpage = page.querySelector("#userpage");
+            var addUser = page.querySelector("#add");
+            userpage.style.display = "none";
+            addUser.style.display = 'block';
+        }
+        function userView(x) {
+            debugger
+            var page = document.getElementById(x);
+            var userpage = page.querySelector("#userpage");
+            var addUser = page.querySelector("#add");
+            userpage.style.display = "block";
+            addUser.style.display = 'none';
+        }
+        function editUser(x,id) {
+           debugger
+            var page = document.getElementById(x);
+            var userpage = page.querySelector("#userpage");
+            var addUser = page.querySelector("#edit");
+            userpage.style.display = "none";
+            addUser.style.display = 'block';
+            getUserData(id);
+        }
+        function editUserClose(x) {
+            debugger
+            var page = document.getElementById(x);
+            var userpage = page.querySelector("#userpage");
+            var addUser = page.querySelector("#edit");
+            userpage.style.display = "block";
+            addUser.style.display = "none";
+        }
+</script>

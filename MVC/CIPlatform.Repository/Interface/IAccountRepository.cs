@@ -27,6 +27,10 @@ namespace CIPlatform.Repository.Interface
 
         public List<StoryModel> StoryList();
 
+        public List<Banner> BannerList();
+
+        public User UserData(long UserId);
+
         public AdminModel adminModelList();
 
         public List<User> UserListSearch(string search, int pg);
@@ -42,6 +46,8 @@ namespace CIPlatform.Repository.Interface
         public List<MissionApplicationModel> ApplicationListSearch(string search, int pg);
 
         public List<StoryModel> StoryListSearch(string search, int pg);
+
+        public List<Banner> BannerListSearch(string search, int pg);
 
         public bool AddCMS(Cmspage model);
 
@@ -62,5 +68,29 @@ namespace CIPlatform.Repository.Interface
         public MissionTheme EditTheme(long ThemeId);
 
         public bool DeleteTheme(long ThemeId);
+        
+        public bool AddSkill(Skill model);
+
+        public Skill EditSkill(long SkillId);
+
+        public bool DeleteSkill(long SkillId);
+
+        public bool StatusChangeApplication(long MissionApplicationId, string Result);
+
+        public bool StatusChangeStory(long StoryId, string Result);
+
+        public bool DeleteStory(long StoryId);
+
+        public bool AddBanner(Banner model);
+
+        public Banner EditBanner(long BannerId);
+
+        public bool DeleteBanner(long BannerId);
+
+        public bool AddUser(User model);
+
+        public User EditUser(long UserId);
+
+        public bool DeleteUser(long UserId);
     }
 }

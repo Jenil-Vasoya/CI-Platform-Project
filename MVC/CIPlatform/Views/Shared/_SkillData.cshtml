@@ -1,70 +1,321 @@
-﻿
+﻿ <style>
+     .page-item.active .page-link {
+    background-color: #F88634;
+    border-color: #F88634;
+}
 
-<div class="row" style="overflow-x: auto;">
-    <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
-        <thead>
-            <tr class="table-light" style="height: 70px;">
-                <th scope="col" class="thforcmstable">Skill Name</th>
-                <th scope="col" class="thforcmstable">Status</th>
-                <th scope="col" class="thforcmstable">Action</th>
-            </tr>
-        </thead>
-        @foreach (var item in @ViewBag.SkillList)
-        {
-            <tbody class="table-border">
-                <tr>
-                    <td>@item.SkillName</td>
-                    <td>@item.Status</td>
-                    <td>
-                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalG-">
-                            <i class="bi bi-pencil-square" style="color: coral;"></i>
-                        </button>
-                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDelete-">
-                            <i class="bi bi-trash ms-3"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
+ .page-item > .page-link {
+    color: black;
+}
+
+  .applyButton {
+        border: 2px solid #F88634;
+        border-radius: 100px;
+        color: #F88634;
+        background-color: white;
         }
-    </table>
+
+        .applyButton:hover {
+            background-color: #F88634;
+            color: white;
+        }
+ </style>
+
+
+<div id="skillpage">
+    <div class="col-12 col-sm-6 col-lg-8 col-xl-9 text-sm-end mt-3 mt-sm-0">
+        <button type="button" class="btn applyButton rounded-pill"
+                onclick="addSkill('nav-skill')">
+            <i class="bi bi-plus"></i>
+            Add
+        </button>
+    </div>
+
+    <div class="row gx-0">
+        <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
+            <thead>
+                <tr class="table-light" style="height: 70px;">
+                    <th scope="col" class="thforcmstable">Skill Name</th>
+                    <th scope="col" class="thforcmstable">Status</th>
+                    <th scope="col" class="thforcmstable">Action</th>
+                </tr>
+            </thead>
+            @foreach (var item in @ViewBag.SkillList)
+            {
+                <tbody class="table-border">
+                    <tr>
+                        <td>@item.SkillName</td>
+                        <td>@item.Status</td>
+                        <td>
+                            <button type="button" class="btn p-0" onclick="editSkill('nav-skill',@item.SkillId)">
+                                <i class="bi bi-pencil-square" style="color: coral;"></i>
+                            </button>
+
+                            <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteSkill-@item.SkillId"><i class="bi bi-trash ms-3"></i></button>
+
+                            <!-- Modal For Delete Skill -->
+                            <div class="modal fade" id="exampleModalDeleteSkill-@item.SkillId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                Are you sure for delete this CMS Page
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+
+                                        <form method="post">
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <button type="submit" onclick="deleteSkill(@item.SkillId,event)" class="btn applyButton" data-bs-dismiss="modal">Delete</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+
+
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center" onchange="searchMission()">
+            <li class="page-item">
+                <button class="page-link" type="submit" aria-label="Previous" onclick="searchMission(1,'skill')">
+                    <span aria-hidden="true">&laquo;</span>
+                </button>
+            </li>
+            @{
+                double totalpages = ViewBag.ttlSkills;
+
+                for (int i = 1; i <= totalpages; i++)
+                {
+                    @if (i == ViewBag.pg_no)
+                    {
+                        <li class="page-item active">
+                            <button class="page-link" type="submit" onclick="searchMission(@i,'skill')">@i</button>
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <button class="page-link" type="submit" onclick="searchMission(@i,'skill')">@i</button>
+                        </li>
+                    }
+
+
+                }
+
+                <li class="page-item">
+                    <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@totalpages,'skill')">
+                        <span aria-hidden="true">&raquo;</span>
+                    </button>
+                </li>
+            }
+        </ul>
+    </nav>
 </div>
 
 
+<div class="border" id="add" style="display: none;">
+    <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Add </h3>
+    <hr class="m-0">
+    <form class="px-3">
+        <label class="mt-3">Skill Name </label>
+        <input type="text" class="form-control" id="addSkillName">
 
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center" onchange="searchMission()">
-        <li class="page-item">
-            <button class="page-link" type="submit" aria-label="Previous" onclick="searchMission(1,'skill')">
-                <span aria-hidden="true">&laquo;</span>
-            </button>
-        </li>
-        @{
-            double totalpages = ViewBag.ttlSkills;
-
-            for (int i = 1; i <= totalpages; i++)
-            {
-                @if (i == ViewBag.pg_no)
-                {
-                    <li class="page-item active">
-                        <button class="page-link" type="submit" onclick="searchMission(@i,'skill')">@i</button>
-
-                    </li>
-                }
-                else
-                {
-                    <li class="page-item">
-                        <button class="page-link" type="submit" onclick="searchMission(@i,'skill')">@i</button>
-                    </li>
-                }
-
-
-            }
-
-            <li class="page-item">
-                <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@totalpages,'skill')">
-                    <span aria-hidden="true">&raquo;</span>
+        <label class="mb-1 mt-3">Skill Status</label>
+        <select type="text" id="addSkillStatus" class="form-select form-control">
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+        </select>
+        <div class="row my-3">
+            <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
+                <button type="button" class="cancell rounded-pill btn btn-outline-dark"
+                        onclick="skillView('nav-skill')">
+                    Cancel
                 </button>
-            </li>
+                <button type="button" onclick="addSkillData(event)" class="btn rounded-pill applyButton"
+                        value="2" name="command">
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="border" id="edit" style="display: none;">
+    <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Edit </h3>
+    <hr class="m-0">
+    <form class="px-3">
+        <label class="mt-3">Skill Name </label>
+        <input type="hidden" class="form-control" id="SkillId">
+        <input type="text" class="form-control" id="editSkillName">
+
+        <label class="mb-1 mt-3">Skill Status</label>
+        <select type="text" id="editSkillStatus" class="form-select form-control">
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+        </select>
+        <div class="row my-3">
+            <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
+                <button type="button" class="cancell rounded-pill btn btn-outline-dark"
+                        onclick="editSkillClose('nav-skill')">
+                    Cancel
+                </button>
+                <button type="submit" onclick="addSkillData(event)" class="btn rounded-pill applyButton"
+                        value="2" name="command">
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+ <script>
+        function addSkillData(event) {
+                    debugger
+                    event.preventDefault();
+                    var SkillId = $('#SkillId').val();
+                    if(SkillId != 0)
+                    {
+                        
+                        var formData = {
+                         SkillId: SkillId,
+                         SkillName: $('#editSkillName').val(),
+                         Status: $('#editSkillStatus').val()
+                        };
+                    }
+                    else
+                    {
+                    
+                     var formData = {
+                         SkillName: $('#addSkillName').val(),
+                         Status: $('#addSkillStatus').val()
+                     };
+                    }
+
+                     $.ajax({
+                         type: 'POST',
+                         url: '/Admin/addSkill',
+                         data: formData,
+                         success: function(data) {
+                             console.log(data);
+                             debugger
+                             skillView('nav-skill');
+                             console.log(data);
+                             $('#skills').html(data);
+                             if(SkillId != 0)
+                            {
+                             toastr.success('Skill edit successfully');
+                            }
+                            else
+                            {
+                                toastr.success('Skill add sucessfully');
+                            }
+
+                         },
+                         error: function (request, error) {
+                         console.log(error);
+                         }
+                     });
+                 }
+
+        function getSkillData(skillId)
+        {
+            
+            debugger
+            $.ajax({
+                         type: 'POST',
+                         url: '/Admin/EditSkill',
+                         data: {"SkillId": skillId},
+                         success: function(data) {
+                             console.log(data);
+                             debugger
+                             $('#SkillId').val(data.skillId);
+                             $('#editSkillName').val(data.skillName);
+                             $('#editSkillStatus').val((data.status).toString());
+                         },
+                        error: function (request, error) {
+                         console.log(error);
+                     }
+                     });
         }
-    </ul>
-</nav>
+
+        function deleteSkill(skillId,event)
+        {
+            
+             debugger
+             event.preventDefault();
+             $.ajax({
+                         type: 'POST',
+                         url: '/Admin/DeleteSkill',
+                         data: {"SkillId": skillId},
+                         success: function(data) {
+                             console.log(data);
+                             debugger
+                             skillView('nav-skill');
+                             console.log(data);
+                             $('#skills').html(data);
+                             toastr.error('Skill Deleted');
+                         },
+                        error: function (request, error) {
+                         console.log(error);
+                     }
+                     });
+        }
+
+    </script>
+
+
+     <script>
+        function addSkill(x) {
+            debugger
+            var page = document.getElementById(x);
+            var skillpage = page.querySelector("#skillpage");
+            var addSkill = page.querySelector("#add");
+            skillpage.style.display = "none";
+            addSkill.style.display = 'block';
+        }
+        function skillView(x) {
+            debugger
+            var page = document.getElementById(x);
+            var skillpage = page.querySelector("#skillpage");
+            var addSkill = page.querySelector("#add");
+            skillpage.style.display = "block";
+            addSkill.style.display = 'none';
+        }
+        function editSkill(x,id) {
+           debugger
+            var page = document.getElementById(x);
+            var skillpage = page.querySelector("#skillpage");
+            var addSkill = page.querySelector("#edit");
+            skillpage.style.display = "none";
+            addSkill.style.display = 'block';
+             getSkillData(id);
+        }
+        function editSkillClose(x) {
+            debugger
+            $('#SkillId').val(0);
+            $('#editSkillName').val('');
+            $('#editSkillStatus').val('');
+            var page = document.getElementById(x);
+            var skillpage = page.querySelector("#skillpage");
+            var addSkill = page.querySelector("#edit");
+            skillpage.style.display = "block";
+            addSkill.style.display = 'none';
+        }
+
+
+    </script>

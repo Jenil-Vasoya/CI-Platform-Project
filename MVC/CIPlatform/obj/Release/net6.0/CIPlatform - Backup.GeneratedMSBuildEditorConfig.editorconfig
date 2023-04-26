@@ -71,6 +71,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BcHBsaWNhdGlvbkRhdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Shared/_BannerData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9CYW5uZXJEYXRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Shared/_CMSData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DTVNEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

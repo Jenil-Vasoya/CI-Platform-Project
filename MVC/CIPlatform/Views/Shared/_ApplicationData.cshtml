@@ -1,4 +1,6 @@
-﻿<div class="row" style="overflow-x: auto;">
+﻿
+
+<div class="row gx-0">
     <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
         <thead>
             <tr class="table-light" style="height: 70px;">
@@ -20,13 +22,25 @@
                     <td>@item.User.FirstName  @item.User.LastName</td>
                     <td>@item.AppliedAt</td>
                     <td>
-                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalG-">
-                            <i class="bi bi-check-circle" style="color: green;"></i>
-                        </button> 
+                        @if (@item.ApprovalStatus == "Approve")
+                        {
+                            <button type="button" class="btn p-0" onclick="approveApplication1('true')"><i class="bi bi-check-circle" style="color: green; opacity:30%"></i></button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn p-0" onclick="approveApplication(@item.MissionApplicationId,'true')"><i class="bi bi-check-circle" style="color: green;"></i></button>
+                        }
                         &nbsp;
-                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDelete-">
-                            <i class="bi bi-x-circle" style="color: red;"></i>
-                        </button>
+                        @if (@item.ApprovalStatus == "Decline")
+                        {
+                            <button type="button" class="btn p-0" onclick="approveApplication1('false')"><i class="bi bi-x-circle" style="color: red; opacity:30%" ></i></button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn p-0" onclick="approveApplication(@item.MissionApplicationId,'false')"><i class="bi bi-x-circle" style="color: red;"></i></button>
+                        }
+                        
+                        
                     </td>
                 </tr>
             </tbody>
@@ -71,3 +85,45 @@
             }
         </ul>
     </nav> 
+
+<script>
+
+    function approveApplication1(result)
+    {
+        if(result == "true")
+        {
+            toastr.error('Application is already approve');
+        }
+        else
+        {
+            toastr.error('Application is already declined');
+        }
+    }
+
+    function approveApplication(missionApplicationId,result)
+    {
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/StatusChangeApplication',
+            data: {"MissionApplicationId": missionApplicationId, "Result":result},
+
+            success: function(data){
+                console.log(data);
+                debugger
+                 $('#applications').html(data);
+                if(result == "true")
+                {
+                    toastr.success('Application Approved');
+                }
+                else
+                {
+                    toastr.error('Application Declined');
+                }
+            },
+            error: function (request,error)
+            {
+                console.log(error);
+            }
+        })
+    }
+</script>

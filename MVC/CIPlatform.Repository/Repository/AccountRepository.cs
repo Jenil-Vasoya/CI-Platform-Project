@@ -21,7 +21,7 @@ namespace CIPlatform.Repository.Repository
 
         public List<User> UserList()
         {
-            List<User> objUserList = _DbContext.Users.ToList();
+            List<User> objUserList = _DbContext.Users.Where(u=>u.DeletedAt == null).ToList();
             return objUserList;
         }
         
@@ -45,7 +45,7 @@ namespace CIPlatform.Repository.Repository
         
         public List<Skill> SkillList()
         {
-            List<Skill> objSkillList = _DbContext.Skills.ToList();
+            List<Skill> objSkillList = _DbContext.Skills.Where(s=> s.DeletedAt == null).ToList();
             return objSkillList;
         }
         public List<Country> CountryList()
@@ -81,7 +81,7 @@ namespace CIPlatform.Repository.Repository
         
         public List<StoryModel> StoryList()
         {
-            List<Story> stories = _DbContext.Stories.ToList();
+            List<Story> stories = _DbContext.Stories.Where(s=> s.DeletedAt == null).ToList();
 
             List<StoryModel> storyModels = new List<StoryModel>();
 
@@ -104,6 +104,12 @@ namespace CIPlatform.Repository.Repository
                 storyModels.Add(model);
             }
             return storyModels;
+        }
+
+        public List<Banner> BannerList()
+        {
+            List<Banner> objBannerList = _DbContext.Banners.Where(b=> b.DeletedAt == null).ToList();
+            return objBannerList;
         }
 
         public AdminModel adminModelList()
@@ -133,7 +139,7 @@ namespace CIPlatform.Repository.Repository
         public List<User> UserListSearch(string search, int pg)
         {
             var pageSize = 6;
-            List<User> users = _DbContext.Users.ToList();
+            List<User> users = UserList();
 
             if(search != null)
             {
@@ -184,7 +190,7 @@ namespace CIPlatform.Repository.Repository
         public List<Skill> SkillListSearch(string search, int pg)
         {
             var pageSize = 6;
-            List<Skill> skills = _DbContext.Skills.ToList();
+            List<Skill> skills = SkillList();
 
             if(search != null)
             {
@@ -233,6 +239,31 @@ namespace CIPlatform.Repository.Repository
             return stories;
         }
 
+
+        public List<Banner> BannerListSearch(string search, int pg)
+        {
+            var pageSize = 6;
+            List<Banner> banners = BannerList();
+
+            if (search != null)
+            {
+                banners = banners.Where(u => u.Text.ToLower().Contains(search.ToLower())).ToList();
+            }
+
+            if (pg != 0)
+            {
+                banners = banners.Skip((pg - 1) * pageSize).Take(pageSize).Take(pageSize).ToList();
+            }
+            return banners;
+        }
+
+        public User UserData(long UserId)
+        {
+            var user = _DbContext.Users.Where(c => c.UserId == UserId).FirstOrDefault();
+
+
+            return user;
+        }
 
         public bool AddCMS(Cmspage model)
         {
@@ -597,5 +628,279 @@ namespace CIPlatform.Repository.Repository
             _DbContext.SaveChanges();
             return true;
         }
+        
+        public bool AddSkill(Skill model)
+        {
+            if (model.SkillId == 0)
+            {
+
+                Skill skill = new Skill();
+                {
+                    skill.SkillName = model.SkillName;
+                    skill.Status = model.Status;
+
+                    _DbContext.Skills.Add(skill);
+                    _DbContext.SaveChanges();
+                }
+                return true;
+            }
+            else
+            {
+                var skill = _DbContext.Skills.Find(model.SkillId);
+                if (skill != null)
+                {
+                    skill.SkillName = model.SkillName;
+                    skill.Status = model.Status;
+                    skill.UpdatedAt = DateTime.Now;
+
+                    _DbContext.Skills.Update(skill);
+                    _DbContext.SaveChanges();
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public Skill EditSkill(long SkillId)
+        {
+            var skill = _DbContext.Skills.Where(c => c.SkillId == SkillId).FirstOrDefault();
+
+
+            return skill;
+        }
+
+        public bool DeleteSkill(long SkillId)
+        {
+            var skill = _DbContext.Skills.Where(s=> s.SkillId == SkillId).FirstOrDefault();
+            skill.DeletedAt = DateTime.Now;
+            _DbContext.Skills.Update(skill);
+            _DbContext.SaveChanges();
+            return true;
+        }
+        
+        public bool StatusChangeApplication(long MissionApplicationId, string Result)
+        {
+            var missionApplication = _DbContext.MissionApplications.Where(s=> s.MissionApplicationId == MissionApplicationId).FirstOrDefault();
+            if (Result == "true")
+            {
+                missionApplication.ApprovalStatus = "Approve";
+            }
+            else
+            {
+                missionApplication.ApprovalStatus = "Decline";
+            }
+            _DbContext.MissionApplications.Update(missionApplication);
+            _DbContext.SaveChanges();
+            return true;
+        }
+        
+        public bool StatusChangeStory(long StoryId, string Result)
+        {
+            var story = _DbContext.Stories.Where(s=> s.StoryId == StoryId).FirstOrDefault();
+            if (Result == "true")
+            {
+                story.Status = "PUBLISHED";
+            }
+            else
+            {
+                story.Status = "Decline";
+            }
+            _DbContext.Stories.Update(story);
+            _DbContext.SaveChanges();
+            return true;
+        }
+
+        public bool DeleteStory(long StoryId)
+        {
+            var story = _DbContext.Stories.Where(s => s.StoryId == StoryId).FirstOrDefault();
+            story.DeletedAt = DateTime.Now;
+            _DbContext.Stories.Update(story);
+            _DbContext.SaveChanges();
+            return true;
+        }
+
+        public bool AddBanner(Banner model)
+        {
+            if (model.BannerId == 0)
+            {
+
+                Banner banner = new Banner();
+                {
+                    banner.Text = model.Text;
+                    banner.SortOrder = model.SortOrder;
+
+                    if(model.BannerImg != null)
+                    banner.Image = model.BannerImg.FileName;
+                   
+                    _DbContext.Banners.Add(banner);
+                    _DbContext.SaveChanges();
+                    if (model.BannerImg.Length > 0)
+                    {
+                       
+                        //string path = Server.MapPath("~/wwwroot/Assets/Story");
+                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", model.BannerImg.FileName);
+                       
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            model.BannerImg.CopyTo(stream);
+                        }
+                    }
+
+                }
+                return true;
+
+            }
+            else
+            {
+                var banner = _DbContext.Banners.Find(model.BannerId);
+                if (banner != null)
+                {
+
+                    banner.Text = model.Text;
+                    banner.SortOrder = model.SortOrder;
+
+
+                    banner.Image = model.BannerImg.FileName;
+                    banner.UpdatedAt = DateTime.Now;
+
+                    _DbContext.Banners.Update(banner);
+                    _DbContext.SaveChanges();
+
+                    if (model.BannerImg.Length > 0)
+                    {
+
+                        //string path = Server.MapPath("~/wwwroot/Assets/Story");
+                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", model.BannerImg.FileName);
+
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            model.BannerImg.CopyTo(stream);
+                        }
+                    }
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public Banner EditBanner(long BannerId)
+        {
+            var banner = _DbContext.Banners.Where(b => b.BannerId == BannerId).FirstOrDefault();
+
+            return banner;
+        }
+
+        public bool DeleteBanner(long BannerId)
+        {
+            var banner = _DbContext.Banners.Where(s => s.BannerId == BannerId).FirstOrDefault();
+            banner.DeletedAt = DateTime.Now;
+            _DbContext.Banners.Update(banner);
+            _DbContext.SaveChanges();
+            return true;
+        }
+
+        public bool AddUser(User model) 
+        {
+            if (model.UserId == 0)
+            {
+
+                User user = new User();
+                {
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    user.CityId = model.CityId;
+                    user.CountryId = model.CountryId;
+                    user.Email = model.Email;
+                    user.Password = model.Password;
+                    user.EmployeeId = model.EmployeeId;
+                    user.Department = model.Department;
+                    user.ProfileText = model.ProfileText;
+                    if(model.UserImg != null)
+                    user.Avatar = model.UserImg.FileName;
+
+                    _DbContext.Users.Add(user);
+                    _DbContext.SaveChanges();
+                }
+
+                if (model.UserImg != null)
+                {
+
+                    //string path = Server.MapPath("~/wwwroot/Assets/Story");
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", model.UserImg.FileName);
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        model.UserImg.CopyTo(stream);
+                    }
+                }
+
+                return true;
+            }
+            else
+            {
+                var user = _DbContext.Users.Find(model.UserId);
+                if (user != null)
+                {
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    user.CityId = model.CityId;
+                    user.CountryId = model.CountryId;
+                    user.Email = model.Email;
+                    user.Status = model.Status;
+                    user.Password = model.Password;
+                    user.EmployeeId = model.EmployeeId;
+                    user.Department = model.Department;
+                    user.ProfileText = model.ProfileText;
+                    //if (model.UserImg != null)
+                    //    user.Avatar = model.UserImg.FileName;
+                    user.UpdatedAt = DateTime.Now;
+
+                    _DbContext.Users.Update(user);
+                    _DbContext.SaveChanges();
+
+                    //if (model.UserImg != null)
+                    //{
+
+                    //    //string path = Server.MapPath("~/wwwroot/Assets/Story");
+                    //    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", model.UserImg.FileName);
+
+                    //    using (var stream = new FileStream(path, FileMode.Create))
+                    //    {
+                    //        model.UserImg.CopyTo(stream);
+                    //    }
+                    //}
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public User EditUser(long UserId)
+        {
+            var user = _DbContext.Users.Where(b => b.UserId == UserId).FirstOrDefault();
+
+            return user;
+        }
+
+        public bool DeleteUser(long UserId)
+        {
+            var user = _DbContext.Users.Where(s => s.UserId == UserId).FirstOrDefault();
+            user.DeletedAt = DateTime.Now;
+            _DbContext.Users.Update(user);
+            _DbContext.SaveChanges();
+            return true;
+        }
+
     }
 }

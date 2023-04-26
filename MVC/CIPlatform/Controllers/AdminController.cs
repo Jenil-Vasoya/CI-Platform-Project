@@ -41,10 +41,15 @@ namespace CIPlatform.Controllers
             
             ViewBag.StoryList = _AccountRepo.StoryList().Skip((1 - 1) * 6).Take(6).ToList();
             ViewBag.ttlStories = Math.Ceiling(_AccountRepo.StoryList().Count() / 6.0);
+            
+            ViewBag.BannerList = _AccountRepo.BannerList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlBanners = Math.Ceiling(_AccountRepo.BannerList().Count() / 6.0);
 
             ViewBag.CountryList = _AccountRepo.CountryList();
             ViewBag.Themes = _AccountRepo.ThemeList();
             ViewBag.Skills = _AccountRepo.SkillList();
+
+            ViewBag.missionDatas = 1;
 
             ViewBag.pg_no = 1;
 
@@ -123,6 +128,16 @@ namespace CIPlatform.Controllers
 
                 return PartialView("_StoryData");
             }
+            else if (who == "banner")
+            {
+                var model = _AccountRepo.BannerListSearch(search, pg);
+                ViewBag.BannerList = model;
+                ViewBag.pg_no = pg;
+                ViewBag.ttlBanners = Math.Ceiling(_AccountRepo.BannerListSearch(search, pg = 0).Count() / 6.0);
+
+                return PartialView("_BannerData");
+
+            }
             else 
             {
                 var model = _AccountRepo.UserListSearch(search, pg);
@@ -133,6 +148,13 @@ namespace CIPlatform.Controllers
 
                 return PartialView("_UserData");
             }
+        }
+
+        public JsonResult GetUserData(long UserId)
+        {
+            var adminModel = _AccountRepo.UserData(UserId);
+
+            return Json(adminModel);
         }
 
         public ActionResult AddCMS(Cmspage model)
@@ -227,6 +249,133 @@ namespace CIPlatform.Controllers
 
             return PartialView("_ThemeData");
         }
+        
+        public ActionResult AddSkill(Skill model)
+        {
+            bool result = _AccountRepo.AddSkill(model);
+
+            ViewBag.SkillList = _AccountRepo.SkillList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlSkills = Math.Ceiling(_AccountRepo.SkillList().Count() / 6.0);
+            ViewBag.pg_no = 1;
+
+            return PartialView("_SkillData");
+
+        }
+
+        public JsonResult EditSkill(long SkillId)
+        {
+            var adminModel = _AccountRepo.EditSkill(SkillId);
+
+            return Json(adminModel);
+        }
+
+        public ActionResult DeleteSkill(long SkillId)
+        {
+            bool result = _AccountRepo.DeleteSkill(SkillId);
+
+            ViewBag.SkillList = _AccountRepo.SkillList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlSkills = Math.Ceiling(_AccountRepo.SkillList().Count() / 6.0);
+            ViewBag.pg_no = 1;
+
+            return PartialView("_SkillData");
+        }
+        
+        [HttpPost]
+        public ActionResult StatusChangeApplication(long MissionApplicationId,string Result)
+        {
+            bool result = _AccountRepo.StatusChangeApplication(MissionApplicationId,Result);
+
+            ViewBag.MissionApplicationList = _AccountRepo.MissionApplicationList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlApplications = Math.Ceiling(_AccountRepo.MissionApplicationList().Count() / 6.0);
+            ViewBag.pg_no = 1;
+
+            return PartialView("_ApplicationData");
+        }
+
+        [HttpPost]
+        public ActionResult StatusChangeStory(long StoryId, string Result)
+        {
+            bool result = _AccountRepo.StatusChangeStory(StoryId, Result);
+
+            ViewBag.StoryList = _AccountRepo.StoryList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlStories = Math.Ceiling(_AccountRepo.StoryList().Count() / 6.0);
+            ViewBag.pg_no = 1;
+
+            return PartialView("_StoryData");
+        }
+
+        public ActionResult DeleteStory(long StoryId)
+        {
+            bool result = _AccountRepo.DeleteStory(StoryId);
+
+            ViewBag.StoryList = _AccountRepo.StoryList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlStories = Math.Ceiling(_AccountRepo.StoryList().Count() / 6.0);
+            ViewBag.pg_no = 1;
+
+            return PartialView("_StoryData");
+        }
+
+        [HttpPost]
+        public ActionResult AddBanner(Banner model)
+        {
+            bool result = _AccountRepo.AddBanner(model);
+
+            ViewBag.BannerList = _AccountRepo.BannerList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlBanners = Math.Ceiling(_AccountRepo.BannerList().Count() / 6.0);
+            ViewBag.pg_no = 1;
+
+            return PartialView("_BannerData");
+
+        }
+
+        public JsonResult EditBanner(long BannerId)
+         {
+            var adminModel = _AccountRepo.EditBanner(BannerId);
+
+            return Json(adminModel);
+        }
+
+        public ActionResult DeleteBanner(long BannerId)
+        {
+            bool result = _AccountRepo.DeleteBanner(BannerId);
+
+            ViewBag.BannerList = _AccountRepo.BannerList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlBanners = Math.Ceiling(_AccountRepo.BannerList().Count() / 6.0);
+            ViewBag.pg_no = 1;
+
+            return PartialView("_BannerData");
+        }
+
+        public ActionResult AddUser(User model)
+        {
+            bool result = _AccountRepo.AddUser(model);
+
+            ViewBag.UserList = _AccountRepo.UserList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlUsers = Math.Ceiling(_AccountRepo.UserList().Count() / 6.0);
+            ViewBag.pg_no = 1;
+
+            return PartialView("_UserData");
+
+        }
+
+        public ActionResult DeleteUser(long UserId)
+        {
+            bool result = _AccountRepo.DeleteUser(UserId);
+
+            ViewBag.UserList = _AccountRepo.UserList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlUsers = Math.Ceiling(_AccountRepo.UserList().Count() / 6.0);
+            ViewBag.pg_no = 1;
+
+            return PartialView("_UserData");
+        }
+
+        [HttpPost]
+        public JsonResult EditUser(long UserId)
+        {
+            var adminModel = _AccountRepo.EditUser(UserId);
+
+            return Json(adminModel);
+        }
         //private readonly CiPlatformContext _db;
 
         //public AdminController(CiPlatformContext db)
@@ -238,6 +387,31 @@ namespace CIPlatform.Controllers
         //{
         //    IEnumerable<Admin> objAdminList = _db.Admins;
         //    return View(objAdminList);
+        //}
+
+
+        //public IActionResult StoryDetail(long id)
+        //{
+
+        //        List<User> users = _StoryRepo.UserList();
+        //        ViewBag.Users = users;
+
+        //        _StoryRepo.StoryView(id, UserId);
+
+
+        //        List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
+
+        //        var missions = missionDatas.Where(x => x.StoryId == id).FirstOrDefault();
+        //        ViewBag.missionDatas = missions;
+
+
+        //        ViewBag.UserId = UserId;
+        //        ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
+        //        ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
+        //        ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
+
+        //        return View();
+
         //}
 
         [HttpPost]
