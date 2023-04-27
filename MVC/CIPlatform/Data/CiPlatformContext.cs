@@ -271,54 +271,54 @@ public partial class CiPlatformContext : DbContext
                 .HasConstraintName("FK_GoalMission_Mission");
         });
 
-        modelBuilder.Entity<Mission>(entity =>
-        {
-            entity.HasKey(e => e.MissionId).HasName("PK__Mission__66DFB85426E37C26");
+        //modelBuilder.Entity<Mission>(entity =>
+        //{
+        //    entity.HasKey(e => e.MissionId).HasName("PK__Mission__66DFB85426E37C26");
 
-            entity.ToTable("Mission");
+        //    entity.ToTable("Mission");
 
-            entity.Property(e => e.MissionId).HasColumnName("MissionID");
-            entity.Property(e => e.Availability)
-                .HasMaxLength(20)
-                .IsUnicode(false);
-            entity.Property(e => e.CityId).HasColumnName("CityID");
-            entity.Property(e => e.CountryId).HasColumnName("CountryID");
-            entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.DeletedAt).HasColumnType("datetime");
-            entity.Property(e => e.Description).HasMaxLength(2000);
-            entity.Property(e => e.EndDate).HasColumnType("datetime");
-            entity.Property(e => e.MissionThemeId).HasColumnName("MissionThemeID");
-            entity.Property(e => e.MissionType)
-                .HasMaxLength(10)
-                .IsUnicode(false);
-            entity.Property(e => e.OrganizationDetail).HasMaxLength(500);
-            entity.Property(e => e.OrganizationName)
-                .HasMaxLength(255)
-                .IsUnicode(false);
-            entity.Property(e => e.ShortDescription).HasMaxLength(500);
-            entity.Property(e => e.StartDate).HasColumnType("datetime");
-            entity.Property(e => e.Title)
-                .HasMaxLength(128)
-                .IsUnicode(false);
-            entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
+        //    entity.Property(e => e.MissionId).HasColumnName("MissionID");
+        //    entity.Property(e => e.Availability)
+        //        .HasMaxLength(20)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.CityId).HasColumnName("CityID");
+        //    entity.Property(e => e.CountryId).HasColumnName("CountryID");
+        //    entity.Property(e => e.CreatedAt)
+        //        .HasDefaultValueSql("(getdate())")
+        //        .HasColumnType("datetime");
+        //    entity.Property(e => e.DeletedAt).HasColumnType("datetime");
+        //    entity.Property(e => e.Description).HasMaxLength(2000);
+        //    entity.Property(e => e.EndDate).HasColumnType("datetime");
+        //    entity.Property(e => e.MissionThemeId).HasColumnName("MissionThemeID");
+        //    entity.Property(e => e.MissionType)
+        //        .HasMaxLength(10)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.OrganizationDetail).HasMaxLength(500);
+        //    entity.Property(e => e.OrganizationName)
+        //        .HasMaxLength(255)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.ShortDescription).HasMaxLength(500);
+        //    entity.Property(e => e.StartDate).HasColumnType("datetime");
+        //    entity.Property(e => e.Title)
+        //        .HasMaxLength(128)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
 
-            entity.HasOne(d => d.City).WithMany(p => p.Missions)
-                .HasForeignKey(d => d.CityId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Mission_City");
+        //    entity.HasOne(d => d.City).WithMany(p => p.Missions)
+        //        .HasForeignKey(d => d.CityId)
+        //        .OnDelete(DeleteBehavior.ClientSetNull)
+        //        .HasConstraintName("FK_Mission_City");
 
-            entity.HasOne(d => d.Country).WithMany(p => p.Missions)
-                .HasForeignKey(d => d.CountryId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Mission_Country");
+        //    entity.HasOne(d => d.Country).WithMany(p => p.Missions)
+        //        .HasForeignKey(d => d.CountryId)
+        //        .OnDelete(DeleteBehavior.ClientSetNull)
+        //        .HasConstraintName("FK_Mission_Country");
 
-            entity.HasOne(d => d.MissionTheme).WithMany(p => p.Missions)
-                .HasForeignKey(d => d.MissionThemeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Mission_MissionTheme");
-        });
+        //    entity.HasOne(d => d.MissionTheme).WithMany(p => p.Missions)
+        //        .HasForeignKey(d => d.MissionThemeId)
+        //        .OnDelete(DeleteBehavior.ClientSetNull)
+        //        .HasConstraintName("FK_Mission_MissionTheme");
+        //});
 
         modelBuilder.Entity<MissionApplication>(entity =>
         {

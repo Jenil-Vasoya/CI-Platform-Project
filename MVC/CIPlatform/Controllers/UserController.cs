@@ -174,6 +174,7 @@ namespace CIPlatform.Controllers
                                 HttpContext.Session.SetInt32("userid", (int)objUser.UserId);
                                 HttpContext.Session.SetString("FirstName", objUser.FirstName + " " + objUser.LastName);
                                 HttpContext.Session.SetString("Country", objLogin.CountryId.ToString());
+                                HttpContext.Session.SetString("Role", objUser.Role.ToString());
 
 
                                 TempData["Success"] = "Login Successfully";

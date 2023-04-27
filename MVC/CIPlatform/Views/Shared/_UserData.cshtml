@@ -5,7 +5,7 @@
         margin-top: -150px;
     }
 
-    #imageupload {
+    #addUserAvatar {
         position: absolute;
         width: 1px;
         height: 150px;
@@ -135,10 +135,10 @@
     <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Add </h3>
     <hr class="m-0">
     <form class="px-3" enctype="multipart/form-data">
-        <a id="pop">
-            <input id="imageupload" type="file" class="file" accept="image/jpeg, image/png, image/jpg">
+        <a id="addUserPop">
+            <input id="addUserAvatar" type="file" class="file" accept="image/jpeg, image/png, image/jpg">
 
-            <img id="imageresource" src="~/Assets/StoryImages/404-Page-image.png" class="rounded-circle" style="height:150px; max-width:150px;">
+            <img id="addUserDefaultAvatar" src="~/Assets/StoryImages/404-Page-image.png" class="rounded-circle" style="height:150px; max-width:150px;">
         </a>
 
         <div class="row">
@@ -240,9 +240,9 @@
         <div class="row">
 
             <div class="col-2 d-flex justify-content-center align-items-end">
-                <div id="imgPreviewUser" style="height:150px; max-width:150px;">
-                    <input id="imageuploadedit" type="file" class="file" accept="image/jpeg, image/png, image/jpg">
-                </div>
+                <a id="editUserPop">
+                    <input id="editUserAvatar" type="file" class="file" style="opacity: 0;height: 150px;max-width: 150px;margin-top: 50px;" accept="image/jpeg, image/png, image/jpg">
+                </a>
             </div>
 
             <div class="col-10">
@@ -348,7 +348,7 @@
 <script>
 
     // listen for changes to the file input
-$('#imageupload').on('change', function() {
+$('#addUserAvatar').on('change', function() {
     // get the selected file
     var file = this.files[0];
     
@@ -357,14 +357,36 @@ $('#imageupload').on('change', function() {
     
     // create an img element and set its src attribute
     var img = $('<img>').attr({
+        'id': 'addUserDefaultAvatar',
         'src': url,
         'class': 'rounded-circle',
         'style': 'height: 150px; max-width: 150px;'
     });
     
     // remove the old image and append the new one
-    $('#imageresource').remove();
-    $('#pop').append(img);
+    $('#addUserDefaultAvatar').remove();
+    $('#addUserPop').append(img);
+});
+
+
+$('#editUserAvatar').on('change', function() {
+    $('#editUserAvatarImg').remove();
+    // get the selected file
+    var file = this.files[0];
+    
+    // create a URL for the selected file
+    var url = URL.createObjectURL(file);
+    
+    // create an img element and set its src attribute
+    var img = $('<img>').attr({
+        'id': 'editUserAvatarImg',
+        'src': url,
+        'class': 'rounded-circle',
+        'style': 'height: 150px; max-width: 150px;margin-top: -238px;'
+    });
+    
+    // remove the old image and append the new one
+    $('#editUserPop').append(img);
 });
 
 
@@ -392,13 +414,13 @@ $('#imageupload').on('change', function() {
                              $('#editUserText').val(data.profileText);
                              $('#editUserStatus').val((data.status).toString());
 
-                             $('#imgPreviewUser').empty();
                              var img = $('<img>').attr({
+                                    'id': 'editUserAvatarImg',
                                     'src': '../Assets/StoryImages/' + data.avatar,
                                     'class': 'rounded-circle',
-                                    'style': 'height: 150px; max-width: 150px;'
+                                    'style': 'height: 150px; max-width: 150px;margin-top: -238px;'
                                 });
-                                $('#imgPreviewUser').append(img);
+                                $('#editUserPop').append(img);
 
 
                          },
@@ -421,8 +443,8 @@ $('#imageupload').on('change', function() {
                             formData.append('FirstName', $('#editUserFirstName').val());
                             formData.append('LastName', $('#editUserLastName').val());
                             formData.append('Email', $('#editUserEmail').val());
-                            formData.append('Password', $('#editUserPassword').val());@*
-                            formData.append('UserImg', $('#imageupload')[0].files[0]);*@
+                            formData.append('Password', $('#editUserPassword').val());
+                            formData.append('UserImg', $('#editUserAvatar')[0].files[0]);
                             formData.append('EmployeeId', $('#editUserEmployeeId').val());
                             formData.append('Department', $('#editUserDepartment').val());
                             formData.append('CityId', $('#editUserCity').val());
@@ -432,7 +454,7 @@ $('#imageupload').on('change', function() {
                         }
                         else
                         {
-                            var Profileimg = $('#imageupload')[0].files[0];
+                            var Profileimg = $('#addUserAvatar')[0].files[0];
 
                              event.preventDefault();
                              var formData = new FormData();
@@ -440,7 +462,7 @@ $('#imageupload').on('change', function() {
                             formData.append('LastName', $('#addUserLastName').val());
                             formData.append('Email', $('#addUserEmail').val());
                             formData.append('Password', $('#addUserPassword').val());
-                            formData.append('UserImg', $('#imageupload')[0].files[0]);
+                            formData.append('UserImg', $('#addUserAvatar')[0].files[0]);
                             formData.append('EmployeeId', $('#addUserEmployeeId').val());
                             formData.append('Department', $('#addUserDepartment').val());
                             formData.append('CityId', $('#addUserCity').val());
@@ -481,7 +503,7 @@ $('#imageupload').on('change', function() {
      function EditAvatar(){
             
                     debugger
-                    var Profileimg = $('#imageupload')[0].files[0];
+                    var Profileimg = $('#addUserAvatar')[0].files[0];
                     console.log(Profileimg);
 
                     var data = new FormData();
@@ -585,6 +607,7 @@ $('#imageupload').on('change', function() {
         }
         function editUserClose(x) {
             debugger
+            $('#editUserAvatarImg').remove();
             var page = document.getElementById(x);
             var userpage = page.querySelector("#userpage");
             var addUser = page.querySelector("#edit");

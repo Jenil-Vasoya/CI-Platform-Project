@@ -10,18 +10,19 @@
                 <ul class="navbar-nav storyp">
 
 
-                     <li class="nav-item">
-                        @{
-                        if(@Context.Session.GetString("Country") is not null)
-                        {
-                             <a class="nav-link" asp-controller="Home" asp-action="MissionGrid" >Home</a>
-                        }
-                        else
-                        {
-                             <a class="nav-link" asp-controller="Home" asp-action="MissionGrid" style="pointer-events:none;">Home</a>
-                        }
-                       }
-                        </li>
+            <li class="nav-item">
+                @{
+                    if (@Context.Session.GetString("Country") is not null)
+                    {
+                        <a class="nav-link" asp-controller="Home" asp-action="MissionGrid">Home</a>
+                    }
+                    else
+                    {
+                        <a class="nav-link" asp-controller="Home" asp-action="MissionGrid" style="pointer-events:none;">Home</a>
+                    }
+                    
+                }
+            </li>
 
                     <li class="nav-item">
                         @{
@@ -39,12 +40,17 @@
 
 
 
-            @*<li class="nav-item">
-                <a class="nav-link" asp-controller="Home" asp-action="MissionGrid">Home</a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link" asp-controller="Story" asp-action="StoryList">Stories</a>
-            </li>*@
+                @{
+                    string role = @Context.Session.GetString("Role");
+
+                    if (role.Trim() == "Admin")
+                    {
+                        <a class="nav-link" asp-controller="Admin" asp-action="Index">Admin Panel</a>
+                    }
+                }
+            </li>
+            
                     <li class="nav-item dropdown policyp">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">

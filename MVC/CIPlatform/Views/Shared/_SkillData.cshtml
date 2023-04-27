@@ -208,7 +208,7 @@
 
                      $.ajax({
                          type: 'POST',
-                         url: '/Admin/addSkill',
+                         url: '/Admin/AddSkill',
                          data: formData,
                          success: function(data) {
                              console.log(data);
@@ -290,6 +290,8 @@
         }
         function skillView(x) {
             debugger
+            $('#addSkillName').val('');
+            $('#addSkillStatus').val('true');
             var page = document.getElementById(x);
             var skillpage = page.querySelector("#skillpage");
             var addSkill = page.querySelector("#add");

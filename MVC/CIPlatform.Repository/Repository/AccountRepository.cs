@@ -56,7 +56,7 @@ namespace CIPlatform.Repository.Repository
         
         public List<MissionApplicationModel> MissionApplicationList()
         {
-            List<MissionApplication> missionApplications = _DbContext.MissionApplications.ToList();
+            List<MissionApplication> missionApplications = _DbContext.MissionApplications.OrderByDescending(m => m.ApprovalStatus).ToList();
 
             List<MissionApplicationModel> missionsApplication = new List<MissionApplicationModel>();
 
@@ -81,7 +81,7 @@ namespace CIPlatform.Repository.Repository
         
         public List<StoryModel> StoryList()
         {
-            List<Story> stories = _DbContext.Stories.Where(s=> s.DeletedAt == null).ToList();
+            List<Story> stories = _DbContext.Stories.Where(s=> s.DeletedAt == null).OrderByDescending(s => s.Status == "PENDING").ToList();
 
             List<StoryModel> storyModels = new List<StoryModel>();
 
@@ -483,7 +483,7 @@ namespace CIPlatform.Repository.Repository
                         }
                     }
 
-                    if (model.Images.Count != 0)
+                    if (model.Images != null)
                     {
                         List<MissionMedium> missionMedia = _DbContext.MissionMedia.Where(a => a.MissionId == mission.MissionId && a.MediaType == "png").ToList();
                         foreach (var missionMediaItem in missionMedia)
@@ -555,15 +555,34 @@ namespace CIPlatform.Repository.Repository
 
 
             var skill = _DbContext.MissionSkills.Where(u => u.MissionId == MissionId).ToList();
+            var images = _DbContext.MissionMedia.Where(m => m.MissionId == MissionId).ToList();
 
-               
-            List<string> list = new List<string>();
-            foreach(var skillItem in skill)
+            if (images.Count > 0)
             {
-                var skillName = _DbContext.Skills.FirstOrDefault(s => s.SkillId == skillItem.SkillId).SkillName;
-                list.Add(skillName);
+                var path = new List<string>();
+                foreach (var i in images)
+                {
+                    if (i.MediaType == "png")
+                    {
+                        string path1 = i.MediaName;
+
+                        path.Add(path1);
+                    }
+
+                }
+                mission.MissionImages = path;
             }
-            mission.skillNames = list;
+
+            if (skill.Count > 0)
+            {
+                List<string> list = new List<string>();
+                foreach (var skillItem in skill)
+                {
+                    var skillName = _DbContext.Skills.FirstOrDefault(s => s.SkillId == skillItem.SkillId).SkillName;
+                    list.Add(skillName);
+                }
+                mission.skillNames = list;
+            }
             return mission;
         }
 
@@ -640,8 +659,8 @@ namespace CIPlatform.Repository.Repository
                     skill.Status = model.Status;
 
                     _DbContext.Skills.Add(skill);
-                    _DbContext.SaveChanges();
                 }
+                    _DbContext.SaveChanges();
                 return true;
             }
             else
@@ -859,24 +878,24 @@ namespace CIPlatform.Repository.Repository
                     user.EmployeeId = model.EmployeeId;
                     user.Department = model.Department;
                     user.ProfileText = model.ProfileText;
-                    //if (model.UserImg != null)
-                    //    user.Avatar = model.UserImg.FileName;
+                    if (model.UserImg != null)
+                        user.Avatar = model.UserImg.FileName;
                     user.UpdatedAt = DateTime.Now;
 
                     _DbContext.Users.Update(user);
                     _DbContext.SaveChanges();
 
-                    //if (model.UserImg != null)
-                    //{
+                    if (model.UserImg != null)
+                    {
 
-                    //    //string path = Server.MapPath("~/wwwroot/Assets/Story");
-                    //    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", model.UserImg.FileName);
+                        //string path = Server.MapPath("~/wwwroot/Assets/Story");
+                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", model.UserImg.FileName);
 
-                    //    using (var stream = new FileStream(path, FileMode.Create))
-                    //    {
-                    //        model.UserImg.CopyTo(stream);
-                    //    }
-                    //}
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            model.UserImg.CopyTo(stream);
+                        }
+                    }
                     return true;
                 }
                 else

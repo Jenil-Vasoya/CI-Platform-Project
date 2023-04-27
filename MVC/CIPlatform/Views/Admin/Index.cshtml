@@ -28,6 +28,12 @@
 
     <title>Document</title>
     <style>
+
+        .dropdown-item:hover {
+            background-color: #F88634;
+            color: white;
+            cursor: pointer;
+        }
         .applyButton {
         border: 2px solid #F88634;
         border-radius: 100px;
@@ -273,32 +279,25 @@
 
             <div class="col-10 col-md-8 col-lg-9 col-xl-10">
 
-
-                <nav class="navbar navbar-expand-lg navbar-light " style=" background: #FFFFFF 0% 0% no-repeat padding-box; box-shadow: 3px 5px 10px #00000014; opacity: 1;">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 3px 5px 10px rgba(0,0,0,0.14);">
                     <div class="container-fluid">
-
-                        <span>Thursday, November 3, 2022, 10:06 AM</span>
-
-
-                        <form class="d-flex" class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <img src="./images/user-img.png" class="profile-nav" alt="">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    style="color: black;" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Evan Donohue
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Action1</a></li>
-                                    <li><a class="dropdown-item" href="#">Action1</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Action1</a></li>
-                                </ul>
-                            </li>
-                        </form>
+                        <span class="navbar-text me-auto">
+                            @*Thursday, November 3, 2022, 10:06 AM*@
+                             @DateTime.Now.ToString("dddd, MMMM d, yyyy, h:mm tt")
+                        </span>
+                            <a class="nav-link " style="padding-right: 0px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="~/Assets/StoryImages/@ViewBag.Avatar" class="img rounded-5" style="height: 40px; width: 40px;">
+                    </a>
+                        
+                        <a class="nav-link dropdown-center dropdown-toggle ms-1 " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">@ViewBag.UserName</a>
+                        <ul class=" dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" asp-controller="User" asp-action="EditProfile" asp-route-id="@ViewBag.UserId">Add Profile</a></li>
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="MissionGrid">Home</a></li>
+                            <li><a class="dropdown-item" asp-controller="User" asp-action="LogOut">Log Out</a></li>
+                        </ul>
                     </div>
                 </nav>
+
 
 
                 <div class="m-2">
@@ -365,9 +364,16 @@
                         </div>
 
                         <div class="tab-pane fade" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
-                            <h4 class="pt-3 pb-2">Mission</h4>
-                            <input class="form-control pl-5 w-25" style="border-style:none;" id="name" name="searchMission" type="search" placeholder="&nbsp;Search Mission..." oninput="searchMission(1,'mission')" aria-label="Search">
+                            <div id="searchMission1">
+                                <h4 class="pt-3 pb-2">Mission</h4>
+                                <input class="form-control pl-5 w-25" style="border-style:none;" id="name" name="searchMission" type="search" placeholder="&nbsp;Search Mission..." oninput="searchMission(1,'mission')" aria-label="Search">
 
+                                    <button type="button" id="addMission" class="btn applyButton rounded-pill"
+                                            onclick="addMission('nav-mission')">
+                                        <i class="bi bi-plus"></i>
+                                        Add
+                                    </button>
+                            </div>
                             <div id="missions">
                             <partial name="_MissionData" />
                             </div>
@@ -375,7 +381,7 @@
 
                         <div class="tab-pane fade" id="nav-theme" role="tabpanel" aria-labelledby="nav-theme-tab">
                             <h4 class="pt-3 pb-2">Theme</h4>
-                            <input class="form-control pl-5 w-25" style="border-style:none;" id="name" name="searchTheme" type="search" placeholder="&nbsp;Search Theme..." oninput="searchMission(1,'theme')" aria-label="Search">
+                            <input class="form-control pl-5 w-25" style="border-style:none;" id="searchTheme" name="searchTheme" type="search" placeholder="&nbsp;Search Theme..." oninput="searchMission(1,'theme')" aria-label="Search">
 
                             <div id="themes">
                             <partial name="_ThemeData" />
@@ -506,7 +512,7 @@
 
 <script>
       function searchMission(pg,who) {
-          
+          debugger
             var search = $('input[name="search"]').val();
             if(search == "")
             {
@@ -518,7 +524,7 @@
             }
             if(search == "")
             {
-                search = $('input[name="searchTheme"]').val();
+                search = $('#searchTheme').val();
             }
             if(search == "")
             {

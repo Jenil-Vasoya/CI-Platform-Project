@@ -131,15 +131,15 @@
     <hr class="m-0">
     <form class="px-3">
         <label class="mt-3"> Title </label>
-        <input type="text" class="form-control" id="formGroupExampleInput">
+        <input type="text" class="form-control" id="addCmsTitle">
         <label class="mt-3"> Description</label>
-        <textarea id="editor"></textarea>
+        <textarea id="addCmsDescription"></textarea>
 
         <label class="mt-3"> Slug </label>
-        <input type="text" class="form-control" id="formGroupExampleInput">
+        <input type="text" class="form-control" id="addCmsSlug">
 
         <label class="mb-1 mt-3">Mission</label>
-        <select type="text" id="status" class="form-select form-control">
+        <select type="text" id="addCmsStatus" class="form-select form-control">
             <option value="true">Active</option>
             <option value="false">Inactive</option>
         </select>
@@ -166,15 +166,15 @@
                                 <form class="px-3">
                                     <input type="hidden" id="cmspageId" />
                                     <label for="select mission" class="mt-3"> Title </label>
-                                    <input type="text"  class="form-control" id="titleedit">
+                                    <input type="text"  class="form-control" id="editCmsTitle">
                                     <label class="mt-3"> Description</label>
-                                    <textarea id="editoredit"></textarea>
+                                    <textarea id="editCmsDescription"></textarea>
                                     
                                     <label class="mt-3"> Slug </label>
-                                    <input type="text" class="form-control" id="slugedit">
+                                    <input type="text" class="form-control" id="editCmsSlug">
 
                                     <label class="mb-1 mt-3">Mission</label>
-                                    <select type="text" id="statusedit" class="form-select form-control">
+                                    <select type="text" id="editCmsStatus" class="form-select form-control">
                                         <option value="true">Active</option>
                                         <option value="false">Inactive</option>
                                     </select>
@@ -201,20 +201,20 @@
                         event.preventDefault();
                       var formData = {
                          cmspageId: cmspageId,
-                         title: $('#titleedit').val(),
-                         description: $('#editoredit').val(),
-                         slug: $('#slugedit').val(),
-                         status: $('#statusedit').val()
+                         title: $('#editCmsTitle').val(),
+                         description: $('#editCmsDescription').val(),
+                         slug: $('#editCmsSlug').val(),
+                         status: $('#editCmsStatus').val()
                      };
                     }
                     else
                     {
                      event.preventDefault();
                      var formData = {
-                         title: $('#formGroupExampleInput').val(),
-                         description: $('#editor').val(),
-                         slug: $('#formGroupExampleInput').val(),
-                         status: $('#status').val()
+                         title: $('#addCmsTitle').val(),
+                         description: $('#addCmsDescription').val(),
+                         slug: $('#addCmsSlug').val(),
+                         status: $('#addCmsStatus').val()
                      };
                     }
 
@@ -257,10 +257,10 @@
                              console.log(data);
                              debugger
                              $('#cmspageId').val(data.cmspageId);
-                             $('#titleedit').val(data.title);
-                             $('#editoredit').val(data.description);
-                             $('#slugedit').val(data.slug);
-                             $('#statusedit').val((data.status).toString());
+                             $('#editCmsTitle').val(data.title);
+                             $('#editCmsDescription').val(data.description);
+                             $('#editCmsSlug').val(data.slug);
+                             $('#editCmsStatus').val((data.status).toString());
                          },
                         error: function (request, error) {
                          console.log(error);
@@ -273,7 +273,7 @@
             
              debugger
              event.preventDefault();
-            $.ajax({
+             $.ajax({
                          type: 'POST',
                          url: '/Admin/DeleteCMS',
                          data: {"CMSId": cmsId},
@@ -305,6 +305,10 @@
         }
         function addpage(x) {
             debugger
+            $('#addCmsTitle').val('');
+            $('#addCmsDescription').val('');
+            $('#addCmsSlug').val('');
+            $('#addCmsStatus').val('true');
             var page = document.getElementById(x);
             var cmsPage = page.querySelector("#cmspage");
             var addForm = page.querySelector("#add");

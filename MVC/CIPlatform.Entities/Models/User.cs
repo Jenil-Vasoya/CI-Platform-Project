@@ -29,13 +29,12 @@ public partial class User
     [Compare("Password", ErrorMessage = "Please enter the same password")]
     public string? ConfirmPassword { get; set; }
 
-
     public int PhoneNumber { get; set; }
-
-    public string? Avatar { get; set; }
 
     [NotMapped]
     public IFormFile? UserImg { get; set; }
+
+    public string? Avatar { get; set; }
 
     public string? WhyIvolunteer { get; set; }
 
@@ -61,11 +60,12 @@ public partial class User
 
     public DateTime? DeletedAt { get; set; }
 
+    public string Role { get; set; } = null!;
+
     public virtual City? City { get; set; }
 
     public virtual ICollection<Comment> Comments { get; } = new List<Comment>();
 
-    [NotMapped]
     public virtual ICollection<ContactU> ContactUs { get; } = new List<ContactU>();
 
     public virtual Country? Country { get; set; }

@@ -39,7 +39,7 @@ public partial class Mission
 
     public string? OrganizationDetail { get; set; }
 
-    public int? Availability { get; set; }
+    public int? TotalSeats { get; set; }
 
     public DateTime CreatedAt { get; set; }
 
@@ -51,7 +51,7 @@ public partial class Mission
     public List<int>? MissionSkill { get; set; }
 
     [NotMapped]
-    public List<string>? StoryImages { get; set; }
+    public List<string>? MissionImages { get; set; }
 
     [NotMapped]
     public List<string>? skillNames { get; set; }
@@ -64,6 +64,8 @@ public partial class Mission
 
     [NotMapped]
     public List<IFormFile>? Documents { get; set; }
+
+    public string? Availibility { get; set; }
 
     public virtual City City { get; set; } = null!;
 
@@ -81,6 +83,8 @@ public partial class Mission
 
     public virtual ICollection<MissionInvite> MissionInvites { get; } = new List<MissionInvite>();
 
+
+    [JsonIgnore]
     public virtual ICollection<MissionMedium> MissionMedia { get; } = new List<MissionMedium>();
 
     public virtual ICollection<MissionRating> MissionRatings { get; } = new List<MissionRating>();

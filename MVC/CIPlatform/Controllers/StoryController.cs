@@ -145,7 +145,7 @@ namespace CIPlatform.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddStory(MissionData objStory , string submit)
+        public IActionResult AddStory(MissionData objStory , string? submit)
         {
            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
             if (UserId > 0)

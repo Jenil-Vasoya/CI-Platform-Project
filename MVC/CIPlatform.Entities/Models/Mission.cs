@@ -52,7 +52,7 @@ public partial class Mission
     public List<int>? MissionSkill { get; set; }
 
     [NotMapped]
-    public List<string>? StoryImages { get; set; }
+    public List<string>? MissionImages { get; set; }
 
     [NotMapped]
     public List<string>? skillNames { get; set; }
@@ -84,9 +84,12 @@ public partial class Mission
 
     public virtual ICollection<MissionInvite> MissionInvites { get; } = new List<MissionInvite>();
 
+
+    [JsonIgnore]
     public virtual ICollection<MissionMedium> MissionMedia { get; } = new List<MissionMedium>();
 
     public virtual ICollection<MissionRating> MissionRatings { get; } = new List<MissionRating>();
+
 
     [JsonIgnore]
     public virtual ICollection<MissionSkill> MissionSkills { get; } = new List<MissionSkill>();

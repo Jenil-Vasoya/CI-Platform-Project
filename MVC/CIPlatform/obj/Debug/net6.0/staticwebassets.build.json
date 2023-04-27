@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "O26ENnsXZv6cw+GVK8XFKIBXaF3G1DhuErODCNb6vaY=",
+  "Hash": "fC6UmR9JCD6s/QgWCXnQnZ4A+tithfyrfU3xLt8XF0E=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -2531,6 +2531,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\volunteer1.png"
+    },
+    {
+      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\volunteer3.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "Assets/StoryImages/volunteer3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\volunteer3.png"
     },
     {
       "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\volunteer4.png",

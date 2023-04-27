@@ -1,21 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace CIPlatform.Entities.Models;
 
 public partial class ContactU
 {
-    
     public long ContactUsId { get; set; }
 
     public long UserId { get; set; }
 
-    public string UserName { get; set; } = null!;
-
     public string Email { get; set; } = null!;
 
-    public string Subject { get; set; } = null!;
+    public string UserName { get; set; } = null!;
+
+    public string? Subject { get; set; }
 
     public string Message { get; set; } = null!;
 

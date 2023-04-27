@@ -3,6 +3,7 @@ using CIPlatform.Entities.Models;
 using CIPlatform.Entities.ViewModel;
 using CIPlatform.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Reflection.PortableExecutable;
 
 namespace CIPlatform.Controllers
@@ -10,16 +11,20 @@ namespace CIPlatform.Controllers
     public class AdminController : Controller
     {
         private readonly IAccountRepository _AccountRepo;
+        private readonly IHomeRepository _HomeRepo;
 
-        public AdminController(IAccountRepository AccountRepo)
+        public AdminController(IAccountRepository AccountRepo, IHomeRepository HomeRepo)
         {
             _AccountRepo = AccountRepo;
+            _HomeRepo = HomeRepo;
 
         }
 
         public IActionResult Index()
         {
             //var model = _AccountRepo.adminModelList();
+
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
             ViewBag.CMSList = _AccountRepo.CMSList().Skip((1 - 1) * 6).Take(6).ToList();
             ViewBag.ttlCMS = Math.Ceiling(_AccountRepo.CMSList().Count() / 6.0);
@@ -48,6 +53,9 @@ namespace CIPlatform.Controllers
             ViewBag.CountryList = _AccountRepo.CountryList();
             ViewBag.Themes = _AccountRepo.ThemeList();
             ViewBag.Skills = _AccountRepo.SkillList();
+
+            ViewBag.UserName = _HomeRepo.GetUserAvatar(UserId).FirstName + " " + _HomeRepo.GetUserAvatar(UserId).LastName;
+            ViewBag.Avatar = _HomeRepo.GetUserAvatar(UserId).Avatar;
 
             ViewBag.missionDatas = 1;
 

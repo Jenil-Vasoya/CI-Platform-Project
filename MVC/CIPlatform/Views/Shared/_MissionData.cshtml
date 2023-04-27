@@ -66,17 +66,38 @@
             font-size: 14px;
             cursor: pointer;
         }
+
+        #editMissionImage img {
+    width: 200px;
+    height: 200px;
+     margin-right: 10px;
+     object-fit: cover; 
+     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); 
+      transition: transform 0.3s ease-in-out;
+}
+
+#editMissionImage img:hover {
+    transform: scale(1.1);
+} 
+
+#image-preview img {
+    width: 200px;
+    height: 200px;
+     margin-right: 10px;
+     object-fit: cover; 
+     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); 
+      transition: transform 0.3s ease-in-out;
+}
+
+#image-preview img:hover {
+    transform: scale(1.1);
+}
+
 </style>
 
 
 <div id="missionpage">
-    <div class="col-12 col-sm-6 col-lg-8 col-xl-9 text-sm-end mt-3 mt-sm-0">
-        <button type="button" class="btn applyButton rounded-pill"
-                onclick="addMission('nav-mission')">
-            <i class="bi bi-plus"></i>
-            Add
-        </button>
-    </div>
+   
 
     <div class="row gx-0">
         <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
@@ -174,7 +195,7 @@
 <div class="border" id="add" style="display: none;">
     <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Add </h3>
     <hr class="m-0">
-    <form class="px-3" enctype="multipart/form-data">
+    <form class="px-3" id="demo1" enctype="multipart/form-data">
         <label class="mt-3"> Title </label>
         <input type="text" class="form-control" id="addMissionTitle">
 
@@ -252,7 +273,7 @@
                                                     <div id="sourceDiv">
                                                         @foreach (var skill in ViewBag.Skills)
                                                         { 
-                                                            <li id="@skill.SkillId" class="skill list-unstyled cursor" onclick="addSkill(event)">@skill.SkillName</li> 
+                                                            <li id="@skill.SkillId" class="skill list-unstyled cursor" onclick="addSkillMission(event)">@skill.SkillName</li> 
                                                         }
                                                     </div>
                                                 </div>
@@ -289,6 +310,14 @@
                 <input type="date" id="addMissionEndDate" class="form-control">
             </div>
             <div class="col-sm-4">
+                <label class="form-label">Total Seats</label>
+                <input type="text" id="addMissionSeat" class="form-control">
+               
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-sm-4">
                 <label class="form-label">Theme</label>
                 <select class="form-select" id="addMissionTheme">
                     @if (ViewBag.Themes != null)
@@ -299,13 +328,6 @@
                         }
                     }
                 </select>
-            </div>
-        </div>
-
-        <div class="row mt-2">
-            <div class="col-sm-4">
-                <label class="form-label">Total Seats</label>
-                <input type="text" id="addMissionSeat" class="form-control">
             </div>
             <div class="col-sm-4">
                 <label class="form-label"> Registration Deadline </label>
@@ -424,7 +446,7 @@
                @* <div id="editMissionSkill">*@
                    @* @foreach (var skill in ViewBag.Skills)
                     {
-                        <li id="@skill.SkillId" class="skill list-unstyled cursor" onclick="addSkilledit(event)">@skill.SkillName</li>
+                        <li id="@skill.SkillId" class="skill list-unstyled cursor" onclick="addSkillMissionedit(event)">@skill.SkillName</li>
                     }*@
                 @*</div>*@
                 </select>
@@ -481,7 +503,16 @@
                 <input type="date" id="editMissionEndDate" class="form-control">
             </div>
             <div class="col-sm-4">
-                <label class="form-label">Theme</label>
+
+                <label class="form-label">Total Seats</label>
+                <input type="text" id="editMissionSeat" class="form-control">
+               
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-sm-4">
+                 <label class="form-label">Theme</label>
                 <select class="form-select" id="editMissionTheme">
                     @if (ViewBag.Themes != null)
                     {
@@ -491,13 +522,6 @@
                         }
                     }
                 </select>
-            </div>
-        </div>
-
-        <div class="row mt-2">
-            <div class="col-sm-4">
-                <label class="form-label">Total Seats</label>
-                <input type="text" id="editMissionSeat" class="form-control">
             </div>
             <div class="col-sm-4">
                 <label class="form-label"> Registration Deadline </label>
@@ -535,10 +559,9 @@
                     <input type="file" accept="image/*" name="images" id="imagesedit" style="opacity:0;cursor:pointer;" multiple required />
                     <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
                 </div>
-                <div id="image-previewedit">
+                <div id="editMissionImage">
 
                 </div>
-                <div id="selected-countedit"></div>
                 <span class="text-danger d-none" id="imageedit">At Least Select One Image</span>
                 <div class="gallary mt-4 d-flex flex-wrap">
                 </div>
@@ -567,7 +590,7 @@
 
 
 
-   <script>
+   @*<script>
 
 
         // Add a click event listener to the removeImg icon
@@ -613,49 +636,74 @@
                     });
                 });
         });
-    </script>
+    </script>*@
                        
 
  <script>
-     $(function() {
-                var selectedCount = 0;
-                var selectedCountElement = $('#selected-countedit');
-                // Listen for changes to the file input element
-                $('#imagesedit').on('change', function() {
-                    // Clear any previous preview images
-                    $('#image-previewedit').empty();
-                    selectedCount = 0;
-                    selectedCountElement.html('0 images selected');
-                    // Loop through the selected files
-                    $.each(this.files, function(i, file) {
-                        // Create a container for the preview image and remove button
-                        var container = $('<div />', { class: 'preview-containeredit' });
-                        // Create an image element to show the preview
-                        var img = $('<img  />');
-                        img.attr('src', URL.createObjectURL(file));
-                        img.attr('alt', file.name);
-                        // Create a remove button to remove the image from the preview
-                        var removeBtn = $('<img />', { class: 'remove-icon' });
-                        removeBtn.attr('src',"/Assets/images/cancel1.png");
-                        removeBtn.attr('alt', file.name);
-                        removeBtn.html('&#x2715;');
-                        removeBtn.on('click', function() {
-                            container.remove();
-                            selectedCount--;
-                            selectedCountElement.html(selectedCount + ' images selected');
-                        });
-                        // Add the image and remove button to the container
-                        container.append(img, removeBtn);
-                        // Add the container to the preview container
-                        $('#image-previewedit').append(container);
-                        selectedCount++;
-                        selectedCountElement.html(selectedCount + ' images selected');
-                    });
-                });
-            });
+   
+     $(document).ready(function() {
+    $("#addMissionType").change(function() {
+    var selectedType = $(this).val();
+    if (selectedType === "Goal") {
+      $("#addMissionStartDate").prop("disabled", true);
+      $("#addMissionEndDate").prop("disabled", true);
+      $("#addMissionSeat").prop("disabled", false);
+    } else if (selectedType === "Time") {
+      $("#addMissionStartDate").prop("disabled", false);
+      $("#addMissionEndDate").prop("disabled", false);
+      $("#addMissionSeat").prop("disabled", true);
+    }
+  }).change(); // Trigger change event on page load
+});
 
 
-function addSkill(event) {
+   $("#images").change(function() {
+    var files = this.files;
+    var editMissionImageDiv = $("#image-preview");
+
+    // Clear existing images from the div
+    editMissionImageDiv.empty();
+
+    // Display the newly selected images
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            var img = $("<img>");
+            img.attr("src", e.target.result);
+            editMissionImageDiv.append(img);
+        }
+
+        reader.readAsDataURL(file);
+    }
+});
+
+
+   $("#imagesedit").change(function() {
+    var files = this.files;
+    var editMissionImageDiv = $("#editMissionImage");
+
+    // Clear existing images from the div
+    editMissionImageDiv.empty();
+
+    // Display the newly selected images
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            var img = $("<img>");
+            img.attr("src", e.target.result);
+            editMissionImageDiv.append(img);
+        }
+
+        reader.readAsDataURL(file);
+    }
+});
+
+
+function addSkillMission(event) {
     
   var skillId = event.target.id;
   var skillName = event.target.textContent;
@@ -665,7 +713,7 @@ function addSkill(event) {
     // Check if the skill already exists in the destination div
     if ($("#destinationDiv #" + skillId).length == 0) {
       // Add the skill to the destination div
-      $("#destinationDiv").append("<li id='" + skillId + "' class='skill list-unstyled cursor' onclick='addSkill(event)'>" + skillName + "</li>");
+      $("#destinationDiv").append("<li id='" + skillId + "' class='skill list-unstyled cursor' onclick='addSkillMission(event)'>" + skillName + "</li>");
       // Check if the skill already exists in the select element
       if ($("#addMissionSkill option[value='" + skillId + "']").length == 0) {
         // Add the skill to the select element
@@ -687,6 +735,7 @@ function addSkill(event) {
 
 
 function addSkilledit(event) {
+    debugger
   var skillId = event.target.id;
   var skillName = event.target.textContent;
 
@@ -881,6 +930,14 @@ function addSkilledit(event) {
                                     select.append(option);
                                   }
                         
+                                    var images = data.missionImages;
+                                    var editMissionImageDiv = $("#editMissionImage");
+
+                                    for (var i = 0; i < images.length; i++) {
+                                        var img = $("<img>");
+                                        img.attr("src", '../Assets/StoryImages/' + images[i]);
+                                        editMissionImageDiv.append(img);
+                                    }
 
                          },
                         error: function (request, error) {
@@ -915,19 +972,24 @@ function addSkilledit(event) {
     </script>
 
 
- <script>
+ <script> 
         function addMission(x) {
             var page = document.getElementById(x);
             var missionpage = page.querySelector("#missionpage");
             var addMission = page.querySelector("#add");
+            var search = page.querySelector("#searchMission1");
             missionpage.style.display = "none";
+            search.style.display = "none";
             addMission.style.display = 'block';
         }
         function missionView(x) {
             debugger
+            
             var page = document.getElementById(x);
             var missionpage = page.querySelector("#missionpage");
             var addMission = page.querySelector("#add");
+            var search = page.querySelector("#searchMission1");
+            search.style.display = "block";
             missionpage.style.display = "block";
             addMission.style.display = 'none';
         }
@@ -942,6 +1004,7 @@ function addSkilledit(event) {
         }
         function editMissionClose(x) {
             debugger
+            $('#editMissionImage').empty()
             var page = document.getElementById(x);
             var missionpage = page.querySelector("#missionpage");
             var addMission = page.querySelector("#edit");

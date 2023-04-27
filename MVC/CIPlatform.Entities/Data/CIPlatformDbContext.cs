@@ -201,14 +201,13 @@ public partial class CIPlatformDbContext : DbContext
         {
             entity.HasKey(e => e.ContactUsId);
 
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+            entity.Property(e => e.DeletedAt).HasColumnType("datetime");
             entity.Property(e => e.Email).HasMaxLength(30);
             entity.Property(e => e.Message).HasMaxLength(500);
             entity.Property(e => e.Subject).HasMaxLength(50);
-            entity.Property(e => e.UserName).HasMaxLength(40);
-            entity.Property(e => e.CreatedAt)
-                .HasColumnType("datetime");
-            entity.Property(e => e.DeletedAt).HasColumnType("datetime");
             entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
+            entity.Property(e => e.UserName).HasMaxLength(40);
 
             entity.HasOne(d => d.User).WithMany(p => p.ContactUs)
                 .HasForeignKey(d => d.UserId)
@@ -554,7 +553,9 @@ public partial class CIPlatformDbContext : DbContext
             entity.Property(e => e.SkillName)
                 .HasMaxLength(64)
                 .IsUnicode(false);
-            entity.Property(e => e.Status).HasDefaultValueSql("((1))");
+            entity.Property(e => e.Status)
+                .IsRequired()
+                .HasDefaultValueSql("((1))");
             entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
         });
 
@@ -730,6 +731,10 @@ public partial class CIPlatformDbContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false);
             entity.Property(e => e.ProfileText).HasMaxLength(2000);
+            entity.Property(e => e.Role)
+                .HasMaxLength(10)
+                .HasDefaultValueSql("('User')")
+                .IsFixedLength();
             entity.Property(e => e.Status)
                 .IsRequired()
                 .HasDefaultValueSql("((1))");
