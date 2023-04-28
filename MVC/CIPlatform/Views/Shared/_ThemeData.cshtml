@@ -23,13 +23,7 @@
 
 
 <div id="themepage">
-    <div class="col-12 col-sm-6 col-lg-8 col-xl-9 text-sm-end mt-3 mt-sm-0">
-        <button type="button" class="btn applyButton rounded-pill"
-                onclick="addTheme('nav-theme')">
-            <i class="bi bi-plus"></i>
-            Add
-        </button>
-    </div>
+    
 
    <div class="row gx-0">
         <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
@@ -132,14 +126,19 @@
     <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Add </h3>
     <hr class="m-0">
     <form class="px-3">
-        <label class="mt-3">Theme Name </label>
-        <input type="text" class="form-control" id="addThemeName">
+        <div class="row" style="display: contents">
+            <label class="mt-3 p-0"> Theme Name </label>
+            <input type="text" class="form-control" id="addThemeName">
+            <span id="validAddThemeName" style="color:red; padding:0px"></span>
+        </div>
 
+        <div class="row" style="display: contents">
         <label class="mb-1 mt-3">Theme Status</label>
         <select type="text" id="addThemeStatus" class="form-select form-control">
             <option value="true">Active</option>
             <option value="false">Inactive</option>
         </select>
+        </div>
         <div class="row my-3">
             <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
             <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
@@ -147,7 +146,7 @@
                         onclick="themeView('nav-theme')">
                     Cancel
                 </button>
-                <button type="button" onclick="addThemeData(event)" class="btn rounded-pill applyButton"
+                <button type="button" onclick="addValidTheme(event)" class="btn rounded-pill applyButton"
                         value="2" name="command">
                     Save
                 </button>
@@ -161,15 +160,22 @@
     <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Edit </h3>
     <hr class="m-0">
     <form class="px-3">
-        <label class="mt-3">Theme Name </label>
         <input type="hidden" class="form-control" id="MissionThemeId">
-        <input type="text" class="form-control" id="editThemeName">
 
+
+         <div class="row" style="display: contents">
+            <label class="mt-3 p-0"> Theme Name </label>
+            <input type="text" class="form-control" id="editThemeName">
+            <span id="validEditThemeName" style="color:red; padding:0px"></span>
+        </div>
+        
+        <div class="row" style="display: contents">
         <label class="mb-1 mt-3">Theme Status</label>
         <select type="text" id="editThemeStatus" class="form-select form-control">
             <option value="true">Active</option>
             <option value="false">Inactive</option>
         </select>
+        </div>
         <div class="row my-3">
             <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
             <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
@@ -177,7 +183,7 @@
                         onclick="editThemeClose('nav-theme')">
                     Cancel
                 </button>
-                <button type="submit" onclick="addThemeData(event)" class="btn rounded-pill applyButton"
+                <button type="submit" onclick="editValidTheme(event)" class="btn rounded-pill applyButton"
                         value="2" name="command">
                     Save
                 </button>
@@ -189,6 +195,64 @@
 
 
  <script>
+     function addValidTheme(event){
+           debugger
+                event.preventDefault();
+                var Theme = $('#addThemeName').val().trim();
+                
+                $('#validAddThemeName').text('');
+
+                var isValid = true;
+
+                if(Theme == ""){
+                    $('#validAddThemeName').text('Theme Name is Required!');
+                    isValid = false;
+                } else {
+                    $('#validAddThemeName').text('');
+                }
+                
+                
+                if (isValid) {
+                    addThemeData(event);
+                }
+    }
+
+     $('#addThemeName').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validAddThemeName').text('');
+        }
+    });
+
+    function editValidTheme(event){
+           debugger
+                event.preventDefault();
+                var Theme = $('#editThemeName').val().trim();
+                
+                $('#validEditThemeName').text('');
+
+                var isValid = true;
+
+                if(Theme == ""){
+                    $('#validEditThemeName').text('Theme Name is Required!');
+                    isValid = false;
+                } else {
+                    $('#validEditThemeName').text('');
+                }
+                
+                
+                if (isValid) {
+                    addThemeData(event);
+                }
+    }
+
+     $('#editThemeName').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validEditThemeName').text('');
+        }
+    });
+   
+
+
         function addThemeData(event) {
                     debugger
                     event.preventDefault();
@@ -221,6 +285,7 @@
                              themeView('nav-theme');
                              console.log(data);
                              $('#themes').html(data);
+                             searchMission(@ViewBag.pg_no,'theme');
                              if(MissionThemeId != 0)
                             {
                              toastr.success('Theme edit successfully');
@@ -290,6 +355,8 @@
             var page = document.getElementById(x);
             var themepage = page.querySelector("#themepage");
             var addTheme = page.querySelector("#add");
+            var search = page.querySelector("#searchTheme1");
+            search.style.display = "none";
             themepage.style.display = "none";
             addTheme.style.display = 'block';
         }
@@ -300,6 +367,8 @@
             var page = document.getElementById(x);
             var themepage = page.querySelector("#themepage");
             var addTheme = page.querySelector("#add");
+            var search = page.querySelector("#searchTheme1");
+            search.style.display = "block";
             themepage.style.display = "block";
             addTheme.style.display = 'none';
         }
@@ -308,6 +377,8 @@
             var page = document.getElementById(x);
             var themepage = page.querySelector("#themepage");
             var addTheme = page.querySelector("#edit");
+            var search = page.querySelector("#searchTheme1");
+            search.style.display = "none";
             themepage.style.display = "none";
             addTheme.style.display = 'block';
              getThemeData(id);
@@ -320,6 +391,8 @@
             var page = document.getElementById(x);
             var themepage = page.querySelector("#themepage");
             var addTheme = page.querySelector("#edit");
+            var search = page.querySelector("#searchTheme1");
+            search.style.display = "block";
             themepage.style.display = "block";
             addTheme.style.display = 'none';
         }

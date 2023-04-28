@@ -377,10 +377,11 @@ namespace CIPlatform.Controllers
             return PartialView("_UserData");
         }
 
-        [HttpPost]
+       
         public JsonResult EditUser(long UserId)
         {
             var adminModel = _AccountRepo.EditUser(UserId);
+            //ViewBag.CountryList = _AccountRepo.CountryList().Select(x=> new {x.CountryId,x.CountryName});
 
             return Json(adminModel);
         }

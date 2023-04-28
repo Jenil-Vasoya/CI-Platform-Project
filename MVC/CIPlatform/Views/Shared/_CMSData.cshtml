@@ -8,7 +8,7 @@
         border-radius: 100px;
         color: #F88634;
         background-color: white;
-        }
+    }
 
         .applyButton:hover {
             background-color: #F88634;
@@ -21,13 +21,6 @@
 
 
 <div id="cmspage">
-    <div class="col-12 col-sm-6 col-lg-8 col-xl-9 text-sm-end mt-3 mt-sm-0">
-        <button type="button" class="btn applyButton rounded-pill"
-                onclick="addform('nav-cms')">
-            <i class="bi bi-plus"></i>
-            Add
-        </button>
-    </div>
 
     <div class="row gx-0">
         <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
@@ -55,7 +48,7 @@
                             <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteTime-@item.CmspageId"><i class="bi bi-trash ms-3"></i></button>
 
                             <!-- Modal For Delete CMS -->
-                            <div class="modal fade" id="exampleModalDeleteTime-@item.CmspageId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModalDeleteTime-@item.CmspageId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
@@ -130,13 +123,22 @@
     <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Add </h3>
     <hr class="m-0">
     <form class="px-3">
-        <label class="mt-3"> Title </label>
-        <input type="text" class="form-control" id="addCmsTitle">
-        <label class="mt-3"> Description</label>
-        <textarea id="addCmsDescription"></textarea>
+        <div class="row" style="display: contents">
+            <label class="mt-3 p-0"> Title </label>
+            <input type="text" class="form-control" id="addCmsTitle">
+            <span id="validAddCmsTitle" style="color:red; padding:0px"></span>
+        </div>
 
-        <label class="mt-3"> Slug </label>
+        <div class="row" style="display: contents">
+            <label class="mt-3 p-0"> Description </label>
+            <textarea id="addCmsDescription" type="text" class="form-control" rows="6" placeholder="Enter Description.."></textarea>
+            <span id="validAddCmsDescription" style="color:red; padding:0px"></span>
+        </div>
+
+        <div class="row" style="display: contents">
+        <label class="mt-3 p-0"> Slug </label>
         <input type="text" class="form-control" id="addCmsSlug">
+        </div>
 
         <label class="mb-1 mt-3">Mission</label>
         <select type="text" id="addCmsStatus" class="form-select form-control">
@@ -150,7 +152,7 @@
                         onclick="addpage('nav-cms')">
                     Cancel
                 </button>
-                <button type="submit" onclick="addCMS(event)" class="btn rounded-pill applyButton"
+                <button type="submit" onclick="addValidCMS(event)" class="btn rounded-pill applyButton"
                         value="2" name="command">
                     Save
                 </button>
@@ -161,180 +163,291 @@
 
 
 <div class="border" id="edit" style="display: none;">
-                                <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Edit </h3>
-                                <hr class="m-0">
-                                <form class="px-3">
-                                    <input type="hidden" id="cmspageId" />
-                                    <label for="select mission" class="mt-3"> Title </label>
-                                    <input type="text"  class="form-control" id="editCmsTitle">
-                                    <label class="mt-3"> Description</label>
-                                    <textarea id="editCmsDescription"></textarea>
-                                    
-                                    <label class="mt-3"> Slug </label>
-                                    <input type="text" class="form-control" id="editCmsSlug">
+    <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Edit </h3>
+    <hr class="m-0">
+    <form class="px-3">
+        <input type="hidden" id="cmspageId" />
 
-                                    <label class="mb-1 mt-3">Mission</label>
-                                    <select type="text" id="editCmsStatus" class="form-select form-control">
-                                        <option value="true">Active</option>
-                                        <option value="false">Inactive</option>
-                                    </select>
-                                    <div class="row my-3">
-                                        <div class="col-10"></div>
-                                        <div class="col-2">
-                                            <button type="button" class="cancell rounded-pill btn btn-outline-dark"
-                                                onclick="editpage('nav-cms');">Cancel</button>
-                                            <button type="submit" onclick="addCMS(event)" class="rounded-pill btn applyButton"
-                                                value="2" name="command">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+        <div class="row" style="display: contents">
+            <label class="mt-3 p-0"> Title </label>
+            <input type="text" class="form-control" id="editCmsTitle">
+            <span id="validEditCmsTitle" style="color:red; padding:0px"></span>
+        </div>
 
+        <div class="row" style="display: contents">
+            <label class="mt-3 p-0"> Description </label>
+            <textarea id="editCmsDescription" type="text" class="form-control" rows="6" placeholder="Enter Description.."></textarea>
+            <span id="validEditCmsDescription" style="color:red; padding:0px"></span>
+        </div>
 
+        <div class="row" style="display: contents">
+        <label class="mt-3"> Slug </label>
+        <input type="text" class="form-control" id="editCmsSlug">
+        </div>
 
- <script>
-        function addCMS(event) {
-                    debugger
-                    var cmspageId = $('#cmspageId').val()
-                    if(cmspageId != 0)
-                    {
-                        event.preventDefault();
-                      var formData = {
-                         cmspageId: cmspageId,
-                         title: $('#editCmsTitle').val(),
-                         description: $('#editCmsDescription').val(),
-                         slug: $('#editCmsSlug').val(),
-                         status: $('#editCmsStatus').val()
-                     };
-                    }
-                    else
-                    {
-                     event.preventDefault();
-                     var formData = {
-                         title: $('#addCmsTitle').val(),
-                         description: $('#addCmsDescription').val(),
-                         slug: $('#addCmsSlug').val(),
-                         status: $('#addCmsStatus').val()
-                     };
-                    }
-
-                     // Send the AJAX request
-                     $.ajax({
-                         type: 'POST',
-                         url: '/Admin/AddCMS',
-                         data: formData,
-                         success: function(data) {
-                             console.log(data);
-                             debugger
-                             addpage('nav-cms');
-                             console.log(data);
-                             $('#cms').html(data);
-                             if(cmspageId != 0)
-                            {
-                             toastr.success('Page edit successfully');
-                            }
-                            else
-                            {
-                                toastr.success('Page add sucessfully');
-                            }
-
-                         },
-                        error: function (request, error) {
-                         console.log(error);
-                     }
-                     });
-                 }
-
-        function editCMS(cmsId)
-        {
-            
-            debugger
-            $.ajax({
-                         type: 'POST',
-                         url: '/Admin/EditCMS',
-                         data: {"CMSId": cmsId},
-                         success: function(data) {
-                             console.log(data);
-                             debugger
-                             $('#cmspageId').val(data.cmspageId);
-                             $('#editCmsTitle').val(data.title);
-                             $('#editCmsDescription').val(data.description);
-                             $('#editCmsSlug').val(data.slug);
-                             $('#editCmsStatus').val((data.status).toString());
-                         },
-                        error: function (request, error) {
-                         console.log(error);
-                     }
-                     });
-        }
-
-        function deleteCMS(cmsId,event)
-        {
-            
-             debugger
-             event.preventDefault();
-             $.ajax({
-                         type: 'POST',
-                         url: '/Admin/DeleteCMS',
-                         data: {"CMSId": cmsId},
-                         success: function(data) {
-                             console.log(data);
-                             debugger
-                             addpage('nav-cms');
-                             console.log(data);
-                             $('#cms').html(data);
-                             toastr.error('Page Deleted');
-                         },
-                        error: function (request, error) {
-                         console.log(error);
-                     }
-                     });
-        }
-
-    </script>
+        <label class="mb-1 mt-3">Mission</label>
+        <select type="text" id="editCmsStatus" class="form-select form-control">
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+        </select>
+        <div class="row my-3">
+            <div class="col-10"></div>
+            <div class="col-2">
+                <button type="button" class="cancell rounded-pill btn btn-outline-dark"
+                        onclick="editpage('nav-cms');">
+                    Cancel
+                </button>
+                <button type="submit" onclick="editValidCMS(event)" class="rounded-pill btn applyButton"
+                        value="2" name="command">
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
 
 
-     <script>
-        function addform(x) {
-            debugger
-            var page = document.getElementById(x);
-            var cmsPage = page.querySelector("#cmspage");
-            var addForm = page.querySelector("#add");
-            cmsPage.style.display = "none";
-            addForm.style.display = 'block';
-        }
-        function addpage(x) {
-            debugger
-            $('#addCmsTitle').val('');
-            $('#addCmsDescription').val('');
-            $('#addCmsSlug').val('');
-            $('#addCmsStatus').val('true');
-            var page = document.getElementById(x);
-            var cmsPage = page.querySelector("#cmspage");
-            var addForm = page.querySelector("#add");
-            cmsPage.style.display = "block";
-            addForm.style.display = 'none';
-        }
-        function editform(x,id) {
+
+<script>
+       function addValidCMS(event){
            debugger
-            var page = document.getElementById(x);
-            var cmsPage = page.querySelector("#cmspage");
-            var addForm = page.querySelector("#edit");
-            cmsPage.style.display = "none";
-            addForm.style.display = 'block';
-             editCMS(id);
+                event.preventDefault();
+                var Title = $('#addCmsTitle').val().trim();
+                var Description = $('#addCmsDescription').val().trim();
+                
+
+                $('#validAddCmsTitle').text('');
+                $('#validAddCmsDescription').text('');
+                
+
+                var isValid = true;
+
+                if(Title == ""){
+                    $('#validAddCmsTitle').text('Title is Required!!');
+                    isValid = false;
+                } else {
+                    $('#validAddCmsTitle').text('');
+                }
+                if(Description == ""){
+                    $('#validAddCmsDescription').text('Description is Required!!');
+                    isValid = false;
+                } else {
+                    $('#validAddCmsDescription').text('');
+                }
+                
+                if (isValid) {
+                    addCMS(event);
+                }
+}
+
+     $('#addCmsTitle').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validAddCmsTitle').text('');
         }
-        function editpage(x) {
-            debugger
-            var page = document.getElementById(x);
-            var cmsPage = page.querySelector("#cmspage");
-            var addForm = page.querySelector("#edit");
-            cmsPage.style.display = "block";
-            addForm.style.display = 'none';
+    });
+    $('#addCmsDescription').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validAddCmsDescription').text('');
         }
+    });
 
 
-    </script>
+        function editValidCMS(event){
+           debugger
+                event.preventDefault();
+                var Title = $('#editCmsTitle').val().trim();
+                var Description = $('#editCmsDescription').val().trim();
+                
+
+                $('#validEditCmsTitle').text('');
+                $('#validEditCmsDescription').text('');
+                
+
+                var isValid = true;
+
+                if(Title == ""){
+                    $('#validEditCmsTitle').text('Title is Required!!');
+                    isValid = false;
+                } else {
+                    $('#validEditCmsTitle').text('');
+                }
+                if(Description == ""){
+                    $('#validEditCmsDescription').text('Description is Required!!');
+                    isValid = false;
+                } else {
+                    $('#validEditCmsDescription').text('');
+                }
+                
+                if (isValid) {
+                    addCMS(event);
+                }
+}
+
+     $('#editCmsTitle').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validEditCmsTitle').text('');
+        }
+    });
+    $('#editCmsDescription').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validEditCmsDescription').text('');
+        }
+    });
+    
+
+
+    function addCMS(event) {
+                debugger
+                var cmspageId = $('#cmspageId').val()
+                if(cmspageId != 0)
+                {
+                    event.preventDefault();
+                  var formData = {
+                     cmspageId: cmspageId,
+                     title: $('#editCmsTitle').val(),
+                     description: $('#editCmsDescription').val(),
+                     slug: $('#editCmsSlug').val(),
+                     status: $('#editCmsStatus').val()
+                 };
+                }
+                else
+                {
+                 event.preventDefault();
+                 var formData = {
+                     title: $('#addCmsTitle').val(),
+                     description: $('#addCmsDescription').val(),
+                     slug: $('#addCmsSlug').val(),
+                     status: $('#addCmsStatus').val()
+                 };
+                }
+
+                 // Send the AJAX request
+                 $.ajax({
+                     type: 'POST',
+                     url: '/Admin/AddCMS',
+                     data: formData,
+                     success: function(data) {
+                         console.log(data);
+                         debugger
+                         addpage('nav-cms');
+                         console.log(data);
+                         $('#cms').html(data);
+                         searchMission(@ViewBag.pg_no,'cms');
+                         if(cmspageId != 0)
+                        {
+                         toastr.success('Page edit successfully');
+                        }
+                        else
+                        {
+                            toastr.success('Page add sucessfully');
+                        }
+
+                     },
+                    error: function (request, error) {
+                     console.log(error);
+                 }
+                 });
+             }
+
+    function editCMS(cmsId)
+    {
+
+        debugger
+        $.ajax({
+                     type: 'POST',
+                     url: '/Admin/EditCMS',
+                     data: {"CMSId": cmsId},
+                     success: function(data) {
+                         console.log(data);
+                         debugger
+                         $('#cmspageId').val(data.cmspageId);
+                         $('#editCmsTitle').val(data.title);
+                         $('#editCmsDescription').val(data.description);
+                         $('#editCmsSlug').val(data.slug);
+                         $('#editCmsStatus').val((data.status).toString());
+                     },
+                    error: function (request, error) {
+                     console.log(error);
+                 }
+                 });
+    }
+
+    function deleteCMS(cmsId,event)
+    {
+
+         debugger
+         event.preventDefault();
+         $.ajax({
+                     type: 'POST',
+                     url: '/Admin/DeleteCMS',
+                     data: {"CMSId": cmsId},
+                     success: function(data) {
+                         console.log(data);
+                         debugger
+                         addpage('nav-cms');
+                         console.log(data);
+                         $('#cms').html(data);
+                         searchMission(@ViewBag.pg_no,'cms');
+                         toastr.error('Page Deleted');
+                     },
+                    error: function (request, error) {
+                     console.log(error);
+                 }
+                 });
+    }
+
+</script>
+
+
+<script>
+    function addform(x) {
+        debugger
+        var page = document.getElementById(x);
+        var cmsPage = page.querySelector("#cmspage");
+        var addForm = page.querySelector("#add");
+        var search = page.querySelector("#searchCMS1");
+        search.style.display = "none";
+        cmsPage.style.display = "none";
+        addForm.style.display = 'block';
+    }
+    function addpage(x) {
+        debugger
+        $('#addCmsTitle').val('');
+        $('#addCmsDescription').val('');
+        $('#addCmsSlug').val('');
+        $('#addCmsStatus').val('true');
+        var page = document.getElementById(x);
+        var cmsPage = page.querySelector("#cmspage");
+        var addForm = page.querySelector("#add");
+        var search = page.querySelector("#searchCMS1");
+        search.style.display = "block";
+        cmsPage.style.display = "block";
+        addForm.style.display = 'none';
+    }
+    function editform(x,id) {
+       debugger
+        var page = document.getElementById(x);
+        var cmsPage = page.querySelector("#cmspage");
+        var addForm = page.querySelector("#edit");
+        var search = page.querySelector("#searchCMS1");
+        search.style.display = "none";
+        cmsPage.style.display = "none";
+        addForm.style.display = 'block';
+         editCMS(id);
+    }
+    function editpage(x) {
+        debugger
+        var page = document.getElementById(x);
+        var cmsPage = page.querySelector("#cmspage");
+        var addForm = page.querySelector("#edit");
+         var search = page.querySelector("#searchCMS1");
+        search.style.display = "block";
+        cmsPage.style.display = "block";
+        addForm.style.display = 'none';
+    }
+
+
+</script>
 @*<script>
 
 

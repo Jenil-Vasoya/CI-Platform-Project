@@ -76,14 +76,7 @@
 </style>
 
 <div id="bannerpage">
-    <div class="col-12 col-sm-6 col-lg-8 col-xl-9 text-sm-end mt-3 mt-sm-0">
-        <button type="button" class="btn applyButton rounded-pill"
-                onclick="addBanner('nav-banner')">
-            <i class="bi bi-plus"></i>
-            Add
-        </button>
-    </div>
-
+    
     <div class="row gx-0">
         <table class="table table-hover table-bordered" style="width: 99%;margin-inline: auto; text-align: center;">
             <thead>
@@ -398,6 +391,8 @@ $('#editbannerImage').on('change', function() {
             var page = document.getElementById(x);
             var bannerpage = page.querySelector("#bannerpage");
             var addBanner = page.querySelector("#add");
+            var search = page.querySelector("#searchBanner1");
+            search.style.display = "none";
             bannerpage.style.display = "none";
             addBanner.style.display = 'block';
         }
@@ -410,6 +405,8 @@ $('#editbannerImage').on('change', function() {
             var page = document.getElementById(x);
             var bannerpage = page.querySelector("#bannerpage");
             var addBanner = page.querySelector("#add");
+            var search = page.querySelector("#searchBanner1");
+            search.style.display = "block";
             bannerpage.style.display = "block";
             addBanner.style.display = 'none';
         }
@@ -418,6 +415,8 @@ $('#editbannerImage').on('change', function() {
             var page = document.getElementById(x);
             var bannerpage = page.querySelector("#bannerpage");
             var addBanner = page.querySelector("#edit");
+            var search = page.querySelector("#searchBanner1");
+            search.style.display = "none";
             bannerpage.style.display = "none";
             addBanner.style.display = 'block';
             getBannerData(id);
@@ -427,6 +426,8 @@ $('#editbannerImage').on('change', function() {
             var page = document.getElementById(x);
             var bannerpage = page.querySelector("#bannerpage");
             var addBanner = page.querySelector("#edit");
+            var search = page.querySelector("#searchBanner1");
+            search.style.display = "block";
             bannerpage.style.display = "block";
             addBanner.style.display = "none";
         }

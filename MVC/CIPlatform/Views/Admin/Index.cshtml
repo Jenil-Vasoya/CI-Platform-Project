@@ -304,8 +304,22 @@
                     <div class="tab-content" id="nav-tabContent">
 
                         <div class="tab-pane fade show active" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
-                            <h4 class="pt-3 pb-2">User</h4>
-                            <input class="form-control pl-5 w-25" style="border-style:none;" id="name" name="search" type="search" placeholder="&nbsp;Search User..." oninput="searchMission()" aria-label="Search">
+                            <div id="searchUser1" style="padding:10px;">
+                                <h4 class="pt-3 pb-2">User</h4>
+                                <div class="row">
+                                    <div class="col-11">
+                                        <input class="form-control pl-5 w-25" id="name" name="search" type="search" placeholder="&nbsp;Search User..." oninput="searchMission()" aria-label="Search">
+                                    </div>
+                                    <div class="col-1 text-end">
+                                        <button type="button" id="addUser" class="btn applyButton rounded-pill"
+                                                onclick="addUser('nav-user')">
+                                            <i class="bi bi-plus"></i>
+                                            Add
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
 
                             <div id="users">
                             <partial name="_UserData" />
@@ -313,66 +327,43 @@
                         </div>
 
                         <div class="tab-pane fade" id="nav-cms" role="tabpanel" aria-labelledby="nav-cms-tab">
-                          
+                          <div id="searchCMS1" style="padding:10px;">
                                 <h4 class="pt-3 pb-2">CMS Page</h4>
-                                <div class="row mt-3 g-0">
-                                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                                        <div class="form-group has-search">
-                                            <span class="fa fa-search form-control-feedback"></span>
-                                            <input type="text" class="form-control " placeholder="Search">
-                                        </div>
+                                <div class="row">
+                                    <div class="col-11">
+                                       <input class="form-control pl-5 w-25" id="name" name="searchCMS" type="search" placeholder="&nbsp;Search CMS..." oninput="searchMission(1,'cms')" aria-label="Search">
+                                    </div>
+                                    <div class="col-1 text-end">
+                                        <button type="button" id="addCMS" class="btn applyButton rounded-pill"
+                                                 onclick="addform('nav-cms')">
+                                            <i class="bi bi-plus"></i>
+                                            Add
+                                        </button>
                                     </div>
                                 </div>
+                            </div>
+
                                 <div id="cms">
                                     <partial name="_CMSData" />
                                 </div>
                         
-
-                            
-
-                            @*<div class="border" id="edit" style="display: none;">
-                                <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Edit </h3>
-                                <hr class="m-0">
-                                <form class="px-3">
-                                    <label for="select mission" class="mt-3"> Title </label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput">
-                                    <label class="mt-3"> Description</label>
-                                    <textarea id="cms2" cols="172" rows="10" maxlength="40000"></textarea>
-                                    <script>
-                                        var abc = document.getElementById("cms2");
-                                        CKEDITOR.replace(abc);
-                                    </script>
-                                    <label class="mt-3"> Slug </label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput">
-
-                                    <label class="mb-1 mt-3">Mission</label>
-                                    <select type="text" class="form-select form-control">
-                                        <option value="true">Active</option>
-                                        <option value="false">Inactive</option>
-                                    </select>
-                                    <div class="row my-3">
-                                        <div class="col-10"></div>
-                                        <div class="col-2">
-                                            <button type="button" class="cancell rounded-pill btn btn-outline-dark"
-                                                onclick="editpage('nav-cms');">Cancel</button>
-                                            <button type="submit" class="threebt rounded-pill btn btn-outline-warning"
-                                                value="2" name="command">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>*@
                         </div>
 
                         <div class="tab-pane fade" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
-                            <div id="searchMission1">
+                            <div id="searchMission1" style="padding:10px;">
                                 <h4 class="pt-3 pb-2">Mission</h4>
-                                <input class="form-control pl-5 w-25" style="border-style:none;" id="name" name="searchMission" type="search" placeholder="&nbsp;Search Mission..." oninput="searchMission(1,'mission')" aria-label="Search">
-
-                                    <button type="button" id="addMission" class="btn applyButton rounded-pill"
-                                            onclick="addMission('nav-mission')">
-                                        <i class="bi bi-plus"></i>
-                                        Add
-                                    </button>
+                                <div class="row">
+                                    <div class="col-11">
+                                        <input class="form-control pl-5 w-25" id="name" name="searchMission" type="search" placeholder="&nbsp;Search Mission..." oninput="searchMission(1,'mission')" aria-label="Search">
+                                    </div>
+                                    <div class="col-1 text-end">
+                                        <button type="button" id="addMission" class="btn applyButton rounded-pill"
+                                                onclick="addMission('nav-mission')">
+                                            <i class="bi bi-plus"></i>
+                                            Add
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             <div id="missions">
                             <partial name="_MissionData" />
@@ -380,8 +371,21 @@
                         </div>
 
                         <div class="tab-pane fade" id="nav-theme" role="tabpanel" aria-labelledby="nav-theme-tab">
-                            <h4 class="pt-3 pb-2">Theme</h4>
-                            <input class="form-control pl-5 w-25" style="border-style:none;" id="searchTheme" name="searchTheme" type="search" placeholder="&nbsp;Search Theme..." oninput="searchMission(1,'theme')" aria-label="Search">
+                            <div id="searchTheme1" style="padding:10px;">
+                                <h4 class="pt-3 pb-2">Theme</h4>
+                                <div class="row">
+                                    <div class="col-11">
+                                        <input class="form-control pl-5 w-25" id="searchTheme" name="searchTheme" type="search" placeholder="&nbsp;Search Theme..." oninput="searchMission(1,'theme')" aria-label="Search">
+                                    </div>
+                                    <div class="col-1 text-end">
+                                        <button type="button" id="addTheme" class="btn applyButton rounded-pill"
+                                                onclick="addTheme('nav-theme')">
+                                            <i class="bi bi-plus"></i>
+                                            Add
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div id="themes">
                             <partial name="_ThemeData" />
@@ -389,8 +393,21 @@
                         </div>
 
                         <div class="tab-pane fade" id="nav-skill" role="tabpanel" aria-labelledby="nav-skill-tab">
-                            <h4 class="pt-3 pb-2">Skills</h4>
-                            <input class="form-control pl-5 w-25" style="border-style:none;" id="name" name="searchSkill" type="search" placeholder="&nbsp;Search Skill..." oninput="searchMission(1,'skill')" aria-label="Search">
+                            <div id="searchSkill1" style="padding:10px;">
+                                <h4 class="pt-3 pb-2">Skills</h4>
+                                <div class="row">
+                                    <div class="col-11">
+                                        <input class="form-control pl-5 w-25" id="searchSkill" name="searchSkill" type="search" placeholder="&nbsp;Search Skill..." oninput="searchMission(1,'skill')" aria-label="Search">
+                                    </div>
+                                    <div class="col-1 text-end">
+                                        <button type="button" class="btn applyButton rounded-pill"
+                                                onclick="addSkill('nav-skill')">
+                                            <i class="bi bi-plus"></i>
+                                            Add
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div id="skills">
                             <partial name="_SkillData" />
@@ -398,8 +415,14 @@
                         </div>
 
                         <div class="tab-pane fade" id="nav-application" role="tabpanel" aria-labelledby="nav-application-tab">
-                            <h4 class="pt-3 pb-2">Application</h4>
-                            <input class="form-control pl-5 w-25" style="border-style:none;" id="name" name="searchApplication" type="search" placeholder="&nbsp;Search Application..." oninput="searchMission(1,'application')" aria-label="Search">
+                            <div style="padding:10px;">
+                                <h4 class="pt-3 pb-2">Application</h4>
+                                <div class="row">
+                                    <div class="col-11">
+                                        <input class="form-control pl-5 w-25" id="searchApplication" name="searchApplication" type="search" placeholder="&nbsp;Search Application..." oninput="searchMission(1,'application')" aria-label="Search">
+                                    </div>
+                                </div>
+                            </div>
 
                             <div id="applications">
                             <partial name="_ApplicationData" />
@@ -407,8 +430,14 @@
                         </div>
 
                         <div class="tab-pane fade" id="nav-story" role="tabpanel" aria-labelledby="nav-story-tab">
-                            <h4 class="pt-3 pb-2">Story</h4>
-                            <input class="form-control pl-5 w-25" style="border-style:none;" id="name" name="searchStory" type="search" placeholder="&nbsp;Search Story..." oninput="searchMission(1,'story')" aria-label="Search">
+                            <div style="padding:10px;">
+                               <h4 class="pt-3 pb-2">Story</h4>
+                                <div class="row">
+                                    <div class="col-11">
+                                        <input class="form-control pl-5 w-25" id="name" name="searchStory" type="search" placeholder="&nbsp;Search Story..." oninput="searchMission(1,'story')" aria-label="Search">
+                                    </div>
+                                </div>
+                            </div>
 
                             <div id="stories">
                             <partial name="_StoryData" />
@@ -416,7 +445,25 @@
                         </div>
 
                         <div class="tab-pane fade" id="nav-banner" role="tabpanel" aria-labelledby="nav-banner-tab">
-                            <h4 class="pt-3 pb-2">Banner</h4>
+
+                            <div id="searchBanner1" style="padding:10px;">
+                                <h4 class="pt-3 pb-2">Banner</h4>
+                                <div class="row">
+                                    <div class="col-11">
+                                        <input class="form-control pl-5 w-25" id="searchBanner" name="searchBanner" type="search" placeholder="&nbsp;Search Banner..." oninput="searchMission(1,'banner')" aria-label="Search">
+                                    </div>
+                                    <div class="col-1 text-end">
+                                        <button type="button" class="btn applyButton rounded-pill"
+                                                onclick="addBanner('nav-banner')">
+                                            <i class="bi bi-plus"></i>
+                                            Add
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            
 
                             <div id="banners">
                             <partial name="_BannerData" />
@@ -505,10 +552,10 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+   @* <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-
+*@
 
 <script>
       function searchMission(pg,who) {
@@ -537,6 +584,10 @@
             if(search == "")
             {
                 search = $('input[name="searchStory"]').val();
+            }
+            if(search == "")
+            {
+                search = $('input[name="searchBanner"]').val();
             }
 
             if (pg == undefined) {

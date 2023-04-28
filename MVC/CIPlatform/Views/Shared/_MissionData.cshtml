@@ -223,7 +223,7 @@
 
             <div class="col-sm-4">
                 <label class="form-label">City<span class="text-danger">*</span></label>
-                <select class="form-select" id="selectCityList" required>
+                <select class="form-select" id="selectMissionCityList" required>
 
                     <option id="selectCity">Please select first country</option>
 
@@ -420,7 +420,7 @@
 
             <div class="col-sm-4">
                 <label class="form-label">City<span class="text-danger">*</span></label>
-                <select class="form-select" id="selecteditCityList" required>
+                <select class="form-select" id="selectEditMissionCityList" required>
 
                     <option id="selectCity">Please select first country</option>
 
@@ -641,20 +641,33 @@
 
  <script>
    
-     $(document).ready(function() {
-    $("#addMissionType").change(function() {
-    var selectedType = $(this).val();
-    if (selectedType === "Goal") {
-      $("#addMissionStartDate").prop("disabled", true);
-      $("#addMissionEndDate").prop("disabled", true);
-      $("#addMissionSeat").prop("disabled", false);
-    } else if (selectedType === "Time") {
-      $("#addMissionStartDate").prop("disabled", false);
-      $("#addMissionEndDate").prop("disabled", false);
-      $("#addMissionSeat").prop("disabled", true);
-    }
-  }).change(); // Trigger change event on page load
-});
+    $(document).ready(function() {
+            $("#addMissionType").change(function() {
+                var selectedType = $(this).val();
+                if (selectedType === "Goal") {
+                  $("#addMissionStartDate").prop("disabled", true);
+                  $("#addMissionEndDate").prop("disabled", true);
+                  $("#addMissionSeat").prop("disabled", false);
+                } else if (selectedType === "Time") {
+                  $("#addMissionStartDate").prop("disabled", false);
+                  $("#addMissionEndDate").prop("disabled", false);
+                  $("#addMissionSeat").prop("disabled", true);
+                }
+            }).change();
+            
+            $("#editMissionType").change(function() {
+                var selectedType = $(this).val();
+                if (selectedType === "Goal") {
+                  $("#editMissionStartDate").prop("disabled", true);
+                  $("#editMissionEndDate").prop("disabled", true);
+                  $("#editMissionSeat").prop("disabled", false);
+                } else if (selectedType === "Time") {
+                  $("#editMissionStartDate").prop("disabled", false);
+                  $("#editMissionEndDate").prop("disabled", false);
+                  $("#editMissionSeat").prop("disabled", true);
+                }
+            }).change(); // Trigger change event on page load
+    });
 
 
    $("#images").change(function() {
@@ -804,6 +817,8 @@ function addSkilledit(event) {
                         for (var i = 0; i < images.length; i++) {
                           formData.append('Images', images[i]);
                         }
+
+                        console.log(formData);
                         $.ajax({
                          type: 'POST',
                          url: '/Admin/AddMission',
@@ -816,6 +831,7 @@ function addSkilledit(event) {
                              missionView('nav-mission');
                              console.log(data);
                              $('#missions').html(data);
+                             searchMission(@ViewBag.pg_no,'mission');
                              toastr.success('Mission edit successfully');
                             
 
@@ -882,6 +898,7 @@ function addSkilledit(event) {
                                      missionView('nav-mission');
                                      console.log(data);
                                      $('#missions').html(data);
+                                     searchMission(@ViewBag.pg_no,'mission');
                                         toastr.success('Mission add sucessfully');
                             
 
@@ -918,6 +935,8 @@ function addSkilledit(event) {
                              $('#editMissionOrganisationName').val(data.organizationName);
                              $('#editMissionOrganisationDetail').val(data.organizationDetail);
                              $('#editMissionVideo').val(data.videoUrl);
+
+                             GetCity('edit');
 
                              var skills = data.skillNames;
                               
@@ -978,8 +997,8 @@ function addSkilledit(event) {
             var missionpage = page.querySelector("#missionpage");
             var addMission = page.querySelector("#add");
             var search = page.querySelector("#searchMission1");
-            missionpage.style.display = "none";
             search.style.display = "none";
+            missionpage.style.display = "none";
             addMission.style.display = 'block';
         }
         function missionView(x) {
@@ -998,6 +1017,8 @@ function addSkilledit(event) {
             var page = document.getElementById(x);
             var missionpage = page.querySelector("#missionpage");
             var addMission = page.querySelector("#edit");
+            var search = page.querySelector("#searchMission1");
+            search.style.display = "none";
             missionpage.style.display = "none";
             addMission.style.display = 'block';
             getMissionData(id);
@@ -1008,6 +1029,8 @@ function addSkilledit(event) {
             var page = document.getElementById(x);
             var missionpage = page.querySelector("#missionpage");
             var addMission = page.querySelector("#edit");
+            var search = page.querySelector("#searchMission1");
+            search.style.display = "block";
             missionpage.style.display = "block";
             addMission.style.display = "none";
         }
@@ -1033,28 +1056,28 @@ function addSkilledit(event) {
                                     success: function (data) {
                                         data = JSON.parse(data);
                                     if(who == 'edit')
-                                    {
+                                        {
 
-                                        $("#selecteditCityList").empty();
-                                        data.forEach((name) => {
-                                            document.getElementById("selecteditCityList").innerHTML += `
+                                            $("#selectEditMissionCityList").empty();
+                                            data.forEach((name) => {
+                                                document.getElementById("selectEditMissionCityList").innerHTML += `
 
-                                        <option class="form-check" value="${name.CityId}" name="city" id="editMissionCity">${name.CityName}</option>
+                                            <option class="form-check" value="${name.CityId}" name="city" id="editMissionCity">${name.CityName}</option>
 
-                                            `;
-                                        })
-                                    }
-                                    else
-                                    {
-                                        $("#selectCityList").empty();
-                                         data.forEach((name) => {
-                                        document.getElementById("selectCityList").innerHTML += `
+                                                `;
+                                            })
+                                        }
+                                        else
+                                        {
+                                            $("#selectMissionCityList").empty();
+                                             data.forEach((name) => {
+                                            document.getElementById("selectMissionCityList").innerHTML += `
 
-                                        <option class="form-check" value="${name.CityId}" name="city" id="addMissionCity">${name.CityName}</option>
+                                            <option class="form-check" value="${name.CityId}" name="city" id="addMissionCity">${name.CityName}</option>
 
-                                            `;
-                                                })
-                                    }
+                                                `;
+                                                    })
+                                        }
                                     },
                                     error: function (request, error) {
                                         console.log(error);

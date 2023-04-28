@@ -17,13 +17,7 @@
 </style>
 
 <div id="userpage">
-    <div class="col-12 col-sm-6 col-lg-8 col-xl-9 text-sm-end mt-3 mt-sm-0">
-        <button type="button" class="btn applyButton rounded-pill"
-                onclick="addUser('nav-user')">
-            <i class="bi bi-plus"></i>
-            Add
-        </button>
-    </div>
+   
 
 
     <div class="row gx-0">
@@ -132,114 +126,128 @@
 </div>
 
 <div class="border" id="add" style="display: none;">
-    <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Add </h3>
+    <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Add User</h3>
     <hr class="m-0">
     <form class="px-3" enctype="multipart/form-data">
-        <a id="addUserPop">
-            <input id="addUserAvatar" type="file" class="file" accept="image/jpeg, image/png, image/jpg">
-
-            <img id="addUserDefaultAvatar" src="~/Assets/StoryImages/404-Page-image.png" class="rounded-circle" style="height:150px; max-width:150px;">
-        </a>
-
         <div class="row">
-            <div class="col-6">
-                <label class="mt-3"> First Name <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="addUserFirstName">
+            <div class="col-2">
+                <a id="addUserPop">
+                    <input id="addUserAvatar" type="file" class="file" accept="image/jpeg, image/png, image/jpg">
+
+                    <img id="addUserDefaultAvatar" src="~/Assets/StoryImages/404-Page-image.png" class="rounded-circle" style="height:150px; max-width:150px;">
+                </a>
             </div>
 
-            <div class="col-6">
-                <label class="mt-3"> Last Name </label>
-                <input type="text" class="form-control" id="addUserLastName">
-            </div>
-        </div>
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="mt-3"> First Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="addUserFirstName" oninput="" >
+                        <span id="validAddUserFirstName" style="color:red;"></span>
+                    </div>
 
-         <div class="row">
-            <div class="col-6">
-                <label class="mt-3"> Eamil <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="addUserEmail">
-            </div>
+                    <div class="col-6">
+                        <label class="mt-3"> Last Name </label>
+                        <input type="text" class="form-control" id="addUserLastName">
+                    </div>
+                </div>
 
-            <div class="col-6">
-                <label class="mt-3"> Password <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="addUserPassword">
-            </div>
-        </div>
-         
-         <div class="row">
-            <div class="col-6">
-                <label class="mt-3"> Employee Id </label>
-                <input type="text" class="form-control" id="addUserEmployeeId">
-            </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label class="mt-3"> Eamil <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="addUserEmail" oninput="">
+                        <span id="validAddUserEmail" style="color:red;"></span>
+                    </div>
 
-            <div class="col-6">
-                <label class="mt-3"> Department Name </label>
-                <input type="text" class="form-control" id="addUserDepartment">
-            </div>
-        </div>
-          
+                    <div class="col-6">
+                        <label class="mt-3"> Password <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="addUserPassword" oninput="">
+                        <span id="validAddUserPassword" style="color:red;"></span>
+                    </div>
+                </div>
 
-        
-        <div class="row mt-2">
-            <div class="col-sm-4">
-                <label class="form-label">Country<span class="text-danger">*</span></label>
+                <div class="row">
+                    <div class="col-6">
+                        <label class="mt-3"> Employee Id </label>
+                        <input type="text" class="form-control" id="addUserEmployeeId">
+                    </div>
 
-                <select class="form-select" id="addUserCountry" onchange="GetCityUser()" required>
-                    @*<option value="@data.CountryId" selected>@data.Country.CountryName</option>*@
-                    @if (ViewBag.CountryList != null)
-                    {
-                        @foreach (var country in ViewBag.CountryList)
-                        {
-                            <option value="@country.CountryId">@country.CountryName</option>
-                        }
-                    }
-                </select>
-            </div>
+                    <div class="col-6">
+                        <label class="mt-3"> Department Name </label>
+                        <input type="text" class="form-control" id="addUserDepartment">
+                    </div>
+                </div>
 
-            <div class="col-sm-4">
-                <label class="form-label">City<span class="text-danger">*</span></label>
-                <select class="form-select" id="selectUserCityList" required>
 
-                    <option id="selectCityUser">Please select first country</option>
 
-                </select>
-            </div>
+                <div class="row mt-2">
+                    <div class="col-sm-3">
+                        <label class="form-label">Country<span class="text-danger">*</span></label>
 
-            <div class="col-sm-4">
-                <label class="form-label">User Status<span class="text-danger">*</span></label>
-                <select class="form-select" id="addUserStatus">
-                    <option value="true">Active</option>
-                    <option value="false">InActive</option>
-                </select>
-            </div>
-        </div>
+                        <select class="form-select" id="addUserCountry" onchange="GetCityUser()" onclick="()">
+                            @*<option value="@data.CountryId" selected>@data.Country.CountryName</option>*@
+                            @if (ViewBag.CountryList != null)
+                            {
+                                @foreach (var country in ViewBag.CountryList)
+                                {
+                                    <option value="@country.CountryId">@country.CountryName</option>
+                                }
+                            }
+                        </select>
+                        <span id="validAddUserCountry" style="color:red;"></span>
+                    </div>
 
-        <label class="mt-3"> Profile Text </label>
-        <input type="text" class="form-control" id="addUserText">
+                    <div class="col-sm-3">
+                        <label class="form-label">City<span class="text-danger">*</span></label>
+                        <select class="form-select" id="selectUserCityList" onchange="()">
 
-        <div class="row my-3">
-            <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
-            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
-                <button type="button" class="cancell rounded-pill btn btn-outline-dark"
-                        onclick="userView('nav-user');">
-                    Cancel
-                </button>
-                <button type="submit" onclick="addUserData(event)" class="btn rounded-pill applyButton"
-                        value="2" name="command">
-                    Save
-                </button>
+                            <option id="selectCityUser">Please select first country</option>
+
+                        </select>
+                        <span id="validAddUserCity" style="color:red;"></span>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <label class="form-label">User Status<span class="text-danger">*</span></label>
+                        <select class="form-select" id="addUserStatus">
+                            <option value="true">Active</option>
+                            <option value="false">InActive</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-sm-3">
+                        <label class="form-label">Role</label>
+                        <select class="form-select" id="addUserRole">
+                            <option value="User">User</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label class="mt-3"> Profile Text </label>
+                <input type="text" class="form-control" id="addUserText">
+
+                <div class="row my-3">
+                    <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
+                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
+                        <button type="button" class="cancell rounded-pill btn btn-outline-dark" onclick="userView('nav-user');">Cancel</button>
+                        <button type="submit" onclick="addValidUser(event)" class="btn rounded-pill applyButton" value="2" name="command">Save</button>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
 </div>
 
 <div class="border" id="edit" style="display: none;">
-    <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Edit </h3>
+    <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Edit User</h3>
     <hr class="m-0">
     <form class="px-3" enctype="multipart/form-data">
-        <input type="hidden" id="userId" />
         <div class="row">
+            <input type="hidden" id="userId" />
 
-            <div class="col-2 d-flex justify-content-center align-items-end">
+
+            <div class="col-2">
                 <a id="editUserPop">
                     <input id="editUserAvatar" type="file" class="file" style="opacity: 0;height: 150px;max-width: 150px;margin-top: 50px;" accept="image/jpeg, image/png, image/jpg">
                 </a>
@@ -250,6 +258,7 @@
                     <div class="col-6">
                         <label class="mt-3"> First Name <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="editUserFirstName">
+                        <span id="validEditUserFirstName" style="color:red;"></span>
                     </div>
 
                     <div class="col-6">
@@ -264,88 +273,264 @@
                         <input type="text" class="form-control" id="editUserText">
                     </div>
                 </div>
+
+
+
+                <div class="row">
+                    <div class="col-6">
+                        <label class="mt-3"> Eamil <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="editUserEmail">
+                        <span id="validEditUserEmail" style="color:red;"></span>
+                    </div>
+
+                    <div class="col-6">
+                        <label class="mt-3"> Password <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="editUserPassword" disabled>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <label class="mt-3"> Employee Id </label>
+                        <input type="text" class="form-control" id="editUserEmployeeId">
+                    </div>
+
+                    <div class="col-6">
+                        <label class="mt-3"> Department Name </label>
+                        <input type="text" class="form-control" id="editUserDepartment">
+                    </div>
+                </div>
+
+
+
+                <div class="row mt-2">
+                    <div class="col-sm-3">
+                        <label class="form-label">Country<span class="text-danger">*</span></label>
+
+                        <select class="form-select" id="editUserCountry" onchange="GetCityUser('edit')">
+                            @*<option value="@data.CountryId" selected>@data.Country.CountryName</option>*@
+                            @if (ViewBag.CountryList != null)
+                            {
+                                @foreach (var country in ViewBag.CountryList)
+                                {
+                                    <option value="@country.CountryId">@country.CountryName</option>
+                                }
+                            }
+                        </select>
+                        <span id="validEditUserCountry" style="color:red;"></span>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <label class="form-label">City<span class="text-danger">*</span></label>
+                        <select class="form-select" id="selectEditUserCityList">
+
+                            <option id="selectCityUser">Please select first country</option>
+
+                        </select>
+                        <span id="validEditUserCity" style="color:red;"></span>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <label class="form-label">User Status<span class="text-danger">*</span></label>
+                        <select class="form-select" id="editUserStatus">
+                            <option value="true">Active</option>
+                            <option value="false">InActive</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <label class="form-label">Role</label>
+                        <select class="form-select" id="editUserRole">
+                            <option value="User">User</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-        </div>
 
-         <div class="row">
-            <div class="col-6">
-                <label class="mt-3"> Eamil <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="editUserEmail">
-            </div>
 
-            <div class="col-6">
-                <label class="mt-3"> Password <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="editUserPassword" disabled>
-            </div>
-        </div>
-         
-         <div class="row">
-            <div class="col-6">
-                <label class="mt-3"> Employee Id </label>
-                <input type="text" class="form-control" id="editUserEmployeeId">
-            </div>
-
-            <div class="col-6">
-                <label class="mt-3"> Department Name </label>
-                <input type="text" class="form-control" id="editUserDepartment">
-            </div>
-        </div>
-          
-
-        
-        <div class="row mt-2">
-            <div class="col-sm-4">
-                <label class="form-label">Country<span class="text-danger">*</span></label>
-
-                <select class="form-select" id="editUserCountry" onchange="GetCityUser()" required>
-                    @*<option value="@data.CountryId" selected>@data.Country.CountryName</option>*@
-                    @if (ViewBag.CountryList != null)
-                    {
-                        @foreach (var country in ViewBag.CountryList)
-                        {
-                            <option value="@country.CountryId">@country.CountryName</option>
-                        }
-                    }
-                </select>
-            </div>
-
-            <div class="col-sm-4">
-                <label class="form-label">City<span class="text-danger">*</span></label>
-                <select class="form-select" id="selectUserCityList" required>
-
-                    <option id="selectCityUser">Please select first country</option>
-
-                </select>
-            </div>
-
-            <div class="col-sm-4">
-                <label class="form-label">User Status<span class="text-danger">*</span></label>
-                <select class="form-select" id="editUserStatus">
-                    <option value="true">Active</option>
-                    <option value="false">InActive</option>
-                </select>
-            </div>
-        </div>
-
-        
-
-        <div class="row my-3">
-            <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
-            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
-                <button type="button" class="cancell rounded-pill btn btn-outline-dark"
-                        onclick="editUserClose('nav-user');">
-                    Cancel
-                </button>
-                <button type="submit" onclick="addUserData(event)" class="btn rounded-pill applyButton"
-                        value="2" name="command">
-                    Save
-                </button>
+            <div class="row my-3">
+                <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
+                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
+                    <button type="button" class="cancell rounded-pill btn btn-outline-dark"
+                            onclick="editUserClose('nav-user');">
+                        Cancel
+                    </button>
+                    <button type="submit" onclick="editValidUser(event)" class="btn rounded-pill applyButton"
+                            value="2" name="command">
+                        Save
+                    </button>
+                </div>
             </div>
         </div>
     </form>
 </div>
 
 <script>
+   
+
+
+
+   function addValidUser(event){
+                event.preventDefault();
+                var Firstname = $('#addUserFirstName').val().trim();
+                var Email = $('#addUserEmail').val().trim();
+                var Password = $('#addUserPassword').val().trim();
+                var CityId = $('#addUserCity').find(":selected").val();
+                var CountryId = $('#addUserCountry').find(":selected").val();
+
+                $('#validAddUserFirstName').text('');
+                $('#validAddUserEmail').text('');
+                $('#validAddUserPassword').text('');
+                $('#validAddUserCountry').text('');
+                $('#validAddUserCity').text('');
+
+                var isValid = true;
+
+                if(Firstname == ""){
+                    $('#validAddUserFirstName').text('First Name is Required!!');
+                    isValid = false;
+                } else {
+                    $('#validAddUserFirstName').text('');
+                }
+                if(Email == ""){
+                    $('#validAddUserEmail').text('Email is Required!!');
+                    isValid = false;
+                } else {
+                    $('#validAddUserEmail').text('');
+                }
+                if(Password == ""){
+                    $('#validAddUserPassword').text('Password is Required!!');
+                    isValid = false;
+                } else {
+                    $('#validAddUserPassword').text('');
+                }
+                if(CityId == 0){
+                    $('#validAddUserCity').text('Please Select a City!!');
+                    isValid = false;
+                } else {
+                    $('#validAddUserCity').text('');
+                }
+                if(CountryId == 0){
+                    $('#validAddUserCountry').text('Please Select a Country!!');
+                    isValid = false;
+                } else {
+                    $('#validAddUserCountry').text('');
+                }
+    
+                if (isValid) {
+                    addUserData(event);
+                }
+}
+
+    $('#addUserFirstName').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validAddUserFirstName').text('');
+        }
+    });
+    $('#addUserEmail').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validAddUserEmail').text('');
+        }
+    });
+    $('#addUserPassword').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validAddUserPassword').text('');
+        }
+    });
+    $('#addUserCity').change(function() {
+        if ($(this).val() != 0) {
+            $('#validAddUserCity').text('');
+        }
+    });
+    $('#addUserCountry').change(function() {
+        if ($(this).val() != 0) {
+            $('#validAddUserCountry').text('');
+        }
+    });
+
+
+function editValidUser(event){
+                event.preventDefault();
+                var Firstname = $('#editUserFirstName').val().trim();
+                var Email = $('#editUserEmail').val().trim();
+                var Password = $('#editUserPassword').val().trim();
+                var CityId = $('#editUserCity').find(":selected").val();
+                var CountryId = $('#editUserCountry').find(":selected").val();
+
+                $('#validEditUserFirstName').text('');
+                $('#validEditUserEmail').text('');
+                $('#validEditUserPassword').text('');
+                $('#validEditUserCountry').text('');
+                $('#validEditUserCity').text('');
+
+                var isValid = true;
+
+                if(Firstname == ""){
+                    $('#validEditUserFirstName').text('First Name is Required!!');
+                    isValid = false;
+                } else {
+                    $('#validEditUserFirstName').text('');
+                }
+                if(Email == ""){
+                    $('#validEditUserEmail').text('Email is Required!!');
+                    isValid = false;
+                } else {
+                    $('#validEditUserEmail').text('');
+                }
+                if(Password == ""){
+                    $('#validEditUserPassword').text('Password is Required!!');
+                    isValid = false;
+                } else {
+                    $('#validEditUserPassword').text('');
+                }
+                if(CityId == 0){
+                    $('#validEditUserCity').text('Please Select a City!!');
+                    isValid = false;
+                } else {
+                    $('#validEditUserCity').text('');
+                }
+                if(CountryId == 0){
+                    $('#validEditUserCountry').text('Please Select a Country!!');
+                    isValid = false;
+                } else {
+                    $('#validEditUserCountry').text('');
+                }
+    
+                if (isValid) {
+                    addUserData(event);
+                }
+}
+
+// Use keyup() function to remove the required message as soon as the user starts typing
+$('#editUserFirstName').keyup(function() {
+    if ($(this).val() != '') {
+        $('#validEditUserFirstName').text('');
+    }
+});
+$('#editUserEmail').keyup(function() {
+    if ($(this).val() != '') {
+        $('#validEditUserEmail').text('');
+    }
+});
+$('#editUserPassword').keyup(function() {
+    if ($(this).val() != '') {
+        $('#validEditUserPassword').text('');
+    }
+});
+$('#editUserCity').change(function() {
+    if ($(this).val() != 0) {
+        $('#validEditUserCity').text('');
+    }
+});
+$('#editUserCountry').change(function() {
+    if ($(this).val() != 0) {
+        $('#validEditUserCountry').text('');
+    }
+});
+
+
+
 
     // listen for changes to the file input
 $('#addUserAvatar').on('change', function() {
@@ -401,7 +586,7 @@ $('#editUserAvatar').on('change', function() {
                          success: function(data) {
                              console.log(data);
                              debugger
-
+                            
                              $('#userId').val(data.userId);
                              $('#editUserFirstName').val(data.firstName);
                              $('#editUserLastName').val(data.lastName);
@@ -411,6 +596,7 @@ $('#editUserAvatar').on('change', function() {
                              $('#editUserDepartment').val(data.department);
                              $('#editUserCountry').val(data.countryId);
                              $('#editUserCity').val(data.cityId);
+                             $('#editUserRole').val(data.role.trim());
                              $('#editUserText').val(data.profileText);
                              $('#editUserStatus').val((data.status).toString());
 
@@ -421,6 +607,7 @@ $('#editUserAvatar').on('change', function() {
                                     'style': 'height: 150px; max-width: 150px;margin-top: -238px;'
                                 });
                                 $('#editUserPop').append(img);
+                                GetCityUser('edit');
 
 
                          },
@@ -431,8 +618,9 @@ $('#editUserAvatar').on('change', function() {
         }
 
     function addUserData(event) {
-                        debugger
-                        var userId = $('#userId').val();
+           debugger
+           
+             var userId = $('#userId').val();
 
                         if(userId != 0)
                         {
@@ -448,6 +636,7 @@ $('#editUserAvatar').on('change', function() {
                             formData.append('EmployeeId', $('#editUserEmployeeId').val());
                             formData.append('Department', $('#editUserDepartment').val());
                             formData.append('CityId', $('#editUserCity').val());
+                            formData.append('Role', $('#editUserRole').val());
                             formData.append('CountryId', $('#editUserCountry').val());
                             formData.append('ProfileText', $('#editUserText').val());
                             formData.append('Status', $('#editUserStatus').val());
@@ -466,6 +655,7 @@ $('#editUserAvatar').on('change', function() {
                             formData.append('EmployeeId', $('#addUserEmployeeId').val());
                             formData.append('Department', $('#addUserDepartment').val());
                             formData.append('CityId', $('#addUserCity').val());
+                            formData.append('Role', $('#addUserRole').val());
                             formData.append('CountryId', $('#addUserCountry').val());
                             formData.append('ProfileText', $('#addUserText').val());
                             formData.append('Status', $('#addUserStatus').val());
@@ -483,6 +673,7 @@ $('#editUserAvatar').on('change', function() {
                                      userView('nav-user');
                                      console.log(data);
                                      $('#users').html(data);
+                                     searchMission(@ViewBag.pg_no,'user');
 
                                      if(userId != 0)
                                      {
@@ -525,8 +716,7 @@ $('#editUserAvatar').on('change', function() {
                     //        console.log(error);
                     //      }
                     //                      });
-
-                    
+    
                 }
 
                 function GetCityUser(x) {
@@ -536,12 +726,14 @@ $('#editUserAvatar').on('change', function() {
                      debugger
                                 if(who == 'edit')
                                 {
-                                  countryId = document.getElementById("editUserCountry").value;
+                                  countryId = $("#editUserCountry").val();
                                 }
+                                
                                 else
                                 {
                                   countryId = $("#addUserCountry").val();
                                 }
+                                
 
                                     $.ajax({
                                         url: "/User/GetCity",
@@ -549,12 +741,26 @@ $('#editUserAvatar').on('change', function() {
                                         data: {"countryId": countryId},
                                         success: function (data) {
                                             data = JSON.parse(data);
-                                        if(who == 'edit')
+                                            console.log(data);
+                                            debugger
+                                       @* if(who == 'edit')
                                         {
 
                                             $("#selectUserCityList").empty();
                                             data.forEach((name) => {
                                                 document.getElementById("selectUserCityList").innerHTML += `
+
+                                            <option class="form-check" value="${name.CityId}" name="city" id="editUserCity">${name.CityName}</option>
+
+                                                `;
+                                            })
+                                        }*@
+                                        if(who == 'edit')
+                                        {
+
+                                            $("#selectEditUserCityList").empty();
+                                            data.forEach((name) => {
+                                                document.getElementById("selectEditUserCityList").innerHTML += `
 
                                             <option class="form-check" value="${name.CityId}" name="city" id="editUserCity">${name.CityName}</option>
 
@@ -578,6 +784,30 @@ $('#editUserAvatar').on('change', function() {
                                         }
                                     })
          }
+
+         function deleteUser(userId,event)
+        {
+            
+             debugger
+             event.preventDefault();
+                $.ajax({
+                         type: 'POST',
+                         url: '/Admin/DeleteUser',
+                         data: {"UserId": userId},
+                         success: function(data) {
+                             console.log(data);
+                             debugger
+                             userView('nav-user');
+                             console.log(data);
+                             $('#users').html(data);
+                             searchMission(@ViewBag.pg_no,'user');
+                             toastr.error('User Deleted');
+                         },
+                        error: function (request, error) {
+                         console.log(error);
+                     }
+                     });
+        }
 </script>
 
 <script>
@@ -585,6 +815,8 @@ $('#editUserAvatar').on('change', function() {
             var page = document.getElementById(x);
             var userpage = page.querySelector("#userpage");
             var addUser = page.querySelector("#add");
+            var search = page.querySelector("#searchUser1");
+            search.style.display = "none";
             userpage.style.display = "none";
             addUser.style.display = 'block';
         }
@@ -593,6 +825,8 @@ $('#editUserAvatar').on('change', function() {
             var page = document.getElementById(x);
             var userpage = page.querySelector("#userpage");
             var addUser = page.querySelector("#add");
+            var search = page.querySelector("#searchUser1");
+            search.style.display = "block";
             userpage.style.display = "block";
             addUser.style.display = 'none';
         }
@@ -601,6 +835,8 @@ $('#editUserAvatar').on('change', function() {
             var page = document.getElementById(x);
             var userpage = page.querySelector("#userpage");
             var addUser = page.querySelector("#edit");
+            var search = page.querySelector("#searchUser1");
+            search.style.display = "none";
             userpage.style.display = "none";
             addUser.style.display = 'block';
             getUserData(id);
@@ -611,6 +847,8 @@ $('#editUserAvatar').on('change', function() {
             var page = document.getElementById(x);
             var userpage = page.querySelector("#userpage");
             var addUser = page.querySelector("#edit");
+            var search = page.querySelector("#searchUser1");
+            search.style.display = "block";
             userpage.style.display = "block";
             addUser.style.display = "none";
         }

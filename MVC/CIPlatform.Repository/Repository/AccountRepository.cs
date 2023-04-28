@@ -841,6 +841,7 @@ namespace CIPlatform.Repository.Repository
                     user.Password = model.Password;
                     user.EmployeeId = model.EmployeeId;
                     user.Department = model.Department;
+                    user.Role = model.Role;
                     user.ProfileText = model.ProfileText;
                     if(model.UserImg != null)
                     user.Avatar = model.UserImg.FileName;
@@ -877,6 +878,7 @@ namespace CIPlatform.Repository.Repository
                     user.Password = model.Password;
                     user.EmployeeId = model.EmployeeId;
                     user.Department = model.Department;
+                    user.Role = model.Role;
                     user.ProfileText = model.ProfileText;
                     if (model.UserImg != null)
                         user.Avatar = model.UserImg.FileName;
