@@ -1,0 +1,125 @@
+﻿
+
+<div class="row gx-0">
+    <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
+        <thead>
+            <tr class="table-light" style="height: 70px;">
+                <th scope="col" class="thforcmstable">Mission Title</th>
+                <th scope="col" class="thforcmstable">User Name</th>
+                <th scope="col" class="thforcmstable">Comment</th>
+                <th scope="col" class="thforcmstable">Action</th>
+            </tr>
+        </thead>
+        @foreach (var item in @ViewBag.CommentList)
+        {
+            <tbody class="table-border">
+                <tr>
+                    <td>@item.Mission.Title</td>
+                    <td>@item.User.FirstName  @item.User.LastName</td>
+                    <td>@item.Comments</td>
+                    <td>
+                        @if (@item.ApprovalStatus == "Approve")
+                        {
+                            <button type="button" class="btn p-0" onclick="approveComment1('true')"><i class="bi bi-check-circle" style="color: green; opacity:30%"></i></button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn p-0" onclick="approveComment(@item.CommentId,'true')"><i class="bi bi-check-circle" style="color: green;"></i></button>
+                        }
+                        &nbsp;
+                        @if (@item.ApprovalStatus == "Decline")
+                        {
+                            <button type="button" class="btn p-0" onclick="approveComment1('false')"><i class="bi bi-x-circle" style="color: red; opacity:30%" ></i></button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn p-0" onclick="approveComment(@item.CommentId,'false')"><i class="bi bi-x-circle" style="color: red;"></i></button>
+                        }
+                        
+                        
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
+
+<nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center" onchange="searchMission()" >
+            <li class="page-item">
+                <button class="page-link" type="submit" aria-label="Previous" onclick="searchMission(1,'comment')">
+                    <span aria-hidden="true">&laquo;</span>
+                </button>
+            </li>
+            @{
+                double totalpages = ViewBag.ttlComments;
+
+                for (int i = 1; i <= totalpages; i++)
+                {
+                    @if (i == ViewBag.pg_no)
+                    {
+                        <li class="page-item active">
+                            <button class="page-link" type="submit" onclick="searchMission(@i,'comment')">@i</button>
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <button class="page-link" type="submit" onclick="searchMission(@i,'comment')">@i</button>
+                        </li>
+                    }
+
+
+                }   
+            
+            <li class="page-item">
+                <button class="page-link" type="submit" aria-label="Next" onclick="searchMission(@totalpages,'comment')">
+                    <span aria-hidden="true">&raquo;</span>
+                </button>
+            </li>
+            }
+        </ul>
+    </nav> 
+
+<script>
+
+    function approveComment1(result)
+    {
+        if(result == "true")
+        {
+            toastr.error('Comment is already approve');
+        }
+        else
+        {
+            toastr.error('Comment is already declined');
+        }
+    }
+
+    function approveComment(CommentId,result)
+    {
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/StatusChangeComment',
+            data: {"CommentId": CommentId, "Result":result},
+
+            success: function(data){
+                console.log(data);
+                debugger
+                 $('#comments').html(data);
+                if(result == "true")
+                {
+                    toastr.success('Comment Approved');
+                }
+                else
+                {
+                    toastr.error('Comment Declined');
+                }
+            },
+            error: function (request,error)
+            {
+                console.log(error);
+            }
+        })
+    }
+</script>

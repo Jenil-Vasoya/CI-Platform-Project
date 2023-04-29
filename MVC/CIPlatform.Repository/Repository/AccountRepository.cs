@@ -112,6 +112,31 @@ namespace CIPlatform.Repository.Repository
             return objBannerList;
         }
 
+        public List<CommentModel> CommentList()
+        {
+            List<Comment> missionComments = _DbContext.Comments.OrderByDescending(m => m.ApprovalStatus).ToList();
+
+            List<CommentModel> comments = new List<CommentModel>();
+
+            foreach (var comment in missionComments)
+            {
+                User user = _DbContext.Users.Find(comment.UserId);
+                Mission mission = _DbContext.Missions.Find(comment.MissionId);
+
+                CommentModel model = new CommentModel();
+                model.Mission = mission;
+                model.User = user;
+                model.UserId = comment.UserId;
+                model.MissionId = comment.MissionId;
+                model.User = comment.User;
+                model.Comments = comment.Comments;
+                model.ApprovalStatus = comment.ApprovalStatus;
+                model.CommentId = comment.CommentId;
+                comments.Add(model);
+            }
+            return comments;
+        }
+
         public AdminModel adminModelList()
         {
             AdminModel admins = new AdminModel();
@@ -252,9 +277,26 @@ namespace CIPlatform.Repository.Repository
 
             if (pg != 0)
             {
-                banners = banners.Skip((pg - 1) * pageSize).Take(pageSize).Take(pageSize).ToList();
+                banners = banners.Skip((pg - 1) * pageSize).Take(pageSize).ToList();
             }
             return banners;
+        }
+
+        public List<CommentModel> CommentListSearch(string search, int pg)
+        {
+            var pageSize = 6;
+            List<CommentModel> missions = CommentList();
+
+            if (search != null)
+            {
+                missions = missions.Where(u => u.Mission.Title.ToLower().Contains(search.ToLower()) || u.User.FirstName.ToLower().Contains(search.ToLower()) || u.Comments.ToLower().Contains(search.ToLower())).ToList();
+            }
+
+            if (pg != 0)
+            {
+                missions = missions.Skip((pg - 1) * pageSize).Take(pageSize).Take(pageSize).ToList();
+            }
+            return missions;
         }
 
         public User UserData(long UserId)
@@ -822,6 +864,22 @@ namespace CIPlatform.Repository.Repository
             var banner = _DbContext.Banners.Where(s => s.BannerId == BannerId).FirstOrDefault();
             banner.DeletedAt = DateTime.Now;
             _DbContext.Banners.Update(banner);
+            _DbContext.SaveChanges();
+            return true;
+        }
+
+        public bool StatusChangeComment(long CommentId, string Result)
+        {
+            var missionComment = _DbContext.Comments.Where(s => s.CommentId == CommentId).FirstOrDefault();
+            if (Result == "true")
+            {
+                missionComment.ApprovalStatus = "Approve";
+            }
+            else
+            {
+                missionComment.ApprovalStatus = "Decline";
+            }
+            _DbContext.Comments.Update(missionComment);
             _DbContext.SaveChanges();
             return true;
         }

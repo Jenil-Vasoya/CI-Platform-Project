@@ -267,6 +267,15 @@
                                 </span>
                             </a>
                         </li>
+                        <li>
+                            <a href="#" class="nav-link align-middle" id="nav-comment-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-comment" role="tab" aria-controls="nav-comment" aria-selected="true">
+                                <i class="bi bi-chat-text mr-3" style="font-size: 18px;"></i> <span
+                                    class="ms-1 d-none d-sm-inline">
+                                    Mission Comments
+                                </span>
+                            </a>
+                        </li>
 
                     </ul>
 
@@ -462,11 +471,23 @@
                                 </div>
                             </div>
 
-
-                            
-
                             <div id="banners">
                             <partial name="_BannerData" />
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-comment" role="tabpanel" aria-labelledby="nav-comment-tab">
+                            <div style="padding:10px;">
+                                <h4 class="pt-3 pb-2">Mission Comments</h4>
+                                <div class="row">
+                                    <div class="col-11">
+                                        <input class="form-control pl-5 w-25" id="searchComment" name="searchComment" type="search" placeholder="&nbsp;Search Comment..." oninput="searchMission(1,'comment')" aria-label="Search">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="comments">
+                            <partial name="_CommentData" />
                             </div>
                         </div>
                     </div>
@@ -589,6 +610,10 @@
             {
                 search = $('input[name="searchBanner"]').val();
             }
+            if(search == "")
+            {
+                search = $('input[name="searchComment"]').val();
+            }
 
             if (pg == undefined) {
                 pg = 1;
@@ -640,6 +665,10 @@
                     else if(who == 'banner')
                     {
                          $('#banners').html(data);
+                    }
+                    else if(who == 'comment')
+                    {
+                         $('#comments').html(data);
                     }
                 },
                 error: function (request, error) {

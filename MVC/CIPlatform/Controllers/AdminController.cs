@@ -23,45 +23,57 @@ namespace CIPlatform.Controllers
         public IActionResult Index()
         {
             //var model = _AccountRepo.adminModelList();
+           
+             var role =  HttpContext.Session.GetString("Role");
+            if(role != null && role.Trim() == "Admin")
+            { 
 
-            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+                long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-            ViewBag.CMSList = _AccountRepo.CMSList().Skip((1 - 1) * 6).Take(6).ToList();
-            ViewBag.ttlCMS = Math.Ceiling(_AccountRepo.CMSList().Count() / 6.0);
-            
-            ViewBag.MissionList = _AccountRepo.MissionList().Skip((1 - 1) * 6).Take(6).ToList();
-            ViewBag.ttlMissions = Math.Ceiling(_AccountRepo.MissionList().Count() / 6.0);
+                ViewBag.CMSList = _AccountRepo.CMSList().Skip((1 - 1) * 6).Take(6).ToList();
+                ViewBag.ttlCMS = Math.Ceiling(_AccountRepo.CMSList().Count() / 6.0);
 
-            ViewBag.ThemeList = _AccountRepo.ThemeList().Skip((1 - 1) * 6).Take(6).ToList();
-            ViewBag.ttlThemes = Math.Ceiling(_AccountRepo.ThemeList().Count() / 6.0);
+                ViewBag.MissionList = _AccountRepo.MissionList().Skip((1 - 1) * 6).Take(6).ToList();
+                ViewBag.ttlMissions = Math.Ceiling(_AccountRepo.MissionList().Count() / 6.0);
 
-            ViewBag.SkillList = _AccountRepo.SkillList().Skip((1 - 1) * 6).Take(6).ToList();
-            ViewBag.ttlSkills = Math.Ceiling(_AccountRepo.SkillList().Count() / 6.0);
+                ViewBag.ThemeList = _AccountRepo.ThemeList().Skip((1 - 1) * 6).Take(6).ToList();
+                ViewBag.ttlThemes = Math.Ceiling(_AccountRepo.ThemeList().Count() / 6.0);
 
-            ViewBag.UserList = _AccountRepo.UserList().Skip((1 - 1) * 6).Take(6).ToList();
-            ViewBag.ttlUsers = Math.Ceiling(_AccountRepo.UserList().Count() / 6.0);
+                ViewBag.SkillList = _AccountRepo.SkillList().Skip((1 - 1) * 6).Take(6).ToList();
+                ViewBag.ttlSkills = Math.Ceiling(_AccountRepo.SkillList().Count() / 6.0);
 
-            ViewBag.MissionApplicationList = _AccountRepo.MissionApplicationList().Skip((1 - 1) * 6).Take(6).ToList();
-            ViewBag.ttlApplications = Math.Ceiling(_AccountRepo.MissionApplicationList().Count() / 6.0);
-            
-            ViewBag.StoryList = _AccountRepo.StoryList().Skip((1 - 1) * 6).Take(6).ToList();
-            ViewBag.ttlStories = Math.Ceiling(_AccountRepo.StoryList().Count() / 6.0);
-            
-            ViewBag.BannerList = _AccountRepo.BannerList().Skip((1 - 1) * 6).Take(6).ToList();
-            ViewBag.ttlBanners = Math.Ceiling(_AccountRepo.BannerList().Count() / 6.0);
+                ViewBag.UserList = _AccountRepo.UserList().Skip((1 - 1) * 6).Take(6).ToList();
+                ViewBag.ttlUsers = Math.Ceiling(_AccountRepo.UserList().Count() / 6.0);
 
-            ViewBag.CountryList = _AccountRepo.CountryList();
-            ViewBag.Themes = _AccountRepo.ThemeList();
-            ViewBag.Skills = _AccountRepo.SkillList();
+                ViewBag.MissionApplicationList = _AccountRepo.MissionApplicationList().Skip((1 - 1) * 6).Take(6).ToList();
+                ViewBag.ttlApplications = Math.Ceiling(_AccountRepo.MissionApplicationList().Count() / 6.0);
 
-            ViewBag.UserName = _HomeRepo.GetUserAvatar(UserId).FirstName + " " + _HomeRepo.GetUserAvatar(UserId).LastName;
-            ViewBag.Avatar = _HomeRepo.GetUserAvatar(UserId).Avatar;
+                ViewBag.StoryList = _AccountRepo.StoryList().Skip((1 - 1) * 6).Take(6).ToList();
+                ViewBag.ttlStories = Math.Ceiling(_AccountRepo.StoryList().Count() / 6.0);
 
-            ViewBag.missionDatas = 1;
+                ViewBag.BannerList = _AccountRepo.BannerList().Skip((1 - 1) * 6).Take(6).ToList();
+                ViewBag.ttlBanners = Math.Ceiling(_AccountRepo.BannerList().Count() / 6.0);
 
-            ViewBag.pg_no = 1;
+                ViewBag.CommentList = _AccountRepo.CommentList().Skip((1 - 1) * 6).Take(6).ToList();
+                ViewBag.ttlComments = Math.Ceiling(_AccountRepo.CommentList().Count() / 6.0);
 
-            return View();
+                ViewBag.CountryList = _AccountRepo.CountryList();
+                ViewBag.Themes = _AccountRepo.ThemeList();
+                ViewBag.Skills = _AccountRepo.SkillList();
+
+                ViewBag.UserName = _HomeRepo.GetUserAvatar(UserId).FirstName + " " + _HomeRepo.GetUserAvatar(UserId).LastName;
+                ViewBag.Avatar = _HomeRepo.GetUserAvatar(UserId).Avatar;
+
+                ViewBag.missionDatas = 1;
+
+                ViewBag.pg_no = 1;
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
         }
 
         public ActionResult Search(string? search, int pg, string who)
@@ -145,6 +157,16 @@ namespace CIPlatform.Controllers
 
                 return PartialView("_BannerData");
 
+            }
+            else if (who == "comment")
+            {
+                var model = _AccountRepo.CommentListSearch(search, pg);
+
+                ViewBag.CommentList = model;
+                ViewBag.pg_no = pg;
+                ViewBag.ttlComments = Math.Ceiling(_AccountRepo.CommentListSearch(search, pg = 0).Count() / 6.0);
+
+                return PartialView("_CommentData");
             }
             else 
             {
@@ -352,6 +374,18 @@ namespace CIPlatform.Controllers
             ViewBag.pg_no = 1;
 
             return PartialView("_BannerData");
+        }
+
+        [HttpPost]
+        public ActionResult StatusChangeComment(long CommentId, string Result)
+        {
+            bool result = _AccountRepo.StatusChangeComment(CommentId, Result);
+
+            ViewBag.CommentList = _AccountRepo.CommentList().Skip((1 - 1) * 6).Take(6).ToList();
+            ViewBag.ttlComments = Math.Ceiling(_AccountRepo.CommentList().Count() / 6.0);
+            ViewBag.pg_no = 1;
+
+            return PartialView("_CommentData");
         }
 
         public ActionResult AddUser(User model)

@@ -29,6 +29,8 @@ namespace CIPlatform.Repository.Interface
 
         public List<Banner> BannerList();
 
+        public List<CommentModel> CommentList();
+
         public User UserData(long UserId);
 
         public AdminModel adminModelList();
@@ -48,6 +50,8 @@ namespace CIPlatform.Repository.Interface
         public List<StoryModel> StoryListSearch(string search, int pg);
 
         public List<Banner> BannerListSearch(string search, int pg);
+
+        public List<CommentModel> CommentListSearch(string search, int pg);
 
         public bool AddCMS(Cmspage model);
 
@@ -86,6 +90,8 @@ namespace CIPlatform.Repository.Interface
         public Banner EditBanner(long BannerId);
 
         public bool DeleteBanner(long BannerId);
+
+        public bool StatusChangeComment(long CommentId, string Result);
 
         public bool AddUser(User model);
 

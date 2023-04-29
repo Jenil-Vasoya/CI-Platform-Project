@@ -11,6 +11,6 @@
     "\\MVC\\CIPlatform\\Views\\Shared",
     "\\MVC\\CIPlatform\\Views\\Story"
   ],
-  "SelectedNode": "\\MVC\\CIPlatform\\Views\\Shared\\_MissionData.cshtml",
+  "SelectedNode": "\\MVC\\CIPlatform\\Controllers\\AdminController.cs",
   "PreviewInSolutionExplorer": false
 }
