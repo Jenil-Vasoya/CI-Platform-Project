@@ -530,7 +530,7 @@
 
 <script>
 
-    function checkDate() {
+function checkDate() {
 
     mission_id = document.getElementById("tMission").value;
     var newDate = document.getElementById("tDate").value;
@@ -563,7 +563,7 @@
     })
 }
 
-    function validDate()
+function validDate()
     {
         debugger
         var dateVolunteeredInput = document.getElementById('dateVolunteered').value;
@@ -582,7 +582,7 @@
             });
        }
 
-    function clearSheet() {
+function clearSheet() {
     debugger
 
      @*$('#timeSheetId').val('');*@
@@ -609,9 +609,5 @@
     }
 
 }
+
 </script>
-@section Scripts{
-    @{
-        <partial name="_ValidationScriptsPartial" />
-    }
-}

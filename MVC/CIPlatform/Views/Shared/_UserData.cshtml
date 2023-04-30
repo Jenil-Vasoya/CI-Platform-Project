@@ -367,11 +367,8 @@
 </div>
 
 <script>
-   
 
-
-
-   function addValidUser(event){
+    function addValidUser(event){
                 event.preventDefault();
                 var Firstname = $('#addUserFirstName').val().trim();
                 var Email = $('#addUserEmail').val().trim();
@@ -450,129 +447,129 @@
     });
 
 
-function editValidUser(event){
-                event.preventDefault();
-                var Firstname = $('#editUserFirstName').val().trim();
-                var Email = $('#editUserEmail').val().trim();
-                var Password = $('#editUserPassword').val().trim();
-                var CityId = $('#editUserCity').find(":selected").val();
-                var CountryId = $('#editUserCountry').find(":selected").val();
+    function editValidUser(event){
+                    event.preventDefault();
+                    var Firstname = $('#editUserFirstName').val().trim();
+                    var Email = $('#editUserEmail').val().trim();
+                    var Password = $('#editUserPassword').val().trim();
+                    var CityId = $('#editUserCity').find(":selected").val();
+                    var CountryId = $('#editUserCountry').find(":selected").val();
 
-                $('#validEditUserFirstName').text('');
-                $('#validEditUserEmail').text('');
-                $('#validEditUserPassword').text('');
-                $('#validEditUserCountry').text('');
-                $('#validEditUserCity').text('');
-
-                var isValid = true;
-
-                if(Firstname == ""){
-                    $('#validEditUserFirstName').text('First Name is Required!!');
-                    isValid = false;
-                } else {
                     $('#validEditUserFirstName').text('');
-                }
-                if(Email == ""){
-                    $('#validEditUserEmail').text('Email is Required!!');
-                    isValid = false;
-                } else {
                     $('#validEditUserEmail').text('');
-                }
-                if(Password == ""){
-                    $('#validEditUserPassword').text('Password is Required!!');
-                    isValid = false;
-                } else {
                     $('#validEditUserPassword').text('');
-                }
-                if(CityId == 0){
-                    $('#validEditUserCity').text('Please Select a City!!');
-                    isValid = false;
-                } else {
-                    $('#validEditUserCity').text('');
-                }
-                if(CountryId == 0){
-                    $('#validEditUserCountry').text('Please Select a Country!!');
-                    isValid = false;
-                } else {
                     $('#validEditUserCountry').text('');
-                }
-    
-                if (isValid) {
-                    addUserData(event);
-                }
-}
+                    $('#validEditUserCity').text('');
 
-// Use keyup() function to remove the required message as soon as the user starts typing
-$('#editUserFirstName').keyup(function() {
-    if ($(this).val() != '') {
-        $('#validEditUserFirstName').text('');
+                    var isValid = true;
+
+                    if(Firstname == ""){
+                        $('#validEditUserFirstName').text('First Name is Required!!');
+                        isValid = false;
+                    } else {
+                        $('#validEditUserFirstName').text('');
+                    }
+                    if(Email == ""){
+                        $('#validEditUserEmail').text('Email is Required!!');
+                        isValid = false;
+                    } else {
+                        $('#validEditUserEmail').text('');
+                    }
+                    if(Password == ""){
+                        $('#validEditUserPassword').text('Password is Required!!');
+                        isValid = false;
+                    } else {
+                        $('#validEditUserPassword').text('');
+                    }
+                    if(CityId == 0){
+                        $('#validEditUserCity').text('Please Select a City!!');
+                        isValid = false;
+                    } else {
+                        $('#validEditUserCity').text('');
+                    }
+                    if(CountryId == 0){
+                        $('#validEditUserCountry').text('Please Select a Country!!');
+                        isValid = false;
+                    } else {
+                        $('#validEditUserCountry').text('');
+                    }
+    
+                    if (isValid) {
+                        addUserData(event);
+                    }
     }
-});
-$('#editUserEmail').keyup(function() {
-    if ($(this).val() != '') {
-        $('#validEditUserEmail').text('');
-    }
-});
-$('#editUserPassword').keyup(function() {
-    if ($(this).val() != '') {
-        $('#validEditUserPassword').text('');
-    }
-});
-$('#editUserCity').change(function() {
-    if ($(this).val() != 0) {
-        $('#validEditUserCity').text('');
-    }
-});
-$('#editUserCountry').change(function() {
-    if ($(this).val() != 0) {
-        $('#validEditUserCountry').text('');
-    }
-});
+
+    // Use keyup() function to remove the required message as soon as the user starts typing
+    $('#editUserFirstName').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validEditUserFirstName').text('');
+        }
+    });
+    $('#editUserEmail').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validEditUserEmail').text('');
+        }
+    });
+    $('#editUserPassword').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validEditUserPassword').text('');
+        }
+    });
+    $('#editUserCity').change(function() {
+        if ($(this).val() != 0) {
+            $('#validEditUserCity').text('');
+        }
+    });
+    $('#editUserCountry').change(function() {
+        if ($(this).val() != 0) {
+            $('#validEditUserCountry').text('');
+        }
+    });
 
 
 
 
     // listen for changes to the file input
-$('#addUserAvatar').on('change', function() {
-    // get the selected file
-    var file = this.files[0];
+    $('#addUserAvatar').on('change', function() {
+        // get the selected file
+        var file = this.files[0];
     
-    // create a URL for the selected file
-    var url = URL.createObjectURL(file);
+        // create a URL for the selected file
+        var url = URL.createObjectURL(file);
     
-    // create an img element and set its src attribute
-    var img = $('<img>').attr({
-        'id': 'addUserDefaultAvatar',
-        'src': url,
-        'class': 'rounded-circle',
-        'style': 'height: 150px; max-width: 150px;'
+        // create an img element and set its src attribute
+        var img = $('<img>').attr({
+            'id': 'addUserDefaultAvatar',
+            'src': url,
+            'class': 'rounded-circle',
+            'style': 'height: 150px; max-width: 150px;'
+        });
+    
+        // remove the old image and append the new one
+        $('#addUserDefaultAvatar').remove();
+        $('#addUserPop').append(img);
     });
-    
-    // remove the old image and append the new one
-    $('#addUserDefaultAvatar').remove();
-    $('#addUserPop').append(img);
-});
 
 
-$('#editUserAvatar').on('change', function() {
-    $('#editUserAvatarImg').remove();
-    // get the selected file
-    var file = this.files[0];
+    $('#editUserAvatar').on('change', function() {
+        $('#editUserAvatarImg').remove();
+        // get the selected file
+        var file = this.files[0];
     
-    // create a URL for the selected file
-    var url = URL.createObjectURL(file);
+        // create a URL for the selected file
+        var url = URL.createObjectURL(file);
     
-    // create an img element and set its src attribute
-    var img = $('<img>').attr({
-        'id': 'editUserAvatarImg',
-        'src': url,
-        'class': 'rounded-circle',
-        'style': 'height: 150px; max-width: 150px;margin-top: -238px;'
+        // create an img element and set its src attribute
+        var img = $('<img>').attr({
+            'id': 'editUserAvatarImg',
+            'src': url,
+            'class': 'rounded-circle',
+            'style': 'height: 150px; max-width: 150px;margin-top: -238px;'
+        });
+    
+        // remove the old image and append the new one
+        $('#editUserPop').append(img);
     });
-    
-    // remove the old image and append the new one
-    $('#editUserPop').append(img);
-});
 
 
     function getUserData(userId)
@@ -691,7 +688,7 @@ $('#editUserAvatar').on('change', function() {
                              });
      }
 
-     function EditAvatar(){
+    function EditAvatar(){
             
                     debugger
                     var Profileimg = $('#addUserAvatar')[0].files[0];
@@ -719,7 +716,7 @@ $('#editUserAvatar').on('change', function() {
     
                 }
 
-                function GetCityUser(x) {
+    function GetCityUser(x) {
                     debugger
                      var who = x;
                      var countryId = 0;
@@ -785,7 +782,7 @@ $('#editUserAvatar').on('change', function() {
                                     })
          }
 
-         function deleteUser(userId,event)
+    function deleteUser(userId,event)
         {
             
              debugger
@@ -808,10 +805,8 @@ $('#editUserAvatar').on('change', function() {
                      }
                      });
         }
-</script>
 
-<script>
-    function addUser(x) {
+        function addUser(x) {
             var page = document.getElementById(x);
             var userpage = page.querySelector("#userpage");
             var addUser = page.querySelector("#add");

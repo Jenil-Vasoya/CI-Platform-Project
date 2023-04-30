@@ -26,13 +26,13 @@ namespace CIPlatform.Repository.Repository
 
         public User GetUserAvatar(long UserId)
         {
-            var user = _DbContext.Users.FirstOrDefault(i => i.UserId == UserId);
-            return user;
+            var user = _DbContext.Users.FirstOrDefault(i => i.UserId == UserId && i.DeletedAt == null);
+            return user ;
         }
 
         public List<User> UserList()
         {
-            List<User> objUserList = _DbContext.Users.ToList();
+            List<User> objUserList = _DbContext.Users.Where(u=> u.DeletedAt == null).ToList();
             return objUserList;
         }
 
@@ -40,19 +40,19 @@ namespace CIPlatform.Repository.Repository
 
         public Boolean IsEmailAvailable(string email)
         {
-            return _DbContext.Users.Any(u => u.Email == email);
+            return _DbContext.Users.Any(u => u.Email == email && u.DeletedAt == null);
         }
 
         public User IsPasswordAvailable(string password, string email)
         {
-            return _DbContext.Users.Where(u => u.Password == password && u.Email == email).FirstOrDefault();
+            return _DbContext.Users.Where(u => u.Password == password && u.Email == email && u.DeletedAt == null).FirstOrDefault();
         }
 
 
 
         public long GetUserID(string Email)
         {
-            User user = _DbContext.Users.Where(u => u.Email == Email).FirstOrDefault();
+            User user = _DbContext.Users.Where(u => u.Email == Email && u.DeletedAt == null ).FirstOrDefault();
             if (user == null)
             {
 
@@ -102,28 +102,19 @@ namespace CIPlatform.Repository.Repository
         }
         public User GetUser(int userID)
         {
-            try
+
+            User user = _DbContext.Users.Where(u => u.UserId == userID && u.DeletedAt == null).FirstOrDefault();
+            if (user != null)
             {
-
-                User user = _DbContext.Users.Where(u => u.UserId == userID).FirstOrDefault();
-                if (user != null)
-                {
-                    return user;
-                }
-                else
-                {
-
-                    return null;
-
-                }
-
-
+                return user;
             }
-            catch (Exception ex)
+            else
             {
 
                 return null;
+
             }
+
         }
 
         public bool Register(User objUser)
@@ -137,14 +128,11 @@ namespace CIPlatform.Repository.Repository
             }
             return false;
 
-            
-                
-            
         }
 
         public void Login(User objLogin)
         {
-            if (_DbContext.Users.Any(u => u.Email == objLogin.Email && u.Password == objLogin.Password))
+            if (_DbContext.Users.Any(u => u.Email == objLogin.Email && u.Password == objLogin.Password && u.DeletedAt == null))
             {
 
             }
@@ -153,7 +141,7 @@ namespace CIPlatform.Repository.Repository
 
         public UserData GetUserlist(long UserId)
         {
-            var getuser = _DbContext.Users.FirstOrDefault(u=> u.UserId == UserId);
+            var getuser = _DbContext.Users.FirstOrDefault(u=> u.UserId == UserId && u.DeletedAt == null);
             if (getuser != null)
             {
                 UserData userData = new UserData();
@@ -196,13 +184,13 @@ namespace CIPlatform.Repository.Repository
         
         public List<Skill> GetSkills()
         {
-            var getskills = _DbContext.Skills.ToList();
+            var getskills = _DbContext.Skills.Where(s=> s.DeletedAt == null).ToList();
             return getskills;
         }
         
         public List<UserSkill> GetUserSkills(long UserId)
         {
-            var getUserSkills = _DbContext.UserSkills.Where(u=> u.UserId == UserId).ToList();
+            var getUserSkills = _DbContext.UserSkills.Where(u=> u.UserId == UserId && u.DeletedAt == null).ToList();
             return getUserSkills;
         }
 
@@ -228,7 +216,7 @@ namespace CIPlatform.Repository.Repository
 
         public bool ChangeSkills(List<long> skills, long UserId)
         {
-            List<UserSkill> userSkills = _DbContext.UserSkills.Where(a => a.UserId == UserId).ToList();
+            List<UserSkill> userSkills = _DbContext.UserSkills.Where(a => a.UserId == UserId && a.DeletedAt == null).ToList();
             foreach (var userSkill in userSkills)
             {
                 _DbContext.UserSkills.Remove(userSkill);
@@ -255,7 +243,7 @@ namespace CIPlatform.Repository.Repository
 
         public bool EditAvatar(IFormFile Profileimg, long UserId)
         {
-            var CheckProfile = _DbContext.Users.FirstOrDefault(x => x.UserId == UserId);
+            var CheckProfile = _DbContext.Users.FirstOrDefault(x => x.UserId == UserId && x.DeletedAt == null);
 
 
             // Delete the image file from the file system
@@ -276,7 +264,7 @@ namespace CIPlatform.Repository.Repository
 
         public bool EditProfile(UserData userData, long UserId)
         {
-            User getUser = _DbContext.Users.FirstOrDefault(u=> u.UserId == UserId);
+            User getUser = _DbContext.Users.FirstOrDefault(u=> u.UserId == UserId && u.DeletedAt == null);
             if(getUser != null)
             {
                 getUser.FirstName = userData.FirstName;
@@ -304,7 +292,7 @@ namespace CIPlatform.Repository.Repository
 
             List<VolunteerTimeSheet> volunteerSheets = new List<VolunteerTimeSheet>();
 
-            var timeSheet = _DbContext.TimeSheets.Where(u => u.UserId == UserId).ToList();
+            var timeSheet = _DbContext.TimeSheets.Where(u => u.UserId == UserId && u.DeletedAt == null).ToList();
 
             foreach (var sheet in timeSheet)
             {
@@ -325,7 +313,7 @@ namespace CIPlatform.Repository.Repository
 
                 if (sheet.Time != null)
                 {
-                    TimeSpan timeSpanValue = TimeSpan.Parse(sheet.Time.ToString());
+                    TimeSpan timeSpanValue = TimeSpan.Parse(sheet.Time.ToString() ?? "");
                     volunteerSheet.Hours = timeSpanValue.Hours;
                     volunteerSheet.Minutes = timeSpanValue.Minutes;
                 }
@@ -343,7 +331,7 @@ namespace CIPlatform.Repository.Repository
 
         public List<Mission> UserAppliedMissionList(long UserId)
         {
-            var validUser = _DbContext.MissionApplications.Where(a => a.UserId == UserId && a.ApprovalStatus == "Approve").ToList();
+            var validUser = _DbContext.MissionApplications.Where(a => a.UserId == UserId && a.ApprovalStatus == "Approve" && a.DeletedAt == null).ToList();
 
             var list = new List<long>();
 
@@ -352,7 +340,7 @@ namespace CIPlatform.Repository.Repository
                 list.Add(app.MissionId);
             }
 
-            var missions = _DbContext.Missions.Where(a => list.Contains(a.MissionId)).ToList();
+            var missions = _DbContext.Missions.Where(a => list.Contains(a.MissionId) && a.DeletedAt == null).ToList();
 
             return missions;
         }
@@ -386,7 +374,7 @@ namespace CIPlatform.Repository.Repository
         
         public bool EditTimeSheet(VolunteerTimeSheet volunteerSheet)
         {
-            var timeSheet = _DbContext.TimeSheets.Where(t => t.TimeSheetId == volunteerSheet.TimesheetId).FirstOrDefault();
+            var timeSheet = _DbContext.TimeSheets.Where(t => t.TimeSheetId == volunteerSheet.TimesheetId && t.DeletedAt == null).FirstOrDefault();
             if(timeSheet != null)
             {
                 timeSheet.MissionId = volunteerSheet.MissionId;
@@ -413,7 +401,7 @@ namespace CIPlatform.Repository.Repository
         
         public bool DeleteTimeSheet(long TimesheetId)
         {
-            var timeSheet = _DbContext.TimeSheets.Where(t => t.TimeSheetId == TimesheetId).FirstOrDefault();
+            var timeSheet = _DbContext.TimeSheets.Where(t => t.TimeSheetId == TimesheetId && t.DeletedAt == null).FirstOrDefault();
             if(timeSheet != null)
             {
                 _DbContext.TimeSheets.Remove(timeSheet);

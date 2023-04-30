@@ -1,4 +1,20 @@
-﻿<style>
+﻿@if (TempData["Error"] != null)
+{
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        toastr.error('@TempData["Error"]')
+    </script>
+
+}
+
+
+<style>
     .applyButton {
         border: 2px solid #F88634;
         border-radius: 100px;
@@ -31,12 +47,10 @@
                         <img src="~/Assets/images/404-Page-image.png" alt="Avatar" height="300px" width="100%">
                     }
                     <div class=" overlayforhower p-0">
-                    <a asp-controller="Story" asp-action="StoryDetail" asp-route-id="@story.StoryId">
-                    <button type="submit"  class="btn applyButton bg-transparent border-white rounded-pill">
-                        <span style="color:white">View Details &nbsp;<i class="bi bi-arrow-right"></i></span>
-                    </button>
-                    </a>
-                </div>
+                        <a asp-controller="Story" asp-action="StoryDetail" asp-route-id="@story.StoryId" class="btn applyButton bg-transparent border-white rounded-pill">
+                            <span style="color:white">View Details &nbsp;<i class="bi bi-arrow-right"></i></span>
+                        </a>
+                    </div>
                 <div class="position-relative">
                     <div class="position-absolute top-100 start-50 translate-middle rounded-pill p-2" style="background-color: white;">@story.Theme</div>
                 </div>
@@ -58,11 +72,7 @@
                         </div>
 
                         <div class="col-2 d-flex align-items-center">
-                            <a asp-controller="Story" asp-action="AddStory" asp-route-id="@story.StoryId">
-                                <button  class="btn applyButton rounded-pill" type="submit">
-                                    Edit 
-                                </button>
-                            </a>
+                            <a asp-controller="Story" asp-action="AddStory" class="btn applyButton rounded-pill" asp-route-id="@story.StoryId"> Edit </a>
                         </div>
                     }
                     else

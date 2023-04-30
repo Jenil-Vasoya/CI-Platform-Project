@@ -26,196 +26,240 @@ namespace CIPlatform.Controllers
 
         public IActionResult StoryList()
         {
-            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-
-            if (UserId > 0)
+            try
             {
-                List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
-                ViewBag.missionDatas = missionDatas;
+                long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-                ViewBag.UserId = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? "");
-                ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-                ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
-                ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
+                if (UserId > 0)
+                {
+                    List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
+                    ViewBag.missionDatas = missionDatas;
 
-                List<Country> countries = _StoryRepo.CountryList();
-                ViewBag.countries = countries;
+                    ViewBag.UserId = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? "");
+                    ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
+                    ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
+                    ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
 
-                List<MissionTheme> themes = _StoryRepo.MissionThemeList();
-                ViewBag.themes = themes;
+                    List<Country> countries = _StoryRepo.CountryList();
+                    ViewBag.countries = countries;
 
-                List<Skill> skills = _StoryRepo.SkillList();
-                ViewBag.skills = skills;
+                    List<MissionTheme> themes = _StoryRepo.MissionThemeList();
+                    ViewBag.themes = themes;
 
-                ViewBag.Totalpages = Math.Ceiling(missionDatas.Count() / 6.0);
-                ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
-                ViewBag.pg_no = 1;
+                    List<Skill> skills = _StoryRepo.SkillList();
+                    ViewBag.skills = skills;
 
+                    ViewBag.Totalpages = Math.Ceiling(missionDatas.Count() / 6.0);
+                    ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
+                    ViewBag.pg_no = 1;
+
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Login", "User");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["SubmitStory"] = ex.Message;
                 return View();
             }
-            else
-            {
-                return RedirectToAction("Login", "User");
-            }
         }
+
 
         [HttpPost]
         public ActionResult SearchStory(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int pg)
         {
-
-            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-
-            if (UserId > 0)
+            try
             {
-                search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
-                List<MissionData> missionDatas = _StoryRepo.GetStoryMissionList(search, countries, cities, themes, skills, pg, UserId);
+                long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-                ViewBag.missionDatas = missionDatas;
+                if (UserId > 0)
+                {
+                    search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
+                    List<MissionData> missionDatas = _StoryRepo.GetStoryMissionList(search, countries, cities, themes, skills, pg, UserId);
 
-                ViewBag.UserId = UserId;
-                ViewBag.pg_no = pg;
-                ViewBag.Totalpages = Math.Ceiling(_StoryRepo.GetStoryMissionList(search, countries, cities, themes, skills, pg = 0, UserId).Count() / 6.0);
-                ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
+                    ViewBag.missionDatas = missionDatas;
 
-                return PartialView("_StoryList");
+                    ViewBag.UserId = UserId;
+                    ViewBag.pg_no = pg;
+                    ViewBag.Totalpages = Math.Ceiling(_StoryRepo.GetStoryMissionList(search, countries, cities, themes, skills, pg = 0, UserId).Count() / 6.0);
+                    ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
+
+                    return PartialView("_StoryList");
+                }
+                else
+                {
+                    return RedirectToAction("Login", "User");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return RedirectToAction("Login", "User");
+                TempData["Error"] = ex.Message;
+                return PartialView("_StoryList");
             }
         }
 
 
         public IActionResult StoryDetail(long id)
         {
-            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-
-            if (UserId > 0)
+            try
             {
-                List<User> users = _StoryRepo.UserList();
-                ViewBag.Users = users;
+                long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-                _StoryRepo.StoryView(id, UserId);
+                if (UserId > 0)
+                {
+                    List<User> users = _StoryRepo.UserList();
+                    ViewBag.Users = users;
 
-
-                List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
-
-                var missions = missionDatas.Where(x => x.StoryId == id).FirstOrDefault();
-                ViewBag.missionDatas = missions;
+                    _StoryRepo.StoryView(id, UserId);
 
 
-                ViewBag.UserId = UserId;
-                ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-                ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
-                ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
+                    List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
 
-                return View();
+                    var missions = missionDatas.Where(x => x.StoryId == id).FirstOrDefault();
+                    ViewBag.missionDatas = missions;
+
+
+                    ViewBag.UserId = UserId;
+                    ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
+                    ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
+                    ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
+
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Login", "User");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return RedirectToAction("Login", "User");
+                TempData["Error"] = ex.Message;
+                return View();
             }
         }
 
         
         public IActionResult AddStory(long id)
         {
-            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-
-            if (UserId > 0)
+            try
             {
-                List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
+                long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-                var missions = missionDatas.Where(x => x.StoryId == id).FirstOrDefault();
-                ViewBag.missionDatas = missions;
-
-                ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
-
-                ViewBag.UserId = UserId;
-                ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-                ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
-                ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
-
-                return View(missions);
-            }
-            else
-            {
-                return RedirectToAction("Login", "User");
-            }
-        }
-
-        [HttpPost]
-        public IActionResult AddStory(MissionData objStory , string? submit)
-        {
-           long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-            if (UserId > 0)
-            {
-                if (ModelState.IsValid)
+                if (UserId > 0)
                 {
-                    string btn = "";
-                    long StoryId = 0;
-
-                    if (submit != null)
-                    {
-                        btn = submit;
-                        TempData["SubmitStory"] = "Story Sent for Publish Successfully";
-                    }
-                    else
-                    {
-                        TempData["SaveStory"] = "Story Saved Successfully";
-                    }
-                    if (objStory.MissionId != 0)
-                    {
-                        StoryId = _StoryRepo.AddData(objStory, UserId, btn);
-                    }
-
-                    var path = new List<string>();
-                    foreach (var i in objStory.images)
-                    {
-                        StoryMedium story = new StoryMedium();
-
-                        string path1 = i.FileName;
-
-                        path.Add(path1);
-
-                    }
-                    objStory.StoryImages = path;
-
-                    var missions = objStory;
-
                     List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
 
-                    var storymission = missionDatas.Where(x => x.StoryId == (objStory.StoryId ?? StoryId)).FirstOrDefault();
-                    ViewBag.missionDatas = storymission;
+                    var missions = missionDatas.Where(x => x.StoryId == id).FirstOrDefault();
+                    ViewBag.missionDatas = missions;
+
+                    ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
 
                     ViewBag.UserId = UserId;
                     ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
                     ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
                     ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
 
-                    ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
-                    if (submit != null)
-                    {
-                        return RedirectToAction("StoryList");
-                    }
                     return View(missions);
                 }
                 else
                 {
-                    ViewBag.UserId = UserId;
-                    ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-                    ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
-                    ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
-
-                    ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
-                    return View();
+                    return RedirectToAction("Login", "User");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                return RedirectToAction("Login", "User");
+                TempData["Error"] = ex.Message;
+                return View();
             }
         }
+
+
+        [HttpPost]
+        public IActionResult AddStory(MissionData objStory , string? submit)
+        {
+            try
+            {
+                long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+                if (UserId > 0)
+                {
+                    if (ModelState.IsValid)
+                    {
+                        string btn = "";
+                        long StoryId = 0;
+
+                        if (submit != null)
+                        {
+                            btn = submit;
+                            TempData["SubmitStory"] = "Story Sent for Publish Successfully";
+                        }
+                        else
+                        {
+                            TempData["SubmitStory"] = "Story Saved Successfully";
+                        }
+                        if (objStory.MissionId != 0)
+                        {
+                            StoryId = _StoryRepo.AddData(objStory, UserId, btn);
+                        }
+
+                        if (objStory.images != null)
+                        {
+                            var path = new List<string>();
+                            foreach (var i in objStory.images)
+                            {
+                                StoryMedium story = new StoryMedium();
+
+                                string path1 = i.FileName;
+
+                                path.Add(path1);
+
+                            }
+                            objStory.StoryImages = path;
+                        }
+
+                            var missions = objStory;
+                        
+
+                        List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
+
+                        var storymission = missionDatas.Where(x => x.StoryId == (objStory.StoryId ?? StoryId)).FirstOrDefault();
+                        ViewBag.missionDatas = storymission;
+
+                        ViewBag.UserId = UserId;
+                        ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
+                        ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
+                        ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
+
+                        ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
+                  
+                            return RedirectToAction("StoryList");
+                   
+                    }
+                    else
+                    {
+                        ViewBag.UserId = UserId;
+                        ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
+                        ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
+                        ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
+
+                        ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
+                        return View();
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Login", "User");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+                return View();
+            }
+        }
+
 
         [HttpPost]
         public JsonResult InviteWorker(long StoryId, List<long> CoWorkers)
@@ -230,22 +274,7 @@ namespace CIPlatform.Controllers
 
             return Json(null);
         }
-        //[HttpPost]
-        //public ActionResult UploadImages(IEnumerable<HttpPostedFileBase> images)
-        //{
-        //    foreach (var image in images)
-        //    {
-        //        if (image != null && image.ContentLength > 0)
-        //        {
-        //            // Save the file to the server or process it as needed
-        //            var fileName = Path.GetFileName(image.FileName);
-        //            var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
-        //            image.SaveAs(path);
-        //        }
-        //    }
-
-        //    return RedirectToAction("Index");
-        //}
+        
 
 
     }

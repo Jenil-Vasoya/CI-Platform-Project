@@ -29,15 +29,6 @@ namespace CIPlatform.Controllers
         }
 
 
-       
-
-
-        //private readonly CiPlatformContext _db;
-
-        //public UserController(CiPlatformContext db)
-        //{
-        //    _db = db;
-        //}
 
         public IActionResult Index()
         {
@@ -48,14 +39,6 @@ namespace CIPlatform.Controllers
         {
             return View();
         }
-
-
-        //[Route("/logout")]
-        //public IActionResult Logout()
-        //{
-        //    HttpContext.Session.Clear();
-        //    return RedirectToAction("Index");
-        //}
 
         public IActionResult VolunteerTimeSheet()
         {
@@ -137,28 +120,17 @@ namespace CIPlatform.Controllers
         }
 
 
-
-        //[HttpPost]
-        //public JsonResult EditTimeSheet(long id)
-        //{
-        //    long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-        //    List<VolunteerTimeSheet> sheets = _UserRepo.GetVolunteerSheetData(UserId);
-
-        //    var sheet = sheets.FirstOrDefault(s => s.TimesheetId == id);
-        //    return Json(sheet);
-        //}
-
         [HttpPost]
         public IActionResult Login(User objLogin)
         {
-            
-            if (objLogin.Email != null && objLogin.Password != null)
+            try
             {
-
-                var objUser = _UserRepo.UserList().FirstOrDefault(u => u.Email == objLogin.Email);
-
-                if (_UserRepo.UserList().Any(u => u.Email == objLogin.Email))
+                if (objLogin.Email != null && objLogin.Password != null)
                 {
+
+                    var objUser = _UserRepo.UserList().FirstOrDefault(u => u.Email == objLogin.Email);
+
+
                     if (_UserRepo.UserList().Any(u => u.Email == objLogin.Email.ToLower()))
                     {
                         if (Crypto.VerifyHashedPassword(objUser.Password, objLogin.Password))
@@ -188,18 +160,24 @@ namespace CIPlatform.Controllers
                                 return RedirectToAction("EditProfile", "User");
                             }
                         }
-                    TempData["Fail"] = "Please enter correct password";
-                    return View();
+                        TempData["Fail"] = "Please enter correct password";
+                        return View();
 
                     }
-                }
-                TempData["Fail"] = "Don't have any account please register your account";
-                return View();
 
+                    TempData["Fail"] = "Don't have any account please register your account";
+                    return View();
+
+                }
+                else
+                {
+
+                    return View();
+                }
             }
-            else
+            catch (Exception ex)
             {
-               
+                TempData["Fail"] = ex.Message;
                 return View();
             }
 
@@ -216,34 +194,43 @@ namespace CIPlatform.Controllers
             return View();
         }
 
+
         [HttpPost]
         public IActionResult Register(User objUser)
         {
-
-            if ((objUser.Password == objUser.ConfirmPassword) && objUser.FirstName != null && objUser.Email != null && objUser.Password != null)
+            try
             {
-                if (_UserRepo.UserList().Any(u => u.Email == objUser.Email) == false)
+                if ((objUser.Password == objUser.ConfirmPassword) && objUser.FirstName != null && objUser.Email != null && objUser.Password != null)
                 {
-
-                    var isValid = _UserRepo.Register(objUser);
+                    if (_UserRepo.UserList().Any(u => u.Email == objUser.Email) == false)
                     {
-                        if (isValid == true)
+
+                        var isValid = _UserRepo.Register(objUser);
                         {
-                            TempData["RegisterSuccess"] = "Account Created Successfully";
-                            return RedirectToAction("Login", "User");
+                            if (isValid == true)
+                            {
+                                TempData["RegisterSuccess"] = "Account Created Successfully";
+                                return RedirectToAction("Login", "User");
+
+                            }
+                            TempData["RegisterFail"] = "Registarion is fail";
+                            return View();
 
                         }
-                        TempData["RegisterFail"] = "Registarion is fail";
-                        return View();
-
                     }
+                    TempData["RegisterFail"] = "This email is already registered";
+                    return View();
+
                 }
-                TempData["RegisterFail"] = "This email is already registered";
+                TempData["RegisterFail"] = "Registarion is fail";
                 return View();
 
             }
-            TempData["RegisterFail"] = "Registarion is fail";
-            return View();
+            catch (Exception e)
+            {
+                TempData["RegisterFail"] = e.Message;
+                return View();
+            }
         }
 
 
@@ -254,6 +241,7 @@ namespace CIPlatform.Controllers
             return View();
         }
 
+
         [HttpPost]
         public IActionResult ForgotPassword(ForgotPassword objForgotPass)
         {
@@ -263,33 +251,42 @@ namespace CIPlatform.Controllers
                 return View();
             }
 
-            if (_UserRepo.IsEmailAvailable(objForgotPass.email))
+            try
             {
-                try
+                if (_UserRepo.IsEmailAvailable(objForgotPass.email))
                 {
-                    long UserId = _UserRepo.GetUserID(objForgotPass.email);
-                    string welcomeMessage = "Welcome to CI platform, <br/> You can Reset your password using below link. <br/>";
-                    // string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Account/Reset_Password/" + UserId.ToString() + " \"  style=\"font-weight:500;color:blue;\" > Reset Password </a>";
-                    string path = "<a href=\"https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/User/ResetPassword/" + UserId.ToString() + "\"> Reset Password </a>";
-                    MailHelper mailHelper = new MailHelper(configuration);
-                    ModelState.Clear();
-                    ViewBag.sendMail = mailHelper.Send(objForgotPass.email, welcomeMessage + path);
-                    TempData["LinkSent"] = "ResetPassword link is sent on your registered email";
-                    return RedirectToAction("Login", new { UserId = UserId });
+                    try
+                    {
+                        long UserId = _UserRepo.GetUserID(objForgotPass.email);
+                        string welcomeMessage = "Welcome to CI platform, <br/> You can Reset your password using below link. <br/>";
+                        // string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Account/Reset_Password/" + UserId.ToString() + " \"  style=\"font-weight:500;color:blue;\" > Reset Password </a>";
+                        string path = "<a href=\"https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/User/ResetPassword/" + UserId.ToString() + "\"> Reset Password </a>";
+                        MailHelper mailHelper = new MailHelper(configuration);
+                        ModelState.Clear();
+                        ViewBag.sendMail = mailHelper.Send(objForgotPass.email, welcomeMessage + path);
+                        TempData["LinkSent"] = "ResetPassword link is sent on your registered email";
+                        return RedirectToAction("Login", new { UserId = UserId });
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", ex.Message);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    ModelState.AddModelError("", ex.Message);
+                    TempData["InvalidEmail"] = "This email in not registered";
+                    return View();
                 }
             }
-            else
+            catch  (Exception ex)
             {
-                TempData["InvalidEmail"] = "This email in not registered";
+                TempData["InvalidEmail"] = ex.Message;
                 return View();
             }
             return View();
             
         }
+
 
         [HttpGet]
         public IActionResult ResetPassword(long id)
@@ -298,6 +295,7 @@ namespace CIPlatform.Controllers
             model.UserId = id;
             return View(model);
         }
+
 
         [HttpPost]
         public IActionResult ResetPassword(Reset_Password model, long id)
@@ -320,70 +318,87 @@ namespace CIPlatform.Controllers
             return View();
         }
 
+
         public IActionResult EditProfile(long id)
         {
-            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-
-            if (UserId != 0)
+            try
             {
-                ViewBag.Uid = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-                ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email"));
+                long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-                UserData model = _UserRepo.GetUserlist(UserId);
+                if (UserId != 0)
+                {
 
-                ViewBag.UserName = _UserRepo.GetUserAvatar(UserId).FirstName + " " + _UserRepo.GetUserAvatar(UserId).LastName;
-                ViewBag.Avatar = _UserRepo.GetUserAvatar(UserId).Avatar;
+                    UserData model = _UserRepo.GetUserlist(UserId);
+                    ViewBag.Email = _UserRepo.GetUserAvatar(UserId).Email;
+                    ViewBag.UserName = _UserRepo.GetUserAvatar(UserId).FirstName + " " + _UserRepo.GetUserAvatar(UserId).LastName;
+                    ViewBag.Avatar = _UserRepo.GetUserAvatar(UserId).Avatar;
 
-                return View(model);
+                    return View(model);
+                }
+                else
+                {
+                    return RedirectToAction("Login");
+                }
             }
-            else
+            catch  (Exception ex)
             {
+                TempData["Fail"] = ex.Message;
                 return RedirectToAction("Login");
             }
         }
+
 
         [HttpPost]
         public IActionResult EditProfile(UserData userData)
         {
-            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-
-            if (UserId != 0)
+            try
             {
-                UserData model1 = _UserRepo.GetUserlist(UserId);
-                if (userData.FirstName == model1.FirstName && userData.LastName == model1.LastName && userData.EmployeeId == model1.EmployeeId && userData.Title == model1.Title && userData.Department == model1.Department && userData.WhyIvolunteer == model1.WhyIvolunteer && userData.CityId == model1.CityId && userData.CountryId == model1.CountryId && userData.LinkedInUrl == model1.LinkedInUrl && userData.ProfileText == model1.ProfileText)
+                long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+
+                if (UserId != 0)
                 {
-                    TempData["EditFail"] = "Please change the profile details for update details";
+                    UserData model1 = _UserRepo.GetUserlist(UserId);
+                    if (userData.FirstName == model1.FirstName && userData.LastName == model1.LastName && userData.EmployeeId == model1.EmployeeId && userData.Title == model1.Title && userData.Department == model1.Department && userData.WhyIvolunteer == model1.WhyIvolunteer && userData.CityId == model1.CityId && userData.CountryId == model1.CountryId && userData.LinkedInUrl == model1.LinkedInUrl && userData.ProfileText == model1.ProfileText)
+                    {
+                        TempData["EditFail"] = "Please change the profile details for update details";
+
+                        ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
+                        ViewBag.UserName = model1.FirstName + " " + model1.LastName;
+                        ViewBag.Avatar = model1.Avatar;
+                        return View(model1);
+                    }
+                    bool result = _UserRepo.EditProfile(userData, UserId);
+
+                    UserData model = _UserRepo.GetUserlist(UserId);
+                    if (result)
+                    {
+                        TempData["EditSuccess"] = "Your profile was updated";
+                    }
+                    else
+                    {
+                        TempData["EditFail"] = "Your profile was not updated";
+                    }
 
                     ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-                    ViewBag.UserName = model1.FirstName + " " + model1.LastName;
-                    ViewBag.Avatar = model1.Avatar;
-                    return View(model1);
-                }
-                bool result = _UserRepo.EditProfile(userData, UserId);
-
-                UserData model = _UserRepo.GetUserlist(UserId);
-                if (result)
-                {
-                    TempData["EditSuccess"] = "Your profile was updated";
+                    ViewBag.UserName = _UserRepo.GetUserAvatar(UserId).FirstName + " " + _UserRepo.GetUserAvatar(UserId).LastName;
+                    ViewBag.Avatar = _UserRepo.GetUserAvatar(UserId).Avatar;
+                    return View(model);
                 }
                 else
                 {
-                    TempData["EditFail"] = "Your profile was not updated";
+                    return RedirectToAction("Login");
                 }
-
-                ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
-                ViewBag.UserName = _UserRepo.GetUserAvatar(UserId).FirstName + " " + _UserRepo.GetUserAvatar(UserId).LastName;
-                ViewBag.Avatar = _UserRepo.GetUserAvatar(UserId).Avatar;
-                return View(model);
             }
-            else
+            catch (Exception ex)
             {
-                return RedirectToAction("Login");
+                TempData["EditFail"] =  ex.Message;
+                return View();
             }
         }
 
+
         public JsonResult GetCity(long countryId)
-        {
+            {
             List<City> city = _UserRepo.CityList(countryId);
             var json = JsonConvert.SerializeObject(city);
 
@@ -391,46 +406,24 @@ namespace CIPlatform.Controllers
             return Json(json);
         }
 
+
         [HttpPost]
-        public JsonResult ChangePassword(string OldPassword, string Password, string ConfirmPassword)
+        public JsonResult ChangePassword(string OldPassword, string Password)
         {
-            if (ModelState.IsValid)
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+
+            bool result = _UserRepo.ChangePasswordUser(UserId, OldPassword, Password);
+
+            if (result == true)
             {
-                long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-                if (OldPassword == null || Password == null || ConfirmPassword == null)
-                {
-                    return Json(null);
-                }
-                if (Password == ConfirmPassword)
-                {
-
-                    bool result = _UserRepo.ChangePasswordUser(UserId, OldPassword, Password);
-
-                    if (result == true)
-                    {
-                        TempData["ResetSuccess"] = "Your password has been updated";
-                        return Json(true);
-
-                    }
-                    else
-                    {
-                        TempData["ResetFail"] = "Please enter the correct old password";
-                        return Json(false);
-
-                    }
-
-                }
-
-                TempData["ResetFail"] = "Please enter the same password";
-                string res = "abc";
-                return Json(res);
+                return Json(true);
             }
             else
             {
-                return Json("notvalid");
+                return Json(false);
             }
-
         }
+
 
         [HttpPost]
         public JsonResult ChangeSkill(List<long> skillIDs)
@@ -441,16 +434,7 @@ namespace CIPlatform.Controllers
             return Json(result);
         }
 
-        //[HttpPost]
-        //public ActionResult ActionName(string base64Image)
-        //{
-        //    long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-
-        //    _UserRepo.EditAvatar(base64Image,UserId);
-
-        //    return RedirectToAction("Index");
-        //}
-
+       
         [HttpPost]
         public JsonResult EditAvatar(IFormFile Profileimg)
         {
@@ -460,8 +444,9 @@ namespace CIPlatform.Controllers
             return Json(changeimage);
         }
 
-       [HttpPost]
-       public JsonResult AddMessage(ContactU model)
+
+        [HttpPost]
+        public JsonResult AddMessage(ContactU model)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
             model.UserId = UserId;
@@ -469,10 +454,6 @@ namespace CIPlatform.Controllers
 
             return Json(result);
         }
-
-
-
-
 
     }
 }

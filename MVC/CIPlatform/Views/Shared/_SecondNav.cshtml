@@ -12,6 +12,7 @@
   cursor: pointer;
 }
 </style>
+
 <div class="container-fluid border shadow-sm">
    
 
@@ -28,18 +29,7 @@
 
                 <div class="col-lg-6 col-12 d-flex">
 
-                 @*   <div class="col-3 col-sm-3 col-lg-3 dropdown border">
-
-                        <select id="countryId" onchange="GetCity();searchMission();" class="form-select select-menu border-lg-left  border-0"
-                                aria-label="Default select example">
-                            <option selected>Country</option>
-                            @foreach (var obj in @ViewBag.countries)
-                            {
-                                <option value="@obj.CountryId">@obj.CountryName</option>
-                            }
-                        </select>
-                    </div>*@
-
+                 
                    <div class="col-3 col-sm-3 col-lg-3 dropdown border">
  
 
@@ -140,100 +130,3 @@
 </div>
 
 <div id="filter-button"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- @* <script type="text/javascript" language="javascript">
-         function DisableBackButton() {
-             window.history.forward();
-         }
-         DisableBackButton();
-         window.onload = DisableBackButton;
-         window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton(); }
-         window.onunload = function () { void (0); };
-    
-        
-        function GetCity(){
-        var countryId = $('#countryId').find(":selected").val();
-        debugger;
-        $.ajax({
-        url:"/Home/GetCity",
-        method: "GET",
-        data: {
-        "countryId":countryId
-        },
-        success:function(data){
-        data = JSON.parse(data);
-        $("#selectCityList").empty();
-        data.forEach((name)=> {
-        document.getElementById("selectCityList").innerHTML += `
-        <option value=${name} >${name.CityName}</option>
-        `;
-        })
-        },
-        error: function(request,error){
-        console.log(error);
-        }
-        })
-        }
-
-        function setFilter(){
-            debugger;
-            
-            $.ajax({
-                success:function(data){
-                    debugger;
-                    $("#filter-button").empty();
-                    $('input[name="city"]:checked').each(function() {
-                       console.log(this.value);
-                       document.getElementById("filter-button").innerHTML += `
-                        <button class="filter common-font filter-text" >
-                            <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.value})" class="bi bi-x"></i></div>
-                        </button>
-                        
-                        `
-                    });
-                    $('input[name="theme"]:checked').each(function() {
-                       console.log(this.value);
-                       document.getElementById("filter-button").innerHTML += `
-                        <button class="filter common-font filter-text">
-                            <div style="width:max-content">${this.value} <i class="bi bi-x"></i></div>
-                        </button>
-                        `
-                    });
-                    $('input[name="skill"]:checked').each(function() {
-                       console.log(this.value);
-                       document.getElementById("filter-button").innerHTML += `
-                        <button class="filter common-font filter-text">
-                            <div style="width:max-content">${this.value} <i class="bi bi-x"></i></div>
-                        </button>
-                        `
-                    });
-                   document.getElementById("filter-button").innerHTML += `
-                        <button class="filter filter-text common-font" style="padding:0; border:0">Clear all</button>
-                        `
-                    
-                    
-                    
-                },
-                error: function(request,error){
-                    console.log(error);
-                }
-            })
-        
-    </script>*@

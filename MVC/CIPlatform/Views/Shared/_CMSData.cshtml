@@ -17,9 +17,6 @@
 </style>
 
 
-
-
-
 <div id="cmspage">
 
     <div class="row gx-0">
@@ -245,7 +242,7 @@
             $('#validAddCmsTitle').text('');
         }
     });
-    $('#addCmsDescription').keyup(function() {
+     $('#addCmsDescription').keyup(function() {
         if ($(this).val() != '') {
             $('#validAddCmsDescription').text('');
         }
@@ -288,7 +285,7 @@
             $('#validEditCmsTitle').text('');
         }
     });
-    $('#editCmsDescription').keyup(function() {
+     $('#editCmsDescription').keyup(function() {
         if ($(this).val() != '') {
             $('#validEditCmsDescription').text('');
         }
@@ -396,10 +393,7 @@
                  });
     }
 
-</script>
 
-
-<script>
     function addform(x) {
         debugger
         var page = document.getElementById(x);
@@ -448,39 +442,4 @@
 
 
 </script>
-@*<script>
 
-
-
-
-    function addform(x) {
-    var page = document.getElementById(x);
-    var cmsPage = page.querySelector("#cmspage");
-    var addForm = page.querySelector("#add");
-    cmsPage.style.display = "none";
-    addForm.style.display = 'block';
-    }
-    function addpage(x) {
-    var page = document.getElementById(x);
-    var cmsPage = page.querySelector("#cmspage");
-    var addForm = page.querySelector("#add");
-    cmsPage.style.display = "block";
-    addForm.style.display = 'none';
-    }
-    function editform(x) {
-    var page = document.getElementById(x);
-    var cmsPage = page.querySelector("#cmspage");
-    var addForm = page.querySelector("#edit");
-    cmsPage.style.display = "none";
-    addForm.style.display = 'block';
-    }
-    function editpage(x) {
-    var page = document.getElementById(x);
-    var cmsPage = page.querySelector("#cmspage");
-    var addForm = page.querySelector("#edit");
-    cmsPage.style.display = "block";
-    addForm.style.display = 'none';
-    }
-
-
-    </script>*@

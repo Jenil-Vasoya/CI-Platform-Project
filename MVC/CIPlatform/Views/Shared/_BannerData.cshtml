@@ -1,46 +1,48 @@
 ﻿
 
 <style>
-  /*      #banner-preview img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
-   object-fit: cover; 
-     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); 
-      transition: transform 0.3s ease-in-out;
-    }
+    /*      #banner-preview img {
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: cover;
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+          border-radius: 5px;
+           object-fit: cover;
+             box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+              transition: transform 0.3s ease-in-out;
+            }
 
-        #banner-preview img:hover {
-            transform: scale(1.1);
-        }*/
+                #banner-preview img:hover {
+                    transform: scale(1.1);
+                }*/
 
     .applyButton {
         border: 2px solid #F88634;
         border-radius: 100px;
         color: #F88634;
         background-color: white;
-        }
+    }
 
         .applyButton:hover {
             background-color: #F88634;
             color: white;
         }
 
-        .skill:hover {
+    .skill:hover {
         background-color: #F88634;
         color: white;
         cursor: pointer;
     }
-         #banner-preview .preview-container {
+
+    #banner-preview .preview-container {
         display: inline-block;
         position: relative;
         margin: 5px;
         width: 100px;
         height: 100px;
         overflow: hidden;
-        }
+    }
+
         #banner-preview .preview-container img {
             position: absolute;
             top: 50%;
@@ -49,6 +51,7 @@
             max-width: 100%;
             max-height: 100%;
         }
+
         #banner-preview .preview-container .remove-icon {
             position: absolute;
             top: 5px;
@@ -56,15 +59,17 @@
             color: #fff;
             font-size: 14px;
             cursor: pointer;
-        }  
-        #banner-previewedit .preview-containeredit {
+        }
+
+    #banner-previewedit .preview-containeredit {
         display: inline-block;
         position: relative;
         margin: 5px;
         width: 100px;
         height: 100px;
         overflow: hidden;
-        }
+    }
+
         #banner-previewedit .preview-containeredit img {
             position: absolute;
             top: 50%;
@@ -73,6 +78,7 @@
             max-width: 100%;
             max-height: 100%;
         }
+
         #banner-previewedit .preview-containeredit .remove-icon {
             position: absolute;
             top: 5px;
@@ -82,16 +88,16 @@
             cursor: pointer;
         }
 
-        #imgPreview img {
-    max-width: 100%;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-}
+    #imgPreview img {
+        max-width: 100%;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+    }
 
 </style>
 
 <div id="bannerpage">
-    
+
     <div class="row gx-0">
         <table class="table table-hover table-bordered" style="width: 99%;margin-inline: auto; text-align: center;">
             <thead>
@@ -115,7 +121,7 @@
 
 
                             <!-- Modal For Delete Banner -->
-                        <div class="modal fade" id="exampleModalDeleteBanner-@item.BannerId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModalDeleteBanner-@item.BannerId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
@@ -181,6 +187,7 @@
             }
         </ul>
     </nav>
+
 </div>
 
 
@@ -193,8 +200,6 @@
 
         <label class="mt-3"> Short Order </label>
         <input type="number" class="form-control" id="addShortOrder">
-
-
 
         <div class="images w-100 mt-4 ">
             <label class="form-label">Upload Your Photos</label>
@@ -233,8 +238,6 @@
         <label class="mt-3"> Short Order </label>
         <input type="number" class="form-control" id="editShortOrder">
 
-
-
         <div class="images w-100 mt-4 ">
             <label class="form-label">Upload Your Photos</label>
             <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
@@ -264,186 +267,177 @@
 </div>
 
 <script>
-// listen for changes to the file input
-$('#bannerImage').on('change', function() {
-    // get the selected file
-    var file = this.files[0];
-    
-    // create a URL for the selected file
-    var url = URL.createObjectURL(file);
-    
-    // create an img element and set its src attribute
-    var img = $('<img>').attr('src', url);
-    
-    // append the img element to the banner-preview div
-    $('#banner-preview').empty().append(img);
-});
+    // listen for changes to the file input
+    $('#bannerImage').on('change', function () {
+        // get the selected file
+        var file = this.files[0];
 
-$('#editbannerImage').on('change', function() {
-    // get the selected file
-    var file = this.files[0];
-    
-    // create a URL for the selected file
-    var url = URL.createObjectURL(file);
-    
-    // create an img element and set its src attribute
-    var img = $('<img>').attr('src', url);
-    
-    // append the img element to the banner-preview div
-    $('#imgPreview').empty()
-    $('#banner-previewedit').empty().append(img);
-});
+        // create a URL for the selected file
+        var url = URL.createObjectURL(file);
+
+        // create an img element and set its src attribute
+        var img = $('<img>').attr('src', url);
+
+        // append the img element to the banner-preview div
+        $('#banner-preview').empty().append(img);
+    });
+
+    $('#editbannerImage').on('change', function () {
+        // get the selected file
+        var file = this.files[0];
+
+        // create a URL for the selected file
+        var url = URL.createObjectURL(file);
+
+        // create an img element and set its src attribute
+        var img = $('<img>').attr('src', url);
+
+        // append the img element to the banner-preview div
+        $('#imgPreview').empty()
+        $('#banner-previewedit').empty().append(img);
+    });
 
     function addBannerData(event) {
-                       debugger
-                       var bannerId = $('#bannerId').val();
-                        if(bannerId != 0)
-                        {
-                            const imgs = document.getElementById("editbannerImage").files;
+        debugger
+        var bannerId = $('#bannerId').val();
+        if (bannerId != 0) {
+            const imgs = document.getElementById("editbannerImage").files;
 
-                             event.preventDefault();
-                             var formData = new FormData();
-                                formData.append('Text', $('#editBannerText').val());
-                                formData.append('BannerId', $('#bannerId').val());
-                                formData.append('SortOrder', $('#editShortOrder').val());
-                                formData.append('BannerImg', imgs[0]);
-                            
+            event.preventDefault();
+            var formData = new FormData();
+            formData.append('Text', $('#editBannerText').val());
+            formData.append('BannerId', $('#bannerId').val());
+            formData.append('SortOrder', $('#editShortOrder').val());
+            formData.append('BannerImg', imgs[0]);
 
-                        }
-                        else
-                        {
-                         const imgs = document.getElementById("bannerImage").files;
 
-                         event.preventDefault();
-                         var formData = new FormData();
-                            formData.append('Text', $('#addBannerText').val());
-                            formData.append('SortOrder', $('#addShortOrder').val());
-                            formData.append('BannerImg', imgs[0]);
-                            
-
-                        }
-                             $.ajax({
-                                 type: 'POST', 
-                                 url: '/Admin/AddBanner',
-                                 data: formData,
-                                 contentType: false,
-                                 processData: false,
-                                 success: function(data) {
-                                     debugger
-                                     bannerView('nav-banner');
-                                     console.log(data);
-                                     $('#banners').html(data);
-                                     if(bannerId != 0)
-                                     {
-                                         toastr.success('Banner Updated');
-                                     }
-                                     else
-                                     {
-                                        toastr.success('Banner add sucessfully');
-                                     }
-                            
-
-                                 },
-                                 error: function (error) {
-                                 console.log(error);
-                                 }
-                             });
-     }
-
-     function getBannerData(bannerId)
-        {
-            console.log(bannerId);
-            debugger
-            $.ajax({
-                         type: 'POST',
-                         url: '/Admin/EditBanner',
-                         data: {"BannerId": bannerId},
-                         success: function(data) {
-                             console.log(data);
-                             debugger
-
-                             $('#bannerId').val(data.bannerId);
-                             $('#editBannerText').val(data.text);
-                             $('#editShortOrder').val(data.sortOrder);
-                             
-                             $('#imgPreview').empty();
-                             var img = $('<img>').attr('src', '../Assets/StoryImages/' + (data.image).toString());
-                             $('#imgPreview').append(img);
-                         },
-                        error: function (request, error) {
-                         console.log(error);
-                     }
-                     });
         }
+        else {
+            const imgs = document.getElementById("bannerImage").files;
 
-     function deleteBanner(bannerId,event)
-        {
-            
-             debugger
-             event.preventDefault();
-                $.ajax({
-                         type: 'POST',
-                         url: '/Admin/DeleteBanner',
-                         data: {"BannerId": bannerId},
-                         success: function(data) {
-                             console.log(data);
-                             debugger
-                             bannerView('nav-banner');
-                             console.log(data);
-                             $('#banners').html(data);
-                             toastr.error('Banner Deleted');
-                         },
-                        error: function (request, error) {
-                         console.log(error);
-                     }
-                     });
-        }
-</script>
+            event.preventDefault();
+            var formData = new FormData();
+            formData.append('Text', $('#addBannerText').val());
+            formData.append('SortOrder', $('#addShortOrder').val());
+            formData.append('BannerImg', imgs[0]);
 
 
-<script>
-     function addBanner(x) {
-            var page = document.getElementById(x);
-            var bannerpage = page.querySelector("#bannerpage");
-            var addBanner = page.querySelector("#add");
-            var search = page.querySelector("#searchBanner1");
-            search.style.display = "none";
-            bannerpage.style.display = "none";
-            addBanner.style.display = 'block';
         }
-        function bannerView(x) {
-            debugger
-            $('#addBannerText').val('');
-            $('#addShortOrder').val('');
-            $('#banner-preview').empty();
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/AddBanner',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                debugger
+                bannerView('nav-banner');
+                console.log(data);
+                $('#banners').html(data);
+                if (bannerId != 0) {
+                    toastr.success('Banner Updated');
+                }
+                else {
+                    toastr.success('Banner add sucessfully');
+                }
 
-            var page = document.getElementById(x);
-            var bannerpage = page.querySelector("#bannerpage");
-            var addBanner = page.querySelector("#add");
-            var search = page.querySelector("#searchBanner1");
-            search.style.display = "block";
-            bannerpage.style.display = "block";
-            addBanner.style.display = 'none';
-        }
-        function editBanner(x,id) {
-           debugger
-            var page = document.getElementById(x);
-            var bannerpage = page.querySelector("#bannerpage");
-            var addBanner = page.querySelector("#edit");
-            var search = page.querySelector("#searchBanner1");
-            search.style.display = "none";
-            bannerpage.style.display = "none";
-            addBanner.style.display = 'block';
-            getBannerData(id);
-        }
-        function editBannerClose(x) {
-            debugger
-            var page = document.getElementById(x);
-            var bannerpage = page.querySelector("#bannerpage");
-            var addBanner = page.querySelector("#edit");
-            var search = page.querySelector("#searchBanner1");
-            search.style.display = "block";
-            bannerpage.style.display = "block";
-            addBanner.style.display = "none";
-        }
+
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
+    function getBannerData(bannerId) {
+        console.log(bannerId);
+        debugger
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/EditBanner',
+            data: { "BannerId": bannerId },
+            success: function (data) {
+                console.log(data);
+                debugger
+
+                $('#bannerId').val(data.bannerId);
+                $('#editBannerText').val(data.text);
+                $('#editShortOrder').val(data.sortOrder);
+
+                $('#imgPreview').empty();
+                var img = $('<img>').attr('src', '../Assets/StoryImages/' + (data.image).toString());
+                $('#imgPreview').append(img);
+            },
+            error: function (request, error) {
+                console.log(error);
+            }
+        });
+    }
+
+    function deleteBanner(bannerId, event) {
+
+        debugger
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/DeleteBanner',
+            data: { "BannerId": bannerId },
+            success: function (data) {
+                console.log(data);
+                debugger
+                bannerView('nav-banner');
+                console.log(data);
+                $('#banners').html(data);
+                toastr.error('Banner Deleted');
+            },
+            error: function (request, error) {
+                console.log(error);
+            }
+        });
+    }
+
+    function addBanner(x) {
+        var page = document.getElementById(x);
+        var bannerpage = page.querySelector("#bannerpage");
+        var addBanner = page.querySelector("#add");
+        var search = page.querySelector("#searchBanner1");
+        search.style.display = "none";
+        bannerpage.style.display = "none";
+        addBanner.style.display = 'block';
+    }
+    function bannerView(x) {
+        debugger
+        $('#addBannerText').val('');
+        $('#addShortOrder').val('');
+        $('#banner-preview').empty();
+
+        var page = document.getElementById(x);
+        var bannerpage = page.querySelector("#bannerpage");
+        var addBanner = page.querySelector("#add");
+        var search = page.querySelector("#searchBanner1");
+        search.style.display = "block";
+        bannerpage.style.display = "block";
+        addBanner.style.display = 'none';
+    }
+    function editBanner(x, id) {
+        debugger
+        var page = document.getElementById(x);
+        var bannerpage = page.querySelector("#bannerpage");
+        var addBanner = page.querySelector("#edit");
+        var search = page.querySelector("#searchBanner1");
+        search.style.display = "none";
+        bannerpage.style.display = "none";
+        addBanner.style.display = 'block';
+        getBannerData(id);
+    }
+    function editBannerClose(x) {
+        debugger
+        var page = document.getElementById(x);
+        var bannerpage = page.querySelector("#bannerpage");
+        var addBanner = page.querySelector("#edit");
+        var search = page.querySelector("#searchBanner1");
+        search.style.display = "block";
+        bannerpage.style.display = "block";
+        addBanner.style.display = "none";
+    }
 </script>

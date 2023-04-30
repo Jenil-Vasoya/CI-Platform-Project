@@ -1,388 +1,346 @@
-﻿@using CIPlatform.Entities.ViewModel
-@inject IHttpContextAccessor Accessor
-@model IEnumerable<CIPlatform.Entities.Models.Country>
+﻿@{
+    @using CIPlatform.Entities.ViewModel
+    @inject IHttpContextAccessor Accessor
 
-@{
+    @model IEnumerable<CIPlatform.Entities.Models.Country>
+
+
     ViewData["Title"] = "MissionGrid";
-}
 
-@if (TempData["Success"] != null)
-{
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script type="text/javascript">
+    @if (TempData["Error"] != null)
+    {
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+        <script type="text/javascript">
+
+            toastr.error('@TempData["Error"]')
+        </script>
+
+    }
+
+    @if (TempData["Success"] != null)
+    {
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
             toastr.options = {
-            "closeButton": true,
-            "progressBar": true
-        }
-        toastr.success('@TempData["Success"]', { timeOut: 100 })
-    </script>
-}
+                "closeButton": true
+            }
+            toastr.success('@TempData["Success"]', { timeOut: 100 })
+        </script>
+    }
 
-<head>
-     <link rel="stylesheet" href="~/Assets/css/mission.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <head>
+        <link rel="stylesheet" href="~/Assets/css/mission.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
 
-<script src="~/js/site.js"></script>
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="~/js/site.js"></script>
 
 
-</head>
-<body>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-    <partial name="_FirstNav" />
-    <partial name="_SecondNav" />
 
-    <div class="container pt-3">
-        <div class="row">
-           
+    </head>
+    <body>
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class=" d-flex  justify-content-end ">
+        <!-- Headers -->
+        <partial name="_FirstNav" />
+        <partial name="_SecondNav" />
+        <!-- End Headers -->
 
-                    <div class=" dropdown border" style="height:fit-content;">
 
-                        <select aria-label="Default select example" id="sortby" onchange="searchMission();" class="form-select border-0" style="box-shadow: none;">
-                            <option selected>Sort By</option>
-                            <option value="1">Newest</option>
-                            <option value="2">Oldest</option>
-                            <option value="3">Sort by Deadline</option>
-                            <option value="4">Lowest Available Seats</option>
-                            <option value="5">Highest Available Seats</option>
-                            <option value="6">Sort by my Favourite</option>
-                        </select>
+        <!-- Filters -->
+        <div class="container pt-3">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="d-flex justify-content-end">
+                        <div class="dropdown border" style="height:fit-content;">
+                            <select aria-label="Default select example" id="sortby" onchange="searchMission();" class="form-select border-0" style="box-shadow: none;">
+                                <option selected>Sort By</option>
+                                <option value="1">Newest</option>
+                                <option value="2">Oldest</option>
+                                <option value="3">Sort by Deadline</option>
+                                <option value="4">Lowest Available Seats</option>
+                                <option value="5">Highest Available Seats</option>
+                                <option value="6">Sort by my Favourite</option>
+                            </select>
+                        </div>
+                        <a class="btn">
+                            <img src="~/Assets/images/grid.png" id="grid">
+                        </a>
+                        <a class="btn pt-2">
+                            <img src="~/Assets/images/list.png" id="list">
+                        </a>
                     </div>
-
-                    <a class="btn">
-                        <img src="~/Assets/images/grid.png" id="grid">
-                    </a>
-
-
-                    <a class="btn pt-2">
-                        <img src="~/Assets/images/list.png" id="list">
-                    </a>
-
                 </div>
             </div>
         </div>
-    </div>
+        <!-- End Filters -->
 
-
-
-
+        <!-- Mission Grid -->
         <div class="gridItem" id="missions">
             <partial name="_MissionGrid" />
         </div>
-
-   
-    <div class="listItem" id="missionslist">
-        <partial name="_MissionList" />
-    </div>
+        <!-- End Mission Grid -->
 
 
-</body>
-
-<script type="text/javascript" language="javascript">
-
-    
-
-    $('.listItem').hide();
-    $('#grid').click(function () {
-        $('.gridItem').show();
-        $('.listItem').hide();
-        localStorage.setItem("lastVisible", "list");
-    })
-    $('#list').click(function () {
-        $('.listItem').show();
-        $('.gridItem').hide();
-        localStorage.setItem("lastVisible", "grid");
-    })
-
-    //function Add(MissionId) {
-    //    debugger
-    //    $.ajax({
-
-    //        url: "/Home/AddToFavourite",
-    //        method: "POST",
-
-    //        data:
-    //        {
-    //            MissionId: MissionId
-
-    //        },
-    //        success: function (data) {
-
-    //            toastr.options = {
-    //                "closeButton": true,
-    //                "progressBar": true
-    //            };
-
-    //            if (data == true) {
-    //                console.log('addtofav output:'.data);
-
-    //                $('#favButtonText').text('Remove from Favourite');
-    //                $("#addToFav_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
-    //                $("#addToFavList_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
-    //                toastr.success('Added favourite successfully');
-    //            }
-    //            else {
-
-    //                $('#favButtonText').text('Add to Favourite');
-    //                $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
-    //                $("#addToFavList_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
-    //                toastr.error('Remove favourite successfully');
-    //            }
-    //        }
-    //    })
-    //};
-
-
-    function filterBadges() {
-        
-        $("#filter-button").empty();
-        $('input[name="country"]:checked').each(function () {
-            debugger
-            console.log(this.value)
-            document.getElementById("filter-button").innerHTML += `
-            <button class="filter rounded-pill border" id="${this.value}" >
-            <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'country')" class="bi bi-x"></i></div>
-            </button>
-            `
-        });
-        console.log(this.value);
-    
-        $('input[name="city"]:checked').each(function () {
-
-            document.getElementById("filter-button").innerHTML += `
-            <button class="filter rounded-pill border" id="${this.value}" >
-            <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'city')" class="bi bi-x"></i></div>
-            </button>
-            `
-        });
-        $('input[name="theme"]:checked').each(function () {
-
-            document.getElementById("filter-button").innerHTML += `
-                <button class="filter rounded-pill border" id="${this.value}">
-                <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'theme')" class="bi bi-x"></i></div>
-                </button>
-                `
-        });
-
-        $('input[name="skill"]:checked').each(function () {
-
-            document.getElementById("filter-button").innerHTML += `
-                <button class="filter rounded-pill border" id="${this.value}">
-                <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'skill')" class="bi bi-x"></i></div>
-                </button>
-                `
-        });
-
-        document.getElementById("filter-button").innerHTML += `
-            <button class="clearall p-0 rounded-pill border" onclick="clearAll()">Clear all</button>
-            `
-}
- 
-
-function clearAll() {
-    $('input[name="country"]:checked').each(function () {
-
-        $(".country_" + this.id).prop("checked", false);
-    });
-    $('input[name="city"]:checked').each(function () {
-
-        $(".city_" + this.id).prop("checked", false);
-    });
-    $('input[name="theme"]:checked').each(function () {
-
-        $(".theme_" + this.id).prop("checked", false);
-    });
-    $('input[name="skill"]:checked').each(function () {
-
-        $(".skill_" + this.id).prop("checked", false);
-    });
-
-    filterBadges();
-    searchMission();
-    $(".clearall").addClass("d-none");
-}
-
-function removeFilter(checkboxId, type) {
-    console.log("rm" + checkboxId);
-    if (type == 'country') {
-        $(".country_" + checkboxId).prop("checked", false);
-    }
-    if (type == 'city') {
-        $(".city_" + checkboxId).prop("checked", false);
-    }
-    if (type == 'theme') {
-        $(".theme_" + checkboxId).prop("checked", false);
-    }
-    if (type == 'skill') {
-        $(".skill_" + checkboxId).prop("checked", false);
-    }
-
-    searchMission();
-    filterBadges();
-
-}
-
-    function sendInvitation(MissionId) {
-        debugger
-        var CoWorkers = [];
-
-        $('input[name="CoWorkers"]:checked').each(function () {
-            CoWorkers.push(this.id);
-        });
-
-        $.ajax({
-            url: "/Home/InviteWorker",
-            method: "POST",
-            data: {
-                "MissionId": MissionId,
-                "CoWorkers": CoWorkers
-            },
-            success: function (data) {
-                if(data == true)
-                {
-                    toastr.success('Mail sent successfully');
-                }
-                else
-                {
-                    toastr.error('Mail not successfully');
-                }
-            },
-            error: function (request, error) {
-
-                console.log(error);
-            }
-        })
-
-    }
-
-
-
-    function GetCity() {
-        var countryId = [];
-        $('input[name="country"]:checked').each(function () {
-            countryId.push(this.id);
-        });
-        debugger;
-        $.ajax({
-            url: "/Home/GetCity",
-            method: "Post",
-            data: {
-                "countryId": countryId
-            },
-            success: function (data) {
-                data = JSON.parse(data);
-                $("#selectCityList").empty();
-                data.forEach((name) => {
-                    document.getElementById("selectCityList").innerHTML += `
-                <li>
-        <div class="form-check dropdown-item px-3">
-        <input class="form-check-input mx-auto city_${name.CityId}" name="city" type="checkbox" value="${name.CityName}"
-        id="${name.CityId}" />
-        <label class="form-check-label ps-2" for="${name.CityId}">
-        ${name.CityName}
-        </label>
+        <!-- Mission List -->
+        <div class="listItem" id="missionslist">
+            <partial name="_MissionList" />
         </div>
-        </li>
-            `;
-                })
-            },
-            error: function (request, error) {
-                console.log(error);
-            }
+        <!-- End Mission List -->
+
+
+    </body>
+
+    <script type="text/javascript" language="javascript">
+
+
+
+        $('.listItem').hide();
+        $('#grid').click(function () {
+            $('.gridItem').show();
+            $('.listItem').hide();
+            localStorage.setItem("lastVisible", "list");
         })
-    };
+        $('#list').click(function () {
+            $('.listItem').show();
+            $('.gridItem').hide();
+            localStorage.setItem("lastVisible", "grid");
+        })
 
+        
+        function filterBadges() {
 
+            $("#filter-button").empty();
+            $('input[name="country"]:checked').each(function () {
+                debugger
+                console.log(this.value)
+                document.getElementById("filter-button").innerHTML += `
+                    <button class="filter rounded-pill border" id="${this.value}" >
+                    <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'country')" class="bi bi-x"></i></div>
+                    </button>
+                    `
+            });
+            console.log(this.value);
 
-    function searchMission(pg) {
-        console.log("abc");
-        var search = $('input[name="search"]').val();
-        var sort = $('#sortby').find(":selected").val();
-        var countries = [];
-        var cities = [];
-        var themes = [];
-        var skills = [];
+            $('input[name="city"]:checked').each(function () {
 
-        if (pg == undefined) {
-            pg = 1;
+                document.getElementById("filter-button").innerHTML += `
+                    <button class="filter rounded-pill border" id="${this.value}" >
+                    <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'city')" class="bi bi-x"></i></div>
+                    </button>
+                    `
+            });
+            $('input[name="theme"]:checked').each(function () {
+
+                document.getElementById("filter-button").innerHTML += `
+                        <button class="filter rounded-pill border" id="${this.value}">
+                        <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'theme')" class="bi bi-x"></i></div>
+                        </button>
+                        `
+            });
+
+            $('input[name="skill"]:checked').each(function () {
+
+                document.getElementById("filter-button").innerHTML += `
+                        <button class="filter rounded-pill border" id="${this.value}">
+                        <div style="width:max-content">${this.value} <i onclick="removeFilter(${this.id},'skill')" class="bi bi-x"></i></div>
+                        </button>
+                        `
+            });
+
+            document.getElementById("filter-button").innerHTML += `
+                    <button class="clearall p-0 rounded-pill border" onclick="clearAll()">Clear all</button>
+                    `
         }
 
-        $('input[name="country"]:checked').each(function () {
-            countries.push(this.id);
-        });
-        $('input[name="city"]:checked').each(function () {
-            cities.push(this.id);
-        });
-        $('input[name="theme"]:checked').each(function () {
-            themes.push(this.id);
-        });
-        $('input[name="skill"]:checked').each(function () {
-            skills.push(this.id);
-        });
-        debugger;
-        $.ajax({
-            url: "/Home/Search",
-            method: "POST",
-            data: {
-                "search": search,
-                "countries": countries,
-                "cities": cities,
-                "themes": themes,
-                "skills": skills,
-                "sort": sort,
-                "pg": pg
-            },
-            success: function (data) {
-                $('#missions').html(data);
-            },
-            error: function (request, error) {
-                console.log(error);
+
+        function clearAll() {
+            $('input[name="country"]:checked').each(function () {
+
+                $(".country_" + this.id).prop("checked", false);
+            });
+            $('input[name="city"]:checked').each(function () {
+
+                $(".city_" + this.id).prop("checked", false);
+            });
+            $('input[name="theme"]:checked').each(function () {
+
+                $(".theme_" + this.id).prop("checked", false);
+            });
+            $('input[name="skill"]:checked').each(function () {
+
+                $(".skill_" + this.id).prop("checked", false);
+            });
+
+            filterBadges();
+            searchMission();
+            $(".clearall").addClass("d-none");
+        }
+
+        function removeFilter(checkboxId, type) {
+            console.log("rm" + checkboxId);
+            if (type == 'country') {
+                $(".country_" + checkboxId).prop("checked", false);
             }
-        })
-        debugger;
-        $.ajax({
-            url: "/Home/SearchList",
-            method: "POST",
-            data: {
-                "search": search,
-                "countries": countries,
-                "cities": cities,
-                "themes": themes,
-                "skills": skills,
-                "sort": sort,
-                "pg": pg
-            },
-            success: function (data) {
-                $('#missionslist').html(data);
-            },
-            error: function (request, error) {
-                console.log(error);
+            if (type == 'city') {
+                $(".city_" + checkboxId).prop("checked", false);
             }
-        })
-    }
-</script>
-@*<script>
-    $(document).ready(function(){
-searchMission(null, 1);
-//$("#searchByTitle").on("keyup", function() {
-//searchMission();
-});
-//var SortByFunction = "";
-//$("#SortBy li a").on("click", function(){
-//SortByFunction = $(this).text();
-//localStorage.setItem("SortByFunction",SortByFunction);
-//DisplayGrid(SortByFunction, 1);
-//DisplayList(SortByFunction,1);
-//});
-//});
-</script>*@
+            if (type == 'theme') {
+                $(".theme_" + checkboxId).prop("checked", false);
+            }
+            if (type == 'skill') {
+                $(".skill_" + checkboxId).prop("checked", false);
+            }
+
+            searchMission();
+            filterBadges();
+
+        }
+
+        function sendInvitation(MissionId) {
+            debugger
+            var CoWorkers = [];
+
+            $('input[name="CoWorkers"]:checked').each(function () {
+                CoWorkers.push(this.id);
+            });
+
+            $.ajax({
+                url: "/Home/InviteWorker",
+                method: "POST",
+                data: {
+                    "MissionId": MissionId,
+                    "CoWorkers": CoWorkers
+                },
+                success: function (data) {
+                    if (data == true) {
+                        toastr.success('Mail sent successfully');
+                    }
+                    else {
+                        toastr.error('Mail not successfully');
+                    }
+                },
+                error: function (request, error) {
+
+                    console.log(error);
+                }
+            })
+
+        }
 
 
+
+        function GetCity() {
+            var countryId = [];
+            $('input[name="country"]:checked').each(function () {
+                countryId.push(this.id);
+            });
+            debugger;
+            $.ajax({
+                url: "/Home/GetCity",
+                method: "Post",
+                data: {
+                    "countryId": countryId
+                },
+                success: function (data) {
+                    data = JSON.parse(data);
+                    $("#selectCityList").empty();
+                    data.forEach((name) => {
+                        document.getElementById("selectCityList").innerHTML += `
+                        <li>
+                <div class="form-check dropdown-item px-3">
+                <input class="form-check-input mx-auto city_${name.CityId}" name="city" type="checkbox" value="${name.CityName}"
+                id="${name.CityId}" />
+                <label class="form-check-label ps-2" for="${name.CityId}">
+                ${name.CityName}
+                </label>
+                </div>
+                </li>
+                    `;
+                    })
+                },
+                error: function (request, error) {
+                    console.log(error);
+                }
+            })
+        }
+
+
+
+        function searchMission(pg) {
+            console.log("abc");
+            var search = $('input[name="search"]').val();
+            var sort = $('#sortby').find(":selected").val();
+            var countries = [];
+            var cities = [];
+            var themes = [];
+            var skills = [];
+
+            if (pg == undefined) {
+                pg = 1;
+            }
+
+            $('input[name="country"]:checked').each(function () {
+                countries.push(this.id);
+            });
+            $('input[name="city"]:checked').each(function () {
+                cities.push(this.id);
+            });
+            $('input[name="theme"]:checked').each(function () {
+                themes.push(this.id);
+            });
+            $('input[name="skill"]:checked').each(function () {
+                skills.push(this.id);
+            });
+            debugger;
+            $.ajax({
+                url: "/Home/Search",
+                method: "POST",
+                data: {
+                    "search": search,
+                    "countries": countries,
+                    "cities": cities,
+                    "themes": themes,
+                    "skills": skills,
+                    "sort": sort,
+                    "pg": pg
+                },
+                success: function (data) {
+                    $('#missions').html(data);
+                },
+                error: function (request, error) {
+                    console.log(error);
+                }
+            })
+            debugger;
+            $.ajax({
+                url: "/Home/SearchList",
+                method: "POST",
+                data: {
+                    "search": search,
+                    "countries": countries,
+                    "cities": cities,
+                    "themes": themes,
+                    "skills": skills,
+                    "sort": sort,
+                    "pg": pg
+                },
+                success: function (data) {
+                    $('#missionslist').html(data);
+                },
+                error: function (request, error) {
+                    console.log(error);
+                }
+            })
+        }
+    </script>
+
+}

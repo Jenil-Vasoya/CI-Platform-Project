@@ -6,26 +6,28 @@
         border-radius: 100px;
         color: #F88634;
         background-color: white;
-        }
+    }
 
         .applyButton:hover {
             background-color: #F88634;
             color: white;
         }
 
-        .skill:hover {
+    .skill:hover {
         background-color: #F88634;
         color: white;
         cursor: pointer;
     }
-         #image-preview .preview-container {
+
+    #image-preview .preview-container {
         display: inline-block;
         position: relative;
         margin: 5px;
         width: 100px;
         height: 100px;
         overflow: hidden;
-        }
+    }
+
         #image-preview .preview-container img {
             position: absolute;
             top: 50%;
@@ -34,6 +36,7 @@
             max-width: 100%;
             max-height: 100%;
         }
+
         #image-preview .preview-container .remove-icon {
             position: absolute;
             top: 5px;
@@ -41,15 +44,17 @@
             color: #fff;
             font-size: 14px;
             cursor: pointer;
-        }  
-        #image-previewedit .preview-containeredit {
+        }
+
+    #image-previewedit .preview-containeredit {
         display: inline-block;
         position: relative;
         margin: 5px;
         width: 100px;
         height: 100px;
         overflow: hidden;
-        }
+    }
+
         #image-previewedit .preview-containeredit img {
             position: absolute;
             top: 50%;
@@ -58,6 +63,7 @@
             max-width: 100%;
             max-height: 100%;
         }
+
         #image-previewedit .preview-containeredit .remove-icon {
             position: absolute;
             top: 5px;
@@ -67,37 +73,37 @@
             cursor: pointer;
         }
 
-        #editMissionImage img {
-    width: 200px;
-    height: 200px;
-     margin-right: 10px;
-     object-fit: cover; 
-     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); 
-      transition: transform 0.3s ease-in-out;
-}
+    #editMissionImage img {
+        width: 200px;
+        height: 200px;
+        margin-right: 10px;
+        object-fit: cover;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease-in-out;
+    }
 
-#editMissionImage img:hover {
-    transform: scale(1.1);
-} 
+        #editMissionImage img:hover {
+            transform: scale(1.1);
+        }
 
-#image-preview img {
-    width: 200px;
-    height: 200px;
-     margin-right: 10px;
-     object-fit: cover; 
-     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); 
-      transition: transform 0.3s ease-in-out;
-}
+    #image-preview img {
+        width: 200px;
+        height: 200px;
+        margin-right: 10px;
+        object-fit: cover;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease-in-out;
+    }
 
-#image-preview img:hover {
-    transform: scale(1.1);
-}
+        #image-preview img:hover {
+            transform: scale(1.1);
+        }
 
 </style>
 
 
 <div id="missionpage">
-   
+
 
     <div class="row gx-0">
         <table class="table table-hover  table-bordered" style="width: 99%;margin-inline: auto;">
@@ -119,32 +125,32 @@
                         <td>@item.StartDate</td>
                         <td>@item.EndDate</td>
                         <td>
-                             <button type="button" class="btn p-0" onclick="editMission('nav-mission',@item.MissionId)"><i class="bi bi-pencil-square" style="color: coral;"></i></button>
-                             <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteTime-@item.MissionId"><i class="bi bi-trash ms-3"></i></button>
+                            <button type="button" class="btn p-0" onclick="editMission('nav-mission',@item.MissionId)"><i class="bi bi-pencil-square" style="color: coral;"></i></button>
+                            <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#exampleModalDeleteTime-@item.MissionId"><i class="bi bi-trash ms-3"></i></button>
 
 
-                                                 <!-- Modal For Delete Mission -->
-                                                    <div class="modal fade" id="exampleModalDeleteTime-@item.MissionId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <!-- Modal For Delete Mission -->
+                            <div class="modal fade" id="exampleModalDeleteTime-@item.MissionId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
-                                                                        Are you sure for delete this Mission
-                                                                    </h1>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                Are you sure for delete this Mission
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
 
-                                                                <form method="post">
+                                        <form method="post">
 
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                        <button type="submit" onclick="deleteMission(@item.MissionId,event)" class="btn applyButton" data-bs-dismiss="modal">Delete</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <button type="submit" onclick="deleteMission(@item.MissionId,event)" class="btn applyButton" data-bs-dismiss="modal">Delete</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
 
                         </td>
                     </tr>
@@ -196,14 +202,22 @@
     <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Add </h3>
     <hr class="m-0">
     <form class="px-3" id="demo1" enctype="multipart/form-data">
-        <label class="mt-3"> Title </label>
-        <input type="text" class="form-control" id="addMissionTitle">
+        <div class="row">
+            <label class="mt-3"> Title </label>
+            <input type="text" class="form-control" id="addMissionTitle">
+            <span id="validAddMissionTitle" style="color:red;"></span>
+        </div>
 
+        <div class="row">
         <label class="mt-3"> Description</label>
         <textarea id="addMissionDescription" type="text" class="form-control" rows="6" placeholder="Enter Description.."></textarea>
+        <span id="validAddMissionDescription" style="color:red;"></span>
+        </div>
 
+        <div class="row">
         <label class="mt-3"> Short Description </label>
         <input type="text" class="form-control" id="addMissionShortDescription">
+        </div>
 
         <div class="row mt-2">
             <div class="col-sm-4">
@@ -239,80 +253,78 @@
             </div>
         </div>
 
+        <div class="row">
         <label class="mt-3"> Organisation Name </label>
         <input type="text" class="form-control" id="addMissionOrganisationName">
+        <span id="validAddMissionOrganisationName" style="color:red;"></span>
+        </div>
 
         <div class="row">
             <div class="col-sm-4">
                 <label class="form-label">Skills </label>
-                <select id="addMissionSkill" multiple="multiple" class="form-control" size="7" style="width:-webkit-fill-available">
-                    @*@if (ViewBag.Skills != null)
-                    {
-                        @foreach (var uskill in ViewBag.Skills)
-                        {
+                <select id="addMissionSkill" multiple="multiple" class="form-control" size="7" style="width: 100%;"></select>
+                <span id="validAddMissionSkill" style="color:red;"></span>
 
-                            <option value="@uskill.SkillId">@uskill.SkillName</option>
-
-                        }
-                    }*@
-
-                </select>
-                                        <button type="button" id="skillButton" class="btn btn-secondary border border-2 rounded-pill mt-3 bg-transparent text-secondary" data-bs-toggle="modal" data-bs-target="#skillModal">Add Skills</button>
+                <button type="button" id="skillButton" class="btn btn-secondary border border-2 rounded-pill mt-3 bg-transparent text-secondary" data-bs-toggle="modal" data-bs-target="#skillModal">Add Skills</button>
+                
                 <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                    <div class="modal-content">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
 
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Your Skills</h1>
-                                            <button type="button" id="skillClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Your Skills</h1>
+                                <button type="button" id="skillClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
 
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col mx-2 border border-2">
-                                                    <div id="sourceDiv">
-                                                        @foreach (var skill in ViewBag.Skills)
-                                                        { 
-                                                            <li id="@skill.SkillId" class="skill list-unstyled cursor" onclick="addSkillMission(event)">@skill.SkillName</li> 
-                                                        }
-                                                    </div>
-                                                </div>
-
-                                                <div class="col mx-2 border border-2">
-                                                    
-                                                        <div id="destinationDiv"></div>
-                                                    
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <button type="button" id="skillClose1" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn applyButton rounded-pill" onclick="setSkills()">Change Skills</button>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col mx-2 border border-2">
+                                        <div id="sourceDiv">
+                                            @foreach (var skill in ViewBag.Skills)
+                                            {
+                                                <li id="@skill.SkillId" class="skill list-unstyled cursor" onclick="addSkillMission(event)">@skill.SkillName</li>
+                                            }
                                         </div>
                                     </div>
+
+                                    <div class="col mx-2 border border-2">
+
+                                        <div id="destinationDiv"></div>
+
+                                    </div>
                                 </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" id="skillClose1" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn applyButton rounded-pill" onclick="setSkills()">Change Skills</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
             <div class="col-sm-8">
                 <label class="form-label">Organisation Detail  </label>
-                <textarea id="addMissionOrganisationDetail" type="text" class="form-control" rows="6" placeholder="Enter Organisation Detail..">
-                </textarea>
+                <textarea id="addMissionOrganisationDetail" type="text" class="form-control" rows="6" placeholder="Enter Organisation Detail.."></textarea>
+                <span id="validAddMissionOrganisationDetail" style="color:red;"></span>
             </div>
         </div>
         <div class="row mt-2">
             <div class="col-sm-4">
                 <label class="form-label">Start Date</label>
                 <input type="date" id="addMissionStartDate" class="form-control">
+                <span id="validAddMissionStartDate" style="color:red;"></span>
             </div>
             <div class="col-sm-4">
                 <label class="form-label">End Date</label>
                 <input type="date" id="addMissionEndDate" class="form-control">
+                <span id="validAddMissionEndDate" style="color:red;"></span>
             </div>
             <div class="col-sm-4">
                 <label class="form-label">Total Seats</label>
                 <input type="text" id="addMissionSeat" class="form-control">
-               
+                <span id="validAddMissionSeat" style="color:red;"></span>
             </div>
         </div>
 
@@ -332,10 +344,14 @@
             <div class="col-sm-4">
                 <label class="form-label"> Registration Deadline </label>
                 <input type="date" id="addMissionDeadline" class="form-control">
+                <span id="validAddMissionDeadline" style="color:red;"></span>
             </div>
             <div class="col-sm-4">
                 <label class="form-label">Availability</label>
                 <select class="form-select" id="addMissionAvailability">
+                    <option value="Monthly">Monthly</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Daily">Daily</option>
                 </select>
             </div>
         </div>
@@ -347,7 +363,7 @@
             </div>
             <div class="col-sm-5">
                 <label class="form-label">Video </label>
-                <input  type="text" class="form-control" id="addMissionVideo" placeholder="Enter your url">
+                <input type="text" class="form-control" id="addMissionVideo" placeholder="Enter your url">
             </div>
             <div class="col-sm-3">
                 <label class="mb-1 mt-3">Mission Status</label>
@@ -359,18 +375,18 @@
         </div>
 
         <div class="images w-100 mt-4 ">
-                <label class="form-label">Upload Your Photos</label>
-                <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
-                    <img src="~/Assets/images/add.png" style="cursor:pointer;position:relative; top:20px;" />
-                    <input type="file" accept="image/*" name="images" id="images" style="opacity:0;cursor:pointer;" multiple required />
-                    <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
-                </div>
-                <div id="image-preview"></div>
-                <div id="selected-count"></div>
-                <span class="text-danger d-none" id="image">At Least Select One Image</span>
-                <div class="gallary mt-4 d-flex flex-wrap">
-                </div>
+            <label class="form-label">Upload Your Photos</label>
+            <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
+                <img src="~/Assets/images/add.png" style="cursor:pointer;position:relative; top:20px;" />
+                <input type="file" accept="image/*" name="images" id="images" style="opacity:0;cursor:pointer;" multiple required />
+                <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
             </div>
+            <div id="image-preview"></div>
+            <div id="selected-count"></div>
+            <span id="validImages" style="color:red;"></span>
+            @*<div class="gallary mt-4 d-flex flex-wrap">
+            </div>*@
+        </div>
 
         <div class="row my-3">
             <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
@@ -379,7 +395,7 @@
                         onclick="missionView('nav-mission');">
                     Cancel
                 </button>
-                <button type="submit" onclick="addMissionData(event)" class="btn rounded-pill applyButton"
+                <button type="submit" onclick="addValidMission(event)" class="btn rounded-pill applyButton"
                         value="2" name="command">
                     Save
                 </button>
@@ -442,50 +458,50 @@
         <div class="row">
             <div class="col-sm-4">
                 <label class="form-label">Skills </label>
-                <select id="editMissionSkill" multiple="multiple" class="form-control" size="7" style="width:-webkit-fill-available">
-               @* <div id="editMissionSkill">*@
-                   @* @foreach (var skill in ViewBag.Skills)
+                <select id="editMissionSkill" multiple="multiple" class="form-control" size="7" style="width: 100%;">
+                    @* <div id="editMissionSkill">*@
+                    @* @foreach (var skill in ViewBag.Skills)
                     {
-                        <li id="@skill.SkillId" class="skill list-unstyled cursor" onclick="addSkillMissionedit(event)">@skill.SkillName</li>
+                    <li id="@skill.SkillId" class="skill list-unstyled cursor" onclick="addSkillMissionedit(event)">@skill.SkillName</li>
                     }*@
-                @*</div>*@
+                    @*</div>*@
                 </select>
-                                        <button type="button" id="skillButton" onclick="skillClear()" class="btn btn-secondary border border-2 rounded-pill mt-3 bg-transparent text-secondary" data-bs-toggle="modal" data-bs-target="#skillModaledit">Add Skills</button>
-                                        <div class="modal fade" id="skillModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                                            <div class="modal-content">
+                <button type="button" id="skillButton" onclick="skillClear()" class="btn btn-secondary border border-2 rounded-pill mt-3 bg-transparent text-secondary" data-bs-toggle="modal" data-bs-target="#skillModaledit">Add Skills</button>
+                <div class="modal fade" id="skillModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
 
-                                                                <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Your Skills</h1>
-                                                                    <button type="button" id="skillClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Your Skills</h1>
+                                <button type="button" id="skillClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
 
-                                                                <div class="modal-body">
-                                                                    <div class="row">
-                                                                        <div class="col mx-2 border border-2">
-                                                                            <div id="sourceDivedit">
-                                                                                @foreach (var skill in ViewBag.Skills)
-                                                                                { 
-                                                                                    <li id="@skill.SkillId" class="skill list-unstyled cursor" onclick="addSkilledit(event)">@skill.SkillName</li> 
-                                                                                }
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col mx-2 border border-2">
-                                                    
-                                                                                <div id="destinationDivedit"></div>
-                                                    
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="modal-footer">
-                                                                    <button type="button" id="skillClose1" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn applyButton rounded-pill" onclick="setSkillsedit()">Change Skills</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col mx-2 border border-2">
+                                        <div id="sourceDivedit">
+                                            @foreach (var skill in ViewBag.Skills)
+                                            {
+                                                <li id="@skill.SkillId" class="skill list-unstyled cursor" onclick="addSkilledit(event)">@skill.SkillName</li>
+                                            }
                                         </div>
+                                    </div>
+
+                                    <div class="col mx-2 border border-2">
+
+                                        <div id="destinationDivedit"></div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" id="skillClose1" class="btn btn-secondary bg-transparent border border-2 rounded-pill text-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn applyButton rounded-pill" onclick="setSkillsedit()">Change Skills</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-sm-8">
                 <label class="form-label">Organisation Detail  </label>
@@ -506,13 +522,13 @@
 
                 <label class="form-label">Total Seats</label>
                 <input type="text" id="editMissionSeat" class="form-control">
-               
+
             </div>
         </div>
 
         <div class="row mt-2">
             <div class="col-sm-4">
-                 <label class="form-label">Theme</label>
+                <label class="form-label">Theme</label>
                 <select class="form-select" id="editMissionTheme">
                     @if (ViewBag.Themes != null)
                     {
@@ -530,6 +546,9 @@
             <div class="col-sm-4">
                 <label class="form-label">Availability</label>
                 <select class="form-select" id="editMissionAvailability">
+                    <option value="Monthly">Monthly</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Daily">Daily</option>
                 </select>
             </div>
         </div>
@@ -541,11 +560,11 @@
             </div>
             <div class="col-sm-5">
                 <label class="form-label">Video </label>
-                <input  type="text" class="form-control" id="editMissionVideo" placeholder="Enter your url">
+                <input type="text" class="form-control" id="editMissionVideo" placeholder="Enter your url">
             </div>
             <div class="col-sm-3">
                 <label class="mb-1 mt-3">Mission Status</label>
-                <select  id="editMissionStatus" class="form-select">
+                <select id="editMissionStatus" class="form-select">
                     <option value="true">Active</option>
                     <option value="false">Inactive</option>
                 </select>
@@ -553,19 +572,18 @@
         </div>
 
         <div class="images w-100 mt-4 ">
-                <label class="form-label">Upload Your Photos</label>
-                <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
-                    <img src="~/Assets/images/add.png" style="cursor:pointer;position:relative; top:20px;" />
-                    <input type="file" accept="image/*" name="images" id="imagesedit" style="opacity:0;cursor:pointer;" multiple required />
-                    <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
-                </div>
-                <div id="editMissionImage">
-
-                </div>
-                <span class="text-danger d-none" id="imageedit">At Least Select One Image</span>
-                <div class="gallary mt-4 d-flex flex-wrap">
-                </div>
+            <label class="form-label">Upload Your Photos</label>
+            <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
+                <img src="~/Assets/images/add.png" style="cursor:pointer;position:relative; top:20px;" />
+                <input type="file" accept="image/*" name="images" id="imagesedit" style="opacity:0;cursor:pointer;" multiple required />
+                <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
             </div>
+            <div id="editMissionImage">
+            </div>
+            <span class="text-danger d-none" id="imageedit">At Least Select One Image</span>
+            <div class="gallary mt-4 d-flex flex-wrap">
+            </div>
+        </div>
 
         <div class="row my-3">
             <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
@@ -585,504 +603,611 @@
 
 
 
+<script>
+    function addValidMission(event){
+        debugger
+                event.preventDefault();
+        var Title = $('#addMissionTitle').val().trim();
+        var Description = $('#addMissionDescription').val().trim();
+        var OrganizationName = $('#addMissionOrganisationName').val();
+        var OrganizationDetail = $('#addMissionOrganisationDetail').val().trim();
+        var Skill = $('#addMissionSkill').find(":selected").val();
+        var StartDate = $('#addMissionStartDate').val().trim();
+        var EndDate = $('#addMissionEndDate').val().trim();
+        var Seat = $('#addMissionSeat').val();
+        var Deadline = $('#addMissionDeadline').val();
+        var who = $('#addMissionType').val();
 
+        var images = $('#images').prop('files');
 
+          
+        $('#validImages').text('');
+        $('#validAddMissionTitle').text('');
+        $('#validAddMissionDescription').text('');
+        $('#validAddMissionOrganisationName').text('');
+        $('#validAddMissionOrganisationDetail').text('');
+        $('#validAddMissionSkill').text('');
+        $('#validAddMissionStartDate').text('');
+        $('#validAddMissionEndDate').text('');
+        $('#validAddMissionSeat').text('');
+        $('#validAddMissionDeadline').text('');
 
+                var isValid = true;
 
-
-   @*<script>
-
-
-        // Add a click event listener to the removeImg icon
-        $('.remove-icon').on('click', function() {
-          // Remove the preview-container element from the DOM
-          $('.img').remove();
-        });
-
-
-        $(function() {
-                var selectedCount = 0;
-                var selectedCountElement = $('#selected-count');
-                // Listen for changes to the file input element
-                $('#images').on('change', function() {
-                    // Clear any previous preview images
-                    $('#image-preview').empty();
-                    selectedCount = 0;
-                    selectedCountElement.html('0 images selected');
-                    // Loop through the selected files
-                    $.each(this.files, function(i, file) {
-                        // Create a container for the preview image and remove button
-                        var container = $('<div />', { class: 'preview-container' });
-                        // Create an image element to show the preview
-                        var img = $('<img  />');
-                        img.attr('src', URL.createObjectURL(file));
-                        img.attr('alt', file.name);
-                        // Create a remove button to remove the image from the preview
-                        var removeBtn = $('<img />', { class: 'remove-icon' });
-                        removeBtn.attr('src',"/Assets/images/cancel1.png");
-                        removeBtn.attr('alt', file.name);
-                        removeBtn.html('&#x2715;');
-                        removeBtn.on('click', function() {
-                            container.remove();
-                            selectedCount--;
-                            selectedCountElement.html(selectedCount + ' images selected');
-                        });
-                        // Add the image and remove button to the container
-                        container.append(img, removeBtn);
-                        // Add the container to the preview container
-                        $('#image-preview').append(container);
-                        selectedCount++;
-                        selectedCountElement.html(selectedCount + ' images selected');
-                    });
-                });
-        });
-    </script>*@
-                       
-
- <script>
-   
-    $(document).ready(function() {
-            $("#addMissionType").change(function() {
-                var selectedType = $(this).val();
-                if (selectedType === "Goal") {
-                  $("#addMissionStartDate").prop("disabled", true);
-                  $("#addMissionEndDate").prop("disabled", true);
-                  $("#addMissionSeat").prop("disabled", false);
-                } else if (selectedType === "Time") {
-                  $("#addMissionStartDate").prop("disabled", false);
-                  $("#addMissionEndDate").prop("disabled", false);
-                  $("#addMissionSeat").prop("disabled", true);
-                }
-            }).change();
+        if (who == "Goal") 
+        {
             
-            $("#editMissionType").change(function() {
-                var selectedType = $(this).val();
-                if (selectedType === "Goal") {
-                  $("#editMissionStartDate").prop("disabled", true);
-                  $("#editMissionEndDate").prop("disabled", true);
-                  $("#editMissionSeat").prop("disabled", false);
-                } else if (selectedType === "Time") {
-                  $("#editMissionStartDate").prop("disabled", false);
-                  $("#editMissionEndDate").prop("disabled", false);
-                  $("#editMissionSeat").prop("disabled", true);
-                }
-            }).change(); // Trigger change event on page load
+            if (Seat == 0) 
+            {
+                $('#validAddMissionSeat').text('Please fill seat!!');
+                isValid = false;
+            } else 
+            {
+                $('#validAddMissionSeat').text('');
+            }
+        }
+        else
+        {
+            if (StartDate == 0) 
+            {
+                $('#validAddMissionStartDate').text('Please Select a StartDate!!');
+                isValid = false;
+            } else 
+            {
+                $('#validAddMissionStartDate').text('');
+            }
+            if (EndDate == 0) 
+            {
+                $('#validAddMissionEndDate').text('Please Select a EndDate!!');
+                isValid = false;
+            } else 
+            {
+                $('#validAddMissionEndDate').text('');
+            }
+        }
+
+
+        if (images.length === 0) {
+            $('#validImages').text('Please select at least one image.');
+            isValid = false;
+        }
+        else {
+            $('#validImages').text('');
+          }
+        if (Title == "") {
+            $('#validAddMissionTitle').text('Please enter a Title!!');
+            isValid = false;
+        } 
+        else {
+            $('#validAddMissionTitle').text('');
+        }
+        if (Description == "") {
+            $('#validAddMissionDescription').text('Please enter a Description!!');
+            isValid = false;
+        } else {
+            $('#validAddMissionDescription').text('');
+        }
+        if (OrganizationName == "") {
+            $('#validAddMissionOrganisationName').text('Please enter a OrganizationName!!');
+            isValid = false;
+        } else {
+            $('#validAddMissionOrganisationName').text('');
+        }
+        if (OrganizationDetail == 0) {
+            $('#validAddMissionOrganisationDetail').text('Please enter a OrganizationDetail!!');
+            isValid = false;
+        } else {
+            $('#validAddMissionOrganisationDetail').text('');
+        }
+        if (Skill == 0) {
+            $('#validAddMissionSkill').text('Please Select a Skill!!');
+            isValid = false;
+        } else {
+            $('#validAddMissionSkill').text('');
+        }
+        
+        if (Deadline == 0) {
+            $('#validAddMissionDeadline').text('Please Select a Deadline!!');
+            isValid = false;
+        } else {
+            $('#validAddMissionDeadline').text('');
+        }
+
+        if (isValid) {
+            addMissionData(event);
+        }
+}
+
+
+    $('#addMissionTitle').keyup(function () {
+        if ($(this).val() != '') {
+            $('#validAddMissionTitle').text('');
+        }
+    });
+    $('#addMissionDescription').keyup(function () {
+        if ($(this).val() != '') {
+            $('#validAddMissionDescription').text('');
+        }
+    });
+    $('#addMissionOrganisationName').keyup(function () {
+        if ($(this).val() != '') {
+            $('#validAddMissionOrganisationName').text('');
+        }
+    });
+    $('#addMissionOrganisationDetail').change(function () {
+        if ($(this).val() != 0) {
+            $('#validAddMissionOrganisationDetail').text('');
+        }
+    });
+    $('#addMissionSkill').change(function () {
+        if ($(this).val() != 0) {
+            $('#validAddMissionSkill').text('');
+        }
+    });
+    $('#addMissionStartDate').keyup(function () {
+        if ($(this).val() != '') {
+            $('#validAddMissionStartDate').text('');
+        }
+    });
+    $('#addMissionEndDate').keyup(function () {
+        if ($(this).val() != '') {
+            $('#validAddMissionEndDate').text('');
+        }
+    });
+    $('#addMissionSeat').keyup(function () {
+        if ($(this).val() != '') {
+            $('#validAddMissionSeat').text('');
+        }
+    });
+    $('#addMissionDeadline').change(function () {
+        if ($(this).val() != 0) {
+            $('#validAddMissionDeadline').text('');
+        }
     });
 
 
-   $("#images").change(function() {
-    var files = this.files;
-    var editMissionImageDiv = $("#image-preview");
 
-    // Clear existing images from the div
-    editMissionImageDiv.empty();
+    $(document).ready(function () {
+        $("#addMissionType").change(function () {
+            var selectedType = $(this).val();
+            if (selectedType === "Goal") {
+                $("#addMissionStartDate").prop("disabled", true);
+                $("#addMissionEndDate").prop("disabled", true);
+                $("#addMissionSeat").prop("disabled", false);
+            } else if (selectedType === "Time") {
+                $("#addMissionStartDate").prop("disabled", false);
+                $("#addMissionEndDate").prop("disabled", false);
+                $("#addMissionSeat").prop("disabled", true);
+            }
+        }).change();
 
-    // Display the newly selected images
-    for (var i = 0; i < files.length; i++) {
-        var file = files[i];
-        var reader = new FileReader();
+        $("#editMissionType").change(function () {
+            var selectedType = $(this).val();
+            if (selectedType === "Goal") {
+                $("#editMissionStartDate").prop("disabled", true);
+                $("#editMissionEndDate").prop("disabled", true);
+                $("#editMissionSeat").prop("disabled", false);
+            } else if (selectedType === "Time") {
+                $("#editMissionStartDate").prop("disabled", false);
+                $("#editMissionEndDate").prop("disabled", false);
+                $("#editMissionSeat").prop("disabled", true);
+            }
+        }).change();
+    });
 
-        reader.onload = function(e) {
-            var img = $("<img>");
-            img.attr("src", e.target.result);
-            editMissionImageDiv.append(img);
+
+    $("#images").change(function () {
+        var files = this.files;
+        var editMissionImageDiv = $("#image-preview");
+
+        // Clear existing images from the div
+        editMissionImageDiv.empty();
+
+        // Display the newly selected images
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var img = $("<img>");
+                img.attr("src", e.target.result);
+                editMissionImageDiv.append(img);
+            }
+
+            reader.readAsDataURL(file);
         }
-
-        reader.readAsDataURL(file);
-    }
-});
+    });
 
 
-   $("#imagesedit").change(function() {
-    var files = this.files;
-    var editMissionImageDiv = $("#editMissionImage");
+    $("#imagesedit").change(function () {
+        var files = this.files;
+        var editMissionImageDiv = $("#editMissionImage");
 
-    // Clear existing images from the div
-    editMissionImageDiv.empty();
+        // Clear existing images from the div
+        editMissionImageDiv.empty();
 
-    // Display the newly selected images
-    for (var i = 0; i < files.length; i++) {
-        var file = files[i];
-        var reader = new FileReader();
+        // Display the newly selected images
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            var reader = new FileReader();
 
-        reader.onload = function(e) {
-            var img = $("<img>");
-            img.attr("src", e.target.result);
-            editMissionImageDiv.append(img);
+            reader.onload = function (e) {
+                var img = $("<img>");
+                img.attr("src", e.target.result);
+                editMissionImageDiv.append(img);
+            }
+
+            reader.readAsDataURL(file);
         }
-
-        reader.readAsDataURL(file);
-    }
-});
+    });
 
 
-function addSkillMission(event) {
-    
-  var skillId = event.target.id;
-  var skillName = event.target.textContent;
+    function addSkillMission(event) {
 
-  // Check if the event was triggered in the source div
-  if ($(event.target).closest("#sourceDiv").length) {
-    // Check if the skill already exists in the destination div
-    if ($("#destinationDiv #" + skillId).length == 0) {
-      // Add the skill to the destination div
-      $("#destinationDiv").append("<li id='" + skillId + "' class='skill list-unstyled cursor' onclick='addSkillMission(event)'>" + skillName + "</li>");
-      // Check if the skill already exists in the select element
-      if ($("#addMissionSkill option[value='" + skillId + "']").length == 0) {
-        // Add the skill to the select element
-        $("#addMissionSkill").append("<option value='" + skillId + "'>" + skillName + "</option>");
-      }
-    }
-  } else if ($(event.target).closest("#destinationDiv").length) { // Check if the event was triggered in the destination div
-    // Remove the skill from the destination div
-    $("#" + skillId).remove();
-    // Remove the skill from the select element
-    $("#addMissionSkill option[value='" + skillId + "']").remove();
-  }
-}
+        var skillId = event.target.id;
+        var skillName = event.target.textContent;
 
- function skillClear() {
-    debugger
-    $("#editMissionSkill").empty();
-};
-
-
-function addSkilledit(event) {
-    debugger
-  var skillId = event.target.id;
-  var skillName = event.target.textContent;
-
-  // Check if the event was triggered in the source div
-  if ($(event.target).closest("#sourceDivedit").length) {
-    // Check if the skill already exists in the destination div
-    if ($("#destinationDivedit #" + skillId).length == 0) {
-      // Add the skill to the destination div
-      $("#destinationDivedit").append("<li id='" + skillId + "' class='skill list-unstyled cursor' onclick='addSkilledit(event)'>" + skillName + "</li>");
-      // Check if the skill already exists in the select element
-      if ($("#editMissionSkill option[value='" + skillId + "']").length == 0) {
-        // Add the skill to the select element
-        $("#editMissionSkill").append("<option value='" + skillId + "'>" + skillName + "</option>");
-      }
-    }
-  } else if ($(event.target).closest("#destinationDivedit").length) { // Check if the event was triggered in the destination div
-    // Remove the skill from the destination div
-    $("#" + skillId).remove();
-    // Remove the skill from the select element
-    $("#editMissionSkill option[value='" + skillId + "']").remove();
-  }
-}
-
-    
-     function editMissionData(event) {
-                    debugger
-                         const imgs = document.getElementById("imagesedit");
-                         const imgfiles = imgs.files;
-
-                         const docs = document.getElementById("editMissionDocument");
-                         const docfiles = docs.files;
-
-                         const allSkills = $('#editMissionSkill option').map(function(){
-                                         return $(this).val();
-                                        }).get();
-
-                        event.preventDefault();
-                        var formData = new FormData();
-                        formData.append('MissionId', $('#missionId').val());
-                        formData.append('MissionThemeId', $('#editMissionTheme').val());
-                        formData.append('CityId', $('#editMissionCity').val());
-                        formData.append('CountryId', $('#editMissionCountry').val());
-                        formData.append('Title', $('#editMissionTitle').val());
-                        formData.append('ShortDescription', $('#editMissionShortDescription').val());
-                        formData.append('Description', $('#editMissionDescription').val());
-                        formData.append('StartDate', $('#editMissionStartDate').val());
-                        formData.append('EndDate', $('#editMissionEndDate').val());
-                        formData.append('MissionType', $('#editMissionType').val());
-                        formData.append('Status', $('#editMissionStatus').val());
-                        formData.append('OrganizationName', $('#editMissionOrganisationName').val());
-                        formData.append('OrganizationDetail', $('#editMissionOrganisationDetail').val());
-                        formData.append('VideoUrl', $('#editMissionVideo').val());
-                        
-
-                        var documents = docfiles;
-                        for (var i = 0; i < documents.length; i++) {
-                            formData.append('Documents', documents[i]);
-                        } 
-                        
-                        var skills = allSkills;
-                        for (var i = 0; i < skills.length; i++) {
-                            formData.append('MissionSkill', skills[i]);
-                        } 
-                        
-                        var images = imgfiles;
-                        for (var i = 0; i < images.length; i++) {
-                          formData.append('Images', images[i]);
-                        }
-
-                        console.log(formData);
-                        $.ajax({
-                         type: 'POST',
-                         url: '/Admin/AddMission',
-                         data: formData,
-                         contentType: false,
-                         processData: false,
-                         success: function(data) {
-                             console.log(data);
-                             debugger
-                             missionView('nav-mission');
-                             console.log(data);
-                             $('#missions').html(data);
-                             searchMission(@ViewBag.pg_no,'mission');
-                             toastr.success('Mission edit successfully');
-                            
-
-                         },
-                        error: function (request, error) {
-                         console.log(error);
-                     }
-                     });
-     }
-
-     function addMissionData(event) {
-                        debugger
-
-                        const imgs = document.getElementById("images");
-                        const imgfiles = imgs.files;
-
-                        const docs = document.getElementById("addMissionDocument");
-                        const docfiles = docs.files;
-                        const allSkills = $('#addMissionSkill option').map(function(){
-                                         return $(this).val();
-                                        }).get();
-
-                         event.preventDefault();
-                         var formData = new FormData();
-                            formData.append('MissionThemeId', $('#addMissionTheme').val());
-                            formData.append('CityId', $('#addMissionCity').val());
-                            formData.append('CountryId', $('#addMissionCountry').val());
-                            formData.append('Title', $('#addMissionTitle').val());
-                            formData.append('ShortDescription', $('#addMissionShortDescription').val());
-                            formData.append('Description', $('#addMissionDescription').val());
-                            formData.append('StartDate', $('#addMissionStartDate').val());
-                            formData.append('EndDate', $('#addMissionEndDate').val());
-                            formData.append('MissionType', $('#addMissionType').val());
-                            formData.append('Status', $('#addMissionStatus').val());
-                            formData.append('OrganizationName', $('#addMissionOrganisationName').val());
-                            formData.append('OrganizationDetail', $('#addMissionOrganisationDetail').val());
-                            formData.append('VideoUrl', $('#addMissionVideo').val());
-                        
-
-                            var documents = docfiles;
-                            for (var i = 0; i < documents.length; i++) {
-                                formData.append('Documents', documents[i]);
-                            } 
-                        
-                            var skills = allSkills;
-                            for (var i = 0; i < skills.length; i++) {
-                                formData.append('MissionSkill', skills[i]);
-                            } 
-                        
-                            var images = imgfiles;
-                            for (var i = 0; i < images.length; i++) {
-                              formData.append('Images', images[i]);
-                            }
-
-                   
-                             $.ajax({
-                                 type: 'POST',
-                                 url: '/Admin/AddMission',
-                                 data: formData,
-                                 contentType: false,
-                                 processData: false,
-                                 success: function(data) {
-                                     debugger
-                                     missionView('nav-mission');
-                                     console.log(data);
-                                     $('#missions').html(data);
-                                     searchMission(@ViewBag.pg_no,'mission');
-                                        toastr.success('Mission add sucessfully');
-                            
-
-                                 },
-                                 error: function (request, error) {
-                                 console.log(error);
-                                 }
-                             });
-     }
-
-        function getMissionData(missionId)
-        {
-            console.log(missionId);
-            debugger
-            $.ajax({
-                         type: 'POST',
-                         url: '/Admin/EditMission',
-                         data: {"MissionId": missionId},
-                         success: function(data) {
-                             console.log(data);
-                             debugger
-
-                             $('#missionId').val(data.missionId);
-                             $('#editMissionTheme').val(data.missionThemeId);
-                             $('#editMissionCity').val(data.cityId);
-                             $('#editMissionCountry').val(data.countryId);
-                             $('#editMissionTitle').val(data.title);
-                             $('#editMissionShortDescription').val(data.shortDescription);
-                             $('#editMissionDescription').val(data.description);
-                             $('#editMissionStartDate').val(data.startDateEdit);
-                             $('#editMissionEndDate').val(data.endDateEdit);
-                             $('#editMissionType').val(data.missionType);
-                             $('#editMissionStatus').val((data.status).toString());
-                             $('#editMissionOrganisationName').val(data.organizationName);
-                             $('#editMissionOrganisationDetail').val(data.organizationDetail);
-                             $('#editMissionVideo').val(data.videoUrl);
-
-                             GetCity('edit');
-
-                             var skills = data.skillNames;
-                              
-                              var select = $("#editMissionSkill");
-                                  select.empty(); // clear existing options
-                                  for (var i = 0; i < skills.length; i++) {
-                                    var option = $("<option></option>")
-                                      .attr("value", skills[i])
-                                      .text(skills[i]);
-                                    select.append(option);
-                                  }
-                        
-                                    var images = data.missionImages;
-                                    var editMissionImageDiv = $("#editMissionImage");
-
-                                    for (var i = 0; i < images.length; i++) {
-                                        var img = $("<img>");
-                                        img.attr("src", '../Assets/StoryImages/' + images[i]);
-                                        editMissionImageDiv.append(img);
-                                    }
-
-                         },
-                        error: function (request, error) {
-                         console.log(error);
-                     }
-                     });
-        }
-
-        function deleteMission(missionId,event)
-        {
+        
+        if ($(event.target).closest("#sourceDiv").length) {
             
-             debugger
-             event.preventDefault();
-                $.ajax({
-                         type: 'POST',
-                         url: '/Admin/DeleteMission',
-                         data: {"MissionId": missionId},
-                         success: function(data) {
-                             console.log(data);
-                             debugger
-                             missionView('nav-mission');
-                             console.log(data);
-                             $('#missions').html(data);
-                             toastr.error('Mission Deleted');
-                         },
-                        error: function (request, error) {
-                         console.log(error);
-                     }
-                     });
-        }
-
-    </script>
-
-
- <script> 
-        function addMission(x) {
-            var page = document.getElementById(x);
-            var missionpage = page.querySelector("#missionpage");
-            var addMission = page.querySelector("#add");
-            var search = page.querySelector("#searchMission1");
-            search.style.display = "none";
-            missionpage.style.display = "none";
-            addMission.style.display = 'block';
-        }
-        function missionView(x) {
-            debugger
+            if ($("#destinationDiv #" + skillId).length == 0) {
+                
+                $("#destinationDiv").append("<li id='" + skillId + "' class='skill list-unstyled cursor' onclick='addSkillMission(event)'>" + skillName + "</li>");
+                
+                if ($("#addMissionSkill option[value='" + skillId + "']").length == 0) {
+                    
+                    $("#addMissionSkill").append("<option value='" + skillId + "'>" + skillName + "</option>");
+                }
+            }
+        } else if ($(event.target).closest("#destinationDiv").length) { 
             
-            var page = document.getElementById(x);
-            var missionpage = page.querySelector("#missionpage");
-            var addMission = page.querySelector("#add");
-            var search = page.querySelector("#searchMission1");
-            search.style.display = "block";
-            missionpage.style.display = "block";
-            addMission.style.display = 'none';
+            $("#" + skillId).remove();
+            
+            $("#addMissionSkill option[value='" + skillId + "']").remove();
         }
-        function editMission(x,id) {
-           debugger
-            var page = document.getElementById(x);
-            var missionpage = page.querySelector("#missionpage");
-            var addMission = page.querySelector("#edit");
-            var search = page.querySelector("#searchMission1");
-            search.style.display = "none";
-            missionpage.style.display = "none";
-            addMission.style.display = 'block';
-            getMissionData(id);
+    }
+
+    function skillClear() {
+        debugger
+        $("#editMissionSkill").empty();
+    };
+
+
+    function addSkilledit(event) {
+        debugger
+        var skillId = event.target.id;
+        var skillName = event.target.textContent;
+
+        
+        if ($(event.target).closest("#sourceDivedit").length) {
+            
+            if ($("#destinationDivedit #" + skillId).length == 0) {
+                
+                $("#destinationDivedit").append("<li id='" + skillId + "' class='skill list-unstyled cursor' onclick='addSkilledit(event)'>" + skillName + "</li>");
+                
+                if ($("#editMissionSkill option[value='" + skillId + "']").length == 0) {
+                    
+                    $("#editMissionSkill").append("<option value='" + skillId + "'>" + skillName + "</option>");
+                }
+            }
+        } else if ($(event.target).closest("#destinationDivedit").length) { 
+            
+            $("#" + skillId).remove();
+            
+            $("#editMissionSkill option[value='" + skillId + "']").remove();
         }
-        function editMissionClose(x) {
-            debugger
-            $('#editMissionImage').empty()
-            var page = document.getElementById(x);
-            var missionpage = page.querySelector("#missionpage");
-            var addMission = page.querySelector("#edit");
-            var search = page.querySelector("#searchMission1");
-            search.style.display = "block";
-            missionpage.style.display = "block";
-            addMission.style.display = "none";
+    }
+
+
+    function editMissionData(event) {
+        debugger
+        const imgs = document.getElementById("imagesedit");
+        const imgfiles = imgs.files;
+
+        const docs = document.getElementById("editMissionDocument");
+        const docfiles = docs.files;
+
+        const allSkills = $('#editMissionSkill option').map(function () {
+            return $(this).val();
+        }).get();
+
+        event.preventDefault();
+        var formData = new FormData();
+        formData.append('MissionId', $('#missionId').val());
+        formData.append('MissionThemeId', $('#editMissionTheme').val());
+        formData.append('CityId', $('#editMissionCity').val());
+        formData.append('CountryId', $('#editMissionCountry').val());
+        formData.append('Title', $('#editMissionTitle').val());
+        formData.append('ShortDescription', $('#editMissionShortDescription').val());
+        formData.append('Description', $('#editMissionDescription').val());
+        formData.append('StartDate', $('#editMissionStartDate').val());
+        formData.append('EndDate', $('#editMissionEndDate').val());
+        formData.append('TotalSeats', $('#editMissionSeat').val());
+        formData.append('Availibility', $('#editMissionAvailability').val());
+        formData.append('MissionType', $('#editMissionType').val());
+        formData.append('Status', $('#editMissionStatus').val());
+        formData.append('OrganizationName', $('#editMissionOrganisationName').val());
+        formData.append('OrganizationDetail', $('#editMissionOrganisationDetail').val());
+        formData.append('VideoUrl', $('#editMissionVideo').val());
+
+
+        var documents = docfiles;
+        for (var i = 0; i < documents.length; i++) {
+            formData.append('Documents', documents[i]);
+        }
+
+        var skills = allSkills;
+        for (var i = 0; i < skills.length; i++) {
+            formData.append('MissionSkill', skills[i]);
+        }
+
+        var images = imgfiles;
+        for (var i = 0; i < images.length; i++) {
+            formData.append('Images', images[i]);
+        }
+
+        console.log(formData);
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/AddMission',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                console.log(data);
+                debugger
+                missionView('nav-mission');
+                console.log(data);
+                $('#missions').html(data);
+                searchMission(@ViewBag.pg_no, 'mission');
+                toastr.success('Mission edit successfully');
+
+
+            },
+            error: function (request, error) {
+                console.log(error);
+            }
+        });
+    }
+
+    function addMissionData(event) {
+        debugger
+
+        const imgs = document.getElementById("images");
+        const imgfiles = imgs.files;
+
+        const docs = document.getElementById("addMissionDocument");
+        const docfiles = docs.files;
+        const allSkills = $('#addMissionSkill option').map(function () {
+            return $(this).val();
+        }).get();
+
+        event.preventDefault();
+        var formData = new FormData();
+        formData.append('MissionThemeId', $('#addMissionTheme').val());
+        formData.append('CityId', $('#addMissionCity').val());
+        formData.append('CountryId', $('#addMissionCountry').val());
+        formData.append('Title', $('#addMissionTitle').val());
+        formData.append('ShortDescription', $('#addMissionShortDescription').val());
+        formData.append('Description', $('#addMissionDescription').val());
+        formData.append('StartDate', $('#addMissionStartDate').val());
+        formData.append('EndDate', $('#addMissionEndDate').val());
+        formData.append('TotalSeats', $('#addMissionSeat').val());
+        formData.append('Availability', $('#addMissionAvailability').val());
+        formData.append('MissionType', $('#addMissionType').val());
+        formData.append('Status', $('#addMissionStatus').val());
+        formData.append('OrganizationName', $('#addMissionOrganisationName').val());
+        formData.append('OrganizationDetail', $('#addMissionOrganisationDetail').val());
+        formData.append('VideoUrl', $('#addMissionVideo').val());
+
+
+        var documents = docfiles;
+        for (var i = 0; i < documents.length; i++) {
+            formData.append('Documents', documents[i]);
+        }
+
+        var skills = allSkills;
+        for (var i = 0; i < skills.length; i++) {
+            formData.append('MissionSkill', skills[i]);
+        }
+
+        var images = imgfiles;
+        for (var i = 0; i < images.length; i++) {
+            formData.append('Images', images[i]);
         }
 
 
-         function GetCity(x) {
-                 var who = x;
-                 var countryId = 0;
-                 debugger
-                            if(who == 'edit')
-                            {
-                              countryId = document.getElementById("editMissionCountry").value;
-                            }
-                            else
-                            {
-                              countryId = document.getElementById("addMissionCountry").value;
-                            }
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/AddMission',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                debugger
+                missionView('nav-mission');
+                console.log(data);
+                $('#missions').html(data);
+                searchMission(@ViewBag.pg_no, 'mission');
+                toastr.success('Mission add sucessfully');
 
-                                $.ajax({
-                                    url: "/User/GetCity",
-                                    method: "Post",
-                                    data: {"countryId": countryId},
-                                    success: function (data) {
-                                        data = JSON.parse(data);
-                                    if(who == 'edit')
-                                        {
 
-                                            $("#selectEditMissionCityList").empty();
-                                            data.forEach((name) => {
-                                                document.getElementById("selectEditMissionCityList").innerHTML += `
+            },
+            error: function (request, error) {
+                console.log(error);
+            }
+        });
+    }
 
-                                            <option class="form-check" value="${name.CityId}" name="city" id="editMissionCity">${name.CityName}</option>
+    function getMissionData(missionId) {
+        console.log(missionId);
+        debugger
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/EditMission',
+            data: { "MissionId": missionId },
+            success: function (data) {
+                console.log(data);
+                debugger
 
-                                                `;
-                                            })
-                                        }
-                                        else
-                                        {
-                                            $("#selectMissionCityList").empty();
-                                             data.forEach((name) => {
-                                            document.getElementById("selectMissionCityList").innerHTML += `
+                $('#missionId').val(data.missionId);
+                $('#editMissionTheme').val(data.missionThemeId);
+                $('#editMissionCity').val(data.cityId);
+                $('#editMissionCountry').val(data.countryId);
+                $('#editMissionTitle').val(data.title);
+                $('#editMissionShortDescription').val(data.shortDescription);
+                $('#editMissionDescription').val(data.description);
+                $('#editMissionStartDate').val(data.startDateEdit);
+                $('#editMissionEndDate').val(data.endDateEdit);
+                $('#editMissionType').val(data.missionType);
+                $('#editMissionSeats').val(data.missionSeats);
+                $('#editMissionAvailability').val(data.missionAvailability);
+                $('#editMissionStatus').val((data.status).toString());
+                $('#editMissionOrganisationName').val(data.organizationName);
+                $('#editMissionOrganisationDetail').val(data.organizationDetail);
+                $('#editMissionVideo').val(data.videoUrl);
 
-                                            <option class="form-check" value="${name.CityId}" name="city" id="addMissionCity">${name.CityName}</option>
+                GetCity('edit');
 
-                                                `;
-                                                    })
-                                        }
-                                    },
-                                    error: function (request, error) {
-                                        console.log(error);
-                                    }
-                                })
-         }
-    </script>
-    
+                var skills = data.skillNames;
+
+                if(skills != null)
+                {
+                    var select = $("#editMissionSkill");
+                    select.empty(); // clear existing options
+                    for (var i = 0; i < skills.length; i++) {
+                        var option = $("<option></option>")
+                            .attr("value", skills[i])
+                            .text(skills[i]);
+                        select.append(option);
+                    }
+                }
+
+                var images = data.missionImages;
+                var editMissionImageDiv = $("#editMissionImage");
+
+                for (var i = 0; i < images.length; i++) {
+                    var img = $("<img>");
+                    img.attr("src", '../Assets/StoryImages/' + images[i]);
+                    editMissionImageDiv.append(img);
+                }
+
+            },
+            error: function (request, error) {
+                console.log(error);
+            }
+        });
+    }
+
+    function deleteMission(missionId, event) {
+
+        debugger
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/DeleteMission',
+            data: { "MissionId": missionId },
+            success: function (data) {
+                console.log(data);
+                debugger
+                missionView('nav-mission');
+                console.log(data);
+                $('#missions').html(data);
+                toastr.error('Mission Deleted');
+            },
+            error: function (request, error) {
+                console.log(error);
+            }
+        });
+    }
+
+
+    function addMission(x) {
+        var page = document.getElementById(x);
+        var missionpage = page.querySelector("#missionpage");
+        var addMission = page.querySelector("#add");
+        var search = page.querySelector("#searchMission1");
+        search.style.display = "none";
+        missionpage.style.display = "none";
+        addMission.style.display = 'block';
+    }
+    function missionView(x) {
+        debugger
+
+        var page = document.getElementById(x);
+        var missionpage = page.querySelector("#missionpage");
+        var addMission = page.querySelector("#add");
+        var search = page.querySelector("#searchMission1");
+        search.style.display = "block";
+        missionpage.style.display = "block";
+        addMission.style.display = 'none';
+    }
+    function editMission(x, id) {
+        debugger
+        var page = document.getElementById(x);
+        var missionpage = page.querySelector("#missionpage");
+        var addMission = page.querySelector("#edit");
+        var search = page.querySelector("#searchMission1");
+        search.style.display = "none";
+        missionpage.style.display = "none";
+        addMission.style.display = 'block';
+        getMissionData(id);
+    }
+    function editMissionClose(x) {
+        debugger
+        $('#editMissionImage').empty()
+        var page = document.getElementById(x);
+        var missionpage = page.querySelector("#missionpage");
+        var addMission = page.querySelector("#edit");
+        var search = page.querySelector("#searchMission1");
+        search.style.display = "block";
+        missionpage.style.display = "block";
+        addMission.style.display = "none";
+    }
+
+
+    function GetCity(x) {
+        var who = x;
+        var countryId = 0;
+        debugger
+        if (who == 'edit') {
+            countryId = document.getElementById("editMissionCountry").value;
+        }
+        else {
+            countryId = document.getElementById("addMissionCountry").value;
+        }
+
+        $.ajax({
+            url: "/User/GetCity",
+            method: "Post",
+            data: { "countryId": countryId },
+            success: function (data) {
+                data = JSON.parse(data);
+                if (who == 'edit') {
+
+                    $("#selectEditMissionCityList").empty();
+                    data.forEach((name) => {
+                        document.getElementById("selectEditMissionCityList").innerHTML += `
+
+                                                <option class="form-check" value="${name.CityId}" name="city" id="editMissionCity">${name.CityName}</option>
+
+                                                    `;
+                    })
+                }
+                else {
+                    $("#selectMissionCityList").empty();
+                    data.forEach((name) => {
+                        document.getElementById("selectMissionCityList").innerHTML += `
+
+                                                <option class="form-check" value="${name.CityId}" name="city" id="addMissionCity">${name.CityName}</option>
+
+                                                    `;
+                    })
+                }
+            },
+            error: function (request, error) {
+                console.log(error);
+            }
+        })
+    }
+</script>

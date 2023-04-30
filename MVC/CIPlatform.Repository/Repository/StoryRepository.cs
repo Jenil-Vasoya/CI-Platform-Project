@@ -23,13 +23,13 @@ namespace CIPlatform.Repository.Repository
 
         public User GetUserAvatar(long UserId)
         {
-            var user = _DbContext.Users.FirstOrDefault(i => i.UserId == UserId);
+            var user = _DbContext.Users.FirstOrDefault(i => i.UserId == UserId && i.DeletedAt == null);
             return user;
         }
 
         public List<User> UserList()
         {
-            List<User> users = _DbContext.Users.ToList();
+            List<User> users = _DbContext.Users.Where(u=> u.DeletedAt == null).ToList();
             return users;
         }
 
@@ -41,13 +41,13 @@ namespace CIPlatform.Repository.Repository
 
         public List<MissionTheme> MissionThemeList()
         {
-            List<MissionTheme> objMissionTheme = _DbContext.MissionThemes.ToList();
+            List<MissionTheme> objMissionTheme = _DbContext.MissionThemes.Where(t=> t.DeletedAt == null).ToList();
             return objMissionTheme;
         }
 
         public List<Skill> SkillList()
         {
-            List<Skill> objSkill = _DbContext.Skills.ToList();
+            List<Skill> objSkill = _DbContext.Skills.Where(s=> s.DeletedAt == null).ToList();
             return objSkill;
         }
 
@@ -62,7 +62,7 @@ namespace CIPlatform.Repository.Repository
         public string MediaByMissionId(long missionID)
         {
 
-            MissionMedium media = _DbContext.MissionMedia.FirstOrDefault(a => a.MissionId == missionID);
+            MissionMedium media = _DbContext.MissionMedia.FirstOrDefault(a => a.MissionId == missionID && a.DeletedAt == null);
             return media.MediaPath;
 
         }
@@ -126,7 +126,7 @@ namespace CIPlatform.Repository.Repository
             foreach (var objMission in missions)
             {
                 MissionData missionData = new MissionData();
-                List<StoryMedium> storyMedium = _DbContext.StoryMedia.Where(a => a.StoryId == objMission.StoryId).ToList();
+                List<StoryMedium> storyMedium = _DbContext.StoryMedia.Where(a => a.StoryId == objMission.StoryId && a.DeletedAt == null ).ToList();
 
                 var path = new List<string>();
                 foreach (var i in storyMedium)
@@ -165,27 +165,7 @@ namespace CIPlatform.Repository.Repository
                     missionData.VideoUrl = null;
                 }
 
-                //var formFiles = new List<IFormFile>();
-
-                //foreach (var imagePath in path)
-                //{
-                //    var fileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory());
-                //    var fileInfo = fileProvider.GetFileInfo(imagePath);
-
-                //    if (fileInfo.Exists)
-                //    {
-                //        var stream = fileInfo.CreateReadStream();
-                //        var formFile = new FormFile(stream, 0, stream.Length, null, Path.GetFileName(imagePath))
-                //        {
-                //            Headers = new HeaderDictionary(),
-                //            ContentType = "image/png" // set the content type to the appropriate value for your image type
-                //        };
-
-                //        formFiles.Add(formFile);
-                //    }
-                //}
-
-                //missionData.images = formFiles;
+                
 
 
 
@@ -281,39 +261,48 @@ namespace CIPlatform.Repository.Repository
                 _DbContext.Stories.Update(editStory);
                 _DbContext.SaveChanges();
 
-                List<StoryMedium> storyMedia = _DbContext.StoryMedia.Where(a => a.StoryId == editStory.StoryId).ToList();
-                foreach (var storyMediaItem in storyMedia)
+                if (objStory.images != null)
                 {
-                    _DbContext.StoryMedia.Remove(storyMediaItem);
-                    _DbContext.SaveChanges();
-                }
-
-
-
-
-                var filePath = new List<string>();
-                foreach (var i in objStory.images)
-                {
-                    StoryMedium storyMedium = new StoryMedium();
-                    storyMedium.StoryId = editStory.StoryId;
-                    storyMedium.Type = "png";
-                    storyMedium.Path = i.FileName;
-                    _DbContext.StoryMedia.Add(storyMedium);
-                    if (i.Length > 0)
+                    List<StoryMedium> storyMedia = _DbContext.StoryMedia.Where(a => a.StoryId == editStory.StoryId && a.Type != "mp4").ToList();
+                    foreach (var storyMediaItem in storyMedia)
                     {
-                        //string path = Server.MapPath("~/wwwroot/Assets/Story");
-                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", i.FileName);
-                        filePath.Add(path);
-                        using (var stream = new FileStream(path, FileMode.Create))
-                        {
-                            i.CopyTo(stream);
-                        }
+                        _DbContext.StoryMedia.Remove(storyMediaItem);
+                        _DbContext.SaveChanges();
                     }
 
+
+
+                    var filePath = new List<string>();
+                    foreach (var i in objStory.images)
+                    {
+                        StoryMedium storyMedium = new StoryMedium();
+                        storyMedium.StoryId = editStory.StoryId;
+                        storyMedium.Type = "png";
+                        storyMedium.Path = i.FileName;
+                        _DbContext.StoryMedia.Add(storyMedium);
+                        if (i.Length > 0)
+                        {
+                            //string path = Server.MapPath("~/wwwroot/Assets/Story");
+                            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", i.FileName);
+                            filePath.Add(path);
+                            using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                i.CopyTo(stream);
+                            }
+                        }
+
+                    }
                 }
                 if (objStory.VideoUrl != null)
                 {
-                    foreach (var i in objStory.VideoUrl)
+                    List<StoryMedium> storyMedia = _DbContext.StoryMedia.Where(a => a.StoryId == editStory.StoryId && a.Type == "mp4").ToList();
+                    foreach (var storyMediaItem in storyMedia)
+                    {
+                        _DbContext.StoryMedia.Remove(storyMediaItem);
+                        _DbContext.SaveChanges();
+                    }
+                    var url = objStory.VideoUrl.Where(u => u.Contains('w'));
+                    foreach (var i in url)
                     {
                         StoryMedium storyMediumurl = new StoryMedium();
                         storyMediumurl.StoryId = editStory.StoryId;

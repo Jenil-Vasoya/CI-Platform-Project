@@ -1,751 +1,883 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CIPlatform.bundle.scp.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CIPlatform.bundle.scp.css",
       "PackagePath": "staticwebassets\\CIPlatform.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\404-Page-image.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\404-Page-image.png",
       "PackagePath": "staticwebassets\\Assets\\StoryImages\\404-Page-image.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign-1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign - Copy.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign - Copy.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign-1 - Copy.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign-1 - Copy.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign-1.png",
       "PackagePath": "staticwebassets\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign-1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign.png",
       "PackagePath": "staticwebassets\\Assets\\StoryImages\\Animal-welfare-&-save-birds-campaign.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
       "PackagePath": "staticwebassets\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
       "PackagePath": "staticwebassets\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
       "PackagePath": "staticwebassets\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
       "PackagePath": "staticwebassets\\Assets\\StoryImages\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\bell.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Grow-Trees-On-the-path-to-environment-sustainability-2.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\Grow-Trees-On-the-path-to-environment-sustainability-2.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Grow-Trees-On-the-path-to-environment-sustainability-3.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\Grow-Trees-On-the-path-to-environment-sustainability-3.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Grow-Trees-On-the-path-to-environment-sustainability-4.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\Grow-Trees-On-the-path-to-environment-sustainability-4.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Grow-Trees-On-the-path-to-environment-sustainability-5.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\Grow-Trees-On-the-path-to-environment-sustainability-5.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Grow-Trees-On-the-path-to-environment-sustainability-login.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Grow-Trees-On-the-path-to-environment-sustainability.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\Grow-Trees-On-the-path-to-environment-sustainability.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Nourish-the-Children-in--African-country-1.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\Nourish-the-Children-in--African-country-1.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Nourish-the-Children-in--African-country.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\Nourish-the-Children-in--African-country.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\Plantation-and-Afforestation-programme.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\Plantation-and-Afforestation-programme.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\arrow.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\arrow.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\bell.png",
       "PackagePath": "staticwebassets\\Assets\\StoryImages\\bell.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\cross.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\cross.png",
       "PackagePath": "staticwebassets\\Assets\\StoryImages\\cross.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\bootstrap.min.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\image.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\image.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\img1.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\img1.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\img2.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\img2.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\img22.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\img22.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\img3.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\img3.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\user-img-large.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\user-img-large.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\volunteer1.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\volunteer1.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\volunteer2.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\volunteer2.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\volunteer3.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\volunteer3.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\volunteer4.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\volunteer4.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\volunteer5.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\volunteer5.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\volunteer6.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\volunteer6.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\volunteer7.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\volunteer7.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\volunteer8.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\volunteer8.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\volunteer9.png",
+      "PackagePath": "staticwebassets\\Assets\\StoryImages\\volunteer9.png"
+    },
+    {
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\Assets\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\mission.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\mission.css",
       "PackagePath": "staticwebassets\\Assets\\css\\mission.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\missionlist.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\missionlist.css",
       "PackagePath": "staticwebassets\\Assets\\css\\missionlist.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\mlist.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\mlist.css",
       "PackagePath": "staticwebassets\\Assets\\css\\mlist.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\story.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\story.css",
       "PackagePath": "staticwebassets\\Assets\\css\\story.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\style.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\style.css",
       "PackagePath": "staticwebassets\\Assets\\css\\style.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\volunteer.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\volunteer.css",
       "PackagePath": "staticwebassets\\Assets\\css\\volunteer.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\volunteermission.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\css\\volunteermission.css",
       "PackagePath": "staticwebassets\\Assets\\css\\volunteermission.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\404-Page-image.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\404-Page-image.png",
       "PackagePath": "staticwebassets\\Assets\\images\\404-Page-image.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Already-volunteered.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Already-volunteered.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Already-volunteered.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Animal-welfare-&-save-birds-campaign-1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Animal-welfare-&-save-birds-campaign-1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Animal-welfare-&-save-birds-campaign-1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Animal-welfare-&-save-birds-campaign.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Animal-welfare-&-save-birds-campaign.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Animal-welfare-&-save-birds-campaign.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
       "PackagePath": "staticwebassets\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
       "PackagePath": "staticwebassets\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
       "PackagePath": "staticwebassets\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
       "PackagePath": "staticwebassets\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
       "PackagePath": "staticwebassets\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
       "PackagePath": "staticwebassets\\Assets\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-2.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-2.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-2.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-3.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-3.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-3.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-4.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-4.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-4.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-5.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-5.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-5.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-login.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-login.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability-login.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Grow-Trees-On-the-path-to-environment-sustainability.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Nourish-the-Children-in--African-country-1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Nourish-the-Children-in--African-country-1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Nourish-the-Children-in--African-country-1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Nourish-the-Children-in--African-country.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Nourish-the-Children-in--African-country.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Nourish-the-Children-in--African-country.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Open-Volunteering-Requests.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Open-Volunteering-Requests.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Open-Volunteering-Requests.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Plantation-and-Afforestation-programme-1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Plantation-and-Afforestation-programme-1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Plantation-and-Afforestation-programme-1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Plantation-and-Afforestation-programme.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Plantation-and-Afforestation-programme.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Plantation-and-Afforestation-programme.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Seats-left.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Seats-left.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Seats-left.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Volunteering-Rank.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Volunteering-Rank.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Volunteering-Rank.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Voted-Missions.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\Voted-Missions.png",
       "PackagePath": "staticwebassets\\Assets\\images\\Voted-Missions.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\achieved.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\achieved.png",
       "PackagePath": "staticwebassets\\Assets\\images\\achieved.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\add.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\add.png",
       "PackagePath": "staticwebassets\\Assets\\images\\add.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\add1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\add1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\add1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\arrow.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\arrow.png",
       "PackagePath": "staticwebassets\\Assets\\images\\arrow.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\bell-big.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\bell-big.png",
       "PackagePath": "staticwebassets\\Assets\\images\\bell-big.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\bell.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\bell.png",
       "PackagePath": "staticwebassets\\Assets\\images\\bell.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\bin.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\bin.png",
       "PackagePath": "staticwebassets\\Assets\\images\\bin.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\calender.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\calender.png",
       "PackagePath": "staticwebassets\\Assets\\images\\calender.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\cancel.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\cancel.png",
       "PackagePath": "staticwebassets\\Assets\\images\\cancel.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\cancel1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\cancel1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\cancel1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\checked.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\checked.png",
       "PackagePath": "staticwebassets\\Assets\\images\\checked.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\cross.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\cross.png",
       "PackagePath": "staticwebassets\\Assets\\images\\cross.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\deadline.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\deadline.png",
       "PackagePath": "staticwebassets\\Assets\\images\\deadline.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\doc.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\doc.png",
       "PackagePath": "staticwebassets\\Assets\\images\\doc.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\down.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\down.png",
       "PackagePath": "staticwebassets\\Assets\\images\\down.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\drag-and-drop.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\drag-and-drop.png",
       "PackagePath": "staticwebassets\\Assets\\images\\drag-and-drop.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\drop-down.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\drop-down.png",
       "PackagePath": "staticwebassets\\Assets\\images\\drop-down.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\eye.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\eye.png",
       "PackagePath": "staticwebassets\\Assets\\images\\eye.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\facebook.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\facebook.png",
       "PackagePath": "staticwebassets\\Assets\\images\\facebook.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\filter.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\filter.png",
       "PackagePath": "staticwebassets\\Assets\\images\\filter.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\gift.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\gift.png",
       "PackagePath": "staticwebassets\\Assets\\images\\gift.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\graph.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\graph.png",
       "PackagePath": "staticwebassets\\Assets\\images\\graph.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\grid.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\grid.png",
       "PackagePath": "staticwebassets\\Assets\\images\\grid.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\heart.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\heart.png",
       "PackagePath": "staticwebassets\\Assets\\images\\heart.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\heart1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\heart1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\heart1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\hours.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\hours.png",
       "PackagePath": "staticwebassets\\Assets\\images\\hours.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\image.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\image.png",
       "PackagePath": "staticwebassets\\Assets\\images\\image.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\image1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\image1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\image1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\image2.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\image2.png",
       "PackagePath": "staticwebassets\\Assets\\images\\image2.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img.png",
       "PackagePath": "staticwebassets\\Assets\\images\\img.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\img1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img11.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img11.png",
       "PackagePath": "staticwebassets\\Assets\\images\\img11.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img2.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img2.png",
       "PackagePath": "staticwebassets\\Assets\\images\\img2.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img22.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img22.png",
       "PackagePath": "staticwebassets\\Assets\\images\\img22.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img3.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img3.png",
       "PackagePath": "staticwebassets\\Assets\\images\\img3.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img33.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\img33.png",
       "PackagePath": "staticwebassets\\Assets\\images\\img33.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\info.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\info.png",
       "PackagePath": "staticwebassets\\Assets\\images\\info.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\left.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\left.png",
       "PackagePath": "staticwebassets\\Assets\\images\\left.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\left1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\left1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\left1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\linkedin.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\linkedin.png",
       "PackagePath": "staticwebassets\\Assets\\images\\linkedin.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\list.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\list.png",
       "PackagePath": "staticwebassets\\Assets\\images\\list.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\logo.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\logo.png",
       "PackagePath": "staticwebassets\\Assets\\images\\logo.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\mission.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\mission.png",
       "PackagePath": "staticwebassets\\Assets\\images\\mission.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\my-story.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\my-story.png",
       "PackagePath": "staticwebassets\\Assets\\images\\my-story.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\new-message.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\new-message.png",
       "PackagePath": "staticwebassets\\Assets\\images\\new-message.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\next.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\next.png",
       "PackagePath": "staticwebassets\\Assets\\images\\next.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\organization.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\organization.png",
       "PackagePath": "staticwebassets\\Assets\\images\\organization.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\pdf.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\pdf.png",
       "PackagePath": "staticwebassets\\Assets\\images\\pdf.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\pin.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\pin.png",
       "PackagePath": "staticwebassets\\Assets\\images\\pin.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\pin1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\pin1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\pin1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\previous.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\previous.png",
       "PackagePath": "staticwebassets\\Assets\\images\\previous.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\red-heart.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\red-heart.png",
       "PackagePath": "staticwebassets\\Assets\\images\\red-heart.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-arrow.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-arrow.png",
       "PackagePath": "staticwebassets\\Assets\\images\\right-arrow.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-arrow1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-arrow1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\right-arrow1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-arrow2.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-arrow2.png",
       "PackagePath": "staticwebassets\\Assets\\images\\right-arrow2.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-white.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right-white.png",
       "PackagePath": "staticwebassets\\Assets\\images\\right-white.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\right.png",
       "PackagePath": "staticwebassets\\Assets\\images\\right.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\search.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\search.png",
       "PackagePath": "staticwebassets\\Assets\\images\\search.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\selected-star.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\selected-star.png",
       "PackagePath": "staticwebassets\\Assets\\images\\selected-star.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\settings.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\settings.png",
       "PackagePath": "staticwebassets\\Assets\\images\\settings.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\star-empty.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\star-empty.png",
       "PackagePath": "staticwebassets\\Assets\\images\\star-empty.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\star.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\star.png",
       "PackagePath": "staticwebassets\\Assets\\images\\star.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\twitter.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\twitter.png",
       "PackagePath": "staticwebassets\\Assets\\images\\twitter.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\up.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\up.png",
       "PackagePath": "staticwebassets\\Assets\\images\\up.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user-img-large.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user-img-large.png",
       "PackagePath": "staticwebassets\\Assets\\images\\user-img-large.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user-img.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user-img.png",
       "PackagePath": "staticwebassets\\Assets\\images\\user-img.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user.png",
       "PackagePath": "staticwebassets\\Assets\\images\\user.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\user1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\user1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer1.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer1.png",
       "PackagePath": "staticwebassets\\Assets\\images\\volunteer1.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer2.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer2.png",
       "PackagePath": "staticwebassets\\Assets\\images\\volunteer2.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer3.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer3.png",
       "PackagePath": "staticwebassets\\Assets\\images\\volunteer3.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer4.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer4.png",
       "PackagePath": "staticwebassets\\Assets\\images\\volunteer4.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer5.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer5.png",
       "PackagePath": "staticwebassets\\Assets\\images\\volunteer5.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer6.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer6.png",
       "PackagePath": "staticwebassets\\Assets\\images\\volunteer6.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer7.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer7.png",
       "PackagePath": "staticwebassets\\Assets\\images\\volunteer7.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer8.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer8.png",
       "PackagePath": "staticwebassets\\Assets\\images\\volunteer8.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer9.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\volunteer9.png",
       "PackagePath": "staticwebassets\\Assets\\images\\volunteer9.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\web.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\web.png",
       "PackagePath": "staticwebassets\\Assets\\images\\web.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\xlsx.png",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\xlsx.png",
       "PackagePath": "staticwebassets\\Assets\\images\\xlsx.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\css\\site.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\favicon.ico",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\js\\AddFavourite.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\js\\AddFavourite.js",
       "PackagePath": "staticwebassets\\js\\AddFavourite.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\js\\site.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "D:\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {

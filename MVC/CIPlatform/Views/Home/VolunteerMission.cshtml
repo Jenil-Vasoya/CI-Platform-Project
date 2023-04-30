@@ -1,4 +1,19 @@
-﻿@if (TempData["Success"] != null)
+﻿@if (TempData["Error"] != null)
+{
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        toastr.error('@TempData["Error"]')
+    </script>
+
+}
+
+@if (TempData["Success"] != null)
 {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script type="text/javascript">
@@ -45,6 +60,7 @@
 
 
         .rating ::before
+        {
         display: flex;
         justify-content: center;
         background-color: white;
@@ -168,7 +184,9 @@
                             <h3>
                                 @ViewBag.missionDatas.Title
                             </h3>
+
                             <p>@ViewBag.missionDatas.ShortDescription</p>
+
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item"></li>
                                 <li class="list-group-item">
@@ -208,7 +226,7 @@
                                                     <div class=" d-flex flex-row">
                                                         <div class=""><img src="~/Assets/images/Seats-left.png" class="img-fluid"></div>
                                                         <div class=" ">
-                                                            <h5 class="card-title" style="text-transform: start;"> &nbsp; @ViewBag.missionDatas.TotalSeats</h5>
+                                                            <h5 class="card-title" style="text-transform: capitalize;"> &nbsp; @ViewBag.missionDatas.TotalSeats</h5>
                                                             <p class="card-text ">Seats left</p>
                                                         </div>
                                                     </div>
@@ -311,6 +329,7 @@
                                     </div>
                                 </li>
                             </ul>
+
                             <div class="row">
                                 <div class="col-xl-3 col-md-3 col-6 border-1">
                                     <div class="card p-xl-2  p-2  p-lg-0 ">
@@ -318,7 +337,7 @@
                                             <div class="">
                                                 <img src="~/Assets/images/pin1.png" class="img-fluid">
                                                 <br><br class="d-xl-block d-lg-none" />
-                                                <p class="card-title pt-xl-0 pt-lg-0 pt-md-3" style="text-transform: start;">City</p>
+                                                <p class="card-title pt-xl-0 pt-lg-0 pt-md-3" style="text-transform: capitalize;">City</p>
                                                 <h6 class="card-text ">@ViewBag.missionDatas.CityName</h6>
                                             </div>
                                         </div>
@@ -330,7 +349,7 @@
                                             <div class="">
                                                 <img src="~/Assets/images/web.png" class="img-fluid">
                                                 <br><br class="d-xl-block d-lg-none" />
-                                                <p class="card-title pt-xl-0 pt-lg-0 pt-md-3" style="text-transform: start;">Theme</p>
+                                                <p class="card-title pt-xl-0 pt-lg-0 pt-md-3" style="text-transform: capitalize;">Theme</p>
                                                 <h6 class="card-text ">@ViewBag.missionDatas.Theme</h6>
                                             </div>
                                         </div>
@@ -342,7 +361,7 @@
                                             <div class="">
                                                 <img src="~/Assets/images/calender.png" class="img-fluid">
                                                 <br><br class=" d-lg-none" />
-                                                <p class="card-title pt-xl-2 " style="text-transform: start;">Date</p>
+                                                <p class="card-title pt-xl-2 " style="text-transform: capitalize;">Date</p>
                                                 <h6 class="card-text ">@ViewBag.missionDatas.EndDate.ToString("dd/MM/yyyy")</h6>
                                             </div>
                                         </div>
@@ -354,7 +373,7 @@
                                             <div class="">
                                                 <img src="~/Assets/images/organization.png" class="img-fluid">
                                                 <br><br class="d-xl-block d-lg-none" />
-                                                <p class="card-title pt-xl-0 pt-lg-0 pt-md-3" style="text-transform: start;">Organization</p>
+                                                <p class="card-title pt-xl-0 pt-lg-0 pt-md-3" style="text-transform: capitalize;">Organization</p>
                                                 <h6 class="card-text ">@ViewBag.missionDatas.OrganizationName</h6>
                                             </div>
                                         </div>
@@ -672,7 +691,10 @@
                                                         <div class=" d-flex flex-row">
                                                             <div class=""><img src="~/Assets/images/Seats-left.png" class="img-fluid"></div>
                                                             <div class=" ">
-                                                                <h5 class="card-title" style="text-transform: start;"> &nbsp; @item.TotalSeats</h5>
+                                                                <h5 class="card-title" style="text-transform: capitalize;">
+                                                                    &nbsp;@item.TotalSeats
+                                                                </h5>
+
                                                                 <p class="card-text ">Seats left</p>
                                                             </div>
                                                         </div>
@@ -696,8 +718,8 @@
                                 </ul>
                                 <div class=" text-center pb-2">
                                     @*onclick="window.location= '@Url.Action( "VolunteerMission", "Home", new {id = @item.MissionId})'"*@
-                                    <a asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@item.MissionId">
-                                        <button type="submit" class="btn applyButton "> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
+                                    <a asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@item.MissionId" class="btn applyButton ">
+                                        Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i>
                                     </a>
                                 </div>
                             </div>
@@ -714,20 +736,14 @@
 </body>
 <script>
 
-    //      $(document).ready(function() {
-    //          debugger
-    //        if (successMessage) {
-    //            toastr.success(successMessage);
-    //         }
-    //});
 
-          function Rate(i,MissionId)
+function Rate(i,MissionId)
           {
               $(".rtcolor").removeClass("text-warning");
               PostRating(i,MissionId);
           }
 
-        function PostRating(i,MissionId) {
+function PostRating(i,MissionId) {
 
 
             debugger
@@ -744,7 +760,7 @@
                     if(data == 1)
                     {
                              debugger
-                             toastr.success('Rateing applied for the mission');
+                             toastr.success('Rateing applied');
                              setTimeout(function(){ location.reload();}, 2000);
                     }
                     else if(data == 2)
@@ -765,10 +781,7 @@
 
         }
 
-
-</script>
-<script>
-                function searchMission(pg) {
+function searchMission(pg) {
 
 
     if (pg == undefined) {
@@ -790,101 +803,40 @@
         }
     })
     }
-</script>
 
-<script>
+function AddComments(missionId)
+       {
+            var comment = $("#user-comment").val();
 
-    @* function Add(MissionId, btn)
-        {
-        debugger
-        $.ajax({
+               if(comment == null || comment=="")
+               {
+                    $("#comment-status").html("please enter the comment");
+                    $("#comment-status").css("color","red");
+               }
+               else
+               {
+                    debugger
+                    $.ajax({
 
-        url:"/Home/AddToFavourite",
-        method: "POST",
+                        url:"/Home/AddComment",
+                        method: "POST",
 
-        data:
-        {
-        MissionId:MissionId
-
-        },
-        success:function(data)
-        {
-        console.log(data)
-        debugger
-        toastr.options = {
-        "closeButton": true,
-        "progressBar": true
-        };
-        console.log(MissionId)
-        console.log(btn)
-        if (data == true) {
-        debugger
-        if (btn == 'btnAddToFavVolun_')
-        {
-
-        $('#favButtonText').text('Remove from Favourite');
-        $("#addToFavVolun_" + MissionId).removeClass('bi-heart text-black').addClass('bi-heart-fill  text-danger');
-        toastr.success('Added favourite successfully');
-        }
-        else if(btn == 'btnaddToFav_')
-        {
-        $("#addToFav_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
-        toastr.success('Added favourite successfully');
-        }
-        }
-        else {
-        if (btn == 'btnAddToFavVolun_')
-        {
-
-        $('#favButtonText').text('Add to Favourite');
-        $("#addToFavVolun_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-black');
-        toastr.error('Remove favourite successfully');
-        }
-        else if (btn == 'btnaddToFav_')
-        {
-        $("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
-        toastr.error('Remove favourite successfully');
+                        data:
+                        {
+                        comment:comment,
+                        missionId:missionId
+                        },
+                        success:function(data)
+                        {
+                        $("#comment-status").html("comment sent for approvel");
+                        $("#comment-status").css("color","green");
+                        $('#user-comment').val('');
+                        }
+                    })
+                }
         }
 
-        }
-        }
-        })
-        }*@
-
-            function AddComments(missionId)
-        {
-
-        var comment = $("#user-comment").val();
-
-        if(comment == null || comment=="")
-        {
-        $("#comment-status").html("please enter the comment");
-        $("#comment-status").css("color","red");
-        }
-        else
-        {
-        debugger
-        $.ajax({
-
-        url:"/Home/AddComment",
-        method: "POST",
-
-        data:
-        {
-        comment:comment,
-        missionId:missionId
-        },
-        success:function(data)
-        {
-        $("#comment-status").html("comment sent for approvel");
-        $("#comment-status").css("color","green");
-        $('#user-comment').val('');
-        }
-        })
-        }
-        }
-
-            function ApplyMission(missionId)
+function ApplyMission(missionId)
             {
                 debugger
                 $.ajax({
@@ -895,13 +847,9 @@
 
                     success: function(data)
                     {
-                        toastr.options = {
-                        "closeButton": true,
-                        "progressBar": true
-                    };
                         if(data == 2)
                         {
-                            toastr.success('Applied mission successfully');
+                            toastr.success('Applied Mission');
                         }
                         else if(data == 1)
                         {
@@ -920,8 +868,7 @@
                 })
             }
 
-
-         function sendInvitation(MissionId)
+function sendInvitation(MissionId)
             {
                 debugger
                 var CoWorkers = [];
@@ -947,34 +894,5 @@
                  })
 
             }
-
-    @*function PostRating(x,i) {
-
-
-        debugger
-
-        var missionId = x;
-        //var rate = document.getElementsByName('input[name="myradio"]:checked').va;
-        //console.log(rate);
-        $.ajax({
-        type: "POST",
-        url: '/Home/PostRating',
-        data: {
-        'rate': i,
-        'MissionId': missionId
-
-        },
-        success: (data) => {
-        console.log(data);
-
-        },
-
-        error: function () {
-        alert("An error occurred while Sending Mission Rating!");
-        }
-        });
-    *@
-
-
 
 </script>

@@ -1,6 +1,19 @@
 ﻿@model CIPlatform.Entities.ViewModel.MissionData
 
+@if (TempData["Error"] != null)
+{
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        toastr.error('@TempData["Error"]')
+    </script>
+
+}
 @if (TempData["SaveStory"] != null)
 {
 
@@ -16,7 +29,7 @@
         }
         toastr.success('@TempData["SaveStory"]')
     </script>
-    
+
 }
 
 <style>
@@ -28,10 +41,12 @@
         padding-left: 20px;
         padding-right: 20px;
     }
+
         .applyButton:hover {
             background-color: #F88634;
             color: white;
         }
+
     #image-preview .preview-container {
         display: inline-block;
         position: relative;
@@ -40,6 +55,7 @@
         height: 100px;
         overflow: hidden;
     }
+
         #image-preview .preview-container img {
             position: absolute;
             top: 50%;
@@ -48,6 +64,7 @@
             max-width: 100%;
             max-height: 100%;
         }
+
         #image-preview .preview-container .remove-icon {
             position: absolute;
             top: 5px;
@@ -58,53 +75,56 @@
         }
 </style>
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+
 <partial name="_FirstNav" />
+
 <div class="container">
     <form method="post" enctype="multipart/form-data">
-    <h3>Share Your Story</h3>
-    <br />
+        <h3>Share Your Story</h3>
+        <br />
 
 
-    <div class="row">
-        <input type="hidden" asp-for="StoryId" />
-        <div class="col-lg-4 pe-2">
-            Select Mission
-            <select asp-for="MissionId" class="form-select  my-2" data-bs-toggle="dropdown" aria-placeholder="dropdown" required>
-                 <option disabled selected value="">select your mission</option>
+        <div class="row">
+            <input type="hidden" asp-for="StoryId" />
+            <div class="col-lg-4 pe-2">
+                Select Mission
+                <select asp-for="MissionId" class="form-select  my-2" data-bs-toggle="dropdown" aria-placeholder="dropdown" required>
+                    <option disabled selected value="">select your mission</option>
                     @foreach (var obj in ViewBag.MissionData)
                     {
-                            <option value="@obj.MissionId" >@obj.Title</option>
-                        
-                    }
-            </select>
-        </div>
+                        <option value="@obj.MissionId">@obj.Title</option>
 
-        <div class="col-lg-4 pe-2">
-            My Story title
+                    }
+                </select>
+            </div>
+
+            <div class="col-lg-4 pe-2">
+                My Story title
                 <div class="row-cols-auto my-2 ">
                     <input asp-for="Title" type="text" class="form-control" placeholder="Enter Story Title" required data-val-required="Please enter a title for your story">
                     <span asp-validation-for="Title"></span>
-                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                Date
+                <div class="row-cols-auto my-2 "><input asp-for="CreatedAt" type="date" class="form-control" required></div>
+            </div>
         </div>
-        <div class="col-lg-4">
-            Date
-            <div class="row-cols-auto my-2 "><input asp-for="CreatedAt" type="date" class="form-control" required></div>
-        </div>
-    </div>
 
-    <div class="col-12 col-md-12 mt-3 ">
-        My Story
-        <div class="row my-2">
-            <textarea id="editor" asp-for="Description"></textarea>
-            <span asp-validation-for="Description"></span>
+        <div class="col-12 col-md-12 mt-3 ">
+            My Story
+            <div class="row my-2">
+                <textarea id="editor" asp-for="Description"></textarea>
+                <span asp-validation-for="Description"></span>
+            </div>
         </div>
-    </div>
-    <br />
+        <br />
 
-    <div class="col-12">
-        Enter Video URL
-        @if(ViewBag.missionDatas != null)
-        {
+        <div class="col-12">
+            Enter Video URL
+            @if (ViewBag.missionDatas != null)
+            {
                 @if (ViewBag.missionDatas.VideoUrl != null)
                 {
                     @foreach (var i in ViewBag.missionDatas.VideoUrl)
@@ -115,21 +135,21 @@
                 }
                 else
                 {
-                    <input asp-for="VideoUrl" name="VideoUrl[]"  type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your url">
+                    <input asp-for="VideoUrl" name="VideoUrl[]" type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your url">
                     <br />
                 }
-        }
-        else
-        {
-                <input asp-for="VideoUrl" name="VideoUrl[]"  type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your url">
+            }
+            else
+            {
+                <input asp-for="VideoUrl" name="VideoUrl[]" type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your url">
                 <br />
 
-        }
-        
+            }
+
             <button type="button" class="btn applyButton" id="addLink">Add Link</button>
 
-    </div>
-    <br />
+        </div>
+        <br />
 
         @if (ViewBag.missionDatas == null)
         {
@@ -154,20 +174,20 @@
                 <label class="form-label">Upload Your Photos</label>
                 <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
                     <img src="~/Assets/images/add.png" style="cursor:pointer;position:relative; top:20px;" />
-                    <input type="file" accept="image/*" asp-for="images" id="images" style="opacity:0;cursor:pointer;" multiple required />
+                    <input type="file" accept="image/*" asp-for="images" id="images" style="opacity:0;cursor:pointer;" multiple  />
                     <span asp-validation-for="images"></span>
                     <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
                 </div>
                 <div id="image-preview">
-                        @foreach (var a in ViewBag.missionDatas.StoryImages)
-                        {
+                    @foreach (var a in ViewBag.missionDatas.StoryImages)
+                    {
                         <div class="preview-container">
-                                <img class="img"  asp-for="images" src="~/Assets/StoryImages/@a" alt="404-Page-image.png">
+                            <img class="img" asp-for="images" src="~/Assets/StoryImages/@a" alt="404-Page-image.png">
                             <img class="remove-icon" src="/Assets/images/cancel1.png" alt="404-Page-image.png">
-                        
+
                         </div>
-                        }
-                    
+                    }
+
                 </div>
                 <div id="selected-count"></div>
                 <span class="text-danger d-none" id="image">At Least Select One Image</span>
@@ -176,7 +196,7 @@
             </div>
         }
         <br />
-        
+
 
         <div class="row">
             <div class="col-lg-6 col-6 ">
@@ -192,39 +212,39 @@
         </div>
 
 
-        </form>
-            
-    </div>
-    @section Scripts {
-    <script>
+    </form>
 
-           $(document).ready(function () {
-        $('#addLink').click(function () {
-            //var index = $('input[name="URL"]').length;
-            var input = '<input type="text" class="form-control" name="VideoUrl[]" asp-for="VideoUrl"  id="formGroupExampleInput" placeholder="Enter your url"/> <br/>';
-                  $(this).before(input);
-            //$(input).appendTo('form');
+</div>
+
+<script>
+
+$(document).ready(function () {
+            $('#addLink').click(function () {
+                //var index = $('input[name="URL"]').length;
+                var input = '<input type="text" class="form-control" name="VideoUrl[]" asp-for="VideoUrl"  id="formGroupExampleInput" placeholder="Enter your url"/> <br/>';
+                $(this).before(input);
+                //$(input).appendTo('form');
+            });
         });
-    });
 
-        // Add a click event listener to the removeImg icon
-$('.remove-icon').on('click', function() {
-  // Remove the preview-container element from the DOM
-  $('.img').remove();
-});
+// Add a click event listener to the removeImg icon
+$('.remove-icon').on('click', function () {
+            // Remove the preview-container element from the DOM
+            $('.img').remove();
+        });
 
 
-        $(function() {
-             var selectedCount = 0;
+$(function () {
+            var selectedCount = 0;
             var selectedCountElement = $('#selected-count');
             // Listen for changes to the file input element
-            $('#images').on('change', function() {
+            $('#images').on('change', function () {
                 // Clear any previous preview images
                 $('#image-preview').empty();
                 selectedCount = 0;
                 selectedCountElement.html('0 images selected');
                 // Loop through the selected files
-                $.each(this.files, function(i, file) {
+                $.each(this.files, function (i, file) {
                     // Create a container for the preview image and remove button
                     var container = $('<div />', { class: 'preview-container' });
                     // Create an image element to show the preview
@@ -233,10 +253,10 @@ $('.remove-icon').on('click', function() {
                     img.attr('alt', file.name);
                     // Create a remove button to remove the image from the preview
                     var removeBtn = $('<img />', { class: 'remove-icon' });
-                    removeBtn.attr('src',"/Assets/images/cancel1.png");
+                    removeBtn.attr('src', "/Assets/images/cancel1.png");
                     removeBtn.attr('alt', file.name);
                     removeBtn.html('&#x2715;');
-                    removeBtn.on('click', function() {
+                    removeBtn.on('click', function () {
                         container.remove();
                         selectedCount--;
                         selectedCountElement.html(selectedCount + ' images selected');
@@ -250,33 +270,32 @@ $('.remove-icon').on('click', function() {
                 });
             });
         });
-    </script>
-    }
-    <script>
-                    tinymce.init({
-                     selector:'#editor',
-                     menubar: false,
-                     statusbar: false,
-                     plugins: 'autoresize anchor autolink charmap code codesample directionality fullpage help hr image imagetools insertdatetime link lists media nonbreaking pagebreak preview print searchreplace table template textpattern toc visualblocks visualchars',
-                     toolbar: ' bold italic strikethrough  backcolor | link image media | removeformat help fullscreen ',
-                     skin: 'bootstrap',
-                     toolbar_drawer: 'floating',
-                     min_height: 200,
-                     autoresize_bottom_margin: 16,
-                     setup: (editor) => {
-                         editor.on('init', () => {
-                             editor.getContainer().style.transition="border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out"
-                         });
-                         editor.on('focus', () => {
-                             editor.getContainer().style.boxShadow="0 0 0 .2rem rgba(0, 123, 255, .25)",
-                             editor.getContainer().style.borderColor="#80bdff"
-                         });
-                         editor.on('blur', () => {
-                             editor.getContainer().style.boxShadow="",
-                             editor.getContainer().style.borderColor=""
-                         });
-                     }
-                 });
-    </script>
+ 
 
-   
+tinymce.init({
+        selector: '#editor',
+        menubar: false,
+        statusbar: false,
+        plugins: 'autoresize anchor autolink charmap code codesample directionality fullpage help hr image imagetools insertdatetime link lists media nonbreaking pagebreak preview print searchreplace table template textpattern toc visualblocks visualchars',
+        toolbar: ' bold italic strikethrough  backcolor | link image media | removeformat help fullscreen ',
+        skin: 'bootstrap',
+        toolbar_drawer: 'floating',
+        min_height: 200,
+        autoresize_bottom_margin: 16,
+        setup: (editor) => {
+            editor.on('init', () => {
+                editor.getContainer().style.transition = "border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out"
+            });
+            editor.on('focus', () => {
+                editor.getContainer().style.boxShadow = "0 0 0 .2rem rgba(0, 123, 255, .25)",
+                    editor.getContainer().style.borderColor = "#80bdff"
+            });
+            editor.on('blur', () => {
+                editor.getContainer().style.boxShadow = "",
+                    editor.getContainer().style.borderColor = ""
+            });
+        }
+    });
+
+</script>
+

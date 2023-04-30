@@ -70,17 +70,22 @@ public partial class CIPlatformDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-            => optionsBuilder.UseSqlServer("Data Source=PCT106\\SQL2017;DataBase=CI Platform;User ID=sa;Password=Tatva@123;Encrypt=False;TrustServerCertificate=False;");
+        => optionsBuilder.UseSqlServer("Data Source=MRKHEDUT;DataBase=CI Platform;Trusted_Connection=true;TrustServerCertificate=True;");
 
-//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-//        => optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|CI Platform.mdf;Encrypt=False;TrustServerCertificate=False;");
-           
-//    <connectionStrings>
-//  <add name = "ConnectionName"
-//    connectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|DatabaseName.mdf;Integrated Security=True;User Instance=True"
-//    providerName="System.Data.SqlClient" />
-//</connectionStrings>
+
+    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+    //            => optionsBuilder.UseSqlServer("Data Source=PCT106\\SQL2017;DataBase=CI Platform;User ID=sa;Password=Tatva@123;Encrypt=False;TrustServerCertificate=False;");
+
+    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+    //        => optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|CI Platform.mdf;Encrypt=False;TrustServerCertificate=False;");
+
+    //    <connectionStrings>
+    //  <add name = "ConnectionName"
+    //    connectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|DatabaseName.mdf;Integrated Security=True;User Instance=True"
+    //    providerName="System.Data.SqlClient" />
+    //</connectionStrings>
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

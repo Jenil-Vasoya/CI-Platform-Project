@@ -79,6 +79,8 @@ namespace CIPlatform.Entities.ViewModel
 
         public string? MediaPath { get; set; }
 
+        public string? MediaName { get; set; }
+
         public int AvgRating { get; set; }
 
         public int? UserRating { get; set; }

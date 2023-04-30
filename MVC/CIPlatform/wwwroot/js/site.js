@@ -58,11 +58,6 @@ function Add(MissionId,btn) {
         },
         success: function (data) {
 
-            toastr.options = {
-                "closeButton": true,
-                "progressBar": true
-            };
-
             if (data == true) {
 
                 debugger
@@ -72,13 +67,13 @@ function Add(MissionId,btn) {
                     $("#addToFavGrid_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
                     $("#addToFavVolun_" + MissionId).removeClass('bi-heart text-black').addClass('bi-heart-fill  text-danger');
                     $("#addToFavList_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
-                    toastr.success('Added favourite successfully');
+                    toastr.success('Added to Favourite');
                 }
                 else if (btn == 'btnaddToFav_') {
                     //$("#addToFav_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
                     $("#addToFavGrid_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
                     $("#addToFavList_" + MissionId).removeClass('bi-heart text-white').addClass('bi-heart-fill  text-danger');
-                    toastr.success('Added favourite successfully');
+                    toastr.success('Added to Favourite');
                 }
                
             }
@@ -90,13 +85,13 @@ function Add(MissionId,btn) {
                     $("#addToFavGrid_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
                     $("#addToFavVolun_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-black');
                     $("#addToFavList_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
-                    toastr.error('Remove favourite successfully');
+                    toastr.error('Remove from Favourite');
                 }
                 else if (btn == 'btnaddToFav_') {
                     //$("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
                     $("#addToFavGrid_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
                     $("#addToFavList_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
-                    toastr.error('Remove favourite successfully');
+                    toastr.error('Remove from Favourite');
                 }
 
                
@@ -131,12 +126,15 @@ function CheckUser(userId, missionId) {
                 $('#exampleModal_' + missionId).modal('hide');
                 $('#exampleModal1_' + missionId).modal('hide');
                 $('#exampleModal').modal('hide');
+                $('#' + userId).prop('checked', false);
                 toastr.error('You already invite this user');
             }
            
         }
     })
 };
+
+
 //function Add(MissionId, btn) {
 //    debugger
 //    $.ajax({

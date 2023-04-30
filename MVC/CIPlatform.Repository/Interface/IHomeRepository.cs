@@ -32,7 +32,7 @@ namespace CIPlatform.Repository.Interface
 
         public int TotalMissions();
 
-        public string MediaByMissionId(long missionID);
+        public MissionMedium MediaByMissionId(long missionID);
 
         public List<MissionRating> MissionRatings(long missionID);
 

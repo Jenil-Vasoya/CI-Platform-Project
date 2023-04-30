@@ -299,25 +299,10 @@
                                             <div class="col-sm-6">
                                                 <label class="form-label">Availablity</label>
                                                 <select class="form-select" id="Availablity">
-
-                                                    @*<option value="@data.a" selected> @data.TotalSeats </option>
-                                                        @if (@data.TotalSeats != "Monthly")
-                                                        {
                                                         <option value="Monthly">Monthly</option>
-                                                        }
-                                                        @if (@data.TotalSeats != "Week-End")
-                                                        {
                                                         <option value="Week-End">Week-End</option>
-                                                        }
-                                                        @if (@data.TotalSeats != "Weekly")
-                                                        {
                                                         <option value="Weekly">Weekly</option>
-                                                        }
-                                                        @if (@data.TotalSeats != "Daily")
-                                                        {
                                                         <option value="Daily">Daily</option>
-                                                        }
-                                                    *@
                                                 </select>
                                             </div>
                                             <div class="col-sm-6">
@@ -464,67 +449,11 @@
 
 </body>
 
-@*<script>
-           
-                document.querySelector('input[type="file"]').addEventListener('change', function() {
-                    // Get the selected image file
-                    var file = this.files[0];
 
-                    // Create a new FileReader object
-                    var reader = new FileReader();
-
-                    // Set a function to run when the FileReader has finished loading the image file
-                    reader.onload = function(e) {
-                        // Create a new image element
-                        var image = new Image();
-
-                        image.style.height = '150px';
-                        image.style.width = '150px';
-                        image.style.borderRadius = '50%';
-                        // Set the source of the image to the FileReader's result (the image data)
-                        image.src = e.target.result;
-
-                        // Add the image to the preview area
-                        document.getElementById('imagePreview').innerHTML = '';
-                        document.getElementById('imagePreview').appendChild(image);
-
-                        // Show the preview area
-                        //document.getElementById('imagePreviewContainer').style.display = 'block';
-                    };
-
-                    // Read the image file data as a URL
-                    reader.readAsDataURL(file);
-                    });
-
-           
-                function convertImageToBase64() {
-
-                    // Get the selected image file
-                    var file = document.getElementById("imageupload").files[0];
-
-                    // Create a new FileReader object
-                    var reader = new FileReader();
-
-                    // Set the onload event of the FileReader object to convert the image to base64
-                    reader.onload = function(event) {
-                    // Get the base64-encoded image data
-                    var base64Image = event.target.result;
-
-                    // Send the base64-encoded image to the server using AJAX
-                        $.ajax({
-                            type: "POST",
-                            url: "/User/ActionName",
-                            data: { base64Image: base64Image },
-                            success: function(response) {
-                                // Handle the server response here
-                            }
-                        });
-                };
-</script>*@
 
 <script>
 
-      $(document).ready(function(){
+$(document).ready(function(){
              $('#skillClose').click(function(){
              location.reload();
              });
@@ -533,91 +462,89 @@
              });
              });
 
-             function validPassword()
-             {
-                 debugger
-                 var Pass = $('#Password').val();
-
-                 function checkPassword(password) {
-                      // Create a regular expression object
-                      const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$!%*?&])[A-Za-z\d$!%*?&]{8,}$/;
-  
-                      // Test the password against the regular expression
-                      const isValid = regex.test(Pass);
-
-                      // Return the result
-                      return isValid;
-                 }
 
 
-             }
+function changePassword(){
+   
+    var oldPassword = $('#OldPassword').val();
+    var password = $('#Password').val();
+    var confirmPassword = $('#ConfirmPassword').val();
+    var minLength = 8;
+    var hasUpperCase = /[A-Z]/.test(password);
+    var hasLowerCase = /[a-z]/.test(password);
+    var hasNumber = /\d/.test(password);
+    var hasSpecialChar = /[!#$%^&*(),.?":{}|<>]/.test(password);
 
-                        function changePassword(){
+        if (password.length < minLength) {
+          $('#passwordError').text('Password must be at least ' + minLength + ' characters long');
+          return;
+        } 
+        else if (!hasUpperCase) {
+          $('#passwordError').text('Password must contain at least one uppercase letter');
+          return;
+        } 
+        else if (!hasLowerCase) {
+          $('#passwordError').text('Password must contain at least one lowercase letter');
+          return;
+        } 
+        else if (!hasNumber) {
+          $('#passwordError').text('Password must contain at least one number');
+          return;
+        } 
+        else if (!hasSpecialChar) {
+          $('#passwordError').text('Password must contain at least one special character');
+          return;
+        } 
+        else if (password != confirmPassword) {
+          $('#confirmPasswordError').text('Passwords do not match');
+          return;
+        } 
+        else {
+          $('#passwordError').empty();
+          $('#confirmPasswordError').empty();
+        }
 
-                            debugger
-                            var OldPass = $('#OldPassword').val();
-                            var Pass = $('#Password').val();
-                            var ConPass = $('#ConfirmPassword').val();
 
-                              if (OldPass === '') {
-                                document.getElementById('oldPasswordError').textContent = 'Please enter your old password.';
-                                return;
-                              }
-  
-                              if (Pass === '') {
-                                document.getElementById('passwordError').textContent = 'Please enter a new password.';
-                                return;
-                              }
-  
-                              if (Pass !== ConPass) {
-                                document.getElementById('confirmPasswordError').textContent = 'The new password and confirm password fields do not match.';
-                                return;
-                              }
+        if (oldPassword === '') {
+            $('#oldPasswordError').text('Please enter your old password.');
+            return;
+        }
 
-                                     $.ajax({
-                                            type: "POST",
-                                            url: "/User/ChangePassword",
-                                            data: {OldPassword: OldPass, Password: Pass , ConfirmPassword: ConPass },
-                                            success: function(data) {
-                                                console.log(data);
-                                                if(data == true)
-                                                {
-                                                     toastr.options = {
-                                                        "closeButton": true,
-                                                        "progressBar": true
-                                                    }
-                                                      toastr.success('Your password has been updated')
-                                                }
-                                                else if(data == "abc")
-                                                {
-                                                    toastr.options = {
-                                                        "closeButton": true,
-                                                        "progressBar": true
-                                                    }
-                                                      toastr.error('Please enter the same password')
-                                                }
-                                                else if(data == false)
-                                                {
-                                                    toastr.options = {
-                                                        "closeButton": true,
-                                                        "progressBar": true
-                                                    }
-                                                      toastr.error('Please enter the correct old password')
-                                                }
-                                                else if(data == "notvalid"){
-                                                    document.getElementById('passwordError').textContent = 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number and one special character.';
-                                                }
-                                                else
-                                                {}
-                                              // Handle success response from server
-                                            },
-                                            error: function() {
-                                              // Handle error response from server
-                                            }
-                                          });
-                        }
+        if (password === '') {
+            $('#passwordError').text('Please enter a new password.');
+            return;
+        }
 
-                        function setSkills() {
+        
+
+        $.ajax({
+            type: "POST",
+            url: "/User/ChangePassword",
+            data: { OldPassword: oldPassword, Password: password },
+            success: function (data) {
+                console.log(data);
+                if (data == true) {
+                    toastr.options = {
+                        "closeButton": true
+                    }
+                    $('#exampleModal').modal('hide');
+                    toastr.success('Your password updated')
+                }
+                else
+                {
+                    toastr.options = {
+                        "closeButton": true
+                    }
+                    toastr.error('Please enter the correct old password')
+                }
+                
+            },
+            error: function () {
+            }
+        });
+    }
+
+function setSkills() {
 
                                   var destinationDiv = document.getElementById("destinationDiv");
                                   var selectedSkills = destinationDiv.getElementsByTagName("li");
@@ -651,8 +578,7 @@
                                           });
                         };
 
-
-                        function addSkill(event) {
+function addSkill(event) {
                           // Get the clicked skill element and its name
                           debugger
                           var skillElement = event.target;
@@ -685,12 +611,12 @@
                           destinationDiv.appendChild(newSkillElement);
                         };
 
-                        function removeSkill(event) {
+function removeSkill(event) {
                           var skillElement = event.target;
                           skillElement.parentNode.removeChild(skillElement);
                         }
 
-                        function GetCity() {
+function GetCity() {
                              var countryId = document.getElementById("country").value;
 
                                 $.ajax({
@@ -713,10 +639,8 @@
                                     }
                                 })
                         };
-</script>
 
-<script>
-                function EditAvatar(){
+function EditAvatar(){
             
                     debugger
                     var Profileimg = $('#imageupload')[0].files[0];
@@ -745,7 +669,7 @@
                     
                 }
 
-                $(document).ready(function() {
+$(document).ready(function() {
     if (localStorage.getItem('avatarChanged') === 'true') {
          toastr.options = {
                                                         "closeButton": true,
@@ -756,4 +680,5 @@
         localStorage.setItem('avatarChanged', 'false');
     }
 });
+
 </script>

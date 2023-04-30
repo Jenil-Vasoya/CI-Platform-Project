@@ -27,7 +27,7 @@ namespace CIPlatform.Repository.Repository
         
         public List<Cmspage> CMSList()
         {
-            List<Cmspage> objCMSList = _DbContext.Cmspages.ToList();
+            List<Cmspage> objCMSList = _DbContext.Cmspages.Where(p=> p.DeletedAt == null).ToList();
             return objCMSList;
         }
         
@@ -148,7 +148,7 @@ namespace CIPlatform.Repository.Repository
         public List<Cmspage> CMSListSearch(string search, int pg)
         {
             var pageSize = 6;
-            List<Cmspage> cmspages = _DbContext.Cmspages.ToList();
+            List<Cmspage> cmspages = CMSList();
 
             if(search != null)
             {
@@ -384,12 +384,13 @@ namespace CIPlatform.Repository.Repository
                     //mission.OrganizationDetail = model.OrganizationDetail;
                     //mission.ShortDescription = model.ShortDescription;
                     mission = model;
-                    mission.TotalSeats = 10;
+                    mission.TotalSeats = model.TotalSeats;
+                    mission.Availibility = model.Availibility;
 
                     _DbContext.Missions.Add(mission);
                     _DbContext.SaveChanges();
                 }
-                if (model.MissionSkill.Count != 0)
+                if (model.MissionSkill != null)
                 {
                     foreach (var skillId in model.MissionSkill)
                     {

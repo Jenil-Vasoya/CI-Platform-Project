@@ -26,7 +26,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 
-    <title>Document</title>
+    <title>Admin</title>
     <style>
 
         .dropdown-item:hover {
@@ -34,17 +34,19 @@
             color: white;
             cursor: pointer;
         }
+
         .applyButton {
-        border: 2px solid #F88634;
-        border-radius: 100px;
-        color: #F88634;
-        background-color: white;
+            border: 2px solid #F88634;
+            border-radius: 100px;
+            color: #F88634;
+            background-color: white;
         }
 
-        .applyButton:hover {
-            background-color: #F88634;
-            color: white;
-        }
+            .applyButton:hover {
+                background-color: #F88634;
+                color: white;
+            }
+
         .has-search .form-control {
             padding-left: 2.375rem;
         }
@@ -83,7 +85,6 @@
             padding: 14px 18px;
         }
 
-
         .nav-tabs .nav-link1:focus,
         .nav-tabs .nav-link1:hover,
         .nav-tabs .nav-item.show .nav-link1,
@@ -106,8 +107,6 @@
             line-height: 18px;
             padding: 14px 18px;
         }
-
-
 
         .nav-tabs {
             border-bottom: 1px solid #ADADAD;
@@ -175,7 +174,7 @@
         }
 
         .nav-pills .nav-link.active,
-        .nav-pills .show>.nav-link {
+        .nav-pills .show > .nav-link {
             color: #F88634;
             background-color: #ffffff;
         }
@@ -185,6 +184,7 @@
             box-shadow: none !important;
             border-color: #bdbbbb;
         }
+
     </style>
 
 </head>
@@ -498,78 +498,6 @@
 
         </div>
     </div>
-
-
-
-   @* <script>
-        function addCMS(event) {
-                     debugger
-                     event.preventDefault();
-                     var formData = {
-                         title: $('#formGroupExampleInput').val(),
-                         description: $('#editor').val(),
-                         slug: $('#formGroupExampleInput').val(),
-                         status: $('#status').val()
-                     };
-
-                     // Send the AJAX request
-                     $.ajax({
-                         type: 'POST',
-                         url: '/Admin/AddCMS',
-                         data: formData,
-                         success: function(data) {
-                             console.log(data);
-                             debugger
-                             addpage('nav-cms');
-                             console.log(data);
-                             $('#cms').html(data);
-                             toastr.success('Page added successfully');
-
-                         },
-                        error: function (request, error) {
-                         console.log(error);
-                     }
-                     });
-                 }
-
-
-    </script>*@
-
-    
-
-   @* <script>
-        function addform(x) {
-            var page = document.getElementById(x);
-            var cmsPage = page.querySelector("#cmspage");
-            var addForm = page.querySelector("#add");
-            cmsPage.style.display = "none";
-            addForm.style.display = 'block';
-        }
-        function addpage(x) {
-            debugger
-            var page = document.getElementById(x);
-            var cmsPage = page.querySelector("#cmspage");
-            var addForm = page.querySelector("#add");
-            cmsPage.style.display = "block";
-            addForm.style.display = 'none';
-        }
-        function editform(x) {
-            var page = document.getElementById(x);
-            var cmsPage = page.querySelector("#cmspage");
-            var addForm = page.querySelector("#edit");
-            cmsPage.style.display = "none";
-            addForm.style.display = 'block';
-        }
-        function editpage(x) {
-            var page = document.getElementById(x);
-            var cmsPage = page.querySelector("#cmspage");
-            var addForm = page.querySelector("#edit");
-            cmsPage.style.display = "block";
-            addForm.style.display = 'none';
-        }
-
-
-    </script>*@
 
 
 

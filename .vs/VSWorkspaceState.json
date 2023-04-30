@@ -1,16 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\MVC",
-    "\\MVC\\CIPlatform",
-    "\\MVC\\CIPlatform.Repository",
-    "\\MVC\\CIPlatform.Repository\\Repository",
-    "\\MVC\\CIPlatform\\Controllers",
-    "\\MVC\\CIPlatform\\Views",
-    "\\MVC\\CIPlatform\\Views\\Admin",
-    "\\MVC\\CIPlatform\\Views\\Shared",
-    "\\MVC\\CIPlatform\\Views\\Story"
+    ""
   ],
-  "SelectedNode": "\\MVC\\CIPlatform\\Controllers\\AdminController.cs",
+  "SelectedNode": "\\CIPlatform.sln",
   "PreviewInSolutionExplorer": false
 }

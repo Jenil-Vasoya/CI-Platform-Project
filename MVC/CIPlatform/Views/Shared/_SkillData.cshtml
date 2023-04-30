@@ -190,7 +190,19 @@
 
  <script>
 
-          function addValidSkill(event){
+$('#addSkillName').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validAddSkillName').text('');
+        }
+    });
+
+$('#editSkillName').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validEditSkillName').text('');
+        }
+    });
+
+    function addValidSkill(event){
            debugger
                 event.preventDefault();
                 var skill = $('#addSkillName').val().trim();
@@ -211,12 +223,6 @@
                     addSkillData(event);
                 }
     }
-
-     $('#addSkillName').keyup(function() {
-        if ($(this).val() != '') {
-            $('#validAddSkillName').text('');
-        }
-    });
 
     function editValidSkill(event){
            debugger
@@ -239,12 +245,6 @@
                     addSkillData(event);
                 }
     }
-
-     $('#editSkillName').keyup(function() {
-        if ($(this).val() != '') {
-            $('#validEditSkillName').text('');
-        }
-    });
 
 
         function addSkillData(event) {
@@ -340,10 +340,7 @@
                      });
         }
 
-    </script>
-
-
-     <script>
+   
         function addSkill(x) {
             debugger
             var page = document.getElementById(x);

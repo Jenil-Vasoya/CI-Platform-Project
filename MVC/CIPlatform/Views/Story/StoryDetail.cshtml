@@ -1,7 +1,19 @@
-﻿
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+@if (TempData["Error"] != null)
+{
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        toastr.error('@TempData["Error"]')
+    </script>
+
+}
 
 <head>
     <meta charset="UTF-8">
@@ -21,17 +33,18 @@
     <style>
 
         .applyButton {
-        border: 2px solid #F88634;
-        border-radius: 100px;
-        color: #F88634;
-        background-color: white;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-        .applyButton:hover {
-            background-color: #F88634;
-            color: white;
+            border: 2px solid #F88634;
+            border-radius: 100px;
+            color: #F88634;
+            background-color: white;
+            padding-left: 20px;
+            padding-right: 20px;
         }
+
+            .applyButton:hover {
+                background-color: #F88634;
+                color: white;
+            }
 
         .swiper {
             width: 100%;
@@ -95,6 +108,7 @@
             height: 100%;
             object-fit: cover;
         }
+
         .swiper-slide iframe {
             display: block;
             width: 75%;
@@ -115,20 +129,17 @@
             <div class="col-lg-10 ">
                 <div class="row bootstrap snippets">
 
-                   
-
-                    
                     <div class="col-xl-6 col-lg-6  col-12 ">
                         <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
                             <div class="swiper-wrapper pb-5">
-                               
+
                                 @foreach (string imageUrl in ViewBag.missionDatas.StoryImages)
                                 {
                                     <div class="swiper-slide">
                                         <img src="~/Assets/StoryImages/@imageUrl" />
                                     </div>
-                                    
-                                } 
+
+                                }
                                 @if (ViewBag.missionDatas != null)
                                 {
                                     @if (ViewBag.missionDatas.VideoUrl != null)
@@ -137,7 +148,7 @@
                                         {
                                             string embedLink = @i.Replace("watch?v=", "embed/");
                                             <div class="swiper-slide">
-                                               <iframe width="560" height="315" src="@embedLink" title="YouTube video player" frameborder="0" ></iframe>
+                                                <iframe width="560" height="315" src="@embedLink" title="YouTube video player" frameborder="0"></iframe>
                                             </div>
                                         }
                                     }
@@ -156,9 +167,9 @@
                                     <div class="swiper-slide">
                                         <img src="~/Assets/StoryImages/@imageUrl" />
                                     </div>
-                                    
-                                } 
-                                 @if (ViewBag.missionDatas != null)
+
+                                }
+                                @if (ViewBag.missionDatas != null)
                                 {
                                     @if (ViewBag.missionDatas.VideoUrl != null)
                                     {
@@ -172,10 +183,10 @@
                                     }
 
                                 }
-                                
+
                             </div>
                         </div>
-                       
+
                         <!-- Swiper JS -->
                         <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
@@ -236,7 +247,7 @@
                                             {
                                                 <button type="submit" class="btn rounded-5  " style="border-color: black;" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="~/Assets/images/add1.png" class=" img-fluid cancle-img" alt=""> Recommend to a Co-Worker</button>
                                             }
-                                            
+
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -274,8 +285,8 @@
                                                             <tfoot>
                                                                 <tr>
                                                                     <td colspan="3">
-                                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit" onclick="sendInvitation(@ViewBag.missionDatas.StoryId)" class="btn btn-success"> Send Invitation</button>
+                                                                    <button type="button" class=" rounded-pill btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" onclick="sendInvitation(@ViewBag.missionDatas.StoryId)" class="btn applyButton" data-bs-dismiss="modal">Send Invitation</button>
                                                                     </td>
                                                                 </tr>
                                                             </tfoot>
@@ -286,8 +297,8 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-12 text-center " id="">
-                                             <a asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@ViewBag.missionDatas.MissionId">
-                                            <button type="submit" class="btn applyButton rounded-5  " > Open Mission &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
+                                            <a asp-controller="Home" class="btn applyButton rounded-5  " asp-action="VolunteerMission" asp-route-id="@ViewBag.missionDatas.MissionId">
+                                                Open Mission &nbsp; &nbsp; <i class="bi bi-arrow-right"></i>
                                             </a>
                                         </div>
 
@@ -302,8 +313,9 @@
             </div>
         </div>
     </div>
-    <br>
-    <br>
+
+    <br><br>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-1 "></div>
@@ -318,69 +330,54 @@
 
                     </div>
                 </nav>
+
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <br>
                         <div> @Html.Raw(ViewBag.missionDatas.Description)</div>
-                       
                     </div>
-
-
-
-
                 </div>
-
-
             </div>
             <div class="col-lg-1"></div>
         </div>
     </div>
 
 
-
-
 </body>
-
-
-
-
-
 </html>
 
 <script>
-    
-     function sendInvitation(StoryId)
-        {
-            debugger
-            var CoWorkers = [];
 
-             $('input[name="CoWorkers"]:checked').each(function(){
-                 CoWorkers.push(this.id);
-             });
+function sendInvitation(StoryId) {
+        debugger
+        var CoWorkers = [];
 
-             $.ajax({
-                 url:"/Story/InviteWorker",
-                 method: "POST",
-                 data:{
-                     "StoryId" : StoryId,
-                     "CoWorkers" : CoWorkers
-                 },
-                 success:function(data){
-                     debugger
-                   if(data == true)
-                   {
-                       toastr.success("Mail sent Successfully")
-                   }
-                   else
-                   {
-                       toastr.error("Mail is not sent")
-                   }
-                 },
-                 error: function(request,error){
+        $('input[name="CoWorkers"]:checked').each(function () {
+            CoWorkers.push(this.id);
+        });
 
-                     console.log(error);
-                 }
-             })
+        $.ajax({
+            url: "/Story/InviteWorker",
+            method: "POST",
+            data: {
+                "StoryId": StoryId,
+                "CoWorkers": CoWorkers
+            },
+            success: function (data) {
+                debugger
+                if (data == true) {
+                    toastr.success("Mail sent Successfully")
+                }
+                else {
+                    toastr.error("Mail is not sent")
+                }
+            },
+            error: function (request, error) {
 
-        }
+                console.log(error);
+            }
+        })
+
+    }
+
 </script>

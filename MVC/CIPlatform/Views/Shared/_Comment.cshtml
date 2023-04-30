@@ -1,42 +1,92 @@
-﻿<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+﻿<style>
+    .comment-container {
+        max-height: 500px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+    }
+
+    .comment-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .comment-body {
+        margin-top: 8px;
+        font-size: 16px;
+    }
+
+        .comment-body::before {
+            font-size: 24px;
+            color: #666;
+            margin-right: 4px;
+        }
+
+        .comment-body::after {
+            font-size: 24px;
+            color: #666;
+            margin-left: 4px;
+        }
+
+    
+    textarea {
+        height: 120px;
+        resize: none;
+        font-size: 16px;
+    }
+
+        textarea:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+    .form-floating label {
+        font-size: 16px;
+    }
+
+    .form-floating textarea {
+        font-size: 16px;
+    }
+
+    .border {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+  
+
+</style>
+
+<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
     <div class="form-floating">
         <textarea class="form-control" placeholder="Leave a comment here" id="user-comment" maxlength="600"></textarea>
         <p id="comment-status"></p>
         <label for="floatingTextarea">Comments</label>
     </div>
     <div class="pt-2">
-        <button type="submit" href="#" class="btn applyButton  rounded-5 " onclick="AddComments(@ViewBag.missionDatas.MissionId)">Post Comment<i class="bi bi-arrow-right"></i></button>
+        <button type="submit" href="#" class="btn applyButton rounded-5" onclick="AddComments(@ViewBag.missionDatas.MissionId)">Post Comment <i class="bi bi-arrow-right"></i></button>
     </div>
-    <div class="container-fluid p-2 mt-2" style="background-color:gray;">
-        <div class="container " style=" height:500px; overflow-y:auto; scroll-behavior:smooth;">
-            <div class="container px-0 pb-2">
-                <div class="row  border px-2" style="background-color:white; margin:0px;">
-
-
-                    @if (@ViewBag.Comments != null)
+    <div class="container-fluid p-2 mt-2" style="background-color: #f5f5f5;">
+        <div class="container comment-container">
+            <div class="row border p-2" style="background-color: white;">
+                @if (@ViewBag.Comments != null)
+                {
+                    @foreach (var item in @ViewBag.Comments)
                     {
-                        @foreach (var item in @ViewBag.Comments)
-                        {
-                            <div class="col-xl-1 col-md-1 col-sm-2 col-2 my-2">
-
-                                <img alt="avatar1" src="@item.Avatar" class="rounded-circle mt-2" height="50px" width="50px">
-
+                        <div class="col-lg-1 col-md-2 col-3 my-2">
+                            <img alt="avatar1" src="~/Assets/StoryImages/@item.Avatar" class="rounded-circle mt-2" style="height: 50px; width: 50px;">
+                        </div>
+                        <div class="col-lg-11 col-md-10 col-9 ps-md-4 ps-3">
+                            <div class="comment-header">
+                                <h6 class="fw-bold mb-0">@item.UserName</h6>
+                                <p class="text-muted mb-0">@item.Day, @item.Month @item.WeekDay, @item.Year. @item.Time</p>
                             </div>
-                            <div class="col-xl-11 col-md-11 col-sm-10 col-9 ps-4">
-                                <h6 class="fw-bold mb-0"> @item.UserName</h6>
-                                <p>
-                                    @item.Day,@item.Month @item.WeekDay,@item.Year. @item.Time
-                                </p>
-
-                                <p>@item.Comment</p>
-                            </div>
-                            <hr />
-
-                        }
+                            <p class="comment-body">@item.Comment</p>
+                        </div>
+                        <hr class="my-2">
                     }
-                </div>
+                }
             </div>
-
         </div>
     </div>
 </div>

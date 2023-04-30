@@ -42,7 +42,7 @@
 
             <li class="nav-item">
                 @{
-                    string role = @Context.Session.GetString("Role");
+                    string role = @Context.Session.GetString("Role")?? "";
                     //var userId =  @Context.Session.GetInt32("userid");
 
                     if (role.Trim() == "Admin")

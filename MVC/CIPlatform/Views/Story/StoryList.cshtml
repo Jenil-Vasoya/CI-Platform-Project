@@ -8,10 +8,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
     <script type="text/javascript">
-        toastr.options = {
-            "closeButton": true,
-            "progressBar": true
-        }
+        
         toastr.success('@TempData["SubmitStory"]')
     </script>
     
@@ -22,42 +19,32 @@
 
 <div class="container-fluid">
     <div class="row">
-            <div class="howerimg p-0">
-                <img src="~/Assets/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png" class="img-fluid" alt="Avatar" width="100%" height="400px" style="object-fit:cover; object-position: 50% 45%">
-                <div class=" overlayforhower1 flex-column">
-                    <p class="text-white">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus praesentium
-                            labore accusamus sequi, voluptate debitis tenetur in deleniti possimus modi voluptatum
-                            neque maiores dolorem unde? Aut dolorum quod excepturi fugit.
-                            
-                    </p>
-                     <a asp-controller="Story" asp-action="AddStory">
-                    <button class="btn bg-transparent border-white rounded-pill" type="submit" >
-                        <span style="color:white">Share your Story &nbsp;<i class="bi bi-arrow-right"></i></span>
-                    </button>
-                    </a>
-                </div>
-                
+        <div class="howerimg p-0">
+            <img src="~/Assets/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png" class="img-fluid" alt="Avatar" width="100%" height="400px" style="object-fit:cover; object-position: 50% 45%">
+            <div class=" overlayforhower1 flex-column">
+                <p class="text-white">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus praesentium
+                    labore accusamus sequi, voluptate debitis tenetur in deleniti possimus modi voluptatum
+                    neque maiores dolorem unde? Aut dolorum quod excepturi fugit.
+                </p>
+                <a asp-controller="Story" asp-action="AddStory" class="btn bg-transparent border-white rounded-pill">
+                    <span style="color:white">Share your Story &nbsp;<i class="bi bi-arrow-right"></i></span>
+                </a>
             </div>
-            
+        </div>
     </div>
     <br />
 </div>
 
 <div id="storylist">
-
-<partial name="_StoryList" />
+    <partial name="_StoryList" />
 </div>
 
-
-
-<br />
-<br />
+<br /><br />
 
 <script type="text/javascript" language="javascript">
     
-
-            function GetCity(){
+function GetCity(){
       var countryId= [];
 
     $('input[name="country"]:checked').each(function(){
@@ -97,7 +84,7 @@
             })
             };
 
-     function searchMission(pg) {
+function searchMission(pg) {
         console.log("abc");
         var search = $('input[name="search"]').val();
         var sort = $('#sortby').find(":selected").val();
@@ -145,4 +132,5 @@
         })
         
     }
+
 </script>
