@@ -48,6 +48,10 @@ namespace CIPlatform.Entities.ViewModel
         
         public List<string>? StoryImages { get; set; }
 
+        public List<string>? MissionImages { get; set; }
+
+        public List<string>? MissionVideoUrl { get; set; }
+
         public List<string>? VideoUrl { get; set; }
 
         //[MaxLength(20, ErrorMessage = "You can upload maximum 20 images")]

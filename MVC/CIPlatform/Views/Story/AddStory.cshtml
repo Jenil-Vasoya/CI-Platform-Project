@@ -205,7 +205,18 @@
 
             <div class="col-lg-6 col-6  d-flex justify-content-end">
                 <button type="submit" value="Save" name="save" asp-controller="Story" asp-action="AddStory" class="btn applyButton save  me-2 ">Save</button>
-                <button type="submit" value="Submit" name="submit" asp-controller="Story" asp-action="AddStory" class="btn applyButton ">Submit</button>
+                @if (ViewBag.missionDatas != null)
+                {
+                    @if (ViewBag.missionDatas.StoryStatus == "DRAFT")
+                    {
+                        <button type="submit" value="Submit" name="submit" asp-controller="Story" asp-action="AddStory" class="btn applyButton ">Submit</button>
+                    }
+                    
+                }
+                else
+                    {
+                        <button type="submit" value="Submit" name="submit" asp-controller="Story" asp-action="AddStory" class="btn applyButton " disabled>Submit</button>
+                    }
             </div>
 
 

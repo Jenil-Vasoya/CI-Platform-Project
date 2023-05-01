@@ -37,6 +37,7 @@ namespace CIPlatform.Controllers
 
         public IActionResult Login()
         {
+            ViewBag.Banner = _UserRepo.BannerList();
             return View();
         }
 
@@ -62,6 +63,7 @@ namespace CIPlatform.Controllers
 
         public IActionResult AddTimeSheet(VolunteerTimeSheet volunteerSheet)
         {
+
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
             if (UserId != 0)
             {
@@ -123,6 +125,7 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult Login(User objLogin)
         {
+                ViewBag.Banner = _UserRepo.BannerList();
             try
             {
                 if (objLogin.Email != null && objLogin.Password != null)
@@ -191,6 +194,7 @@ namespace CIPlatform.Controllers
 
         public IActionResult Register()
         {
+            ViewBag.Banner = _UserRepo.BannerList();
             return View();
         }
 
@@ -200,6 +204,7 @@ namespace CIPlatform.Controllers
         {
             try
             {
+                ViewBag.Banner = _UserRepo.BannerList();
                 if ((objUser.Password == objUser.ConfirmPassword) && objUser.FirstName != null && objUser.Email != null && objUser.Password != null)
                 {
                     if (_UserRepo.UserList().Any(u => u.Email == objUser.Email) == false)
@@ -236,6 +241,7 @@ namespace CIPlatform.Controllers
 
         public IActionResult ForgotPassword()
         {
+            ViewBag.Banner = _UserRepo.BannerList();
             ViewBag.sessionV = HttpContext.Session.GetString("UserId");
             ViewBag.session = HttpContext.Session.GetString("UserName");
             return View();
@@ -269,7 +275,8 @@ namespace CIPlatform.Controllers
                     }
                     catch (Exception ex)
                     {
-                        ModelState.AddModelError("", ex.Message);
+                        TempData["InvalidEmail"] = ex.Message;
+                        return View();
                     }
                 }
                 else
@@ -291,6 +298,7 @@ namespace CIPlatform.Controllers
         [HttpGet]
         public IActionResult ResetPassword(long id)
         {
+            ViewBag.Banner = _UserRepo.BannerList();
             Reset_Password model = new Reset_Password();
             model.UserId = id;
             return View(model);

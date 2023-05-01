@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Helpers;
 
 namespace CIPlatform.Repository.Repository
 {
@@ -795,13 +796,13 @@ namespace CIPlatform.Repository.Repository
                     banner.Text = model.Text;
                     banner.SortOrder = model.SortOrder;
 
-                    if(model.BannerImg != null)
-                    banner.Image = model.BannerImg.FileName;
-                   
-                    _DbContext.Banners.Add(banner);
-                    _DbContext.SaveChanges();
-                    if (model.BannerImg.Length > 0)
+                    if (model.BannerImg != null)
                     {
+                        banner.Image = model.BannerImg.FileName;
+
+                        _DbContext.Banners.Add(banner);
+                        _DbContext.SaveChanges();
+                    
                        
                         //string path = Server.MapPath("~/wwwroot/Assets/Story");
                         var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", model.BannerImg.FileName);
@@ -810,10 +811,11 @@ namespace CIPlatform.Repository.Repository
                         {
                             model.BannerImg.CopyTo(stream);
                         }
+                        return true;
                     }
 
                 }
-                return true;
+                return false;
 
             }
             else
@@ -825,14 +827,16 @@ namespace CIPlatform.Repository.Repository
                     banner.Text = model.Text;
                     banner.SortOrder = model.SortOrder;
 
-
-                    banner.Image = model.BannerImg.FileName;
+                    if (model.BannerImg != null)
+                    {
+                        banner.Image = model.BannerImg.FileName;
+                    }
                     banner.UpdatedAt = DateTime.Now;
 
                     _DbContext.Banners.Update(banner);
                     _DbContext.SaveChanges();
 
-                    if (model.BannerImg.Length > 0)
+                    if (model.BannerImg != null)
                     {
 
                         //string path = Server.MapPath("~/wwwroot/Assets/Story");
@@ -897,7 +901,7 @@ namespace CIPlatform.Repository.Repository
                     user.CityId = model.CityId;
                     user.CountryId = model.CountryId;
                     user.Email = model.Email;
-                    user.Password = model.Password;
+                    user.Password = Crypto.HashPassword(model.Password);
                     user.EmployeeId = model.EmployeeId;
                     user.Department = model.Department;
                     user.Role = model.Role;

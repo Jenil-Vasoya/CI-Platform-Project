@@ -1,6 +1,8 @@
-﻿<div class="col-lg-9">
+﻿<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
-    <div class="carousel-item active col-lg-10">
+<div class="col-lg-9">
+
+    @*<div class="carousel-item active col-lg-10">
 
 
         <div id="carouselExampleDark" class="carousel carousel-fade slide" data-bs-ride="carousel">
@@ -11,6 +13,9 @@
                         aria-label="Slide 2"></button>
             </div>
             <div class="carousel-inner">
+                @foreach (var banner in ViewBag.Banner)
+                {
+                    
                 <div class="carousel-item " data-bs-interval="10000">
                     <img class="img-fluid " src="../Assets/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
                          alt="...">
@@ -29,14 +34,19 @@
                         </p>
                     </div>
                 </div>
+                }
+
+                @foreach (var banner in ViewBag.Banner)
+                {
                 <div class="carousel-item active" data-bs-interval="2000">
-                    <img src="../Assets/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+                    <img src="../Assets/images/@banner.Image"
                          class="img-fluid " alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Second slide label</h5>
                         <p>Some representative placeholder content for the second slide.</p>
                     </div>
                 </div>
+                }
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
                     data-bs-slide="prev">
@@ -49,6 +59,62 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-    </div>
+    </div>*@
+
+
+    <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+                            <div class="swiper-wrapper pb-5">
+
+                                @foreach (var banner in ViewBag.Banner)
+                                {
+                                    <div class="swiper-slide">
+                                        <img class="img-fluid " src="~/Assets/StoryImages/@banner.Image" />
+                                    </div>
+
+                                }
+
+
+                            </div>
+                            <div class="swiper-button-next text-black"></div>
+                            <div class="swiper-button-prev text-black"></div>
+                        </div>
+
+                        <div thumbsSlider="" class="swiper mySwiper row d-flex flex-row d-none">
+                            <div class="swiper-wrapper  ">
+                                @foreach (var banner in ViewBag.Banner)
+                                {
+                                    <div class="swiper-slide">
+                                        <img src="~/Assets/StoryImages/@banner.Image" />
+                                    </div>
+
+                                }
+                               
+
+                            </div>
+                        </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+                        <!-- Initialize Swiper -->
+                        <script>
+                            var swiper = new Swiper(".mySwiper", {
+                                loop: true,
+                                spaceBetween: 10,
+                                slidesPerView: 4,
+                                freeMode: true,
+                                watchSlidesProgress: true,
+                            });
+                            var swiper2 = new Swiper(".mySwiper2", {
+                                loop: true,
+                                spaceBetween: 10,
+                                navigation: {
+                                    nextEl: ".swiper-button-next",
+                                    prevEl: ".swiper-button-prev",
+                                },
+                                thumbs: {
+                                    swiper: swiper,
+                                },
+                            });
+                        </script>

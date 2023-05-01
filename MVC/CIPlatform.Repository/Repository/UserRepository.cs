@@ -35,6 +35,12 @@ namespace CIPlatform.Repository.Repository
             List<User> objUserList = _DbContext.Users.Where(u=> u.DeletedAt == null).ToList();
             return objUserList;
         }
+        
+        public List<Banner> BannerList()
+        {
+            List<Banner> objBannerList = _DbContext.Banners.Where(u=> u.DeletedAt == null).ToList();
+            return objBannerList;
+        }
 
     
 

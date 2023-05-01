@@ -117,8 +117,7 @@ function CheckUser(userId, missionId) {
         success: function (data) {
 
             toastr.options = {
-                "closeButton": true,
-                "progressBar": true
+                "closeButton": true
             };
 
             if (data == true) {

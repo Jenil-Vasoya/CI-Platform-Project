@@ -15,6 +15,8 @@ namespace CIPlatform.Repository.Interface
 
         public List<User> UserList();
 
+        public List<Banner> BannerList();
+
         public Boolean Register(User objUser);
 
         public Boolean IsEmailAvailable(string email);

@@ -369,20 +369,57 @@
 <script>
 
     function addValidUser(event){
+
+    var password = $('#addUserPassword').val();
+    var minLength = 8;
+    var hasUpperCase = /[A-Z]/.test(password);
+    var hasLowerCase = /[a-z]/.test(password);
+    var hasNumber = /\d/.test(password);
+    var hasSpecialChar = /[!#$%^&*(),.?":{}|<>]/.test(password);
+
+       
+
+
+
                 event.preventDefault();
                 var Firstname = $('#addUserFirstName').val().trim();
                 var Email = $('#addUserEmail').val().trim();
-                var Password = $('#addUserPassword').val().trim();
                 var CityId = $('#addUserCity').find(":selected").val();
                 var CountryId = $('#addUserCountry').find(":selected").val();
 
                 $('#validAddUserFirstName').text('');
                 $('#validAddUserEmail').text('');
-                $('#validAddUserPassword').text('');
                 $('#validAddUserCountry').text('');
                 $('#validAddUserCity').text('');
 
                 var isValid = true;
+
+                 if (password.length < minLength) {
+                  $('#validAddUserPassword').text('Password must be at least ' + minLength + ' characters long');
+                  isValid = false;
+                } 
+                else if (!hasUpperCase) {
+                  $('#validAddUserPassword').text('Password must contain at least one uppercase letter');
+                  isValid = false;
+                } 
+                else if (!hasLowerCase) {
+                  $('#validAddUserPassword').text('Password must contain at least one lowercase letter');
+                  isValid = false;
+                } 
+                else if (!hasNumber) {
+                  $('#validAddUserPassword').text('Password must contain at least one number');
+                  isValid = false;
+                } 
+                else if (!hasSpecialChar) {
+                  $('#validAddUserPassword').text('Password must contain at least one special character');
+                  isValid = false;
+                } 
+                
+
+                if (password === '') {
+                    $('#passwordError').text('Please enter a new password.');
+                    isValid = false;
+                }
 
                 if(Firstname == ""){
                     $('#validAddUserFirstName').text('First Name is Required!!');
@@ -396,12 +433,7 @@
                 } else {
                     $('#validAddUserEmail').text('');
                 }
-                if(Password == ""){
-                    $('#validAddUserPassword').text('Password is Required!!');
-                    isValid = false;
-                } else {
-                    $('#validAddUserPassword').text('');
-                }
+                
                 if(CityId == 0){
                     $('#validAddUserCity').text('Please Select a City!!');
                     isValid = false;

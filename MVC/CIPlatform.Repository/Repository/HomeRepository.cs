@@ -209,6 +209,39 @@ namespace CIPlatform.Repository.Repository
             foreach (var objMission in missions)
             {
                 MissionData missionData = new MissionData();
+                List<MissionMedium> missionMedium = _DbContext.MissionMedia.Where(a => a.MissionId == objMission.MissionId && a.DeletedAt == null).ToList();
+
+                var path = new List<string>();
+                foreach (var i in missionMedium)
+                {
+                    StoryMedium story = new StoryMedium();
+                    if (i.MediaType == "png")
+                    {
+                        string path1 = i.MediaName;
+
+                        path.Add(path1);
+                    }
+
+                }
+                missionData.MissionImages = path;
+
+                var MissionVideopath = new List<string>();
+                foreach (var i in missionMedium)
+                {
+                    MissionMedium story = new MissionMedium();
+                    if (i.MediaType == "mp4")
+                    {
+                        string url = i.MediaName;
+
+                        MissionVideopath.Add(url);
+                    }
+                }
+                if (MissionVideopath.Count != null)
+                {
+                    missionData.MissionVideoUrl = MissionVideopath;
+                }
+                
+
 
                 missionData.MissionId = objMission.MissionId;
 
@@ -254,7 +287,7 @@ namespace CIPlatform.Repository.Repository
                 }
                 missionData.IsApplied = (_DbContext.MissionApplications.FirstOrDefault(a => a.UserId == UserId && a.MissionId == objMission.MissionId) != null) ? 1 : 0;
 
-                DateTime dt = new DateTime(2023, 10, 10, 12, 0, 0);
+                DateTime dt = new DateTime(2023, 01, 01, 12, 0, 0);
 
                 missionData.Deadline = dt;
 

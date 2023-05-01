@@ -32,7 +32,7 @@ namespace CIPlatform.Controllers
 
                 if (UserId > 0)
                 {
-                    List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
+                    List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId,"User");
                     ViewBag.missionDatas = missionDatas;
 
                     ViewBag.UserId = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? "");
@@ -107,7 +107,7 @@ namespace CIPlatform.Controllers
             try
             {
                 long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-
+                string Role = HttpContext.Session.GetString("Role")?? "";
                 if (UserId > 0)
                 {
                     List<User> users = _StoryRepo.UserList();
@@ -116,7 +116,7 @@ namespace CIPlatform.Controllers
                     _StoryRepo.StoryView(id, UserId);
 
 
-                    List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
+                    List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId,Role);
 
                     var missions = missionDatas.Where(x => x.StoryId == id).FirstOrDefault();
                     ViewBag.missionDatas = missions;
@@ -150,7 +150,7 @@ namespace CIPlatform.Controllers
 
                 if (UserId > 0)
                 {
-                    List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
+                    List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId,"User");
 
                     var missions = missionDatas.Where(x => x.StoryId == id).FirstOrDefault();
                     ViewBag.missionDatas = missions;
@@ -222,7 +222,7 @@ namespace CIPlatform.Controllers
                             var missions = objStory;
                         
 
-                        List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId);
+                        List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId,"User");
 
                         var storymission = missionDatas.Where(x => x.StoryId == (objStory.StoryId ?? StoryId)).FirstOrDefault();
                         ViewBag.missionDatas = storymission;

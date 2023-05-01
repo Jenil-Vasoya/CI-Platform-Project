@@ -33,6 +33,7 @@ namespace CIPlatform.Entities.ViewModel
             [Required(ErrorMessage = "Please Enter a Date")]
             //[DataType(DataType.DateTime, ErrorMessage = "Please enter a valid date and time")]
             public string DateVolunteered { get; set; }
+
             public DateTime sendDateVolunteered { get; set; }
 
             [Required(ErrorMessage = "Please Enter The Action")]

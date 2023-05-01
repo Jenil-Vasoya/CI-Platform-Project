@@ -195,11 +195,14 @@
     <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Add </h3>
     <hr class="m-0">
     <form class="px-3" enctype="multipart/form-data">
+        <div class="row">
         <label class="mt-3"> Banner Text </label>
         <input type="text" class="form-control" id="addBannerText">
-
+        <span id="validAddBannerText" style="color:red; padding:0px"></span>
+        </div>
         <label class="mt-3"> Short Order </label>
         <input type="number" class="form-control" id="addShortOrder">
+        <span id="validAddShortOrder" style="color:red; padding:0px"></span>
 
         <div class="images w-100 mt-4 ">
             <label class="form-label">Upload Your Photos</label>
@@ -209,6 +212,7 @@
                 <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
             </div>
             <div id="banner-preview"></div>
+            <span id="validAddBanner" style="color:red;"></span>
         </div>
 
         <div class="row my-3">
@@ -218,7 +222,7 @@
                         onclick="bannerView('nav-banner');">
                     Cancel
                 </button>
-                <button type="submit" onclick="addBannerData(event)" class="btn rounded-pill applyButton"
+                <button type="submit" onclick="addValidBanner(event)" class="btn rounded-pill applyButton"
                         value="2" name="command">
                     Save
                 </button>
@@ -232,11 +236,14 @@
     <hr class="m-0">
     <form class="px-3" enctype="multipart/form-data">
         <input type="hidden" id="bannerId" />
+         <div class="row">
         <label class="mt-3"> Banner Text </label>
         <input type="text" class="form-control" id="editBannerText">
-
+        <span id="validEditBannerText" style="color:red; padding:0px"></span>
+        </div>
         <label class="mt-3"> Short Order </label>
         <input type="number" class="form-control" id="editShortOrder">
+        <span id="validEditShortOrder" style="color:red; padding:0px"></span>
 
         <div class="images w-100 mt-4 ">
             <label class="form-label">Upload Your Photos</label>
@@ -249,6 +256,7 @@
         <div id="banner-previewedit"></div>
         <div id="imgPreview">
         </div>
+        @*<span id="validEditBanner" style="color:red;"></span>*@
 
         <div class="row my-3">
             <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
@@ -257,7 +265,7 @@
                         onclick="editBannerClose('nav-banner');">
                     Cancel
                 </button>
-                <button type="submit" onclick="addBannerData(event)" class="btn rounded-pill applyButton"
+                <button type="submit" onclick="editValidBanner(event)" class="btn rounded-pill applyButton"
                         value="2" name="command">
                     Save
                 </button>
@@ -267,7 +275,106 @@
 </div>
 
 <script>
-    // listen for changes to the file input
+           function addValidBanner(event){
+           debugger
+                event.preventDefault();
+                var Text = $('#addBannerText').val().trim();
+                var ShortOrder = $('#addShortOrder').val().trim();
+                var images = $('#bannerImage').prop('files');
+
+          
+                $('#validAddBanner').text('');
+                $('#validAddBannerText').text('');
+                $('#validAddShortOrder').text('');
+                
+
+                var isValid = true;
+
+                if (images.length === 0) {
+                    $('#validAddBanner').text('Please select at least one image.');
+                    isValid = false;
+                }
+
+                if(Text == ""){
+                    $('#validAddBannerText').text('Title is Required!!');
+                    isValid = false;
+                } else {
+                    $('#validAddBannerText').text('');
+                }
+                if(ShortOrder == ""){
+                    $('#validAddShortOrder').text('Description is Required!!');
+                    isValid = false;
+                } else {
+                    $('#validAddShortOrder').text('');
+                }
+                
+                if (isValid) {
+                    addBannerData(event);
+                }
+}
+
+     $('#addBannerText').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validAddBannerText').text('');
+        }
+    });
+     $('#addShortOrder').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validAddShortOrder').text('');
+        }
+    });
+    
+    
+    function editValidBanner(event){
+           debugger
+                event.preventDefault();
+                var Text = $('#editBannerText').val().trim();
+                var ShortOrder = $('#editShortOrder').val().trim();
+                @*var images = $('#editbannerImage').prop('files');
+
+          
+                $('#validEditBanner').text('');*@
+                $('#validEditBannerText').text('');
+                $('#validEditShortOrder').text('');
+                
+
+                var isValid = true;
+@*
+                if (images.length === 0) {
+                    $('#validEditBanner').text('Please select at least one image.');
+                    isValid = false;
+                }*@
+
+                if(Text == ""){
+                    $('#validEditBannerText').text('Title is Required!!');
+                    isValid = false;
+                } else {
+                    $('#validEditBannerText').text('');
+                }
+                if(ShortOrder == ""){
+                    $('#validEditShortOrder').text('Description is Required!!');
+                    isValid = false;
+                } else {
+                    $('#validEditShortOrder').text('');
+                }
+                
+                if (isValid) {
+                    addBannerData(event);
+                }
+}
+
+     $('#editBannerText').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validEditBannerText').text('');
+        }
+    });
+     $('#editShortOrder').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validEditShortOrder').text('');
+        }
+    });
+
+
     $('#bannerImage').on('change', function () {
         // get the selected file
         var file = this.files[0];
@@ -308,7 +415,10 @@
             formData.append('Text', $('#editBannerText').val());
             formData.append('BannerId', $('#bannerId').val());
             formData.append('SortOrder', $('#editShortOrder').val());
+            if(imgs[0] != null)
+            {
             formData.append('BannerImg', imgs[0]);
+            }
 
 
         }

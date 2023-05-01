@@ -76,7 +76,7 @@ namespace CIPlatform.Repository.Repository
         public List<MissionData> GetStoryMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int pg, long UserId)
         {
             var pageSize = 6;
-            List<MissionData> missions = GetStoryCardsList(UserId);
+            List<MissionData> missions = GetStoryCardsList(UserId,"User");
             if (search != "")
             {
                 missions = missions.Where(a => a.Title.ToLower().Contains(search) || a.ShortDescription.ToLower().Contains(search)).ToList();
@@ -114,10 +114,17 @@ namespace CIPlatform.Repository.Repository
             return missions;
         }
 
-        public List<MissionData> GetStoryCardsList(long UserId)
+        public List<MissionData> GetStoryCardsList(long UserId, string Role)
         {
-            var missions = _DbContext.Stories.Where(a => a.Status == "PUBLISHED" || (a.UserId == UserId && a.Status != "PENDING")).OrderBy(a => a.Status).ToList();
-
+            var missions = new List<Story>();
+            if (Role.Trim() == "Admin")
+            {
+                missions = _DbContext.Stories.Where(a => a.DeletedAt == null).OrderBy(a => a.Status).ToList();
+            }
+            else
+            {
+                missions = _DbContext.Stories.Where(a => a.Status == "PUBLISHED" || (a.UserId == UserId && a.Status != "PENDING")).OrderBy(a => a.Status).ToList();
+            }
 
             
 
