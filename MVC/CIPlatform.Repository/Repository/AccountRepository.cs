@@ -440,30 +440,30 @@ namespace CIPlatform.Repository.Repository
                         }
 
                     }
-                    
-                    //var docPath = new List<string>();
-                    //foreach (var i in model.Images)
-                    //{
-                    //    MissionDocument missionDocument = new MissionDocument();
-                    //    missionDocument.MissionId = mission.MissionId;
-                    //    missionDocument.DocumentName = i.FileName;
-                    //    missionDocument.DocumentType = "docx";
-                    //    missionDocument.DocumentPath = "~/Assets/StoryImages/" + i.FileName;
-                    //    _DbContext.MissionDocuments.Add(missionDocument);
-                    //    _DbContext.SaveChanges();
-                    //    if (i.Length > 0)
-                    //    {
-                    //        //string path = Server.MapPath("~/wwwroot/Assets/Story");
-                    //        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/StoryImages", i.FileName);
-                    //        docPath.Add(path);
-                    //        using (var stream = new FileStream(path, FileMode.Create))
-                    //        {
-                    //            i.CopyTo(stream);
-                    //        }
-                    //    }
 
-                    //}
-                    
+                    var docPath = new List<string>();
+                    foreach (var i in model.Documents)
+                    {
+                        MissionDocument missionDocument = new MissionDocument();
+                        missionDocument.MissionId = mission.MissionId;
+                        missionDocument.DocumentName = i.FileName;
+                        missionDocument.DocumentType = "pdf";
+                        missionDocument.DocumentPath = "~/Assets/Document/" + i.FileName;
+                        _DbContext.MissionDocuments.Add(missionDocument);
+                        _DbContext.SaveChanges();
+                        if (i.Length > 0)
+                        {
+                            //string path = Server.MapPath("~/wwwroot/Assets/Story");
+                            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/Document", i.FileName);
+                            docPath.Add(path);
+                            using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                i.CopyTo(stream);
+                            }
+                        }
+
+                    }
+
                 }
                 if (model.VideoUrl != null)
                 {
@@ -615,6 +615,22 @@ namespace CIPlatform.Repository.Repository
 
                 }
                 mission.MissionImages = path;
+                
+                var url = new List<string>();
+                foreach (var i in images)
+                {
+                    if (i.MediaType == "mp4")
+                    {
+                        string path1 = i.MediaName;
+
+                        url.Add(path1);
+                    }
+
+                }
+                if (url.Count > 0)
+                {
+                    mission.VideoUrl = url[0];
+                }
             }
 
             if (skill.Count > 0)

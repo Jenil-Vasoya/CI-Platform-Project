@@ -15,6 +15,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Assets\Documents\**" />
+    <Content Remove="wwwroot\Assets\Documents\**" />
+    <EmbeddedResource Remove="wwwroot\Assets\Documents\**" />
+    <None Remove="wwwroot\Assets\Documents\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3">
@@ -37,7 +44,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Assets\Documents\" />
+    <Folder Include="wwwroot\Assets\Document\" />
+    <Folder Include="wwwroot\Assets\NewFolder\" />
     <Folder Include="wwwroot\Assets\StoryImages\" />
     <Folder Include="wwwroot\StoryImages\" />
   </ItemGroup>

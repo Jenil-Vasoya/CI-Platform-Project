@@ -304,10 +304,18 @@ namespace CIPlatform.Repository.Repository
             {
 
                 VolunteerTimeSheet volunteerSheet = new VolunteerTimeSheet();
+
+
+                var mission = _DbContext.Missions.Where(c => c.MissionId == sheet.MissionId).FirstOrDefault();
+
+                volunteerSheet.StartDateEdit = mission.StartDate.Value.ToString("yyyy-MM-dd");
+                volunteerSheet.EndDateEdit = mission.EndDate.Value.ToString("yyyy-MM-dd");
+
+
                 volunteerSheet.TimesheetId = sheet.TimeSheetId;
                 volunteerSheet.UserId = sheet.UserId;
                 volunteerSheet.MissionId = sheet.MissionId;
-                volunteerSheet.MissionTitle = _DbContext.Missions.Where(m => m.MissionId == sheet.MissionId).FirstOrDefault().Title;
+                volunteerSheet.MissionTitle = mission.Title;
                 volunteerSheet.Time = sheet.Time.ToString();
                 volunteerSheet.Status = sheet.Status;
                 var newdate = sheet.DateVolunteered;
@@ -432,6 +440,65 @@ namespace CIPlatform.Repository.Repository
 
             return true;
         }
-       
+
+        public bool checkSameDate(DateTime oldDate, long userId, long TimesheetId, long MissionId)
+        {
+            var date = _DbContext.TimeSheets.Where(x => x.UserId == userId && x.MissionId == MissionId && x.DateVolunteered == oldDate && x.DeletedAt == null).ToList();
+            if (date.Count != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            //{
+            //    if (date.Where(x => x.TimeSheetId == TimesheetId).Count() != 0)
+            //    {
+            //        return true;
+            //    }
+            //    return false;
+            //}
+        }
+        
+        public bool checkSameDateEdit(DateTime oldDate, long userId, long TimesheetId, long MissionId)
+        {
+            var date = _DbContext.TimeSheets.Where(x => x.UserId == userId && x.MissionId == MissionId && x.DateVolunteered == oldDate && x.DeletedAt == null).ToList();
+            if (date.Count != 0)
+            {
+                if (date.Where(x => x.TimeSheetId == TimesheetId).Count() != 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        public Mission getMissionDate(long MissionId)
+        {
+            var mission = _DbContext.Missions.Where(m => m.MissionId == MissionId).FirstOrDefault();
+            
+
+            mission.StartDateEdit = mission.StartDate.Value.ToString("yyyy-MM-dd");
+            mission.EndDateEdit = mission.EndDate.Value.ToString("yyyy-MM-dd");
+            if (mission.StartDateEdit != null && mission.EndDateEdit != null)
+            {
+                return mission;
+            }
+            else
+            {
+                return mission;
+            }
+        }
+
+
     }
 }

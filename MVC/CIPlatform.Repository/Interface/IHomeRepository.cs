@@ -64,5 +64,7 @@ namespace CIPlatform.Repository.Interface
         public bool PostRating(byte rate, long missionId, long userId);
 
         public bool CheckUser(long userId, long UserId, long MissionId);
+
+        public List<Cmspage> getCMS();
     }
 }

@@ -89,8 +89,8 @@
             <input type="hidden" asp-for="StoryId" />
             <div class="col-lg-4 pe-2">
                 Select Mission
-                <select asp-for="MissionId" class="form-select  my-2" data-bs-toggle="dropdown" aria-placeholder="dropdown" required>
-                    <option disabled selected value="">select your mission</option>
+                <select asp-for="MissionId" class="form-select" id="storyMissionId" onchange="getMissionDate()"  my-2" data-bs-toggle="dropdown" aria-placeholder="dropdown" required>
+                    
                     @foreach (var obj in ViewBag.MissionData)
                     {
                         <option value="@obj.MissionId">@obj.Title</option>
@@ -108,7 +108,7 @@
             </div>
             <div class="col-lg-4">
                 Date
-                <div class="row-cols-auto my-2 "><input asp-for="CreatedAt" type="date" class="form-control" required></div>
+                <div class="row-cols-auto my-2 "><input asp-for="CreatedAt" type="date" id="storyDate" class="form-control" required></div>
             </div>
         </div>
 
@@ -158,7 +158,7 @@
                 <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
                     <img src="~/Assets/images/add.png" style="cursor:pointer;position:relative; top:20px;" />
                     <input type="file" accept="image/*" asp-for="images" id="images" style="opacity:0;cursor:pointer;" multiple required />
-                    <span class="text-danger" asp-validation-for="images"></span>
+                    <span asp-validation-for="images" id="validAddImage"  style="color:red;"></span>
                     <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
                 </div>
                 <div id="image-preview"></div>
@@ -175,7 +175,7 @@
                 <div class="w-100 border rounded d-flex flex-column align-items-center justify-content-center" style="height:100px;border-style:dashed;">
                     <img src="~/Assets/images/add.png" style="cursor:pointer;position:relative; top:20px;" />
                     <input type="file" accept="image/*" asp-for="images" id="images" style="opacity:0;cursor:pointer;" multiple  />
-                    <span asp-validation-for="images"></span>
+                    <span asp-validation-for="images" id="validImage" style="color:red;"></span>
                     <p style="margin-block:0px;cursor:pointer;"> Upload Pictures Here</p>
                 </div>
                 <div id="image-preview">
@@ -229,6 +229,41 @@
 
 <script>
 
+     function getMissionDate()
+    {
+        debugger
+        var missionId;
+        
+           missionId = $('#storyMissionId').val();
+        
+        
+
+        $.ajax({
+        url: '/User/getMissionDate',
+        type: 'POST',
+        data: {
+            MissionId: missionId
+        },
+        success: function (data) {
+            debugger
+            console.log(data)
+           
+                $('#storyDate').val('');
+                var minDate = data.startDateEdit; 
+                var maxDate = data.endDateEdit;
+                $('#storyDate').attr('min', minDate); 
+                $('#storyDate').attr('max', maxDate);
+            
+            
+        },
+        error: function () {
+            console.log("Error updating variable");
+        }
+        })
+    }
+
+
+
 $(document).ready(function () {
             $('#addLink').click(function () {
                 //var index = $('input[name="URL"]').length;
@@ -250,35 +285,48 @@ $(function () {
             var selectedCountElement = $('#selected-count');
             // Listen for changes to the file input element
             $('#images').on('change', function () {
-                // Clear any previous preview images
-                $('#image-preview').empty();
-                selectedCount = 0;
-                selectedCountElement.html('0 images selected');
-                // Loop through the selected files
-                $.each(this.files, function (i, file) {
-                    // Create a container for the preview image and remove button
-                    var container = $('<div />', { class: 'preview-container' });
-                    // Create an image element to show the preview
-                    var img = $('<img  />');
-                    img.attr('src', URL.createObjectURL(file));
-                    img.attr('alt', file.name);
-                    // Create a remove button to remove the image from the preview
-                    var removeBtn = $('<img />', { class: 'remove-icon' });
-                    removeBtn.attr('src', "/Assets/images/cancel1.png");
-                    removeBtn.attr('alt', file.name);
-                    removeBtn.html('&#x2715;');
-                    removeBtn.on('click', function () {
-                        container.remove();
-                        selectedCount--;
+
+
+              if(this.files.length > 20)
+              {
+                $('#validAddImage').text('Please select less than 20 images');
+                $('#validImage').text('Please select less than 20 images');
+                this.value = null; // reset the value of the input element to clear the selected files
+              } 
+              else 
+              {
+    
+                  $('#validAddImage').text('');
+                  $('#validImage').text('');
+                    $('#image-preview').empty();
+                    selectedCount = 0;
+                    selectedCountElement.html('0 images selected');
+                    // Loop through the selected files
+                    $.each(this.files, function (i, file) {
+                        // Create a container for the preview image and remove button
+                        var container = $('<div />', { class: 'preview-container' });
+                        // Create an image element to show the preview
+                        var img = $('<img  />');
+                        img.attr('src', URL.createObjectURL(file));
+                        img.attr('alt', file.name);
+                        // Create a remove button to remove the image from the preview
+                        var removeBtn = $('<img />', { class: 'remove-icon' });
+                        removeBtn.attr('src', "/Assets/images/cancel1.png");
+                        removeBtn.attr('alt', file.name);
+                        removeBtn.html('&#x2715;');
+                        removeBtn.on('click', function () {
+                            container.remove();
+                            selectedCount--;
+                            selectedCountElement.html(selectedCount + ' images selected');
+                        });
+                        // Add the image and remove button to the container
+                        container.append(img, removeBtn);
+                        // Add the container to the preview container
+                        $('#image-preview').append(container);
+                        selectedCount++;
                         selectedCountElement.html(selectedCount + ' images selected');
                     });
-                    // Add the image and remove button to the container
-                    container.append(img, removeBtn);
-                    // Add the container to the preview container
-                    $('#image-preview').append(container);
-                    selectedCount++;
-                    selectedCountElement.html(selectedCount + ' images selected');
-                });
+                }
             });
         });
  

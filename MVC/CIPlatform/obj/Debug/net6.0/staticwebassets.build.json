@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9eMPxIuZiFQca/cphIgdcEjyzcJ5YxmXXKofLSHcKVk=",
+  "Hash": "vEFiVWHdCmI1pD72EWosR8aWTdbZjAAeG20STo6a3Ok=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -185,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\css\\volunteermission.css"
+    },
+    {
+      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\Document\\CI-Good to have.pdf",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "Assets/Document/CI-Good to have.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\Document\\CI-Good to have.pdf"
     },
     {
       "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\images\\404-Page-image.png",
@@ -2633,6 +2650,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\Plantation-and-Afforestation-programme.png"
+    },
+    {
+      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\user1.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "Assets/StoryImages/user1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\user1.png"
     },
     {
       "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\user-img-large.png",

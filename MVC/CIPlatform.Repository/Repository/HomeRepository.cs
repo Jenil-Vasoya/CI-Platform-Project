@@ -210,6 +210,7 @@ namespace CIPlatform.Repository.Repository
             {
                 MissionData missionData = new MissionData();
                 List<MissionMedium> missionMedium = _DbContext.MissionMedia.Where(a => a.MissionId == objMission.MissionId && a.DeletedAt == null).ToList();
+                List<MissionDocument> missionDocument = _DbContext.MissionDocuments.Where(a => a.MissionId == objMission.MissionId && a.DeletedAt == null).ToList();
 
                 var path = new List<string>();
                 foreach (var i in missionMedium)
@@ -236,9 +237,25 @@ namespace CIPlatform.Repository.Repository
                         MissionVideopath.Add(url);
                     }
                 }
-                if (MissionVideopath.Count != null)
+                if (MissionVideopath.Count != 0)
                 {
                     missionData.MissionVideoUrl = MissionVideopath;
+                }
+                
+                var documents = new List<string>();
+                foreach (var i in missionDocument)
+                {
+                    MissionMedium story = new MissionMedium();
+                    if (i.DocumentType == "pdf")
+                    {
+                        string doc = i.DocumentName;
+
+                        documents.Add(doc);
+                    }
+                }
+                if (documents.Count != 0)
+                {
+                    missionData.Documents = documents;
                 }
                 
 
@@ -581,6 +598,12 @@ namespace CIPlatform.Repository.Repository
             {
                 return true;
             }
+        }
+
+        public List<Cmspage> getCMS()
+        {
+            var cms = _DbContext.Cmspages.Where(c => c.DeletedAt == null && c.Status == true).ToList();
+            return cms;
         }
 
     }

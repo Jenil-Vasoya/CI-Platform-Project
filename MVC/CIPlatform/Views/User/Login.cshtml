@@ -80,13 +80,13 @@
                             <div class="form-group my-2">
                                 <label asp-for="Email">Email Address</label>
                                 <input type="email" asp-for="Email" class="form-control my-2 mb-0" id="email" placeholder="Username"
-                                       name="email">
+                                       name="email" required>
                                        <span asp-validation-for="Email" class="text-danger" style="font-size:smaller"></span>
                             </div>
                             <div class="form-group my-2">
                                 <label asp-for="Password">Password</label>
                                 <input type="password" asp-for="Password" class="form-control my-2 mb-0" id="password" placeholder="Password"
-                                       name="password">
+                                       name="password" required>
                                  <span asp-validation-for="Password" class="text-danger" style="font-size:smaller;"></span>
 
                             </div>
@@ -108,8 +108,6 @@
                                     <span> <a asp-action="Register" class="link-primary ">Create Account</a> </span>
                                 </p>
                             </div>
-
-
 
                         </form>
 

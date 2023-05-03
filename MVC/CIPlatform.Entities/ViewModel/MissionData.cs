@@ -54,6 +54,8 @@ namespace CIPlatform.Entities.ViewModel
 
         public List<string>? VideoUrl { get; set; }
 
+        public List<string>? Documents { get; set; }
+
         //[MaxLength(20, ErrorMessage = "You can upload maximum 20 images")]
         public List<IFormFile>? images { get; set; }
 

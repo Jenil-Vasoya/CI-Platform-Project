@@ -126,6 +126,7 @@ namespace CIPlatform.Controllers
         public IActionResult Login(User objLogin)
         {
                 ViewBag.Banner = _UserRepo.BannerList();
+
             try
             {
                 if (objLogin.Email != null && objLogin.Password != null)
@@ -461,6 +462,27 @@ namespace CIPlatform.Controllers
             bool result = _UserRepo.AddContactUs(model);
 
             return Json(result);
+        }
+
+        public JsonResult checkSameDate(long MissionId, DateTime Date, long TimesheetId)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+            bool date;
+            if (TimesheetId == 0)
+            {
+                date = _UserRepo.checkSameDate(Date, UserId, TimesheetId, MissionId);
+            }
+            else
+            {
+                date = _UserRepo.checkSameDateEdit(Date, UserId, TimesheetId, MissionId);
+            }
+            return Json(date);
+        }
+
+        public JsonResult getMissionDate(long MissionId)
+        {
+            var data = _UserRepo.getMissionDate(MissionId);
+            return Json(data);
         }
 
     }

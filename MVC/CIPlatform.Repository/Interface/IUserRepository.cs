@@ -61,5 +61,11 @@ namespace CIPlatform.Repository.Interface
 
         public bool AddContactUs(ContactU model);
 
+        public bool checkSameDate(DateTime oldDate, long userId, long TimesheetId, long MissionId);
+
+        public bool checkSameDateEdit(DateTime oldDate, long userId, long TimesheetId, long MissionId);
+
+        public Mission getMissionDate(long MissionId);
+
     }
 }

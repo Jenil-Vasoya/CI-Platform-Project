@@ -47,5 +47,11 @@ namespace CIPlatform.Entities.ViewModel
         public string? Status { get; set; }
 
 
+        public string StartDateEdit { get; set; }
+
+       
+        public string EndDateEdit { get; set; }
+
+
     }
 }

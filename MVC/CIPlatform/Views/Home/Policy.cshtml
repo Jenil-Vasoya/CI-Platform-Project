@@ -5,72 +5,80 @@
 
 
     <style>
-        body {
-            position: relative;
-        }
+       
 
-        .list-group {
-            position: sticky;
-            top: 10px;
-        }
+ .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: var(--bs-nav-pills-link-active-color);
+  background-color: #ff7800;
+}
+
+ 
+.applyButton {
+    border: 2px solid #F88634;
+    border-radius: 100px;
+    color: #F88634;
+    background-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+    .applyButton:hover {
+        background-color: #F88634;
+        color: white;
+    }
     </style>
 
-    <div class="container">
-        <div class="row">
-            <h1>Privacy and cookies Policy</h1>
-            <br>
-            <div class="col-sm-3">
-                <div class="list-group">
 
-                    <a class="list-group-item list-group-item-action " href="#item-1">Introducion</a>
-                    <a class="list-group-item list-group-item-action" href="#item-2">How does use cookies?</a>
-                    <a class="list-group-item list-group-item-action" href="#item-3">How to manage your cookies preferences?</a>
+
+    <div class="container-fluid p-0">
+        <div class="row flex-nowrap g-0">
+
+            <div class="col-2 col-md-4 col-lg-3 col-xl-2 side-nav ">
+                <div class="d-flex flex-column align-items-end align-items-sm-end min-vh-100">
+                    <ul class="nav nav-pills flex-column align-items-center align-items-sm-center nav-list w-100" id="menu">
+
+
+                        @foreach (var item in ViewBag.CMSList)
+                        {
+                            <li style="width: 100%;">
+                                <a href="#" class="nav-link align-end btn applyButton border d-flex" id="nav-@item.Title-tab" data-bs-toggle="tab" data-bs-target="#nav-@item.Title" role="tab" aria-controls="nav-@item.Title" aria-selected="true">
+                                    <span class="ms-1 text-start">@item.Title</span>
+                                    
+                                    <i class="bi bi-chevron-compact-right text-end"></i>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+
+
+                    <hr>
+
                 </div>
             </div>
-            <div class="col-sm-9">
-                <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="50" tabindex="0">
-                    <div class="container   h-50">
 
-                        <h2 id="item-1">Introducion</h2>
-                        <br>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non pulvinar elit. Donec euismod auctor eros, a facilisis enim faucibus eget. Nullam eu arcu at metus tincidunt varius. Donec a mi id nulla congue mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed eget velit eleifend, mollis orci sit amet, imperdiet leo. </p>
-                        <br>
-                        <p> Vestibulum bibendum tristique dolor, vitae pellentesque ex lobortis nec. Morbi et ex quis nibh ullamcorper lacinia. Donec tristique vel eros in dapibus. Fusce in ligula vitae odio mollis laoreet eget ac lectus. Sed a purus at nibh dapibus ultricies. Sed eget libero vitae lectus tincidunt convallis. Sed ultrices mi vel diam pretium, id semper arcu vestibulum. Nullam sit amet mauris lectus.</p>
-                        <br>
-                        <p>programming language that is designed to have as </p>
-                        <p>few implementation dependencies as possible.</p>
-                        <hr>
-                    </div>
-                    <div class="container  h-50">
 
-                        <h2 id="item-2">How does use cookies?</h2>
-                        <br>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non pulvinar elit. Donec euismod auctor eros, a facilisis enim faucibus eget. Nullam eu arcu at metus tincidunt varius. Donec a mi id nulla congue mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed eget velit eleifend, mollis orci sit amet, imperdiet leo. </p>
-                        <br>
-                        <p> Vestibulum bibendum tristique dolor, vitae pellentesque ex lobortis nec. Morbi et ex quis nibh ullamcorper lacinia. Donec tristique vel eros in dapibus. Fusce in ligula vitae odio mollis laoreet eget ac lectus. Sed a purus at nibh dapibus ultricies. Sed eget libero vitae lectus tincidunt convallis. Sed ultrices mi vel diam pretium, id semper arcu vestibulum. Nullam sit amet mauris lectus.</p>
-                        <br>
-                        <p>programming language that is designed to have as </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dapibus ligula in velit blandit varius. Sed vel turpis quis quam fringilla pulvinar. Pellentesque at ipsum ligula. Nullam consequat auctor tellus, sed tincidunt ipsum vestibulum nec. In vel est vel ante dignissim elementum. Sed sollicitudin semper lacinia. Suspendisse eget velit vel orci molestie vehicula. Etiam vitae purus euismod, iaculis elit sed, interdum sapien.</p>
-                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc in velit in nulla tincidunt luctus. Maecenas pretium ullamcorper tellus eget scelerisque. In convallis, dolor eu suscipit tempor, enim turpis euismod massa, eu pellentesque eros elit ut orci. Vivamus eu aliquam odio. Pellentesque ultricies nisl nec quam dignissim, nec pellentesque odio aliquam. Integer commodo bibendum felis id facilisis.</p>
-                        <hr>
-                    </div>
-                    <div class="container   h-50">
+            <div class="col-10 col-md-8 col-lg-9 col-xl-10">
 
-                        <h2 id="item-3">How to manage your cookies preferences?</h2>
-                        <br>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non pulvinar elit. Donec euismod auctor eros, a facilisis enim faucibus eget. Nullam eu arcu at metus tincidunt varius. Donec a mi id nulla congue mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed eget velit eleifend, mollis orci sit amet, imperdiet leo. </p>
-                        <br>
-                        <p> Vestibulum bibendum tristique dolor, vitae pellentesque ex lobortis nec. Morbi et ex quis nibh ullamcorper lacinia. Donec tristique vel eros in dapibus. Fusce in ligula vitae odio mollis laoreet eget ac lectus. Sed a purus at nibh dapibus ultricies. Sed eget libero vitae lectus tincidunt convallis. Sed ultrices mi vel diam pretium, id semper arcu vestibulum. Nullam sit amet mauris lectus.</p>
-                        <br>
-                        <p>programming language that is designed to have as </p>
-                        <p>few implementation dependencies as possible.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dapibus ligula in velit blandit varius. Sed vel turpis quis quam fringilla pulvinar. Pellentesque at ipsum ligula. Nullam consequat auctor tellus, sed tincidunt ipsum vestibulum nec. In vel est vel ante dignissim elementum. Sed sollicitudin semper lacinia. Suspendisse eget velit vel orci molestie vehicula. Etiam vitae purus euismod, iaculis elit sed, interdum sapien.</p>
-                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc in velit in nulla tincidunt luctus. Maecenas pretium ullamcorper tellus eget scelerisque. In convallis, dolor eu suscipit tempor, enim turpis euismod massa, eu pellentesque eros elit ut orci. Vivamus eu aliquam odio. Pellentesque ultricies nisl nec quam dignissim, nec pellentesque odio aliquam. Integer commodo bibendum felis id facilisis.</p>
-                        <p>Aliquam pulvinar tortor et est suscipit, ut accumsan ipsum sagittis. Sed et convallis odio, non posuere purus. Donec ut bibendum ex, a consequat tortor. Praesent a sapien ut mi convallis suscipit. Aenean vitae augue velit. Morbi efficitur aliquam turpis, at sagittis dolor varius ac. In mollis, mauris quis sollicitudin vulputate, est mauris molestie libero, vitae commodo orci tellus vel lacus. Praesent efficitur dolor vel nisl rhoncus, quis tempor augue consectetur. Proin vulputate tristique neque. Integer commodo tellus felis, in bibendum odio euismod vel.</p>
-                        <hr>
+                
+
+
+                <div class="m-2">
+                    <div class="tab-content" id="nav-tabContent">
+
+                        @foreach (var item in ViewBag.CMSList)
+                        {
+                            <div class="tab-pane fade show active" id="nav-@item.Title" role="tabpanel" aria-labelledby="nav-@item.Title-tab">
+                                <div id="searchUser1" style="padding:10px;">
+                                    <h4 class="pt-3 pb-2">@item.Description</h4>
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
+
             </div>
+
+
         </div>
     </div>
 

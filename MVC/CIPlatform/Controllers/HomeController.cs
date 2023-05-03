@@ -47,6 +47,7 @@ namespace CIPlatform.Controllers
 
             if (UserId > 0)
             {
+                ViewBag.CMSList = _HomeRepo.getCMS();
                 ViewBag.UserName = _HomeRepo.GetUserAvatar(UserId).FirstName + " " + _HomeRepo.GetUserAvatar(UserId).LastName;
                 ViewBag.Avatar = _HomeRepo.GetUserAvatar(UserId).Avatar;
                 return View();
