@@ -45,17 +45,20 @@ namespace CIPlatform.Controllers
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
+            //if (UserId > 0)
+            //{
+                ViewBag.CMSList = _HomeRepo.getCMS();
             if (UserId > 0)
             {
-                ViewBag.CMSList = _HomeRepo.getCMS();
                 ViewBag.UserName = _HomeRepo.GetUserAvatar(UserId).FirstName + " " + _HomeRepo.GetUserAvatar(UserId).LastName;
                 ViewBag.Avatar = _HomeRepo.GetUserAvatar(UserId).Avatar;
+            }
                 return View();
-            }
-            else
-            {
-                return RedirectToAction("Login","User");
-            }
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Login","User");
+            //}
         }
 
         public IActionResult Header()

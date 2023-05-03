@@ -153,11 +153,11 @@ namespace CIPlatform.Repository.Repository
             switch (sort)
             {
                 case 1:
-                    missions = missions.OrderBy(i => i.CreatedAt).ToList();
+                    missions = missions.OrderByDescending(i => i.CreatedAt).ToList();
                     break;
 
                 case 2:
-                    missions = missions.OrderByDescending(i => i.CreatedAt).ToList();
+                    missions = missions.OrderBy(i => i.CreatedAt).ToList();
                     break;
 
                 case 3:
@@ -202,7 +202,7 @@ namespace CIPlatform.Repository.Repository
         
         public List<MissionData> GetMissionCardsList(long UserId)
         {
-            var missions = _DbContext.Missions.Where(m=>m.DeletedAt == null).ToList();
+            var missions = _DbContext.Missions.OrderByDescending(m=> m.CreatedAt).Where(m=>m.DeletedAt == null && m.Status != false).ToList();
 
             List<MissionData> missionDatas = new List<MissionData>();
 
@@ -304,7 +304,7 @@ namespace CIPlatform.Repository.Repository
                 }
                 missionData.IsApplied = (_DbContext.MissionApplications.FirstOrDefault(a => a.UserId == UserId && a.MissionId == objMission.MissionId) != null) ? 1 : 0;
 
-                DateTime dt = new DateTime(2023, 01, 01, 12, 0, 0);
+                DateTime dt = new DateTime(2023, 10, 10, 12, 0, 0);
 
                 missionData.Deadline = dt;
 

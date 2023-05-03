@@ -28,6 +28,10 @@
             color: #F88634;
             cursor: pointer
         }
+        .card-imgs {
+        height: 250px;
+        max-height: 250px !important;
+    }
 
 </style>
 <br />
@@ -45,10 +49,10 @@
         @foreach (var item in ViewBag.missionDatas)
         {
             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 pb-3" style="">
-                <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
-                    <div class="thumbnail col-lg-12 col-md-12 col-sm-12 ">
+                <div class="hidden-xs">
+                    <div class="thumbnail h-100">
                         <div class="card">
-                            <img src="~/Assets/StoryImages/@item.MediaName" class="img-fluid">
+                            <img src="~/Assets/StoryImages/@item.MediaName" class="img-fluid card-imgs">
                             <div class="position-relative">
                                 <div class="position-absolute top-100 start-50 translate-middle rounded-5 p-2" style="background-color: white;">@item.Theme</div>
                             </div>

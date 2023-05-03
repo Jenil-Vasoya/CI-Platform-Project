@@ -1,10 +1,4 @@
-﻿
-
-<partial name="_FirstNav">
-
-
-
-    <style>
+﻿    <style>
        
 
  .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -29,11 +23,17 @@
     </style>
 
 
+<partial name="_FirstNav">
 
-    <div class="container-fluid p-0">
-        <div class="row flex-nowrap g-0">
 
-            <div class="col-2 col-md-4 col-lg-3 col-xl-2 side-nav ">
+
+
+
+
+    <div class="container p-0">
+            <h2>Privacy and Cookies Policy</h2>
+        <div class="row flex-nowrap g-0 pt-3">
+            <div class="col-2 col-md-4 col-lg-3 col-xl-2 side-nav">
                 <div class="d-flex flex-column align-items-end align-items-sm-end min-vh-100">
                     <ul class="nav nav-pills flex-column align-items-center align-items-sm-center nav-list w-100" id="menu">
 
@@ -41,10 +41,11 @@
                         @foreach (var item in ViewBag.CMSList)
                         {
                             <li style="width: 100%;">
-                                <a href="#" class="nav-link align-end btn applyButton border d-flex" id="nav-@item.Title-tab" data-bs-toggle="tab" data-bs-target="#nav-@item.Title" role="tab" aria-controls="nav-@item.Title" aria-selected="true">
-                                    <span class="ms-1 text-start">@item.Title</span>
-                                    
-                                    <i class="bi bi-chevron-compact-right text-end"></i>
+                                <a href="#" class="nav-link align-end btn applyButton border-bottom d-flex" id="nav-@item.Slug-tab" data-bs-toggle="tab" data-bs-target="#nav-@item.Slug" role="tab" aria-controls="nav-@item.Slug" aria-selected="true">
+                                    <span class="ms-0 ">@item.Title</span>
+                                   
+                                    <i class="bi bi-chevron-compact-right ms-auto"></i>
+                                   
                                 </a>
                             </li>
                         }
@@ -62,14 +63,15 @@
                 
 
 
-                <div class="m-2">
+                <div class="ms-3">
                     <div class="tab-content" id="nav-tabContent">
 
                         @foreach (var item in ViewBag.CMSList)
                         {
-                            <div class="tab-pane fade show active" id="nav-@item.Title" role="tabpanel" aria-labelledby="nav-@item.Title-tab">
+                            <div class="tab-pane fade show active" id="nav-@item.Slug" role="tabpanel" aria-labelledby="nav-@item.Slug-tab">
+                                <h2>@item.Title</h2>
                                 <div id="searchUser1" style="padding:10px;">
-                                    <h4 class="pt-3 pb-2">@item.Description</h4>
+                                    <h6 class="pt-3 pb-2">@item.Description</h6>
                                 </div>
                             </div>
                         }

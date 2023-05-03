@@ -32,13 +32,13 @@ namespace CIPlatform.Repository.Repository
 
         public List<User> UserList()
         {
-            List<User> objUserList = _DbContext.Users.Where(u=> u.DeletedAt == null).ToList();
+            List<User> objUserList = _DbContext.Users.Where(u=> u.DeletedAt == null && u.Status != false).ToList();
             return objUserList;
         }
         
         public List<Banner> BannerList()
         {
-            List<Banner> objBannerList = _DbContext.Banners.Where(u=> u.DeletedAt == null).ToList();
+            List<Banner> objBannerList = _DbContext.Banners.OrderBy(b=> b.SortOrder).Where(u=> u.DeletedAt == null).ToList();
             return objBannerList;
         }
 

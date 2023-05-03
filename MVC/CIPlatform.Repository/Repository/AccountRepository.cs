@@ -406,6 +406,17 @@ namespace CIPlatform.Repository.Repository
                     }
                 }
 
+                if(model.GoalText != null && model.GoalValue != 0)
+                {
+                    GoalMission goalMission = new GoalMission();
+                    goalMission.MissionId = mission.MissionId;
+                    goalMission.GoalObjectiveText = model.GoalText;
+                    goalMission.GoalValue = model.GoalValue;
+
+                    _DbContext.GoalMissions.Add(goalMission);
+                    _DbContext.SaveChanges();
+                }
+
                 if(model.Images.Count != 0)
                 {
                     List<MissionMedium> missionMedia = _DbContext.MissionMedia.Where(a => a.MissionId == mission.MissionId).ToList();
@@ -441,27 +452,30 @@ namespace CIPlatform.Repository.Repository
 
                     }
 
-                    var docPath = new List<string>();
-                    foreach (var i in model.Documents)
+                    if (model.Documents != null)
                     {
-                        MissionDocument missionDocument = new MissionDocument();
-                        missionDocument.MissionId = mission.MissionId;
-                        missionDocument.DocumentName = i.FileName;
-                        missionDocument.DocumentType = "pdf";
-                        missionDocument.DocumentPath = "~/Assets/Document/" + i.FileName;
-                        _DbContext.MissionDocuments.Add(missionDocument);
-                        _DbContext.SaveChanges();
-                        if (i.Length > 0)
+                        var docPath = new List<string>();
+                        foreach (var i in model.Documents)
                         {
-                            //string path = Server.MapPath("~/wwwroot/Assets/Story");
-                            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/Document", i.FileName);
-                            docPath.Add(path);
-                            using (var stream = new FileStream(path, FileMode.Create))
+                            MissionDocument missionDocument = new MissionDocument();
+                            missionDocument.MissionId = mission.MissionId;
+                            missionDocument.DocumentName = i.FileName;
+                            missionDocument.DocumentType = "pdf";
+                            missionDocument.DocumentPath = "~/Assets/Document/" + i.FileName;
+                            _DbContext.MissionDocuments.Add(missionDocument);
+                            _DbContext.SaveChanges();
+                            if (i.Length > 0)
                             {
-                                i.CopyTo(stream);
+                                //string path = Server.MapPath("~/wwwroot/Assets/Story");
+                                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/Document", i.FileName);
+                                docPath.Add(path);
+                                using (var stream = new FileStream(path, FileMode.Create))
+                                {
+                                    i.CopyTo(stream);
+                                }
                             }
-                        }
 
+                        }
                     }
 
                 }
@@ -482,6 +496,7 @@ namespace CIPlatform.Repository.Repository
             else
             {
                 var mission = _DbContext.Missions.Find(model.MissionId);
+                var goalMission = _DbContext.GoalMissions.Where(g=> g.MissionId == model.MissionId).FirstOrDefault();
                 if (mission != null)
                 {
 
@@ -497,11 +512,54 @@ namespace CIPlatform.Repository.Repository
                     mission.OrganizationName = model.OrganizationName;
                     mission.OrganizationDetail = model.OrganizationDetail;
                     mission.ShortDescription = model.ShortDescription;
-                    mission.TotalSeats = 10;
+                    mission.TotalSeats = model.TotalSeats;
                     mission.UpdatedAt = DateTime.Now;
 
                     _DbContext.Missions.Update(mission);
                     _DbContext.SaveChanges();
+
+
+                    if (model.MissionType == "Goal")
+                    {
+                        if (goalMission != null)
+                        {
+
+                            goalMission.MissionId = mission.MissionId;
+                            goalMission.GoalObjectiveText = model.GoalText;
+                            goalMission.GoalValue = model.GoalValue;
+
+                            _DbContext.GoalMissions.Update(goalMission);
+                            _DbContext.SaveChanges();
+                        }
+                        else
+                        {
+                            GoalMission goalMission1 = new GoalMission();
+                            goalMission1.MissionId = mission.MissionId;
+                            goalMission1.GoalObjectiveText = model.GoalText;
+                            goalMission1.GoalValue = model.GoalValue;
+
+                            _DbContext.GoalMissions.Add(goalMission1);
+                            _DbContext.SaveChanges();
+                        }
+                    }
+                    else
+                    {
+                        if (goalMission != null)
+                        {
+                            _DbContext.GoalMissions.Remove(goalMission);
+                            _DbContext.SaveChanges();
+                        }
+                    }
+                    //else if (model.GoalText != null && model.GoalValue != 0)
+                    //{
+                    //    GoalMission goalMissionAdd = new GoalMission();
+                    //    goalMissionAdd.MissionId = mission.MissionId;
+                    //    goalMissionAdd.GoalObjectiveText = model.GoalText;
+                    //    goalMissionAdd.GoalValue = model.GoalValue;
+
+                    //    _DbContext.GoalMissions.Add(goalMissionAdd);
+                    //    _DbContext.SaveChanges();
+                    //}
 
                     if (model.MissionSkill.Count != 0)
                     {
@@ -593,9 +651,19 @@ namespace CIPlatform.Repository.Repository
          public Mission EditMission(long MissionId)
         {
             var mission = _DbContext.Missions.Where(c => c.MissionId == MissionId).FirstOrDefault();
+            var goalMission = _DbContext.GoalMissions.Where(g=> g.MissionId == MissionId).FirstOrDefault();
 
-            mission.StartDateEdit = mission.StartDate.Value.ToString("yyyy-MM-dd");
-            mission.EndDateEdit = mission.EndDate.Value.ToString("yyyy-MM-dd");
+            if (goalMission != null)
+            {
+                mission.GoalMissionId = goalMission.GoalMissionId;
+                mission.GoalText = goalMission.GoalObjectiveText;
+                mission.GoalValue = goalMission.GoalValue;
+            }
+            else
+            {
+                mission.StartDateEdit = mission.StartDate.Value.ToString("yyyy-MM-dd");
+                mission.EndDateEdit = mission.EndDate.Value.ToString("yyyy-MM-dd");
+            }
 
 
             var skill = _DbContext.MissionSkills.Where(u => u.MissionId == MissionId).ToList();

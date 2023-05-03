@@ -38,7 +38,14 @@
                 <tbody class="table-border">
                     <tr>
                         <td>@item.SkillName</td>
-                        <td>@item.Status</td>
+                        @if (item.Status == true)
+                        {
+                            <td style="color: green;">Active</td>
+                        }
+                        else
+                        {
+                            <td class="text-danger">Inactive</td>
+                        }
                         <td>
                             <button type="button" class="btn p-0" onclick="editSkill('nav-skill',@item.SkillId)">
                                 <i class="bi bi-pencil-square" style="color: coral;"></i>

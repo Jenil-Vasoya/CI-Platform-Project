@@ -5,81 +5,84 @@
         cursor: pointer;
     }
  </style> 
- <nav class="navbar navbar-expand navbar-light bg-light">
-            <div class="container">
-                <ul class="navbar-nav storyp">
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <div class="container">
+       @* @if (ViewBag.UserName != null)
+        {*@
+            <ul class="navbar-nav storyp">
 
 
-            <li class="nav-item">
-                @{
-                    if (@Context.Session.GetString("Country") is not null)
-                    {
-                        <a class="nav-link" asp-controller="Home" asp-action="MissionGrid">Home</a>
-                    }
-                    else
-                    {
-                        <a class="nav-link" asp-controller="Home" asp-action="MissionGrid" style="pointer-events:none;">Home</a>
-                    }
-                    
-                }
-            </li>
-
-                    <li class="nav-item">
-                        @{
-                        if(@Context.Session.GetString("Country") is not null)
+                <li class="nav-item">
+                    @{
+                        if (@Context.Session.GetString("Country") is not null)
                         {
-                        <a class="nav-link" asp-controller="Story" asp-action="StoryList"> Stories </a>
+                            <a class="nav-link" asp-controller="Home" asp-action="MissionGrid">Home</a>
                         }
                         else
                         {
-                             <a class="nav-link" asp-controller="Story" asp-action="StoryList" style="pointer-events:none;"> Stories </a>
+                            <a class="nav-link" asp-controller="Home" asp-action="MissionGrid" style="pointer-events:none;">Home</a>
                         }
-                        }
-                    </li>
 
-
-
-
-            <li class="nav-item">
-                @{
-                    string role = @Context.Session.GetString("Role")?? "";
-                    //var userId =  @Context.Session.GetInt32("userid");
-
-                    if (role.Trim() == "Admin")
-                    {
-                        <a class="nav-link" asp-controller="Admin" asp-action="Index">Admin Panel</a>
                     }
-                }
-            </li>
-            
-                    <li class="nav-item dropdown policyp">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            Policy
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" asp-controller="Admin" asp-action="Index">Something else here</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="d-flex ">
-                    <a class="nav-link " style="padding-right: 0px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="~/Assets/StoryImages/@ViewBag.Avatar" class="img rounded-5" style="height: 40px; width: 40px;">
+                </li>
+
+                <li class="nav-item">
+                    @{
+                        if (@Context.Session.GetString("Country") is not null)
+                        {
+                            <a class="nav-link" asp-controller="Story" asp-action="StoryList"> Stories </a>
+                        }
+                        else
+                        {
+                            <a class="nav-link" asp-controller="Story" asp-action="StoryList" style="pointer-events:none;"> Stories </a>
+                        }
+                    }
+                </li>
+
+
+
+
+                <li class="nav-item">
+                    @{
+                        string role = @Context.Session.GetString("Role") ?? "";
+                        //var userId =  @Context.Session.GetInt32("userid");
+
+                        if (role.Trim() == "Admin")
+                        {
+                            <a class="nav-link" asp-controller="Admin" asp-action="Index">Admin Panel</a>
+                        }
+                    }
+                </li>
+
+                <li class="nav-item dropdown policyp">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                        Policy
                     </a>
-                   <div class="dropdown-center my-auto uname">
-                        
-                        <a class="nav-link dropdown-toggle ms-1 " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">@ViewBag.UserName</a>
-                        <ul class=" dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                            <li><a class="dropdown-item" asp-controller="User" asp-action="EditProfile" asp-route-id="@ViewBag.UserId">Add Profile</a></li>
-                            <li><a class="dropdown-item" asp-controller="User" asp-action="VolunteerTimeSheet">Volunteering Timesheet</a></li>
-                            <li><a class="dropdown-item" asp-controller="User" asp-action="LogOut">Log Out</a></li>
-                        </ul>
-                    </div>
-                </div>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" asp-controller="Admin" asp-action="Index">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="d-flex ">
+                <a class="nav-link " style="padding-right: 0px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="~/Assets/StoryImages/@ViewBag.Avatar" class="img rounded-5" style="height: 40px; width: 40px;">
+            </a>
+            <div class="dropdown-center my-auto uname">
+
+                <a class="nav-link dropdown-toggle ms-1 " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">@ViewBag.UserName</a>
+                <ul class=" dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                    <li><a class="dropdown-item" asp-controller="User" asp-action="EditProfile" asp-route-id="@ViewBag.UserId">Add Profile</a></li>
+                    <li><a class="dropdown-item" asp-controller="User" asp-action="VolunteerTimeSheet">Volunteering Timesheet</a></li>
+                    <li><a class="dropdown-item" asp-controller="User" asp-action="LogOut">Log Out</a></li>
+                </ul>
             </div>
-        </nav>
+        </div>
+        
+    </div>
+</nav>

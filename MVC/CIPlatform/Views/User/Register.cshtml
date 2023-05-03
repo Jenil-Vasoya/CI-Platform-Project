@@ -34,12 +34,12 @@
             <div class="container h-100">
                 <div class="row h-100 justify-content-center align-items-end">
                     <div class="col-10 col-md-8 col-lg-12">
-                        <form class="form-example" action="" method="post">
+                        <form class="form-example" action="" id="registerForm" method="post">
                             <div class="form-group my-2">
                                 <label asp-for="FirstName">First Name</label>
                                 <input type="text" asp-for="FirstName" class="form-control my-2 mb-0" id="firstname" placeholder="Enter first name"
                                        name="firstname">
-                                       <span asp-validation-for="FirstName" class="text-danger" style="font-size:smaller;"></span>
+                                       <span asp-validation-for="FirstName" id="validName" class="text-danger" style="font-size:smaller;"></span>
 
                             </div>
                             <div class="form-group mt-4">
@@ -49,28 +49,24 @@
                             </div>
                             <div class="form-group mt-4">
                                 <label asp-for="PhoneNumber">Phone Number</label>
-                                <input type="number" asp-for="PhoneNumber" class="form-control my-2 mb-0" id="phonenumber" placeholder="Enter phone number"
-                                       name="phonenumber">
-                                       <span></span>
+                                <input type="number" asp-for="PhoneNumber" class="form-control my-2 mb-0" id="phonenumber" placeholder="Enter phone number" name="phonenumber">
+                                       
                             </div>
                             <div class="form-group mt-4">
                                 <label asp-for="Email">Email Address</label>
-                                <input type="email" asp-for="Email" class="form-control username my-2 mb-0" id="email" placeholder="Enter Email"
-                                       name="email">
-                                        <span asp-validation-for="Email" class="text-danger" style="font-size:smaller"></span>
+                                <input type="email" asp-for="Email" class="form-control username my-2 mb-0" id="email" placeholder="Enter Email" name="email">
+                                        <span asp-validation-for="Email" class="text-danger" id="validEmail" style="font-size:smaller"></span>
                             </div>
                             <div class="form-group mt-4">
                                 <label asp-for="Password">New Password</label>
-                                <input type="password" asp-for="Password" class="form-control my-2 mb-0" id="password" placeholder="Enter new password"
-                                       name="password">
-                                       <span asp-validation-for="Password" class="text-danger" style="font-size:smaller;"></span>
+                                <input type="password" asp-for="Password" class="form-control my-2 mb-0" id="password" placeholder="Enter new password" name="password">
+                                       <span asp-validation-for="Password" id="validPassword" class="text-danger" style="font-size:smaller;"></span>
                             </div>
 
                             <div class="form-group mt-3">
                                 <label for="confirmpassword">Confirm Password</label>
-                                <input type="password" class="form-control my-2 mb-0" id="confirmpassword" placeholder="Confirm password"
-                                       name="confirmpassword">
-                                       <span asp-validation-for="ConfirmPassword" class="text-danger" style="font-size:smaller;"></span>
+                                <input type="password" class="form-control my-2 mb-0" id="confirmpassword" placeholder="Confirm password" name="confirmpassword">
+                                       <span asp-validation-for="ConfirmPassword" id="validConfirmPassword" class="text-danger" style="font-size:smaller;"></span>
                             </div>
 
                             <button type="submit" asp-controller="User" asp-action="Register" class="btn applyButton my-2 mt-3 w-100"
@@ -95,7 +91,7 @@
 
                     </div>
                     <div class="policy">
-                        <a href="#" class="link-secondary">Privacy Policy</a>
+                        <a asp-controller="Home" asp-action="Policy class="link-secondary">Privacy Policy</a>
                     </div>
                 </div>
             </div>
@@ -104,3 +100,161 @@
 
    
 </body>
+
+
+<script>
+    const form = document.getElementById('registerForm');
+    const firstNameInput = document.getElementById('firstname');
+    const lastNameInput = document.getElementById('lastname');
+    const phoneNumberInput = document.getElementById('phonenumber');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmpassword');
+    const validName = document.getElementById('validName');
+    const validEmail = document.getElementById('validEmail');
+    const validPassword = document.getElementById('validPassword');
+    const validConfirmPassword = document.getElementById('validConfirmPassword');
+
+     
+
+    function validateForm(event) {
+        debugger
+
+        var password = $('#password').val();
+    var minLength = 8;
+    var hasUpperCase = /[A-Z]/.test(password);
+    var hasLowerCase = /[a-z]/.test(password);
+    var hasNumber = /\d/.test(password);
+    var hasSpecialChar = /[!#$%^&*(),.?":{}|<>]/.test(password);
+
+        let valid = true;
+        event.preventDefault();
+
+
+         if (password.length < minLength) {
+                  $('#validPassword').text('Password must be at least ' + minLength + ' characters long');
+                  valid = false;
+                } 
+                else if (!hasUpperCase) {
+                  $('#validPassword').text('Password must contain at least one uppercase letter');
+                  valid = false;
+                } 
+                else if (!hasLowerCase) {
+                  $('#validPassword').text('Password must contain at least one lowercase letter');
+                  valid = false;
+                } 
+                else if (!hasNumber) {
+                  $('#validPassword').text('Password must contain at least one number');
+                  valid = false;
+                } 
+                else if (!hasSpecialChar) {
+                  $('#validPassword').text('Password must contain at least one special character');
+                  valid = false;
+                } 
+
+        if (!firstNameInput.value) {
+            validName.textContent = 'Please enter your first name';
+            valid = false;
+        } else {
+            validName.textContent = '';
+        }
+
+        if (!emailInput.value) {
+            validEmail.textContent = 'Please enter your email address';
+            valid = false;
+        } else {
+            validEmail.textContent = '';
+        }
+
+        if (!passwordInput.value) {
+            validPassword.textContent = 'Please enter a password';
+            valid = false;
+        } 
+
+        if (!confirmPasswordInput.value) {
+            validConfirmPassword.textContent = 'Please confirm your password';
+            valid = false;
+        } else if (passwordInput.value !== confirmPasswordInput.value) {
+            validConfirmPassword.textContent = 'Passwords do not match';
+            valid = false;
+        } else {
+            validConfirmPassword.textContent = '';
+        }
+
+        if (valid) {
+            form.submit();
+        }
+    }
+
+    form.addEventListener('submit', validateForm);
+
+    firstNameInput.addEventListener('keyup', () => {
+        validName.textContent = '';
+    });
+
+    emailInput.addEventListener('keyup', () => {
+        validEmail.textContent = '';
+    });
+
+    passwordInput.addEventListener('keyup', () => {
+        validPassword.textContent = '';
+        validateForm(event);
+        if (confirmPasswordInput.value && passwordInput.value !== confirmPasswordInput.value) {
+            validConfirmPassword.textContent = 'Passwords do not match';
+        } else {
+            validConfirmPassword.textContent = '';
+        }
+    });
+
+    confirmPasswordInput.addEventListener('keyup', () => {
+        if (passwordInput.value && confirmPasswordInput.value !== passwordInput.value) {
+            validConfirmPassword.textContent = 'Passwords do not match';
+        } else {
+            validConfirmPassword.textContent = '';
+        }
+    });
+</script>
+
+
+
+@*<script>
+    // Get the form element
+    const form = document.getElementById("registerForm");
+
+    // Add an event listener for the form submit event
+    form.addEventListener("submit", function(event) {
+        debugger
+        // Get the input fields
+        $('#validEmail').text('');
+        $('#validPassword').text('');
+        const email = $('#email').val();
+        const password = $('#password').val();
+
+        // Check if the fields are empty
+        if (email == '' || password == '') {
+            // Prevent the form from submitting
+            event.preventDefault();
+            if(email == '')
+            {
+            $('#validEmail').text('Please enter the Email');
+            }
+            if(password == '')
+            {
+            $('#validPassword').text('Please enter the Password');
+            }
+
+        }
+       
+    });
+
+    $('#email').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validEmail').text('');
+        }
+    });
+    $('#password').keyup(function() {
+        if ($(this).val() != '') {
+            $('#validPassword').text('');
+        }
+    });
+</script>*@

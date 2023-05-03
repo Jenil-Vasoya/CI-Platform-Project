@@ -446,7 +446,7 @@
                                                 <img src="~/Assets/images/calender.png" class="img-fluid">
                                                 <br><br class=" d-lg-none" />
                                                 <p class="card-title pt-xl-2 " style="text-transform: capitalize;">Date</p>
-                                                <h6 class="card-text ">@ViewBag.missionDatas.EndDate.ToString("dd/MM/yyyy")</h6>
+                                                <h6 class="card-text ">@ViewBag.missionDatas.Deadline.ToString("dd/MM/yyyy")</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -473,7 +473,11 @@
                                 }
                                 else if(@ViewBag.missionDatas.IsApplied == 1)
                                 {
-                                    <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton " disabled> Apply &nbsp; &nbsp; <i class="bi bi-arrow-right"></i></button>
+                                    <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton " disabled> Alredy Applied</button>
+                                }
+                                 else if(@ViewBag.missionDatas.Deadline < @DateTime.Now)
+                                {
+                                    <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton " disabled> Registration Date Over &nbsp; &nbsp; <i class="bi bi-clock-history"></i></button>
                                 }
                                 else
                                 {
@@ -618,7 +622,7 @@
         <br />
         <hr />
 
-        <div class="row">
+        <div class="row g-0">
             <h3 class="text-center">Related Missions</h3>
             <br />
 
@@ -626,9 +630,9 @@
 
             @foreach (var item in @ViewBag.relatedmission)
             {
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 pb-3" style="">
-                    <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
-                        <div class="thumbnail col-lg-12 col-md-12 col-sm-12 ">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 pb-3 px-2" style="">
+                    <div class="hidden-xs">
+                        <div class="thumbnail">
                             <div class="card">
                                 <img src="~/Assets/StoryImages/@item.MediaName" class="img-fluid">
                                 <div class="position-relative">
@@ -853,8 +857,10 @@ function PostRating(i,MissionId) {
                     if(data == 1)
                     {
                              debugger
-                             toastr.success('Rateing applied');
-                             setTimeout(function(){ location.reload();}, 2000);
+                             @*toastr.success('Rateing applied');
+                             setTimeout(function(){ location.reload();}, 2000);*@
+                              localStorage.setItem('rate', 'true');
+                              location.reload();
                     }
                     else if(data == 2)
                     {
@@ -873,6 +879,17 @@ function PostRating(i,MissionId) {
             });
 
         }
+
+        $(document).ready(function() {
+    if (localStorage.getItem('rate') === 'true') {
+         toastr.options = {
+                                                        "closeButton": true
+                                                    }
+        toastr.success('Thanks for your rating');
+       
+        localStorage.setItem('rate', 'false');
+    }
+});
 
 function searchMission(pg) {
 
