@@ -2,7 +2,8 @@
 
 
 
-@section hidefooter {}
+@section hidefooter {
+}
 
 
 @if (TempData["RegisterSuccess"] != null)
@@ -14,10 +15,10 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
     <script type="text/javascript">
-       
+
         toastr.success('@TempData["RegisterSuccess"]')
     </script>
-    
+
 }
 @if (TempData["Fail"] != null)
 {
@@ -28,7 +29,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
     <script type="text/javascript">
-       
+
         toastr.error('@TempData["Fail"]')
     </script>
 
@@ -42,7 +43,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
     <script type="text/javascript">
-        
+
         toastr.success('@TempData["ResetSuccess"]')
     </script>
 
@@ -56,14 +57,14 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
     <script type="text/javascript">
-        
+
         toastr.success('@TempData["LinkSent"]')
     </script>
 
 }
 
 
-  <link href="~/Assets/css/style.css" rel="stylesheet">
+<link href="~/Assets/css/style.css" rel="stylesheet">
 
 
 <body>
@@ -77,17 +78,18 @@
                 <div class="row h-100 justify-content-center align-items-end">
                     <div class="col-10 col-md-8 col-lg-12">
                         <form class="form-example" action="" id="loginForm" method="post">
+                           
                             <div class="form-group my-2">
                                 <label asp-for="Email">Email Address</label>
                                 <input type="email" asp-for="Email" class="form-control my-2 mb-0" id="email" placeholder="Username"
-                                       name="email" >
-                                       <span asp-validation-for="Email" id="validEmail" class="text-danger" style="font-size:smaller"></span>
+                                       name="email">
+                                <span asp-validation-for="Email" id="validEmail" class="text-danger" style="font-size:smaller"></span>
                             </div>
                             <div class="form-group my-2">
                                 <label asp-for="Password">Password</label>
                                 <input type="password" asp-for="Password" class="form-control my-2 mb-0" id="password" placeholder="Password"
-                                       name="password" >
-                                 <span asp-validation-for="Password" id="validPassword" class="text-danger" style="font-size:smaller;"></span>
+                                       name="password">
+                                <span asp-validation-for="Password" id="validPassword" class="text-danger" style="font-size:smaller;"></span>
 
                             </div>
 
@@ -153,7 +155,7 @@
             }
 
         }
-       
+
     });
 
     $('#email').keyup(function() {

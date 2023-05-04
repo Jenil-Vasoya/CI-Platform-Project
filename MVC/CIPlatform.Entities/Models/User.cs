@@ -10,6 +10,9 @@ public partial class User
 {
     public long UserId { get; set; }
 
+    [NotMapped]
+    public long? returnId { get; set; }
+
     [Required(ErrorMessage = "Please enter the first name")]
     public string? FirstName { get; set; }
 

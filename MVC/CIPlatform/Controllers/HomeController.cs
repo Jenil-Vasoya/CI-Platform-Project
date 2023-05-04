@@ -24,13 +24,13 @@ namespace CIPlatform.Controllers
         public HomeController(IHomeRepository HomeRepo, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration, CIPlatformDbContext DbContext)
         {
             _HomeRepo = HomeRepo;
-             _httpContextAccessor = httpContextAccessor;
+            _httpContextAccessor = httpContextAccessor;
             configuration = _configuration;
             _DbContext = DbContext;
         }
 
- 
-        
+
+
         public IActionResult Index()
         {
             return View();
@@ -39,21 +39,21 @@ namespace CIPlatform.Controllers
         public IActionResult AddStory()
         {
             return View();
-        } 
-        
+        }
+
         public IActionResult Policy()
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
             //if (UserId > 0)
             //{
-                ViewBag.CMSList = _HomeRepo.getCMS();
+            ViewBag.CMSList = _HomeRepo.getCMS();
             if (UserId > 0)
             {
                 ViewBag.UserName = _HomeRepo.GetUserAvatar(UserId).FirstName + " " + _HomeRepo.GetUserAvatar(UserId).LastName;
                 ViewBag.Avatar = _HomeRepo.GetUserAvatar(UserId).Avatar;
             }
-                return View();
+            return View();
             //}
             //else
             //{
@@ -204,6 +204,7 @@ namespace CIPlatform.Controllers
             {
                 long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
+
                 if (UserId > 0)
                 {
                     List<User> users = _HomeRepo.UserList();
@@ -244,7 +245,11 @@ namespace CIPlatform.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Login", "User");
+
+                    return RedirectToAction("Login", "User", new { returnUrl = $"Home/VolunteerMission/{id}" });
+
+
+
                 }
             }
             catch (Exception ex)
@@ -256,22 +261,22 @@ namespace CIPlatform.Controllers
 
         public ActionResult Volunteer(long MissionId, int pg)
         {
-                long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-                if (UserId > 0)
-                {
-                    List<RecentVolunteer> missionDatas = _HomeRepo.RecentVolunteer(MissionId, pg);
-                    ViewBag.RecentVolunteer = missionDatas;
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+            if (UserId > 0)
+            {
+                List<RecentVolunteer> missionDatas = _HomeRepo.RecentVolunteer(MissionId, pg);
+                ViewBag.RecentVolunteer = missionDatas;
 
-                    ViewBag.pg_no = pg;
-                    ViewBag.Totalpages = Math.Ceiling(_HomeRepo.RecentVolunteer(MissionId, pg = 0).Count() / 3.0);
-                    ViewBag.RecentVolunteer = missionDatas.Skip((1 - 1) * 3).Take(3).ToList();
+                ViewBag.pg_no = pg;
+                ViewBag.Totalpages = Math.Ceiling(_HomeRepo.RecentVolunteer(MissionId, pg = 0).Count() / 3.0);
+                ViewBag.RecentVolunteer = missionDatas.Skip((1 - 1) * 3).Take(3).ToList();
 
-                    return PartialView("_RecentVolunteer");
-                }
-                else
-                {
-                    return RedirectToAction("Login", "User");
-                }
+                return PartialView("_RecentVolunteer");
+            }
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
         }
 
         [HttpPost]
@@ -321,16 +326,16 @@ namespace CIPlatform.Controllers
         }
 
 
-        public JsonResult AddToFavourite( long missionId)
+        public JsonResult AddToFavourite(long missionId)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
             bool mission = _HomeRepo.AddFavouriteMission(UserId, missionId);
-            if(mission == true)
+            if (mission == true)
             {
                 return Json(mission);
             }
-           
+
             return Json(null);
         }
 
@@ -338,18 +343,18 @@ namespace CIPlatform.Controllers
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-           
-                _HomeRepo.AddComment(comment, UserId, MissionId);
-            
+
+            _HomeRepo.AddComment(comment, UserId, MissionId);
+
         }
 
         public JsonResult ApplyMission(long missionId)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-              int success =  _HomeRepo.ApplyMission(UserId, missionId);
+            int success = _HomeRepo.ApplyMission(UserId, missionId);
             return Json(success);
-            
+
         }
 
 
@@ -379,7 +384,7 @@ namespace CIPlatform.Controllers
 
                 return 1;
             }
-            else if(UserValid == 2)
+            else if (UserValid == 2)
             {
                 return 2;
             }
@@ -393,10 +398,10 @@ namespace CIPlatform.Controllers
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-            var invited = _HomeRepo.CheckUser(userId,UserId, missionId);
-           
+            var invited = _HomeRepo.CheckUser(userId, UserId, missionId);
+
             return invited;
-            
+
         }
 
     }

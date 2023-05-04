@@ -62,8 +62,8 @@ namespace CIPlatform.Controllers
             }
             catch (Exception ex)
             {
-                TempData["SubmitStory"] = ex.Message;
-                return View();
+                TempData["Error"] = ex.Message;
+                return RedirectToAction("MissionGrid", "Home");
             }
         }
 
@@ -126,12 +126,15 @@ namespace CIPlatform.Controllers
                     ViewBag.Email = JsonConvert.DeserializeObject(HttpContext.Session.GetString("Email") ?? "");
                     ViewBag.UserName = _StoryRepo.GetUserAvatar(UserId).FirstName + " " + _StoryRepo.GetUserAvatar(UserId).LastName;
                     ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
-
+                    
                     return View();
                 }
                 else
                 {
-                    return RedirectToAction("Login", "User");
+                    
+                        return RedirectToAction("Login", "User", new { returnUrl = $"Story/StoryDetail/{id}" });
+                  
+                    
                 }
             }
             catch (Exception ex)
@@ -193,11 +196,11 @@ namespace CIPlatform.Controllers
                         if (submit != null)
                         {
                             btn = submit;
-                            TempData["SubmitStory"] = "Story Sent for Publish Successfully";
+                            TempData["SubmitStory"] = "Story Sent for Approval";
                         }
                         else
                         {
-                            TempData["SubmitStory"] = "Story Saved Successfully";
+                            TempData["SubmitStory"] = "Draft Story Saved";
                         }
                         if (objStory.MissionId != 0)
                         {

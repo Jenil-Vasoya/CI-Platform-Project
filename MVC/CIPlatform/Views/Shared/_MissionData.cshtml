@@ -202,20 +202,20 @@
     <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Add </h3>
     <hr class="m-0">
     <form class="px-3" id="demo1" enctype="multipart/form-data">
-        <div class="row">
+        <div class="row ms-1">
             <label class="mt-3 p-0"> Title </label>
             <input type="text" class="form-control" id="addMissionTitle">
             <span id="validAddMissionTitle" style="color:red; padding:0px"></span>
         </div>
 
-        <div class="row">
+        <div class="row ms-1">
         <label class="mt-3 p-0"> Description</label>
         <textarea id="addMissionDescription" type="text" class="form-control" rows="6" placeholder="Enter Description.."></textarea>
         <span id="validAddMissionDescription" style="color:red; padding:0px"></span>
         </div>
 
-        <div class="row">
-        <label class="mt-3"> Short Description </label>
+        <div class="row ms-1">
+        <label class="mt-3 p-0"> Short Description </label>
         <input type="text" class="form-control" id="addMissionShortDescription">
         </div>
 
@@ -253,7 +253,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row ms-1">
         <label class="mt-3 p-0"> Organisation Name </label>
         <input type="text" class="form-control" id="addMissionOrganisationName">
         <span id="validAddMissionOrganisationName" style="color:red; padding:0px"></span>
@@ -585,7 +585,7 @@
         <div class="row mt-2">
             <div class="col-sm-4">
                 <label class="form-label"> Documents </label>
-                <input type="file" id="editMissionDocument" class="form-control">
+                <input type="file" id="editMissionDocument" class="form-control" multiple>
             </div>
             <div class="col-sm-5">
                 <label class="form-label">Video </label>
@@ -960,9 +960,12 @@
 
     function editMissionData(event) {
         debugger
+
         const imgs = document.getElementById("imagesedit");
         const imgfiles = imgs.files;
+
         var type = $('#editMissionType').val();
+
         const docs = document.getElementById("editMissionDocument");
         const docfiles = docs.files;
 
@@ -992,6 +995,7 @@
         formData.append('EndDate', $('#editMissionEndDate').val());
         }
         formData.append('TotalSeats', $('#editMissionSeats').val());
+        formData.append('Deadline', $('#editMissionDeadline').val());
         formData.append('Availibility', $('#editMissionAvailability').val());
         formData.append('MissionType', $('#editMissionType').val());
         formData.append('Status', $('#editMissionStatus').val());
@@ -1029,7 +1033,7 @@
                 console.log(data);
                 $('#missions').html(data);
                 searchMission(@ViewBag.pg_no, 'mission');
-                toastr.success('Mission edit successfully');
+                toastr.success('Mission Updated');
 
 
             },
@@ -1061,6 +1065,7 @@
         formData.append('Description', $('#addMissionDescription').val());
         formData.append('StartDate', $('#addMissionStartDate').val());
         formData.append('EndDate', $('#addMissionEndDate').val());
+        formData.append('Deadline', $('#addMissionDeadline').val());
         formData.append('GoalText', $('#addMissionGoalText').val());
         formData.append('GoalValue', $('#addMissionGoalValue').val());
         formData.append('TotalSeats', $('#addMissionSeat').val());
@@ -1100,7 +1105,7 @@
                 console.log(data);
                 $('#missions').html(data);
                 searchMission(@ViewBag.pg_no, 'mission');
-                toastr.success('Mission add sucessfully');
+                toastr.success('Mission Created');
 
 
             },
@@ -1130,6 +1135,7 @@
                 $('#editMissionDescription').val(data.description);
                 $('#editMissionStartDate').val(data.startDateEdit);
                 $('#editMissionEndDate').val(data.endDateEdit);
+                $('#editMissionDeadline').val(data.editDeadline);
                 $('#editMissionType').val(data.missionType);
                 $('#GoalMissionId').val(data.goalMissionId);
                 $('#editMissionGoalText').val(data.goalText);

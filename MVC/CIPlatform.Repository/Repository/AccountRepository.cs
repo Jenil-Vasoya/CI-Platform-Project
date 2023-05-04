@@ -372,18 +372,6 @@ namespace CIPlatform.Repository.Repository
 
                 Mission mission = new Mission();
                 {
-                    //mission.Title = model.Title;
-                    //mission.Description = model.Description;
-                    //mission.Status = model.Status;
-                    //mission.CityId = model.CityId;
-                    //mission.CountryId = model.CountryId;
-                    //mission.EndDate = model.EndDate;
-                    //mission.StartDate = model.StartDate;
-                    //mission.MissionType = model.MissionType;
-                    //mission.MissionThemeId = model.MissionThemeId;
-                    //mission.OrganizationName = model.OrganizationName;
-                    //mission.OrganizationDetail = model.OrganizationDetail;
-                    //mission.ShortDescription = model.ShortDescription;
                     mission = model;
                     mission.TotalSeats = model.TotalSeats;
                     mission.Availibility = model.Availibility;
@@ -506,6 +494,7 @@ namespace CIPlatform.Repository.Repository
                     mission.CityId = model.CityId;
                     mission.CountryId = model.CountryId;
                     mission.EndDate = model.EndDate;
+                    mission.Deadline = model.Deadline;
                     mission.StartDate = model.StartDate;
                     mission.MissionType = model.MissionType;
                     mission.MissionThemeId = model.MissionThemeId;
@@ -621,6 +610,39 @@ namespace CIPlatform.Repository.Repository
                         }
 
                     }
+                    if (model.Documents != null)
+                    {
+                        List<MissionDocument> missionDocuments = _DbContext.MissionDocuments.Where(a => a.MissionId == mission.MissionId).ToList();
+                        foreach (var document in missionDocuments)
+                        {
+                            _DbContext.MissionDocuments.Remove(document);
+                            _DbContext.SaveChanges();
+                        }
+
+
+                        var docPath = new List<string>();
+                        foreach (var i in model.Documents)
+                        {
+                            MissionDocument missionDocument = new MissionDocument();
+                            missionDocument.MissionId = mission.MissionId;
+                            missionDocument.DocumentName = i.FileName;
+                            missionDocument.DocumentType = "pdf";
+                            missionDocument.DocumentPath = "~/Assets/Document/" + i.FileName;
+                            _DbContext.MissionDocuments.Add(missionDocument);
+                            _DbContext.SaveChanges();
+                            if (i.Length > 0)
+                            {
+                                //string path = Server.MapPath("~/wwwroot/Assets/Story");
+                                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/Document", i.FileName);
+                                docPath.Add(path);
+                                using (var stream = new FileStream(path, FileMode.Create))
+                                {
+                                    i.CopyTo(stream);
+                                }
+                            }
+
+                        }
+                    }
                     if (model.VideoUrl != null)
                     {
                         List<MissionMedium> missionMedia = _DbContext.MissionMedia.Where(a => a.MissionId == mission.MissionId && a.MediaType == "mp4").ToList();
@@ -665,7 +687,7 @@ namespace CIPlatform.Repository.Repository
                 mission.EndDateEdit = mission.EndDate.Value.ToString("yyyy-MM-dd");
             }
 
-
+            mission.EditDeadline = mission.Deadline.Value.ToString("yyyy-MM-dd");
             var skill = _DbContext.MissionSkills.Where(u => u.MissionId == MissionId).ToList();
             var images = _DbContext.MissionMedia.Where(m => m.MissionId == MissionId).ToList();
 

@@ -333,6 +333,7 @@ public partial class CIPlatformDbContext : DbContext
                 .HasMaxLength(128)
                 .IsUnicode(false);
             entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
+            entity.Property(e => e.Deadline).HasColumnType("datetime");
 
             entity.HasOne(d => d.City).WithMany(p => p.Missions)
                 .HasForeignKey(d => d.CityId)

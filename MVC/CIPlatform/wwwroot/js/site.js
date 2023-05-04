@@ -85,13 +85,13 @@ function Add(MissionId,btn) {
                     $("#addToFavGrid_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
                     $("#addToFavVolun_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-black');
                     $("#addToFavList_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
-                    toastr.error('Remove from Favourite');
+                    toastr.error('Removed from Favourite');
                 }
                 else if (btn == 'btnaddToFav_') {
                     //$("#addToFav_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
                     $("#addToFavGrid_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
                     $("#addToFavList_" + MissionId).removeClass('bi-heart-fill').addClass('bi-heart text-white');
-                    toastr.error('Remove from Favourite');
+                    toastr.error('Removed from Favourite');
                 }
 
                

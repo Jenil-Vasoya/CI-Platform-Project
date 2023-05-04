@@ -57,6 +57,11 @@ public partial class Mission
 
     public DateTime? DeletedAt { get; set; }
 
+    public DateTime? Deadline { get; set; }
+
+    [NotMapped]
+    public string EditDeadline { get; set; }
+
     [NotMapped]
     public List<int>? MissionSkill { get; set; }
 

@@ -35,9 +35,23 @@ namespace CIPlatform.Controllers
             return View();
         }
 
-        public IActionResult Login()
+        public IActionResult Login(string? returnUrl)
         {
             ViewBag.Banner = _UserRepo.BannerList();
+            if (HttpContext.Session.GetString("userid") != null)
+            {
+                if (returnUrl != null)
+                {
+                    return new RedirectResult(returnUrl);
+                }
+            }
+            else
+            {
+                if (returnUrl != null)
+                {
+                    HttpContext.Session.SetString("returnUrl", returnUrl);
+                }
+            }
             return View();
         }
 
@@ -72,7 +86,7 @@ namespace CIPlatform.Controllers
 
                 if (result)
                 {
-                    TempData["SheetSuccess"] = "Your sheet added successfully🙍";
+                    TempData["SheetSuccess"] = "Sheet Created";
                 }
                 return RedirectToAction("VolunteerTimeSheet");
             }
@@ -92,7 +106,7 @@ namespace CIPlatform.Controllers
 
                 if (result)
                 {
-                    TempData["SheetSuccess"] = "Your sheet update successfully🧖";
+                    TempData["SheetSuccess"] = "Sheet Updated";
                 }
                 return RedirectToAction("VolunteerTimeSheet");
             }
@@ -111,7 +125,7 @@ namespace CIPlatform.Controllers
 
                 if (result)
                 {
-                    TempData["SheetDelete"] = "Your TimeSheet delete successfully🤦";
+                    TempData["SheetDelete"] = "TimeSheet Deleted";
                 }
                 return RedirectToAction("VolunteerTimeSheet");
             }
@@ -152,8 +166,13 @@ namespace CIPlatform.Controllers
                                 HttpContext.Session.SetString("Country", objLogin.CountryId.ToString());
                                 HttpContext.Session.SetString("Role", objUser.Role.ToString());
 
+                                var url = HttpContext.Session.GetString("returnUrl");
+                                if (url != null)
+                                {
+                                    return new RedirectResult(url);
+                                }
 
-                                TempData["Success"] = "Login Successfully";
+                                TempData["Success"] = "Login Success";
                                 return RedirectToAction("MissionGrid", "Home");
                             }
                             else
@@ -164,7 +183,7 @@ namespace CIPlatform.Controllers
                                 return RedirectToAction("EditProfile", "User");
                             }
                         }
-                        TempData["Fail"] = "Please enter correct password";
+                        TempData["Fail"] = "Wrong Password";
                         return View();
 
                     }
@@ -215,20 +234,20 @@ namespace CIPlatform.Controllers
                         {
                             if (isValid == true)
                             {
-                                TempData["RegisterSuccess"] = "Account Created Successfully";
+                                TempData["RegisterSuccess"] = "Account Created";
                                 return RedirectToAction("Login", "User");
 
                             }
-                            TempData["RegisterFail"] = "Registarion is fail";
+                            TempData["RegisterFail"] = "Registarion Fail";
                             return View();
 
                         }
                     }
-                    TempData["RegisterFail"] = "This email is already registered";
+                    TempData["RegisterFail"] = "Email is already registered";
                     return View();
 
                 }
-                TempData["RegisterFail"] = "Registarion is fail";
+                TempData["RegisterFail"] = "Registarion Fail";
                 return View();
 
             }
@@ -282,7 +301,7 @@ namespace CIPlatform.Controllers
                 }
                 else
                 {
-                    TempData["InvalidEmail"] = "This email in not registered";
+                    TempData["InvalidEmail"] = "Email is not registered";
                     return View();
                 }
             }
@@ -315,7 +334,7 @@ namespace CIPlatform.Controllers
                 if (_UserRepo.ChangePassword(id, model))
                 {
                     ModelState.Clear();
-                    TempData["ResetSuccess"] = "Your password has been updated";
+                    TempData["ResetSuccess"] = "Password Updated";
                     return RedirectToAction("Login", "User");
                 }
                 else
@@ -381,7 +400,7 @@ namespace CIPlatform.Controllers
                     UserData model = _UserRepo.GetUserlist(UserId);
                     if (result)
                     {
-                        TempData["EditSuccess"] = "Your profile was updated";
+                        TempData["EditSuccess"] = "Profile Updated";
                     }
                     else
                     {

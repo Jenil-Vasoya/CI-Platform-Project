@@ -10,8 +10,7 @@
 
     <script type="text/javascript">
         toastr.options = {
-            "closeButton": true,
-            "progressBar": true
+            "closeButton": true
         }
         toastr.success('@TempData["ResetSuccess"]', { timeOut: 10 })
     </script>
@@ -28,8 +27,7 @@
 
     <script type="text/javascript">
         toastr.options = {
-            "closeButton": true,
-            "progressBar": true
+            "closeButton": true
         }
         toastr.error('@TempData["ResetFail"]', { timeOut: 10 })
     </script>
@@ -45,8 +43,7 @@
 
     <script type="text/javascript">
         toastr.options = {
-            "closeButton": true,
-            "progressBar": true
+            "closeButton": true
         }
         toastr.success('@TempData["EditSuccess"]', { timeOut: 10 })
     </script>
@@ -62,8 +59,7 @@
 
     <script type="text/javascript">
         toastr.options = {
-            "closeButton": true,
-            "progressBar": true
+            "closeButton": true
         }
         toastr.error('@TempData["EditFail"]', { timeOut: 10 })
     </script>
@@ -528,14 +524,14 @@ function changePassword(){
                         "closeButton": true
                     }
                     $('#exampleModal').modal('hide');
-                    toastr.success('Your password updated')
+                    toastr.success('Password Updated')
                 }
                 else
                 {
                     toastr.options = {
                         "closeButton": true
                     }
-                    toastr.error('Please enter the correct old password')
+                    toastr.error('Wrong Old Password')
                 }
                 
             },
@@ -565,10 +561,9 @@ function setSkills() {
                                                 if(data == true)
                                                 {
                                                      toastr.options = {
-                                                        "closeButton": true,
-                                                        "progressBar": true
+                                                        "closeButton": true
                                                     }
-                                                    toastr.success('Skill changed successfully')
+                                                    toastr.success('Skill Updated')
                                                 }
                                               // Handle success response from server
                                             },
@@ -674,7 +669,7 @@ $(document).ready(function() {
          toastr.options = {
                                                         "closeButton": true
                                                     }
-        toastr.success('Your avatar changed');
+        toastr.success('Avatar Updated');
        
         localStorage.setItem('avatarChanged', 'false');
     }

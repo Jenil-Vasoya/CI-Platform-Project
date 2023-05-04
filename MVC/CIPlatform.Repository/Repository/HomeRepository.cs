@@ -304,9 +304,9 @@ namespace CIPlatform.Repository.Repository
                 }
                 missionData.IsApplied = (_DbContext.MissionApplications.FirstOrDefault(a => a.UserId == UserId && a.MissionId == objMission.MissionId) != null) ? 1 : 0;
 
-                DateTime dt = new DateTime(2023, 10, 10, 12, 0, 0);
+                
 
-                missionData.Deadline = dt;
+                missionData.Deadline = objMission.Deadline;
 
                 missionData.MediaPath = MediaByMissionId(objMission.MissionId).MediaPath;
                 missionData.MediaName = MediaByMissionId(objMission.MissionId).MediaName;

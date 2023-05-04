@@ -307,10 +307,11 @@ namespace CIPlatform.Repository.Repository
 
 
                 var mission = _DbContext.Missions.Where(c => c.MissionId == sheet.MissionId).FirstOrDefault();
-
-                volunteerSheet.StartDateEdit = mission.StartDate.Value.ToString("yyyy-MM-dd");
-                volunteerSheet.EndDateEdit = mission.EndDate.Value.ToString("yyyy-MM-dd");
-
+                if (mission.StartDate != null && mission.EndDate != null)
+                {
+                    volunteerSheet.StartDateEdit = mission.StartDate.Value.ToString("yyyy-MM-dd");
+                    volunteerSheet.EndDateEdit = mission.EndDate.Value.ToString("yyyy-MM-dd");
+                }
 
                 volunteerSheet.TimesheetId = sheet.TimeSheetId;
                 volunteerSheet.UserId = sheet.UserId;
