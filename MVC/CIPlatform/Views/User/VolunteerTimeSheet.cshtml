@@ -371,7 +371,7 @@
                                                     </select>
                                                     <span id="validAddGoal"></span>
                                                     <label class="mb-1 mt-3">Actions</label>
-                                                    <input type="text" asp-for="Action" id="action" class="form-control" placeholder="Enter Actions" required>
+                                                    <input type="number" asp-for="Action" id="action" class="form-control" placeholder="Enter Actions" required>
                                                      <span asp-validation-for="Action" style="color:red"></span>
 
                                                     
@@ -458,7 +458,7 @@
                                                                                 }
                                                                             </select>
                                                                         <label class="mb-1 mt-3">Actions</label>
-                                                                        <input type="text" value="@obj.Action" asp-for="Action" class="form-control" placeholder="Enter Actions" required>
+                                                                        <input type="number" value="@obj.Action" asp-for="Action" class="form-control" placeholder="Enter Actions" required>
                                                                          <span asp-validation-for="Action" style="color:red"></span>
 
                                                                         <label class="mb-1 mt-3">

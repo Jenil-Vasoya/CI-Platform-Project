@@ -154,8 +154,8 @@
 
                 <div class="row">
                     <div class="col-6">
-                        <label class="mt-3"> Eamil <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="addUserEmail" oninput="">
+                        <label class="mt-3"> Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="addUserEmail" onblur="addValidEmail(event,'add')">
                         <span id="validAddUserEmail" style="color:red;"></span>
                     </div>
 
@@ -231,7 +231,7 @@
                     <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 "></div>
                     <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 ">
                         <button type="button" class="cancell rounded-pill btn btn-outline-dark" onclick="userView('nav-user');">Cancel</button>
-                        <button type="submit" onclick="addValidUser(event)" class="btn rounded-pill applyButton" value="2" name="command">Save</button>
+                        <button type="submit" onclick="addValidUser(event)" class="btn rounded-pill applyButton addButton" value="2" name="command">Save</button>
                     </div>
                 </div>
             </div>
@@ -278,8 +278,8 @@
 
                 <div class="row">
                     <div class="col-6">
-                        <label class="mt-3"> Eamil <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="editUserEmail">
+                        <label class="mt-3"> Email <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="editUserEmail" onblur="addValidEmail(event,'edit')">
                         <span id="validEditUserEmail" style="color:red;"></span>
                     </div>
 
@@ -356,7 +356,7 @@
                             onclick="editUserClose('nav-user');">
                         Cancel
                     </button>
-                    <button type="submit" onclick="editValidUser(event)" class="btn rounded-pill applyButton"
+                    <button type="submit" onclick="editValidUser(event)" class="btn rounded-pill applyButton editButton"
                             value="2" name="command">
                         Save
                     </button>
@@ -368,6 +368,49 @@
 
 <script>
 
+    function addValidEmail(event,who) {
+          event.preventDefault();
+                debugger
+          var email;
+          if(who == "add")
+          {
+            email= $('#addUserEmail').val();
+          }
+          else
+          {
+              email= $('#editUserEmail').val();
+          }
+          if(email != '')
+          {
+          $.ajax({
+            url: '/Admin/CheckEmail',
+            type: 'POST',
+            data: { email: email },
+            success: function(result) {
+                debugger
+                  if (result === true) {
+                      if(who == "add")
+                      {
+                                $('#validAddUserEmail').text('Email is already registered.');
+                                $('.addButton').prop('disabled', true);
+                      }
+                      else
+                      {
+                          $('#validEditUserEmail').text('Email is already registered.');
+                          $('.editButton').prop('disabled', true);
+                      }
+                  }
+                  else
+                  {
+                      $('.addButton').prop('disabled', false);
+                       $('.editButton').prop('disabled', false);
+                  }
+            }
+          });
+          }
+}
+
+
     function addValidUser(event){
 
     var password = $('#addUserPassword').val();
@@ -375,7 +418,9 @@
     var hasUpperCase = /[A-Z]/.test(password);
     var hasLowerCase = /[a-z]/.test(password);
     var hasNumber = /\d/.test(password);
-    var hasSpecialChar = /[!#$%^&*(),.?":{}|<>]/.test(password);
+    var hasSpecialChar = /[!#$%@@^&*(),.?":{}|<>]/.test(password);
+
+
 
        
 

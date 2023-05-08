@@ -26,7 +26,7 @@ namespace CIPlatform.Repository.Interface
 
         public string GetMissionThemes(long themeID);
 
-        public List<MissionData> GetStoryMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int pg, long UserId);
+        public List<MissionData> GetStoryMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int pg, long UserId, string Role);
 
         public List<MissionData> GetStoryCardsList(long UserId, string Role);
 

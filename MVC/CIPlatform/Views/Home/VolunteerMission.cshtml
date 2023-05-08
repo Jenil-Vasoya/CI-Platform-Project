@@ -474,6 +474,10 @@
                                 {
                                     <button type="button" disabled class="btn applyButton ">Sorry seats left !!</button>
                                 }
+                                @*else if(@ViewBag.missionDatas.IsApplied == 1)
+                                {
+                                    <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton " disabled> Alredy Applied</button>
+                                }*@
                                 else if(@ViewBag.missionDatas.IsApplied == 1)
                                 {
                                     <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton " disabled> Alredy Applied</button>

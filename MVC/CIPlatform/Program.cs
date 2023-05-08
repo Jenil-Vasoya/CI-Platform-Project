@@ -3,8 +3,18 @@ using CIPlatform.Repository.Interface;
 using CIPlatform.Repository.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Session;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/User/LogIn";
+        options.LogoutPath = "/User/LogOut";
+    });
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -34,7 +44,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseSession();
- 
+app.UseSession();
+app.UseAuthentication();
+app.UseAuthorization();
+
+
+
 app.UseRouting();
 
 app.UseAuthorization();

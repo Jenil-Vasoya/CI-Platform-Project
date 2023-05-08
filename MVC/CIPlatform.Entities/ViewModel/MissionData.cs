@@ -33,6 +33,8 @@ namespace CIPlatform.Entities.ViewModel
 
         public string? SkillName { get; set; }
 
+        public string? Status { get; set; }
+
         public bool? Favorite { get; set; }
 
         public long MissionThemeId { get; set; }

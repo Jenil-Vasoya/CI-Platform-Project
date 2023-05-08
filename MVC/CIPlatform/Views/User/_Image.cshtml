@@ -6,115 +6,115 @@
 
 
         <div id="carouselExampleDark" class="carousel carousel-fade slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-            </div>
-            <div class="carousel-inner">
-                @foreach (var banner in ViewBag.Banner)
-                {
-                    
-                <div class="carousel-item " data-bs-interval="10000">
-                    <img class="img-fluid " src="../Assets/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
-                         alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h1 style="width: 592px; text-align: left; color: #ffffff;">
-                            Sed ut perspiciatis unde omnis iste natus
-                            voluptatem
-                        </h1>
-                        <p style="height: 120px; text-align: left; letter-spacing: 0px; color: #FFFFFF; opacity: 1;">
-                            Lorem ipsum
-                            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                            deserunt mollit anim id est laborum.
-                        </p>
-                    </div>
-                </div>
-                }
-
-                @foreach (var banner in ViewBag.Banner)
-                {
-                <div class="carousel-item active" data-bs-interval="2000">
-                    <img src="../Assets/images/@banner.Image"
-                         class="img-fluid " alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
-                    </div>
-                </div>
-                }
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
-                    data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
-                    data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+        <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
         </div>
-    </div>*@
+        <div class="carousel-inner">
+        @foreach (var banner in ViewBag.Banner)
+        {
+
+        <div class="carousel-item " data-bs-interval="10000">
+        <img class="img-fluid " src="../Assets/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+        alt="...">
+        <div class="carousel-caption d-none d-md-block">
+        <h1 style="width: 592px; text-align: left; color: #ffffff;">
+        Sed ut perspiciatis unde omnis iste natus
+        voluptatem
+        </h1>
+        <p style="height: 120px; text-align: left; letter-spacing: 0px; color: #FFFFFF; opacity: 1;">
+        Lorem ipsum
+        dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id est laborum.
+        </p>
+        </div>
+        </div>
+        }
+
+        @foreach (var banner in ViewBag.Banner)
+        {
+        <div class="carousel-item active" data-bs-interval="2000">
+        <img src="../Assets/images/@banner.Image"
+        class="img-fluid " alt="...">
+        <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+        </div>
+        </div>
+        }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+        </button>
+        </div>
+        </div>*@
 
 
     <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
-                            <div class="swiper-wrapper pb-5">
+        <div class="swiper-wrapper">
 
-                                @foreach (var banner in ViewBag.Banner)
-                                {
-                                    <div class="swiper-slide">
-                                        <img class="img-fluid " src="~/Assets/StoryImages/@banner.Image" />
-                                    </div>
+            @foreach (var banner in ViewBag.Banner)
+            {
+                <div class="swiper-slide">
+                    <img class="img-fluid " src="~/Assets/StoryImages/@banner.Image" />
+                </div>
 
-                                }
+            }
 
 
-                            </div>
-                            <div class="swiper-button-next text-black"></div>
-                            <div class="swiper-button-prev text-black"></div>
-                        </div>
+        </div>
+        <div class="swiper-button-next text-black"></div>
+        <div class="swiper-button-prev text-black"></div>
+    </div>
 
-                        <div thumbsSlider="" class="swiper mySwiper row d-flex flex-row d-none">
-                            <div class="swiper-wrapper  ">
-                                @foreach (var banner in ViewBag.Banner)
-                                {
-                                    <div class="swiper-slide">
-                                        <img src="~/Assets/StoryImages/@banner.Image" />
-                                    </div>
+    <div thumbsSlider="" class="swiper mySwiper row d-flex flex-row d-none">
+        <div class="swiper-wrapper  ">
+            @foreach (var banner in ViewBag.Banner)
+            {
+                <div class="swiper-slide">
+                    <img src="~/Assets/StoryImages/@banner.Image" />
+                </div>
 
-                                }
-                               
+            }
 
-                            </div>
-                        </div>
+
+        </div>
+    </div>
 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-                        <!-- Initialize Swiper -->
-                        <script>
-                            var swiper = new Swiper(".mySwiper", {
-                                loop: true,
-                                spaceBetween: 10,
-                                slidesPerView: 4,
-                                freeMode: true,
-                                watchSlidesProgress: true,
-                            });
-                            var swiper2 = new Swiper(".mySwiper2", {
-                                loop: true,
-                                spaceBetween: 10,
-                                navigation: {
-                                    nextEl: ".swiper-button-next",
-                                    prevEl: ".swiper-button-prev",
-                                },
-                                thumbs: {
-                                    swiper: swiper,
-                                },
-                            });
-                        </script>
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        loop: true,
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
+    });
+    var swiper2 = new Swiper(".mySwiper2", {
+        loop: true,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        thumbs: {
+            swiper: swiper,
+        },
+    });
+</script>

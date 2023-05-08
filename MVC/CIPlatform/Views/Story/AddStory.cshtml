@@ -167,7 +167,7 @@
                 </div>
             </div>
         }
-        else if (ViewBag.missionDatas.StoryStatus == "DRAFT")
+        else if (ViewBag.missionDatas.StoryStatus == "DRAFT" || ViewBag.missionDatas.StoryStatus == "Decline")
         {
             <div class="images w-100 mt-4 ">
                 <label class="form-label">Upload Your Photos</label>
@@ -206,7 +206,7 @@
                 <button type="submit" value="Save" name="save" asp-controller="Story" asp-action="AddStory" class="btn applyButton save  me-2 ">Save</button>
                 @if (ViewBag.missionDatas != null)
                 {
-                    @if (ViewBag.missionDatas.StoryStatus == "DRAFT")
+                    @if (ViewBag.missionDatas.StoryStatus == "DRAFT" || ViewBag.missionDatas.StoryStatus == "Decline")
                     {
                         <button type="submit" value="Submit" name="submit" asp-controller="Story" asp-action="AddStory" class="btn applyButton ">Submit</button>
                     }

@@ -195,11 +195,12 @@
     <h3 class="p-3 m-0" style="background-color: #F8F9FC;"> Add </h3>
     <hr class="m-0">
     <form class="px-3" enctype="multipart/form-data">
-        <div class="row">
-        <label class="mt-3"> Banner Text </label>
-        <input type="text" class="form-control" id="addBannerText">
-        <span id="validAddBannerText" style="color:red; padding:0px"></span>
+        <div class="row" style="display: contents">
+            <label class="mt-3 p-0">  Banner Text </label>
+            <input type="text" class="form-control" id="addBannerText">
+            <span id="validAddBannerText" style="color:red; padding:0px"></span>
         </div>
+
         <label class="mt-3"> Short Order </label>
         <input type="number" class="form-control" id="addShortOrder">
         <span id="validAddShortOrder" style="color:red; padding:0px"></span>
@@ -236,8 +237,8 @@
     <hr class="m-0">
     <form class="px-3" enctype="multipart/form-data">
         <input type="hidden" id="bannerId" />
-         <div class="row">
-        <label class="mt-3"> Banner Text </label>
+         <div class="row" style="display: contents">
+        <label class="mt-3 p-0"> Banner Text </label>
         <input type="text" class="form-control" id="editBannerText">
         <span id="validEditBannerText" style="color:red; padding:0px"></span>
         </div>

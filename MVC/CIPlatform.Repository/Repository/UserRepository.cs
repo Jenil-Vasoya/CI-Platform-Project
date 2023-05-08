@@ -374,6 +374,10 @@ namespace CIPlatform.Repository.Repository
                 else
                 {
                     timeSheet.Action = volunteerSheet.Action;
+                        var goalMission = _DbContext.GoalMissions.FirstOrDefault(g=>g.MissionId == volunteerSheet.MissionId);
+
+                    goalMission.CompleteGoal = goalMission.CompleteGoal + volunteerSheet.Action;
+
                 }
                 DateTime dateTime = DateTime.Parse(volunteerSheet.DateVolunteered);
                 timeSheet.DateVolunteered = dateTime;

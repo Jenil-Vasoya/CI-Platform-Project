@@ -1,0 +1,93 @@
+﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+<style>
+    body{
+    margin-top:20px;
+    background-color: #f0f2f5;
+}
+.dropdown-list-image {
+    position: relative;
+    height: 2.5rem;
+    width: 2.5rem;
+}
+.dropdown-list-image img {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+.btn-light {
+    color: #2cdd9b;
+    background-color: #e5f7f0;
+    border-color: #d8f7eb;
+}
+</style>
+
+        
+
+<div class="dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="bi bi-bell"></i>
+        <span class="badge bg-danger"></span>
+    </a>
+    <div class="dropdown-menu  mx-auto" style="width: max-content;">
+        <h6 class="dropdown-header">Notifications</h6>
+        @foreach (var notification in ViewBag.Notifications)
+        {
+            <a class="dropdown-item" onclick="updateNotification(@notification.NotificationId)">
+                <input type="hidden" id="MissionId" value="@notification.MissionId">
+                <input type="hidden" id="StoryId" value="@notification.StoryId">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img class="rounded-circle"  alt="">
+                    </div>
+                    <div class="col-md-11">
+                        <div><h6>@notification.Text</h6></div>
+                    </div>
+                </div>
+            </a>
+            <div class="dropdown-divider"></div>
+        }
+        <a class="dropdown-item text-center"><strong>View all notifications</strong></a>
+    </div>
+</div>
+
+<script>
+    function updateNotification(id)
+    {
+        var missionId = $('#MissionId').val();
+        var storyId = $('#StoryId').val();
+
+        if(missionId != null)
+        {
+        $.ajax({
+            url: "/Home/VolunteerMission",
+                method: "POST",
+                data: {
+                    "NotificationId": id,
+                    "id": missionId
+                },
+                success: function (data) {
+                   
+                },
+                error: function (request, error) {
+                    console.log(error);
+                }
+        })
+        }
+        else
+        {
+            $.ajax({
+            url: "/Story/StoryDetail",
+                method: "POST",
+                data: {
+                    "id": id,
+                    "NotificationId": 
+                },
+                success: function (data) {
+                    $('#missions').html(data);
+                },
+                error: function (request, error) {
+                    console.log(error);
+                }
+        })
+        }
+    }
+</script>

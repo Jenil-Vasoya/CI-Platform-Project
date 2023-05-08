@@ -66,5 +66,9 @@ namespace CIPlatform.Repository.Interface
         public bool CheckUser(long userId, long UserId, long MissionId);
 
         public List<Cmspage> getCMS();
+
+        public List<Notification> GetNotifications(long UserId);
+
+        public bool UpdateNotification(long? NotificationId);
     }
 }

@@ -36,7 +36,6 @@ public partial class User
 
     [NotMapped]
     public IFormFile? UserImg { get; set; }
-
     public string? Avatar { get; set; }
 
     public string? WhyIvolunteer { get; set; }

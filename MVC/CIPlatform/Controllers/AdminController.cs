@@ -2,12 +2,14 @@
 using CIPlatform.Entities.Models;
 using CIPlatform.Entities.ViewModel;
 using CIPlatform.Repository.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Reflection.PortableExecutable;
 
 namespace CIPlatform.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly IAccountRepository _AccountRepo;
@@ -426,6 +428,12 @@ namespace CIPlatform.Controllers
             //ViewBag.CountryList = _AccountRepo.CountryList().Select(x=> new {x.CountryId,x.CountryName});
 
             return Json(adminModel);
+        }
+
+        public bool CheckEmail(string email)
+        {
+            bool result = _AccountRepo.UserList().Where(u=> u.Email == email).Any();
+            return result;
         }
         //private readonly CiPlatformContext _db;
 

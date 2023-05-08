@@ -1,11 +1,14 @@
 ﻿using CIPlatform.Entities.Models;
 using CIPlatform.Entities.ViewModel;
 using CIPlatform.Repository.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace CIPlatform.Controllers
 {
+
+    [Authorize]
     public class StoryController : Controller
     {
         private readonly IStoryRepository _StoryRepo;
@@ -29,10 +32,9 @@ namespace CIPlatform.Controllers
             try
             {
                 long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-
-                if (UserId > 0)
-                {
-                    List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId,"User");
+                string Role = HttpContext.Session.GetString("Role") ?? "";
+                
+                    List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId,Role);
                     ViewBag.missionDatas = missionDatas;
 
                     ViewBag.UserId = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? "");
@@ -54,11 +56,7 @@ namespace CIPlatform.Controllers
                     ViewBag.pg_no = 1;
 
                     return View();
-                }
-                else
-                {
-                    return RedirectToAction("Login", "User");
-                }
+                
             }
             catch (Exception ex)
             {
@@ -74,25 +72,20 @@ namespace CIPlatform.Controllers
             try
             {
                 long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-
-                if (UserId > 0)
-                {
+                string Role = HttpContext.Session.GetString("Role") ?? "";
+               
                     search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
-                    List<MissionData> missionDatas = _StoryRepo.GetStoryMissionList(search, countries, cities, themes, skills, pg, UserId);
+                    List<MissionData> missionDatas = _StoryRepo.GetStoryMissionList(search, countries, cities, themes, skills, pg, UserId, Role);
 
                     ViewBag.missionDatas = missionDatas;
 
                     ViewBag.UserId = UserId;
                     ViewBag.pg_no = pg;
-                    ViewBag.Totalpages = Math.Ceiling(_StoryRepo.GetStoryMissionList(search, countries, cities, themes, skills, pg = 0, UserId).Count() / 6.0);
+                    ViewBag.Totalpages = Math.Ceiling(_StoryRepo.GetStoryMissionList(search, countries, cities, themes, skills, pg = 0, UserId,Role).Count() / 6.0);
                     ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
 
                     return PartialView("_StoryList");
-                }
-                else
-                {
-                    return RedirectToAction("Login", "User");
-                }
+               
             }
             catch (Exception ex)
             {
@@ -131,9 +124,7 @@ namespace CIPlatform.Controllers
                 }
                 else
                 {
-                    
                         return RedirectToAction("Login", "User", new { returnUrl = $"Story/StoryDetail/{id}" });
-                  
                     
                 }
             }
@@ -150,10 +141,9 @@ namespace CIPlatform.Controllers
             try
             {
                 long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-
-                if (UserId > 0)
-                {
-                    List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId,"User");
+                string Role = HttpContext.Session.GetString("Role") ?? "";
+                
+                    List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId,Role);
 
                     var missions = missionDatas.Where(x => x.StoryId == id).FirstOrDefault();
                     ViewBag.missionDatas = missions;
@@ -166,11 +156,7 @@ namespace CIPlatform.Controllers
                     ViewBag.Avatar = _StoryRepo.GetUserAvatar(UserId).Avatar;
 
                     return View(missions);
-                }
-                else
-                {
-                    return RedirectToAction("Login", "User");
-                }
+                
             }
             catch (Exception ex)
             {
@@ -186,9 +172,8 @@ namespace CIPlatform.Controllers
             try
             {
                 long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-                if (UserId > 0)
-                {
-                    if (ModelState.IsValid)
+                string Role = HttpContext.Session.GetString("Role") ?? "";
+                   if (ModelState.IsValid)
                     {
                         string btn = "";
                         long StoryId = 0;
@@ -225,7 +210,7 @@ namespace CIPlatform.Controllers
                             var missions = objStory;
                         
 
-                        List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId,"User");
+                        List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId,Role);
 
                         var storymission = missionDatas.Where(x => x.StoryId == (objStory.StoryId ?? StoryId)).FirstOrDefault();
                         ViewBag.missionDatas = storymission;
@@ -250,11 +235,7 @@ namespace CIPlatform.Controllers
                         ViewBag.MissionData = _StoryRepo.UserAppliedMissionList(UserId);
                         return View();
                     }
-                }
-                else
-                {
-                    return RedirectToAction("Login", "User");
-                }
+               
             }
             catch (Exception ex)
             {

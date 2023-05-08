@@ -3,6 +3,8 @@ using CIPlatform.Entities.Models;
 using CIPlatform.Entities.ViewModel;
 using CIPlatform.Repository.Interface;
 using CIPlatform.Views.User;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -10,6 +12,7 @@ using Newtonsoft.Json;
 using SendGrid.Helpers.Mail;
 using System.Data;
 using System.Drawing;
+using System.Security.Claims;
 using System.Web.Helpers;
 using MailHelper = CIPlatform.Entities.ViewModel.MailHelper;
 
@@ -47,7 +50,7 @@ namespace CIPlatform.Controllers
             }
             else
             {
-                if (returnUrl != null)
+                if (returnUrl != null && returnUrl != "/Admin/Index")
                 {
                     HttpContext.Session.SetString("returnUrl", returnUrl);
                 }
@@ -55,25 +58,22 @@ namespace CIPlatform.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult VolunteerTimeSheet()
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-            if(UserId != 0)
-            {
-            ViewBag.UserName = _UserRepo.GetUserAvatar(UserId).FirstName + " " + _UserRepo.GetUserAvatar(UserId).LastName;
-            ViewBag.Avatar = _UserRepo.GetUserAvatar(UserId).Avatar;
+         
+                ViewBag.UserName = _UserRepo.GetUserAvatar(UserId).FirstName + " " + _UserRepo.GetUserAvatar(UserId).LastName;
+                ViewBag.Avatar = _UserRepo.GetUserAvatar(UserId).Avatar;
 
-            ViewBag.MissionList = _UserRepo.UserAppliedMissionList(UserId);
-            List<VolunteerTimeSheet> sheets = _UserRepo.GetVolunteerSheetData(UserId);
-            ViewBag.SheetData = sheets;
-            return View();
+                ViewBag.MissionList = _UserRepo.UserAppliedMissionList(UserId);
+                List<VolunteerTimeSheet> sheets = _UserRepo.GetVolunteerSheetData(UserId);
+                ViewBag.SheetData = sheets;
+                return View();
 
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
+            
         }
+
 
         public IActionResult AddTimeSheet(VolunteerTimeSheet volunteerSheet)
         {
@@ -94,8 +94,8 @@ namespace CIPlatform.Controllers
             {
                 return RedirectToAction("Login");
             }
-        } 
-        
+        }
+
         public IActionResult EditTimeSheet(VolunteerTimeSheet volunteerSheet)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
@@ -115,7 +115,7 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("Login");
             }
         }
-        
+
         public IActionResult DeleteTimeSheet(long id)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
@@ -139,7 +139,7 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult Login(User objLogin)
         {
-                ViewBag.Banner = _UserRepo.BannerList();
+            ViewBag.Banner = _UserRepo.BannerList();
 
             try
             {
@@ -157,6 +157,19 @@ namespace CIPlatform.Controllers
                             HttpContext.Session.SetString("UserId", JsonConvert.SerializeObject(objUser.UserId.ToString()));
                             HttpContext.Session.SetString("Email", JsonConvert.SerializeObject(objUser.Email.ToString()));
                             HttpContext.Session.SetString("UserName", JsonConvert.SerializeObject(objUser.FirstName.ToString() + " " + objUser.LastName.ToString()));
+
+                            var claims = new List<Claim>
+                            {
+                            new Claim("role",objUser.Role.ToString()),
+                            new Claim("Name", $"{objUser.FirstName} {objUser.LastName}"),
+                            new Claim("Email", objUser.Email),
+                            new Claim("Uid", objUser.UserId.ToString()),
+                            };
+                            var identity = new ClaimsIdentity(claims, "AuthCookie");
+                            var Principle = new ClaimsPrincipal(identity);
+                            HttpContext.User = Principle;
+                            var abc = HttpContext.SignInAsync(Principle);
+
 
                             if (objUser.CountryId != null)
                             {
@@ -208,9 +221,11 @@ namespace CIPlatform.Controllers
 
         public IActionResult LogOut()
         {
+            HttpContext.SignOutAsync().Wait();
             HttpContext.Session.Clear();
             return RedirectToAction("Login", "User");
         }
+
 
         public IActionResult Register()
         {
@@ -259,6 +274,7 @@ namespace CIPlatform.Controllers
         }
 
 
+        [Authorize]
         public IActionResult ForgotPassword()
         {
             ViewBag.Banner = _UserRepo.BannerList();
@@ -271,7 +287,7 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult ForgotPassword(ForgotPassword objForgotPass)
         {
-            if(objForgotPass.email == null)
+            if (objForgotPass.email == null)
             {
                 TempData["InvalidEmail"] = "Please enter registered Email";
                 return View();
@@ -305,16 +321,17 @@ namespace CIPlatform.Controllers
                     return View();
                 }
             }
-            catch  (Exception ex)
+            catch (Exception ex)
             {
                 TempData["InvalidEmail"] = ex.Message;
                 return View();
             }
             return View();
-            
+
         }
 
 
+        [Authorize]
         [HttpGet]
         public IActionResult ResetPassword(long id)
         {
@@ -347,14 +364,13 @@ namespace CIPlatform.Controllers
         }
 
 
+        [Authorize]
         public IActionResult EditProfile(long id)
         {
             try
             {
                 long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-                if (UserId != 0)
-                {
 
                     UserData model = _UserRepo.GetUserlist(UserId);
                     ViewBag.Email = _UserRepo.GetUserAvatar(UserId).Email;
@@ -362,13 +378,9 @@ namespace CIPlatform.Controllers
                     ViewBag.Avatar = _UserRepo.GetUserAvatar(UserId).Avatar;
 
                     return View(model);
-                }
-                else
-                {
-                    return RedirectToAction("Login");
-                }
+               
             }
-            catch  (Exception ex)
+            catch (Exception ex)
             {
                 TempData["Fail"] = ex.Message;
                 return RedirectToAction("Login");
@@ -419,14 +431,14 @@ namespace CIPlatform.Controllers
             }
             catch (Exception ex)
             {
-                TempData["EditFail"] =  ex.Message;
+                TempData["EditFail"] = ex.Message;
                 return View();
             }
         }
 
 
         public JsonResult GetCity(long countryId)
-            {
+        {
             List<City> city = _UserRepo.CityList(countryId);
             var json = JsonConvert.SerializeObject(city);
 
@@ -462,7 +474,7 @@ namespace CIPlatform.Controllers
             return Json(result);
         }
 
-       
+
         [HttpPost]
         public JsonResult EditAvatar(IFormFile Profileimg)
         {

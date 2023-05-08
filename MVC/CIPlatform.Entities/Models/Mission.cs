@@ -41,10 +41,10 @@ public partial class Mission
     public string? OrganizationDetail { get; set; }
 
     public int? TotalSeats { get; set; }
-    
+
     [NotMapped]
     public long? GoalMissionId { get; set; }
-    
+
     [NotMapped]
     public string? GoalText { get; set; }
 

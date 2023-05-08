@@ -50,6 +50,8 @@ public partial class CIPlatformDbContext : DbContext
 
     public virtual DbSet<MissionTheme> MissionThemes { get; set; }
 
+    public virtual DbSet<Notification> Notifications { get; set; }
+
     public virtual DbSet<PasswordReset> PasswordResets { get; set; }
 
     public virtual DbSet<Skill> Skills { get; set; }
@@ -68,25 +70,9 @@ public partial class CIPlatformDbContext : DbContext
 
     public virtual DbSet<UserSkill> UserSkills { get; set; }
 
-    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-    //        => optionsBuilder.UseSqlServer("Data Source=MRKHEDUT;DataBase=CI Platform;Trusted_Connection=true;TrustServerCertificate=True;");
-
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                => optionsBuilder.UseSqlServer("Data Source=PCT106\\SQL2017;DataBase=CI Platform;User ID=sa;Password=Tatva@123;Encrypt=False;TrustServerCertificate=False;");
-
-    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-    //        => optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|CI Platform.mdf;Encrypt=False;TrustServerCertificate=False;");
-
-    //    <connectionStrings>
-    //  <add name = "ConnectionName"
-    //    connectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|DatabaseName.mdf;Integrated Security=True;User Instance=True"
-    //    providerName="System.Data.SqlClient" />
-    //</connectionStrings>
-
+        => optionsBuilder.UseSqlServer("Data Source=PCT106\\SQL2017;DataBase=CI Platform;User ID=sa;Password=Tatva@123;Encrypt=False;TrustServerCertificate=False;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -316,6 +302,7 @@ public partial class CIPlatformDbContext : DbContext
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            entity.Property(e => e.Deadline).HasColumnType("datetime");
             entity.Property(e => e.DeletedAt).HasColumnType("datetime");
             entity.Property(e => e.Description).HasMaxLength(2000);
             entity.Property(e => e.EndDate).HasColumnType("datetime");
@@ -333,7 +320,6 @@ public partial class CIPlatformDbContext : DbContext
                 .HasMaxLength(128)
                 .IsUnicode(false);
             entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
-            entity.Property(e => e.Deadline).HasColumnType("datetime");
 
             entity.HasOne(d => d.City).WithMany(p => p.Missions)
                 .HasForeignKey(d => d.CityId)
@@ -537,6 +523,35 @@ public partial class CIPlatformDbContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false);
             entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<Notification>(entity =>
+        {
+            entity.HasKey(e => e.NotificationId).HasName("PK_Notification");
+            entity.ToTable("Notification");
+
+            entity.Property(e => e.MissionId).HasColumnName("MissionID");
+            entity.Property(e => e.NotificationId)
+                .ValueGeneratedOnAdd()
+                .HasColumnName("NotificationID");
+            entity.Property(e => e.Status).HasMaxLength(10);
+            entity.Property(e => e.StoryId).HasColumnName("StoryID");
+            entity.Property(e => e.Text).HasMaxLength(100);
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+           
+
+            entity.HasOne(d => d.User).WithMany()
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK_Notification_User");
+
+            entity.HasOne(d => d.Mission).WithMany()
+                .HasForeignKey(d => d.MissionId)
+                .HasConstraintName("FK_Notification_Mission");
+
+            entity.HasOne(d => d.Story).WithMany()
+                .HasForeignKey(d => d.StoryId)
+                .HasConstraintName("FK_Notification_Story");
         });
 
         modelBuilder.Entity<PasswordReset>(entity =>

@@ -41,11 +41,25 @@ public partial class Mission
 
     public int? TotalSeats { get; set; }
 
+    [NotMapped]
+    public long? GoalMissionId { get; set; }
+
+    [NotMapped]
+    public string? GoalText { get; set; }
+
+    [NotMapped]
+    public int GoalValue { get; set; }
+
     public DateTime CreatedAt { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
 
     public DateTime? DeletedAt { get; set; }
+
+    public DateTime? Deadline { get; set; }
+
+    [NotMapped]
+    public string EditDeadline { get; set; }
 
     [NotMapped]
     public List<int>? MissionSkill { get; set; }
@@ -75,6 +89,7 @@ public partial class Mission
 
     public virtual ICollection<FavoriteMission> FavoriteMissions { get; } = new List<FavoriteMission>();
 
+    [JsonIgnore]
     public virtual ICollection<GoalMission> GoalMissions { get; } = new List<GoalMission>();
 
     public virtual ICollection<MissionApplication> MissionApplications { get; } = new List<MissionApplication>();
@@ -88,6 +103,7 @@ public partial class Mission
     public virtual ICollection<MissionMedium> MissionMedia { get; } = new List<MissionMedium>();
 
     public virtual ICollection<MissionRating> MissionRatings { get; } = new List<MissionRating>();
+
 
     [JsonIgnore]
     public virtual ICollection<MissionSkill> MissionSkills { get; } = new List<MissionSkill>();

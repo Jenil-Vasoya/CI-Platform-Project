@@ -303,9 +303,11 @@ namespace CIPlatform.Repository.Repository
                     missionData.Availability = objMission.Availibility;
                 }
                 missionData.IsApplied = (_DbContext.MissionApplications.FirstOrDefault(a => a.UserId == UserId && a.MissionId == objMission.MissionId) != null) ? 1 : 0;
+                if (missionData.IsApplied == 1)
+                {
+                    missionData.Status = _DbContext.MissionApplications.FirstOrDefault(a => a.UserId == UserId && a.MissionId == objMission.MissionId).ApprovalStatus;
 
-                
-
+                }
                 missionData.Deadline = objMission.Deadline;
 
                 missionData.MediaPath = MediaByMissionId(objMission.MissionId).MediaPath;
@@ -604,6 +606,25 @@ namespace CIPlatform.Repository.Repository
         {
             var cms = _DbContext.Cmspages.Where(c => c.DeletedAt == null && c.Status == true).ToList();
             return cms;
+        }
+
+        public List<Notification> GetNotifications(long UserId)
+        {
+            var notifications = _DbContext.Notifications.Where(n=> n.UserId == UserId).ToList();
+            return notifications;
+        }
+
+        public bool UpdateNotification(long? NotificationId)
+        {
+            var notification = _DbContext.Notifications.FirstOrDefault(n => n.NotificationId == NotificationId);
+            if(notification != null)
+            {
+                notification.Status = "Seen";
+                _DbContext.Notifications.Update(notification);
+                _DbContext.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
     }

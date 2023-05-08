@@ -73,10 +73,10 @@ namespace CIPlatform.Repository.Repository
             return theme.Titile;
         }
 
-        public List<MissionData> GetStoryMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int pg, long UserId)
+        public List<MissionData> GetStoryMissionList(string? search, string[] countries, string[] cities, string[] themes, string[] skills, int pg, long UserId, string Role)
         {
             var pageSize = 6;
-            List<MissionData> missions = GetStoryCardsList(UserId,"User");
+            List<MissionData> missions = GetStoryCardsList(UserId,Role);
             if (search != "")
             {
                 missions = missions.Where(a => a.Title.ToLower().Contains(search) || a.ShortDescription.ToLower().Contains(search)).ToList();
@@ -123,7 +123,7 @@ namespace CIPlatform.Repository.Repository
             }
             else
             {
-                missions = _DbContext.Stories.Where(a => a.Status == "PUBLISHED" || (a.UserId == UserId && a.Status != "PENDING")).OrderBy(a => a.Status).ToList();
+                missions = _DbContext.Stories.Where(a => (a.Status == "PUBLISHED" || (a.UserId == UserId && a.Status != "PENDING")) && a.DeletedAt == null).OrderBy(a => a.Status).ToList();
             }
 
             
@@ -300,7 +300,7 @@ namespace CIPlatform.Repository.Repository
 
                     }
                 }
-                if (objStory.VideoUrl != null)
+                if (objStory.VideoUrl[0] != null)
                 {
                     List<StoryMedium> storyMedia = _DbContext.StoryMedia.Where(a => a.StoryId == editStory.StoryId && a.Type == "mp4").ToList();
                     foreach (var storyMediaItem in storyMedia)

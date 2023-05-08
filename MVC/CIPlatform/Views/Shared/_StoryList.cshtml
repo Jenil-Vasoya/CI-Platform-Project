@@ -27,6 +27,12 @@
             background-color: #F88634;
             color: white;
         }
+
+        .card-imgs {
+        height: 250px;
+        max-height: 250px !important;
+        width:100%
+    }
 </style>
 
 <div class="container">
@@ -40,11 +46,11 @@
                 <div class="howerimg">
                     @if (story.MediaPath != null)
                     {
-                        <img src="~/Assets/StoryImages/@story.MediaPath" alt="Avatar" height="250px" width="100%">
+                        <img src="~/Assets/StoryImages/@story.MediaPath" alt="Avatar" class="img-fluid card-imgs">
                     }
                     else
                     {
-                        <img src="~/Assets/images/404-Page-image.png" alt="Avatar" height="300px" width="100%">
+                        <img src="~/Assets/images/404-Page-image.png" alt="Avatar" class="img-fluid card-imgs">
                     }
                     <div class=" overlayforhower p-0">
                         <a asp-controller="Story" asp-action="StoryDetail" asp-route-id="@story.StoryId" class="btn applyButton bg-transparent border-white rounded-pill">
@@ -62,7 +68,7 @@
 
             </div>
             <div class="px-3 row">
-                    @if (story.StoryStatus == "DRAFT")
+                    @if (story.StoryStatus == "DRAFT" || story.StoryStatus == "Decline")
                     {
                         <div class="col-2 d-flex align-items-center">
                             <img src="~/Assets/StoryImages/@story.Avatar" class="rounded-circle w-20 h-50" />

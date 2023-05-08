@@ -10,6 +10,9 @@ public partial class User
 {
     public long UserId { get; set; }
 
+    [NotMapped]
+    public long? returnId { get; set; }
+
     [Required(ErrorMessage = "Please enter the first name")]
     public string? FirstName { get; set; }
 
@@ -29,13 +32,12 @@ public partial class User
     [Compare("Password", ErrorMessage = "Please enter the same password")]
     public string? ConfirmPassword { get; set; }
 
-
     public int PhoneNumber { get; set; }
-
-    public string? Avatar { get; set; }
 
     [NotMapped]
     public IFormFile? UserImg { get; set; }
+
+    public string? Avatar { get; set; }
 
     public string? WhyIvolunteer { get; set; }
 

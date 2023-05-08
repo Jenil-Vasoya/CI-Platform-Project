@@ -5,6 +5,7 @@ using CIPlatform.Entities.Models;
 using CIPlatform.Entities.ViewModel;
 using CIPlatform.Repository.Interface;
 using CIPlatform.Repository.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -13,6 +14,7 @@ using System.Diagnostics;
 
 namespace CIPlatform.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IHomeRepository _HomeRepo;
@@ -79,8 +81,7 @@ namespace CIPlatform.Controllers
             {
                 long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-                if (UserId > 0)
-                {
+                
                     List<Mission> missions = _HomeRepo.MissionList();
                     if (missions.Count <= 0)
                     {
@@ -113,6 +114,7 @@ namespace CIPlatform.Controllers
                     var totalMission = _HomeRepo.TotalMissions();
                     ViewBag.totalMission = totalMission;
 
+                    ViewBag.Notifications = _HomeRepo.GetNotifications(UserId);
                     ViewBag.Totalpages = Math.Ceiling(missionDatas.Count() / 6.0);
                     ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
                     ViewBag.pg_no = 1;
@@ -120,11 +122,7 @@ namespace CIPlatform.Controllers
 
 
                     return View();
-                }
-                else
-                {
-                    return RedirectToAction("Login", "User");
-                }
+                
             }
             catch (Exception ex)
             {
@@ -151,8 +149,7 @@ namespace CIPlatform.Controllers
             {
                 long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
 
-                if (UserId > 0)
-                {
+                
                     search = string.IsNullOrEmpty(search) ? "" : search.ToLower();
                     List<MissionData> missionDatas = _HomeRepo.GetMissionList(search, countries, cities, themes, skills, sort, UserId, pg);
 
@@ -178,11 +175,7 @@ namespace CIPlatform.Controllers
                     {
                         return PartialView("_MissionEmpty");
                     }
-                }
-                else
-                {
-                    return RedirectToAction("Login", "User");
-                }
+                
             }
             catch (Exception ex)
             {
@@ -262,8 +255,7 @@ namespace CIPlatform.Controllers
         public ActionResult Volunteer(long MissionId, int pg)
         {
             long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
-            if (UserId > 0)
-            {
+            
                 List<RecentVolunteer> missionDatas = _HomeRepo.RecentVolunteer(MissionId, pg);
                 ViewBag.RecentVolunteer = missionDatas;
 
@@ -272,11 +264,7 @@ namespace CIPlatform.Controllers
                 ViewBag.RecentVolunteer = missionDatas.Skip((1 - 1) * 3).Take(3).ToList();
 
                 return PartialView("_RecentVolunteer");
-            }
-            else
-            {
-                return RedirectToAction("Login", "User");
-            }
+            
         }
 
         [HttpPost]

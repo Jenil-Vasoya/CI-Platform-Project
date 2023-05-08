@@ -854,6 +854,7 @@ namespace CIPlatform.Repository.Repository
         public bool StatusChangeApplication(long MissionApplicationId, string Result)
         {
             var missionApplication = _DbContext.MissionApplications.Where(s=> s.MissionApplicationId == MissionApplicationId).FirstOrDefault();
+            var mission = _DbContext.Missions.Where(m=> m.MissionId == missionApplication.MissionId).FirstOrDefault();
             if (Result == "true")
             {
                 missionApplication.ApprovalStatus = "Approve";
@@ -863,6 +864,23 @@ namespace CIPlatform.Repository.Repository
                 missionApplication.ApprovalStatus = "Decline";
             }
             _DbContext.MissionApplications.Update(missionApplication);
+            _DbContext.SaveChanges();
+
+            Notification notification = new Notification();
+            {
+                notification.MissionId = missionApplication.MissionId;
+                notification.UserId = missionApplication.UserId;
+                if (missionApplication.ApprovalStatus == "Approve")
+                {
+                    notification.Text = "Approved : " + mission.Title;
+                }
+                else
+                {
+                    notification.Text = "Declined : " + mission.Title;
+                }
+                notification.Status = "Unseen";
+            }
+            _DbContext.Notifications.Add(notification);
             _DbContext.SaveChanges();
             return true;
         }
@@ -880,6 +898,8 @@ namespace CIPlatform.Repository.Repository
             }
             _DbContext.Stories.Update(story);
             _DbContext.SaveChanges();
+
+
             return true;
         }
 
