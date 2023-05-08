@@ -31,7 +31,27 @@
         <h6 class="dropdown-header">Notifications</h6>
         @foreach (var notification in ViewBag.Notifications)
         {
-            <a class="dropdown-item" onclick="updateNotification(@notification.NotificationId)">
+            @if(@notification.Status == "Seen")
+            {
+                <a class="dropdown-item" asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@notification.MissionId" asp-route-NotificationId="@notification.NotificationId">
+                <input type="hidden" id="MissionId" value="@notification.MissionId">
+                <input type="hidden" id="StoryId" value="@notification.StoryId">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img class="rounded-circle"  alt="">
+                    </div>
+                    <div class="col-md-11">
+                        <div><h6>@notification.Text</h6></div>
+                        <i class="bi bi-dot fs-2"></i>
+                    </div>
+                </div>
+            </a>
+            }
+            else
+            {
+                
+            
+            <a class="dropdown-item" asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@notification.MissionId" asp-route-NotificationId="@notification.NotificationId" >
                 <input type="hidden" id="MissionId" value="@notification.MissionId">
                 <input type="hidden" id="StoryId" value="@notification.StoryId">
                 <div class="row">
@@ -43,6 +63,7 @@
                     </div>
                 </div>
             </a>
+            }
             <div class="dropdown-divider"></div>
         }
         <a class="dropdown-item text-center"><strong>View all notifications</strong></a>
@@ -52,6 +73,7 @@
 <script>
     function updateNotification(id)
     {
+        debugger
         var missionId = $('#MissionId').val();
         var storyId = $('#StoryId').val();
 
@@ -79,7 +101,7 @@
                 method: "POST",
                 data: {
                     "id": id,
-                    "NotificationId": 
+                    "NotificationId": storyId
                 },
                 success: function (data) {
                     $('#missions').html(data);

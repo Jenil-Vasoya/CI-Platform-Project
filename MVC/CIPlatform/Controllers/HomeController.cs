@@ -191,8 +191,8 @@ namespace CIPlatform.Controllers
         }
 
 
-        public IActionResult VolunteerMission(long id)
-        {
+        public IActionResult VolunteerMission(long id, long? NotificationId)
+            {
             try
             {
                 long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
@@ -200,6 +200,10 @@ namespace CIPlatform.Controllers
 
                 if (UserId > 0)
                 {
+                    if(NotificationId != null)
+                    {
+                        var notification = _HomeRepo.UpdateNotification(NotificationId);
+                    }
                     List<User> users = _HomeRepo.UserList();
                     ViewBag.Users = users;
 
