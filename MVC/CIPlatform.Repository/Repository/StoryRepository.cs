@@ -434,5 +434,18 @@ namespace CIPlatform.Repository.Repository
             return true;
         }
 
+        public bool UpdateNotification(long? NotificationId)
+        {
+            var notification = _DbContext.Notifications.FirstOrDefault(n => n.NotificationId == NotificationId);
+            if (notification != null)
+            {
+                notification.Status = "Seen";
+                _DbContext.Notifications.Update(notification);
+                _DbContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
     }
 }

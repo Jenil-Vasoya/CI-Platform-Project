@@ -114,7 +114,10 @@ namespace CIPlatform.Controllers
                     var totalMission = _HomeRepo.TotalMissions();
                     ViewBag.totalMission = totalMission;
 
-                    ViewBag.Notifications = _HomeRepo.GetNotifications(UserId);
+                    ViewBag.Notifications = _HomeRepo.GetNotifications(UserId).Where(n=> n.MissionId != null);
+                    ViewBag.Story = _HomeRepo.GetNotifications(UserId).Where(n=> n.StoryId != null) ?? null;
+                    ViewBag.NewMissions = _HomeRepo.GetNotifications(UserId).Where(n=> n.MissionId == null && n.StoryId == null) ?? null;
+
                     ViewBag.Totalpages = Math.Ceiling(missionDatas.Count() / 6.0);
                     ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
                     ViewBag.pg_no = 1;

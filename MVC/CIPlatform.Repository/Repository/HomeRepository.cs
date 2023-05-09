@@ -610,7 +610,7 @@ namespace CIPlatform.Repository.Repository
 
         public List<Notification> GetNotifications(long UserId)
         {
-            var notifications = _DbContext.Notifications.Where(n=> n.UserId == UserId).ToList();
+            var notifications = _DbContext.Notifications.Where(n=> n.UserId == UserId || n.UserId == null).OrderByDescending(n=> n.Status).ToList();
             return notifications;
         }
 

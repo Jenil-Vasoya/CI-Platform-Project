@@ -37,5 +37,7 @@ namespace CIPlatform.Repository.Interface
         public long AddData(MissionData objStory,long UserId, string btn);
 
         public bool InviteWorker(List<long> CoWorker, long UserId, long StoryId);
+
+        public bool UpdateNotification(long? NotificationId);
     }
 }

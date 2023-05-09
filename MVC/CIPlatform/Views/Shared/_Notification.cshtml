@@ -1,115 +1,341 @@
-﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
-<style>
+﻿
+@*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+    <style>
     body{
     margin-top:20px;
     background-color: #f0f2f5;
-}
-.dropdown-list-image {
+    }
+    .dropdown-list-image {
     position: relative;
     height: 2.5rem;
     width: 2.5rem;
-}
-.dropdown-list-image img {
+    }
+    .dropdown-list-image img {
     height: 2.5rem;
     width: 2.5rem;
-}
-.btn-light {
+    }
+    .btn-light {
     color: #2cdd9b;
     background-color: #e5f7f0;
     border-color: #d8f7eb;
-}
-</style>
+    }
+    </style>
 
-        
 
-<div class="dropdown">
+
+    <div class="dropdown">
     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="bi bi-bell"></i>
-        <span class="badge bg-danger"></span>
+    <i class="bi bi-bell"></i>
+    <span class="badge bg-danger"></span>
     </a>
     <div class="dropdown-menu  mx-auto" style="width: max-content;">
-        <h6 class="dropdown-header">Notifications</h6>
-        @foreach (var notification in ViewBag.Notifications)
-        {
-            @if(@notification.Status == "Seen")
-            {
-                <a class="dropdown-item" asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@notification.MissionId" asp-route-NotificationId="@notification.NotificationId">
-                <input type="hidden" id="MissionId" value="@notification.MissionId">
-                <input type="hidden" id="StoryId" value="@notification.StoryId">
-                <div class="row">
-                    <div class="col-md-1">
-                        <img class="rounded-circle"  alt="">
-                    </div>
-                    <div class="col-md-11">
-                        <div><h6>@notification.Text</h6></div>
-                        <i class="bi bi-dot fs-2"></i>
-                    </div>
-                </div>
-            </a>
-            }
-            else
-            {
-                
-            
-            <a class="dropdown-item" asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@notification.MissionId" asp-route-NotificationId="@notification.NotificationId" >
-                <input type="hidden" id="MissionId" value="@notification.MissionId">
-                <input type="hidden" id="StoryId" value="@notification.StoryId">
-                <div class="row">
-                    <div class="col-md-1">
-                        <img class="rounded-circle"  alt="">
-                    </div>
-                    <div class="col-md-11">
-                        <div><h6>@notification.Text</h6></div>
-                    </div>
-                </div>
-            </a>
-            }
-            <div class="dropdown-divider"></div>
-        }
-        <a class="dropdown-item text-center"><strong>View all notifications</strong></a>
+    <h6 class="dropdown-header">Notifications</h6>
+    @foreach (var notification in ViewBag.Notifications)
+    {
+    @if(@notification.Status == "Seen")
+    {
+    <a class="dropdown-item" asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@notification.MissionId" asp-route-NotificationId="@notification.NotificationId">
+    <input type="hidden" id="MissionId" value="@notification.MissionId">
+    <input type="hidden" id="StoryId" value="@notification.StoryId">
+    <div class="row">
+    <div class="col-md-1">
+    <img class="rounded-circle"  alt="">
     </div>
-</div>
+    <div class="col-md-11">
+    <div><h6>@notification.Text</h6></div>
+    <i class="bi bi-dot fs-2"></i>
+    </div>
+    </div>
+    </a>
+    }
+    else
+    {
 
-<script>
+
+    <a class="dropdown-item" asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@notification.MissionId" asp-route-NotificationId="@notification.NotificationId" >
+    <input type="hidden" id="MissionId" value="@notification.MissionId">
+    <input type="hidden" id="StoryId" value="@notification.StoryId">
+    <div class="row">
+    <div class="col-md-1">
+    <img class="rounded-circle"  alt="">
+    </div>
+    <div class="col-md-11">
+    <div><h6>@notification.Text</h6></div>
+    </div>
+    </div>
+    </a>
+    }
+    <div class="dropdown-divider"></div>
+    }
+    <a class="dropdown-item text-center"><strong>View all notifications</strong></a>
+    </div>
+    </div>
+
+    <script>
     function updateNotification(id)
     {
-        debugger
-        var missionId = $('#MissionId').val();
-        var storyId = $('#StoryId').val();
+    debugger
+    var missionId = $('#MissionId').val();
+    var storyId = $('#StoryId').val();
 
-        if(missionId != null)
-        {
-        $.ajax({
-            url: "/Home/VolunteerMission",
-                method: "POST",
-                data: {
-                    "NotificationId": id,
-                    "id": missionId
-                },
-                success: function (data) {
-                   
-                },
-                error: function (request, error) {
-                    console.log(error);
-                }
-        })
-        }
-        else
-        {
-            $.ajax({
-            url: "/Story/StoryDetail",
-                method: "POST",
-                data: {
-                    "id": id,
-                    "NotificationId": storyId
-                },
-                success: function (data) {
-                    $('#missions').html(data);
-                },
-                error: function (request, error) {
-                    console.log(error);
-                }
-        })
-        }
+    if(missionId != null)
+    {
+    $.ajax({
+    url: "/Home/VolunteerMission",
+    method: "POST",
+    data: {
+    "NotificationId": id,
+    "id": missionId
+    },
+    success: function (data) {
+
+    },
+    error: function (request, error) {
+    console.log(error);
     }
-</script>
+    })
+    }
+    else
+    {
+    $.ajax({
+    url: "/Story/StoryDetail",
+    method: "POST",
+    data: {
+    "id": id,
+    "NotificationId": storyId
+    },
+    success: function (data) {
+    $('#missions').html(data);
+    },
+    error: function (request, error) {
+    console.log(error);
+    }
+    })
+    }
+    }
+    </script>*@
+
+<style>
+   
+</style>
+
+
+<div class="d-flex justify-content-between">
+
+    <div class="btn-group">
+        @* <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-bell"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownBellButton">
+            <li><a class="dropdown-item" href="#">Menu item</a></li>
+            <li><a class="dropdown-item" href="#">Menu item</a></li>
+            <li><a class="dropdown-item" href="#">Menu item</a></li>
+            </ul>
+        *@<div class="d-flex justify-content-between">
+            @{
+                string style = "auto";
+                <div class="dropdown d-flex justify-content-center align-items-center">
+                    <span class="notification-badge" data-bs-toggle="dropdown" id="notification" role="button" aria-haspopup="true" aria-expanded="false">
+
+                        <img class="position-relative" src="~/Assets/images/bell.png" alt="not load" />
+
+                    </span>
+
+                    <div class="dropdown-menu notification" style="width:@style;" aria-labelledby="notification">
+                        <div class="dropdown-header d-flex justify-content-between border-bottom">
+                            <i class="bi bi-gear-fill" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#notification-setting" alt="not-load"></i>
+                            <strong>Notifications</strong>
+                            <span style="cursor:pointer;" onclick="ClearAllNotifications()">Clear All</span>
+                        </div>
+
+                        @{
+                            if (ViewBag.Notifications is not null)
+                            {
+                                //foreach (var item in ViewBag.Notifications.NewRecommendations)
+                                //{
+                                //    <div class=" dropdown-item d-flex align-items-center justify-content-between border-bottom">
+                                //        <div class="d-flex align-items-center">
+                                //            <img src=@item.Avatar class="n-user" alt="not-load" />
+                                //            <a href="/volunteering_mission/@item.MissionId" onclick="ReadNotification(@item.NotificationId)" style="text-decoration:none;"> <span class="dropdown-item-text text-muted">@item.UserName: recomended this mission - <span class="text-black">@item.Title.Substring(0,25)...</span> </span></a>
+                                //        </div>
+                                //        @if (item.IsAcknowledge)
+                                //        {
+                                //            <div class="rounded-circle d-flex align-item-center justify-content-center" style="background-color:gray;height:15px;width:15px;"><img class="w-75 h-75" src="~/images/right-white.png" alt="not-load" /></div>
+                                //        }
+                                //        else
+                                //        {
+                                //            <div class="rounded-circle" style="background-color:orange;height:15px;width:15px;"></div>
+                                //        }
+                                //    </div>
+                                //}
+                                foreach (var item in ViewBag.Story)
+                                {
+                                    
+                                    <div class=" dropdown-item d-flex align-items-center justify-content-between border-bottom">
+                                        <div class="d-flex align-items-center">
+                                            @if (item.Text.Contains("PUBLISHED"))
+                                            {
+                                                <i class="bi bi-plus-circle"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="bi bi-x-circle"></i>
+                                            }
+                                            @if (@item.Status == "Seen")
+                                            {
+                                                <a asp-controller="Story" asp-action="StoryDetail" asp-route-id="@item.StoryId" asp-route-NotificationId="@item.NotificationId" style="text-decoration:none;"> <span class="dropdown-item-text text-muted">@item.Text</span></a>
+                                            }
+                                            else
+                                            {
+                                                 <a asp-controller="Story" asp-action="StoryDetail" asp-route-id="@item.StoryId" asp-route-NotificationId="@item.NotificationId" style="text-decoration:none;"> <span class="dropdown-item-text text-black">@item.Text</span></a>
+                                            }
+                                        </div>
+                                        @if (@item.Status == "Seen")
+                                        {
+                                            <div class="rounded-circle d-flex align-item-center justify-content-center" style="background-color:gray;height:15px;width:15px;"></div>
+                                        }
+                                        else
+                                        {
+                                            <div class="rounded-circle" style="background-color: #F88634;height:15px;width:15px;"></div>
+                                        }
+                                    </div>
+                                }
+                                foreach (var item in ViewBag.Notifications)
+                                {
+                                    <div class=" dropdown-item d-flex align-items-center justify-content-between border-bottom">
+                                        <div class="d-flex align-items-center">
+                                            @if (item.Text.Contains("Approved"))
+                                            {
+                                                <i class="bi bi-plus-circle"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="bi bi-x-circle"></i>
+                                            }
+
+                                            @if (@item.Status == "Seen")
+                                            {
+                                                <a asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@item.MissionId" asp-route-NotificationId="@item.NotificationId"  style="text-decoration:none;"> <span class="dropdown-item-text text-muted">@item.Text</span></a>
+                                            }
+                                            else
+                                            {
+                                                 <a asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@item.MissionId" asp-route-NotificationId="@item.NotificationId"  style="text-decoration:none;"> <span class="dropdown-item-text text-muted"><span class="text-black">@item.Text</span> </span></a>
+                                            }
+                                        </div>
+                                        @if (@item.Status == "Seen")
+                                        {
+                                            <div class="rounded-circle d-flex align-item-center justify-content-center" style="background-color:gray;height:15px;width:15px;"></div>
+                                        }
+                                        else
+                                        {
+                                            <div class="rounded-circle" style="background-color:#F88634;height:15px;width:15px;"></div>
+                                        }
+                                    </div>
+                                }
+                                foreach (var NewMission in ViewBag.NewMissions)
+                                {
+                                    <div class="dropdown-item d-flex align-items-center justify-content-between border-bottom mt-2">
+                                        <div class="d-flex align-items-center">
+                                            <img src="~/images/add.png" alt="not-load" />
+                                            <a href="/volunteering_mission/@NewMission.MissionId" onclick="ReadNotification(@NewMission.NotificationId)" style="text-decoration:none;"><span class="dropdown-item-text text-muted"> <span class="text-black">@NewMission.Text</span> </span></a>
+                                        </div>
+                                        @if (@NewMission.Status == "Seen")
+                                        {
+                                            <div class="rounded-circle d-flex align-item-center justify-content-center" style="background-color:gray;height:15px;width:15px;"><img class="w-75 h-75" src="~/images/right-white.png" alt="not-load" /></div>
+                                        }
+                                        else
+                                        {
+                                            <div class="rounded-circle" style="background-color:orange;height:15px;width:15px;"></div>
+                                        }
+                                    </div>
+                                }
+                            }
+
+                        }
+                        <div class="w-100 d-flex justify-content-center align-items-center mt-2" style="background-color:#dad8d8;height:18px;"><span>Older</span></div>
+
+                       
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>
+@*modal for setting of notifications*@
+@* <div class="modal fade" id="notification-setting" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    <div class="modal-header">
+    <h5 class="modal-title" id="staticBackdropLabel">Notification Settings</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+    @{
+    List<string> Settings = new List<string>();
+    if (ViewBag.Notifications is not null)
+    {
+    Settings = ViewBag.Notifications.Settings;
+    }
+    }
+    <div class="d-flex justify-content-between">
+    <label class="form-check-label" for="flexCheckDefault">
+    Recommended Missions
+    </label>
+    @if (@Settings.Contains("recommend") && !@Settings.Contains("no-setting"))
+    {
+    <input class="form-check-input setting" checked="checked" type="checkbox" value="recommend">
+    }
+    else
+    {
+    <input class="form-check-input setting" type="checkbox" value="recommend">
+    }
+    </div>
+    <div class="d-flex justify-content-between">
+    <label class="form-check-label" for="flexCheckDefault">
+    Stories
+    </label>
+    @if (@Settings.Contains("story") && !@Settings.Contains("no-setting"))
+    {
+    <input class="form-check-input setting" checked="checked" type="checkbox" value="story">
+    }
+    else
+    {
+    <input class="form-check-input setting" type="checkbox" value="story">
+    }
+    </div>
+    <div class="d-flex justify-content-between">
+    <label class="form-check-label" for="flexCheckDefault">
+    Missions Apply Requests
+    </label>
+    @if (@Settings.Contains("missionapplication") && !@Settings.Contains("no-setting"))
+    {
+    <input class="form-check-input setting" checked="checked" type="checkbox" value="missionapplication">
+    }
+    else
+    {
+    <input class="form-check-input setting" type="checkbox" value="missionapplication">
+    }
+    </div>
+    <div class="d-flex justify-content-between">
+    <label class="form-check-label" for="flexCheckDefault">
+    New Missions
+    </label>
+    @if (@Settings.Contains("mission") && !@Settings.Contains("no-setting"))
+    {
+    <input class="form-check-input setting" checked="checked" type="checkbox" value="mission">
+    }
+    else
+    {
+    <input class="form-check-input setting" type="checkbox" value="mission">
+    }
+    </div>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn applyButton" data-bs-dismiss="modal">Cancle</button>
+    <button type="button" onclick="UpdateSetting()" class="btn applyButton">Save</button>
+    </div>
+    </div>
+    </div>
+    </div>*@

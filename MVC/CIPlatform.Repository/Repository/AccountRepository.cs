@@ -379,6 +379,14 @@ namespace CIPlatform.Repository.Repository
                     _DbContext.Missions.Add(mission);
                     _DbContext.SaveChanges();
                 }
+
+                Notification notification = new Notification();
+                {
+                    notification.Text = "New Mission : " + mission.Title;
+                    notification.Status = "Unseen";
+                    _DbContext.Notifications.Add(notification);
+                    _DbContext.SaveChanges();
+                }
                 if (model.MissionSkill != null)
                 {
                     foreach (var skillId in model.MissionSkill)
@@ -872,11 +880,11 @@ namespace CIPlatform.Repository.Repository
                 notification.UserId = missionApplication.UserId;
                 if (missionApplication.ApprovalStatus == "Approve")
                 {
-                    notification.Text = "Approved : " + mission.Title;
+                    notification.Text = "Approved Mission : " + mission.Title;
                 }
                 else
                 {
-                    notification.Text = "Declined : " + mission.Title;
+                    notification.Text = "Declined Mission : " + mission.Title;
                 }
                 notification.Status = "Unseen";
             }
@@ -899,6 +907,22 @@ namespace CIPlatform.Repository.Repository
             _DbContext.Stories.Update(story);
             _DbContext.SaveChanges();
 
+            Notification notification = new Notification();
+            {
+                notification.StoryId = story.StoryId;
+                notification.UserId = story.UserId;
+                if (story.Status == "PUBLISHED")
+                {
+                    notification.Text = "Published Story : " + story.Title;
+                }
+                else
+                {
+                    notification.Text = "Declined Story : " + story.Title;
+                }
+                notification.Status = "Unseen";
+            }
+            _DbContext.Notifications.Add(notification);
+            _DbContext.SaveChanges();
 
             return true;
         }

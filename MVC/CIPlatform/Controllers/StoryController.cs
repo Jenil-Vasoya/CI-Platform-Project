@@ -95,7 +95,7 @@ namespace CIPlatform.Controllers
         }
 
 
-        public IActionResult StoryDetail(long id)
+        public IActionResult StoryDetail(long id, long? NotificationId)
         {
             try
             {
@@ -107,7 +107,10 @@ namespace CIPlatform.Controllers
                     ViewBag.Users = users;
 
                     _StoryRepo.StoryView(id, UserId);
-
+                    if (NotificationId != null)
+                    {
+                        var notification = _StoryRepo.UpdateNotification(NotificationId);
+                    }
 
                     List<MissionData> missionDatas = _StoryRepo.GetStoryCardsList(UserId,Role);
 
