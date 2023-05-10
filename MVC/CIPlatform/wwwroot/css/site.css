@@ -25,6 +25,31 @@ html {
         padding-left: 35px;
     }
 
+.notification {
+    margin-right: -700px;
+}
+
+.notification-data {
+    margin-left: -480px;
+}
+
+
+@media only screen and (max-width:1399px) {
+    .notification {
+        margin-right: -500px;
+    }
+    .notification-data {
+        margin-left: -280px;
+    }
+
+}
+@media only screen and (max-width:1199px) {
+    .notification {
+        margin-right: -300px;
+    }
+
+}
+
 
     @media only screen and (max-width:991px) {
         .storyp {
@@ -33,8 +58,63 @@ html {
 
         .policyp {
             padding-left: 0px;
+            display: none;
         }
+
+        .notification {
+            margin-right: -300px;
+        }
+
+        
+
     }
+
+@media only screen and (max-width:768px) {
+    .notification {
+        margin-right: -100px;
+    }
+
+   
+
+}
+
+@media only screen and (max-width:474px) {
+    .notification {
+        margin-right: 0px;
+    }
+}
+
+@media (min-width: 992px) {
+    .dropdown-menu-left {
+        left: 50% !important;
+        right: auto !important;
+        text-align: center !important;
+        transform: translate(-50%, 0) !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .dropdown-menu-left {
+        left: 50% !important;
+        right: auto !important;
+        text-align: center !important;
+        transform: translate(-50%, 0) !important;
+    }
+}
+
+@media (max-width: 474px) {
+    .dropdown-menu-left {
+        left: 50% !important;
+        right: auto !important;
+        wid
+        text-align: center !important;
+        transform: translate(-50%, 0) !important;
+    }
+}
+
+
+    
+   
 
     /*@media only screen and (max-width:331px) {
     .uname {
@@ -43,18 +123,18 @@ html {
 }*/
 
 
-.applyButton {
-    border: 2px solid #F88634;
-    border-radius: 100px;
-    color: #F88634;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-    .applyButton:hover {
-        background-color: #F88634;
-        color: white;
+    .applyButton {
+        border: 2px solid #F88634;
+        border-radius: 100px;
+        color: #F88634;
+        padding-left: 20px;
+        padding-right: 20px;
     }
+
+        .applyButton:hover {
+            background-color: #F88634;
+            color: white;
+        }
 
 
 

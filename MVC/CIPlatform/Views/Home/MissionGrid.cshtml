@@ -88,7 +88,7 @@
             <partial name="_MissionGrid" />
         </div>
 
-        <partial name="_Notification" />
+        
         <!-- End Mission Grid -->
 
 
@@ -278,9 +278,82 @@
 
 
         function searchMission(pg) {
-            console.log("abc");
+
+            
             var search = $('input[name="search"]').val();
             var sort = $('#sortby').find(":selected").val();
+            var countries = [];
+            var cities = [];
+            var themes = [];
+            var skills = [];
+
+            if (pg == undefined) {
+                pg = 1;
+            }
+
+            $('input[name="country"]:checked').each(function () {
+                countries.push(this.id);
+            });
+            $('input[name="city"]:checked').each(function () {
+                cities.push(this.id);
+            });
+            $('input[name="theme"]:checked').each(function () {
+                themes.push(this.id);
+            });
+            $('input[name="skill"]:checked').each(function () {
+                skills.push(this.id);
+            });
+            debugger;
+            $.ajax({
+                url: "/Home/Search",
+                method: "POST",
+                data: {
+                    "search": search,
+                    "countries": countries,
+                    "cities": cities,
+                    "themes": themes,
+                    "skills": skills,
+                    "sort": sort,
+                    "pg": pg
+                },
+                success: function (data) {
+                    $('#missions').html(data);
+                },
+                error: function (request, error) {
+                    console.log(error);
+                }
+            })
+            debugger;
+            $.ajax({
+                url: "/Home/SearchList",
+                method: "POST",
+                data: {
+                    "search": search,
+                    "countries": countries,
+                    "cities": cities,
+                    "themes": themes,
+                    "skills": skills,
+                    "sort": sort,
+                    "pg": pg
+                },
+                success: function (data) {
+                    $('#missionslist').html(data);
+                },
+                error: function (request, error) {
+                    console.log(error);
+                }
+            })
+        }
+        function searchMission(pg) {
+
+            var sort;
+            var search = $('input[name="search"]').val();
+            sort = $('#sortby').find(":selected").val();
+            var explore = $('#explore').find(":selected").val();
+            if(explore != "Explore")
+            {
+                sort = explore;
+            }
             var countries = [];
             var cities = [];
             var themes = [];

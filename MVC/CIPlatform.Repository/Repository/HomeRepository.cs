@@ -149,7 +149,7 @@ namespace CIPlatform.Repository.Repository
                 missions = missions.Where(a => skills.Contains(a.SkillId.ToString())).ToList();
 
             }
-           
+
             switch (sort)
             {
                 case 1:
@@ -161,7 +161,7 @@ namespace CIPlatform.Repository.Repository
                     break;
 
                 case 3:
-                    missions = missions.OrderByDescending(i => i.EndDate).ToList();
+                    missions = missions.OrderByDescending(i => i.Deadline).ToList();
                     break;
 
                 case 4:
@@ -176,6 +176,34 @@ namespace CIPlatform.Repository.Repository
                     missions = missions.OrderByDescending(i => i.IsFavMission).ToList();
                     break;
 
+                case 7:
+
+                    var maxThemes = missions.Where(m => m.MissionThemeId != 0).GroupBy(m => m.MissionThemeId).OrderByDescending(g => g.Count()).ToList();
+
+                    List<MissionData> topThemes = new List<MissionData>();
+
+                    foreach (var theme in maxThemes)
+                    {
+                        var missionsInTheme = missions.Where(m => m.MissionThemeId == theme.Key).ToList();
+
+                        topThemes.AddRange(missionsInTheme);
+                    }
+
+                    missions = topThemes;
+
+                    break;
+
+                case 8:
+                    missions = missions.OrderByDescending(i => i.AvgRating).ToList();
+                    break;
+
+                case 9:
+                    missions = missions.OrderByDescending(i => i.IsFavMission).ToList();
+                    break;
+
+                case 10:
+                    missions = missions.OrderByDescending(i => i.IsFavMission).ToList();
+                    break;
 
             }
             if (pg != 0)
@@ -513,6 +541,7 @@ namespace CIPlatform.Repository.Repository
         public bool InviteWorker(List<long> CoWorker, long UserId, long MissionId)
         {
           
+            User? from_user = _DbContext.Users.FirstOrDefault(c => c.UserId.Equals(UserId));
             foreach (var user in CoWorker)
             {
                 _DbContext.MissionInvites.Add(new MissionInvite
@@ -521,10 +550,17 @@ namespace CIPlatform.Repository.Repository
                     ToUserId = Convert.ToInt64(user),
                     MissionId = MissionId
                 });
+
+                _DbContext.Notifications.Add(new Notification
+                {
+                    MissionId = MissionId,
+                    Text = "Recommanded Mission : " + _DbContext.Missions.Where(m => m.MissionId == MissionId).FirstOrDefault().Title + " By " + from_user?.FirstName + " " + from_user?.LastName,
+                    UserId = Convert.ToInt64(user),
+                    Status = "Unseen"
+                });
             }
             _DbContext.SaveChanges();
 
-            User? from_user = _DbContext.Users.FirstOrDefault(c => c.UserId.Equals(UserId));
             List<string> Email_users = (from u in _DbContext.Users
                                         where CoWorker.Contains(u.UserId)
                                         select u.Email).ToList();
@@ -610,8 +646,14 @@ namespace CIPlatform.Repository.Repository
 
         public List<Notification> GetNotifications(long UserId)
         {
-            var notifications = _DbContext.Notifications.Where(n=> n.UserId == UserId || n.UserId == null).OrderByDescending(n=> n.Status).ToList();
+            var notificationsetting = _DbContext.NotificationSettings.Where(ns=> ns.UserId == UserId).ToList();
+            var notifications = _DbContext.Notifications.Where(n=> (n.UserId == UserId || n.UserId == null) && n.DeletedAt == null ).OrderByDescending(n=> n.Status).ToList();
             return notifications;
+        }
+        public List<NotificationSetting> GetNotificationSetting(long UserId)
+        {
+            var notificationsetting = _DbContext.NotificationSettings.Where(ns => ns.UserId == UserId).ToList();
+            return notificationsetting;
         }
 
         public bool UpdateNotification(long? NotificationId)
@@ -625,6 +667,71 @@ namespace CIPlatform.Repository.Repository
                 return true;
             }
             return false;
+        }
+
+        public bool ClearNotification(long UserId)
+        {
+            var notificationsetting = GetNotificationSetting(UserId);
+            var result = new List<Notification>();
+            foreach (var setting in notificationsetting)
+            {
+                if (setting.Type == "recommendStory")
+                {
+                     result = _DbContext.Notifications.Where(n => n.DeletedAt == null && n.UserId == UserId && n.Text.Contains("Recommanded Story")).ToList();
+                }
+                
+                if (setting.Type == "recommendMission")
+                {
+                    result = _DbContext.Notifications.Where(n => n.DeletedAt == null && n.UserId == UserId && n.Text.Contains("Recommanded Mission")).ToList();
+                }
+                
+                if (setting.Type == "story")
+                {
+                    result = _DbContext.Notifications.Where(n => n.DeletedAt == null && n.UserId == UserId && (n.Text.Contains("Published Story") || n.Text.Contains("Declined Story"))).ToList();
+                }
+                
+                if (setting.Type == "mission")
+                {
+                    result = _DbContext.Notifications.Where(n => n.DeletedAt == null && n.UserId == UserId && (n.Text.Contains("Approved Mission") || n.Text.Contains("Declined Mission"))).ToList();
+                }
+                
+                if (setting.Type == "newMission")
+                {
+                    result = _DbContext.Notifications.Where(n => n.DeletedAt == null && n.UserId == UserId && n.Text.Contains("New Mission")).ToList();
+                }
+
+                foreach (var notification in result)
+                {
+                    notification.DeletedAt = DateTime.Now;
+                    _DbContext.Notifications.Update(notification);
+                    _DbContext.SaveChanges();
+                }
+            }
+            return true;
+        }
+
+        public bool UpdateSetting(List<string> type, long UserId)
+        {
+            var user = _DbContext.NotificationSettings.Where(n => n.UserId == UserId).ToList();
+            if (user.Count != 0)
+            {
+                foreach (var item in user)
+                {
+                    _DbContext.NotificationSettings.Remove(item);
+                    _DbContext.SaveChanges();
+                }
+            }
+            foreach (var typeItem in type)
+            {
+                NotificationSetting setting = new NotificationSetting();
+                {
+                    setting.Type = typeItem;
+                    setting.UserId = UserId;
+                    _DbContext.NotificationSettings.Add(setting);
+                    _DbContext.SaveChanges();
+                }
+            }
+            return true;
         }
 
     }

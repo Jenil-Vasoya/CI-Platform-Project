@@ -114,9 +114,13 @@ namespace CIPlatform.Controllers
                     var totalMission = _HomeRepo.TotalMissions();
                     ViewBag.totalMission = totalMission;
 
-                    ViewBag.Notifications = _HomeRepo.GetNotifications(UserId).Where(n=> n.MissionId != null);
-                    ViewBag.Story = _HomeRepo.GetNotifications(UserId).Where(n=> n.StoryId != null) ?? null;
+                    ViewBag.NotificationSetting = _HomeRepo.GetNotificationSetting(UserId) ?? null;
+                    //ViewBag.NotificationCount = _HomeRepo.GetNotifications(UserId).Where(n=> n.Status == "Unseen").Count();
+                    ViewBag.Notifications = _HomeRepo.GetNotifications(UserId).Where(n=> n.MissionId != null && (n.Text.Contains("Approved Mission") || n.Text.Contains("Declined Mission")));
+                    ViewBag.Story = _HomeRepo.GetNotifications(UserId).Where(n=> n.StoryId != null && (n.Text.Contains("Published Story") || n.Text.Contains("Declined Story"))) ?? null;
                     ViewBag.NewMissions = _HomeRepo.GetNotifications(UserId).Where(n=> n.MissionId == null && n.StoryId == null) ?? null;
+                    ViewBag.RecommandedMissions = _HomeRepo.GetNotifications(UserId).Where(n=> n.MissionId != null && n.Text.Contains("Recommanded")) ?? null;
+                    ViewBag.RecommandedStory = _HomeRepo.GetNotifications(UserId).Where(n=> n.StoryId != null && n.Text.Contains("Recommanded")) ?? null;
 
                     ViewBag.Totalpages = Math.Ceiling(missionDatas.Count() / 6.0);
                     ViewBag.missionDatas = missionDatas.Skip((1 - 1) * 6).Take(6).ToList();
@@ -193,7 +197,7 @@ namespace CIPlatform.Controllers
             return View();
         }
 
-
+            
         public IActionResult VolunteerMission(long id, long? NotificationId)
             {
             try
@@ -397,6 +401,23 @@ namespace CIPlatform.Controllers
 
             return invited;
 
+        }
+
+        public ActionResult ClearNotification()
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+            bool result = _HomeRepo.ClearNotification(UserId);
+
+            return PartialView("_Notification");
+        }
+        
+        public ActionResult UpdateSetting(List<string> type)
+        {
+            long UserId = Convert.ToInt64(JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserId") ?? ""));
+            bool result = _HomeRepo.UpdateSetting(type,UserId);
+            ViewBag.NotificationSetting = _HomeRepo.GetNotificationSetting(UserId) ?? null;
+            ViewBag.Notifications = _HomeRepo.GetNotifications(UserId).Where(n => n.MissionId != null && (n.Text.Contains("Approved Mission") || n.Text.Contains("Declined Mission")));
+            return PartialView("_NotificationSetting");
         }
 
     }

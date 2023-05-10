@@ -866,9 +866,16 @@ namespace CIPlatform.Repository.Repository
             if (Result == "true")
             {
                 missionApplication.ApprovalStatus = "Approve";
+                mission.TotalSeats = mission.TotalSeats - 1;
+                _DbContext.Missions.Update(mission);
             }
             else
             {
+                if(missionApplication.ApprovalStatus == "Approve")
+                {
+                    mission.TotalSeats = mission.TotalSeats + 1;
+                    _DbContext.Missions.Update(mission);
+                }
                 missionApplication.ApprovalStatus = "Decline";
             }
             _DbContext.MissionApplications.Update(missionApplication);

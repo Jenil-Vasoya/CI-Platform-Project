@@ -69,6 +69,12 @@ namespace CIPlatform.Repository.Interface
 
         public List<Notification> GetNotifications(long UserId);
 
+        public List<NotificationSetting> GetNotificationSetting(long UserId);
+
         public bool UpdateNotification(long? NotificationId);
+
+        public bool ClearNotification(long UserId);
+
+        public bool UpdateSetting(List<string> type, long UserId);
     }
 }

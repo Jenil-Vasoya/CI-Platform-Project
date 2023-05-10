@@ -24,13 +24,14 @@ public partial class Mission
 
     public DateTime? StartDate { get; set; }
 
+    public DateTime? EndDate { get; set; }
+
     [NotMapped]
     public string StartDateEdit { get; set; }
 
     [NotMapped]
     public string EndDateEdit { get; set; }
 
-    public DateTime? EndDate { get; set; }
 
     public string? MissionType { get; set; }
 
@@ -57,8 +58,6 @@ public partial class Mission
 
     public DateTime? DeletedAt { get; set; }
 
-    public DateTime? Deadline { get; set; }
-
     [NotMapped]
     public string EditDeadline { get; set; }
 
@@ -82,6 +81,8 @@ public partial class Mission
 
     public string? Availibility { get; set; }
 
+    public DateTime? Deadline { get; set; }
+
     public virtual City City { get; set; } = null!;
 
     public virtual ICollection<Comment> Comments { get; } = new List<Comment>();
@@ -99,17 +100,17 @@ public partial class Mission
 
     public virtual ICollection<MissionInvite> MissionInvites { get; } = new List<MissionInvite>();
 
-
     [JsonIgnore]
     public virtual ICollection<MissionMedium> MissionMedia { get; } = new List<MissionMedium>();
 
     public virtual ICollection<MissionRating> MissionRatings { get; } = new List<MissionRating>();
 
-
     [JsonIgnore]
     public virtual ICollection<MissionSkill> MissionSkills { get; } = new List<MissionSkill>();
 
     public virtual MissionTheme MissionTheme { get; set; } = null!;
+
+    public virtual ICollection<Notification> Notifications { get; } = new List<Notification>();
 
     public virtual ICollection<Story> Stories { get; } = new List<Story>();
 

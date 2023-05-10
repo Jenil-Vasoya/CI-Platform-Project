@@ -40,6 +40,7 @@ namespace CIPlatform.Controllers
 
         public IActionResult Login(string? returnUrl)
         {
+            HttpContext.Session.Clear();
             ViewBag.Banner = _UserRepo.BannerList();
             if (HttpContext.Session.GetString("userid") != null)
             {

@@ -478,6 +478,10 @@
                                 {
                                     <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton " disabled> Alredy Applied</button>
                                 }*@
+                                else if(@ViewBag.missionDatas.Status == "Decline")
+                                {
+                                    <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton " disabled> Request Declined &nbsp; &nbsp; <i class="bi bi-clock-history"></i></button>
+                                }
                                 else if(@ViewBag.missionDatas.IsApplied == 1)
                                 {
                                     <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton " disabled> Alredy Applied</button>

@@ -52,6 +52,8 @@ public partial class CIPlatformDbContext : DbContext
 
     public virtual DbSet<Notification> Notifications { get; set; }
 
+    public virtual DbSet<NotificationSetting> NotificationSettings { get; set; }
+
     public virtual DbSet<PasswordReset> PasswordResets { get; set; }
 
     public virtual DbSet<Skill> Skills { get; set; }
@@ -527,31 +529,43 @@ public partial class CIPlatformDbContext : DbContext
 
         modelBuilder.Entity<Notification>(entity =>
         {
-            entity.HasKey(e => e.NotificationId).HasName("PK_Notification");
             entity.ToTable("Notification");
 
+            entity.Property(e => e.NotificationId).HasColumnName("NotificationID");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.DeletedAt).HasColumnType("datetime");
             entity.Property(e => e.MissionId).HasColumnName("MissionID");
-            entity.Property(e => e.NotificationId)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("NotificationID");
             entity.Property(e => e.Status).HasMaxLength(10);
             entity.Property(e => e.StoryId).HasColumnName("StoryID");
-            entity.Property(e => e.Text).HasMaxLength(100);
+            entity.Property(e => e.Text).HasMaxLength(500);
             entity.Property(e => e.UserId).HasColumnName("UserID");
 
-           
-
-            entity.HasOne(d => d.User).WithMany()
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK_Notification_User");
-
-            entity.HasOne(d => d.Mission).WithMany()
+            entity.HasOne(d => d.Mission).WithMany(p => p.Notifications)
                 .HasForeignKey(d => d.MissionId)
                 .HasConstraintName("FK_Notification_Mission");
 
-            entity.HasOne(d => d.Story).WithMany()
+            entity.HasOne(d => d.Story).WithMany(p => p.Notifications)
                 .HasForeignKey(d => d.StoryId)
                 .HasConstraintName("FK_Notification_Story");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Notifications)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK_Notification_User");
+        });
+
+        modelBuilder.Entity<NotificationSetting>(entity =>
+        {
+            entity.ToTable("NotificationSetting");
+
+            entity.Property(e => e.NotificationSettingId).HasColumnName("NotificationSettingID");
+            entity.Property(e => e.Type).HasMaxLength(40);
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.User).WithMany(p => p.NotificationSettings)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK_NotificationSetting_User");
         });
 
         modelBuilder.Entity<PasswordReset>(entity =>

@@ -391,6 +391,7 @@ namespace CIPlatform.Repository.Repository
         }
         public bool InviteWorker(List<long> CoWorker, long UserId, long StoryId)
         {
+            User? from_user = _DbContext.Users.FirstOrDefault(c => c.UserId.Equals(UserId));
             foreach (var user in CoWorker)
             {
                 _DbContext.StoryInvites.Add(new StoryInvite
@@ -399,10 +400,17 @@ namespace CIPlatform.Repository.Repository
                     ToUserId = Convert.ToInt64(user),
                     StoryId = StoryId
                 });
+
+                _DbContext.Notifications.Add(new Notification
+                {
+                    StoryId = StoryId,
+                    Text = "Recommanded Story : " + _DbContext.Stories.Where(m => m.StoryId == StoryId).FirstOrDefault().Title + " By " + from_user?.FirstName + " " + from_user?.LastName,
+                    UserId = Convert.ToInt64(user),
+                    Status = "Unseen"
+                });
             }
             _DbContext.SaveChanges();
 
-            User? from_user = _DbContext.Users.FirstOrDefault(c => c.UserId.Equals(UserId));
             List<string> Email_users = (from u in _DbContext.Users
                                         where CoWorker.Contains(u.UserId)
                                         select u.Email).ToList();
