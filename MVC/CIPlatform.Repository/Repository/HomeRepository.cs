@@ -121,6 +121,8 @@ namespace CIPlatform.Repository.Repository
         {
             var pageSize = 6;
             List<MissionData> missions = GetMissionCardsList(UserId);
+            var FavMission = _DbContext.FavoriteMissions.Where(a => a.UserId == UserId && a.DeletedAt == null).Select(a => a.MissionId).ToList();
+
             if (search != "")
             {
                 missions = missions.Where(a => a.Title.ToLower().Contains(search) || a.ShortDescription.ToLower().Contains(search)).ToList();
@@ -198,11 +200,12 @@ namespace CIPlatform.Repository.Repository
                     break;
 
                 case 9:
-                    missions = missions.OrderByDescending(i => i.IsFavMission).ToList();
+                    missions = missions.OrderByDescending(m => _DbContext.FavoriteMissions.Where(f => f.MissionId == m.MissionId).Count()).ToList();
                     break;
 
                 case 10:
-                    missions = missions.OrderByDescending(i => i.IsFavMission).ToList();
+                    Random random = new Random();
+                    missions = missions.OrderBy(x => random.Next()).ToList();
                     break;
 
             }
@@ -213,6 +216,7 @@ namespace CIPlatform.Repository.Repository
 
             return missions;
         }
+
 
         public List<RecentVolunteer> RecentVolunteer(long MissionId, int pg)
         {
