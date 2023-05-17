@@ -558,7 +558,7 @@ namespace CIPlatform.Repository.Repository
                 _DbContext.Notifications.Add(new Notification
                 {
                     MissionId = MissionId,
-                    Text = "Recommanded Mission : " + _DbContext.Missions.Where(m => m.MissionId == MissionId).FirstOrDefault().Title + " By " + from_user?.FirstName + " " + from_user?.LastName,
+                    Text = "Recommanded Mission : " + _DbContext.Missions.Where(m => m.MissionId == MissionId).FirstOrDefault().Title + " By " + from_user?.UserId,
                     UserId = Convert.ToInt64(user),
                     Status = "Unseen"
                 });

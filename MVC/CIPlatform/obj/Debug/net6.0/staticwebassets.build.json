@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8bmuj2GXMIs+p6WzujeO+lW4ByYhFQXuxmvKopIOrTY=",
+  "Hash": "e1CZi6vZG97IQAz6QLplgwJgVUvL0a4HxQmvteIuwdQ=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -2091,6 +2091,23 @@
       "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\2013-dodge-charger-r-t-muscle-car-lxygkenro11k1iro.jpg"
     },
     {
+      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\27c34acb29632c23c46ebb92ff8b8b72.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "Assets/StoryImages/27c34acb29632c23c46ebb92ff8b8b72.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\27c34acb29632c23c46ebb92ff8b8b72.png"
+    },
+    {
       "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\404-Page-image.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
@@ -2363,6 +2380,23 @@
       "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\cyberpunk-2077-1080p-gaming-nxgxdqn7djd7ukct.jpg"
     },
     {
+      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\cyberpunk-2077-car-quadra-v-tech-uhdpaper.com-4K-21.jpg",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "Assets/StoryImages/cyberpunk-2077-car-quadra-v-tech-uhdpaper.com-4K-21.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\cyberpunk-2077-car-quadra-v-tech-uhdpaper.com-4K-21.jpg"
+    },
+    {
       "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\cyberpunk-for-android-night-city-promo-tiiltfvuln05qpj0.jpg",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
@@ -2395,6 +2429,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\cyberpunk-night-city-0szm42220t4jjmx0.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\desktop-wallpaper-1440x900-forza-horizon-4-classic-cars-1440x900-resolution-vintage-car.jpg",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "Assets/StoryImages/desktop-wallpaper-1440x900-forza-horizon-4-classic-cars-1440x900-resolution-vintage-car.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\desktop-wallpaper-1440x900-forza-horizon-4-classic-cars-1440x900-resolution-vintage-car.jpg"
     },
     {
       "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\drift-cars.jpg",
@@ -2769,6 +2820,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\Plantation-and-Afforestation-programme.png"
+    },
+    {
+      "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\sci-fi-cyberpunk-city-uhdpaper.com-4K-108.jpg",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "Assets/StoryImages/sci-fi-cyberpunk-city-uhdpaper.com-4K-108.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\StoryImages\\sci-fi-cyberpunk-city-uhdpaper.com-4K-108.jpg"
     },
     {
       "Identity": "C:\\Users\\pct106\\Desktop\\CI-Platform-Project\\MVC\\CIPlatform\\wwwroot\\Assets\\StoryImages\\user1.png",

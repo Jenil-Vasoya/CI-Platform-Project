@@ -275,7 +275,6 @@ namespace CIPlatform.Controllers
         }
 
 
-        [Authorize]
         public IActionResult ForgotPassword()
         {
             ViewBag.Banner = _UserRepo.BannerList();

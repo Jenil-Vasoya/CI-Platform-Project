@@ -215,26 +215,33 @@
                 CoWorkers.push(this.id);
             });
 
-            $.ajax({
-                url: "/Home/InviteWorker",
-                method: "POST",
-                data: {
-                    "MissionId": MissionId,
-                    "CoWorkers": CoWorkers
-                },
-                success: function (data) {
-                    if (data == true) {
-                        toastr.success('Mail sent successfully');
-                    }
-                    else {
-                        toastr.error('Mail not successfully');
-                    }
-                },
-                error: function (request, error) {
+            if(CoWorkers.length != 0)
+             {
+                $.ajax({
+                    url: "/Home/InviteWorker",
+                    method: "POST",
+                    data: {
+                        "MissionId": MissionId,
+                        "CoWorkers": CoWorkers
+                    },
+                    success: function (data) {
+                        if (data == true) {
+                            toastr.success('Mail sent successfully');
+                        }
+                        else {
+                            toastr.error('Mail not successfully');
+                        }
+                    },
+                    error: function (request, error) {
 
-                    console.log(error);
-                }
-            })
+                        console.log(error);
+                    }
+                })
+            }
+            else
+            {
+                   toastr.error('First Select User');   
+            }
 
         }
 

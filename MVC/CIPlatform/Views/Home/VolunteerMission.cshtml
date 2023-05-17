@@ -484,11 +484,11 @@
                                 }
                                 else if(@ViewBag.missionDatas.IsApplied == 1)
                                 {
-                                    <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton " disabled> Alredy Applied</button>
+                                    <button type="submit"  class="btn applyButton " disabled> Alredy Applied</button>
                                 }
                                  else if(@ViewBag.missionDatas.Deadline < @DateTime.Now)
                                 {
-                                    <button type="submit" onclick="ApplyMission(@ViewBag.missionDatas.MissionId)" class="btn applyButton " disabled> Registration Date Over &nbsp; &nbsp; <i class="bi bi-clock-history"></i></button>
+                                    <button type="submit" class="btn applyButton " disabled> Registration Date Over &nbsp; &nbsp; <i class="bi bi-clock-history"></i></button>
                                 }
                                 else
                                 {
@@ -993,23 +993,31 @@ function sendInvitation(MissionId)
                      CoWorkers.push(this.id);
                  });
 
-                 $.ajax({
-                     url:"/Home/InviteWorker",
-                     method: "POST",
-                     data:{
-                         "MissionId" : MissionId,
-                         "CoWorkers" : CoWorkers
-                     },
-                     success:function(data){
-                        $("#mission").html(data);
-                        toastr.success('Mail sent successfully');   
-                     },
-                     error: function(request,error){
+                 if(CoWorkers.length != 0)
+                 {
+                     $.ajax({
+                         url:"/Home/InviteWorker",
+                         method: "POST",
+                         data:{
+                             "MissionId" : MissionId,
+                             "CoWorkers" : CoWorkers
+                         },
+                         success:function(data){
+                            $("#mission").html(data);
+                            toastr.success('Mail sent successfully');   
+                         },
+                         error: function(request,error){
 
-                         console.log(error);
-                     }
-                 })
+                             console.log(error);
+                         }
+                     })
+                 }
+                 else
+                 {
+                     toastr.error('First Select User');   
+                     $('#exampleModal').modal('show');
+                 }
 
             }
 
-</script>
+</script>   

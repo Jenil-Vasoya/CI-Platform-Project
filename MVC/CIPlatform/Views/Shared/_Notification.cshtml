@@ -257,11 +257,10 @@
                                                     {
                                                         string text = item.Text;
                                                         string[] words = text.Split(' ');
-                                                        string firstname = words[^2];
-                                                        string lastname = words[^1];
+                                                        var lastname = words[^1];
 
 
-                                                        if (user.FirstName == firstname && user.LastName == lastname)
+                                                        if (user.UserId == lastname)
                                                         {
                                                             <img src="~/Assets/StoryImages/@user.Avatar" class="n-user rounded-circle " height="16px" alt="not-load" />
                                                         }
@@ -288,26 +287,24 @@
                                     {
                                         foreach (var item in ViewBag.RecommandedMissions)
                                         {
+                                             string text1 = item.Text;
                                             <div class=" dropdown-item d-flex align-items-center justify-content-between border-bottom">
                                                 <div class="d-flex align-items-center">
+                                                @foreach (var user in ViewBag.Users)
+                                                {
+                                                    string text = item.Text;
+                                                    string[] words = text.Split(' ');
+                                                    string lastname = words[^1];
 
-                                                    @foreach (var user in ViewBag.Users)
+                                                    if (user.UserId == long.Parse(lastname))
                                                     {
-                                                        string text = item.Text;
-                                                        string[] words = text.Split(' ');
-                                                        string firstname = words[^2];
-                                                        string lastname = words[^1];
-
-
-                                                        if (user.FirstName == firstname && user.LastName == lastname)
-                                                        {
-                                                            <img src="~/Assets/StoryImages/@user.Avatar" class="n-user rounded-circle " height="16px" alt="not-load" />
-                                                        }
+                                                        <img src="~/Assets/StoryImages/@user.Avatar" class="n-user rounded-circle " height="16px" alt="not-load" />
                                                     }
+                                                }
 
                                                     @if (@item.Status == "Seen")
                                                     {
-                                                        <a asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@item.MissionId" asp-route-NotificationId="@item.NotificationId"  style="text-decoration:none;"> <span class="dropdown-item-text text-muted">@item.Text</span></a>
+                                                        <a asp-controller="Home" asp-action="VolunteerMission" asp-route-id="@item.MissionId" asp-route-NotificationId="@item.NotificationId"  style="text-decoration:none;"> <span class="dropdown-item-text text-muted">@text1</span></a>
                                                     }
                                                     else
                                                     {
