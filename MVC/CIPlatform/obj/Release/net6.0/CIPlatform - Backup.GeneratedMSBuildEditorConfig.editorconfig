@@ -19,22 +19,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Admin/Index1.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXgxLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Home/AddStory.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRTdG9yeS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Home/Header.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIZWFkZXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Home/Header1.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIZWFkZXIxLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -47,10 +31,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNaXNzaW9uR3JpZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Home/MissionList.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNaXNzaW9uTGlzdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Home/Policy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQb2xpY3kuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -61,10 +41,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Shared/_AddCMS.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZGRDTVMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Shared/_ApplicationData.cshtml]
@@ -111,6 +87,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NaXNzaW9uTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Shared/_Notification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Shared/_NotificationSetting.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb25TZXR0aW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Shared/_Pagination.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYWdpbmF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -121,10 +105,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Shared/_RecentVolunteer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9SZWNlbnRWb2x1bnRlZXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Shared/_SearchMission.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TZWFyY2hNaXNzaW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Shared/_SecondNav.cshtml]
@@ -157,10 +137,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Story/AddStory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcnlcQWRkU3RvcnkuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Story/AddStory1.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcnlcQWRkU3RvcnkxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pct106/Desktop/CI-Platform-Project/MVC/CIPlatform/Views/Story/StoryDetail.cshtml]
